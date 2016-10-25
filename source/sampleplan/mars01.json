@@ -1,0 +1,67 @@
+{
+    "maneuvers": [
+        {
+            "time": 2458243.5,
+            "type": "START",
+            "phi": 12.64,
+            "dv": 2533.762,
+            "elv": -32.88
+        },
+        {
+            "time": 2458283.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "phi": -84.61,
+            "type": "CP",
+            "elv": -0.79,
+            "dv": 324.139
+        },
+        {
+            "time": 2458368.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "phi": -95.87,
+            "type": "CP",
+            "elv": -7.88,
+            "dv": 27.33
+        },
+        {
+            "time": 2458457.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "time": 2458458.39,
+            "type": "FLYTO",
+            "inter": 0.01
+        },
+        {
+            "phi": 16.19,
+            "type": "CP",
+            "elv": -4.43,
+            "dv": 1981.383
+        },
+        {
+            "time": 2458463.39,
+            "type": "FLYTO",
+            "inter": 0.01
+        }
+    ],
+    "probe": {
+        "name": "Marsexp",
+        "base": "EarthL2",
+        "pmass": 500.0
+    },
+    "target": {
+        "SPKID2B": 0,
+        "SPKID2A": 0,
+        "file": "",
+        "name": "Mars",
+        "SPKID1B": 4,
+        "SPKID1A": 0
+    }
+}
