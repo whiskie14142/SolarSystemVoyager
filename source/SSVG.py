@@ -125,7 +125,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.1.0 beta'
+        version = '0.1.1 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -1216,8 +1216,7 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-#        g.currentdir = 'C:\\Users\\shush_000\\Documents\\Python_Development\\SSVoyager'
-        g.currentdir = 'C:/Users/shush_000/Documents/Python_Development/SSVoyager'
+        g.currentdir = ''
         g.manfilename = None
         g.manplan = None
         g.maneuvers = None
@@ -1292,6 +1291,9 @@ class MainForm(QtGui.QMainWindow):
             caption='Select input maneuver file',
             directory=g.currentdir, filter='JSON files (*.json)')
         if ans == '': return
+
+        dirs = ans.split('/')
+        g.currentdir = '/'.join(dirs[0:-1])
 
         if g.showorbitcontrol != None:
             g.showorbitcontrol.close()
@@ -1372,7 +1374,7 @@ class MainForm(QtGui.QMainWindow):
 
         self.erasecurrentstatus()
         g.manfilename = None
-        self.dispmanfilename
+        self.dispmanfilename()
         g.maneuvers = g.manplan['maneuvers']
         g.manplan_saved = False
         g.nextman = 0
@@ -1430,6 +1432,10 @@ class MainForm(QtGui.QMainWindow):
         ans = QFileDialog.getSaveFileName(self, 
             'Define output maneuver file', dr, 'JSON files (*.json)')
         if ans == '': return
+
+        dirs = ans.split('/')
+        g.currentdir = '/'.join(dirs[0:-1])
+        
         g.manfilename = ans
         manfile = open(g.manfilename, 'w')
         json.dump(g.manplan, manfile, indent=4)
