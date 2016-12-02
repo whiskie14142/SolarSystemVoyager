@@ -72,6 +72,11 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="text">
      <string>100.00000</string>
     </property>
@@ -153,6 +158,11 @@
       <height>19</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="text">
      <string>0.0</string>
     </property>
@@ -165,6 +175,11 @@
       <width>91</width>
       <height>19</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
     </property>
     <property name="toolTip">
      <string>Leading position : phi=0, elv=0
@@ -184,6 +199,11 @@ Upward : elv=90</string>
       <width>91</width>
       <height>19</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
     </property>
     <property name="toolTip">
      <string>Leading position : phi=0, elv=0

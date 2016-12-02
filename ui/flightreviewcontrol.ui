@@ -16,7 +16,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>370</x>
      <y>50</y>
      <width>51</width>
      <height>16</height>
@@ -29,11 +29,16 @@
   <widget class="QLineEdit" name="delta_t_edit">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>430</x>
      <y>50</y>
-     <width>151</width>
+     <width>201</width>
      <height>18</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="acceptDrops">
     <bool>false</bool>
@@ -220,7 +225,7 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>370</x>
      <y>10</y>
      <width>51</width>
      <height>16</height>
@@ -233,7 +238,7 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>370</x>
      <y>30</y>
      <width>51</width>
      <height>16</height>
@@ -246,11 +251,16 @@
   <widget class="QLabel" name="starttime">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>432</x>
      <y>10</y>
-     <width>151</width>
+     <width>201</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -398,6 +408,11 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -410,6 +425,11 @@
      <width>141</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -424,6 +444,11 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -436,6 +461,11 @@
      <width>121</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -460,11 +490,16 @@
   <widget class="QLineEdit" name="currenttime">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>430</x>
      <y>30</y>
-     <width>151</width>
+     <width>201</width>
      <height>18</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="acceptDrops">
     <bool>false</bool>
@@ -488,6 +523,11 @@
      <height>18</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
    <property name="toolTip">
     <string>Relative Velocity abs. (Copiable)</string>
    </property>
@@ -506,6 +546,11 @@
      <width>141</width>
      <height>18</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="toolTip">
     <string>Relative Velocity phi (Copiable)</string>
@@ -526,6 +571,11 @@
      <height>18</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
    <property name="toolTip">
     <string>Relative Velocity elv (Copiable)</string>
    </property>
@@ -541,7 +591,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>120</width>
+     <width>91</width>
      <height>91</height>
     </rect>
    </property>

@@ -53,7 +53,7 @@
     <rect>
      <x>10</x>
      <y>60</y>
-     <width>81</width>
+     <width>61</width>
      <height>16</height>
     </rect>
    </property>
@@ -64,11 +64,16 @@
   <widget class="QLineEdit" name="isotedit">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>80</x>
      <y>60</y>
-     <width>151</width>
+     <width>191</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="toolTip">
     <string>Date and Time (ISOT format)</string>
@@ -77,24 +82,29 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>44</y>
-     <width>181</width>
+     <x>80</x>
+     <y>43</y>
+     <width>201</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>ISOT : yyyy-mm-ddThh:mm:ss.sss</string>
+    <string>ISOT : yyyy-mm-ddThh:mm:ss.ssssss</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="jdedit">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>280</x>
      <y>60</y>
-     <width>111</width>
+     <width>121</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="toolTip">
     <string>Date and Time (Julian day)</string>
@@ -103,7 +113,7 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>304</x>
+     <x>330</x>
      <y>44</y>
      <width>31</width>
      <height>16</height>
@@ -308,9 +318,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>60</y>
-     <width>61</width>
+     <x>460</x>
+     <y>10</y>
+     <width>165</width>
      <height>23</height>
     </rect>
    </property>
@@ -318,7 +328,7 @@
     <string>Get date and time from Show Orbit Window</string>
    </property>
    <property name="text">
-    <string>Get Time</string>
+    <string>Get Time from Show Orbit</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -330,11 +340,16 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>460</x>
      <y>60</y>
-     <width>91</width>
+     <width>121</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
    </property>
    <property name="toolTip">
     <string>Flight Duration for FLYTO</string>
@@ -368,8 +383,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>44</y>
+     <x>461</x>
+     <y>43</y>
      <width>111</width>
      <height>16</height>
     </rect>

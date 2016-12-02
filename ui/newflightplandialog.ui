@@ -79,6 +79,11 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="text">
      <string>myprobe</string>
     </property>
@@ -104,6 +109,11 @@
       <width>113</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
     </property>
     <property name="text">
      <string>500.0</string>
@@ -216,6 +226,11 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+      </font>
+     </property>
      <property name="text">
       <string>2000001</string>
      </property>
@@ -258,6 +273,11 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+      </font>
+     </property>
      <property name="text">
       <string>Ceres</string>
      </property>
@@ -283,6 +303,11 @@
        <width>211</width>
        <height>20</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+      </font>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -359,9 +384,14 @@
      <rect>
       <x>110</x>
       <y>30</y>
-      <width>171</width>
+      <width>191</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
     </property>
     <property name="text">
      <string>2001-01-01T00:00:00.000</string>
@@ -370,11 +400,16 @@
    <widget class="QLineEdit" name="jd_edit">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>320</x>
       <y>30</y>
       <width>131</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
     </property>
     <property name="text">
      <string>2451910.5</string>
@@ -441,6 +476,11 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="text">
      <string>0.0</string>
     </property>
@@ -454,6 +494,11 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="text">
      <string>0.0</string>
     </property>
@@ -466,6 +511,11 @@
       <width>151</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
     </property>
     <property name="text">
      <string>0.0</string>
@@ -532,6 +582,11 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="text">
      <string>0.0</string>
     </property>
@@ -545,6 +600,11 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="text">
      <string>0.0</string>
     </property>
@@ -557,6 +617,11 @@
       <width>151</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
     </property>
     <property name="text">
      <string>0.0</string>

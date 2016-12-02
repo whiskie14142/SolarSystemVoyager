@@ -37,7 +37,11 @@ class Target:
             self.kernel = common.SPKkernel
             self.ephem = self.de430_ephem
         else:
-            self.sbkernel = SPKType01.open(file)
+            filename = file.split('/')[-1]
+            try:
+                self.sbkernel = SPKType01.open(file)
+            except FileNotFoundError:
+                self.sbkernel = SPKType01.open(common.bspdir + filename)
             self.kernel = common.SPKkernel
             self.ephem = self.nasa_sb_ephem
         self.name = name

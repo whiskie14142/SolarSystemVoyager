@@ -116,7 +116,7 @@ class ProbeOrbit:
         self._y0[0:3] = pos
         self._y0[3:6] = vel
         
-    def trj(self, endsec, inter, kernel, body_f, body_mu, atol, rtol):
+    def trj(self, endsec, inter, kernel, body_f, body_mu, atol, rtol, pbar):
         runerror = False
         ninter = int((endsec - self._t0) / inter)
         if (self._t0 + ninter * inter) < endsec:
@@ -147,6 +147,9 @@ class ProbeOrbit:
             xd[i] = posvel[3]
             yd[i] = posvel[4]
             zd[i] = posvel[5]
+            if pbar != None:
+                percent = i * 100 // ninter
+                pbar.setValue(percent)
         if remainder:
             posvel = r.integrate(endsec)
             if not r.successful(): 

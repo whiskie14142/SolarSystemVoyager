@@ -42,8 +42,9 @@ class Probe:
         self.vel = np.zeros(3)
         self.jd = 0.0
         self.orbit.statusinitialize()
-        
-    def exec_man(self, **man):
+
+#        
+    def exec_man(self, man, pbar=None, plabel=None, ptext=''):
         if man['type'] != 'START' and not self.onflight:
             print('Your probe has not started yet.  Man. Type : ', man['type'])
             return False
@@ -51,12 +52,18 @@ class Probe:
             print('Your probe has started already.  Man. Type : ', man['type'])
             return False
 
+        cman = man.copy()
+        status = np.zeros(7)
+
         if man['type'] == 'START':
             self.jd = man['time']
             self.pos, self.vel = self.pseudostart(self.jd, dv=man['dv'], elv=man['elv'], phi=man['phi'])
             self.orbit.setCurrentCart(self.jd*common.secofday, self.pos, self.vel)
             self.onflight = True
-            self.trj_record.append([])
+            status[0] = self.jd
+            status[1:4] = self.pos.copy()
+            status[4:] = self.vel.copy()
+            self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'CP':
             dv = man['dv']
@@ -68,48 +75,67 @@ class Probe:
                 dv * np.sin(elv)                \
                 ])
             sunpos, sunvel = common.SPKposvel(10, self.jd)
-#            sunpos, sunvel = common.SPKkernel[0, 10].compute_and_differentiate(self.jd)
-#            sunpos = common.eqn2ecl(sunpos) * 1000.0
-#            sunvel = common.eqn2ecl(sunvel) * 1000.0 / common.secofday
             self.vel += common.ldv2ecldv(ldv, self.pos, self.vel, sunpos, sunvel)
             self.orbit.setCurrentCart(self.jd*common.secofday, self.pos, self.vel)
-            self.trj_record.append([])
+            status[0] = self.jd
+            status[1:4] = self.pos.copy()
+            status[4:] = self.vel.copy()
+            self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'EP_ON':
             dv = man['dvpd'] / common.secofday
             phi = math.radians(man['phi'])
             elv = math.radians(man['elv'])
             self.orbit.set_epstatus(True, dv, phi, elv)
-            self.trj_record.append([])
+            status[0] = self.jd
+            status[1:4] = self.pos.copy()
+            status[4:] = self.vel.copy()
+            self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'EP_OFF':
             self.orbit.set_epstatus(False, 0.0, 0.0, 0.0)
-            self.trj_record.append([])
+            status[0] = self.jd
+            status[1:4] = self.pos.copy()
+            status[4:] = self.vel.copy()
+            self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'SS_ON':
             aria = man['aria']
             theta = math.radians(man['theta'])
             elv = math.radians(man['elv'])
             self.orbit.set_ssstatus(True, aria, theta, elv)
-            self.trj_record.append([])
+            status[0] = self.jd
+            status[1:4] = self.pos.copy()
+            status[4:] = self.vel.copy()
+            self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'SS_OFF':
             self.orbit.set_ssstatus(False, 0.0, 0.0, 0.0)
-            self.trj_record.append([])
+            status[0] = self.jd
+            status[1:4] = self.pos.copy()
+            status[4:] = self.vel.copy()
+            self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'FLYTO':
             jdto = man['time']
             if jdto < self.jd:
                 print('Invalid FLYTO time : ', common.jd2datetime(jdto))
                 return False
+            if pbar != None:
+                pbar.setVisible(True)
+                pbar.setValue(0)
+                plabel.setText(ptext)
             inter = man['inter'] * common.secofday
             secto = jdto * common.secofday
             pt, px, py, pz, pxd, pyd, pzd, runerror = self.orbit.trj(secto, inter,  \
                 common.SPKkernel, common.planets_grav, common.planets_mu,  \
-                common.integ_abs_tol, common.integ_rel_tol)
+                common.integ_abs_tol, common.integ_rel_tol, pbar)
+            if pbar != None:
+                pbar.setVisible(False)
+                plabel.setText('')
             if runerror: return False
             pt = pt / common.secofday
-            self.trj_record.append([pt, px, py, pz, pxd, pyd, pzd])
+            self.trj_record.append([cman, pt, px, py, pz, pxd, pyd, pzd])
             self.jd = pt[-1]
             self.pos = np.array([px[-1], py[-1], pz[-1]])
             self.vel = np.array([pxd[-1], pyd[-1], pzd[-1]])
