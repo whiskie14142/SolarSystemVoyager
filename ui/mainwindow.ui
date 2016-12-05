@@ -174,7 +174,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Draw position and orbit</string>
+     <string>Show Orbit</string>
     </property>
     <property name="text">
      <string>Show Orbit</string>
@@ -212,7 +212,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Execute maneuvers until selected one</string>
+     <string>Execute maneuvers to the selected line </string>
     </property>
     <property name="text">
      <string>Exec to *</string>
@@ -387,7 +387,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Redraw Target Orbit Line</string>
+     <string>Review throughout the flight</string>
     </property>
     <property name="text">
      <string>Review Throughout</string>

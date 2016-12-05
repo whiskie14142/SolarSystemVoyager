@@ -44,14 +44,14 @@
     <bool>false</bool>
    </property>
    <property name="toolTip">
-    <string>Delta T (you need click apply button)</string>
+    <string>Delta T (prediction - current)</string>
    </property>
   </widget>
   <widget class="QPushButton" name="fastbackward">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>80</y>
+     <x>370</x>
+     <y>100</y>
      <width>41</width>
      <height>23</height>
     </rect>
@@ -78,8 +78,8 @@
   <widget class="QPushButton" name="backward">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>80</y>
+     <x>420</x>
+     <y>100</y>
      <width>41</width>
      <height>23</height>
     </rect>
@@ -106,8 +106,8 @@
   <widget class="QPushButton" name="forward">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>80</y>
+     <x>470</x>
+     <y>100</y>
      <width>41</width>
      <height>23</height>
     </rect>
@@ -137,8 +137,8 @@
   <widget class="QPushButton" name="fastforward">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>80</y>
+     <x>520</x>
+     <y>100</y>
      <width>41</width>
      <height>23</height>
     </rect>
@@ -165,14 +165,14 @@
   <widget class="QSpinBox" name="timescale">
    <property name="geometry">
     <rect>
-     <x>588</x>
-     <y>80</y>
+     <x>580</x>
+     <y>100</y>
      <width>42</width>
      <height>22</height>
     </rect>
    </property>
    <property name="toolTip">
-    <string>Select powers</string>
+    <string>Select exponent</string>
    </property>
    <property name="minimum">
     <number>-8</number>
@@ -184,46 +184,14 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>525</x>
-     <y>83</y>
+     <x>570</x>
+     <y>80</y>
      <width>61</width>
-     <height>16</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Scale 10 **</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="showprobe">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>10</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Show Probe</string>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="showtarget">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>30</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Show Target</string>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
+    <string>Scale 10**</string>
    </property>
   </widget>
   <widget class="QLabel" name="ctimeLabel">
@@ -407,9 +375,9 @@
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>120</y>
+     <y>130</y>
      <width>181</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
@@ -494,10 +462,10 @@
   <widget class="QLabel" name="label_19">
    <property name="geometry">
     <rect>
-     <x>337</x>
-     <y>103</y>
+     <x>400</x>
+     <y>80</y>
      <width>161</width>
-     <height>16</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -549,7 +517,7 @@
     </font>
    </property>
    <property name="toolTip">
-    <string>Relative Velocity abs. (Copiable)</string>
+    <string>Abs. Relative Velocity (Copiable)</string>
    </property>
    <property name="frame">
     <bool>false</bool>
@@ -609,19 +577,19 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>250</x>
      <y>10</y>
-     <width>131</width>
-     <height>91</height>
+     <width>101</width>
+     <height>111</height>
     </rect>
    </property>
    <property name="title">
-    <string>Parameters for CP</string>
+    <string>Params for CP</string>
    </property>
    <widget class="QLabel" name="man_elv">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>30</x>
       <y>60</y>
       <width>71</width>
       <height>16</height>
@@ -639,7 +607,7 @@
    <widget class="QLabel" name="man_dv">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>30</x>
       <y>20</y>
       <width>71</width>
       <height>16</height>
@@ -657,7 +625,7 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>60</y>
       <width>21</width>
       <height>16</height>
@@ -670,7 +638,7 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>20</y>
       <width>21</width>
       <height>16</height>
@@ -683,7 +651,7 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>40</y>
       <width>21</width>
       <height>16</height>
@@ -696,7 +664,7 @@
    <widget class="QLabel" name="man_phi">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>30</x>
       <y>40</y>
       <width>71</width>
       <height>16</height>
@@ -717,8 +685,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>91</width>
-     <height>91</height>
+     <width>71</width>
+     <height>111</height>
     </rect>
    </property>
    <property name="title">
@@ -727,11 +695,14 @@
    <widget class="QRadioButton" name="tobarycenter">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>20</y>
       <width>61</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Solar System Barycenter</string>
     </property>
     <property name="text">
      <string>SSB</string>
@@ -743,7 +714,7 @@
    <widget class="QRadioButton" name="toprobe">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>40</y>
       <width>61</width>
       <height>16</height>
@@ -756,7 +727,7 @@
    <widget class="QRadioButton" name="totarget">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>60</y>
       <width>61</width>
       <height>16</height>
@@ -767,32 +738,91 @@
     </property>
    </widget>
   </widget>
-  <widget class="QCheckBox" name="showplanets">
+  <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>50</y>
-     <width>91</width>
-     <height>16</height>
+     <x>90</x>
+     <y>10</y>
+     <width>151</width>
+     <height>111</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Show Planets</string>
+   <property name="title">
+    <string>Show</string>
    </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
+   <widget class="QCheckBox" name="check_Ptrj">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Probe Trajectory</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="showplanets">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Planets</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_PKepler">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Probe Kepler Orbit</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_TKepler">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Target Kepler Orbit</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
+  <zorder>groupBox_3</zorder>
   <zorder>label_2</zorder>
   <zorder>label</zorder>
   <zorder>delta_t_edit</zorder>
   <zorder>fastbackward</zorder>
-  <zorder>backward</zorder>
   <zorder>forward</zorder>
   <zorder>fastforward</zorder>
   <zorder>timescale</zorder>
-  <zorder>showprobe</zorder>
-  <zorder>showtarget</zorder>
   <zorder>ctimeLabel</zorder>
   <zorder>label_4</zorder>
   <zorder>currentdate</zorder>
@@ -818,11 +848,9 @@
   <zorder>RVTelv</zorder>
   <zorder>groupBox</zorder>
   <zorder>groupBox_2</zorder>
-  <zorder>showplanets</zorder>
+  <zorder>backward</zorder>
  </widget>
  <tabstops>
-  <tabstop>showprobe</tabstop>
-  <tabstop>showtarget</tabstop>
   <tabstop>tobarycenter</tabstop>
   <tabstop>toprobe</tabstop>
   <tabstop>totarget</tabstop>

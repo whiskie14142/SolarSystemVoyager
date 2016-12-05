@@ -51,11 +51,15 @@ class _Gdata:
         'mytarget',                 # instance of Target (destination of the probe)
         'ndata',                    # number of points to draw orbit
         'nextman',                  # index of next maneuver
-        'saved_artist_of_probe',    # list of artists of matplotlib for probe trajectories
-        'saved_artist_of_target',   # artist of matplotlib for target orbit
-        'saved_mark_of_planets',    # artist of matplotlib for planet marks
-        'saved_name_of_planets',    # artist of matplotlib for planet names
-        'saved_artist_of_time',     # artist of matplotlib for time and its type
+        'probe_trj',                # list of probe trajectories of each FLYTO
+        'probe_Kepler',             # points of Kepler orbit of probe
+        'target_Kepler',            # points of Kepler orbit of target
+        'artist_Ptrj',              # list of artists of matplotlib for probe trajectories
+        'artist_PKepler',           # artist of matplotlib for probe orbit
+        'artist_TKepler',           # artist of matplotlib for target orbit
+        'artist_mark_of_planets',   # artist of matplotlib for planet marks
+        'artist_name_of_planets',   # artist of matplotlib for planet names
+        'artist_of_time',           # artist of matplotlib for time and its type
         'showorbitcontrol',         # instance of ShowOrbitDialog
         'showorbitsettings',        # current settings of ShowOrbitDialog
         'flightreviewcontrol',      # instance of FlightReviewControl
@@ -67,28 +71,41 @@ class _Gdata:
 # global data container instance    
 g = _Gdata()
     
-
-def plot_2b_orbit_of_target(ndata, jd):
-    xs, ys, zs, ts = g.mytarget.points(jd, ndata)
-    artist = g.ax.plot(xs, ys, zs, color='green', lw=0.75)
-    plt.draw()
-    return artist
-
-def plot_trj_of_probe():
-    xs = g.myprobe.trj_record[-1][2]
-    ys = g.myprobe.trj_record[-1][3]
-    zs = g.myprobe.trj_record[-1][4]
-    artist = g.ax.plot(xs, ys, zs, color='blue', lw=0.75)
-    plt.draw()
-    return artist
+def erase_Ptrj():
+    for artist in g.artist_Ptrj:
+        artist[0].remove()
+    g.artist_Ptrj = []
+    
+def draw_Ptrj():
+    g.artist_Ptrj = []
+    for trj in g.probe_trj:
+        g.artist_Ptrj.append(g.ax.plot(*trj[2:5], color='blue', lw=0.75))
+    
+def erase_PKepler():
+    if g.artist_PKepler != None:
+        g.artist_PKepler[0].remove()
+    g.artist_PKepler = None
+    
+def draw_PKepler():
+    if g.probe_Kepler != None:
+        g.artist_PKepler = g.ax.plot(*g.probe_Kepler, color='red', lw=0.75)
+    
+def erase_TKepler():
+    if g.artist_TKepler != None:
+        g.artist_TKepler[0].remove()
+    g.artist_TKepler = None
+    
+def draw_TKepler():
+    if g.target_Kepler != None:
+        g.artist_TKepler = g.ax.plot(*g.target_Kepler, color='green', lw=0.75)
 
 def remove_planets():
-    if g.saved_mark_of_planets != None:
-        g.saved_mark_of_planets.remove()
-        g.saved_mark_of_planets = None
-    for art in g.saved_name_of_planets:
+    if g.artist_mark_of_planets != None:
+        g.artist_mark_of_planets.remove()
+        g.artist_mark_of_planets = None
+    for art in g.artist_name_of_planets:
         art.remove()
-    g.saved_name_of_planets = []
+    g.artist_name_of_planets = []
     
 def replot_planets(jd):
     markx = []
@@ -111,22 +128,21 @@ def replot_planets(jd):
         else:
             names.append(common.planets_id[i][1])
     
-    g.saved_mark_of_planets = g.ax.scatter(markx, marky, markz, marker='+', 
+    g.artist_mark_of_planets = g.ax.scatter(markx, marky, markz, marker='+', 
                                            s=20, c='c', depthshade=False)
-    g.saved_name_of_planets = []
+    g.artist_name_of_planets = []
     for i in range(len(names)):
-        g.saved_name_of_planets.append(g.ax.text(markx[i], marky[i], markz[i],
+        g.artist_name_of_planets.append(g.ax.text(markx[i], marky[i], markz[i],
                                       ' '+names[i], color='c', fontsize=9))
-    plt.draw()
 
 def remove_time():
-    if g.saved_artist_of_time != None:
-        g.saved_artist_of_time.remove()
-        g.saved_artist_of_time = None
+    if g.artist_of_time != None:
+        g.artist_of_time.remove()
+        g.artist_of_time = None
 
 def replot_time(jd, ttype=''):
     s = common.jd2isot(jd) + ' (' + ttype + ')'
-    g.saved_artist_of_time = g.ax.text2D(0.02, 0.96, s, transform=g.ax.transAxes)
+    g.artist_of_time = g.ax.text2D(0.02, 0.96, s, transform=g.ax.transAxes)
 
 
 
@@ -137,7 +153,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.2.0 beta'
+        version = '0.3.0 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -736,8 +752,9 @@ class ShowOrbitDialog(QtGui.QDialog):
         self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
         self.connect(self.ui.fastforward, SIGNAL('clicked()'), self.fastforward)
         self.connect(self.ui.fastbackward, SIGNAL('clicked()'), self.fastbackward)
-        self.connect(self.ui.showprobe, SIGNAL('clicked()'), self._statuschanged)
-        self.connect(self.ui.showtarget, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.showplanets, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.toprobe, SIGNAL('clicked()'), self._statuschanged)
@@ -745,7 +762,6 @@ class ShowOrbitDialog(QtGui.QDialog):
         self.connect(self.ui.timescale, SIGNAL('valueChanged(int)'), self._valuechanged)
         self.connect(self.ui.dtApply, SIGNAL('clicked()'), self.dtapply)
 
-        self.artist_of_orbit = None
         self.artist_of_probe = None
         self.artist_of_target = None
         self.artist_of_sun = None
@@ -758,12 +774,19 @@ class ShowOrbitDialog(QtGui.QDialog):
         self.phi = 0.0
         self.elv = 0.0
         self.delta_jd = 0.0
+        
+        if g.myprobe.onflight:
+            jd = g.myprobe.jd
+        else:
+            dt = datetime.now()
+            jdtoday = julian.to_jd(dt, fmt='jd')
+            jd = int(jdtoday + 0.5) - 0.5
+        xs, ys, zs, ts = g.mytarget.points(jd, g.ndata)
+        g.target_Kepler = [xs, ys, zs]
+        
         self.redraw()
         
     def redraw(self):
-        if self.artist_of_orbit != None:
-            self.artist_of_orbit[0].remove()
-            self.artist_of_orbit = None
         if g.myprobe == None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 0, 1, 0)
             return
@@ -781,10 +804,21 @@ class ShowOrbitDialog(QtGui.QDialog):
         if self.tbpred == None:
             self.tbpred = TwoBodyPred(g.myprobe.name)
 
+        erase_Ptrj()
+        if self.ui.check_Ptrj.isChecked():
+            draw_Ptrj()
+        
         self.tbpred.fix_state(self.jd, self.ppos, self.pvel)
         self.tbpred.set_pred_dv(self.dv, self.phi, self.elv)
         x, y, z, t = self.tbpred.points(g.ndata)
-        self.artist_of_orbit = g.ax.plot(x, y, z, color='red', lw=0.75)
+        g.probe_Kepler = [x, y, z]
+        erase_PKepler()
+        if self.ui.check_PKepler.isChecked():
+            draw_PKepler()
+        
+        erase_TKepler()
+        if self.ui.check_TKepler.isChecked():
+            draw_TKepler()
         
         self.ui.man_dv.setText('{:.3f}'.format(self.dv))
         self.ui.man_phi.setText('{:.2f}'.format(self.phi))
@@ -820,13 +854,13 @@ class ShowOrbitDialog(QtGui.QDialog):
         if self.artist_of_probe != None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
-        if self.ui.showprobe.isChecked():
-            self.artist_of_probe = g.ax.scatter(*probe_pos, s=50, c='r',depthshade=False, marker='x')
+        self.artist_of_probe = g.ax.scatter(*probe_pos, s=50, c='r',depthshade=False, marker='x')
+        
         if self.artist_of_target != None:
             self.artist_of_target.remove()
             self.artist_of_target = None
-        if self.ui.showtarget.isChecked():
-            self.artist_of_target = g.ax.scatter(*self.target_pos, s=40, c='g',depthshade=False, marker='+')
+        self.artist_of_target = g.ax.scatter(*self.target_pos, s=40, c='g',depthshade=False, marker='+')
+            
         if self.artist_of_sun != None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
@@ -904,6 +938,16 @@ class ShowOrbitDialog(QtGui.QDialog):
         self._redrawmark()
         
     def _statuschanged(self):
+        erase_Ptrj()
+        if self.ui.check_Ptrj.isChecked():
+            draw_Ptrj()
+        erase_PKepler()
+        if self.ui.check_PKepler.isChecked():
+            draw_PKepler()
+        erase_TKepler()
+        if self.ui.check_TKepler.isChecked():
+            draw_TKepler()
+
         self.save_settings()
         self._redrawmark()
         
@@ -934,33 +978,25 @@ class ShowOrbitDialog(QtGui.QDialog):
         if self.artist_of_sun != None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        if self.artist_of_orbit != None:
-            self.artist_of_orbit[0].remove()
-            self.artist_of_orbit = None
+        erase_Ptrj()
+        erase_PKepler()
+        erase_TKepler()
         remove_planets()
         remove_time()
 
     def save_settings(self):
         settings = {}
-        settings['Show Probe'] = self.ui.showprobe.checkState()
-        settings['Show Target'] = self.ui.showtarget.checkState()
-        settings['Show Planets'] = self.ui.showplanets.checkState()
         settings['SSB'] = self.ui.tobarycenter.isChecked()
         settings['Probe'] = self.ui.toprobe.isChecked()
         settings['Target'] = self.ui.totarget.isChecked()
-        settings['Scale'] = self.ui.timescale.value()
         g.showorbitsettings = settings
         
     def restore_settings(self):
         if g.showorbitsettings != None:
             s = g.showorbitsettings
-            self.ui.showprobe.setCheckState(s['Show Probe'])
-            self.ui.showtarget.setCheckState(s['Show Target'])
-            self.ui.showplanets.setCheckState(s['Show Planets'])
             self.ui.tobarycenter.setChecked(s['SSB'])
             self.ui.toprobe.setChecked(s['Probe'])
             self.ui.totarget.setChecked(s['Target'])
-            self.ui.timescale.setValue(s['Scale'])
 
 
 
@@ -971,9 +1007,6 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
         self.ui.ctimeLabel.setText('S. Time')
         
     def redraw(self):
-        if self.artist_of_orbit != None:
-            self.artist_of_orbit[0].remove()
-            self.artist_of_orbit = None
         self.jd = self.editman['time']
         self.ui.currentdate.setText(common.jd2isot(self.jd))
 
@@ -991,12 +1024,20 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
         self.tbpred.fix_state(self.jd, self.ppos, self.pvel)
         self.tbpred.set_pred_dv(self.dv, self.phi, self.elv)
         x, y, z, t = self.tbpred.points(g.ndata)
-        self.artist_of_orbit = g.ax.plot(x, y, z, color='red', lw=0.75)
+        g.probe_Kepler = [x, y, z]
+        erase_PKepler()
+        if self.ui.check_PKepler.isChecked():
+            draw_PKepler()
+        
+        erase_TKepler()
+        if self.ui.check_TKepler.isChecked():
+            draw_TKepler()
         
         self.ui.man_dv.setText('{:.3f}'.format(self.dv))
         self.ui.man_phi.setText('{:.2f}'.format(self.phi))
         self.ui.man_elv.setText('{:.2f}'.format(self.elv))
 
+        self.restore_settings()
         self._redrawmark()
         
 
@@ -1016,19 +1057,19 @@ class FlightReviewControl(QtGui.QDialog):
             self.ui.tobarycenter.setChecked(s['SSB'])
             self.ui.toprobe.setChecked(s['Probe'])
             self.ui.totarget.setChecked(s['Target'])
-            self.ui.showplanets.setChecked(s['Show Planets'])
         
         self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
         self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
         self.connect(self.ui.fastforward, SIGNAL('clicked()'), self.fastforward)
         self.connect(self.ui.fastbackward, SIGNAL('clicked()'), self.fastbackward)
-        self.connect(self.ui.showkepler, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.showplanets, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.toprobe, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.totarget, SIGNAL('clicked()'), self._statuschanged)
 
-        self.artist_of_orbit = None
         self.artist_of_probe = None
         self.artist_of_target = None
         self.artist_of_sun = None
@@ -1038,6 +1079,8 @@ class FlightReviewControl(QtGui.QDialog):
         
     def reset(self):
         self.c_index = 0
+        
+        
         self.redraw()
 
     def redraw(self):
@@ -1055,10 +1098,22 @@ class FlightReviewControl(QtGui.QDialog):
             QMessageBox.information(self, 'Info', 'Last maneuver was not FLYTO.', 0, 1, 0)
             return
 
-        self.last_trj = g.myprobe.trj_record[-1][1:]
+        self.last_trj = g.probe_trj[-1][1:]
         self.start_time = self.last_trj[0][0]
 #        self.end_time = self.last_trj[0][-1]  not used?
         self.ui.starttime.setText(common.jd2isot(self.start_time))
+        
+        xs, ys, zs, ts = g.mytarget.points(self.start_time, g.ndata)
+        g.target_Kepler = [xs, ys, zs]
+
+        erase_Ptrj()
+        if self.ui.check_Ptrj.isChecked():
+            draw_Ptrj()
+        
+        erase_TKepler()
+        if self.ui.check_TKepler.isChecked():
+            draw_TKepler()
+
         
         self._redrawmark()
 
@@ -1077,16 +1132,16 @@ class FlightReviewControl(QtGui.QDialog):
         pvel[1] = self.last_trj[5][self.c_index]
         pvel[2] = self.last_trj[6][self.c_index]
 
-        if self.artist_of_orbit != None:
-            self.artist_of_orbit[0].remove()
-            self.artist_of_orbit = None
+        erase_PKepler()
 
-        if self.ui.showkepler.isChecked():
+        if self.ui.check_PKepler.isChecked():
             if self.tbpred == None:
                 self.tbpred = TwoBodyPred(g.myprobe.name)
             self.tbpred.fix_state(c_time, ppos, pvel)
             x, y, z, t = self.tbpred.points(g.ndata)
-            self.artist_of_orbit = g.ax.plot(x, y, z, color='red', lw=0.75)
+            g.probe_Kepler = [x, y, z]
+            if self.ui.check_PKepler.isChecked():
+                draw_PKepler()
 
         target_pos, target_vel = g.mytarget.posvel(c_time)
         sun_pos, sun_vel = common.SPKposvel(10, c_time)        
@@ -1170,13 +1225,19 @@ class FlightReviewControl(QtGui.QDialog):
         self._redrawmark()
         
     def _statuschanged(self):
+        erase_Ptrj()
+        if self.ui.check_Ptrj.isChecked():
+            draw_Ptrj()
+        erase_TKepler()
+        if self.ui.check_TKepler.isChecked():
+            draw_TKepler()
+        
         self.save_settings()
         self._redrawmark()
 
     def save_settings(self):
         if g.showorbitsettings != None:
             s = g.showorbitsettings
-            s['Show Planets'] = self.ui.showplanets.checkState()
             s['SSB'] = self.ui.tobarycenter.isChecked()
             s['Probe'] = self.ui.toprobe.isChecked()
             s['Target'] = self.ui.totarget.isChecked()
@@ -1194,9 +1255,9 @@ class FlightReviewControl(QtGui.QDialog):
         if self.artist_of_sun != None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        if self.artist_of_orbit != None:
-            self.artist_of_orbit[0].remove()
-            self.artist_of_orbit = None
+        erase_Ptrj()
+        erase_PKepler()
+        erase_TKepler()
         remove_planets()
         remove_time()
 
@@ -1215,7 +1276,6 @@ class ReviewThroughoutControl(QtGui.QDialog):
             self.ui.tobarycenter.setChecked(s['SSB'])
             self.ui.toprobe.setChecked(s['Probe'])
             self.ui.totarget.setChecked(s['Target'])
-            self.ui.showplanets.setChecked(s['Show Planets'])
 
         self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
         self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
@@ -1223,7 +1283,9 @@ class ReviewThroughoutControl(QtGui.QDialog):
         self.connect(self.ui.fastbackward, SIGNAL('clicked()'), self.fastbackward)
         self.connect(self.ui.previousman, SIGNAL('clicked()'), self.previousman)
         self.connect(self.ui.nextman, SIGNAL('clicked()'), self.nextman)
-        self.connect(self.ui.showkepler, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), self._statuschanged)
+        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.showplanets, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.showmantype, SIGNAL('clicked()'), self._statuschanged)
         self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), self._statuschanged)
@@ -1231,7 +1293,6 @@ class ReviewThroughoutControl(QtGui.QDialog):
         self.connect(self.ui.totarget, SIGNAL('clicked()'), self._statuschanged)
 
         self.mainwindow = parent
-        self.artist_of_orbit = None
         self.artist_of_probe = None
         self.artist_of_target = None
         self.artist_of_sun = None
@@ -1289,14 +1350,18 @@ class ReviewThroughoutControl(QtGui.QDialog):
         g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
         g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
 
+        erase_Ptrj()
+        if self.ui.check_Ptrj.isChecked():
+            draw_Ptrj()
+
         # Kepler Orbit of probe        
-        if self.artist_of_orbit != None:
-            self.artist_of_orbit[0].remove()
-            self.artist_of_orbit = None
-        if self.ui.showkepler.isChecked():
+        erase_PKepler()
+        if self.ui.check_PKepler.isChecked():
             self.tbpred.fix_state(status[0], status[1:4], status[4:])
             x, y, z, t = self.tbpred.points(g.ndata)
-            self.artist_of_orbit = g.ax.plot(x, y, z, color='red', lw=0.75)
+            g.probe_Kepler = [x, y, z]
+            if self.ui.check_PKepler.isChecked():
+                draw_PKepler()
 
         # Planets
         remove_planets()
@@ -1304,9 +1369,11 @@ class ReviewThroughoutControl(QtGui.QDialog):
             replot_planets(status[0])
         
         # Kepler Orbit of target
-        if g.saved_artist_of_target != None:
-            g.saved_artist_of_target[0].remove()
-        g.saved_artist_of_target = plot_2b_orbit_of_target(g.ndata, status[0])
+        xs, ys, zs, ts = g.mytarget.points(status[0], g.ndata)
+        g.target_Kepler = [xs, ys, zs]
+        erase_TKepler()
+        if self.ui.check_TKepler.isChecked():
+            draw_TKepler()
 
         # Probe mark
         if self.artist_of_probe != None:
@@ -1378,14 +1445,13 @@ class ReviewThroughoutControl(QtGui.QDialog):
         pvel[1] = self.last_trj[5][self.c_index]
         pvel[2] = self.last_trj[6][self.c_index]
 
-        if self.artist_of_orbit != None:
-            self.artist_of_orbit[0].remove()
-            self.artist_of_orbit = None
-
-        if self.ui.showkepler.isChecked():
+        erase_PKepler()
+        if self.ui.check_PKepler.isChecked():
             self.tbpred.fix_state(c_time, ppos, pvel)
             x, y, z, t = self.tbpred.points(g.ndata)
-            self.artist_of_orbit = g.ax.plot(x, y, z, color='red', lw=0.75)
+            g.probe_Kepler = [x, y, z]
+            if self.ui.check_PKepler.isChecked():
+                draw_PKepler()
 
         target_pos, target_vel = g.mytarget.posvel(c_time)
         sun_pos, sun_vel = common.SPKposvel(10, c_time)        
@@ -1517,6 +1583,12 @@ class ReviewThroughoutControl(QtGui.QDialog):
     def _statuschanged(self):
         self.save_settings()
         if self.c_mantype == 'FLYTO':
+            erase_Ptrj()
+            if self.ui.check_Ptrj.isChecked():
+                draw_Ptrj()
+            erase_TKepler()
+            if self.ui.check_TKepler.isChecked():
+                draw_TKepler()
             self.drawFLYTO()
         else:
             self.drawman()
@@ -1524,7 +1596,6 @@ class ReviewThroughoutControl(QtGui.QDialog):
     def save_settings(self):
         if g.showorbitsettings != None:
             s = g.showorbitsettings
-            s['Show Planets'] = self.ui.showplanets.checkState()
             s['SSB'] = self.ui.tobarycenter.isChecked()
             s['Probe'] = self.ui.toprobe.isChecked()
             s['Target'] = self.ui.totarget.isChecked()
@@ -1545,9 +1616,9 @@ class ReviewThroughoutControl(QtGui.QDialog):
         if self.artist_of_sun != None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        if self.artist_of_orbit != None:
-            self.artist_of_orbit[0].remove()
-            self.artist_of_orbit = None
+        erase_Ptrj()
+        erase_PKepler()
+        erase_TKepler()
         remove_planets()
         remove_time()
 
@@ -1632,11 +1703,16 @@ class MainForm(QtGui.QMainWindow):
         g.myprobe = None
         
         g.mytarget = None
-        g.saved_artist_of_target = None
-        g.saved_artist_of_probe = []
-        g.saved_artist_of_time = None
-        g.saved_mark_of_planets = None
-        g.saved_name_of_planets = []
+        g.artist_TKepler = None
+        g.artist_Ptrj = []
+        g.artist_PKepler = None
+        g.artist_of_time = None
+        g.artist_mark_of_planets = None
+        g.artist_name_of_planets = []
+        
+        g.probe_trj = []
+        g.probe_Kepler = None
+        g.target_Kepler = None
     
         plt.ion()
         g.fig=plt.figure(figsize=(11,11))
@@ -1718,6 +1794,7 @@ class MainForm(QtGui.QMainWindow):
 
         self.erasecurrentstatus()
         self.eraseselectedman()
+        self.currentrow = 0
         
         g.manfilename = ans
         manfile = open(g.manfilename, 'r')
@@ -1728,20 +1805,12 @@ class MainForm(QtGui.QMainWindow):
         g.manplan_saved = True
         g.nextman = 0
         g.myprobe = probe.Probe(**g.manplan['probe'])
-        for art in g.saved_artist_of_probe:
-            art[0].remove()
-        g.saved_artist_of_probe = []
         
-        if g.saved_artist_of_target != None:
-            g.saved_artist_of_target[0].remove()
+        erase_Ptrj()
+        g.probe_trj = []
         
-        dt = datetime.now()
-        jdtoday = julian.to_jd(dt, fmt='jd')
-        cjd = int(jdtoday + 0.5) - 0.5
+        erase_TKepler()
         g.mytarget = target.Target(**g.manplan['target'])
-        g.saved_artist_of_target = plot_2b_orbit_of_target(g.ndata, cjd)
-        
-        plt.draw()
         
         if len(g.maneuvers) >= 1:
             if not ('onflight' in g.maneuvers[0]):
@@ -1790,27 +1859,20 @@ class MainForm(QtGui.QMainWindow):
 
         self.erasecurrentstatus()
         self.eraseselectedman()
+        self.currentrow = 0
         g.manfilename = None
         self.dispmanfilename()
         g.maneuvers = g.manplan['maneuvers']
         g.manplan_saved = False
         g.nextman = 0
         g.myprobe = probe.Probe(**g.manplan['probe'])
-        for art in g.saved_artist_of_probe:
-            art[0].remove()
-        g.saved_artist_of_probe = []
         
-        if g.saved_artist_of_target != None:
-            g.saved_artist_of_target[0].remove()
+        erase_Ptrj()
+        g.probe_trj = []
         
-        dt = datetime.now()
-        jdtoday = julian.to_jd(dt, fmt='jd')
-        cjd = int(jdtoday + 0.5) - 0.5
+        erase_TKepler()
         g.mytarget = target.Target(**g.manplan['target'])
-        g.saved_artist_of_target = plot_2b_orbit_of_target(g.ndata, cjd)
         
-        plt.draw()
-
         self.enablewidgets()
         
         self.ui.probename.setText(g.manplan['probe']['name'])
@@ -1843,15 +1905,6 @@ class MainForm(QtGui.QMainWindow):
         else:
             g.reviewthroughoutcontrol.drawman()
 
-    def redrawtargetorb(self):
-        if g.myprobe == None:
-            return
-        if g.myprobe.onflight:
-            if g.saved_artist_of_target != None:
-                g.saved_artist_of_target[0].remove()
-            jd = g.myprobe.jd
-            g.saved_artist_of_target = plot_2b_orbit_of_target(g.ndata, jd)
-            plt.draw()
 
     def savemanplan(self):
         if g.manfilename == None:
@@ -1921,7 +1974,7 @@ class MainForm(QtGui.QMainWindow):
         if g.myprobe.exec_man(g.maneuvers[g.nextman], pbar=self.pbar, plabel=self.plabel, ptext=ptext):
             self.ui.reviewthroughout.setEnabled(True)
             if g.myprobe.trj_record[-1][0]['type'] == 'FLYTO':
-                g.saved_artist_of_probe.append(plot_trj_of_probe())
+                g.probe_trj.append(g.myprobe.trj_record[-1])
                 self.ui.flightreview.setEnabled(True)
             else:
                 self.ui.flightreview.setEnabled(False)
@@ -1941,7 +1994,6 @@ class MainForm(QtGui.QMainWindow):
             QMessageBox.information(self, 'Info', "Cannot Executhe the Flight Plan.", 0, 1, 0)
             return False
 
-        self.redrawtargetorb()
         g.showorbitcontrol.reset()
         self.dispcurrentstatus()
         return True
@@ -1958,9 +2010,9 @@ class MainForm(QtGui.QMainWindow):
                 break
 
     def execinitialize(self):
-        for art in g.saved_artist_of_probe:
-            art[0].remove()
-        g.saved_artist_of_probe = []
+        erase_Ptrj()
+        g.probe_trj = []
+        
         g.myprobe.execinitialize()
         g.nextman = 0
         if g.showorbitcontrol != None:
@@ -2195,6 +2247,8 @@ class MainForm(QtGui.QMainWindow):
         if self.currentrow < 0 or self.currentrow >= lenman:
             return
         man = g.manplan['maneuvers'][self.currentrow]
+        if man == None:
+            return
         typeID = self.typedict[man['type']]
         
         cman = str(self.currentrow + 1) + ' ' + man['type']
