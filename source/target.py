@@ -68,6 +68,7 @@ class Target:
         xs += sunpos[0]
         ys += sunpos[1]
         zs += sunpos[2]
+        ts /= common.secofday
         return xs, ys, zs, ts
         
     def getID(self):

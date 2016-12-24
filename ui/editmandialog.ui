@@ -48,12 +48,12 @@
     <number>7</number>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="label_time">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>60</y>
-     <width>61</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
@@ -312,28 +312,6 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="gettime">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>460</x>
-     <y>10</y>
-     <width>165</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>Get date and time from Show Orbit Window</string>
-   </property>
-   <property name="text">
-    <string>Get Time from Show Orbit</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="duration">
    <property name="enabled">
     <bool>false</bool>
@@ -394,6 +372,28 @@
    </property>
    <property name="textFormat">
     <enum>Qt::PlainText</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="optimize">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>180</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Optimize Assistant</string>
+   </property>
+   <property name="text">
+    <string>Optimize</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

@@ -76,8 +76,7 @@ class TwoBodyPred:
         ipos = self.ppos - self.sunpos
         
         # sun position at end
-        esunpos = common.SPKkernel[0, 10].compute(jd)
-        esunpos = common.eqn2ecl(esunpos) * 1000.0
+        esunpos, esunvel = common.SPKposvel(10, jd)
         
         tpos = tepos - esunpos
         ivel, tvel = solveGauss(ipos, tpos, dsec, common.solarmu, ccw=True)
@@ -87,6 +86,30 @@ class TwoBodyPred:
         localdv = common.eclv2lv(delta_v, self.ppos, self.pvel, self.sunpos, 
                                  self.sunvel)
         return common.rect2polar(localdv)
+        
+    def ftavel(self, jd, tepos):
+        # compute fixed time arrival guidance
+        # jd : date of arrival
+        # tepos position of target at jd (barycenter origin)
+        dsec = (jd - self.jd) * common.secofday
+        ipos = self.ppos - self.sunpos
+        
+        # sun position and velocity at end
+        esunpos, esunvel = common.SPKposvel(10, jd)
+        
+        tpos = tepos - esunpos
+        ivel, tvel = solveGauss(ipos, tpos, dsec, common.solarmu, ccw=True)
+        iprobe_vel = self.pvel - self.sunvel
+        delta_v = ivel - iprobe_vel
+        localdv = common.eclv2lv(delta_v, self.ppos, self.pvel, self.sunpos, 
+                                 self.sunvel)
+        dv, phi, elv = common.rect2polar(localdv)
+        
+        bc_ivel = ivel + self.sunvel
+        bc_tvel = tvel + esunvel
+
+        # returns intial velocity and terminal velocity (SSB origin)
+        return dv, phi, elv, bc_ivel, bc_tvel
         
     def vta(self, jd, tpos, tvel):
         print('vta function is under construction')
