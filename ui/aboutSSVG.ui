@@ -44,14 +44,17 @@
    <widget class="QLabel" name="versionlabel">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>50</x>
       <y>20</y>
-      <width>221</width>
-      <height>16</height>
+      <width>341</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>0.1.0 Beta</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

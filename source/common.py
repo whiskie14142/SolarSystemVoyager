@@ -7,6 +7,7 @@ Created on Fri Jun  3 11:19:51 2016
 
 import numpy as np
 import math
+import sys
 
 solarmu = 1.32712440041e20      # solar gravitational constant
 solark1 = 3.85e26               # total solar flux
@@ -51,7 +52,19 @@ integ_rel_tol = [1e-10,1e-10,1e-10,1e-10,1e-10,1e-10]   # relative tolerance
 bspdir = './data/'
 
 from jplephem.spk import SPK
-SPKkernel = SPK.open( bspdir + 'de430.bsp')
+try:
+    SPKkernel = SPK.open( bspdir + 'de430.bsp')
+except FileNotFoundError:
+    print("\n  Cannot open the SPK file 'de430.bsp'")
+    print("  Please consult 'Install SSVG' section of the Users Guide")
+    print("")
+    print("  SPKファイル 'de430.bsp' を開くことができません")
+    print("  ユーザーズガイドの 'インストール' の項を参照してください")
+    print("")
+    print("Type Enter to exit")
+    print("Enterキーで終了します")
+    input("")
+    sys.exit()
 
 
 _TX = np.array([[1., 0., 0.,],

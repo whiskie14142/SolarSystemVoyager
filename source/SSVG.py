@@ -154,7 +154,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.4.0 beta'
+        version = '0.4.1 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
