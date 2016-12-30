@@ -154,7 +154,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.4.1 beta'
+        version = '0.4.2 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -699,8 +699,19 @@ class StartOptimizeDialog(QtGui.QDialog):
             self.itcenter -= 250.0
         else:
             self.itcenter -= 50.0
+
+        rval = self.itcurrent - self.itcenter
+        pos = self.sl_real2pos(self.itfrom, self.itto, rval)
+        if pos > self.sl_maxval:
+            pos = self.sl_maxval
+        if pos < self.sl_minval:
+            pos = self.sl_minval
+        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+                                             self.itslchanged)
+        self.ui.sl_inittime.setValue(pos)
+        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+                                             self.itslchanged)
         self.drawfixedorbit()
-        pos = self.ui.sl_inittime.value()
         self.itslchanged(pos) 
         self.dispit()
     
@@ -710,8 +721,19 @@ class StartOptimizeDialog(QtGui.QDialog):
             self.itcenter += 250.0
         else:
             self.itcenter += 50.0
+
+        rval = self.itcurrent - self.itcenter
+        pos = self.sl_real2pos(self.itfrom, self.itto, rval)
+        if pos > self.sl_maxval:
+            pos = self.sl_maxval
+        if pos < self.sl_minval:
+            pos = self.sl_minval
+        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+                                             self.itslchanged)
+        self.ui.sl_inittime.setValue(pos)
+        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+                                             self.itslchanged)
         self.drawfixedorbit()
-        pos = self.ui.sl_inittime.value()
         self.itslchanged(pos) 
         self.dispit()
     
@@ -731,7 +753,20 @@ class StartOptimizeDialog(QtGui.QDialog):
                 self.ttfrom = self.ttcenter - 50.0
                 self.ttto = self.ttcenter + 50.0
 
-        pos = self.ui.sl_duration.value()
+        if self.ui.radio_fd.isChecked():
+            rval = self.cduration
+        else:
+            rval = self.ttcurrent - self.ttcenter
+        pos = self.sl_real2pos(self.ttfrom, self.ttto, rval)
+        if pos > self.sl_maxval:
+            pos = self.sl_maxval
+        if pos < self.sl_minval:
+            pos = self.sl_minval
+        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+                                             self.ttslchanged)
+        self.ui.sl_duration.setValue(pos)
+        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+                                             self.ttslchanged)
         self.ttslchanged(pos) 
         self.disptt()
     
@@ -747,7 +782,20 @@ class StartOptimizeDialog(QtGui.QDialog):
                 self.ttfrom = self.ttcenter - 50.0
                 self.ttto = self.ttcenter + 50.0
 
-        pos = self.ui.sl_duration.value()
+        if self.ui.radio_fd.isChecked():
+            rval = self.cduration
+        else:
+            rval = self.ttcurrent - self.ttcenter
+        pos = self.sl_real2pos(self.ttfrom, self.ttto, rval)
+        if pos > self.sl_maxval:
+            pos = self.sl_maxval
+        if pos < self.sl_minval:
+            pos = self.sl_minval
+        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+                                             self.ttslchanged)
+        self.ui.sl_duration.setValue(pos)
+        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+                                             self.ttslchanged)
         self.ttslchanged(pos) 
         self.disptt()
     
