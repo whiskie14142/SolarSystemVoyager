@@ -11,27 +11,30 @@ import numpy as np
 import math
 
 
-def spacebase01(jd):
-    # Space Base poised on L2 point of the Earth
-    pos, vel = common.SPKposvel(3, jd)
-#    pos, vel = common.SPKkernel[0, 3].compute_and_differentiate(jd)
-#    pos = common.eqn2ecl(pos) * 1000.0
-#    vel = common.eqn2ecl(vel) * 1000.0 / common.secofday
-    sunpos, sunvel = common.SPKposvel(10, jd)
-#    sunpos, sunvel = common.SPKkernel[0, 10].compute_and_differentiate(jd)
-#    sunpos = common.eqn2ecl(sunpos) * 1000.0
-#    sunvel = common.eqn2ecl(sunvel) * 1000.0 / common.secofday
-    pos = (pos - sunpos) * 1.01008 + sunpos
-    vel = (vel - sunvel) * 1.01008 + sunvel
-    return pos, vel
+
+class SpaceBase:
+    def __init__(self, base):
+        for baseitem in common.bases:
+            if base == baseitem[0]:
+                self.SPKID = baseitem[1]['SPKID']
+                self.factor = baseitem[1]['Factor']
+                # print(self.SPKID, self.factor)
+            
+    def posvel(self, jd):
+        pos, vel = common.SPKposvel(self.SPKID, jd)
+        sunpos, sunvel = common.SPKposvel(10, jd)
+        pos = (pos - sunpos) * self.factor + sunpos
+        vel = (vel - sunvel) * self.factor + sunvel
+        return pos, vel
+
+
 
 class Probe:
     
     def __init__(self, name='myprobe', pmass=500.0, base='EarthL2'):
-        bases = {'EarthL2' : spacebase01, }
         self.name = name
         self.pmass = pmass
-        self.base = bases[base]
+        self.spacebase = SpaceBase(base)
         self.orbit = ProbeOrbit(name, pmass)
         self.execinitialize()
 
@@ -161,9 +164,6 @@ class Probe:
             dv * np.cos(elv) * np.sin(phi), \
             dv * np.sin(elv)                \
             ])
-        bpos, bvel = self.base(jd)
+        bpos, bvel = self.spacebase.posvel(jd)
         sunpos, sunvel = common.SPKposvel(10, jd)
-#        sunpos, sunvel = common.SPKkernel[0, 10].compute_and_differentiate(jd)
-#        sunpos = common.eqn2ecl(sunpos) * 1000.0
-#        sunvel = common.eqn2ecl(sunvel) * 1000.0 / common.secofday
         return bpos, bvel + common.ldv2ecldv(ldv, bpos, bvel, sunpos, sunvel)

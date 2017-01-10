@@ -16,7 +16,7 @@ au = 1.495978707e11             # meters of an astronomical unit
 _eclinc = math.radians(8.4381406e4 / 3600.0)    # ecliptic inc. of J2000.0
 secofday = 86400.0     # seconds of a day
 
-planets_mu = [  solarmu * 1.6601e-7,       # Mercury
+planets_mu = (  solarmu * 1.6601e-7,       # Mercury
                 solarmu * 2.4478e-6,       # Venus
                 3.986004356e14 * 1.012300, # Earth + Moon
                 solarmu * 3.2272e-7,       # Mars
@@ -27,20 +27,39 @@ planets_mu = [  solarmu * 1.6601e-7,       # Mercury
                 3.986004356e14 * 0.00218,  # Pluto
                 solarmu,                   # Sun
                 solarmu * 3.6943e-8,       # Moon
-                3.986004356e14  ]          # Earth
+                3.986004356e14  )          # Earth
 
-planets_id = [  [1, 'Mercury'],
-                [2, 'Venus'],
-                [3, 'EMB'],
-                [4, 'Mars'],
-                [5, 'Jupiter'],
-                [6, 'Saturn'],
-                [7, 'Uranus'],
-                [8, 'Neptune'],
-                [9, 'Pluto'],
-                [10, 'Sol'],
-                [301, 'Moon'],
-                [399, 'Earth']  ]
+planets_id = (  (1, 'Mercury'),
+                (2, 'Venus'),
+                (3, 'EMB'),
+                (4, 'Mars'),
+                (5, 'Jupiter'),
+                (6, 'Saturn'),
+                (7, 'Uranus'),
+                (8, 'Neptune'),
+                (9, 'Pluto'),
+                (10, 'Sol'),
+                (301, 'Moon'),
+                (399, 'Earth')  )
+
+bases = (
+    ('EarthL1', {'SPKID':3, 'Factor':0.98992}), # experimental value
+    ('EarthL2', {'SPKID':3, 'Factor':1.01008}), # experimental value
+    ('MercuryL1', {'SPKID':1, 'Factor':0.99619}),
+    ('MercuryL2', {'SPKID':1, 'Factor':1.00381}),
+    ('VenusL1', {'SPKID':2, 'Factor':0.99066}),
+    ('VenusL2', {'SPKID':2, 'Factor':1.00934}),
+    ('MarsL1', {'SPKID':4, 'Factor':0.99524}),
+    ('MarsL2', {'SPKID':4, 'Factor':1.00476}),
+    ('JupiterL1', {'SPKID':5, 'Factor':0.93172}),
+    ('JupiterL2', {'SPKID':5, 'Factor':1.06828}),
+    ('SaturnL1', {'SPKID':6, 'Factor':0.95432}),
+    ('SaturnL2', {'SPKID':6, 'Factor':1.04568}),
+    ('UranusL1', {'SPKID':7, 'Factor':0.97558}),
+    ('UranusL2', {'SPKID':7, 'Factor':1.02442}),
+    ('NeptuneL1', {'SPKID':8, 'Factor':0.97420}),
+    ('NeptuneL2', {'SPKID':8, 'Factor':1.02580})
+        )
 
 # constants for numerical integration
 planets_grav = [True, True, False, True, True,  # Mer., Ven., EMB, Mars, Jup.,

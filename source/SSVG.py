@@ -154,7 +154,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.4.2 beta'
+        version = '0.4.3 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -210,9 +210,11 @@ class NewFlightPlanDialog(QtGui.QDialog):
         self.ui = Ui_NewFlightPlanDialog()
         self.ui.setupUi(self)
         
-        spacebaselist = ['EarthL2']
+        spacebaselist = []
+        for baseitem in common.bases:
+            spacebaselist.append(baseitem[0])
         self.ui.spacebase.addItems(spacebaselist)
-        self.ui.spacebase.setCurrentIndex(0)
+        self.ui.spacebase.setCurrentIndex(1)
         
         for planet_id in common.planets_id:
             if planet_id[1] == 'EMB': continue
