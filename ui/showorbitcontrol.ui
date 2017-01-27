@@ -44,7 +44,7 @@
     <bool>false</bool>
    </property>
    <property name="toolTip">
-    <string>Delta T (prediction - current)</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="fastbackward">
@@ -220,24 +220,6 @@
     <string>P. Time</string>
    </property>
   </widget>
-  <widget class="QLabel" name="currentdate">
-   <property name="geometry">
-    <rect>
-     <x>432</x>
-     <y>10</y>
-     <width>201</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="dtApply">
    <property name="geometry">
     <rect>
@@ -270,7 +252,7 @@
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>235</x>
      <y>130</y>
      <width>191</width>
      <height>16</height>
@@ -322,9 +304,9 @@
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>235</x>
      <y>150</y>
-     <width>61</width>
+     <width>51</width>
      <height>16</height>
     </rect>
    </property>
@@ -348,9 +330,9 @@
   <widget class="QLabel" name="label_16">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>235</x>
      <y>170</y>
-     <width>61</width>
+     <width>51</width>
      <height>16</height>
     </rect>
    </property>
@@ -361,9 +343,9 @@
   <widget class="QLabel" name="label_17">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>235</x>
      <y>190</y>
-     <width>61</width>
+     <width>51</width>
      <height>16</height>
     </rect>
    </property>
@@ -387,78 +369,6 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="RPTrange">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>150</y>
-     <width>141</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="RPTphi">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>170</y>
-     <width>141</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="RPTelv">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>190</y>
-     <width>141</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="LoSVvel">
-   <property name="geometry">
-    <rect>
-     <x>510</x>
-     <y>150</y>
-     <width>121</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_19">
    <property name="geometry">
     <rect>
@@ -479,7 +389,7 @@
    <property name="geometry">
     <rect>
      <x>430</x>
-     <y>30</y>
+     <y>29</y>
      <width>201</width>
      <height>18</height>
     </rect>
@@ -493,7 +403,7 @@
     <bool>false</bool>
    </property>
    <property name="toolTip">
-    <string>Prediction Time (Copiable)</string>
+    <string/>
    </property>
    <property name="frame">
     <bool>false</bool>
@@ -517,7 +427,7 @@
     </font>
    </property>
    <property name="toolTip">
-    <string>Abs. Relative Velocity (Copiable)</string>
+    <string/>
    </property>
    <property name="frame">
     <bool>false</bool>
@@ -541,7 +451,7 @@
     </font>
    </property>
    <property name="toolTip">
-    <string>Relative Velocity phi (Copiable)</string>
+    <string/>
    </property>
    <property name="frame">
     <bool>false</bool>
@@ -565,7 +475,7 @@
     </font>
    </property>
    <property name="toolTip">
-    <string>Relative Velocity elv (Copiable)</string>
+    <string/>
    </property>
    <property name="frame">
     <bool>false</bool>
@@ -815,6 +725,129 @@
     </property>
    </widget>
   </widget>
+  <widget class="QLineEdit" name="currentdate">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>9</y>
+     <width>201</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="RPTrange">
+   <property name="geometry">
+    <rect>
+     <x>75</x>
+     <y>149</y>
+     <width>141</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="RPTphi">
+   <property name="geometry">
+    <rect>
+     <x>75</x>
+     <y>169</y>
+     <width>141</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="RPTelv">
+   <property name="geometry">
+    <rect>
+     <x>75</x>
+     <y>189</y>
+     <width>141</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="LoSVvel">
+   <property name="geometry">
+    <rect>
+     <x>503</x>
+     <y>149</y>
+     <width>131</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Console</family>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
   <zorder>groupBox_3</zorder>
   <zorder>label_2</zorder>
   <zorder>label</zorder>
@@ -825,7 +858,6 @@
   <zorder>timescale</zorder>
   <zorder>ctimeLabel</zorder>
   <zorder>label_4</zorder>
-  <zorder>currentdate</zorder>
   <zorder>dtApply</zorder>
   <zorder>label_3</zorder>
   <zorder>label_9</zorder>
@@ -837,10 +869,6 @@
   <zorder>label_16</zorder>
   <zorder>label_17</zorder>
   <zorder>label_18</zorder>
-  <zorder>RPTrange</zorder>
-  <zorder>RPTphi</zorder>
-  <zorder>RPTelv</zorder>
-  <zorder>LoSVvel</zorder>
   <zorder>label_19</zorder>
   <zorder>preddate</zorder>
   <zorder>RVTvel</zorder>
@@ -849,6 +877,11 @@
   <zorder>groupBox</zorder>
   <zorder>groupBox_2</zorder>
   <zorder>backward</zorder>
+  <zorder>currentdate</zorder>
+  <zorder>RPTrange</zorder>
+  <zorder>RPTphi</zorder>
+  <zorder>RPTelv</zorder>
+  <zorder>LoSVvel</zorder>
  </widget>
  <tabstops>
   <tabstop>tobarycenter</tabstop>

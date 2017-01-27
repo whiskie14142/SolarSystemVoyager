@@ -154,7 +154,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.4.3 beta'
+        version = '0.5.0 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -218,12 +218,10 @@ class NewFlightPlanDialog(QtGui.QDialog):
         
         for planet_id in common.planets_id:
             if planet_id[1] == 'EMB': continue
-            if planet_id[1] == 'Sun': continue
+            if planet_id[1] == 'Sol': continue
             self.ui.planets.addItem(planet_id[1])
         self.ui.planets.setCurrentIndex(0)
         
-        self.connect(self.ui.startfromspacebase, SIGNAL('clicked()'), 
-                     self.startfromspacebaseclicked)
         self.connect(self.ui.planetbutton, SIGNAL('clicked()'), 
                      self.planetbuttonclicked)
         self.connect(self.ui.smallbodybutton, SIGNAL('clicked()'), 
@@ -232,14 +230,6 @@ class NewFlightPlanDialog(QtGui.QDialog):
                      self.spkfileselectclicked)
         self.connect(self.ui.okbutton, SIGNAL('clicked()'), self.ok_clicked)
         self.connect(self.ui.cancelbutton, SIGNAL('clicked()'), self.reject)
-
-    def startfromspacebaseclicked(self):
-        if self.ui.startfromspacebase.isChecked():
-            self.ui.spacebase.setEnabled(True)
-            self.ui.startparametersgroupbox.setEnabled(False)
-        else:
-            self.ui.spacebase.setEnabled(False)
-            self.ui.startparametersgroupbox.setEnabled(True)
             
     def planetbuttonclicked(self):
         if self.ui.planetbutton.isChecked():
@@ -254,23 +244,6 @@ class NewFlightPlanDialog(QtGui.QDialog):
             caption='Select SPK file', directory=g.currentdir)
         if ans == '': return
         self.ui.spkfilepath.setText(ans)
-
-    def isotedited(self):
-        try:
-            jd = common.isot2jd(self.ui.isot_edit.text())
-        except ValueError:
-            QMessageBox.information(self, 'Info', 'Invalid ISOT.', 0, 1, 0)
-            return
-        self.ui.jd_edit.setText('{:8f}'.format(jd))
-    
-    def jdedited(self):
-        try:
-            isot = common.jd2isot(float(self.ui.jd_edit.text()))
-        except ValueError:
-            QMessageBox.information(self, 'Info', 'Invalid JD.', 0, 1, 0)
-            return
-        self.ui.jd_edit.setText(isot)
-    
 
     def ok_clicked(self):
         newplan = {}
@@ -307,7 +280,15 @@ class NewFlightPlanDialog(QtGui.QDialog):
                     target['SPKID2B'] = 0
         if self.ui.smallbodybutton.isChecked():
             target['name'] = self.ui.targetname.text()
+            if target['name'].strip() == '':
+                QMessageBox.information(self, 'Info', 
+                                    'Specify target name.', 0, 1, 0)
+                return
             target['file'] = self.ui.spkfilepath.text()
+            if target['file'].strip() == '':
+                QMessageBox.information(self, 'Info', 
+                                    'Specify SPK file of the target.', 0, 1, 0)
+                return
             target['SPKID1A'] = 0
             target['SPKID1B'] = 10
             target['SPKID2A'] = 10
@@ -317,13 +298,121 @@ class NewFlightPlanDialog(QtGui.QDialog):
                 QMessageBox.information(self, 'Info', 
                                     'SPKID should be an Integer.', 0, 1, 0)
                 return
+            if spkid <= 10000:
+                QMessageBox.information(self, 'Info', 
+                                    'Invalid SPKID.', 0, 1, 0)
+                return
             target['SPKID2B'] = spkid
+                
             
         newplan['probe'] = probe
         newplan['target'] = target
         newplan['maneuvers'] = []
         g.manplan = newplan
         self.accept()
+
+
+
+class EditProbeDialog(NewFlightPlanDialog):
+    def __init__(self, parent=None, manplan=None):
+        super().__init__(parent)
+        self.manplan = manplan
+        probe = self.manplan['probe']
+        target = self.manplan['target']
+        self.ui.probename.setText(probe['name'])
+        self.ui.probemass.setText('{:.3f}'.format(probe['pmass']))
+        index = self.ui.spacebase.findText(probe['base'])
+        self.ui.spacebase.setCurrentIndex(index)
+        
+        if target['SPKID2B'] > 10000:
+            self.ui.planetbutton.setChecked(False)
+            self.ui.smallbodybutton.setChecked(True)
+            self.ui.planets.setEnabled(False)
+            self.ui.targetgroupbox.setEnabled(True)
+            self.ui.targetname.setText(target['name'])
+            self.ui.spkfilepath.setText(target['file'])
+            self.ui.spkid_edit.setText(str(target['SPKID2B']))
+        else:
+            index = self.ui.planets.findText(target['name'])
+            self.ui.planets.setCurrentIndex(index)
+        
+        self.initdialog()
+        
+    def initdialog(self):
+        self.setWindowTitle('Edit Probe Properties')
+        self.ui.target_box.setEnabled(False)
+        
+    def ok_clicked(self):
+        probe = {}
+        probe['name'] = self.ui.probename.text()
+        probe['base'] = self.ui.spacebase.currentText()
+        try:
+            mass = float(self.ui.probemass.text())
+        except ValueError:
+            QMessageBox.information(self, 'Info', 
+                            'Probe mass should be a float number.', 0, 1, 0)
+            return
+        if mass <= 0.0:
+            QMessageBox.information(self, 'Info', 'Invalid Probe mass.', 
+                                    0, 1, 0)
+            return
+        probe['pmass'] = mass
+        
+        self.manplan['probe'] = probe
+        self.accept()
+    
+        
+class EditTargetDialog(EditProbeDialog):
+    def initdialog(self):
+        self.setWindowTitle('Select New Target')
+        self.ui.probe_box.setEnabled(False)
+        
+    def ok_clicked(self):
+        target = {}
+        if self.ui.planetbutton.isChecked():
+            target['name'] = self.ui.planets.currentText()
+            target['file'] = ''
+            target['SPKID1A'] = 0
+            for planet in common.planets_id:
+                if planet[1] != target['name']: continue
+                if planet[1] == 'Moon' or planet[1] == 'Earth':
+                    target['SPKID1B'] = 3
+                    target['SPKID2A'] = 3
+                    target['SPKID2B'] = planet[0]
+                else:
+                    target['SPKID1B'] = planet[0]
+                    target['SPKID2A'] = 0
+                    target['SPKID2B'] = 0
+        if self.ui.smallbodybutton.isChecked():
+            target['name'] = self.ui.targetname.text()
+            if target['name'].strip() == '':
+                QMessageBox.information(self, 'Info', 
+                                    'Specify target name.', 0, 1, 0)
+                return
+            target['file'] = self.ui.spkfilepath.text()
+            if target['file'].strip() == '':
+                QMessageBox.information(self, 'Info', 
+                                    'Specify SPK file of the target.', 0, 1, 0)
+                return
+            target['SPKID1A'] = 0
+            target['SPKID1B'] = 10
+            target['SPKID2A'] = 10
+            try:
+                spkid = int(self.ui.spkid_edit.text())
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                                    'SPKID should be an Integer.', 0, 1, 0)
+                return
+            if spkid <= 10000:
+                QMessageBox.information(self, 'Info', 
+                                    'Invalid SPKID.', 0, 1, 0)
+                return
+            target['SPKID2B'] = spkid
+            
+        self.manplan['target'] = target
+        self.accept()
+        
+
 
 
 from ftasettingdialog import *
@@ -2319,8 +2408,8 @@ class MainForm(QtGui.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.manplans.setColumnWidth(0,60)
-        self.ui.manplans.setColumnWidth(1,350)
-        self.ui.manplans.setColumnWidth(2,60)
+        self.ui.manplans.setColumnWidth(1,330)
+        self.ui.manplans.setColumnWidth(2,80)
         self.ui.manplans.setCornerButtonEnabled(False)              # Disable table selection by clicking corner button
         self.ui.manplans.horizontalHeader().setClickable(False)     # Disable colomn selection by clicking
         self.ui.manplans.verticalHeader().setClickable(False)       # Disable row selection by clicking
@@ -2336,6 +2425,14 @@ class MainForm(QtGui.QMainWindow):
                                              self.savemanplan)
         self.connect(self.ui.actionSave_as, SIGNAL('triggered()'), 
                                              self.saveasmanplan)
+        self.connect(self.ui.actionProbe, SIGNAL('triggered()'), 
+                                             self.editprobe)
+        self.connect(self.ui.actionTarget, SIGNAL('triggered()'), 
+                                             self.edittarget)
+        self.connect(self.ui.actionCreate, SIGNAL('triggered()'), 
+                                             self.createcheckpoint)
+        self.connect(self.ui.actionResume, SIGNAL('triggered()'), 
+                                             self.resumecheckpoint)
         self.connect(self.ui.actionAbout_SSVG, SIGNAL('triggered()'), 
                                              self.aboutselected)
         self.connect(self.ui.execNext, SIGNAL('clicked()'), self.execnext)
@@ -2438,6 +2535,7 @@ class MainForm(QtGui.QMainWindow):
         self.ui.flightreview.setEnabled(False)
         self.ui.reviewthroughout.setEnabled(False)
         
+        self.checkpoint = False
         g.finish_exec = 2
 
     def closeEvent(self, event):
@@ -2509,10 +2607,6 @@ class MainForm(QtGui.QMainWindow):
         erase_TKepler()
         g.mytarget = target.Target(**g.manplan['target'])
         
-        if len(g.maneuvers) >= 1:
-            if not ('onflight' in g.maneuvers[0]):
-                g.maneuvers
-        
         self.enablewidgets()
 
         self.ui.probename.setText(g.manplan['probe']['name'])
@@ -2525,6 +2619,9 @@ class MainForm(QtGui.QMainWindow):
         self.ui.reviewthroughout.setEnabled(False)
         self.ui.actionSave.setEnabled(True)
         self.ui.actionSave_as.setEnabled(True)
+        self.ui.menuEdit.setEnabled(True)
+        self.ui.menuCheckpoint.setEnabled(False)
+        self.erasecheckpoint()
 
     def newmanplan(self):
         if not g.manplan_saved:
@@ -2582,6 +2679,9 @@ class MainForm(QtGui.QMainWindow):
         self.ui.reviewthroughout.setEnabled(False)
         self.ui.actionSave.setEnabled(True)
         self.ui.actionSave_as.setEnabled(True)
+        self.ui.menuCheckpoint.setEnabled(False)
+        self.ui.menuEdit.setEnabled(True)
+        self.erasecheckpoint()
 
     def reviewthroughout(self):
         if g.myprobe == None:
@@ -2654,6 +2754,7 @@ class MainForm(QtGui.QMainWindow):
         anitem.setTextAlignment(Qt.AlignCenter)
         self.ui.manplans.setItem(g.nextman, 2, anitem)
         self.ui.manplans.selectRow(self.currentrow)
+        self.dispcheckpoint()
         
     def appquit(self):        
         self.close()
@@ -2703,6 +2804,7 @@ class MainForm(QtGui.QMainWindow):
 
         g.showorbitcontrol.reset()
         self.dispcurrentstatus()
+        self.ui.menuCheckpoint.setEnabled(True)
         return True
 
     def execto(self):
@@ -2733,6 +2835,8 @@ class MainForm(QtGui.QMainWindow):
         self.ui.flightreview.setEnabled(False)
         self.ui.reviewthroughout.setEnabled(False)
         self.erasecurrentstatus()
+        self.erasecheckpoint()
+        self.ui.menuCheckpoint.setEnabled(False)
 
     def showorbit(self):
         if g.myprobe == None:
@@ -2880,7 +2984,7 @@ class MainForm(QtGui.QMainWindow):
                                       g.myprobe.vel)
         kepl = self.tbpred_formain.elmKepl()
 
-        self.ui.label_ELM.setText('No.{0}  ({1})'.format(g.nextman, 
+        self.ui.label_ELM.setText('{0} {1}'.format(g.nextman, 
                                   g.maneuvers[g.nextman-1]['type']))
         self.ui.label_ISOT.setText('{0}'.format(common.jd2isot(g.myprobe.jd)))
         self.ui.label_JD.setText('{:.8f}'.format(g.myprobe.jd))
@@ -2998,6 +3102,134 @@ class MainForm(QtGui.QMainWindow):
             self.ui.selectedman.setItem(row, 1, anitem)
             self.ui.selectedman.item(row, 1).setFlags(Qt.NoItemFlags)
             self.ui.selectedman.item(row, 0).setFlags(Qt.NoItemFlags)
+
+    def createcheckpoint(self):
+        if not g.myprobe.onflight:
+            return
+        if self.checkpoint:
+            ans = QMessageBox.question(self, 'Create New Checkpoint', 
+                'Existing checkpoint will be lost.  OK?', 0, button1=1, 
+                button2=2)
+            if ans != 1:
+                return
+            self.erasecheckpoint()
+        self.checkpoint = True
+        self.checkpointdata = {}
+        self.checkpointdata['nextman'] = g.nextman
+        self.checkpointdata['checkrow'] = g.nextman - 1
+        self.checkpointdata['probe_trj'] = g.probe_trj.copy()
+        g.myprobe.createCheckpoint()
+        self.ui.actionResume.setEnabled(True)
+        self.dispcheckpoint()
+
+    def dispcheckpoint(self):
+        if self.checkpoint:
+            anitem = QTableWidgetItem('checkpoint')
+            anitem.setTextAlignment(Qt.AlignCenter)
+            self.ui.manplans.setItem(self.checkpointdata['checkrow'], 2, anitem)
+
+    def erasecheckpoint(self):
+        if self.checkpoint:
+            self.ui.actionResume.setEnabled(False)
+            anitem = QTableWidgetItem('')
+            self.ui.manplans.setItem(self.checkpointdata['checkrow'], 2, 
+                                     anitem)
+        self.checkpoint = False
+    
+    def resumecheckpoint(self):
+        if not self.checkpoint:
+            return
+        if g.showorbitcontrol != None:
+            g.showorbitcontrol.close()
+        if g.flightreviewcontrol != None:
+            g.flightreviewcontrol.close()
+        if g.reviewthroughoutcontrol != None:
+            g.reviewthroughoutcontrol.close()
+
+        g.myprobe.resumeCheckpoint()
+        g.probe_trj = self.checkpointdata['probe_trj'].copy()
+
+        anitem = QTableWidgetItem('')
+        self.ui.manplans.setItem(g.nextman, 2, anitem)
+        
+        g.nextman = self.checkpointdata['nextman']
+        self.currentrow = g.nextman
+        self.dispmanplan()
+        
+        self.showorbit()
+        self.dispcurrentstatus()
+
+    def editprobe(self):
+        if not g.manplan_saved:
+            ans = QMessageBox.question(self, 'Edit Probe Properties', 
+               'Current Flight Plan has not been saved.\nDo you want to save?', 
+               ' Save and Proceed ', ' Proceed ', ' Cancel ')
+            if ans == 0:
+                self.savemanplan()
+            elif ans == 1:
+                pass
+            else:
+                return
+
+        manplan = g.manplan.copy()
+        editdialog = EditProbeDialog(self, manplan)
+        ans = editdialog.exec_()
+        if ans == QDialog.Rejected:
+            return
+        
+        self.execinitialize()
+        g.manplan_saved = False
+        g.manplan['probe'] = manplan['probe']
+        g.myprobe = probe.Probe(**g.manplan['probe'])
+        
+        self.enablewidgets()
+        self.ui.probename.setText(g.manplan['probe']['name'])
+        self.dispmanplan()
+        self.ui.showOrbit.setEnabled(False)
+        self.ui.flightreview.setEnabled(False)
+        self.ui.reviewthroughout.setEnabled(False)
+        self.ui.actionSave.setEnabled(True)
+        self.ui.actionSave_as.setEnabled(True)
+        self.ui.menuEdit.setEnabled(True)
+        self.ui.menuCheckpoint.setEnabled(False)
+    
+    def edittarget(self):
+        if not g.manplan_saved:
+            ans = QMessageBox.question(self, 'Edit Target', 
+               'Current Flight Plan has not been saved.\nDo you want to save?', 
+               ' Save and Proceed ', ' Proceed ', ' Cancel ')
+            if ans == 0:
+                self.savemanplan()
+            elif ans == 1:
+                pass
+            else:
+                return
+
+        manplan = g.manplan.copy()
+        editdialog = EditTargetDialog(self, manplan)
+        ans = editdialog.exec_()
+        if ans == QDialog.Rejected:
+            return
+        
+        self.execinitialize()
+        g.manplan_saved = False
+        g.manplan['target'] = manplan['target']
+        erase_TKepler()
+        g.mytarget = target.Target(**g.manplan['target'])
+        
+        self.enablewidgets()
+        self.ui.targetname.setText(g.manplan['target']['name'])
+        self.dispmanplan()
+        self.ui.showOrbit.setEnabled(False)
+        self.ui.flightreview.setEnabled(False)
+        self.ui.reviewthroughout.setEnabled(False)
+        self.ui.actionSave.setEnabled(True)
+        self.ui.actionSave_as.setEnabled(True)
+        self.ui.menuEdit.setEnabled(True)
+        self.ui.menuCheckpoint.setEnabled(False)
+    
+    
+
             
     
 if __name__ == '__main__':

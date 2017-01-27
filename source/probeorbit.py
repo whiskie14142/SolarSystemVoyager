@@ -29,8 +29,8 @@ class ProbeOrbit:
         scpos = pos - sunpos
         r2 = np.dot(scpos, scpos)
         p0 = common.solark1 / 4.0 / np.pi / r2 / common.c
-        nv = np.array([np.cos(self._sstheta) * np.cos(self._sselv),  \
-            np.sin(self._sstheta) * np.cos(self._sselv),  \
+        nv = np.array([np.cos(self._sstheta) * np.cos(self._sselv), 
+            np.sin(self._sstheta) * np.cos(self._sselv), 
             np.sin(self._sselv)])
         xax = np.array([1.0, 0., 0.,])
         cos2theta = np.dot(xax, nv) ** 2
@@ -41,8 +41,8 @@ class ProbeOrbit:
 
     def _epacc(self, td, y, kernel):
         # comupte acceleration of Electric Propulsion System
-        acc = np.array([self._epdv * np.cos(self._epelv) * np.cos(self._epphi), \
-            self._epdv * np.cos(self._epelv) * np.sin(self._epphi),  \
+        acc = np.array([self._epdv * np.cos(self._epelv) * np.cos(self._epphi),
+            self._epdv * np.cos(self._epelv) * np.sin(self._epphi), 
             self._epdv * np.sin(self._epelv)])
         pos = y[0:3]
         vel = y[3:6]
@@ -103,12 +103,18 @@ class ProbeOrbit:
         self._epdv = epdv
         self._epphi = epphi
         self._epelv = epelv
+        
+    def get_epstatus(self):
+        return self._epon, self._epdv, self._epphi, self._epelv
     
     def set_ssstatus(self, sson, ssarea, sstheta, sselv):
         self._sson = sson
         self._ssarea = ssarea
         self._sstheta = sstheta
         self._sselv = sselv
+        
+    def get_ssstatus(self):
+        return self._sson, self._ssarea, self._sstheta, self._sselv
 
     def setCurrentCart(self, t, pos, vel):
         self._t0 = t
@@ -126,7 +132,7 @@ class ProbeOrbit:
             ndata = ninter + 1
             remainder = False
         r = ode(self._func).set_integrator('dopri5', atol=atol, rtol=rtol)
-        r.set_initial_value(self._y0, self._t0).set_f_params(kernel, body_f, \
+        r.set_initial_value(self._y0, self._t0).set_f_params(kernel, body_f, 
             body_mu)
         t = np.zeros(ndata); t[0] = self._t0
         x = np.zeros(ndata); x[0] = self._y0[0]
@@ -182,7 +188,7 @@ def main(kernel):
               False, False]                    # Moon Earth
     atol = [0.01, 0.01, 0.01, 0.00001, 0.00001, 0.00001]
     rtol = [1e-10,1e-10,1e-10,1e-10,1e-10,1e-10]
-    pt, px, py, pz, pxd, pyd, pzd = probe.trj((t+365.00)*common.secofday, 366, \
+    pt, px, py, pz, pxd, pyd, pzd = probe.trj((t+365.00)*common.secofday, 366,
         kernel, body_f, common.planets_mu, atol, rtol)
     
     for i in range(13):
