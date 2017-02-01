@@ -154,7 +154,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.5.0 beta'
+        version = '0.5.1 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -1007,7 +1007,9 @@ class EditManDialog(QtGui.QDialog):
     
     def __init__(self, parent=None, editman=None, currentrow=0):
         QWidget.__init__(self, parent)
-        self.setGeometry(10, 420, 640, 320)
+        left = g.mainform.geometry().left()
+        top = g.mainform.geometry().top()
+        self.setGeometry(left, top+380, 640, 320)
         self.ui = Ui_editmandialog()
         self.ui.setupUi(self)
         self.connect(self.ui.applymantype, SIGNAL('clicked()'), 
@@ -1446,7 +1448,9 @@ class ShowOrbitDialog(QtGui.QDialog):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.mother = parent
-        self.setGeometry(10, 780, 640, 211)
+        left = g.mainform.geometry().left()
+        top = g.mainform.geometry().top()
+        self.setGeometry(left, top+740, 640, 211)
         self.ui = Ui_ShowOrbitControl()
         self.ui.setupUi(self)
         
@@ -1782,7 +1786,9 @@ from flightreviewcontrol import *
 class FlightReviewControl(QtGui.QDialog):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
-        self.setGeometry(10, 780, 640, 211)
+        left = g.mainform.geometry().left()
+        top = g.mainform.geometry().top()
+        self.setGeometry(left, top+740, 640, 211)
         self.ui = Ui_FlightReviewControl()
         self.ui.setupUi(self)
 
@@ -2016,7 +2022,9 @@ from reviewthroughoutcontrol import *
 class ReviewThroughoutControl(QtGui.QDialog):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
-        self.setGeometry(10, 780, 640, 211)
+        left = g.mainform.geometry().left()
+        top = g.mainform.geometry().top()
+        self.setGeometry(left, top+740, 640, 211)
         self.ui = Ui_ReviewThroughoutControl()
         self.ui.setupUi(self)
 
