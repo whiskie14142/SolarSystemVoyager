@@ -127,7 +127,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>100</y>
+     <y>90</y>
      <width>61</width>
      <height>16</height>
     </rect>
@@ -140,16 +140,16 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>120</y>
+     <y>110</y>
      <width>521</width>
-     <height>143</height>
+     <height>164</height>
     </rect>
    </property>
    <property name="cornerButtonEnabled">
     <bool>false</bool>
    </property>
    <property name="rowCount">
-    <number>7</number>
+    <number>8</number>
    </property>
    <property name="columnCount">
     <number>2</number>
@@ -166,6 +166,7 @@
    <attribute name="verticalHeaderMinimumSectionSize">
     <number>20</number>
    </attribute>
+   <row/>
    <row/>
    <row/>
    <row/>
@@ -221,7 +222,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>120</y>
+     <y>110</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -275,7 +276,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>150</y>
+     <y>140</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -381,7 +382,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>180</y>
+     <y>170</y>
      <width>75</width>
      <height>23</height>
     </rect>

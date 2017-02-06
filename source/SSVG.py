@@ -154,7 +154,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.5.1 beta'
+        version = '0.6.0 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -185,8 +185,8 @@ This program uses following programs and modules:
   matplotlib : http://matplotlib.org/
     Copyright (c) 2012-2013 Matplotlib Development Team;
     All Rights Reserved
-  jplephem : https://github.com/brandon-rhodes/python-jplephem/
   PyQt4 : https://www.riverbankcomputing.com/news/
+  jplephem : https://github.com/brandon-rhodes/python-jplephem/
   julian : https://github.com/dannyzed/julian/
     Copyright (c) 2016 Daniel Zawada
   pytwobodyorbit : https://github.com/whiskie14142/pytwobodyorbit/
@@ -1038,16 +1038,16 @@ class EditManDialog(QtGui.QDialog):
         for i in range(7):
             self.typedict[self.types[i]] = i
         self.paramname = ['time', 'dv', 'dvpd', 'phi', 'elv', 'aria', 'theta', 
-                          'inter']
+                          'tvmode', 'inter']
         self.paramflag = [
-            # 0:time, 1:dv, 2:dvpd, 3:phi, 4:elv, 5:aria, 6:theta, 7:inter
-            [1, 1, 0, 1, 1, 0, 0, 0], # for START
-            [0, 1, 0, 1, 1, 0, 0, 0], # for CP
-            [0, 0, 1, 1, 1, 0, 0, 0], # for EP_ON
-            [0, 0, 0, 0, 0, 0, 0, 0], # for EP_OFF
-            [0, 0, 0, 0, 1, 1, 1, 0], # for SS_ON
-            [0, 0, 0, 0, 0, 0, 0, 0], # for SS_OFF
-            [1, 0, 0, 0, 0, 0, 0, 1]  # for FLYTO
+            # 0:time, 1:dv, 2:dvpd, 3:phi, 4:elv, 5:aria, 6:theta, 7:tvmode, 8:inter
+            [1, 1, 0, 1, 1, 0, 0, 0, 0], # for START
+            [0, 1, 0, 1, 1, 0, 0, 0, 0], # for CP
+            [0, 0, 1, 1, 1, 0, 0, 1, 0], # for EP_ON
+            [0, 0, 0, 0, 0, 0, 0, 0, 0], # for EP_OFF
+            [0, 0, 0, 0, 1, 1, 1, 1, 0], # for SS_ON
+            [0, 0, 0, 0, 0, 0, 0, 0, 0], # for SS_OFF
+            [1, 0, 0, 0, 0, 0, 0, 0, 1]  # for FLYTO
             ]
         paramdesc = [
             'time  : Maneuver Time (JD)',
@@ -1057,6 +1057,7 @@ class EditManDialog(QtGui.QDialog):
             'elv   : Angle (deg) for all prop.',
             'aria  : Aria of Solar Sail (m**2)',
             'theta : Angle (deg) for SS',
+            'tvmode: Thrust Vector Mode (L|E)',
             'inter : Integration Interval (days)'
             ]
         self.timedesc = ['Start Time', '', '', '', '', '', 'End Time']
@@ -1068,6 +1069,7 @@ class EditManDialog(QtGui.QDialog):
             '{:.2f}',
             '{:.1f}',
             '{:.2f}',
+            '{}',
             '{:.5f}'
             ]
         self.stringitems = []
@@ -1087,7 +1089,7 @@ class EditManDialog(QtGui.QDialog):
             self.ui.mantype.addItem(item)
         self.ui.parameters.setColumnWidth(0,350)
         self.ui.parameters.setColumnWidth(1,160)
-        for i in range(1, 8):
+        for i in range(1, 9):
             row = i - 1
             self.ui.parameters.setItem(row, 0, self.stringitems[i])
             self.ui.parameters.item(row, 0).setFlags(Qt.ItemIsEnabled)
@@ -1141,13 +1143,13 @@ class EditManDialog(QtGui.QDialog):
         dt = datetime.now()
         jdtoday = julian.to_jd(dt, fmt='jd')
         jdtoday = int(jdtoday + 0.5) - 0.5
-        ival = [jdtoday, 0.0, 0.0, 0.0, 0.0, 10000.0, 45.0, 1.0]
+        ival = [jdtoday, 0.0, 0.0, 0.0, 0.0, 10000.0, 45.0, 'L', 1.0]
         if g.myprobe != None:
             if g.myprobe.onflight:
                 ival[0] = g.myprobe.jd
         self.editman = {}
         self.editman['type'] = self.types[typeID]
-        for i in range(8):
+        for i in range(9):
             if self.paramflag[typeID][i] == 1:
                 self.editman[self.paramname[i]] = ival[i]
         
@@ -1157,7 +1159,7 @@ class EditManDialog(QtGui.QDialog):
             self.ui.mantypedisp.setText('Not Defined')
             self.ui.isotedit.setEnabled(False)
             self.ui.jdedit.setEnabled(False)
-            for i in range(1, 8):
+            for i in range(1, 9):
                 row = i - 1
                 self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
         else:
@@ -1181,7 +1183,7 @@ class EditManDialog(QtGui.QDialog):
             self.disconnect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
                             self.parameterchanged)
             
-            for i in range(1, 8):
+            for i in range(1, 9):
                 row = i - 1
                 if self.paramflag[self.typeID][i] == 1:
                     anitem = QTableWidgetItem(self.fmttbl[i].format(
@@ -1253,14 +1255,23 @@ class EditManDialog(QtGui.QDialog):
     def parameterchanged(self, row, colmn):
         if colmn != 1: return
         prevval = self.editman[self.paramname[row+1]]
-        try:
-            newval = float(self.ui.parameters.item(row, colmn).text())
-        except ValueError:
-            self.ui.parameters.item(row, colmn).setText(
-                self.fmttbl[row+1].format(prevval))
-            QMessageBox.information(self, 
-                'Parameter Error', 'Enter a floating number', 0, 1, 0)
-            return
+        if self.paramname[row+1] == 'tvmode':
+            newval = self.ui.parameters.item(row, colmn).text().upper()
+            if newval != 'L' and newval != 'E':
+                self.ui.parameters.item(row, colmn).setText(
+                    self.fmttbl[row+1].format(prevval))
+                QMessageBox.information(self, 
+                    'Parameter Error', 'Enter L or E for tvmode', 0, 1, 0)
+                return
+        else:
+            try:
+                newval = float(self.ui.parameters.item(row, colmn).text())
+            except ValueError:
+                self.ui.parameters.item(row, colmn).setText(
+                    self.fmttbl[row+1].format(prevval))
+                QMessageBox.information(self, 
+                    'Parameter Error', 'Enter a floating number', 0, 1, 0)
+                return
         self.editman[self.paramname[row+1]] = newval
 
     def finish_exec(self):
@@ -1823,6 +1834,7 @@ class FlightReviewControl(QtGui.QDialog):
         self.artist_of_probe = None
         self.artist_of_target = None
         self.artist_of_sun = None
+        self.artist_of_epssinfo = None
         
         self.tbpred = None
         self.reset()
@@ -1852,6 +1864,7 @@ class FlightReviewControl(QtGui.QDialog):
             return
 
         self.last_trj = g.probe_trj[-1][1:]
+        self.maninfo = g.probe_trj[-1][0]
         self.start_time = self.last_trj[0][0]
 #        self.end_time = self.last_trj[0][-1]  not used?
         self.ui.starttime.setText(common.jd2isot(self.start_time))
@@ -1884,6 +1897,7 @@ class FlightReviewControl(QtGui.QDialog):
         pvel[0] = self.last_trj[4][self.c_index]
         pvel[1] = self.last_trj[5][self.c_index]
         pvel[2] = self.last_trj[6][self.c_index]
+        ssacc = self.last_trj[7][self.c_index]
 
         erase_PKepler()
 
@@ -1927,6 +1941,18 @@ class FlightReviewControl(QtGui.QDialog):
             self.artist_of_sun = None
         self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='w',
                                           depthshade=False, marker='o')
+
+        if self.artist_of_epssinfo != None:
+            self.artist_of_epssinfo.remove()
+            self.artist_of_epssinfo = None
+        epsstext = ''
+        if self.maninfo['epon']:
+            epsstext = epsstext + '  EP(' + self.maninfo['epmode'] + ')'
+        if self.maninfo['sson']:
+            epsstext = epsstext + '  SS({0}) SSacc={1:.3f}'.format(
+                self.maninfo['ssmode'], ssacc)
+        self.artist_of_epssinfo = g.ax.text(*ppos, epsstext, color='r', 
+                                            fontsize=11)
 
         # redraw planets
         remove_planets()
@@ -2011,6 +2037,9 @@ class FlightReviewControl(QtGui.QDialog):
         if self.artist_of_sun != None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
+        if self.artist_of_epssinfo != None:
+            self.artist_of_epssinfo.remove()
+            self.artist_of_epssinfo = None
         erase_Ptrj()
         erase_PKepler()
         erase_TKepler()
@@ -2070,12 +2099,13 @@ class ReviewThroughoutControl(QtGui.QDialog):
         self.tbpred = TwoBodyPred(g.myprobe.name)
         self.man_index = 0
         self.man_count = len(g.myprobe.trj_record)
-        
+
         self.drawman()
         
     def drawman(self):
         record = g.myprobe.trj_record[self.man_index]
         mantype = record[0]['type']
+        self.c_maninfo = record[0]
         self.c_mantype = mantype
         self.mantext = '   ' + str(self.man_index + 1) + ' ' + mantype
         status = np.zeros(7)
@@ -2087,6 +2117,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
             status[4] = record[5][0]
             status[5] = record[6][0]
             status[6] = record[7][0]
+            ssacc = record[8][0]
             self.last_trj = record[1:]
             self.c_index = 0
             self.ui.fastbackward.setEnabled(True)
@@ -2094,6 +2125,12 @@ class ReviewThroughoutControl(QtGui.QDialog):
             self.ui.forward.setEnabled(True)
             self.ui.fastforward.setEnabled(True)
             self.ui.timescale.setEnabled(True)
+            if self.c_maninfo['epon']:
+                self.mantext = self.mantext + ' EP(' + \
+                                self.c_maninfo['epmode'] + ')'
+            if self.c_maninfo['sson']:
+                self.mantext = self.mantext + ' SS(' + \
+                                self.c_maninfo['ssmode'] + ')'
         else:
             status = record[1]
             self.ui.fastbackward.setEnabled(False)
@@ -2157,8 +2194,12 @@ class ReviewThroughoutControl(QtGui.QDialog):
             self.artist_of_type = None
         if self.ui.showmantype.isChecked():
             if mantype == 'FLYTO':
+                acctext = ''
+                if self.c_maninfo['sson']:
+                    acctext = ' SSacc={:.3f}'.format(ssacc)
                 self.artist_of_type = g.ax.text(*status[1:4], 
-                            self.mantext+'(start)', color='r', fontsize=11)
+                            self.mantext+acctext+' (start)', color='r', 
+                            fontsize=11)
             else:
                 self.artist_of_type = g.ax.text(*status[1:4], self.mantext, 
                                                 color='r', fontsize=11)
@@ -2222,6 +2263,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
         pvel[0] = self.last_trj[4][self.c_index]
         pvel[1] = self.last_trj[5][self.c_index]
         pvel[2] = self.last_trj[6][self.c_index]
+        ssacc = self.last_trj[7][self.c_index]
 
         erase_PKepler()
         if self.ui.check_PKepler.isChecked():
@@ -2266,15 +2308,18 @@ class ReviewThroughoutControl(QtGui.QDialog):
             self.artist_of_type.remove()
             self.artist_of_type = None
         if self.ui.showmantype.isChecked():
+            acctext = ''
+            if self.c_maninfo['sson']:
+                acctext = ' SSacc={:.3f}'.format(ssacc)
             if self.c_index == 0:
-                self.artist_of_type = g.ax.text(*ppos, self.mantext+'(start)', 
-                                                color='r', fontsize=11)
+                self.artist_of_type = g.ax.text(*ppos, self.mantext+acctext+
+                    ' (start)', color='r', fontsize=11)
             elif self.c_index + 1 == len(self.last_trj[0]):
-                self.artist_of_type = g.ax.text(*ppos, self.mantext+'(end)', 
-                                                color='r', fontsize=11)
+                self.artist_of_type = g.ax.text(*ppos, self.mantext+acctext+
+                    ' (end)', color='r', fontsize=11)
             else:
-                self.artist_of_type = g.ax.text(*ppos, self.mantext, color='r', 
-                                                fontsize=11)
+                self.artist_of_type = g.ax.text(*ppos, self.mantext+acctext, 
+                    color='r', fontsize=11)
 
         self.artist_of_target = g.ax.scatter(*target_pos, s=40, c='g',
                                              depthshade=False, marker='+')
@@ -2470,18 +2515,18 @@ class MainForm(QtGui.QMainWindow):
         self.erasecurrentstatus()
         self.currentrow = 0
         self.paramname = ['time', 'dv', 'dvpd', 'phi', 'elv', 'aria', 'theta', 
-                          'inter']
+                          'tvmode', 'inter']
         self.typedict = {'START':0, 'CP':1, 'EP_ON':2, 'EP_OFF':3, 'SS_ON':4,
                          'SS_OFF':5, 'FLYTO':6}
         self.paramflag = [
-            # 0:time, 1:dv, 2:dvpd, 3:phi, 4:elv, 5:aria, 6:theta, 7:inter
-            [1, 1, 0, 1, 1, 0, 0, 0], # for START
-            [0, 1, 0, 1, 1, 0, 0, 0], # for CP
-            [0, 0, 1, 1, 1, 0, 0, 0], # for EP_ON
-            [0, 0, 0, 0, 0, 0, 0, 0], # for EP_OFF
-            [0, 0, 0, 0, 1, 1, 1, 0], # for SS_ON
-            [0, 0, 0, 0, 0, 0, 0, 0], # for SS_OFF
-            [1, 0, 0, 0, 0, 0, 0, 1]  # for FLYTO
+            # 0:time, 1:dv, 2:dvpd, 3:phi, 4:elv, 5:aria, 6:theta, 7:tvmode, 8:inter
+            [1, 1, 0, 1, 1, 0, 0, 0, 0], # for START
+            [0, 1, 0, 1, 1, 0, 0, 0, 0], # for CP
+            [0, 0, 1, 1, 1, 0, 0, 1, 0], # for EP_ON
+            [0, 0, 0, 0, 0, 0, 0, 0, 0], # for EP_OFF
+            [0, 0, 0, 0, 1, 1, 1, 1, 0], # for SS_ON
+            [0, 0, 0, 0, 0, 0, 0, 0, 0], # for SS_OFF
+            [1, 0, 0, 0, 0, 0, 0, 0, 1]  # for FLYTO
             ]
         self.fmttbl = [
             '{:.8f}',
@@ -2491,6 +2536,7 @@ class MainForm(QtGui.QMainWindow):
             '{:.2f}',
             '{:.1f}',
             '{:.2f}',
+            '{}',
             '{:.5f}'
             ]
         self.initselectedman()
@@ -2605,6 +2651,13 @@ class MainForm(QtGui.QMainWindow):
         manfile.close()
         self.dispmanfilename()
         g.maneuvers = g.manplan['maneuvers']
+
+        # for old manplan data        
+        for maneuver in g.maneuvers:
+            if maneuver['type'] == 'EP_ON' or maneuver['type'] == 'SS_ON':
+                if not ('tvmode' in maneuver):
+                    maneuver['tvmode'] = 'L'
+        
         g.manplan_saved = True
         g.nextman = 0
         g.myprobe = probe.Probe(**g.manplan['probe'])
@@ -2753,6 +2806,8 @@ class MainForm(QtGui.QMainWindow):
                     if name == 'time':
                         desc = desc + 'Date=' + \
                             common.jd2datetime(g.maneuvers[i][name])[0] + ' '
+                    elif name == 'tvmode':
+                        desc = desc + name + '=' + g.maneuvers[i][name] + ' '
                     else:
                         desc = desc + name + '=' + \
                             '{:.2f}'.format(g.maneuvers[i][name]) + ' '
@@ -3061,10 +3116,11 @@ class MainForm(QtGui.QMainWindow):
             'elv (deg)',
             'aria (m**2)',
             'theta (deg)',
+            'tvmode (L|E)',
             'inter (days)'
             ]
 
-        for i in range(1, 8):
+        for i in range(1, 9):
             row = i - 1
             self.ui.selectedman.setItem(row, 0, QTableWidgetItem(paramdesc[i]))
 
@@ -3086,7 +3142,7 @@ class MainForm(QtGui.QMainWindow):
             self.ui.label_mantime_h.setEnabled(True)
             self.ui.label_mantime.setText(common.jd2isot(man['time']))
 
-        for i in range(1, 8):
+        for i in range(1, 9):
             row = i - 1
             if self.paramflag[typeID][i] == 1:
                 anitem = QTableWidgetItem(self.fmttbl[i].format(
@@ -3104,7 +3160,7 @@ class MainForm(QtGui.QMainWindow):
         self.ui.label_mantime_h.setEnabled(False)
         self.ui.label_mantime.setText('')
         self.ui.label_cman.setText('')
-        for i in range(1, 8):
+        for i in range(1, 9):
             row = i - 1
             anitem = QTableWidgetItem('')
             self.ui.selectedman.setItem(row, 1, anitem)

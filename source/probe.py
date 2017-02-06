@@ -57,6 +57,10 @@ class Probe:
             return False
 
         cman = man.copy()
+        cman['epon'] = False
+        cman['epmode'] = 'L'
+        cman['sson'] = False
+        cman['ssmode'] = 'L'
         status = np.zeros(7)
 
         if man['type'] == 'START':
@@ -69,6 +73,7 @@ class Probe:
             status[0] = self.jd
             status[1:4] = self.pos.copy()
             status[4:] = self.vel.copy()
+            self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'CP':
@@ -88,16 +93,19 @@ class Probe:
             status[0] = self.jd
             status[1:4] = self.pos.copy()
             status[4:] = self.vel.copy()
+            self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'EP_ON':
             dv = man['dvpd'] / common.secofday
             phi = math.radians(man['phi'])
             elv = math.radians(man['elv'])
-            self.orbit.set_epstatus(True, dv, phi, elv)
+            self.orbit.set_epstatus(True, dv, phi, elv, man['tvmode'],
+                                    common.SPKkernel)
             status[0] = self.jd
             status[1:4] = self.pos.copy()
             status[4:] = self.vel.copy()
+            self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'EP_OFF':
@@ -105,16 +113,19 @@ class Probe:
             status[0] = self.jd
             status[1:4] = self.pos.copy()
             status[4:] = self.vel.copy()
+            self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'SS_ON':
             aria = man['aria']
             theta = math.radians(man['theta'])
             elv = math.radians(man['elv'])
-            self.orbit.set_ssstatus(True, aria, theta, elv)
+            self.orbit.set_ssstatus(True, aria, theta, elv, man['tvmode'],
+                                    common.SPKkernel)
             status[0] = self.jd
             status[1:4] = self.pos.copy()
             status[4:] = self.vel.copy()
+            self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'SS_OFF':
@@ -122,6 +133,7 @@ class Probe:
             status[0] = self.jd
             status[1:4] = self.pos.copy()
             status[4:] = self.vel.copy()
+            self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
             return True
         elif man['type'] == 'FLYTO':
@@ -135,8 +147,8 @@ class Probe:
                 plabel.setText(ptext)
             inter = man['inter'] * common.secofday
             secto = jdto * common.secofday
-            pt, px, py, pz, pxd, pyd, pzd, runerror = self.orbit.trj(secto, 
-                inter, common.SPKkernel, common.planets_grav, 
+            pt, px, py, pz, pxd, pyd, pzd, ssdvpd, runerror = self.orbit.trj(
+                secto, inter, common.SPKkernel, common.planets_grav, 
                 common.planets_mu, common.integ_abs_tol, common.integ_rel_tol, 
                 pbar)
             if pbar != None:
@@ -144,7 +156,9 @@ class Probe:
                 plabel.setText('')
             if runerror: return False
             pt = pt / common.secofday
-            self.trj_record.append([cman, pt, px, py, pz, pxd, pyd, pzd])
+            self.get_epssstatus(cman)
+            self.trj_record.append([cman, pt, px, py, pz, pxd, pyd, pzd, 
+                                    ssdvpd])
             self.jd = pt[-1]
             self.pos = np.array([px[-1], py[-1], pz[-1]])
             self.vel = np.array([pxd[-1], pyd[-1], pzd[-1]])
@@ -193,6 +207,16 @@ class Probe:
             self.jd = self.checkpointdata['jd']
             self.orbit.setCurrentCart(self.jd*common.secofday, self.pos, 
                                       self.vel)
-            self.orbit.set_epstatus(*self.checkpointdata['epstatus'])
-            self.orbit.set_ssstatus(*self.checkpointdata['ssstatus'])
+            self.orbit.resume_epstatus(self.checkpointdata['epstatus'])
+            self.orbit.resume_ssstatus(self.checkpointdata['ssstatus'])
+            
+    def get_epssstatus(self, cman):
+        epstatus = self.orbit.get_epstatus()
+        ssstatus = self.orbit.get_ssstatus()
+        cman['epon'] = epstatus[0]
+        cman['epmode'] = epstatus[4]
+        cman['sson'] = ssstatus[0]
+        cman['ssmode'] = ssstatus[4]
+        
+        
             

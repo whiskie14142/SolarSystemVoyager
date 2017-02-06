@@ -19,6 +19,18 @@ class ProbeOrbit:
 # 座標系は太陽系重心の黄道座標（J2000.0）
 # 長さの単位はメートル、時間の単位は秒でインタフェースする
 
+    def _ssnv(self, td, y, kernel):
+        # compute normal vector of Solar Sail
+        pos = y[0:3]
+        vel = y[3:6]
+        sunpos, sunvel =kernel[0,10].compute_and_differentiate(td)
+        sunpos = common.eqn2ecl(sunpos) * 1000.0
+        sunvel = common.eqn2ecl(sunvel) * 1000.0 / common.secofday
+        nv = np.array([np.cos(self._sstheta) * np.cos(self._sselv), 
+            np.sin(self._sstheta) * np.cos(self._sselv), 
+            np.sin(self._sselv)])
+        return common.sodv2ecldv(nv, pos, vel, sunpos, sunvel)
+
     def _ssacc(self, td, y, kernel):
         # comupte acceleration of Solar Sail
         pos = y[0:3]
@@ -38,6 +50,23 @@ class ProbeOrbit:
 #        print(td,f) # for debug
         acc = nv * (f / self._pmass)
         return common.sodv2ecldv(acc, pos, vel, sunpos, sunvel)
+
+    def _sseclacc(self, td, y, kernel):
+        # compute acceleration of Solar Sail when tvmode='E'
+        pos = y[0:3]
+        sunpos =kernel[0,10].compute(td)
+        sunpos = common.eqn2ecl(sunpos) * 1000.0
+        scpos = pos - sunpos
+        r2 = np.dot(scpos, scpos)
+        p0 = common.solark1 / 4.0 / np.pi / r2 / common.c
+        xax = scpos / np.sqrt(r2)
+        costheta = np.dot(xax, self._sseclnv)
+        cos2theta = costheta ** 2
+        f = 2.0 * cos2theta * p0 * self._ssarea
+        acc = self._sseclnv * (f / self._pmass)
+        if costheta < 0.0:
+            acc = acc * (-1.0)
+        return acc
 
     def _epacc(self, td, y, kernel):
         # comupte acceleration of Electric Propulsion System
@@ -77,9 +106,15 @@ class ProbeOrbit:
                 yd[3:6] += delta * (body_mu[i] / r ** 3)
 #                print(delta * (body_mu[i] / r ** 3))
         if self._epon:
-            yd[3:6] += self._epacc(td, y, kernel)
+            if self._epmode == 'L':
+                yd[3:6] += self._epacc(td, y, kernel)
+            else:
+                yd[3:6] += self._epeclacc
         if self._sson:
-            yd[3:6] += self._ssacc(td, y, kernel)
+            if self._ssmode == 'L':
+                yd[3:6] += self._ssacc(td, y, kernel)
+            else:
+                yd[3:6] += self._sseclacc(td, y, kernel)
         return yd
     
     def __init__(self, pname, pmass):
@@ -92,35 +127,77 @@ class ProbeOrbit:
         self._epdv = 0.0    # 電気推進の加速度絶対値
         self._epphi = 0.0   # 電気推進の推力方向φ
         self._epelv = 0.0   # 電気推進の推力方向elevation
+        self._epmode = 'L'
+        self._epeclacc = []
         
         self._sson = False
         self._ssarea = 0.0      # ソーラーセイルの面積
         self._sstheta = 0.0     #　ソーラーセイルの向きθ
         self._sselv = 0.0       # ソーラーセイルの向きelevation
+        self._ssmode = 'L'
+        self._sseclnv = []
 
-    def set_epstatus(self, epon, epdv, epphi, epelv):
+    def set_epstatus(self, epon, epdv, epphi, epelv, tvmode='L', kernel=None):
         self._epon = epon
         self._epdv = epdv
         self._epphi = epphi
         self._epelv = epelv
+        self._epmode = tvmode
+        if tvmode != 'L':
+            td = self._t0 / common.secofday
+            y = self._y0
+            self._epeclacc = self._epacc(td, y, kernel)
         
     def get_epstatus(self):
-        return self._epon, self._epdv, self._epphi, self._epelv
+        return self._epon, self._epdv, self._epphi, self._epelv, self._epmode,\
+            self._epeclacc.copy()
+            
+    def resume_epstatus(self, epstatus):
+        self._epon = epstatus[0]
+        self._epdv = epstatus[1]
+        self._epphi = epstatus[2]
+        self._epelv = epstatus[3]
+        self._epmode = epstatus[4]
+        self._epeclacc = epstatus[5]
     
-    def set_ssstatus(self, sson, ssarea, sstheta, sselv):
+    def set_ssstatus(self, sson, ssarea, sstheta, sselv, tvmode='L', 
+                     kernel=None):
         self._sson = sson
         self._ssarea = ssarea
         self._sstheta = sstheta
         self._sselv = sselv
+        self._ssmode = tvmode
+        if tvmode != 'L':
+            td = self._t0 / common.secofday
+            y = self._y0
+            self._sseclnv = self._ssnv(td, y, kernel)
         
     def get_ssstatus(self):
-        return self._sson, self._ssarea, self._sstheta, self._sselv
+        return self._sson, self._ssarea, self._sstheta, self._sselv, \
+            self._ssmode, self._sseclnv.copy()
+    
+    def resume_ssstatus(self, ssstatus):
+        self._sson = ssstatus[0]
+        self._ssarea = ssstatus[1]
+        self._sstheta = ssstatus[2]
+        self._sselv = ssstatus[3]
+        self._ssmode = ssstatus[4]
+        self._sseclnv = ssstatus[5]
 
     def setCurrentCart(self, t, pos, vel):
         self._t0 = t
         self._y0 = np.zeros(6)
         self._y0[0:3] = pos
         self._y0[3:6] = vel
+
+    def compssdvpd(self, tsec, y, kernel):
+        td = tsec / common.secofday
+        if self._ssmode == 'L':
+            acc = self._ssacc(td, y, kernel)
+        else:
+            acc = self._sseclacc(td, y, kernel)
+        return np.sqrt(np.dot(acc, acc)) * common.secofday
+        
         
     def trj(self, endsec, inter, kernel, body_f, body_mu, atol, rtol, pbar):
         runerror = False
@@ -141,6 +218,10 @@ class ProbeOrbit:
         xd = np.zeros(ndata); xd[0] = self._y0[3]
         yd = np.zeros(ndata); yd[0] = self._y0[4]
         zd = np.zeros(ndata); zd[0] = self._y0[5]
+        ssdvpd = np.zeros(ndata)
+        if self._sson:
+            ssdvpd[0] = self.compssdvpd(self._t0, self._y0, kernel)
+
         for i in range(1, ninter+1):
             posvel = r.integrate(self._t0 + i * inter)
             if not r.successful(): 
@@ -153,9 +234,12 @@ class ProbeOrbit:
             xd[i] = posvel[3]
             yd[i] = posvel[4]
             zd[i] = posvel[5]
+            if self._sson:
+                ssdvpd[i] = self.compssdvpd(r.t, posvel, kernel)
             if pbar != None:
-                percent = i * 100 // ninter
-                pbar.setValue(percent)
+                if i % 10 == 0:
+                    percent = i * 100 // ninter
+                    pbar.setValue(percent)
         if remainder:
             posvel = r.integrate(endsec)
             if not r.successful(): 
@@ -168,7 +252,9 @@ class ProbeOrbit:
             xd[ndata-1] = posvel[3]
             yd[ndata-1] = posvel[4]
             zd[ndata-1] = posvel[5]
-        return t, x, y, z, xd, yd, zd, runerror
+            if self._sson:
+                ssdvpd[ndata-1] = self.compssdvpd(r.t, posvel, kernel)
+        return t, x, y, z, xd, yd, zd, ssdvpd, runerror
 
 def main(kernel):
 
