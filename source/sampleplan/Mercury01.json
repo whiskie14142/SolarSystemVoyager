@@ -1,0 +1,226 @@
+{
+    "maneuvers": [
+        {
+            "elv": -11.82,
+            "phi": -133.05,
+            "type": "START",
+            "time": 2458314.5,
+            "dv": 5680.147
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458346.1,
+            "inter": 1.0
+        },
+        {
+            "elv": -7.52,
+            "phi": -111.99,
+            "type": "CP",
+            "dv": 40.412
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458446.1,
+            "inter": 1.0
+        },
+        {
+            "elv": 8.35,
+            "phi": 99.72,
+            "type": "CP",
+            "dv": 9.706
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458506.1,
+            "inter": 1.0
+        },
+        {
+            "elv": 25.92,
+            "phi": 148.13,
+            "type": "CP",
+            "dv": 4.53
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458525.1,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458527.1,
+            "inter": 0.002
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458546.1,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459120.1,
+            "inter": 2.0
+        },
+        {
+            "elv": -38.62,
+            "phi": -169.78,
+            "type": "CP",
+            "dv": 30.647
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459180.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 23.18,
+            "phi": 130.51,
+            "type": "CP",
+            "dv": 2.171
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459199.5,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459201.5,
+            "inter": 0.002
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459220.5,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459280.5,
+            "inter": 1.0
+        },
+        {
+            "elv": -29.48,
+            "phi": 164.41,
+            "type": "CP",
+            "dv": 281.863
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459400.5,
+            "inter": 1.0
+        },
+        {
+            "elv": -1.51,
+            "phi": 40.56,
+            "type": "CP",
+            "dv": 17.617
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459410.0,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459411.0,
+            "inter": 0.001
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459420.5,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459678.5,
+            "inter": 2.0
+        },
+        {
+            "elv": -0.6,
+            "phi": -105.84,
+            "type": "CP",
+            "dv": 29.695
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459752.5,
+            "inter": 1.0
+        },
+        {
+            "elv": -0.84,
+            "phi": 53.7,
+            "type": "CP",
+            "dv": 1.849
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459762.0,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459763.0,
+            "inter": 0.001
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459772.5,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460302.1,
+            "inter": 2.0
+        },
+        {
+            "elv": 0.85,
+            "phi": 7.92,
+            "type": "CP",
+            "dv": 1006.753
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460354.25,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.16,
+            "phi": 27.87,
+            "type": "CP",
+            "dv": 5.241
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460363.75,
+            "inter": 0.1
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460364.21,
+            "inter": 0.001
+        },
+        {
+            "elv": 0.24,
+            "phi": -177.7,
+            "type": "CP",
+            "dv": 1804.013
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460374.21,
+            "inter": 0.01
+        }
+    ],
+    "target": {
+        "SPKID2B": 0,
+        "name": "Mercury",
+        "SPKID2A": 0,
+        "SPKID1B": 1,
+        "file": "",
+        "SPKID1A": 0
+    },
+    "probe": {
+        "name": "colombo2",
+        "base": "EarthL2",
+        "pmass": 500.0
+    }
+}

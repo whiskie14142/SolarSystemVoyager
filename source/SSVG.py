@@ -154,7 +154,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.6.0 beta'
+        version = '0.6.1 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -533,6 +533,8 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
                                              self.ttslchanged)
 
+        self.connect(self.ui.reopenbutton, SIGNAL('clicked()'),
+                                             self.reopen3dorbit)
         self.connect(self.ui.finishbutton, SIGNAL('clicked()'), 
                                              self.finishbutton)
         self.connect(self.ui.cancelbutton, SIGNAL('clicked()'), 
@@ -626,7 +628,8 @@ class StartOptimizeDialog(QtGui.QDialog):
         if self.ui.check_Ppred.isChecked():
             x, y, z, t = self.predorbit.points(101)
             self.artist_Porbit = g.ax.plot(x, y, z,color='c', lw=0.75)
-        plt.draw()
+
+        if g.fig != None: plt.draw()
         
         # Print
         idv = ivel - pvel
@@ -747,7 +750,8 @@ class StartOptimizeDialog(QtGui.QDialog):
         erase_Ptrj()
         if self.ui.check_Ptrj.isChecked():
             draw_Ptrj()
-        plt.draw()
+
+        if g.fig != None: plt.draw()
     
     def fdchanged(self):
         self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
@@ -945,6 +949,11 @@ class StartOptimizeDialog(QtGui.QDialog):
         erase_PKepler()
         erase_TKepler()
         erase_Ptrj()
+
+    def reopen3dorbit(self):
+        g.mainform.init3Dfigure()
+        self.drawfixedorbit()
+        self.draworbit()
         
     def finishbutton(self):
         self.eraseall()
@@ -1302,6 +1311,7 @@ class EditManDialog(QtGui.QDialog):
         event.accept()
 
     def showorbit(self):
+        g.mainform.init3Dfigure()
         if self.typeID == 1:
             self.showorbitCP()
         elif self.typeID == 0:
@@ -1388,6 +1398,7 @@ class EditManDialog(QtGui.QDialog):
             self.showorbit()
 
     def optimize(self):
+        g.mainform.init3Dfigure()
         if self.typeID == 0:
             self.start_optimize()
         elif self.typeID == 1:
@@ -1611,7 +1622,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         else:
             replot_time(tempjd, 'Prediction')
 
-        plt.draw()
+        if g.fig != None: plt.draw()
         
         # display relative position and velocity
         rel_pos = self.target_pos - probe_pos
@@ -1962,7 +1973,7 @@ class FlightReviewControl(QtGui.QDialog):
         remove_time()
         replot_time(c_time, 'Real')
         
-        plt.draw()
+        if g.fig != None: plt.draw()
         
         # display relative position and velocity
         rel_pos = target_pos - ppos
@@ -2223,7 +2234,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
         remove_time()
         replot_time(status[0], 'Real')
         
-        plt.draw()
+        if g.fig != None: plt.draw()
         
         # display relative position and velocity, and time
         rel_pos = target_pos - status[1:4]
@@ -2332,7 +2343,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
         remove_time()
         replot_time(c_time, 'Real')
         
-        plt.draw()
+        if g.fig != None: plt.draw()
         
         # display relative position and velocity
         rel_pos = target_pos - ppos
@@ -2566,20 +2577,8 @@ class MainForm(QtGui.QMainWindow):
         g.target_Kepler = None
     
         plt.ion()
-        g.fig=plt.figure(figsize=(11,11))
-        g.ax=g.fig.gca(projection='3d', aspect='equal')
-    
-        g.ax.set_xlim(-3.0e11, 3.0e11)
-        g.ax.set_ylim(-3.0e11, 3.0e11)
-        g.ax.set_zlim(-3.0e11, 3.0e11)
-        g.ax.set_xlabel('X')
-        g.ax.set_ylabel('Y')
-        g.ax.set_zlabel('Z')
-        g.fig.tight_layout()
-        
-        mngr = plt.get_current_fig_manager()
-        mngr.window.setGeometry(660, 40, 960, 960)
-        g.fig.canvas.set_window_title('3D Orbit')
+        g.fig = None
+        self.init3Dfigure()
         
         g.showorbitcontrol = None
         g.showorbitsettings = None
@@ -2592,10 +2591,37 @@ class MainForm(QtGui.QMainWindow):
         self.checkpoint = False
         g.finish_exec = 2
 
+    def init3Dfigure(self):
+        if g.fig != None:
+            return
+        g.fig=plt.figure(figsize=(11,11))
+        g.ax=g.fig.gca(projection='3d', aspect='equal')
+    
+        g.ax.set_xlim(-3.0e11, 3.0e11)
+        g.ax.set_ylim(-3.0e11, 3.0e11)
+        g.ax.set_zlim(-3.0e11, 3.0e11)
+        g.ax.set_xlabel('X')
+        g.ax.set_ylabel('Y')
+        g.ax.set_zlabel('Z')
+        g.fig.tight_layout()
+        
+        left = self.geometry().left()
+        top = self.geometry().top()
+        mngr = plt.get_current_fig_manager()
+        mngr.window.setGeometry(left+650, top, 960, 960)
+        g.fig.canvas.set_window_title('3D Orbit')
+        self.figcid = g.fig.canvas.mpl_connect('close_event', 
+                                               self.handle_3Dclose)
+        
+    def handle_3Dclose(self, event):
+#        print('Closed: 3D Orbit')
+        g.fig.canvas.mpl_disconnect(self.figcid)
+        g.fig = None
+
     def closeEvent(self, event):
         if g.manplan_saved:
             event.accept()
-            QApplication.closeAllWindows()
+            plt.close('all')
         else:
             ans = QMessageBox.question(self, 'Quit SSV', 
                 'Flight Plan has not been saved.\nDo you want to save?', 
@@ -2603,10 +2629,10 @@ class MainForm(QtGui.QMainWindow):
             if ans == 0:
                 self.savemanplan()
                 event.accept()
-                QApplication.closeAllWindows()
+                plt.close('all')
             elif ans == 1:
                 event.accept()
-                QApplication.closeAllWindows()
+                plt.close('all')
             else:
                 event.ignore()
 
@@ -2754,6 +2780,7 @@ class MainForm(QtGui.QMainWindow):
                                     'Your probe is not on flight.', 0, 1, 0)
             return
         
+        self.init3Dfigure()
         if g.showorbitcontrol != None:
             g.showorbitcontrol.close()
         if g.flightreviewcontrol != None:
@@ -2857,6 +2884,7 @@ class MainForm(QtGui.QMainWindow):
             self.currentrow = g.nextman
             self.ui.manplans.selectRow(self.currentrow)
             
+            self.init3Dfigure()
             if g.showorbitcontrol == None:
                 self.showorbit()
                 self.ui.showOrbit.setEnabled(True)
@@ -2910,6 +2938,7 @@ class MainForm(QtGui.QMainWindow):
             QMessageBox.information(self, 'Info', 
                                     'Your probe has no valid orbit.', 0, 1, 0)
             return
+        self.init3Dfigure()
         if g.flightreviewcontrol != None:
             g.flightreviewcontrol.close()
         if g.reviewthroughoutcontrol != None:
@@ -3029,6 +3058,7 @@ class MainForm(QtGui.QMainWindow):
                                     'Latest maneuver was not FLYTO.', 0, 1, 0)
             return  
         
+        self.init3Dfigure()
         if g.showorbitcontrol != None:
             g.showorbitcontrol.close()
         if g.reviewthroughoutcontrol != None:

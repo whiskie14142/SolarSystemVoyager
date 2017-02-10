@@ -1,0 +1,254 @@
+{
+    "maneuvers": [
+        {
+            "elv": 0.0,
+            "phi": 0.0,
+            "type": "START",
+            "time": 2457652.5,
+            "dv": 0.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 45.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2457684.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 45.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 0.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2457715.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 45.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2457896.5,
+            "inter": 1.0
+        },
+        {
+            "elv": -45.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 0.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2457931.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 45.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458127.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 45.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 0.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458161.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 45.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458381.5,
+            "inter": 1.0
+        },
+        {
+            "elv": -45.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 0.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458419.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 45.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458660.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 45.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 0.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458697.5,
+            "inter": 1.0
+        },
+        {
+            "type": "SS_OFF"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458950.5,
+            "inter": 1.0
+        },
+        {
+            "elv": -45.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 0.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2458988.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 45.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459229.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 45.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 0.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459249.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 45.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459329.5,
+            "inter": 1.0
+        },
+        {
+            "type": "SS_OFF"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459659.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 45.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459775.5,
+            "inter": 1.0
+        },
+        {
+            "type": "SS_OFF"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460334.5,
+            "inter": 1.0
+        },
+        {
+            "elv": 0.0,
+            "tvmode": "L",
+            "type": "SS_ON",
+            "aria": 10000.0,
+            "theta": 60.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460383.0,
+            "inter": 1.0
+        },
+        {
+            "type": "SS_OFF"
+        },
+        {
+            "elv": 27.94,
+            "phi": 20.74,
+            "type": "CP",
+            "dv": 300.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460403.0,
+            "inter": 0.1
+        }
+    ],
+    "target": {
+        "SPKID2B": 0,
+        "name": "Mars",
+        "SPKID2A": 0,
+        "SPKID1B": 4,
+        "file": "",
+        "SPKID1A": 0
+    },
+    "probe": {
+        "name": "Mars05",
+        "base": "EarthL2",
+        "pmass": 500.0
+    }
+}

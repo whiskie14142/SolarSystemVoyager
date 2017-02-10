@@ -1,0 +1,67 @@
+{
+    "maneuvers": [
+        {
+            "elv": -12.21,
+            "phi": -127.87,
+            "type": "START",
+            "time": 2455337.4166666665,
+            "dv": 4450.961
+        },
+        {
+            "type": "FLYTO",
+            "time": 2455407.41666667,
+            "inter": 1.0
+        },
+        {
+            "elv": -21.75,
+            "phi": -127.42,
+            "type": "CP",
+            "dv": 57.47
+        },
+        {
+            "inter": 1.0,
+            "time": 2455477.0,
+            "type": "FLYTO"
+        },
+        {
+            "elv": -2.88,
+            "phi": 71.85,
+            "type": "CP",
+            "dv": 4.672
+        },
+        {
+            "inter": 1.0,
+            "time": 2455535.5,
+            "type": "FLYTO"
+        },
+        {
+            "inter": 0.01,
+            "time": 2455536.522,
+            "type": "FLYTO"
+        },
+        {
+            "elv": 13.37,
+            "phi": -143.14,
+            "type": "CP",
+            "dv": 800.0
+        },
+        {
+            "inter": 0.01,
+            "time": 2455546.515,
+            "type": "FLYTO"
+        }
+    ],
+    "target": {
+        "SPKID2B": 0,
+        "name": "Venus",
+        "SPKID2A": 0,
+        "SPKID1B": 2,
+        "file": "",
+        "SPKID1A": 0
+    },
+    "probe": {
+        "name": "Venus01",
+        "base": "EarthL2",
+        "pmass": 500.0
+    }
+}

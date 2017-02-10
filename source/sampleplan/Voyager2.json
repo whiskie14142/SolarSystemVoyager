@@ -1,146 +1,146 @@
 {
-    "target": {
-        "SPKID1A": 0,
-        "file": "",
-        "SPKID1B": 1,
-        "SPKID2A": 0,
-        "SPKID2B": 0,
-        "name": " "
-    },
-    "probe": {
-        "base": "EarthL2",
-        "name": "Voyager2",
-        "pmass": 500.0
-    },
     "maneuvers": [
         {
-            "dv": 9837.344,
+            "elv": 20.93,
             "phi": 20.1,
-            "time": 2443375.5,
             "type": "START",
-            "elv": 20.93
+            "time": 2443375.5,
+            "dv": 9837.344
         },
         {
-            "time": 2443425.5,
             "type": "FLYTO",
+            "time": 2443425.5,
             "inter": 1.0
         },
         {
             "elv": -2.9,
             "phi": -83.86,
-            "dv": 135.317,
-            "type": "CP"
+            "type": "CP",
+            "dv": 135.317
         },
         {
-            "time": 2443895.5,
             "type": "FLYTO",
+            "time": 2443895.5,
             "inter": 5.0
         },
         {
             "elv": 1.36,
             "phi": 143.12,
-            "dv": 7.72,
-            "type": "CP"
+            "type": "CP",
+            "dv": 7.72
         },
         {
-            "time": 2444054.0,
             "type": "FLYTO",
+            "time": 2444054.0,
             "inter": 1.0
         },
         {
-            "time": 2444074.0,
             "type": "FLYTO",
+            "time": 2444074.0,
             "inter": 0.05
         },
         {
-            "time": 2444464.5,
             "type": "FLYTO",
+            "time": 2444464.5,
             "inter": 5.0
         },
         {
             "elv": 0.64,
             "phi": 157.01,
-            "dv": 164.962,
-            "type": "CP"
+            "type": "CP",
+            "dv": 164.962
         },
         {
-            "time": 2444832.5,
             "type": "FLYTO",
+            "time": 2444832.5,
             "inter": 5.0
         },
         {
-            "time": 2444852.5,
             "type": "FLYTO",
+            "time": 2444852.5,
             "inter": 0.05
         },
         {
-            "time": 2445652.5,
             "type": "FLYTO",
+            "time": 2445652.5,
             "inter": 5.0
         },
         {
             "elv": 7.04,
             "phi": 0.02,
-            "dv": 165.669,
-            "type": "CP"
+            "type": "CP",
+            "dv": 165.669
         },
         {
-            "time": 2446080.5,
             "type": "FLYTO",
+            "time": 2446080.5,
             "inter": 5.0
         },
         {
             "elv": 0.73,
             "phi": -26.32,
-            "dv": 17.291,
-            "type": "CP"
+            "type": "CP",
+            "dv": 17.291
         },
         {
-            "time": 2446445.5,
             "type": "FLYTO",
+            "time": 2446445.5,
             "inter": 5.0
         },
         {
-            "time": 2446465.5,
             "type": "FLYTO",
+            "time": 2446465.5,
             "inter": 0.05
         },
         {
-            "time": 2447085.5,
             "type": "FLYTO",
+            "time": 2447085.5,
             "inter": 5.0
         },
         {
             "elv": 4.97,
             "phi": 156.61,
-            "dv": 125.516,
-            "type": "CP"
+            "type": "CP",
+            "dv": 125.516
         },
         {
-            "time": 2447515.5,
             "type": "FLYTO",
+            "time": 2447515.5,
             "inter": 5.0
         },
         {
             "elv": -8.39,
             "phi": 85.66,
-            "dv": 15.874,
-            "type": "CP"
+            "type": "CP",
+            "dv": 15.874
         },
         {
-            "time": 2447753.5,
             "type": "FLYTO",
+            "time": 2447753.5,
             "inter": 5.0
         },
         {
-            "time": 2447773.5,
             "type": "FLYTO",
+            "time": 2447773.5,
             "inter": 0.01
         },
         {
-            "time": 2449589.5,
             "type": "FLYTO",
+            "time": 2449589.5,
             "inter": 5.0
         }
-    ]
+    ],
+    "target": {
+        "SPKID2B": 0,
+        "name": "Neptune",
+        "SPKID2A": 0,
+        "SPKID1B": 8,
+        "file": "",
+        "SPKID1A": 0
+    },
+    "probe": {
+        "name": "Voyager2",
+        "base": "EarthL2",
+        "pmass": 500.0
+    }
 }

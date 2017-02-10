@@ -438,7 +438,7 @@
   <widget class="QPushButton" name="finishbutton">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>330</x>
      <y>590</y>
      <width>121</width>
      <height>23</height>
@@ -454,9 +454,9 @@
   <widget class="QPushButton" name="cancelbutton">
    <property name="geometry">
     <rect>
-     <x>500</x>
+     <x>480</x>
      <y>590</y>
-     <width>71</width>
+     <width>91</width>
      <height>23</height>
     </rect>
    </property>
@@ -1277,6 +1277,22 @@
     <string>elv (deg)</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="reopenbutton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>590</y>
+     <width>91</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Show Orbit</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
   <zorder>box_initialtime</zorder>
   <zorder>starttime</zorder>
   <zorder>label_3</zorder>
@@ -1312,6 +1328,7 @@
   <zorder>idv_elv</zorder>
   <zorder>label_23</zorder>
   <zorder>label_24</zorder>
+  <zorder>reopenbutton</zorder>
  </widget>
  <tabstops>
   <tabstop>tobarycenter</tabstop>
