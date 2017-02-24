@@ -69,6 +69,7 @@ integ_abs_tol = [1.0, 1.0, 1.0, 0.001, 0.001, 0.001]    # absolute tolerance in 
 integ_rel_tol = [1e-10,1e-10,1e-10,1e-10,1e-10,1e-10]   # relative tolerance
 
 bspdir = './data/'
+logdir = './log/'
 
 from jplephem.spk import SPK
 try:

@@ -38,11 +38,14 @@ class _Gdata:
     """Container of global data
     """
     __slots__ = [
+        'version',                  # version no. of this program
+        'options',                  # runtime options
         'ax',                       # axes of matplotlib
         'currentdir',               # current directory of application
         'clipboard',                # system clipboard object
         'editedman',                # edited maneuver : output of EditManDialog
         'fig',                      # figure of matplotlib
+        'logfile',                  # file object of the SSVG LOG
         'mainform',                 # mainform of this application
         'maneuvers',                # list of maneuvers
         'manfilename',              # file name of maneuver plan
@@ -145,6 +148,13 @@ def replot_time(jd, ttype=''):
     s = common.jd2isot(jd) + ' (' + ttype + ')'
     g.artist_of_time = g.ax.text2D(0.02, 0.96, s, transform=g.ax.transAxes)
 
+def nowtimestr():
+    # returns "YYYY-MM-DDTHH:MM:SS"
+    return datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+    
+def nowtimestrf():
+    # returns "YYYYMMDD_HHMMSS" (this string can be used as a file name)
+    return datetime.now().strftime('%Y%m%d_%H%M%S')
 
 
 from aboutSSVG import *
@@ -154,7 +164,6 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        version = '0.6.1 beta'
         abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
@@ -195,7 +204,7 @@ This program uses following programs and modules:
     Copyright (c) 2016 Shushi Uetsuki (whiskie14142)
   PyInstaller : http://www.pyinstaller.org/"""
 
-        self.ui.versionlabel.setText(version)        
+        self.ui.versionlabel.setText(g.version)        
         self.ui.licensetext.setPlainText(abouttext)
         self.connect(self.ui.okButton, SIGNAL('clicked()'), self.accept)
                 
@@ -441,7 +450,7 @@ class FTAsettingDialog(QtGui.QDialog):
             self.ui.timetoarrival.setEnabled(True)
     
     def ok_clicked(self):
-        param = [0.0, np.zeros(3)]      # JD(days), X, Y, Z(meters)
+        param = [0.0, np.zeros(3), np.zeros(4)]      # JD(days), X, Y, Z(meters), dt, R, phi, elv
         try:        
             delta_jd = float(self.ui.timetoarrival.text())
         except ValueError:
@@ -471,6 +480,10 @@ class FTAsettingDialog(QtGui.QDialog):
         
         delta_pos = common.ldv2ecldv(vect, tpos, tvel, sunpos, sunvel)
         param[1] = tpos + delta_pos
+        param[2][0] = delta_jd
+        param[2][1] = r
+        param[2][2] = phi
+        param[2][3] = elv
         
         g.fta_parameters = param
         self.accept()
@@ -653,6 +666,7 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.result_dv = round(dv, 3)
         self.result_phi = round(phi, 2)
         self.result_elv = round(elv, 2)
+        self.result_tt = self.ttcurrent
         
         trv = ttvel - tvel
         trvabs = np.sqrt(np.dot(trv, trv))
@@ -989,6 +1003,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
         
         self.orgorb = TwoBodyPred('orgorb')
         self.orgorb.fix_state(g.myprobe.jd, g.myprobe.pos, g.myprobe.vel)
+        self.fixed_to_ct = True
         
     def fixed_to_ct_changed(self):
         if self.ui.fixed_to_ct.isChecked():
@@ -1003,8 +1018,10 @@ class CpOptimizeDialog(StartOptimizeDialog):
             self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
                                                  self.itslchanged)
             self.draworbit()
+            self.fixed_to_ct = True
         else:
             self.ui.box_initialtime.setEnabled(True)
+            self.fixed_to_ct = False
 
     def orgorbposvel(self, jd):
         return self.orgorb.posvelatt(jd)
@@ -1287,18 +1304,37 @@ class EditManDialog(QtGui.QDialog):
         g.editedman = self.editman
         if g.showorbitcontrol != None:
             g.showorbitcontrol.close()
+        self.writeloglines()
         self.done(g.finish_exec)
         
     def finishbutton(self):
         g.editedman = self.editman
         if g.showorbitcontrol != None:
             g.showorbitcontrol.close()
+        self.writeloglines()
         self.accept()
         
     def cancelbutton(self):
         if g.showorbitcontrol != None:
             g.showorbitcontrol.close()
         self.reject()
+
+    def writeloglines(self):
+        if not g.options['log']:
+            return
+        logstring = []
+        logstring.append('finish maneuver editing: ' + nowtimestr() + '\n')
+        logstring.append('    type: ' + self.editman['type'] + '\n')
+        ix = self.typedict[self.editman['type']]
+        if self.paramflag[ix][0] == 1:
+            isot = common.jd2isot(self.editman['time'])
+            logstring.append('    time: ' + isot + '\n')
+        for i in range(1, 9):
+            if self.paramflag[ix][i] == 1:
+                pname = self.paramname[i]
+                datastr =self.fmttbl[i].format(self.editman[pname])
+                logstring.append('    ' + pname + ': ' + datastr + '\n')
+        g.logfile.writelines(logstring)
         
     def closeEvent(self, event):
         ans = QMessageBox.question(self, 'Exit Editor', 'Discard changes?', 
@@ -1396,6 +1432,23 @@ class EditManDialog(QtGui.QDialog):
             self.editman['elv'] = elv
             self.dispman()
             self.showorbit()
+            
+            if g.options['log']:
+                logstring = []
+                logstring.append('apply FTA result: ' + nowtimestr() + '\n')
+                logstring.append('    target: ' + g.mytarget.name + '\n')
+                logstring.append('    time to arrival: ' + 
+                                str(g.fta_parameters[2][0]) + '\n')
+                logstring.append('    range from target center: ' + 
+                                str(g.fta_parameters[2][1]) + '\n')
+                logstring.append('    angle phi from target center: ' + 
+                                str(g.fta_parameters[2][2]) + '\n')
+                logstring.append('    angle elv from target center: ' + 
+                                str(g.fta_parameters[2][3]) + '\n')
+                logstring.append('    result dv: ' + str(dv) + '\n')
+                logstring.append('    result phi: ' + str(phi) + '\n')
+                logstring.append('    result elv: ' + str(elv) + '\n')
+                g.logfile.writelines(logstring)
 
     def optimize(self):
         g.mainform.init3Dfigure()
@@ -1420,6 +1473,22 @@ class EditManDialog(QtGui.QDialog):
         self.editman['elv'] = dialog.result_elv
         self.dispman()
         self.showorbit()
+        
+        if g.options['log']:
+            logstring = []
+            logstring.append('apply start optimize: ' + nowtimestr() + '\n')
+            logstring.append('    start time: ' +
+                            common.jd2isot(dialog.result_it) + '\n')
+            logstring.append('    target: ' + g.mytarget.name + '\n')
+            logstring.append('    dv: ' + str(dialog.result_dv) + '\n')
+            logstring.append('    phi: ' + str(dialog.result_phi) + '\n')
+            logstring.append('    elv: ' + str(dialog.result_elv) + '\n')
+            logstring.append('    arrival time: ' +
+                            common.jd2isot(dialog.result_tt) + '\n')
+            logstring.append('    flight duration: ' +
+                            str(dialog.result_tt - dialog.result_it) + '\n')
+            g.logfile.writelines(logstring)
+        
     
     def cp_optimize(self):
         if g.showorbitcontrol != None:
@@ -1443,6 +1512,23 @@ class EditManDialog(QtGui.QDialog):
         self.editman['elv'] = dialog.result_elv
         self.dispman()
         self.showorbit()
+
+        if g.options['log']:
+            logstring = []
+            logstring.append('apply CP optimize: ' + nowtimestr() + '\n')
+            logstring.append('    fix maneuver time to current time: ' +
+                            str(dialog.fixed_to_ct) + '\n')
+            logstring.append('    maneuver time: ' +
+                            common.jd2isot(dialog.result_it) + '\n')
+            logstring.append('    target: ' + g.mytarget.name + '\n')
+            logstring.append('    dv: ' + str(dialog.result_dv) + '\n')
+            logstring.append('    phi: ' + str(dialog.result_phi) + '\n')
+            logstring.append('    elv: ' + str(dialog.result_elv) + '\n')
+            logstring.append('    arrival time: ' +
+                            common.jd2isot(dialog.result_tt) + '\n')
+            logstring.append('    flight duration: ' +
+                            str(dialog.result_tt - dialog.result_it) + '\n')
+            g.logfile.writelines(logstring)
 
     def gettime(self, jd):
         # this method is called from Show Orbit
@@ -2555,6 +2641,9 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
+        g.version = '0.6.2 beta'
+        g.options = {}
+        g.options['log'] = True
         g.clipboard = QApplication.clipboard()
         g.currentdir = ''
         g.manfilename = None
@@ -2590,6 +2679,13 @@ class MainForm(QtGui.QMainWindow):
         
         self.checkpoint = False
         g.finish_exec = 2
+        
+        if g.options['log']:
+            fpath = common.logdir + 'SSVGLOG_' + nowtimestrf() + '.log'
+            g.logfile = open(fpath, 'w', encoding='utf-8')
+            logstring = 'start ssvg ' + g.version + ': ' + nowtimestr() + '\n'
+            g.logfile.write(logstring)
+            
 
     def init3Dfigure(self):
         if g.fig != None:
@@ -2620,21 +2716,25 @@ class MainForm(QtGui.QMainWindow):
 
     def closeEvent(self, event):
         if g.manplan_saved:
-            event.accept()
-            plt.close('all')
+           pass
         else:
             ans = QMessageBox.question(self, 'Quit SSV', 
                 'Flight Plan has not been saved.\nDo you want to save?', 
                 ' Save and Quit ', ' Discard and Quit ', ' Cancel ')
             if ans == 0:
                 self.savemanplan()
-                event.accept()
-                plt.close('all')
             elif ans == 1:
-                event.accept()
-                plt.close('all')
+                pass
             else:
                 event.ignore()
+                return
+
+        if g.options['log']:
+            logstring = 'end ssvg: ' + nowtimestr() + '\n'
+            g.logfile.write(logstring)
+            g.logfile.close()
+        event.accept()
+        plt.close('all')
 
     def openmanplan(self):
         if not g.manplan_saved:
@@ -2709,6 +2809,12 @@ class MainForm(QtGui.QMainWindow):
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
         self.erasecheckpoint()
+        
+        if g.options['log']:
+            logstring = 'open flight plan: ' + nowtimestr() + '\n'
+            g.logfile.write(logstring)
+            logstring = '    file name: ' + g.manfilename + '\n'
+            g.logfile.write(logstring)
 
     def newmanplan(self):
         if not g.manplan_saved:
@@ -2770,6 +2876,25 @@ class MainForm(QtGui.QMainWindow):
         self.ui.menuEdit.setEnabled(True)
         self.erasecheckpoint()
 
+        if g.options['log']:
+            logstring = []
+            logstring.append('new flight plan: ' + nowtimestr() + '\n')
+            logstring.append('    probe name: ' +
+                            g.manplan['probe']['name'] + '\n')
+            logstring.append('    probe mass: ' +
+                            str(g.manplan['probe']['pmass']) + '\n')
+            logstring.append('    space base: ' +
+                            g.manplan['probe']['base'] + '\n')
+            logstring.append('    target name: ' +
+                            g.manplan['target']['name'] + '\n')
+            if g.manplan['target']['SPKID2B'] > 10000:
+                logstring.append('    target SPK file: ' +
+                                g.manplan['target']['file'] + '\n')
+                logstring.append('    target SPKID: ' +
+                                str(g.manplan['target']['SPKID2B']) + '\n')
+            g.logfile.writelines(logstring)
+
+
     def reviewthroughout(self):
         if g.myprobe == None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
@@ -2801,6 +2926,12 @@ class MainForm(QtGui.QMainWindow):
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
         
+        if g.options['log']:
+            logstring = 'save flight plan: ' + nowtimestr() + '\n'
+            g.logfile.write(logstring)
+            logstring = '    file name: ' + g.manfilename + '\n'
+            g.logfile.write(logstring)
+        
     def saveasmanplan(self):
         if g.manfilename == None:
             dr = g.currentdir
@@ -2818,6 +2949,12 @@ class MainForm(QtGui.QMainWindow):
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
         self.dispmanfilename()
+        
+        if g.options['log']:
+            logstring = 'save flight plan: ' + nowtimestr() + '\n'
+            g.logfile.write(logstring)
+            logstring = '    file name: ' + g.manfilename + '\n'
+            g.logfile.write(logstring)
 
     def dispmanplan(self):
         self.ui.manplans.clearContents()  # clear previous table
@@ -2966,6 +3103,12 @@ class MainForm(QtGui.QMainWindow):
         self.dispmanplan()
         
     def editman(self):
+        if g.options['log']:
+            logstring = []
+            logstring.append('begin maneuver editing: ' + nowtimestr() + '\n')
+            logstring.append('    line: ' + str(self.currentrow + 1) + '\n')
+            g.logfile.writelines(logstring)
+        
         if g.showorbitcontrol != None:
             g.showorbitcontrol.close()
         if g.flightreviewcontrol != None:
@@ -3020,6 +3163,12 @@ class MainForm(QtGui.QMainWindow):
             self.execinitialize()
         g.manplan_saved = False
         self.dispmanplan()
+        
+        if g.options['log']:
+            logstring = []
+            logstring.append('insert BLANK maneuver: ' + nowtimestr() + '\n')
+            logstring.append('    line: ' + str(self.currentrow + 1) + '\n')
+            g.logfile.writelines(logstring)
             
     def deleteman(self):
         if self.currentrow == len(g.maneuvers):
@@ -3029,11 +3178,20 @@ class MainForm(QtGui.QMainWindow):
                                    button2=2)
         if ans == 2: return
         if self.currentrow < len(g.maneuvers):
+            deltype = g.maneuvers[self.currentrow]['type']
             del(g.maneuvers[self.currentrow])
             if self.currentrow < g.nextman:
                 self.execinitialize()
             g.manplan_saved = False
             self.dispmanplan()
+            
+            if g.options['log']:
+                logstring = []
+                logstring.append('delete maneuver: ' + nowtimestr() + '\n')
+                logstring.append('    line: ' +
+                                str(self.currentrow + 1) + '\n')
+                logstring.append('    maneuver type: ' + deltype + '\n')
+                g.logfile.writelines(logstring)
 
     def dispmanfilename(self):
         if g.manfilename == None:
@@ -3095,7 +3253,11 @@ class MainForm(QtGui.QMainWindow):
         else:
             self.ui.label_MA.setText('N/A')
             self.ui.label_OP.setText('N/A')
-            
+        self.ui.label_ADV.setText('{0:.0f}, {1:.0f}, {2:.0f}'.format(
+                                    g.myprobe.accumdv['CP'],
+                                    g.myprobe.accumdv['EP'],
+                                    g.myprobe.accumdv['SS']))
+        
         sunpos, sunvel = common.SPKposvel(10, g.myprobe.jd)
         relpos = g.myprobe.pos - sunpos
         rangekm = np.sqrt(np.dot(relpos, relpos)) / 1000.0
@@ -3122,6 +3284,7 @@ class MainForm(QtGui.QMainWindow):
         self.ui.label_PPTJD.setText('')
         self.ui.label_MA.setText('')
         self.ui.label_OP.setText('')
+        self.ui.label_ADV.setText('')
 
     def enablewidgets(self):
         self.ui.execNext.setEnabled(True)
@@ -3286,6 +3449,17 @@ class MainForm(QtGui.QMainWindow):
         self.ui.actionSave_as.setEnabled(True)
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
+
+        if g.options['log']:
+            logstring = []
+            logstring.append('edit probe: ' + nowtimestr() + '\n')
+            logstring.append('    probe name: ' +
+                            g.manplan['probe']['name'] + '\n')
+            logstring.append('    probe mass: ' +
+                            str(g.manplan['probe']['pmass']) + '\n')
+            logstring.append('    space base: ' +
+                            g.manplan['probe']['base'] + '\n')
+            g.logfile.writelines(logstring)
     
     def edittarget(self):
         if not g.manplan_saved:
@@ -3322,9 +3496,17 @@ class MainForm(QtGui.QMainWindow):
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
     
-    
-
-            
+        if g.options['log']:
+            logstring = []
+            logstring.append('edit target: ' + nowtimestr() + '\n')
+            logstring.append('    target name: ' +
+                            g.manplan['target']['name'] + '\n')
+            if g.manplan['target']['SPKID2B'] > 10000:
+                logstring.append('    target SPK file: ' +
+                    g.manplan['target']['file'] + '\n')
+                logstring.append('    target SPKID: ' +
+                    str(g.manplan['target']['SPKID2B']) + '\n')
+            g.logfile.writelines(logstring)
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)

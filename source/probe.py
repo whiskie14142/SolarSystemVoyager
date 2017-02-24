@@ -46,6 +46,7 @@ class Probe:
         self.jd = 0.0
         self.orbit.statusinitialize()
         self.checkpoint = False
+        self.accumdv = {'CP':0.0, 'EP':0.0, 'SS':0.0}
 
 #        
     def exec_man(self, man, pbar=None, plabel=None, ptext=''):
@@ -58,6 +59,7 @@ class Probe:
 
         cman = man.copy()
         cman['epon'] = False
+        cman['epdvpd'] = 0.0
         cman['epmode'] = 'L'
         cman['sson'] = False
         cman['ssmode'] = 'L'
@@ -95,6 +97,7 @@ class Probe:
             status[4:] = self.vel.copy()
             self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
+            self.accumdv['CP'] += dv
             return True
         elif man['type'] == 'EP_ON':
             dv = man['dvpd'] / common.secofday
@@ -141,6 +144,7 @@ class Probe:
             if jdto < self.jd:
                 print('Invalid FLYTO time : ', common.jd2datetime(jdto))
                 return False
+            duration = jdto - self.jd
             if pbar != None:
                 pbar.setVisible(True)
                 pbar.setValue(0)
@@ -164,18 +168,17 @@ class Probe:
             self.vel = np.array([pxd[-1], pyd[-1], pzd[-1]])
             self.orbit.setCurrentCart(self.jd*common.secofday, self.pos, 
                                       self.vel)
+            if cman['epon']:
+                self.accumdv['EP'] += duration * cman['epdvpd']
+            if cman['sson']:
+                ssdv = man['inter'] * ssdvpd[0]
+                for i in range(1, len(pt)):
+                    ssdv += (pt[i] -pt[i-1]) * ssdvpd[i]
+                self.accumdv['SS'] += ssdv
             return True
         else:
             print('invalid manuever type : ',man['type'])
             return False
-            
-    def reset(self):
-        self.onflight = False
-        self.trj_record = []
-        self.pos = np.zeros(3)
-        self.vel = np.zeros(3)
-        self.jd = 0.0
-        return
         
     def pseudostart(self, jd, dv, phi, elv):
         elv = math.radians(elv)
@@ -198,6 +201,7 @@ class Probe:
         self.checkpointdata['jd'] = self.jd
         self.checkpointdata['epstatus'] = self.orbit.get_epstatus()
         self.checkpointdata['ssstatus'] = self.orbit.get_ssstatus()
+        self.checkpointdata['accumdv'] = self.accumdv.copy()
         
     def resumeCheckpoint(self):
         if self.checkpoint:
@@ -209,11 +213,13 @@ class Probe:
                                       self.vel)
             self.orbit.resume_epstatus(self.checkpointdata['epstatus'])
             self.orbit.resume_ssstatus(self.checkpointdata['ssstatus'])
+            self.accumdv = self.checkpointdata['accumdv'].copy()
             
     def get_epssstatus(self, cman):
         epstatus = self.orbit.get_epstatus()
         ssstatus = self.orbit.get_ssstatus()
         cman['epon'] = epstatus[0]
+        cman['epdvpd'] = epstatus[1] * common.secofday
         cman['epmode'] = epstatus[4]
         cman['sson'] = ssstatus[0]
         cman['ssmode'] = ssstatus[4]
