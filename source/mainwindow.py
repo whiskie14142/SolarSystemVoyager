@@ -225,7 +225,7 @@ class Ui_MainWindow(object):
         self.selectedman.verticalHeader().setDefaultSectionSize(20)
         self.selectedman.verticalHeader().setMinimumSectionSize(20)
         self.label_progress = QtGui.QLabel(self.centralwidget)
-        self.label_progress.setGeometry(QtCore.QRect(380, 612, 241, 16))
+        self.label_progress.setGeometry(QtCore.QRect(380, 630, 241, 16))
         self.label_progress.setText(_fromUtf8(""))
         self.label_progress.setObjectName(_fromUtf8("label_progress"))
         self.progressBar = QtGui.QProgressBar(self.centralwidget)
