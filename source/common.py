@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jun  3 11:19:51 2016
-
-@author: shush_000
+common module for SSVG
+(c) 2016-2017 Shushi Uetsuki (whiskie14142)
 """
 
 import numpy as np
@@ -29,6 +28,7 @@ planets_mu = (  solarmu * 1.6601e-7,       # Mercury
                 solarmu * 3.6943e-8,       # Moon
                 3.986004356e14  )          # Earth
 
+# SPKIDs for planets (objects in de430.bsp)
 planets_id = (  (1, 'Mercury'),
                 (2, 'Venus'),
                 (3, 'EMB'),
@@ -42,6 +42,7 @@ planets_id = (  (1, 'Mercury'),
                 (301, 'Moon'),
                 (399, 'Earth')  )
 
+# space bases
 bases = (
     ('EarthL1', {'SPKID':3, 'Factor':0.98992}), # experimental value
     ('EarthL2', {'SPKID':3, 'Factor':1.01008}), # experimental value
@@ -68,9 +69,11 @@ planets_grav = [True, True, False, True, True,  # Mer., Ven., EMB, Mars, Jup.,
 integ_abs_tol = [1.0, 1.0, 1.0, 0.001, 0.001, 0.001]    # absolute tolerance in meter
 integ_rel_tol = [1e-10,1e-10,1e-10,1e-10,1e-10,1e-10]   # relative tolerance
 
+# directories
 bspdir = './data/'
 logdir = './log/'
 
+# SPK kernel
 from jplephem.spk import SPK
 try:
     SPKkernel = SPK.open( bspdir + 'de430.bsp')
@@ -85,7 +88,6 @@ except FileNotFoundError:
     print("Enterキーで終了します")
     input("")
     sys.exit()
-
 
 _TX = np.array([[1., 0., 0.,],
                 [0., np.cos(_eclinc), np.sin(_eclinc)],
@@ -213,54 +215,3 @@ def polar2rect(r, phi, elv):
     v[2] = r * np.sin(relv)
     return v
 
-
-# main routines for local test
-
-def mainsv1():
-    print(solarmu, _eclinc, secofday)
-    
-    print(planets_mu)
-    print(planets_id)
-    print(_TX)
-    
-def mainsv2():
-    ppos = np.array([0., -10., 1.,])
-    pvel = np.array([1., 0.5, 0.])
-    sunpos = np.array([0.5, 0.6, 0.])
-    sunvel = np.array([0.3, 0., 0.1])
-    ldv = np.array([1., .05, 3.,])
-    
-    eclv = ldv2ecldv(ldv, ppos, pvel, sunpos, sunvel)
-    print(eclv)
-    lv = eclv2lv(eclv, ppos, pvel, sunpos, sunvel)
-    print(lv)
-
-def mainsv3():
-    ppos = np.array([10., -10., 0.,])
-    pvel = np.array([1., 0.5, 0.])
-    sunpos = np.array([0., 0., 0.])
-    sunvel = np.array([0., 0., 0.])
-    sodv = np.array([1., 2., 3.,])
-    print(sodv2ecldv(sodv, ppos, pvel, sunpos, sunvel))
-    
-def mainsv4():
-    vect = np.array([1.0, -1.0, -1.41421356])
-    print(rect2polar(vect))
-    
-def main():
-    while True:
-        ans = input('jd ? ')
-        if ans.upper == 'Q':
-            break
-        jd = float(ans)
-        isot = jd2isot(jd)
-        print(isot)
-        jd2 = isot2jd(isot)
-        print(jd2)
-        dt = jd2datetime(jd)
-        print(dt)
-        jd3 = datetime2jd(*dt)
-        print(jd3)
-    
-if __name__ == '__main__' :
-    main()    

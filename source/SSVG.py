@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
+"""SSVG (Solar System Voyager) (c) 2016-2017 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -160,11 +160,13 @@ def nowtimestrf():
 from aboutSSVG import *
 
 class AboutSSVG(QtGui.QDialog):
+    """class for 'About SSVG' dialog
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
+        abouttext = """SSVG (Solar System Voyager) (c) 2016-2017 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -213,6 +215,8 @@ This program uses following programs and modules:
 from newflightplandialog import *
 
 class NewFlightPlanDialog(QtGui.QDialog):
+    """class for 'New Flight Plan' dialog
+    """
     
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
@@ -323,6 +327,9 @@ class NewFlightPlanDialog(QtGui.QDialog):
 
 
 class EditProbeDialog(NewFlightPlanDialog):
+    """class for the dialog to edit probe information of a flight plan
+    """
+
     def __init__(self, parent=None, manplan=None):
         super().__init__(parent)
         self.manplan = manplan
@@ -372,6 +379,8 @@ class EditProbeDialog(NewFlightPlanDialog):
     
         
 class EditTargetDialog(EditProbeDialog):
+    """class for the dialog to edit target information of the flight plan
+    """
     def initdialog(self):
         self.setWindowTitle('Select New Target')
         self.ui.probe_box.setEnabled(False)
@@ -427,6 +436,8 @@ class EditTargetDialog(EditProbeDialog):
 from ftasettingdialog import *
 
 class FTAsettingDialog(QtGui.QDialog):
+    """class for the dialog to specity parameters for FTA
+    """
     
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
@@ -491,6 +502,8 @@ class FTAsettingDialog(QtGui.QDialog):
 from orbitoptimizedialog import *
 
 class StartOptimizeDialog(QtGui.QDialog):
+    """class for the Start Optimize Assistant
+    """
     def __init__(self, orgjd, parent=None):
         QWidget.__init__(self, parent)
         g.probe_Kepler = None
@@ -992,6 +1005,8 @@ class StartOptimizeDialog(QtGui.QDialog):
 
 
 class CpOptimizeDialog(StartOptimizeDialog):
+    """class for the CP Optimize Assistant
+    """
 
     def initforCPoptimize(self):
         self.setWindowTitle('CP Optimize Assistant')
@@ -1030,6 +1045,8 @@ class CpOptimizeDialog(StartOptimizeDialog):
 from editmandialog import *
 
 class EditManDialog(QtGui.QDialog):
+    """class for 'Edit Maneuver' dialog
+    """
     
     def __init__(self, parent=None, editman=None, currentrow=0):
         QWidget.__init__(self, parent)
@@ -1553,6 +1570,8 @@ class EditManDialog(QtGui.QDialog):
 from showorbitcontrol import *
 
 class ShowOrbitDialog(QtGui.QDialog):
+    """class for 'Show Orbit' window
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.mother = parent
@@ -1848,6 +1867,8 @@ class ShowOrbitDialog(QtGui.QDialog):
 
 
 class ShowStartOrbitDialog(ShowOrbitDialog):
+    """class for 'Show Start Orbit' window
+    """
     def __init__(self, parent=None, editman=None):
         self.editman = editman
         super().__init__(parent)
@@ -1892,6 +1913,8 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
 from flightreviewcontrol import *
 
 class FlightReviewControl(QtGui.QDialog):
+    """class for 'Flight Review' window
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         left = g.mainform.geometry().left()
@@ -2146,6 +2169,8 @@ class FlightReviewControl(QtGui.QDialog):
 from reviewthroughoutcontrol import *
 
 class ReviewThroughoutControl(QtGui.QDialog):
+    """class for 'Review Throughout' window
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         left = g.mainform.geometry().left()
@@ -2552,6 +2577,8 @@ class ReviewThroughoutControl(QtGui.QDialog):
 from mainwindow import *
 
 class MainForm(QtGui.QMainWindow):
+    """class for the main window (SSVG window)
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setGeometry(10, 40, 640, 700)
@@ -2641,7 +2668,7 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-        g.version = '0.6.2 beta'
+        g.version = '1.0.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
