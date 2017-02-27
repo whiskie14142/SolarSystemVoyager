@@ -2825,6 +2825,7 @@ class MainForm(QtGui.QMainWindow):
 
         self.ui.probename.setText(g.manplan['probe']['name'])
         self.ui.targetname.setText(g.manplan['target']['name'])
+        self.ui.spacebase.setText(g.manplan['probe']['base'])
         
         g.showorbitsettings = None
         self.dispmanplan()
@@ -2891,6 +2892,7 @@ class MainForm(QtGui.QMainWindow):
         
         self.ui.probename.setText(g.manplan['probe']['name'])
         self.ui.targetname.setText(g.manplan['target']['name'])
+        self.ui.spacebase.setText(g.manplan['probe']['base'])
         
         g.showorbitsettings = None
         self.dispmanplan()
@@ -3468,6 +3470,7 @@ class MainForm(QtGui.QMainWindow):
         
         self.enablewidgets()
         self.ui.probename.setText(g.manplan['probe']['name'])
+        self.ui.spacebase.setText(g.manplan['probe']['base'])
         self.dispmanplan()
         self.ui.showOrbit.setEnabled(False)
         self.ui.flightreview.setEnabled(False)
