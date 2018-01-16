@@ -3,7 +3,7 @@ Solar System Voyager (SSVG)
 SSVG is simulation software which enables users to fly their own spaceprobes in the solar system.  Each spaceprobe has three propulsion systems: a chemical propulsion engine, an electric propulsion engine, and solar sail.  Fly your own spaceprobe in the precisely simulated Solar System.
 
 [Modification Log]
-1.0.0: formal release
+1.0.0 beta: adapted to barycentered small body SPK files of HORIZONS system
 0.6.2 beta: added accumulated delta-V (for CP, EP, and SS) into the current status display on the SSVG window, and added logging function (Feb. 24, 2017)
 0.6.1 beta: modified user interface to improve user experience (Feb. 10, 2017)
 0.6.0 beta: added Thrust Vector Mode for EP (Electric Propulsion) and SS (Solar Sail), and improved user experience (Feb. 6, 2017)

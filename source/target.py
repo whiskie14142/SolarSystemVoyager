@@ -23,11 +23,10 @@ class Target:
         return pos, vel
 
     def nasa_sb_ephem(self, jd):
-        sunpos, sunvel = self.kernel[self.idx1a, self.idx1b].compute_and_differentiate(jd)
-        sunvel = sunvel / common.secofday
-        scpos, scvel = self.sbkernel.compute_type01(self.idx2a, self.idx2b, jd)
-        pos = sunpos + scpos
-        vel = sunvel + scvel
+#       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
+#       for small bodies
+#
+        pos, vel = self.sbkernel.compute_type01(self.idx1a, self.idx1b, jd)
         pos = common.eqn2ecl(pos) * 1000.0
         vel = common.eqn2ecl(vel) * 1000.0
         return pos, vel

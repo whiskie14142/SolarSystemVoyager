@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""SSVG (Solar System Voyager) (c) 2016-2017 Shushi Uetsuki (whiskie14142)
+"""SSVG (Solar System Voyager) (c) 2016-2018 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -302,9 +302,13 @@ class NewFlightPlanDialog(QtGui.QDialog):
                 QMessageBox.information(self, 'Info', 
                                     'Specify SPK file of the target.', 0, 1, 0)
                 return
+#
+#       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
+#       for small bodies
+#
             target['SPKID1A'] = 0
-            target['SPKID1B'] = 10
-            target['SPKID2A'] = 10
+            target['SPKID2A'] = 0
+            target['SPKID2B'] = 0
             try:
                 spkid = int(self.ui.spkid_edit.text())
             except ValueError:
@@ -315,7 +319,7 @@ class NewFlightPlanDialog(QtGui.QDialog):
                 QMessageBox.information(self, 'Info', 
                                     'Invalid SPKID.', 0, 1, 0)
                 return
-            target['SPKID2B'] = spkid
+            target['SPKID1B'] = spkid
                 
             
         newplan['probe'] = probe
@@ -2668,7 +2672,7 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-        g.version = '1.0.0'
+        g.version = '1.0.0 beta'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
