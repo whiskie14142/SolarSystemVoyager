@@ -416,9 +416,13 @@ class EditTargetDialog(EditProbeDialog):
                 QMessageBox.information(self, 'Info', 
                                     'Specify SPK file of the target.', 0, 1, 0)
                 return
+#
+#       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
+#       for small bodies
+#
             target['SPKID1A'] = 0
-            target['SPKID1B'] = 10
-            target['SPKID2A'] = 10
+            target['SPKID2A'] = 0
+            target['SPKID2B'] = 0
             try:
                 spkid = int(self.ui.spkid_edit.text())
             except ValueError:
@@ -429,7 +433,7 @@ class EditTargetDialog(EditProbeDialog):
                 QMessageBox.information(self, 'Info', 
                                     'Invalid SPKID.', 0, 1, 0)
                 return
-            target['SPKID2B'] = spkid
+            target['SPKID1B'] = spkid
             
         self.manplan['target'] = target
         self.accept()
