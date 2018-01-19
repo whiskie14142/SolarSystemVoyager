@@ -344,14 +344,14 @@ class EditProbeDialog(NewFlightPlanDialog):
         index = self.ui.spacebase.findText(probe['base'])
         self.ui.spacebase.setCurrentIndex(index)
         
-        if target['SPKID2B'] > 10000:
+        if target['file'] != '':
             self.ui.planetbutton.setChecked(False)
             self.ui.smallbodybutton.setChecked(True)
             self.ui.planets.setEnabled(False)
             self.ui.targetgroupbox.setEnabled(True)
             self.ui.targetname.setText(target['name'])
             self.ui.spkfilepath.setText(target['file'])
-            self.ui.spkid_edit.setText(str(target['SPKID2B']))
+            self.ui.spkid_edit.setText(str(target['SPKID1B']))
         else:
             index = self.ui.planets.findText(target['name'])
             self.ui.planets.setCurrentIndex(index)
