@@ -3215,7 +3215,10 @@ class MainForm(QtGui.QMainWindow):
                                    button2=2)
         if ans == 2: return
         if self.currentrow < len(g.maneuvers):
-            deltype = g.maneuvers[self.currentrow]['type']
+            if g.maneuvers[self.currentrow] == None:
+                deltype = 'BLANK'
+            else:
+                deltype = g.maneuvers[self.currentrow]['type']
             del(g.maneuvers[self.currentrow])
             if self.currentrow < g.nextman:
                 self.execinitialize()
