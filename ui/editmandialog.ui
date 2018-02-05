@@ -231,7 +231,7 @@
     <string>Show orbit</string>
    </property>
    <property name="text">
-    <string>Show Orbit</string>
+    <string>SHOW Orbit</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -391,7 +391,7 @@
     <string>Optimize Assistant</string>
    </property>
    <property name="text">
-    <string>Optimize</string>
+    <string>OPTIMIZE</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
