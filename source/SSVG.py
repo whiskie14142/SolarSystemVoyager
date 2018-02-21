@@ -1389,6 +1389,7 @@ class EditManDialog(QtGui.QDialog):
         if g.showorbitcontrol == None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
+        g.showorbitcontrol.ui.groupBox.setEnabled(True)
         g.showorbitcontrol.set_pred_dv(dv, phi, elv)
         g.showorbitcontrol.redraw()
         g.showorbitcontrol.set_affect_parent(False)
@@ -1399,6 +1400,7 @@ class EditManDialog(QtGui.QDialog):
             g.showorbitcontrol.show()
         else:
             g.showorbitcontrol.redraw()
+        g.showorbitcontrol.ui.groupBox.setEnabled(True)
         g.showorbitcontrol.set_affect_parent(False)
 
     def showorbitFLYTO(self):
@@ -1407,6 +1409,7 @@ class EditManDialog(QtGui.QDialog):
             g.showorbitcontrol.show()
         g.showorbitcontrol.set_pred_DT(self.editman['time'])
         g.showorbitcontrol.redraw()
+        g.showorbitcontrol.ui.groupBox.setEnabled(False)
         g.showorbitcontrol.set_affect_parent(True)
             
     def showorbitOTHER(self):
@@ -1415,6 +1418,7 @@ class EditManDialog(QtGui.QDialog):
             g.showorbitcontrol.show()
         g.showorbitcontrol.set_pred_dv(0.0, 0.0, 0.0)
         g.showorbitcontrol.redraw()
+        g.showorbitcontrol.ui.groupBox.setEnabled(False)
         g.showorbitcontrol.set_affect_parent(False)
         
             
@@ -1627,6 +1631,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         self.phi = 0.0
         self.elv = 0.0
         self.delta_jd = 0.0
+        self.ui.groupBox.setEnabled(False)
         
         if g.myprobe.onflight:
             jd = g.myprobe.jd

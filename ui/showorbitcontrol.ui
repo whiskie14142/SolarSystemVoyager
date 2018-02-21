@@ -494,7 +494,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>Params for CP</string>
+    <string>Mn Parameters</string>
    </property>
    <widget class="QLabel" name="man_elv">
     <property name="geometry">
