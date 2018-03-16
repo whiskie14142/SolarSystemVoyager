@@ -47,10 +47,12 @@ class ProbeOrbit:
             np.sin(self._sstheta) * np.cos(self._sselv), 
             np.sin(self._sselv)])
         xax = np.array([1.0, 0., 0.,])
-        cos2theta = np.dot(xax, nv) ** 2
+        costheta = np.dot(xax, nv)
+        cos2theta = costheta ** 2
         f = 2.0 * cos2theta * p0 * self._ssarea
-#        print(td,f) # for debug
         acc = nv * (f / self._pmass)
+        if costheta < 0.0:
+            acc = acc * (-1.0)
         return common.sodv2ecldv(acc, pos, vel, sunpos, sunvel)
 
     def _sseclacc(self, td, y, kernel):
