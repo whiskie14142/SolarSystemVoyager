@@ -166,7 +166,7 @@ class AboutSSVG(QtGui.QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        abouttext = """SSVG (Solar System Voyager) (c) 2016-2017 Shushi Uetsuki (whiskie14142)
+        abouttext = """SSVG (Solar System Voyager) (c) 2016-2018 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -2681,7 +2681,7 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-        g.version = '1.0.0 beta'
+        g.version = '1.0.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
