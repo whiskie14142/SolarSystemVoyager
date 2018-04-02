@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
+"""SSVG (Solar System Voyager) (c) 2016-2018 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -160,11 +160,13 @@ def nowtimestrf():
 from aboutSSVG import *
 
 class AboutSSVG(QtGui.QDialog):
+    """class for 'About SSVG' dialog
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        abouttext = """SSVG (Solar System Voyager) (c) 2016 Shushi Uetsuki (whiskie14142)
+        abouttext = """SSVG (Solar System Voyager) (c) 2016-2018 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -213,6 +215,8 @@ This program uses following programs and modules:
 from newflightplandialog import *
 
 class NewFlightPlanDialog(QtGui.QDialog):
+    """class for 'New Flight Plan' dialog
+    """
     
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
@@ -298,9 +302,13 @@ class NewFlightPlanDialog(QtGui.QDialog):
                 QMessageBox.information(self, 'Info', 
                                     'Specify SPK file of the target.', 0, 1, 0)
                 return
+#
+#       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
+#       for small bodies
+#
             target['SPKID1A'] = 0
-            target['SPKID1B'] = 10
-            target['SPKID2A'] = 10
+            target['SPKID2A'] = 0
+            target['SPKID2B'] = 0
             try:
                 spkid = int(self.ui.spkid_edit.text())
             except ValueError:
@@ -311,7 +319,7 @@ class NewFlightPlanDialog(QtGui.QDialog):
                 QMessageBox.information(self, 'Info', 
                                     'Invalid SPKID.', 0, 1, 0)
                 return
-            target['SPKID2B'] = spkid
+            target['SPKID1B'] = spkid
                 
             
         newplan['probe'] = probe
@@ -323,6 +331,9 @@ class NewFlightPlanDialog(QtGui.QDialog):
 
 
 class EditProbeDialog(NewFlightPlanDialog):
+    """class for the dialog to edit probe information of a flight plan
+    """
+
     def __init__(self, parent=None, manplan=None):
         super().__init__(parent)
         self.manplan = manplan
@@ -333,14 +344,14 @@ class EditProbeDialog(NewFlightPlanDialog):
         index = self.ui.spacebase.findText(probe['base'])
         self.ui.spacebase.setCurrentIndex(index)
         
-        if target['SPKID2B'] > 10000:
+        if target['file'] != '':
             self.ui.planetbutton.setChecked(False)
             self.ui.smallbodybutton.setChecked(True)
             self.ui.planets.setEnabled(False)
             self.ui.targetgroupbox.setEnabled(True)
             self.ui.targetname.setText(target['name'])
             self.ui.spkfilepath.setText(target['file'])
-            self.ui.spkid_edit.setText(str(target['SPKID2B']))
+            self.ui.spkid_edit.setText(str(target['SPKID1B']))
         else:
             index = self.ui.planets.findText(target['name'])
             self.ui.planets.setCurrentIndex(index)
@@ -372,6 +383,8 @@ class EditProbeDialog(NewFlightPlanDialog):
     
         
 class EditTargetDialog(EditProbeDialog):
+    """class for the dialog to edit target information of the flight plan
+    """
     def initdialog(self):
         self.setWindowTitle('Select New Target')
         self.ui.probe_box.setEnabled(False)
@@ -403,9 +416,13 @@ class EditTargetDialog(EditProbeDialog):
                 QMessageBox.information(self, 'Info', 
                                     'Specify SPK file of the target.', 0, 1, 0)
                 return
+#
+#       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
+#       for small bodies
+#
             target['SPKID1A'] = 0
-            target['SPKID1B'] = 10
-            target['SPKID2A'] = 10
+            target['SPKID2A'] = 0
+            target['SPKID2B'] = 0
             try:
                 spkid = int(self.ui.spkid_edit.text())
             except ValueError:
@@ -416,7 +433,7 @@ class EditTargetDialog(EditProbeDialog):
                 QMessageBox.information(self, 'Info', 
                                     'Invalid SPKID.', 0, 1, 0)
                 return
-            target['SPKID2B'] = spkid
+            target['SPKID1B'] = spkid
             
         self.manplan['target'] = target
         self.accept()
@@ -427,6 +444,8 @@ class EditTargetDialog(EditProbeDialog):
 from ftasettingdialog import *
 
 class FTAsettingDialog(QtGui.QDialog):
+    """class for the dialog to specity parameters for FTA
+    """
     
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
@@ -491,6 +510,8 @@ class FTAsettingDialog(QtGui.QDialog):
 from orbitoptimizedialog import *
 
 class StartOptimizeDialog(QtGui.QDialog):
+    """class for the Start Optimize Assistant
+    """
     def __init__(self, orgjd, parent=None):
         QWidget.__init__(self, parent)
         g.probe_Kepler = None
@@ -992,6 +1013,8 @@ class StartOptimizeDialog(QtGui.QDialog):
 
 
 class CpOptimizeDialog(StartOptimizeDialog):
+    """class for the CP Optimize Assistant
+    """
 
     def initforCPoptimize(self):
         self.setWindowTitle('CP Optimize Assistant')
@@ -1030,6 +1053,8 @@ class CpOptimizeDialog(StartOptimizeDialog):
 from editmandialog import *
 
 class EditManDialog(QtGui.QDialog):
+    """class for 'Edit Maneuver' dialog
+    """
     
     def __init__(self, parent=None, editman=None, currentrow=0):
         QWidget.__init__(self, parent)
@@ -1364,6 +1389,7 @@ class EditManDialog(QtGui.QDialog):
         if g.showorbitcontrol == None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
+        g.showorbitcontrol.ui.groupBox.setEnabled(True)
         g.showorbitcontrol.set_pred_dv(dv, phi, elv)
         g.showorbitcontrol.redraw()
         g.showorbitcontrol.set_affect_parent(False)
@@ -1374,6 +1400,7 @@ class EditManDialog(QtGui.QDialog):
             g.showorbitcontrol.show()
         else:
             g.showorbitcontrol.redraw()
+        g.showorbitcontrol.ui.groupBox.setEnabled(True)
         g.showorbitcontrol.set_affect_parent(False)
 
     def showorbitFLYTO(self):
@@ -1382,6 +1409,7 @@ class EditManDialog(QtGui.QDialog):
             g.showorbitcontrol.show()
         g.showorbitcontrol.set_pred_DT(self.editman['time'])
         g.showorbitcontrol.redraw()
+        g.showorbitcontrol.ui.groupBox.setEnabled(False)
         g.showorbitcontrol.set_affect_parent(True)
             
     def showorbitOTHER(self):
@@ -1390,6 +1418,7 @@ class EditManDialog(QtGui.QDialog):
             g.showorbitcontrol.show()
         g.showorbitcontrol.set_pred_dv(0.0, 0.0, 0.0)
         g.showorbitcontrol.redraw()
+        g.showorbitcontrol.ui.groupBox.setEnabled(False)
         g.showorbitcontrol.set_affect_parent(False)
         
             
@@ -1553,6 +1582,8 @@ class EditManDialog(QtGui.QDialog):
 from showorbitcontrol import *
 
 class ShowOrbitDialog(QtGui.QDialog):
+    """class for 'Show Orbit' window
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.mother = parent
@@ -1600,6 +1631,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         self.phi = 0.0
         self.elv = 0.0
         self.delta_jd = 0.0
+        self.ui.groupBox.setEnabled(False)
         
         if g.myprobe.onflight:
             jd = g.myprobe.jd
@@ -1848,6 +1880,8 @@ class ShowOrbitDialog(QtGui.QDialog):
 
 
 class ShowStartOrbitDialog(ShowOrbitDialog):
+    """class for 'Show Start Orbit' window
+    """
     def __init__(self, parent=None, editman=None):
         self.editman = editman
         super().__init__(parent)
@@ -1892,6 +1926,8 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
 from flightreviewcontrol import *
 
 class FlightReviewControl(QtGui.QDialog):
+    """class for 'Flight Review' window
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         left = g.mainform.geometry().left()
@@ -2146,6 +2182,8 @@ class FlightReviewControl(QtGui.QDialog):
 from reviewthroughoutcontrol import *
 
 class ReviewThroughoutControl(QtGui.QDialog):
+    """class for 'Review Throughout' window
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         left = g.mainform.geometry().left()
@@ -2552,6 +2590,8 @@ class ReviewThroughoutControl(QtGui.QDialog):
 from mainwindow import *
 
 class MainForm(QtGui.QMainWindow):
+    """class for the main window (SSVG window)
+    """
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
         self.setGeometry(10, 40, 640, 700)
@@ -2641,7 +2681,7 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-        g.version = '0.6.2 beta'
+        g.version = '1.0.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -2798,6 +2838,7 @@ class MainForm(QtGui.QMainWindow):
 
         self.ui.probename.setText(g.manplan['probe']['name'])
         self.ui.targetname.setText(g.manplan['target']['name'])
+        self.ui.spacebase.setText(g.manplan['probe']['base'])
         
         g.showorbitsettings = None
         self.dispmanplan()
@@ -2864,6 +2905,7 @@ class MainForm(QtGui.QMainWindow):
         
         self.ui.probename.setText(g.manplan['probe']['name'])
         self.ui.targetname.setText(g.manplan['target']['name'])
+        self.ui.spacebase.setText(g.manplan['probe']['base'])
         
         g.showorbitsettings = None
         self.dispmanplan()
@@ -3178,7 +3220,10 @@ class MainForm(QtGui.QMainWindow):
                                    button2=2)
         if ans == 2: return
         if self.currentrow < len(g.maneuvers):
-            deltype = g.maneuvers[self.currentrow]['type']
+            if g.maneuvers[self.currentrow] == None:
+                deltype = 'BLANK'
+            else:
+                deltype = g.maneuvers[self.currentrow]['type']
             del(g.maneuvers[self.currentrow])
             if self.currentrow < g.nextman:
                 self.execinitialize()
@@ -3441,6 +3486,7 @@ class MainForm(QtGui.QMainWindow):
         
         self.enablewidgets()
         self.ui.probename.setText(g.manplan['probe']['name'])
+        self.ui.spacebase.setText(g.manplan['probe']['base'])
         self.dispmanplan()
         self.ui.showOrbit.setEnabled(False)
         self.ui.flightreview.setEnabled(False)

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jul  8 13:44:30 2016
-
-@author: shush_000
+probe module for SSVG
+(c) 2016-2017 Shushi Uetsuki (whiskie14142)
 """
 
 import common
@@ -13,6 +12,8 @@ import math
 
 
 class SpaceBase:
+    """class for the space base
+    """
     def __init__(self, base):
         for baseitem in common.bases:
             if base == baseitem[0]:
@@ -30,7 +31,8 @@ class SpaceBase:
 
 
 class Probe:
-    
+    """class for the space probe
+    """
     def __init__(self, name='myprobe', pmass=500.0, base='EarthL2'):
         self.name = name
         self.pmass = pmass

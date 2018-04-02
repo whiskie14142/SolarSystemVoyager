@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jul 20 15:26:36 2016
-
-@author: shush_000
+target module for SSVG
+(c) 2016-2017 Shushi Uetsuki (whiskie14142)
 """
 
 import common
@@ -11,7 +10,8 @@ from spktype01 import SPKType01
 
 
 class Target:
-    
+    """class for the target
+    """
     def de430_ephem(self, jd):
         pos, vel = self.kernel[self.idx1a, self.idx1b].compute_and_differentiate(jd)
         if self.idx2a != 0:
@@ -23,11 +23,10 @@ class Target:
         return pos, vel
 
     def nasa_sb_ephem(self, jd):
-        sunpos, sunvel = self.kernel[self.idx1a, self.idx1b].compute_and_differentiate(jd)
-        sunvel = sunvel / common.secofday
-        scpos, scvel = self.sbkernel.compute_type01(self.idx2a, self.idx2b, jd)
-        pos = sunpos + scpos
-        vel = sunvel + scvel
+#       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
+#       for small bodies
+#
+        pos, vel = self.sbkernel.compute_type01(self.idx1a, self.idx1b, jd)
         pos = common.eqn2ecl(pos) * 1000.0
         vel = common.eqn2ecl(vel) * 1000.0
         return pos, vel
@@ -56,9 +55,6 @@ class Target:
 
     def points(self, jd, ndata):
         sunpos, sunvel = common.SPKposvel(10, jd)
-#        sunpos, sunvel = common.SPKkernel[0,10].compute_and_differentiate(jd)
-#        sunpos = common.eqn2ecl(sunpos) * 1000.0
-#        sunvel = common.eqn2ecl(sunvel) / common.secofday * 1000.0
         tpos, tvel = self.posvel(jd)
         tpos -= sunpos
         tvel -= sunvel

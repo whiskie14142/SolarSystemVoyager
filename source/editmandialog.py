@@ -150,7 +150,7 @@ class Ui_editmandialog(object):
         self.cancelbutton.setToolTip(_translate("editmandialog", "Discard changes and quit editing", None))
         self.cancelbutton.setText(_translate("editmandialog", "Cancel", None))
         self.showorbit.setToolTip(_translate("editmandialog", "Show orbit", None))
-        self.showorbit.setText(_translate("editmandialog", "Show Orbit", None))
+        self.showorbit.setText(_translate("editmandialog", "SHOW Orbit", None))
         self.applymantype.setToolTip(_translate("editmandialog", "Select maneuver type and click Apply button", None))
         self.applymantype.setText(_translate("editmandialog", "Apply", None))
         self.computeFTA.setToolTip(_translate("editmandialog", "Comute fixed time arrival guidance", None))
@@ -162,5 +162,5 @@ class Ui_editmandialog(object):
         self.applyduration.setText(_translate("editmandialog", "Apply", None))
         self.label_duration.setText(_translate("editmandialog", "Flight Duration (days)", None))
         self.optimize.setToolTip(_translate("editmandialog", "Optimize Assistant", None))
-        self.optimize.setText(_translate("editmandialog", "Optimize", None))
+        self.optimize.setText(_translate("editmandialog", "OPTIMIZE", None))
 

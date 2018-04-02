@@ -108,7 +108,7 @@
     </column>
     <column>
      <property name="text">
-      <string>Exec</string>
+      <string>Status</string>
      </property>
     </column>
     <item row="0" column="0">
@@ -123,9 +123,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>545</x>
       <y>70</y>
-      <width>75</width>
+      <width>81</width>
       <height>23</height>
      </rect>
     </property>
@@ -133,7 +133,7 @@
      <string>Execute 'Next' maneuver</string>
     </property>
     <property name="text">
-     <string>Exec Next</string>
+     <string>EXEC Next</string>
     </property>
    </widget>
    <widget class="QPushButton" name="insertMan">
@@ -142,9 +142,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>560</x>
       <y>260</y>
-      <width>75</width>
+      <width>65</width>
       <height>23</height>
      </rect>
     </property>
@@ -158,7 +158,7 @@
      <string/>
     </property>
     <property name="text">
-     <string>Insert *</string>
+     <string>INS *</string>
     </property>
    </widget>
    <widget class="QPushButton" name="showOrbit">
@@ -167,9 +167,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>514</x>
       <y>10</y>
-      <width>75</width>
+      <width>111</width>
       <height>23</height>
      </rect>
     </property>
@@ -177,7 +177,7 @@
      <string>Show Orbit</string>
     </property>
     <property name="text">
-     <string>Show Orbit</string>
+     <string>SHOW Orbit</string>
     </property>
    </widget>
    <widget class="QPushButton" name="editMan">
@@ -186,9 +186,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>560</x>
       <y>230</y>
-      <width>75</width>
+      <width>65</width>
       <height>23</height>
      </rect>
     </property>
@@ -196,7 +196,7 @@
      <string>Edit selected maneuver</string>
     </property>
     <property name="text">
-     <string>Edit *</string>
+     <string>EDIT *</string>
     </property>
    </widget>
    <widget class="QPushButton" name="execto">
@@ -205,9 +205,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>560</x>
       <y>100</y>
-      <width>75</width>
+      <width>65</width>
       <height>23</height>
      </rect>
     </property>
@@ -215,7 +215,7 @@
      <string>Execute maneuvers to the selected line </string>
     </property>
     <property name="text">
-     <string>Exec to *</string>
+     <string>EXEC to *</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -223,7 +223,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>81</width>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -236,7 +236,7 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>81</width>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -249,7 +249,7 @@
      <rect>
       <x>90</x>
       <y>10</y>
-      <width>131</width>
+      <width>161</width>
       <height>16</height>
      </rect>
     </property>
@@ -268,7 +268,7 @@
      <rect>
       <x>90</x>
       <y>30</y>
-      <width>231</width>
+      <width>141</width>
       <height>16</height>
      </rect>
     </property>
@@ -288,9 +288,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>560</x>
       <y>290</y>
-      <width>75</width>
+      <width>65</width>
       <height>23</height>
      </rect>
     </property>
@@ -301,15 +301,15 @@
      <string/>
     </property>
     <property name="text">
-     <string>Delete *</string>
+     <string>DEL *</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>250</x>
       <y>50</y>
-      <width>81</width>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -320,9 +320,9 @@
    <widget class="QLabel" name="manfilename">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>322</x>
       <y>50</y>
-      <width>231</width>
+      <width>301</width>
       <height>16</height>
      </rect>
     </property>
@@ -342,9 +342,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>545</x>
       <y>200</y>
-      <width>75</width>
+      <width>81</width>
       <height>23</height>
      </rect>
     </property>
@@ -352,7 +352,7 @@
      <string>Edit 'Next' maneuver</string>
     </property>
     <property name="text">
-     <string>Edit Next</string>
+     <string>EDIT Next</string>
     </property>
    </widget>
    <widget class="QPushButton" name="initexec">
@@ -361,9 +361,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>150</y>
-      <width>75</width>
+      <x>560</x>
+      <y>130</y>
+      <width>65</width>
       <height>23</height>
      </rect>
     </property>
@@ -371,7 +371,7 @@
      <string>Initialize execution of the flight plan</string>
     </property>
     <property name="text">
-     <string>Ex Initialize</string>
+     <string>CLEAR Ex</string>
     </property>
    </widget>
    <widget class="QPushButton" name="reviewthroughout">
@@ -380,9 +380,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>260</x>
       <y>10</y>
-      <width>141</width>
+      <width>111</width>
       <height>23</height>
      </rect>
     </property>
@@ -390,7 +390,7 @@
      <string>Review throughout the flight</string>
     </property>
     <property name="text">
-     <string>Review Throughout</string>
+     <string>REVIEW Through</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -519,7 +519,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Mean Anomary (deg)</string>
+     <string>Mean Anomaly (deg)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_13">
@@ -606,9 +606,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>387</x>
       <y>10</y>
-      <width>141</width>
+      <width>111</width>
       <height>23</height>
      </rect>
     </property>
@@ -616,7 +616,7 @@
      <string>Review recent FLYTO maneuver</string>
     </property>
     <property name="text">
-     <string>Review Recent FLYTO</string>
+     <string>REVIEW Recent</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_19">
@@ -733,7 +733,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>612</y>
+      <y>630</y>
       <width>241</width>
       <height>16</height>
      </rect>
@@ -784,7 +784,7 @@
      <rect>
       <x>180</x>
       <y>370</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -808,7 +808,7 @@
      <rect>
       <x>180</x>
       <y>390</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -832,7 +832,7 @@
      <rect>
       <x>180</x>
       <y>410</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -856,7 +856,7 @@
      <rect>
       <x>180</x>
       <y>430</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -880,7 +880,7 @@
      <rect>
       <x>180</x>
       <y>450</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -904,7 +904,7 @@
      <rect>
       <x>180</x>
       <y>470</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -928,7 +928,7 @@
      <rect>
       <x>180</x>
       <y>490</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -952,7 +952,7 @@
      <rect>
       <x>180</x>
       <y>510</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -976,7 +976,7 @@
      <rect>
       <x>180</x>
       <y>530</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -1000,7 +1000,7 @@
      <rect>
       <x>180</x>
       <y>550</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -1024,7 +1024,7 @@
      <rect>
       <x>180</x>
       <y>570</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -1048,7 +1048,7 @@
      <rect>
       <x>180</x>
       <y>590</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -1072,7 +1072,7 @@
      <rect>
       <x>180</x>
       <y>610</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -1096,7 +1096,7 @@
      <rect>
       <x>180</x>
       <y>630</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -1120,7 +1120,7 @@
      <rect>
       <x>445</x>
       <y>348</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -1144,7 +1144,7 @@
      <rect>
       <x>180</x>
       <y>350</y>
-      <width>181</width>
+      <width>187</width>
       <height>16</height>
      </rect>
     </property>
@@ -1178,7 +1178,7 @@
      <rect>
       <x>180</x>
       <y>650</y>
-      <width>185</width>
+      <width>187</width>
       <height>18</height>
      </rect>
     </property>
@@ -1197,6 +1197,38 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label_23">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Space Base :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="spacebase">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>50</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1204,7 +1236,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

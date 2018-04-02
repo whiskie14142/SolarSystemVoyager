@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jul 15 22:41:00 2016
-
-predict probe orbit and pos/vel through two body theory
-
-@author: shush_000
+twobodypred module for SSVG
+(c) 2016-2017 Shushi Uetsuki (whiskie14142)
 """
 
 import common
@@ -15,7 +12,8 @@ import math
 
 
 class TwoBodyPred:
-    
+    """class for two body prediction
+    """
     def __init__(self, pname):
         self.orbit = TwoBodyOrbit(pname, 'Sol', common.solarmu)
         return
@@ -23,9 +21,6 @@ class TwoBodyPred:
     def fix_state(self, jd, ppos, pvel):
         self.jd = jd
         self.sunpos, self.sunvel = common.SPKposvel(10, self.jd)
-#        spos, svel = common.SPKkernel[0, 10].compute_and_differentiate(self.jd)
-#        self.sunpos = common.eqn2ecl(spos) * 1000.0
-#        self.sunvel = common.eqn2ecl(svel) * 1000.0 / common.secofday
         jdsec = self.jd * common.secofday
         self.ppos = ppos
         self.pvel = pvel
@@ -37,10 +32,10 @@ class TwoBodyPred:
     def set_pred_dv(self, dv, phi, elv):
         relv = math.radians(elv)
         rphi = math.radians(phi)
-        ldv = np.array([                    \
-            dv * np.cos(relv) * np.cos(rphi), \
-            dv * np.cos(relv) * np.sin(rphi), \
-            dv * np.sin(relv)                \
+        ldv = np.array([
+            dv * np.cos(relv) * np.cos(rphi),
+            dv * np.cos(relv) * np.sin(rphi),
+            dv * np.sin(relv)
             ])
         self.pred_vel = self.pvel + \
             common.ldv2ecldv(ldv, self.ppos, self.pvel, \
@@ -62,10 +57,6 @@ class TwoBodyPred:
         
         # sunpos, sunvel at jd
         spos, svel = common.SPKposvel(10, jd)
-#        spos, svel = common.SPKkernel[0, 10].compute_and_differentiate(jd)
-#        spos = common.eqn2ecl(spos) * 1000.0
-#        svel = common.eqn2ecl(svel) * 1000.0 / common.secofday
-        
         return pos + spos, vel + svel
         
     def fta(self, jd, tepos):

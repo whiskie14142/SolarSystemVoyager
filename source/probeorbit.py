@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 """
+probeorbit module for SSVG
+(c) 2016-2017 Shushi Uetsuki (whiskie14142)
 
-Created on Wed May 04 21:40:34 2016
-
-@author: shush_000
+This module computes the trajectory of the probe with numerical integration
+This module can use gravitational attraction of all planets, Pluto, 
+    the Moon, and the Sun for the numerical integration
+This module uses ecliptic coordinate system (J2000.0) for position and 
+    velocity
+The origin of the coordinate system is barycenter of the solar system
 """
 
 import numpy as np
@@ -12,12 +17,9 @@ from scipy.integrate import ode
 
 
 class ProbeOrbit:
-# 太陽系を飛行する探査機のクラス
-# 経路は常に数値積分で計算する
-# 全惑星と冥王星の重力を考慮できる
-# 惑星の位置はjplephemで算出（ファイルはde430.bspを使用する）
-# 座標系は太陽系重心の黄道座標（J2000.0）
-# 長さの単位はメートル、時間の単位は秒でインタフェースする
+    """class for the orbit (trajectory) of the probe　which flies in the
+    solar system
+    """
 
     def _ssnv(self, td, y, kernel):
         # compute normal vector of Solar Sail
@@ -45,10 +47,12 @@ class ProbeOrbit:
             np.sin(self._sstheta) * np.cos(self._sselv), 
             np.sin(self._sselv)])
         xax = np.array([1.0, 0., 0.,])
-        cos2theta = np.dot(xax, nv) ** 2
+        costheta = np.dot(xax, nv)
+        cos2theta = costheta ** 2
         f = 2.0 * cos2theta * p0 * self._ssarea
-#        print(td,f) # for debug
         acc = nv * (f / self._pmass)
+        if costheta < 0.0:
+            acc = acc * (-1.0)
         return common.sodv2ecldv(acc, pos, vel, sunpos, sunvel)
 
     def _sseclacc(self, td, y, kernel):
@@ -124,16 +128,16 @@ class ProbeOrbit:
   
     def statusinitialize(self):      
         self._epon = False
-        self._epdv = 0.0    # 電気推進の加速度絶対値
-        self._epphi = 0.0   # 電気推進の推力方向φ
-        self._epelv = 0.0   # 電気推進の推力方向elevation
+        self._epdv = 0.0    # absolute accelaration of the EP
+        self._epphi = 0.0   # angle phi of the EP
+        self._epelv = 0.0   # angle elv of the EP
         self._epmode = 'L'
         self._epeclacc = []
         
         self._sson = False
-        self._ssarea = 0.0      # ソーラーセイルの面積
-        self._sstheta = 0.0     #　ソーラーセイルの向きθ
-        self._sselv = 0.0       # ソーラーセイルの向きelevation
+        self._ssarea = 0.0      # area of the solar sail
+        self._sstheta = 0.0     # angle theta of the solar sail
+        self._sselv = 0.0       # angle elv of the solar sail
         self._ssmode = 'L'
         self._sseclnv = []
 
@@ -185,6 +189,9 @@ class ProbeOrbit:
         self._sseclnv = ssstatus[5]
 
     def setCurrentCart(self, t, pos, vel):
+        # t should be in seconds,
+        # pos should be in meters,
+        # vel should be in meters per second
         self._t0 = t
         self._y0 = np.zeros(6)
         self._y0[0:3] = pos
@@ -255,39 +262,6 @@ class ProbeOrbit:
             if self._sson:
                 ssdvpd[ndata-1] = self.compssdvpd(r.t, posvel, kernel)
         return t, x, y, z, xd, yd, zd, ssdvpd, runerror
-
-def main(kernel):
-
-    t = 2456800.5
-    id = 3
-    pn = id
-    pos, vel = kernel[0,pn].compute_and_differentiate(t)
-# 地球ー月の重心に探査機を置く
-    pos = common.eqn2ecl(pos)
-    vel = common.eqn2ecl(vel) / common.secofday
-    print(t, pos, vel, '\n')
-    
-    probe = ProbeOrbit('MyP')
-    probe.setCurrentCart(t*common.secofday, pos*1000.0, vel*1000.0)
-    body_f = [True, True, False, True, True, # Mer. Ven. EMB Mars Jup.
-              True, True, True, True, True,  # Sat. Ura. Nep. Plu. Sun
-              False, False]                    # Moon Earth
-    atol = [0.01, 0.01, 0.01, 0.00001, 0.00001, 0.00001]
-    rtol = [1e-10,1e-10,1e-10,1e-10,1e-10,1e-10]
-    pt, px, py, pz, pxd, pyd, pzd = probe.trj((t+365.00)*common.secofday, 366,
-        kernel, body_f, common.planets_mu, atol, rtol)
-    
-    for i in range(13):
-        icheck = i * 30
-        tp = pt[icheck] / common.secofday
-        ppos, pvel = kernel[0,pn].compute_and_differentiate(tp)
-        ppos = common.eqn2ecl(ppos) * 1000.0
-        pvel = pvel / common.secofday
-        pvel = common.eqn2ecl(pvel) * 1000.0
-        print(tp, ppos[0]-px[icheck], ppos[1]-py[icheck], ppos[2]-pz[icheck])
-    
-if __name__ == '__main__' :
-    main(common.SPKkernel)    
     
         
         

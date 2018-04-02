@@ -350,7 +350,7 @@ class Ui_ShowOrbitControl(object):
         self.label_17.setText(_translate("ShowOrbitControl", "elv (deg)", None))
         self.label_18.setText(_translate("ShowOrbitControl", "Line of Sight Velocity (departing)", None))
         self.label_19.setText(_translate("ShowOrbitControl", "Prediction Time Manipulator", None))
-        self.groupBox.setTitle(_translate("ShowOrbitControl", "Params for CP", None))
+        self.groupBox.setTitle(_translate("ShowOrbitControl", "Mn Parameters", None))
         self.label_8.setText(_translate("ShowOrbitControl", "elv", None))
         self.label_6.setText(_translate("ShowOrbitControl", "dv", None))
         self.label_7.setText(_translate("ShowOrbitControl", "phi", None))
