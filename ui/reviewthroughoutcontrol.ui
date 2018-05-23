@@ -216,7 +216,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>S. Time</string>
+    <string>Start</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -229,7 +229,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>C. Time</string>
+    <string>Seeing</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">

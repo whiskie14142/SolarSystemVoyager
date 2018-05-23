@@ -94,7 +94,7 @@ class Ui_ftasettingdialog(object):
     def retranslateUi(self, ftasettingdialog):
         ftasettingdialog.setWindowTitle(_translate("ftasettingdialog", "FTA Setting", None))
         self.groupBox.setTitle(_translate("ftasettingdialog", "Time to Arrival : ", None))
-        self.fromshoworbit.setText(_translate("ftasettingdialog", "Get Prediction Time from Show Orbit Window", None))
+        self.fromshoworbit.setText(_translate("ftasettingdialog", "Get DT of Show Orbit window", None))
         self.directinput.setText(_translate("ftasettingdialog", "Specify Time to Arrival", None))
         self.timetoarrival.setText(_translate("ftasettingdialog", "100.00000", None))
         self.label.setText(_translate("ftasettingdialog", "Time to Arrival (days)", None))

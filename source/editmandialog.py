@@ -160,7 +160,7 @@ class Ui_editmandialog(object):
         self.duration.setToolTip(_translate("editmandialog", "Flight Duration for FLYTO", None))
         self.applyduration.setToolTip(_translate("editmandialog", "Apply the flight duration to Date&Time", None))
         self.applyduration.setText(_translate("editmandialog", "Apply", None))
-        self.label_duration.setText(_translate("editmandialog", "Flight Duration (days)", None))
+        self.label_duration.setText(_translate("editmandialog", "Duration (days)", None))
         self.optimize.setToolTip(_translate("editmandialog", "Optimize Assistant", None))
         self.optimize.setText(_translate("editmandialog", "OPTIMIZE", None))
 

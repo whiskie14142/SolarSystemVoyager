@@ -369,7 +369,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Flight Duration (days)</string>
+    <string>Duration (days)</string>
    </property>
    <property name="textFormat">
     <enum>Qt::PlainText</enum>

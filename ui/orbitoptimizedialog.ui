@@ -477,7 +477,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>Flight Duration is Arranged by</string>
+    <string>Flight Time is Arranged by</string>
    </property>
    <widget class="QRadioButton" name="radio_fd">
     <property name="geometry">
@@ -489,7 +489,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Flight Duration</string>
+     <string>Flight Time</string>
     </property>
     <property name="checked">
      <bool>true</bool>
@@ -598,7 +598,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Start Time:</string>
+     <string>Start Time</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -668,7 +668,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Deviation:</string>
+     <string>Deviation</string>
     </property>
    </widget>
    <widget class="QPushButton" name="it_fb">
@@ -815,7 +815,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>Arrange Flight Duration</string>
+    <string>Arrange Flight Time</string>
    </property>
    <widget class="QSlider" name="sl_duration">
     <property name="geometry">
@@ -839,14 +839,17 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>50</x>
       <y>90</y>
       <width>121</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Flight Duration (days):</string>
+     <string>Flight Time (days)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="duration">
@@ -879,14 +882,17 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>290</x>
       <y>90</y>
       <width>71</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Arrival Time:</string>
+     <string>Arrival Time</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="terminaltime">

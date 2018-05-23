@@ -1022,7 +1022,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
         self.ui.box_initialtime.setEnabled(False)
         self.ui.check_orgorb.setText('Probe Original')
         self.ui.box_initialtime.setTitle('Arrange Maneuver Time')
-        self.ui.label_it.setText('Maneuver Time:')
+        self.ui.label_it.setText('Maneuver Time')
         
         self.orgorb = TwoBodyPred('orgorb')
         self.orgorb.fix_state(g.myprobe.jd, g.myprobe.pos, g.myprobe.vel)
@@ -1102,14 +1102,14 @@ class EditManDialog(QtGui.QDialog):
             ]
         paramdesc = [
             'time  : Maneuver Time (JD)',
-            'dv    : Delta-V absolute value (m/s)',
-            'dvpd  : Delta-V per day for EP (m/s/day)',
-            'phi   : Angle (deg) for START, CP and EP',
-            'elv   : Angle (deg) for all prop.',
-            'aria  : Aria of Solar Sail (m**2)',
-            'theta : Angle (deg) for SS',
-            'tvmode: Thrust Vector Mode (L|E)',
-            'inter : Integration Interval (days)'
+            'dv      : magnitude of delta-V (m/s)',
+            'dvpd  : magnitude of delta-V per day (m/s/day)',
+            'phi     : angle phi (deg)',
+            'elv     : angle elv (deg)',
+            'aria    : area of solar sail (m**2)',
+            'theta : angle theta (deg)',
+            'tvmode : thrust vector mode (L|E)',
+            'inter : integration interval (days)'
             ]
         self.timedesc = ['Start Time', '', '', '', '', '', 'End Time']
         self.fmttbl = [
@@ -1138,8 +1138,8 @@ class EditManDialog(QtGui.QDialog):
         
         for item in self.types:
             self.ui.mantype.addItem(item)
-        self.ui.parameters.setColumnWidth(0,350)
-        self.ui.parameters.setColumnWidth(1,160)
+        self.ui.parameters.setColumnWidth(0,277)
+        self.ui.parameters.setColumnWidth(1,237)
         for i in range(1, 9):
             row = i - 1
             self.ui.parameters.setItem(row, 0, self.stringitems[i])
@@ -1194,7 +1194,7 @@ class EditManDialog(QtGui.QDialog):
         dt = datetime.now()
         jdtoday = julian.to_jd(dt, fmt='jd')
         jdtoday = int(jdtoday + 0.5) - 0.5
-        ival = [jdtoday, 0.0, 0.0, 0.0, 0.0, 10000.0, 45.0, 'L', 1.0]
+        ival = [jdtoday, 0.0, 0.0, 0.0, 0.0, 10000.0, 35.26, 'L', 1.0]
         if g.myprobe != None:
             if g.myprobe.onflight:
                 ival[0] = g.myprobe.jd
@@ -1885,7 +1885,7 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
     def __init__(self, parent=None, editman=None):
         self.editman = editman
         super().__init__(parent)
-        self.ui.ctimeLabel.setText('S. Time')
+        self.ui.ctimeLabel.setText('Start')
         
     def redraw(self):
         self.jd = self.editman['time']
@@ -2681,7 +2681,7 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-        g.version = '1.0.0'
+        g.version = '1.1.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -3069,7 +3069,7 @@ class MainForm(QtGui.QMainWindow):
                 self.ui.showOrbit.setEnabled(True)
         else:
             QMessageBox.information(self, 'Info', 
-                                "Cannot Executhe the Flight Plan.", 0, 1, 0)
+                                "Cannot Execute the Flight Plan.", 0, 1, 0)
             return False
 
         g.showorbitcontrol.reset()

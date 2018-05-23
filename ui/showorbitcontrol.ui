@@ -204,7 +204,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>C. Time</string>
+    <string>Current</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -217,7 +217,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>P. Time</string>
+    <string>Seeing</string>
    </property>
   </widget>
   <widget class="QPushButton" name="dtApply">

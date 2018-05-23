@@ -41,7 +41,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Get Prediction Time from Show Orbit Window</string>
+     <string>Get DT of Show Orbit window</string>
     </property>
     <property name="checked">
      <bool>true</bool>
