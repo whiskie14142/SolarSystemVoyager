@@ -33,6 +33,7 @@ from twobodypred import TwoBodyPred
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 class _Gdata:
     """Container of global data
@@ -455,6 +456,13 @@ class FTAsettingDialog(QtGui.QDialog):
                                                  self.ta_radioclicked)
         self.connect(self.ui.directinput, SIGNAL('clicked()'), 
                                                  self.ta_radioclicked)
+        self.connect(self.ui.selTargetcenter, SIGNAL('clicked()'), 
+                                                 self.pt_radioclicked)
+        self.connect(self.ui.selBplanecoord, SIGNAL('clicked()'), 
+                                                 self.pt_radioclicked)
+        self.connect(self.ui.selOLcoord, SIGNAL('clicked()'), 
+                                                 self.pt_radioclicked)
+
         self.connect(self.ui.ok_button, SIGNAL('clicked()'), self.ok_clicked)
         self.connect(self.ui.cancel_button, SIGNAL('clicked()'), self.reject)
         
@@ -467,9 +475,20 @@ class FTAsettingDialog(QtGui.QDialog):
             self.ui.timetoarrival.setEnabled(False)
         if self.ui.directinput.isChecked():
             self.ui.timetoarrival.setEnabled(True)
+
+    def pt_radioclicked(self):
+        self.ui.Bplanecoords.setEnabled(False)
+        self.ui.OLcoords.setEnabled(False)
+        if self.ui.selTargetcenter.isChecked():
+            return
+        elif self.ui.selBplanecoord.isChecked():
+            self.ui.Bplanecoords.setEnabled(True)
+            return
+        elif self.ui.selOLcoord.isChecked():
+            self.ui.OLcoords.setEnabled(True)
     
     def ok_clicked(self):
-        param = [0.0, np.zeros(3), np.zeros(4)]      # JD(days), X, Y, Z(meters), dt, R, phi, elv
+        param = [0.0, '', np.zeros(4)]      # JD(days),Type, [dt, R, phi, elv]
         try:        
             delta_jd = float(self.ui.timetoarrival.text())
         except ValueError:
@@ -483,26 +502,40 @@ class FTAsettingDialog(QtGui.QDialog):
             return
         param[0] = g.showorbitcontrol.jd + delta_jd
         
-        jd = param[0]
-        tpos, tvel = g.mytarget.posvel(jd)
-        sunpos, sunvel = common.SPKposvel(10, jd)
-
-        try:        
-            r = float(self.ui.rangeedit.text()) * 1000.0
-            phi = float(self.ui.phiedit.text())
-            elv = float(self.ui.elvedit.text())
-        except ValueError:
-            QMessageBox.information(self, 'Info', 
-                            'Parameter should be floating numbers.', 0, 1, 0)
-            return
-        vect = common.polar2rect(r, phi, elv)
+        if self.ui.selBplanecoord.isChecked():
+            try:        
+                r = float(self.ui.Brangeedit.text()) * 1000.0
+                beta = float(self.ui.betaedit.text())
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                                'Parameter should be floating numbers.', 0, 1, 0)
+                return
         
-        delta_pos = common.ldv2ecldv(vect, tpos, tvel, sunpos, sunvel)
-        param[1] = tpos + delta_pos
-        param[2][0] = delta_jd
-        param[2][1] = r
-        param[2][2] = phi
-        param[2][3] = elv
+            param[1] = 'BP'
+            param[2][0] = delta_jd
+            param[2][1] = r
+            param[2][2] = beta
+            param[2][3] = 0.0
+        
+        else:
+            if self.ui.selOLcoord.isChecked():
+                try:        
+                    r = float(self.ui.rangeedit.text()) * 1000.0
+                    phi = float(self.ui.phiedit.text())
+                    elv = float(self.ui.elvedit.text())
+                except ValueError:
+                    QMessageBox.information(self, 'Info', 
+                                    'Parameter should be floating numbers.', 0, 1, 0)
+                    return
+            else:
+                r = 0.0
+                phi = 0.0
+                elv = 0.0
+            param[1] = 'OL'
+            param[2][0] = delta_jd
+            param[2][1] = r
+            param[2][2] = phi
+            param[2][3] = elv
         
         g.fta_parameters = param
         self.accept()
@@ -1423,6 +1456,7 @@ class EditManDialog(QtGui.QDialog):
         
             
     def computefta(self):
+        norm = lambda x : x / np.sqrt(np.dot(x,x))
         if g.showorbitcontrol == None:
             QMessageBox.information(self, 
                 'Info', 'To use FTA, open Show Orbit and\n' 
@@ -1433,52 +1467,134 @@ class EditManDialog(QtGui.QDialog):
         ans = ftadialog.exec_()
         if ans == QDialog.Rejected:
             return
-        
+
         jd = g.fta_parameters[0]
-        tepos = g.fta_parameters[1]
+        tpos, tvel = g.mytarget.posvel(jd)
+        sunpos, sunvel = common.SPKposvel(10, jd)
         
-        try:
-            dv, phi, elv = g.showorbitcontrol.tbpred.fta(jd, tepos)
-        except ValueError:
-            QMessageBox.information(self, 'Info', 
-                'Error occured during FTA computation.\n' 
-                + 'Try different parameters', 0, 1, 0)
-            return
+        if g.fta_parameters[1] == 'OL':
+            sr = g.fta_parameters[2][1]
+            sphi = g.fta_parameters[2][2]
+            selv = g.fta_parameters[2][3]
+            vect = common.polar2rect(sr, sphi, selv)
+            delta_pos = common.ldv2ecldv(vect, tpos, tvel, sunpos, sunvel)
+            tepos = tpos + delta_pos
+            try:
+                dv, phi, elv = g.showorbitcontrol.tbpred.fta(jd, tepos)
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                    'Error occured during FTA computation.\n' 
+                    + 'Try different parameters', 0, 1, 0)
+                return
+    
+            dv = round(dv, 3)
+            phi = round(phi, 2)
+            elv = round(elv, 2)
+                
+            mes = 'FTA Results are as follows. Apply them?\n' + \
+                'dv = ' + str(dv) + '\n' + \
+                'phi = ' + str(phi) + '\n' + \
+                'elv = ' + str(elv)
+            ans = QMessageBox.question(self, 'FTA Results', mes, 0, button1=1, 
+                                       button2=2)
+            if ans == 1:
+                self.editman['dv'] = dv
+                self.editman['phi'] = phi
+                self.editman['elv'] = elv
+                self.dispman()
+                self.showorbit()
+                
+                if g.options['log']:
+                    logstring = []
+                    logstring.append('apply FTA result: ' + nowtimestr() + '\n')
+                    logstring.append('    target: ' + g.mytarget.name + '\n')
+                    logstring.append('    time to arrival: ' + 
+                                    str(g.fta_parameters[2][0]) + '\n')
+                    logstring.append('    Type of Precise Targeting: ' + 
+                                    'OL coordinates or Center' + '\n')
+                    logstring.append('    range from target center: ' + 
+                                    str(g.fta_parameters[2][1]) + '\n')
+                    logstring.append('    phi from target center: ' + 
+                                    str(g.fta_parameters[2][2]) + '\n')
+                    logstring.append('    elv from target center: ' + 
+                                    str(g.fta_parameters[2][3]) + '\n')
+                    logstring.append('    result dv: ' + str(dv) + '\n')
+                    logstring.append('    result phi: ' + str(phi) + '\n')
+                    logstring.append('    result elv: ' + str(elv) + '\n')
+                    g.logfile.writelines(logstring)
 
-        dv = round(dv, 3)
-        phi = round(phi, 2)
-        elv = round(elv, 2)
+        elif g.fta_parameters[1] == 'BP':
+            # compute terminal velocity at Target
+            tepos = tpos + np.zeros(3)
+            try:
+                dv, phi, elv, bc_ivel, bc_tvel              \
+                    = g.showorbitcontrol.tbpred.ftavel(jd, tepos)
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                    'Error occured during FTA computation.\n' 
+                    + 'Try different parameters', 0, 1, 0)
+                return
             
-        mes = 'FTA Results are as follows. Apply them?\n' + \
-            'dv = ' + str(dv) + '\n' + \
-            'phi = ' + str(phi) + '\n' + \
-            'elv = ' + str(elv)
-        ans = QMessageBox.question(self, 'FTA Results', mes, 0, button1=1, 
-                                   button2=2)
-        if ans == 1:
-            self.editman['dv'] = dv
-            self.editman['phi'] = phi
-            self.editman['elv'] = elv
-            self.dispman()
-            self.showorbit()
+            # compute B-Plane Unit Vectors
+            uSvec = norm(bc_tvel - tvel)
+            ss_tpos = tpos - sunpos
+            ss_tvel = tvel - sunvel
+            hvec = np.cross(ss_tpos, ss_tvel)
+            uTvec = norm(np.cross(uSvec, hvec))
+            uRvec = norm(np.cross(uSvec, uTvec))
             
-            if g.options['log']:
-                logstring = []
-                logstring.append('apply FTA result: ' + nowtimestr() + '\n')
-                logstring.append('    target: ' + g.mytarget.name + '\n')
-                logstring.append('    time to arrival: ' + 
-                                str(g.fta_parameters[2][0]) + '\n')
-                logstring.append('    range from target center: ' + 
-                                str(g.fta_parameters[2][1]) + '\n')
-                logstring.append('    angle phi from target center: ' + 
-                                str(g.fta_parameters[2][2]) + '\n')
-                logstring.append('    angle elv from target center: ' + 
-                                str(g.fta_parameters[2][3]) + '\n')
-                logstring.append('    result dv: ' + str(dv) + '\n')
-                logstring.append('    result phi: ' + str(phi) + '\n')
-                logstring.append('    result elv: ' + str(elv) + '\n')
-                g.logfile.writelines(logstring)
-
+            # get Precise Targeting Parameters
+            sr = g.fta_parameters[2][1]
+            sbeta = g.fta_parameters[2][2]
+            rbeta = math.radians(sbeta)
+            
+            # compute delta_pos
+            delta_pos = sr * (np.cos(rbeta) * uTvec + np.sin(rbeta) * uRvec)
+            
+            # FTA computing
+            tepos = tpos + delta_pos
+            try:
+                dv, phi, elv = g.showorbitcontrol.tbpred.fta(jd, tepos)
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                    'Error occured during FTA computation.\n' 
+                    + 'Try different parameters', 0, 1, 0)
+                return
+    
+            dv = round(dv, 3)
+            phi = round(phi, 2)
+            elv = round(elv, 2)
+                
+            mes = 'FTA Results are as follows. Apply them?\n' + \
+                'dv = ' + str(dv) + '\n' + \
+                'phi = ' + str(phi) + '\n' + \
+                'elv = ' + str(elv)
+            ans = QMessageBox.question(self, 'FTA Results', mes, 0, button1=1, 
+                                       button2=2)
+            if ans == 1:
+                self.editman['dv'] = dv
+                self.editman['phi'] = phi
+                self.editman['elv'] = elv
+                self.dispman()
+                self.showorbit()
+                
+                if g.options['log']:
+                    logstring = []
+                    logstring.append('apply FTA result: ' + nowtimestr() + '\n')
+                    logstring.append('    target: ' + g.mytarget.name + '\n')
+                    logstring.append('    time to arrival: ' + 
+                                    str(g.fta_parameters[2][0]) + '\n')
+                    logstring.append('    Type of Precise Targeting: ' + 
+                                    'BP (B-plane coordinates)' + '\n')
+                    logstring.append('    range from target center: ' + 
+                                    str(g.fta_parameters[2][1]) + '\n')
+                    logstring.append('    beta from target center: ' + 
+                                    str(g.fta_parameters[2][2]) + '\n')
+                    logstring.append('    result dv: ' + str(dv) + '\n')
+                    logstring.append('    result phi: ' + str(phi) + '\n')
+                    logstring.append('    result elv: ' + str(elv) + '\n')
+                    g.logfile.writelines(logstring)
+        
     def optimize(self):
         g.mainform.init3Dfigure()
         if self.typeID == 0:
