@@ -3162,8 +3162,9 @@ class MainForm(QtGui.QMainWindow):
         ptext = 'Processing:  ' + str(g.nextman + 1) + ' ' + \
             g.maneuvers[g.nextman]['type']
 #
-        if g.myprobe.exec_man(g.maneuvers[g.nextman], pbar=self.pbar, 
-                              plabel=self.plabel, ptext=ptext):
+        success, emes = g.myprobe.exec_man(g.maneuvers[g.nextman],  
+                             pbar=self.pbar, plabel=self.plabel, ptext=ptext)
+        if success:
             self.ui.reviewthroughout.setEnabled(True)
             if g.myprobe.trj_record[-1][0]['type'] == 'FLYTO':
                 g.probe_trj.append(g.myprobe.trj_record[-1])
@@ -3185,7 +3186,8 @@ class MainForm(QtGui.QMainWindow):
                 self.ui.showOrbit.setEnabled(True)
         else:
             QMessageBox.information(self, 'Info', 
-                                "Cannot Execute the Flight Plan.", 0, 1, 0)
+                                "Cannot Execute this Maneuver.\n\n"    \
+                                + emes, 0, 1, 0)
             return False
 
         g.showorbitcontrol.reset()

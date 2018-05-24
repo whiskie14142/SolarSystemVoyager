@@ -53,11 +53,11 @@ class Probe:
 #        
     def exec_man(self, man, pbar=None, plabel=None, ptext=''):
         if man['type'] != 'START' and not self.onflight:
-            print('Your probe has not started yet.  Man. Type : ', man['type'])
-            return False
+            return False, 'Your probe has not started yet.  Man. Type : '   \
+                + man['type']
         if man['type'] == 'START' and self.onflight:
-            print('Your probe has started already.  Man. Type : ', man['type'])
-            return False
+            return False, 'Your probe has started already.  Man. Type : '   \
+                + man['type']
 
         cman = man.copy()
         cman['epon'] = False
@@ -79,7 +79,7 @@ class Probe:
             status[4:] = self.vel.copy()
             self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
-            return True
+            return True, ''
         elif man['type'] == 'CP':
             dv = man['dv']
             elv = math.radians(man['elv'])
@@ -100,7 +100,7 @@ class Probe:
             self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
             self.accumdv['CP'] += dv
-            return True
+            return True, ''
         elif man['type'] == 'EP_ON':
             dv = man['dvpd'] / common.secofday
             phi = math.radians(man['phi'])
@@ -112,7 +112,7 @@ class Probe:
             status[4:] = self.vel.copy()
             self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
-            return True
+            return True, ''
         elif man['type'] == 'EP_OFF':
             self.orbit.set_epstatus(False, 0.0, 0.0, 0.0)
             status[0] = self.jd
@@ -120,7 +120,7 @@ class Probe:
             status[4:] = self.vel.copy()
             self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
-            return True
+            return True, ''
         elif man['type'] == 'SS_ON':
             aria = man['aria']
             theta = math.radians(man['theta'])
@@ -132,7 +132,7 @@ class Probe:
             status[4:] = self.vel.copy()
             self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
-            return True
+            return True, ''
         elif man['type'] == 'SS_OFF':
             self.orbit.set_ssstatus(False, 0.0, 0.0, 0.0)
             status[0] = self.jd
@@ -140,12 +140,11 @@ class Probe:
             status[4:] = self.vel.copy()
             self.get_epssstatus(cman)
             self.trj_record.append([cman, status])
-            return True
+            return True, ''
         elif man['type'] == 'FLYTO':
             jdto = man['time']
             if jdto < self.jd:
-                print('Invalid FLYTO time : ', common.jd2datetime(jdto))
-                return False
+                return False, 'Invalid FLYTO time : ' + common.jd2isot(jdto)
             duration = jdto - self.jd
             if pbar != None:
                 pbar.setVisible(True)
@@ -160,7 +159,15 @@ class Probe:
             if pbar != None:
                 pbar.setVisible(False)
                 plabel.setText('')
-            if runerror: return False
+            if runerror: 
+                lastsuccess = 0.0
+                length = len(pt)
+                for i in range(length):
+                    if pt[i] < 1.0: break
+                    lastsuccess = pt[i]
+                lastsuccess = lastsuccess / common.secofday
+                return False, 'Numerical integration error(s) occured \nafter '\
+                    + common.jd2isot(lastsuccess)
             pt = pt / common.secofday
             self.get_epssstatus(cman)
             self.trj_record.append([cman, pt, px, py, pz, pxd, pyd, pzd, 
@@ -177,10 +184,9 @@ class Probe:
                 for i in range(1, len(pt)):
                     ssdv += (pt[i] -pt[i-1]) * ssdvpd[i]
                 self.accumdv['SS'] += ssdv
-            return True
+            return True, ''
         else:
-            print('invalid manuever type : ',man['type'])
-            return False
+            return False, 'invalid manuever type : ' + man['type']
         
     def pseudostart(self, jd, dv, phi, elv):
         elv = math.radians(elv)
