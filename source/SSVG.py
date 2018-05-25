@@ -2931,6 +2931,17 @@ class MainForm(QtGui.QMainWindow):
         manfile = open(g.manfilename, 'r')
         g.manplan = json.load(manfile)
         manfile.close()
+        
+        try:
+            g.mytarget = target.Target(**g.manplan['target'])
+        except RuntimeError as e:
+            QMessageBox.critical(self, 'File not Found', 
+                str(e) + "\n\n"
+                "Get appropriate SPK file, \n"
+                "and store it in the 'data' folder.    ",
+                0, 1, 0)
+            return
+        
         self.dispmanfilename()
         g.maneuvers = g.manplan['maneuvers']
 
@@ -2946,12 +2957,9 @@ class MainForm(QtGui.QMainWindow):
         
         erase_Ptrj()
         g.probe_trj = []
-        
         erase_TKepler()
-        g.mytarget = target.Target(**g.manplan['target'])
-        
+            
         self.enablewidgets()
-
         self.ui.probename.setText(g.manplan['probe']['name'])
         self.ui.targetname.setText(g.manplan['target']['name'])
         self.ui.spacebase.setText(g.manplan['probe']['base'])

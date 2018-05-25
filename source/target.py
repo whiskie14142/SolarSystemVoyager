@@ -40,7 +40,11 @@ class Target:
             try:
                 self.sbkernel = SPKType01.open(file)
             except FileNotFoundError:
-                self.sbkernel = SPKType01.open(common.bspdir + filename)
+                try:
+                    self.sbkernel = SPKType01.open(common.bspdir + filename)
+                except FileNotFoundError:
+                    raise RuntimeError("Target's SPK file is not found: "
+                        + filename)
             self.kernel = common.SPKkernel
             self.ephem = self.nasa_sb_ephem
         self.name = name
