@@ -123,7 +123,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Range from Target Center (km)</string>
+     <string>offset distance (km)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -283,7 +283,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Specify with B-plane coordinates (range and beta)</string>
+     <string>Specify B-plane Coordinates (offset distance and beta)</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="selOLcoord">
@@ -296,7 +296,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Specify with Orbit Local coordinates (range, phi, and elv)</string>
+     <string>Specify Orbit Local Coordinates (offset distance, phi and elv)</string>
     </property>
    </widget>
   </widget>
@@ -313,7 +313,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>B-plane coordinates</string>
+    <string>B-plane Coordinates</string>
    </property>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
@@ -325,7 +325,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Range from Target Center (km)</string>
+     <string>offset distance (km)</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="Brangeedit">
