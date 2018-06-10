@@ -371,7 +371,7 @@
      <string>Initialize execution of the flight plan</string>
     </property>
     <property name="text">
-     <string>CLEAR Ex</string>
+     <string>CLEAR EX</string>
     </property>
    </widget>
    <widget class="QPushButton" name="reviewthroughout">

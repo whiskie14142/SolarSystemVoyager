@@ -505,7 +505,7 @@ class Ui_MainWindow(object):
         self.editnext.setToolTip(_translate("MainWindow", "Edit \'Next\' maneuver", None))
         self.editnext.setText(_translate("MainWindow", "EDIT Next", None))
         self.initexec.setToolTip(_translate("MainWindow", "Initialize execution of the flight plan", None))
-        self.initexec.setText(_translate("MainWindow", "CLEAR Ex", None))
+        self.initexec.setText(_translate("MainWindow", "CLEAR EX", None))
         self.reviewthroughout.setToolTip(_translate("MainWindow", "Review throughout the flight", None))
         self.reviewthroughout.setText(_translate("MainWindow", "REVIEW Through", None))
         self.label_4.setText(_translate("MainWindow", "Current Time", None))
