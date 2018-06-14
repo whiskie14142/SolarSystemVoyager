@@ -232,7 +232,7 @@ class NewFlightPlanDialog(QtGui.QDialog):
         
         for planet_id in common.planets_id:
             if planet_id[1] == 'EMB': continue
-            if planet_id[1] == 'Sol': continue
+            if planet_id[1] == 'Sun': continue
             self.ui.planets.addItem(planet_id[1])
         self.ui.planets.setCurrentIndex(0)
         

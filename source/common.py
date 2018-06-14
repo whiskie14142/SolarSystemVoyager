@@ -38,7 +38,7 @@ planets_id = (  (1, 'Mercury'),
                 (7, 'Uranus'),
                 (8, 'Neptune'),
                 (9, 'Pluto'),
-                (10, 'Sol'),
+                (10, 'Sun'),
                 (301, 'Moon'),
                 (399, 'Earth')  )
 

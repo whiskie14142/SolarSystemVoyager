@@ -62,7 +62,7 @@ class Target:
         tpos, tvel = self.posvel(jd)
         tpos -= sunpos
         tvel -= sunvel
-        orbit = TwoBodyOrbit(self.name, 'Sol', common.solarmu)
+        orbit = TwoBodyOrbit(self.name, 'Sun', common.solarmu)
         orbit.setOrbCart(0.0, tpos, tvel)
         xs, ys, zs, ts = orbit.points(ndata)
         xs += sunpos[0]
