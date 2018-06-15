@@ -296,7 +296,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Specify Orbit Local Coordinates (offset distance, phi and elv)</string>
+     <string>Specify Orbit Local Coordinates (offset distance, phi, and elv)</string>
     </property>
    </widget>
   </widget>

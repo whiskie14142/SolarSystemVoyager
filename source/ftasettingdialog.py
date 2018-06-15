@@ -148,7 +148,7 @@ class Ui_ftasettingdialog(object):
         self.groupBox_3.setTitle(_translate("ftasettingdialog", "Precise Targeting", None))
         self.selTargetcenter.setText(_translate("ftasettingdialog", "Center of Target", None))
         self.selBplanecoord.setText(_translate("ftasettingdialog", "Specify B-plane Coordinates (offset distance and beta)", None))
-        self.selOLcoord.setText(_translate("ftasettingdialog", "Specify Orbit Local Coordinates (offset distance, phi and elv)", None))
+        self.selOLcoord.setText(_translate("ftasettingdialog", "Specify Orbit Local Coordinates (offset distance, phi, and elv)", None))
         self.Bplanecoords.setTitle(_translate("ftasettingdialog", "B-plane Coordinates", None))
         self.label_5.setText(_translate("ftasettingdialog", "offset distance (km)", None))
         self.Brangeedit.setText(_translate("ftasettingdialog", "0.0", None))
