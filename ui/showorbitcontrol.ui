@@ -252,7 +252,7 @@
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>235</x>
+     <x>237</x>
      <y>130</y>
      <width>191</width>
      <height>16</height>
@@ -267,12 +267,12 @@
     <rect>
      <x>10</x>
      <y>150</y>
-     <width>61</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>range (km)</string>
+    <string>distance (km)</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_11">
@@ -304,7 +304,7 @@
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>235</x>
+     <x>237</x>
      <y>150</y>
      <width>51</width>
      <height>16</height>
@@ -330,7 +330,7 @@
   <widget class="QLabel" name="label_16">
    <property name="geometry">
     <rect>
-     <x>235</x>
+     <x>237</x>
      <y>170</y>
      <width>51</width>
      <height>16</height>
@@ -343,7 +343,7 @@
   <widget class="QLabel" name="label_17">
    <property name="geometry">
     <rect>
-     <x>235</x>
+     <x>237</x>
      <y>190</y>
      <width>51</width>
      <height>16</height>
@@ -415,7 +415,7 @@
   <widget class="QLineEdit" name="RVTvel">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>292</x>
      <y>149</y>
      <width>141</width>
      <height>18</height>
@@ -439,7 +439,7 @@
   <widget class="QLineEdit" name="RVTphi">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>292</x>
      <y>169</y>
      <width>141</width>
      <height>18</height>
@@ -463,7 +463,7 @@
   <widget class="QLineEdit" name="RVTelv">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>292</x>
      <y>189</y>
      <width>141</width>
      <height>18</height>
@@ -755,7 +755,7 @@
   <widget class="QLineEdit" name="RPTrange">
    <property name="geometry">
     <rect>
-     <x>75</x>
+     <x>83</x>
      <y>149</y>
      <width>141</width>
      <height>18</height>
@@ -779,7 +779,7 @@
   <widget class="QLineEdit" name="RPTphi">
    <property name="geometry">
     <rect>
-     <x>75</x>
+     <x>83</x>
      <y>169</y>
      <width>141</width>
      <height>18</height>
@@ -803,7 +803,7 @@
   <widget class="QLineEdit" name="RPTelv">
    <property name="geometry">
     <rect>
-     <x>75</x>
+     <x>83</x>
      <y>189</y>
      <width>141</width>
      <height>18</height>

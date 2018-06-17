@@ -1512,11 +1512,11 @@ class EditManDialog(QtGui.QDialog):
                                     str(g.fta_parameters[2][0]) + '\n')
                     logstring.append('    Type of Precise Targeting: ' + 
                                     'OL coordinates or Center' + '\n')
-                    logstring.append('    range from target center: ' + 
+                    logstring.append('    offset distance: ' + 
                                     str(g.fta_parameters[2][1]) + '\n')
-                    logstring.append('    phi from target center: ' + 
+                    logstring.append('    phi: ' + 
                                     str(g.fta_parameters[2][2]) + '\n')
-                    logstring.append('    elv from target center: ' + 
+                    logstring.append('    elv: ' + 
                                     str(g.fta_parameters[2][3]) + '\n')
                     logstring.append('    result dv: ' + str(dv) + '\n')
                     logstring.append('    result phi: ' + str(phi) + '\n')
@@ -1586,9 +1586,9 @@ class EditManDialog(QtGui.QDialog):
                                     str(g.fta_parameters[2][0]) + '\n')
                     logstring.append('    Type of Precise Targeting: ' + 
                                     'BP (B-plane coordinates)' + '\n')
-                    logstring.append('    range from target center: ' + 
+                    logstring.append('    offset distance: ' + 
                                     str(g.fta_parameters[2][1]) + '\n')
-                    logstring.append('    beta from target center: ' + 
+                    logstring.append('    beta: ' + 
                                     str(g.fta_parameters[2][2]) + '\n')
                     logstring.append('    result dv: ' + str(dv) + '\n')
                     logstring.append('    result phi: ' + str(phi) + '\n')

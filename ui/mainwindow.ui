@@ -584,7 +584,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Range from the Sun (km)</string>
+     <string>Distance from Sun (km)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_18">
@@ -597,7 +597,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Velocity rel. to the Sun (m/s)</string>
+     <string>Velocity rel. to Sun (m/s)</string>
     </property>
    </widget>
    <widget class="QPushButton" name="flightreview">
