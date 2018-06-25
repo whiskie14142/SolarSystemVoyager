@@ -503,5 +503,5 @@ class Ui_OrbitOptimizeDialog(object):
         self.clearstat.setText(_translate("OrbitOptimizeDialog", "Clear Statistics", None))
         self.label_23.setText(_translate("OrbitOptimizeDialog", "phi (deg)", None))
         self.label_24.setText(_translate("OrbitOptimizeDialog", "elv (deg)", None))
-        self.reopenbutton.setText(_translate("OrbitOptimizeDialog", "Show Orbit", None))
+        self.reopenbutton.setText(_translate("OrbitOptimizeDialog", "SHOW Orbit", None))
 
