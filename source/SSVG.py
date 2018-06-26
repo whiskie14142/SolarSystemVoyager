@@ -120,10 +120,12 @@ def replot_planets(jd):
     id_of_target = g.mytarget.getID()
     id_of_EMB = 3
     id_of_Moon = 301
+    id_of_Sun = 10
     
     for i in range(12):
         if common.planets_id[i][0] == id_of_target: continue
         if common.planets_id[i][0] == id_of_EMB: continue
+        if common.planets_id[i][0] == id_of_Sun: continue
         pos, vel = common.SPKposvel(common.planets_id[i][0], jd)
         markx.append(pos[0])
         marky.append(pos[1])
