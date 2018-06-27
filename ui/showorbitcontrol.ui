@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>DT(days)</string>
+    <string>ET(days)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="delta_t_edit">
@@ -494,7 +494,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>Mn Parameters</string>
+    <string>M. Parameters</string>
    </property>
    <widget class="QLabel" name="man_elv">
     <property name="geometry">

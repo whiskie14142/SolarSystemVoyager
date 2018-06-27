@@ -325,7 +325,7 @@ class Ui_ShowOrbitControl(object):
 
     def retranslateUi(self, ShowOrbitControl):
         ShowOrbitControl.setWindowTitle(_translate("ShowOrbitControl", "Show Orbit", None))
-        self.label.setText(_translate("ShowOrbitControl", "DT(days)", None))
+        self.label.setText(_translate("ShowOrbitControl", "ET(days)", None))
         self.fastbackward.setToolTip(_translate("ShowOrbitControl", "Fast Backword", None))
         self.fastbackward.setText(_translate("ShowOrbitControl", "<<", None))
         self.backward.setToolTip(_translate("ShowOrbitControl", "Backward", None))
@@ -350,7 +350,7 @@ class Ui_ShowOrbitControl(object):
         self.label_17.setText(_translate("ShowOrbitControl", "elv (deg)", None))
         self.label_18.setText(_translate("ShowOrbitControl", "Line of Sight Velocity (departing)", None))
         self.label_19.setText(_translate("ShowOrbitControl", "Prediction Time Manipulator", None))
-        self.groupBox.setTitle(_translate("ShowOrbitControl", "Mn Parameters", None))
+        self.groupBox.setTitle(_translate("ShowOrbitControl", "M. Parameters", None))
         self.label_8.setText(_translate("ShowOrbitControl", "elv", None))
         self.label_6.setText(_translate("ShowOrbitControl", "dv", None))
         self.label_7.setText(_translate("ShowOrbitControl", "phi", None))

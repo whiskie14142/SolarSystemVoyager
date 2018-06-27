@@ -290,7 +290,7 @@ class Ui_FlightReviewControl(object):
 
     def retranslateUi(self, FlightReviewControl):
         FlightReviewControl.setWindowTitle(_translate("FlightReviewControl", "Flight Review", None))
-        self.label.setText(_translate("FlightReviewControl", "DT(days)", None))
+        self.label.setText(_translate("FlightReviewControl", "ET(days)", None))
         self.fastbackward.setToolTip(_translate("FlightReviewControl", "Fast Backword", None))
         self.fastbackward.setText(_translate("FlightReviewControl", "<<", None))
         self.backward.setToolTip(_translate("FlightReviewControl", "Backward", None))

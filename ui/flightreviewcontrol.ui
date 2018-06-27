@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>DT(days)</string>
+    <string>ET(days)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="delta_t_edit">

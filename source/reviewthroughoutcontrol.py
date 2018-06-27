@@ -314,7 +314,7 @@ class Ui_ReviewThroughoutControl(object):
 
     def retranslateUi(self, ReviewThroughoutControl):
         ReviewThroughoutControl.setWindowTitle(_translate("ReviewThroughoutControl", "Review Throughout", None))
-        self.label.setText(_translate("ReviewThroughoutControl", "DT(days)", None))
+        self.label.setText(_translate("ReviewThroughoutControl", "ET(days)", None))
         self.fastbackward.setToolTip(_translate("ReviewThroughoutControl", "Fast Backword", None))
         self.fastbackward.setText(_translate("ReviewThroughoutControl", "<<", None))
         self.backward.setToolTip(_translate("ReviewThroughoutControl", "Backward", None))
