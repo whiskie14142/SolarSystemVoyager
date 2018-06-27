@@ -325,7 +325,7 @@ class Ui_ShowOrbitControl(object):
 
     def retranslateUi(self, ShowOrbitControl):
         ShowOrbitControl.setWindowTitle(_translate("ShowOrbitControl", "Show Orbit", None))
-        self.label.setText(_translate("ShowOrbitControl", "ET(days)", None))
+        self.label.setText(_translate("ShowOrbitControl", "ET (days)", None))
         self.fastbackward.setToolTip(_translate("ShowOrbitControl", "Fast Backword", None))
         self.fastbackward.setText(_translate("ShowOrbitControl", "<<", None))
         self.backward.setToolTip(_translate("ShowOrbitControl", "Backward", None))
