@@ -2003,7 +2003,7 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
     def __init__(self, parent=None, editman=None):
         self.editman = editman
         super().__init__(parent)
-        self.ui.ctimeLabel.setText('Start')
+        self.ui.ctimeLabel.setText('Start Time')
         
     def redraw(self):
         self.jd = self.editman['time']
