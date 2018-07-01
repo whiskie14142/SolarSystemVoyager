@@ -41,7 +41,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Get DT of Show Orbit window</string>
+     <string>Get Elapsed Time of Show Orbit window</string>
     </property>
     <property name="checked">
      <bool>true</bool>
@@ -283,7 +283,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Specify B-plane Coordinates (offset distance and beta)</string>
+     <string>Specify B-plane Coordinates</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="selOLcoord">
@@ -296,7 +296,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Specify Orbit Local Coordinates (offset distance, phi, and elv)</string>
+     <string>Specify Orbit Local Coordinates</string>
     </property>
    </widget>
   </widget>
