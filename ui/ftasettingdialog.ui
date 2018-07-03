@@ -29,7 +29,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>Time to Arrival : </string>
+    <string>Time to Arrival</string>
    </property>
    <widget class="QRadioButton" name="fromshoworbit">
     <property name="geometry">
