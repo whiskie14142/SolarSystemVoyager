@@ -1461,8 +1461,8 @@ class EditManDialog(QtGui.QDialog):
         norm = lambda x : x / np.sqrt(np.dot(x,x))
         if g.showorbitcontrol == None:
             QMessageBox.information(self, 
-                'Info', 'To use FTA, open Show Orbit and\n' 
-                + 'specify Delta-T (DT)', 0, 1, 0)
+                'Info', 'To use FTA, open Show Orbit window and\n' 
+                + 'try again', 0, 1, 0)
             return
 
         ftadialog = FTAsettingDialog(self)
