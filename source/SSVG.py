@@ -3093,6 +3093,8 @@ class MainForm(QtGui.QMainWindow):
         manfile = open(g.manfilename, 'w')
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
+        QMessageBox.information(self, 'Info', 
+                                'Flight Plan was saved.', 0, 1, 0)
         
         if g.options['log']:
             logstring = 'save flight plan: ' + nowtimestr() + '\n'
