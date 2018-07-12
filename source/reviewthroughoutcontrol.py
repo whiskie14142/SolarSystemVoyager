@@ -336,7 +336,7 @@ class Ui_ReviewThroughoutControl(object):
         self.label_15.setText(_translate("ReviewThroughoutControl", "vel (m/s)", None))
         self.label_16.setText(_translate("ReviewThroughoutControl", "phi (deg)", None))
         self.label_17.setText(_translate("ReviewThroughoutControl", "elv (deg)", None))
-        self.label_18.setText(_translate("ReviewThroughoutControl", "Line of Sight Velocity (departing)", None))
+        self.label_18.setText(_translate("ReviewThroughoutControl", "Line of Sight Velocity", None))
         self.label_19.setText(_translate("ReviewThroughoutControl", "Review Manipulator", None))
         self.groupBox.setTitle(_translate("ReviewThroughoutControl", "Look at", None))
         self.tobarycenter.setToolTip(_translate("ReviewThroughoutControl", "Solar System Barycenter", None))

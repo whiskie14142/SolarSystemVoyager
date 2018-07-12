@@ -363,7 +363,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Line of Sight Velocity (departing)</string>
+    <string>Line of Sight Velocity</string>
    </property>
    <property name="wordWrap">
     <bool>false</bool>
