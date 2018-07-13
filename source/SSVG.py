@@ -590,6 +590,12 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.connect(self.ui.it_ff, SIGNAL('clicked()'), self.it_ff)
         self.connect(self.ui.tt_fb, SIGNAL('clicked()'), self.tt_fb)
         self.connect(self.ui.tt_ff, SIGNAL('clicked()'), self.tt_ff)
+        
+        self.connect(self.ui.it_b, SIGNAL('clicked()'), self.it_b)
+        self.connect(self.ui.it_f, SIGNAL('clicked()'), self.it_f)
+        self.connect(self.ui.tt_b, SIGNAL('clicked()'), self.tt_b)
+        self.connect(self.ui.tt_f, SIGNAL('clicked()'), self.tt_f)
+        
         self.connect(self.ui.it_wide, SIGNAL('clicked()'), self.itwnchanged)
         self.connect(self.ui.it_narrow, SIGNAL('clicked()'), self.itwnchanged)
         self.connect(self.ui.tt_wide, SIGNAL('clicked()'), self.fdchanged)
@@ -963,6 +969,34 @@ class StartOptimizeDialog(QtGui.QDialog):
                                              self.ttslchanged)
         self.ttslchanged(pos) 
         self.disptt()
+        
+    def it_b(self):
+        pos = self.ui.sl_inittime.value()
+        if pos == self.sl_minval:
+            return
+        pos -= 1
+        self.ui.sl_inittime.setValue(pos)
+        
+    def it_f(self):
+        pos = self.ui.sl_inittime.value()
+        if pos == self.sl_maxval:
+            return
+        pos += 1
+        self.ui.sl_inittime.setValue(pos)
+    
+    def tt_b(self):
+        pos = self.ui.sl_duration.value()
+        if pos == self.sl_minval:
+            return
+        pos -= 1
+        self.ui.sl_duration.setValue(pos)
+    
+    def tt_f(self):
+        pos = self.ui.sl_duration.value()
+        if pos == self.sl_maxval:
+            return
+        pos += 1
+        self.ui.sl_duration.setValue(pos)
     
     def itwnchanged(self):
         if self.ui.it_wide.isChecked():

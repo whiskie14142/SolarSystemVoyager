@@ -559,20 +559,23 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>13</y>
+      <x>270</x>
+      <y>10</y>
       <width>41</width>
-      <height>16</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
      <string>Center</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QSlider" name="sl_inittime">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>35</x>
       <y>60</y>
       <width>511</width>
       <height>22</height>
@@ -674,8 +677,8 @@
    <widget class="QPushButton" name="it_fb">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>28</y>
+      <x>165</x>
+      <y>30</y>
       <width>31</width>
       <height>23</height>
      </rect>
@@ -699,8 +702,8 @@
    <widget class="QPushButton" name="it_ff">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>28</y>
+      <x>385</x>
+      <y>30</y>
       <width>31</width>
       <height>23</height>
      </rect>
@@ -724,9 +727,9 @@
    <widget class="QRadioButton" name="it_wide">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>450</x>
       <y>20</y>
-      <width>71</width>
+      <width>61</width>
       <height>16</height>
      </rect>
     </property>
@@ -740,9 +743,9 @@
    <widget class="QRadioButton" name="it_narrow">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>450</x>
       <y>40</y>
-      <width>71</width>
+      <width>61</width>
       <height>16</height>
      </rect>
     </property>
@@ -756,9 +759,9 @@
    <widget class="QLabel" name="label_itfrom">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>17</x>
       <y>40</y>
-      <width>31</width>
+      <width>41</width>
       <height>16</height>
      </rect>
     </property>
@@ -772,9 +775,9 @@
    <widget class="QLabel" name="label_itto">
     <property name="geometry">
      <rect>
-      <x>525</x>
+      <x>519</x>
       <y>40</y>
-      <width>31</width>
+      <width>41</width>
       <height>16</height>
      </rect>
     </property>
@@ -788,7 +791,7 @@
    <widget class="QLabel" name="it_center">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>210</x>
       <y>30</y>
       <width>161</width>
       <height>21</height>
@@ -802,6 +805,56 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="it_b">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>60</y>
+      <width>21</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="it_f">
+    <property name="geometry">
+     <rect>
+      <x>552</x>
+      <y>60</y>
+      <width>21</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&gt;</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
@@ -820,7 +873,7 @@
    <widget class="QSlider" name="sl_duration">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>35</x>
       <y>60</y>
       <width>511</width>
       <height>22</height>
@@ -925,8 +978,8 @@
    <widget class="QPushButton" name="tt_fb">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>28</y>
+      <x>165</x>
+      <y>30</y>
       <width>31</width>
       <height>23</height>
      </rect>
@@ -950,9 +1003,9 @@
    <widget class="QRadioButton" name="tt_narrow">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>450</x>
       <y>40</y>
-      <width>71</width>
+      <width>61</width>
       <height>16</height>
      </rect>
     </property>
@@ -966,9 +1019,9 @@
    <widget class="QLabel" name="label_ttto">
     <property name="geometry">
      <rect>
-      <x>525</x>
+      <x>521</x>
       <y>40</y>
-      <width>31</width>
+      <width>41</width>
       <height>16</height>
      </rect>
     </property>
@@ -982,8 +1035,8 @@
    <widget class="QPushButton" name="tt_ff">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>28</y>
+      <x>385</x>
+      <y>30</y>
       <width>31</width>
       <height>23</height>
      </rect>
@@ -1007,9 +1060,9 @@
    <widget class="QRadioButton" name="tt_wide">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>450</x>
       <y>20</y>
-      <width>71</width>
+      <width>61</width>
       <height>16</height>
      </rect>
     </property>
@@ -1023,14 +1076,17 @@
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>13</y>
+      <x>270</x>
+      <y>10</y>
       <width>41</width>
-      <height>16</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
      <string>Center</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_ttfrom">
@@ -1038,7 +1094,7 @@
      <rect>
       <x>20</x>
       <y>40</y>
-      <width>31</width>
+      <width>41</width>
       <height>16</height>
      </rect>
     </property>
@@ -1052,7 +1108,7 @@
    <widget class="QLabel" name="tt_center">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>210</x>
       <y>30</y>
       <width>161</width>
       <height>21</height>
@@ -1066,6 +1122,56 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tt_b">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>60</y>
+      <width>21</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tt_f">
+    <property name="geometry">
+     <rect>
+      <x>552</x>
+      <y>60</y>
+      <width>21</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&gt;</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
