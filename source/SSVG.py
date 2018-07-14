@@ -769,22 +769,29 @@ class StartOptimizeDialog(QtGui.QDialog):
         return rval
 
     def dispit(self):
-        self.ui.it_center.setText(common.jd2isot(self.itcenter))
-        self.ui.label_itfrom.setText('{:+.0f}'.format(self.itfrom))
-        self.ui.label_itto.setText('{:+.0f}'.format(self.itto))
+        fromjd = self.sl_pos2real(self.itfrom, self.itto, self.sl_minval)  \
+            + self.itcenter
+        fromdate = common.jd2isot(fromjd).split('T')[0]
+        self.ui.label_itfrom.setText(fromdate)
+        tojd = self.sl_pos2real(self.itfrom, self.itto, self.sl_maxval)  \
+            + self.itcenter
+        todate = common.jd2isot(tojd).split('T')[0]
+        self.ui.label_itto.setText(todate)
         self.ui.initialtime.setText(common.jd2isot(self.itcurrent))
-        self.ui.itdeviation.setText('{:+.1f}'.format(self.itcurrent 
-                                                        - self.itcenter))
 
     def disptt(self):
         if self.ui.radio_fd.isChecked():
-            self.ui.tt_center.setText('{:.1f}'.format(self.ttcenter))
             self.ui.label_ttfrom.setText('{:.0f}'.format(self.ttfrom))
             self.ui.label_ttto.setText('{:.0f}'.format(self.ttto))
         else:
-            self.ui.tt_center.setText(common.jd2isot(self.ttcenter))
-            self.ui.label_ttfrom.setText('{:+.0f}'.format(self.ttfrom))
-            self.ui.label_ttto.setText('{:+.0f}'.format(self.ttto))
+            fromjd = self.sl_pos2real(self.ttfrom, self.ttto, self.sl_minval)  \
+                + self.ttcenter
+            fromdate = common.jd2isot(fromjd).split('T')[0]
+            self.ui.label_ttfrom.setText(fromdate)
+            tojd = self.sl_pos2real(self.ttfrom, self.ttto, self.sl_maxval)  \
+                + self.ttcenter
+            todate = common.jd2isot(tojd).split('T')[0]
+            self.ui.label_ttto.setText(todate)
         self.ui.duration.setText('{:.1f}'.format(self.cduration))
         self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent))
         
@@ -792,8 +799,6 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.itcurrent = self.sl_pos2real(self.itfrom, self.itto, pos)  \
             + self.itcenter
         self.ui.initialtime.setText(common.jd2isot(self.itcurrent))
-        self.ui.itdeviation.setText('{:+.1f}'.format(self.itcurrent 
-                                                        - self.itcenter))
         if self.ui.radio_fd.isChecked():
             self.ttcurrent = self.itcurrent + self.cduration
             self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent))
@@ -838,6 +843,8 @@ class StartOptimizeDialog(QtGui.QDialog):
             dev = 50.0
         
         if self.ui.radio_fd.isChecked():
+            if self.cduration < 0.0:
+                self.cduration = 0.0
             self.ttcenter = 250.0
             self.ttfrom = self.ttcenter - dev
             self.ttto = self.ttcenter + dev
