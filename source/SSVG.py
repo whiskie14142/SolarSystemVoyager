@@ -1076,7 +1076,7 @@ class StartOptimizeDialog(QtGui.QDialog):
 
     def initforCPoptimize(self):
         # Place Holder for CPoptimize
-        self.ui.box_initialfix.setVisible(False)
+        self.ui.fixed_to_ct.setVisible(False)
         self.ui.check_Ptrj.setVisible(False)
         
     def fixed_to_ct_changed(self):
@@ -1097,7 +1097,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
         self.ui.fixed_to_ct.setChecked(True)
         self.ui.box_initialtime.setEnabled(False)
         self.ui.check_orgorb.setText('Probe Original')
-        self.ui.box_initialtime.setTitle('Arrange Maneuver Time')
+        self.ui.box_initialtime.setTitle('Maneuver Time')
         self.ui.label_it.setText('Maneuver Time')
         
         self.orgorb = TwoBodyPred('orgorb')
