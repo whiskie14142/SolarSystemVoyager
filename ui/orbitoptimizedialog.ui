@@ -269,7 +269,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Probe Trajectory</string>
+     <string>Trajectory</string>
     </property>
     <property name="checked">
      <bool>false</bool>
@@ -285,7 +285,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Probe Predicted</string>
+     <string>Current</string>
     </property>
     <property name="checked">
      <bool>true</bool>

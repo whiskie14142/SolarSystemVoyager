@@ -1096,7 +1096,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
         self.setWindowTitle('CP Optimize Assistant')
         self.ui.fixed_to_ct.setChecked(True)
         self.ui.box_initialtime.setEnabled(False)
-        self.ui.check_orgorb.setText('Probe Original')
+        self.ui.check_orgorb.setText('Previous')
         self.ui.box_initialtime.setTitle('Maneuver Time')
         self.ui.label_it.setText('Maneuver Time')
         
