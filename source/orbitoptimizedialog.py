@@ -521,5 +521,5 @@ class Ui_OrbitOptimizeDialog(object):
         self.label_23.setText(_translate("OrbitOptimizeDialog", "phi (deg)", None))
         self.label_24.setText(_translate("OrbitOptimizeDialog", "elv (deg)", None))
         self.reopenbutton.setText(_translate("OrbitOptimizeDialog", "SHOW Orbit", None))
-        self.fixed_to_ct.setText(_translate("OrbitOptimizeDialog", "Fix to Current Time", None))
+        self.fixed_to_ct.setText(_translate("OrbitOptimizeDialog", "Fix to SSVG\'s Time", None))
 

@@ -1331,7 +1331,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Fix to Current Time</string>
+    <string>Fix to SSVG's Time</string>
    </property>
    <property name="checked">
     <bool>false</bool>
