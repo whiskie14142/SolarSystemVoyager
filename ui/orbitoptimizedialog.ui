@@ -638,14 +638,14 @@
     <widget class="QRadioButton" name="it_wide">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>170</x>
        <y>10</y>
-       <width>51</width>
+       <width>121</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>Wide </string>
+      <string>Wide    (500 days)</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -654,14 +654,14 @@
     <widget class="QRadioButton" name="it_narrow">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>170</x>
        <y>30</y>
-       <width>61</width>
+       <width>121</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>Narrow</string>
+      <string>Narrow (100 days)</string>
      </property>
      <property name="checked">
       <bool>false</bool>
@@ -670,7 +670,7 @@
     <widget class="QPushButton" name="it_ff">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>110</x>
        <y>17</y>
        <width>31</width>
        <height>23</height>
@@ -695,7 +695,7 @@
     <widget class="QPushButton" name="it_fb">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>40</x>
        <y>17</y>
        <width>31</width>
        <height>23</height>
@@ -720,7 +720,7 @@
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>70</x>
        <y>20</y>
        <width>41</width>
        <height>16</height>
@@ -949,14 +949,14 @@
     <widget class="QRadioButton" name="tt_wide">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>170</x>
        <y>10</y>
-       <width>61</width>
+       <width>121</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>Wide </string>
+      <string>Wide    (500 days)</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -965,14 +965,14 @@
     <widget class="QRadioButton" name="tt_narrow">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>170</x>
        <y>30</y>
-       <width>61</width>
+       <width>121</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>Narrow</string>
+      <string>Narrow (100 days)</string>
      </property>
      <property name="checked">
       <bool>false</bool>
@@ -981,7 +981,7 @@
     <widget class="QPushButton" name="tt_fb">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>40</x>
        <y>17</y>
        <width>31</width>
        <height>23</height>
@@ -1006,7 +1006,7 @@
     <widget class="QPushButton" name="tt_ff">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>110</x>
        <y>17</y>
        <width>31</width>
        <height>23</height>
@@ -1031,8 +1031,8 @@
     <widget class="QLabel" name="label_11">
      <property name="geometry">
       <rect>
-       <x>210</x>
-       <y>20</y>
+       <x>70</x>
+       <y>19</y>
        <width>41</width>
        <height>20</height>
       </rect>
