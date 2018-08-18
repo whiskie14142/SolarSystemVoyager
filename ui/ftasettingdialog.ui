@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>480</width>
-    <height>320</height>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,13 +23,13 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
+     <y>10</y>
      <width>441</width>
-     <height>111</height>
+     <height>91</height>
     </rect>
    </property>
    <property name="title">
-    <string>Time to Arrival : </string>
+    <string>Time to Arrival</string>
    </property>
    <widget class="QRadioButton" name="fromshoworbit">
     <property name="geometry">
@@ -41,7 +41,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Get Prediction Time from Show Orbit Window</string>
+     <string>Get Elapsed Time of Show Orbit window</string>
     </property>
     <property name="checked">
      <bool>true</bool>
@@ -67,7 +67,7 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>70</y>
+      <y>60</y>
       <width>113</width>
       <height>20</height>
      </rect>
@@ -88,7 +88,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>70</y>
+      <y>60</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -98,17 +98,20 @@
     </property>
    </widget>
   </widget>
-  <widget class="QGroupBox" name="groupBox_2">
+  <widget class="QGroupBox" name="OLcoords">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>150</y>
+     <y>320</y>
      <width>441</width>
-     <height>111</height>
+     <height>91</height>
     </rect>
    </property>
    <property name="title">
-    <string>Set Probe's Sights on : </string>
+    <string>Orbit Local Coordinates</string>
    </property>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
@@ -120,7 +123,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Range from Target Center (km)</string>
+     <string>offset distance (km)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -133,7 +136,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Angle phi from Target Center (deg)</string>
+     <string>phi (deg)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -146,7 +149,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Angle elv from Target Center (deg)</string>
+     <string>elv (deg)</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="rangeedit">
@@ -182,10 +185,7 @@
      </font>
     </property>
     <property name="toolTip">
-     <string>Leading position : phi=0, elv=0
-Trailing position : phi=180, elv=0
-Sunward lateral : phi=90, elv=0
-Upward : elv=90</string>
+     <string>Angle phi on Orbit Local coordinate</string>
     </property>
     <property name="text">
      <string>0.0</string>
@@ -206,10 +206,7 @@ Upward : elv=90</string>
      </font>
     </property>
     <property name="toolTip">
-     <string>Leading position : phi=0, elv=0
-Trailing position : phi=180, elv=0
-Sunward lateral : phi=90, elv=0
-Upward : elv=90</string>
+     <string>Angle elv on Orbit Local coordinate</string>
     </property>
     <property name="text">
      <string>0.0</string>
@@ -220,7 +217,7 @@ Upward : elv=90</string>
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>280</y>
+     <y>440</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -236,7 +233,7 @@ Upward : elv=90</string>
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>280</y>
+     <y>440</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -247,6 +244,142 @@ Upward : elv=90</string>
    <property name="autoDefault">
     <bool>false</bool>
    </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>120</y>
+     <width>441</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Precise Targeting</string>
+   </property>
+   <widget class="QRadioButton" name="selTargetcenter">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>391</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Center of Target</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="selBplanecoord">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>391</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Specify B-plane Coordinates</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="selOLcoord">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>391</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Specify Orbit Local Coordinates</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="Bplanecoords">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>230</y>
+     <width>441</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>B-plane Coordinates</string>
+   </property>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>offset distance (km)</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Brangeedit">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>20</y>
+      <width>91</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>0.0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>beta (deg)</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="betaedit">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>40</y>
+      <width>91</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Angle beta on B-plane</string>
+    </property>
+    <property name="text">
+     <string>0.0</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

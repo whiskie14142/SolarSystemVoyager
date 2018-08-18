@@ -15,7 +15,7 @@ class TwoBodyPred:
     """class for two body prediction
     """
     def __init__(self, pname):
-        self.orbit = TwoBodyOrbit(pname, 'Sol', common.solarmu)
+        self.orbit = TwoBodyOrbit(pname, 'Sun', common.solarmu)
         return
 
     def fix_state(self, jd, ppos, pvel):

@@ -233,7 +233,7 @@ class ProbeOrbit:
             posvel = r.integrate(self._t0 + i * inter)
             if not r.successful(): 
                 runerror = True
-                print('Unsuccessful numerical integration.')
+                break
             t[i] = r.t
             x[i] = posvel[0]
             y[i] = posvel[1]
@@ -247,20 +247,21 @@ class ProbeOrbit:
                 if i % 10 == 0:
                     percent = i * 100 // ninter
                     pbar.setValue(percent)
-        if remainder:
-            posvel = r.integrate(endsec)
-            if not r.successful(): 
-                runerror = True
-                print('Unsuccessful numerical integration.')
-            t[ndata-1] = r.t
-            x[ndata-1] = posvel[0]
-            y[ndata-1] = posvel[1]
-            z[ndata-1] = posvel[2]
-            xd[ndata-1] = posvel[3]
-            yd[ndata-1] = posvel[4]
-            zd[ndata-1] = posvel[5]
-            if self._sson:
-                ssdvpd[ndata-1] = self.compssdvpd(r.t, posvel, kernel)
+        if not runerror:
+            if remainder:
+                posvel = r.integrate(endsec)
+                if not r.successful(): 
+                    runerror = True
+                else:
+                    t[ndata-1] = r.t
+                    x[ndata-1] = posvel[0]
+                    y[ndata-1] = posvel[1]
+                    z[ndata-1] = posvel[2]
+                    xd[ndata-1] = posvel[3]
+                    yd[ndata-1] = posvel[4]
+                    zd[ndata-1] = posvel[5]
+                    if self._sson:
+                        ssdvpd[ndata-1] = self.compssdvpd(r.t, posvel, kernel)
         return t, x, y, z, xd, yd, zd, ssdvpd, runerror
     
         

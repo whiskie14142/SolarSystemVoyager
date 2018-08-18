@@ -33,6 +33,7 @@ from twobodypred import TwoBodyPred
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 class _Gdata:
     """Container of global data
@@ -119,10 +120,12 @@ def replot_planets(jd):
     id_of_target = g.mytarget.getID()
     id_of_EMB = 3
     id_of_Moon = 301
+    id_of_Sun = 10
     
     for i in range(12):
         if common.planets_id[i][0] == id_of_target: continue
         if common.planets_id[i][0] == id_of_EMB: continue
+        if common.planets_id[i][0] == id_of_Sun: continue
         pos, vel = common.SPKposvel(common.planets_id[i][0], jd)
         markx.append(pos[0])
         marky.append(pos[1])
@@ -231,7 +234,7 @@ class NewFlightPlanDialog(QtGui.QDialog):
         
         for planet_id in common.planets_id:
             if planet_id[1] == 'EMB': continue
-            if planet_id[1] == 'Sol': continue
+            if planet_id[1] == 'Sun': continue
             self.ui.planets.addItem(planet_id[1])
         self.ui.planets.setCurrentIndex(0)
         
@@ -455,6 +458,13 @@ class FTAsettingDialog(QtGui.QDialog):
                                                  self.ta_radioclicked)
         self.connect(self.ui.directinput, SIGNAL('clicked()'), 
                                                  self.ta_radioclicked)
+        self.connect(self.ui.selTargetcenter, SIGNAL('clicked()'), 
+                                                 self.pt_radioclicked)
+        self.connect(self.ui.selBplanecoord, SIGNAL('clicked()'), 
+                                                 self.pt_radioclicked)
+        self.connect(self.ui.selOLcoord, SIGNAL('clicked()'), 
+                                                 self.pt_radioclicked)
+
         self.connect(self.ui.ok_button, SIGNAL('clicked()'), self.ok_clicked)
         self.connect(self.ui.cancel_button, SIGNAL('clicked()'), self.reject)
         
@@ -467,9 +477,20 @@ class FTAsettingDialog(QtGui.QDialog):
             self.ui.timetoarrival.setEnabled(False)
         if self.ui.directinput.isChecked():
             self.ui.timetoarrival.setEnabled(True)
+
+    def pt_radioclicked(self):
+        self.ui.Bplanecoords.setEnabled(False)
+        self.ui.OLcoords.setEnabled(False)
+        if self.ui.selTargetcenter.isChecked():
+            return
+        elif self.ui.selBplanecoord.isChecked():
+            self.ui.Bplanecoords.setEnabled(True)
+            return
+        elif self.ui.selOLcoord.isChecked():
+            self.ui.OLcoords.setEnabled(True)
     
     def ok_clicked(self):
-        param = [0.0, np.zeros(3), np.zeros(4)]      # JD(days), X, Y, Z(meters), dt, R, phi, elv
+        param = [0.0, '', np.zeros(4)]      # JD(days),Type, [dt, R, phi, elv]
         try:        
             delta_jd = float(self.ui.timetoarrival.text())
         except ValueError:
@@ -483,26 +504,40 @@ class FTAsettingDialog(QtGui.QDialog):
             return
         param[0] = g.showorbitcontrol.jd + delta_jd
         
-        jd = param[0]
-        tpos, tvel = g.mytarget.posvel(jd)
-        sunpos, sunvel = common.SPKposvel(10, jd)
-
-        try:        
-            r = float(self.ui.rangeedit.text()) * 1000.0
-            phi = float(self.ui.phiedit.text())
-            elv = float(self.ui.elvedit.text())
-        except ValueError:
-            QMessageBox.information(self, 'Info', 
-                            'Parameter should be floating numbers.', 0, 1, 0)
-            return
-        vect = common.polar2rect(r, phi, elv)
+        if self.ui.selBplanecoord.isChecked():
+            try:        
+                r = float(self.ui.Brangeedit.text()) * 1000.0
+                beta = float(self.ui.betaedit.text())
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                                'Parameter should be floating numbers.', 0, 1, 0)
+                return
         
-        delta_pos = common.ldv2ecldv(vect, tpos, tvel, sunpos, sunvel)
-        param[1] = tpos + delta_pos
-        param[2][0] = delta_jd
-        param[2][1] = r
-        param[2][2] = phi
-        param[2][3] = elv
+            param[1] = 'BP'
+            param[2][0] = delta_jd
+            param[2][1] = r
+            param[2][2] = beta
+            param[2][3] = 0.0
+        
+        else:
+            if self.ui.selOLcoord.isChecked():
+                try:        
+                    r = float(self.ui.rangeedit.text()) * 1000.0
+                    phi = float(self.ui.phiedit.text())
+                    elv = float(self.ui.elvedit.text())
+                except ValueError:
+                    QMessageBox.information(self, 'Info', 
+                                    'Parameter should be floating numbers.', 0, 1, 0)
+                    return
+            else:
+                r = 0.0
+                phi = 0.0
+                elv = 0.0
+            param[1] = 'OL'
+            param[2][0] = delta_jd
+            param[2][1] = r
+            param[2][2] = phi
+            param[2][3] = elv
         
         g.fta_parameters = param
         self.accept()
@@ -555,6 +590,12 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.connect(self.ui.it_ff, SIGNAL('clicked()'), self.it_ff)
         self.connect(self.ui.tt_fb, SIGNAL('clicked()'), self.tt_fb)
         self.connect(self.ui.tt_ff, SIGNAL('clicked()'), self.tt_ff)
+        
+        self.connect(self.ui.it_b, SIGNAL('clicked()'), self.it_b)
+        self.connect(self.ui.it_f, SIGNAL('clicked()'), self.it_f)
+        self.connect(self.ui.tt_b, SIGNAL('clicked()'), self.tt_b)
+        self.connect(self.ui.tt_f, SIGNAL('clicked()'), self.tt_f)
+        
         self.connect(self.ui.it_wide, SIGNAL('clicked()'), self.itwnchanged)
         self.connect(self.ui.it_narrow, SIGNAL('clicked()'), self.itwnchanged)
         self.connect(self.ui.tt_wide, SIGNAL('clicked()'), self.fdchanged)
@@ -728,22 +769,29 @@ class StartOptimizeDialog(QtGui.QDialog):
         return rval
 
     def dispit(self):
-        self.ui.it_center.setText(common.jd2isot(self.itcenter))
-        self.ui.label_itfrom.setText('{:+.0f}'.format(self.itfrom))
-        self.ui.label_itto.setText('{:+.0f}'.format(self.itto))
+        fromjd = self.sl_pos2real(self.itfrom, self.itto, self.sl_minval)  \
+            + self.itcenter
+        fromdate = common.jd2isot(fromjd).split('T')[0]
+        self.ui.label_itfrom.setText(fromdate)
+        tojd = self.sl_pos2real(self.itfrom, self.itto, self.sl_maxval)  \
+            + self.itcenter
+        todate = common.jd2isot(tojd).split('T')[0]
+        self.ui.label_itto.setText(todate)
         self.ui.initialtime.setText(common.jd2isot(self.itcurrent))
-        self.ui.itdeviation.setText('{:+.1f}'.format(self.itcurrent 
-                                                        - self.itcenter))
 
     def disptt(self):
         if self.ui.radio_fd.isChecked():
-            self.ui.tt_center.setText('{:.1f}'.format(self.ttcenter))
             self.ui.label_ttfrom.setText('{:.0f}'.format(self.ttfrom))
             self.ui.label_ttto.setText('{:.0f}'.format(self.ttto))
         else:
-            self.ui.tt_center.setText(common.jd2isot(self.ttcenter))
-            self.ui.label_ttfrom.setText('{:+.0f}'.format(self.ttfrom))
-            self.ui.label_ttto.setText('{:+.0f}'.format(self.ttto))
+            fromjd = self.sl_pos2real(self.ttfrom, self.ttto, self.sl_minval)  \
+                + self.ttcenter
+            fromdate = common.jd2isot(fromjd).split('T')[0]
+            self.ui.label_ttfrom.setText(fromdate)
+            tojd = self.sl_pos2real(self.ttfrom, self.ttto, self.sl_maxval)  \
+                + self.ttcenter
+            todate = common.jd2isot(tojd).split('T')[0]
+            self.ui.label_ttto.setText(todate)
         self.ui.duration.setText('{:.1f}'.format(self.cduration))
         self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent))
         
@@ -751,8 +799,6 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.itcurrent = self.sl_pos2real(self.itfrom, self.itto, pos)  \
             + self.itcenter
         self.ui.initialtime.setText(common.jd2isot(self.itcurrent))
-        self.ui.itdeviation.setText('{:+.1f}'.format(self.itcurrent 
-                                                        - self.itcenter))
         if self.ui.radio_fd.isChecked():
             self.ttcurrent = self.itcurrent + self.cduration
             self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent))
@@ -797,6 +843,8 @@ class StartOptimizeDialog(QtGui.QDialog):
             dev = 50.0
         
         if self.ui.radio_fd.isChecked():
+            if self.cduration < 0.0:
+                self.cduration = 0.0
             self.ttcenter = 250.0
             self.ttfrom = self.ttcenter - dev
             self.ttto = self.ttcenter + dev
@@ -928,6 +976,34 @@ class StartOptimizeDialog(QtGui.QDialog):
                                              self.ttslchanged)
         self.ttslchanged(pos) 
         self.disptt()
+        
+    def it_b(self):
+        pos = self.ui.sl_inittime.value()
+        if pos == self.sl_minval:
+            return
+        pos -= 1
+        self.ui.sl_inittime.setValue(pos)
+        
+    def it_f(self):
+        pos = self.ui.sl_inittime.value()
+        if pos == self.sl_maxval:
+            return
+        pos += 1
+        self.ui.sl_inittime.setValue(pos)
+    
+    def tt_b(self):
+        pos = self.ui.sl_duration.value()
+        if pos == self.sl_minval:
+            return
+        pos -= 1
+        self.ui.sl_duration.setValue(pos)
+    
+    def tt_f(self):
+        pos = self.ui.sl_duration.value()
+        if pos == self.sl_maxval:
+            return
+        pos += 1
+        self.ui.sl_duration.setValue(pos)
     
     def itwnchanged(self):
         if self.ui.it_wide.isChecked():
@@ -1000,7 +1076,7 @@ class StartOptimizeDialog(QtGui.QDialog):
 
     def initforCPoptimize(self):
         # Place Holder for CPoptimize
-        self.ui.box_initialfix.setVisible(False)
+        self.ui.fixed_to_ct.setVisible(False)
         self.ui.check_Ptrj.setVisible(False)
         
     def fixed_to_ct_changed(self):
@@ -1020,9 +1096,9 @@ class CpOptimizeDialog(StartOptimizeDialog):
         self.setWindowTitle('CP Optimize Assistant')
         self.ui.fixed_to_ct.setChecked(True)
         self.ui.box_initialtime.setEnabled(False)
-        self.ui.check_orgorb.setText('Probe Original')
-        self.ui.box_initialtime.setTitle('Arrange Maneuver Time')
-        self.ui.label_it.setText('Maneuver Time:')
+        self.ui.check_orgorb.setText('Previous')
+        self.ui.box_initialtime.setTitle('Maneuver Time')
+        self.ui.label_it.setText('Maneuver Time')
         
         self.orgorb = TwoBodyPred('orgorb')
         self.orgorb.fix_state(g.myprobe.jd, g.myprobe.pos, g.myprobe.vel)
@@ -1102,14 +1178,14 @@ class EditManDialog(QtGui.QDialog):
             ]
         paramdesc = [
             'time  : Maneuver Time (JD)',
-            'dv    : Delta-V absolute value (m/s)',
-            'dvpd  : Delta-V per day for EP (m/s/day)',
-            'phi   : Angle (deg) for START, CP and EP',
-            'elv   : Angle (deg) for all prop.',
-            'aria  : Aria of Solar Sail (m**2)',
-            'theta : Angle (deg) for SS',
-            'tvmode: Thrust Vector Mode (L|E)',
-            'inter : Integration Interval (days)'
+            'dv      : magnitude of delta-V (m/s)',
+            'dvpd  : magnitude of delta-V per day (m/s/day)',
+            'phi     : angle phi (deg)',
+            'elv     : angle elv (deg)',
+            'aria    : area of solar sail (m**2)',
+            'theta : angle theta (deg)',
+            'tvmode : thrust vector mode (L|E)',
+            'inter : integration interval (days)'
             ]
         self.timedesc = ['Start Time', '', '', '', '', '', 'End Time']
         self.fmttbl = [
@@ -1138,8 +1214,8 @@ class EditManDialog(QtGui.QDialog):
         
         for item in self.types:
             self.ui.mantype.addItem(item)
-        self.ui.parameters.setColumnWidth(0,350)
-        self.ui.parameters.setColumnWidth(1,160)
+        self.ui.parameters.setColumnWidth(0,277)
+        self.ui.parameters.setColumnWidth(1,237)
         for i in range(1, 9):
             row = i - 1
             self.ui.parameters.setItem(row, 0, self.stringitems[i])
@@ -1194,7 +1270,7 @@ class EditManDialog(QtGui.QDialog):
         dt = datetime.now()
         jdtoday = julian.to_jd(dt, fmt='jd')
         jdtoday = int(jdtoday + 0.5) - 0.5
-        ival = [jdtoday, 0.0, 0.0, 0.0, 0.0, 10000.0, 45.0, 'L', 1.0]
+        ival = [jdtoday, 0.0, 0.0, 0.0, 0.0, 10000.0, 35.26, 'L', 1.0]
         if g.myprobe != None:
             if g.myprobe.onflight:
                 ival[0] = g.myprobe.jd
@@ -1423,62 +1499,145 @@ class EditManDialog(QtGui.QDialog):
         
             
     def computefta(self):
+        norm = lambda x : x / np.sqrt(np.dot(x,x))
         if g.showorbitcontrol == None:
             QMessageBox.information(self, 
-                'Info', 'To use FTA, open Show Orbit and\n' 
-                + 'specify Delta-T (DT)', 0, 1, 0)
+                'Info', 'To use FTA, open Show Orbit window and\n' 
+                + 'try again', 0, 1, 0)
             return
 
         ftadialog = FTAsettingDialog(self)
         ans = ftadialog.exec_()
         if ans == QDialog.Rejected:
             return
-        
+
         jd = g.fta_parameters[0]
-        tepos = g.fta_parameters[1]
+        tpos, tvel = g.mytarget.posvel(jd)
+        sunpos, sunvel = common.SPKposvel(10, jd)
         
-        try:
-            dv, phi, elv = g.showorbitcontrol.tbpred.fta(jd, tepos)
-        except ValueError:
-            QMessageBox.information(self, 'Info', 
-                'Error occured during FTA computation.\n' 
-                + 'Try different parameters', 0, 1, 0)
-            return
+        if g.fta_parameters[1] == 'OL':
+            sr = g.fta_parameters[2][1]
+            sphi = g.fta_parameters[2][2]
+            selv = g.fta_parameters[2][3]
+            vect = common.polar2rect(sr, sphi, selv)
+            delta_pos = common.ldv2ecldv(vect, tpos, tvel, sunpos, sunvel)
+            tepos = tpos + delta_pos
+            try:
+                dv, phi, elv = g.showorbitcontrol.tbpred.fta(jd, tepos)
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                    'Error occured during FTA computation.\n' 
+                    + 'Try different parameters', 0, 1, 0)
+                return
+    
+            dv = round(dv, 3)
+            phi = round(phi, 2)
+            elv = round(elv, 2)
+                
+            mes = 'FTA Results are as follows. Apply them?\n' + \
+                'dv = ' + str(dv) + '\n' + \
+                'phi = ' + str(phi) + '\n' + \
+                'elv = ' + str(elv)
+            ans = QMessageBox.question(self, 'FTA Results', mes, 0, button1=1, 
+                                       button2=2)
+            if ans == 1:
+                self.editman['dv'] = dv
+                self.editman['phi'] = phi
+                self.editman['elv'] = elv
+                self.dispman()
+                self.showorbit()
+                
+                if g.options['log']:
+                    logstring = []
+                    logstring.append('apply FTA result: ' + nowtimestr() + '\n')
+                    logstring.append('    target: ' + g.mytarget.name + '\n')
+                    logstring.append('    time to arrival: ' + 
+                                    str(g.fta_parameters[2][0]) + '\n')
+                    logstring.append('    Type of Precise Targeting: ' + 
+                                    'OL coordinates or Center' + '\n')
+                    logstring.append('    offset distance: ' + 
+                                    str(g.fta_parameters[2][1]) + '\n')
+                    logstring.append('    phi: ' + 
+                                    str(g.fta_parameters[2][2]) + '\n')
+                    logstring.append('    elv: ' + 
+                                    str(g.fta_parameters[2][3]) + '\n')
+                    logstring.append('    result dv: ' + str(dv) + '\n')
+                    logstring.append('    result phi: ' + str(phi) + '\n')
+                    logstring.append('    result elv: ' + str(elv) + '\n')
+                    g.logfile.writelines(logstring)
 
-        dv = round(dv, 3)
-        phi = round(phi, 2)
-        elv = round(elv, 2)
+        elif g.fta_parameters[1] == 'BP':
+            # compute terminal velocity at Target
+            tepos = tpos + np.zeros(3)
+            try:
+                dv, phi, elv, bc_ivel, bc_tvel              \
+                    = g.showorbitcontrol.tbpred.ftavel(jd, tepos)
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                    'Error occured during FTA computation.\n' 
+                    + 'Try different parameters', 0, 1, 0)
+                return
             
-        mes = 'FTA Results are as follows. Apply them?\n' + \
-            'dv = ' + str(dv) + '\n' + \
-            'phi = ' + str(phi) + '\n' + \
-            'elv = ' + str(elv)
-        ans = QMessageBox.question(self, 'FTA Results', mes, 0, button1=1, 
-                                   button2=2)
-        if ans == 1:
-            self.editman['dv'] = dv
-            self.editman['phi'] = phi
-            self.editman['elv'] = elv
-            self.dispman()
-            self.showorbit()
+            # compute B-Plane Unit Vectors
+            uSvec = norm(bc_tvel - tvel)
+            ss_tpos = tpos - sunpos
+            ss_tvel = tvel - sunvel
+            hvec = np.cross(ss_tpos, ss_tvel)
+            uTvec = norm(np.cross(uSvec, hvec))
+            uRvec = norm(np.cross(uSvec, uTvec))
             
-            if g.options['log']:
-                logstring = []
-                logstring.append('apply FTA result: ' + nowtimestr() + '\n')
-                logstring.append('    target: ' + g.mytarget.name + '\n')
-                logstring.append('    time to arrival: ' + 
-                                str(g.fta_parameters[2][0]) + '\n')
-                logstring.append('    range from target center: ' + 
-                                str(g.fta_parameters[2][1]) + '\n')
-                logstring.append('    angle phi from target center: ' + 
-                                str(g.fta_parameters[2][2]) + '\n')
-                logstring.append('    angle elv from target center: ' + 
-                                str(g.fta_parameters[2][3]) + '\n')
-                logstring.append('    result dv: ' + str(dv) + '\n')
-                logstring.append('    result phi: ' + str(phi) + '\n')
-                logstring.append('    result elv: ' + str(elv) + '\n')
-                g.logfile.writelines(logstring)
-
+            # get Precise Targeting Parameters
+            sr = g.fta_parameters[2][1]
+            sbeta = g.fta_parameters[2][2]
+            rbeta = math.radians(sbeta)
+            
+            # compute delta_pos
+            delta_pos = sr * (np.cos(rbeta) * uTvec + np.sin(rbeta) * uRvec)
+            
+            # FTA computing
+            tepos = tpos + delta_pos
+            try:
+                dv, phi, elv = g.showorbitcontrol.tbpred.fta(jd, tepos)
+            except ValueError:
+                QMessageBox.information(self, 'Info', 
+                    'Error occured during FTA computation.\n' 
+                    + 'Try different parameters', 0, 1, 0)
+                return
+    
+            dv = round(dv, 3)
+            phi = round(phi, 2)
+            elv = round(elv, 2)
+                
+            mes = 'FTA Results are as follows. Apply them?\n' + \
+                'dv = ' + str(dv) + '\n' + \
+                'phi = ' + str(phi) + '\n' + \
+                'elv = ' + str(elv)
+            ans = QMessageBox.question(self, 'FTA Results', mes, 0, button1=1, 
+                                       button2=2)
+            if ans == 1:
+                self.editman['dv'] = dv
+                self.editman['phi'] = phi
+                self.editman['elv'] = elv
+                self.dispman()
+                self.showorbit()
+                
+                if g.options['log']:
+                    logstring = []
+                    logstring.append('apply FTA result: ' + nowtimestr() + '\n')
+                    logstring.append('    target: ' + g.mytarget.name + '\n')
+                    logstring.append('    time to arrival: ' + 
+                                    str(g.fta_parameters[2][0]) + '\n')
+                    logstring.append('    Type of Precise Targeting: ' + 
+                                    'BP (B-plane coordinates)' + '\n')
+                    logstring.append('    offset distance: ' + 
+                                    str(g.fta_parameters[2][1]) + '\n')
+                    logstring.append('    beta: ' + 
+                                    str(g.fta_parameters[2][2]) + '\n')
+                    logstring.append('    result dv: ' + str(dv) + '\n')
+                    logstring.append('    result phi: ' + str(phi) + '\n')
+                    logstring.append('    result elv: ' + str(elv) + '\n')
+                    g.logfile.writelines(logstring)
+        
     def optimize(self):
         g.mainform.init3Dfigure()
         if self.typeID == 0:
@@ -1885,7 +2044,7 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
     def __init__(self, parent=None, editman=None):
         self.editman = editman
         super().__init__(parent)
-        self.ui.ctimeLabel.setText('S. Time')
+        self.ui.ctimeLabel.setText('Start Time')
         
     def redraw(self):
         self.jd = self.editman['time']
@@ -2681,7 +2840,7 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-        g.version = '1.0.0'
+        g.version = '1.1.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -2815,6 +2974,17 @@ class MainForm(QtGui.QMainWindow):
         manfile = open(g.manfilename, 'r')
         g.manplan = json.load(manfile)
         manfile.close()
+        
+        try:
+            g.mytarget = target.Target(**g.manplan['target'])
+        except RuntimeError as e:
+            QMessageBox.critical(self, 'File not Found', 
+                str(e) + "\n\n"
+                "Get appropriate SPK file, \n"
+                "and store it in the 'data' folder.    ",
+                0, 1, 0)
+            return
+        
         self.dispmanfilename()
         g.maneuvers = g.manplan['maneuvers']
 
@@ -2830,12 +3000,9 @@ class MainForm(QtGui.QMainWindow):
         
         erase_Ptrj()
         g.probe_trj = []
-        
         erase_TKepler()
-        g.mytarget = target.Target(**g.manplan['target'])
-        
+            
         self.enablewidgets()
-
         self.ui.probename.setText(g.manplan['probe']['name'])
         self.ui.targetname.setText(g.manplan['target']['name'])
         self.ui.spacebase.setText(g.manplan['probe']['base'])
@@ -2967,6 +3134,8 @@ class MainForm(QtGui.QMainWindow):
         manfile = open(g.manfilename, 'w')
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
+        QMessageBox.information(self, 'Info', 
+                                'Flight Plan was saved.', 0, 1, 0)
         
         if g.options['log']:
             logstring = 'save flight plan: ' + nowtimestr() + '\n'
@@ -3046,8 +3215,9 @@ class MainForm(QtGui.QMainWindow):
         ptext = 'Processing:  ' + str(g.nextman + 1) + ' ' + \
             g.maneuvers[g.nextman]['type']
 #
-        if g.myprobe.exec_man(g.maneuvers[g.nextman], pbar=self.pbar, 
-                              plabel=self.plabel, ptext=ptext):
+        success, emes = g.myprobe.exec_man(g.maneuvers[g.nextman],  
+                             pbar=self.pbar, plabel=self.plabel, ptext=ptext)
+        if success:
             self.ui.reviewthroughout.setEnabled(True)
             if g.myprobe.trj_record[-1][0]['type'] == 'FLYTO':
                 g.probe_trj.append(g.myprobe.trj_record[-1])
@@ -3069,7 +3239,8 @@ class MainForm(QtGui.QMainWindow):
                 self.ui.showOrbit.setEnabled(True)
         else:
             QMessageBox.information(self, 'Info', 
-                                "Cannot Executhe the Flight Plan.", 0, 1, 0)
+                                "Cannot Execute this Maneuver.\n\n"    \
+                                + emes, 0, 1, 0)
             return False
 
         g.showorbitcontrol.reset()
