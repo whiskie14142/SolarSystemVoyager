@@ -66,7 +66,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>280</x>
       <y>60</y>
       <width>113</width>
       <height>20</height>
@@ -87,7 +87,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>150</x>
       <y>60</y>
       <width>121</width>
       <height>16</height>
@@ -95,121 +95,6 @@
     </property>
     <property name="text">
      <string>Time to Arrival (days)</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="OLcoords">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>320</y>
-     <width>441</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Orbit Local Coordinates</string>
-   </property>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>offset distance (km)</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>phi (deg)</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>60</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>elv (deg)</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="rangeedit">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>20</y>
-      <width>91</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Lucida Console</family>
-     </font>
-    </property>
-    <property name="text">
-     <string>0.0</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="phiedit">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>40</y>
-      <width>91</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Lucida Console</family>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>Angle phi on Orbit Local coordinate</string>
-    </property>
-    <property name="text">
-     <string>0.0</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="elvedit">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>60</y>
-      <width>91</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Lucida Console</family>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>Angle elv on Orbit Local coordinate</string>
-    </property>
-    <property name="text">
-     <string>0.0</string>
     </property>
    </widget>
   </widget>
@@ -251,7 +136,7 @@
      <x>20</x>
      <y>120</y>
      <width>441</width>
-     <height>91</height>
+     <height>291</height>
     </rect>
    </property>
    <property name="title">
@@ -277,108 +162,223 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>40</y>
-      <width>391</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Specify B-plane Coordinates</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="selOLcoord">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
       <y>60</y>
       <width>391</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Specify Orbit Local Coordinates</string>
+     <string>B-plane Coordinates</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QGroupBox" name="Bplanecoords">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>230</y>
-     <width>441</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>B-plane Coordinates</string>
-   </property>
-   <widget class="QLabel" name="label_5">
+   <widget class="QRadioButton" name="selOLcoord">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>20</y>
-      <width>181</width>
+      <y>170</y>
+      <width>391</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>offset distance (km)</string>
+     <string>Orbit Local Coordinates</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Brangeedit">
+   <widget class="QGroupBox" name="Bplanecoords">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>20</y>
-      <width>91</width>
-      <height>19</height>
+      <x>130</x>
+      <y>80</y>
+      <width>261</width>
+      <height>61</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Lucida Console</family>
-     </font>
+    <property name="title">
+     <string/>
     </property>
-    <property name="text">
-     <string>0.0</string>
-    </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>offset distance (km)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="Brangeedit">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>10</y>
+       <width>91</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>0.0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>beta (deg)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="betaedit">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>30</y>
+       <width>91</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Angle beta on B-plane</string>
+     </property>
+     <property name="text">
+      <string>0.0</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QGroupBox" name="OLcoords">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>181</width>
-      <height>16</height>
+      <x>130</x>
+      <y>190</y>
+      <width>261</width>
+      <height>81</height>
      </rect>
     </property>
-    <property name="text">
-     <string>beta (deg)</string>
+    <property name="title">
+     <string/>
     </property>
-   </widget>
-   <widget class="QLineEdit" name="betaedit">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>40</y>
-      <width>91</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Lucida Console</family>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>Angle beta on B-plane</string>
-    </property>
-    <property name="text">
-     <string>0.0</string>
-    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>offset distance (km)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>phi (deg)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>elv (deg)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="rangeedit">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>10</y>
+       <width>91</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>0.0</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="phiedit">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>30</y>
+       <width>91</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Angle phi on Orbit Local coordinate</string>
+     </property>
+     <property name="text">
+      <string>0.0</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="elvedit">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>50</y>
+       <width>91</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Angle elv on Orbit Local coordinate</string>
+     </property>
+     <property name="text">
+      <string>0.0</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

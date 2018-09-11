@@ -2840,7 +2840,7 @@ class MainForm(QtGui.QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-        g.version = '1.1.0'
+        g.version = '1.2.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
