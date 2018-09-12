@@ -843,21 +843,19 @@ class StartOptimizeDialog(QtGui.QDialog):
             dev = 50.0
         
         if self.ui.radio_fd.isChecked():
-            if self.cduration < 0.0:
-                self.cduration = 0.0
             self.ttcenter = 250.0
             self.ttfrom = self.ttcenter - dev
             self.ttto = self.ttcenter + dev
             pos = self.sl_real2pos(self.ttfrom, self.ttto, self.cduration)
             while pos < self.sl_minval:
-                self.ttfrom -= 100.0
-                self.ttto -= 100.0
-                self.ttcenter -= 100.0
+                self.ttfrom -= dev
+                self.ttto -= dev
+                self.ttcenter -= dev
                 pos = self.sl_real2pos(self.ttfrom, self.ttto, self.cduration)
             while pos > self.sl_maxval:
-                self.ttfrom += 100.0
-                self.ttto += 100.0
-                self.ttcenter += 100.0
+                self.ttfrom += dev
+                self.ttto += dev
+                self.ttcenter += dev
                 pos = self.sl_real2pos(self.ttfrom, self.ttto, self.cduration)
             self.ui.sl_duration.setValue(pos)
             
