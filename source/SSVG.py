@@ -21,6 +21,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 import sys
+import os
 import json
 
 import common
@@ -3722,9 +3723,15 @@ class MainForm(QtGui.QMainWindow):
                 logstring.append('    target SPKID: ' +
                     str(g.manplan['target']['SPKID2B']) + '\n')
             g.logfile.writelines(logstring)
+
+def resource_path(relative):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative)
+    return os.path.join(relative)
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon(resource_path('SSVG32.ico')))
     #print(os.path.abspath(os.path.dirname(sys.argv[0])))
     g.mainform = MainForm()
     g.mainform.show()
