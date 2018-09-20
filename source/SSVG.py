@@ -3731,7 +3731,7 @@ def resource_path(relative):
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(resource_path('SSVG32.ico')))
+    app.setWindowIcon(QIcon(resource_path('SSVG.ico')))
     #print(os.path.abspath(os.path.dirname(sys.argv[0])))
     g.mainform = MainForm()
     g.mainform.show()

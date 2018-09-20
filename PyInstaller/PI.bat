@@ -1,0 +1,1 @@
+pyinstaller --clean SSVG.spec
