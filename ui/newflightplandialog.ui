@@ -97,6 +97,11 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="currentIndex">
      <number>-1</number>
     </property>
@@ -176,6 +181,11 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lucida Console</family>
+     </font>
+    </property>
     <property name="currentIndex">
      <number>-1</number>
     </property>
@@ -198,31 +208,13 @@
     <property name="flat">
      <bool>false</bool>
     </property>
-    <widget class="QLineEdit" name="spkid_edit">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>80</y>
-       <width>113</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Lucida Console</family>
-      </font>
-     </property>
-     <property name="text">
-      <string>2000001</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>50</y>
+       <y>20</y>
        <width>41</width>
-       <height>16</height>
+       <height>21</height>
       </rect>
      </property>
      <property name="text">
@@ -232,14 +224,14 @@
     <widget class="QPushButton" name="spkfileselect">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>48</y>
-       <width>21</width>
+       <x>270</x>
+       <y>20</y>
+       <width>41</width>
        <height>23</height>
       </rect>
      </property>
      <property name="text">
-      <string>...</string>
+      <string>Find</string>
      </property>
      <property name="autoDefault">
       <bool>false</bool>
@@ -249,8 +241,8 @@
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>20</y>
-       <width>113</width>
+       <y>80</y>
+       <width>121</width>
        <height>20</height>
       </rect>
      </property>
@@ -260,16 +252,16 @@
       </font>
      </property>
      <property name="text">
-      <string>Ceres</string>
+      <string/>
      </property>
     </widget>
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>80</y>
+       <y>50</y>
        <width>41</width>
-       <height>16</height>
+       <height>21</height>
       </rect>
      </property>
      <property name="text">
@@ -280,8 +272,8 @@
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>50</y>
-       <width>221</width>
+       <y>20</y>
+       <width>201</width>
        <height>20</height>
       </rect>
      </property>
@@ -290,18 +282,66 @@
        <family>Lucida Console</family>
       </font>
      </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
-       <width>51</width>
-       <height>16</height>
+       <y>80</y>
+       <width>41</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="text">
       <string>Name</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="spkid_list">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lucida Console</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>50</y>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>(Select one)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>80</y>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>(Enter the name)</string>
      </property>
     </widget>
    </widget>

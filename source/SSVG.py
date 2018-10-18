@@ -30,6 +30,7 @@ from datetime import datetime
 import probe
 import target
 from twobodypred import TwoBodyPred
+from spktype21 import SPKType21
 
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
@@ -258,9 +259,63 @@ class NewFlightPlanDialog(QtGui.QDialog):
             
     def spkfileselectclicked(self):
         ans = QFileDialog.getOpenFileName(parent=self,
-            caption='Select SPK file', directory=g.currentdir)
+            caption='Select SPK file', directory=os.path.join(common.bspdir))
         if ans == '': return
-        self.ui.spkfilepath.setText(ans)
+        filename = os.path.basename(ans)
+        filepath = os.path.join(common.bspdir, filename)
+        try:
+            tempk = SPKType21.open(filepath)
+        except FileNotFoundError:
+            QMessageBox.critical(self, 'Error', 
+                'SPK file must be stored in "data" folder', 0, 1, 0)
+            return
+        self.ui.spkfilepath.setText(filename)
+        
+        # Check center of coordinates. it should be 0
+        center0 = tempk.segments[0].center
+        if center0 != 0:
+            mes = 'Invalid SPK file: center is {0}'.format(center0)
+            QMessageBox.critical(self, 'Invalid SPK file',
+                mes, 0, 1, 0)
+            tempk.close()
+            return
+        self.center = center0
+
+        # Check data_type. it should be 1 or 21, and all segments has same type
+        datatype0 = tempk.segments[0].data_type
+        if datatype0 != 1 and datatype0  != 21:
+            mes = 'Invalid SPK file: data_type is {0}'.format(datatype0)
+            QMessageBox.critical(self, 'Invalid SPK file',
+                mes, 0, 1, 0)
+            tempk.close()
+            return
+
+        for seg in tempk.segments:
+            if datatype0 != seg.data_type:
+                QMessageBox.critical(self, 'Invalid SPK file',
+                    'Invalid SPK file: more than one data type', 0, 1, 0)
+                tempk.close()
+                return
+        self.data_type = datatype0
+        # Prepare the combo-box of SPKID
+        # idlist is a list of [SPKID]
+        idlist = [tempk.segments[0].target]
+        for seg in tempk.segments:
+            found = False
+            for i in range(len(idlist)):
+                if idlist[i] == seg.target:
+                    found = True
+                    break
+            if not found:
+                idlist.append(seg.target)
+        idlist.sort()
+        combo = self.ui.spkid_list
+        combo.clear()
+        for spkid in idlist:
+            combo.addItem(str(spkid))
+        combo.setCurrentIndex(0)
+        
+        tempk.close()
 
     def ok_clicked(self):
         newplan = {}
@@ -285,6 +340,7 @@ class NewFlightPlanDialog(QtGui.QDialog):
             target['name'] = self.ui.planets.currentText()
             target['file'] = ''
             target['SPKID1A'] = 0
+            target['data_type'] = 0
             for planet in common.planets_id:
                 if planet[1] != target['name']: continue
                 if planet[1] == 'Moon' or planet[1] == 'Earth':
@@ -304,27 +360,18 @@ class NewFlightPlanDialog(QtGui.QDialog):
             target['file'] = self.ui.spkfilepath.text()
             if target['file'].strip() == '':
                 QMessageBox.information(self, 'Info', 
-                                    'Specify SPK file of the target.', 0, 1, 0)
+                    'Click Find button and pecify SPK file of the target', 
+                    0, 1, 0)
                 return
 #
 #       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
 #       for small bodies
 #
-            target['SPKID1A'] = 0
+            target['SPKID1A'] = self.center
             target['SPKID2A'] = 0
             target['SPKID2B'] = 0
-            try:
-                spkid = int(self.ui.spkid_edit.text())
-            except ValueError:
-                QMessageBox.information(self, 'Info', 
-                                    'SPKID should be an Integer.', 0, 1, 0)
-                return
-            if spkid <= 10000:
-                QMessageBox.information(self, 'Info', 
-                                    'Invalid SPKID.', 0, 1, 0)
-                return
-            target['SPKID1B'] = spkid
-                
+            target['SPKID1B'] = int(self.ui.spkid_list.currentText())
+            target['data_type'] = self.data_type
             
         newplan['probe'] = probe
         newplan['target'] = target
@@ -355,11 +402,16 @@ class EditProbeDialog(NewFlightPlanDialog):
             self.ui.targetgroupbox.setEnabled(True)
             self.ui.targetname.setText(target['name'])
             self.ui.spkfilepath.setText(target['file'])
-            self.ui.spkid_edit.setText(str(target['SPKID1B']))
+            combo = self.ui.spkid_list
+            combo.clear()
+            combo.addItem(str(target['SPKID1B']))
+            combo.setCurrentIndex(0)
         else:
             index = self.ui.planets.findText(target['name'])
             self.ui.planets.setCurrentIndex(index)
         
+        self.center = target['SPKID1A']
+        self.data_type = target['data_type']
         self.initdialog()
         
     def initdialog(self):
@@ -399,6 +451,7 @@ class EditTargetDialog(EditProbeDialog):
             target['name'] = self.ui.planets.currentText()
             target['file'] = ''
             target['SPKID1A'] = 0
+            target['data_type'] = 0
             for planet in common.planets_id:
                 if planet[1] != target['name']: continue
                 if planet[1] == 'Moon' or planet[1] == 'Earth':
@@ -418,26 +471,18 @@ class EditTargetDialog(EditProbeDialog):
             target['file'] = self.ui.spkfilepath.text()
             if target['file'].strip() == '':
                 QMessageBox.information(self, 'Info', 
-                                    'Specify SPK file of the target.', 0, 1, 0)
+                    'Click Find button and pecify SPK file of the target', 
+                    0, 1, 0)
                 return
 #
 #       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
 #       for small bodies
 #
-            target['SPKID1A'] = 0
+            target['SPKID1A'] = self.center
             target['SPKID2A'] = 0
             target['SPKID2B'] = 0
-            try:
-                spkid = int(self.ui.spkid_edit.text())
-            except ValueError:
-                QMessageBox.information(self, 'Info', 
-                                    'SPKID should be an Integer.', 0, 1, 0)
-                return
-            if spkid <= 10000:
-                QMessageBox.information(self, 'Info', 
-                                    'Invalid SPKID.', 0, 1, 0)
-                return
-            target['SPKID1B'] = spkid
+            target['SPKID1B'] = int(self.ui.spkid_list.currentText())
+            target['data_type'] = self.data_type
             
         self.manplan['target'] = target
         self.accept()
@@ -2843,7 +2888,7 @@ class MainForm(QtGui.QMainWindow):
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
-        g.currentdir = ''
+        g.currentdir = os.path.join('')
         g.manfilename = None
         g.manplan = None
         g.maneuvers = None
@@ -2879,7 +2924,7 @@ class MainForm(QtGui.QMainWindow):
         g.finish_exec = 2
         
         if g.options['log']:
-            fpath = common.logdir + 'SSVGLOG_' + nowtimestrf() + '.log'
+            fpath = os.path.join(common.logdir, 'SSVGLOG_' + nowtimestrf() + '.log')
             g.logfile = open(fpath, 'w', encoding='utf-8')
             logstring = 'start ssvg ' + g.version + ': ' + nowtimestr() + '\n'
             g.logfile.write(logstring)
@@ -2951,9 +2996,8 @@ class MainForm(QtGui.QMainWindow):
             directory=g.currentdir, filter='JSON files (*.json)')
         if ans == '': return
 
-        dirs = ans.split('/')
-        g.currentdir = '/'.join(dirs[0:-1])
-
+        g.currentdir = os.path.split(ans)[0]
+        
         if g.showorbitcontrol != None:
             g.showorbitcontrol.close()
         if g.flightreviewcontrol != None:
@@ -2974,15 +3018,25 @@ class MainForm(QtGui.QMainWindow):
         g.manplan = json.load(manfile)
         manfile.close()
         
-        try:
-            g.mytarget = target.Target(**g.manplan['target'])
-        except RuntimeError as e:
-            QMessageBox.critical(self, 'File not Found', 
-                str(e) + "\n\n"
-                "Get appropriate SPK file, \n"
-                "and store it in the 'data' folder.    ",
-                0, 1, 0)
-            return
+        # Check SPK file, and set data_type
+        temppath = g.manplan['target']['file']
+        if temppath != '':
+            try:
+                tempk = SPKType21.open(temppath)
+            except FileNotFoundError:
+                try:
+                    tempk = SPKType21.open(os.path.join(common.bspdir, temppath))
+                except FileNotFoundError:
+                    fname = os.path.basename(temppath)
+                    QMessageBox.critical(self, 'File not Found',
+                        'SPK file {0} not found. Store it in "data" folder'.format(fname),
+                        0, 1, 0)
+                    return
+            g.manplan['target']['data_type'] = tempk.segments[0].data_type
+        else:
+            g.manplan['target']['data_type'] = 0
+        
+        g.mytarget = target.Target(**g.manplan['target'])
         
         self.dispmanfilename()
         g.maneuvers = g.manplan['maneuvers']
@@ -3151,8 +3205,7 @@ class MainForm(QtGui.QMainWindow):
             'Define output maneuver file', dr, 'JSON files (*.json)')
         if ans == '': return
 
-        dirs = ans.split('/')
-        g.currentdir = '/'.join(dirs[0:-1])
+        g.currentdir = os.path.split(ans)[0]
         
         g.manfilename = ans
         manfile = open(g.manfilename, 'w')
@@ -3412,9 +3465,7 @@ class MainForm(QtGui.QMainWindow):
         if g.manfilename == None:
             filename = ''
         else:
-            drs = g.manfilename.split('/')
-            drs = drs[-1].split('.')
-            filename = '.'.join(drs[0:-1])
+            filename = os.path.basename(g.manfilename)
         self.ui.manfilename.setText(filename)
 
     def showflightreview(self):

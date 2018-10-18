@@ -7,6 +7,7 @@ target module for SSVG
 import common
 from pytwobodyorbit import TwoBodyOrbit
 from spktype01 import SPKType01
+from spktype21 import SPKType21
 
 
 class Target:
@@ -22,36 +23,56 @@ class Target:
         vel = common.eqn2ecl(vel) / common.secofday * 1000.0
         return pos, vel
 
-    def nasa_sb_ephem(self, jd):
-#       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
-#       for small bodies
-#
+    def nasa_sb_type01(self, jd):
         pos, vel = self.sbkernel.compute_type01(self.idx1a, self.idx1b, jd)
         pos = common.eqn2ecl(pos) * 1000.0
         vel = common.eqn2ecl(vel) * 1000.0
         return pos, vel
+
+    def nasa_sb_type21(self, jd):
+        pos, vel = self.sbkernel.compute_type21(self.idx1a, self.idx1b, jd)
+        pos = common.eqn2ecl(pos) * 1000.0
+        vel = common.eqn2ecl(vel) * 1000.0
+        return pos, vel
+
         
-    def __init__(self, name='Mars', file='', SPKID1A=0, SPKID1B=4, SPKID2A=0, SPKID2B=0):
+    def __init__(self, name='Mars', file='', SPKID1A=0, SPKID1B=4, SPKID2A=0, 
+                 SPKID2B=0, data_type=21):
         if file == '':
             self.kernel = common.SPKkernel
             self.ephem = self.de430_ephem
         else:
-            filename = file.split('/')[-1]
-            try:
-                self.sbkernel = SPKType01.open(file)
-            except FileNotFoundError:
+            filename = os.path.basename(file)
+            if data_type == 1:
                 try:
-                    self.sbkernel = SPKType01.open(common.bspdir + filename)
+                    self.sbkernel = SPKType01.open(file)
                 except FileNotFoundError:
-                    raise RuntimeError("Target's SPK file is not found: "
-                        + filename)
-            self.kernel = common.SPKkernel
-            self.ephem = self.nasa_sb_ephem
+                    try:
+                        self.sbkernel = SPKType01.open(
+                            os.path.join(common.bspdir, filename))
+                    except FileNotFoundError:
+                        raise RuntimeError("Target's SPK file is not found: "
+                            + filename)
+                self.ephem = self.nasa_sb_type01
+            elif data_type == 21:
+                try:
+                    self.sbkernel = SPKType21.open(file)
+                except FileNotFoundError:
+                    try:
+                        self.sbkernel = SPKType21.open(
+                            os.path.join(common.bspdir, filename))
+                    except FileNotFoundError:
+                        raise RuntimeError("Target's SPK file is not found: "
+                            + filename)
+                self.ephem = self.nasa_sb_type21
+            else:
+                raise RuntimeError("Illegal data_type: " + str(data_type))
         self.name = name
         self.idx1a = SPKID1A
         self.idx1b = SPKID1B
         self.idx2a = SPKID2A
         self.idx2b = SPKID2B
+        self.data_type = data_type
         return
     
     def posvel(self, jd):
