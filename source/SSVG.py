@@ -412,9 +412,7 @@ class EditProbeDialog(NewFlightPlanDialog):
         
         self.center = target['SPKID1A']
         self.data_type = target['data_type']
-        self.initdialog()
-        
-    def initdialog(self):
+
         self.setWindowTitle('Edit Probe Properties')
         self.ui.target_box.setEnabled(False)
         
@@ -438,10 +436,65 @@ class EditProbeDialog(NewFlightPlanDialog):
         self.accept()
     
         
-class EditTargetDialog(EditProbeDialog):
+class EditTargetDialog(NewFlightPlanDialog):
     """class for the dialog to edit target information of the flight plan
     """
-    def initdialog(self):
+    def __init__(self, parent=None, manplan=None):
+        super().__init__(parent)
+        self.manplan = manplan
+        probe = self.manplan['probe']
+        target = self.manplan['target']
+        self.ui.probename.setText(probe['name'])
+        self.ui.probemass.setText('{:.3f}'.format(probe['pmass']))
+        index = self.ui.spacebase.findText(probe['base'])
+        self.ui.spacebase.setCurrentIndex(index)
+        
+        if target['file'] != '':
+            self.ui.planetbutton.setChecked(False)
+            self.ui.smallbodybutton.setChecked(True)
+            self.ui.planets.setEnabled(False)
+            self.ui.targetgroupbox.setEnabled(True)
+            self.ui.targetname.setText(target['name'])
+            self.ui.spkfilepath.setText(target['file'])
+
+            temppath = target['file']
+            if temppath != '':
+                try:
+                    tempk = SPKType21.open(temppath)
+                except FileNotFoundError:
+                    try:
+                        fname = os.path.basename(temppath)
+                        tempk = SPKType21.open(os.path.join(common.bspdir, fname))
+                    except FileNotFoundError:
+                        QMessageBox.critical(self, 'File not Found',
+                            "Target's SPK file {0} is not found.  Store it in 'data' folder".format(fname),
+                            0, 1, 0)
+                        return
+
+                idlist = [tempk.segments[0].target]
+                for seg in tempk.segments:
+                    found = False
+                    for i in range(len(idlist)):
+                        if idlist[i] == seg.target:
+                            found = True
+                            break
+                    if not found:
+                        idlist.append(seg.target)
+                idlist.sort()
+                combo = self.ui.spkid_list
+                combo.clear()
+                for spkid in idlist:
+                    combo.addItem(str(spkid))
+                index = combo.findText(str(target['SPKID1B']))
+                combo.setCurrentIndex(index)
+                tempk.close()
+        else:
+            index = self.ui.planets.findText(target['name'])
+            self.ui.planets.setCurrentIndex(index)
+        
+        self.center = target['SPKID1A']
+        self.data_type = target['data_type']
+
         self.setWindowTitle('Select New Target')
         self.ui.probe_box.setEnabled(False)
         
@@ -3018,24 +3071,28 @@ class MainForm(QtGui.QMainWindow):
         g.manplan = json.load(manfile)
         manfile.close()
         
-        # Check SPK file, and set data_type
-        temppath = g.manplan['target']['file']
-        if temppath != '':
-            try:
-                tempk = SPKType21.open(temppath)
-            except FileNotFoundError:
+        # for old manplan data, check SPK file, and set data_type
+        if not ('data_type' in g.manplan['target']):
+            temppath = g.manplan['target']['file']
+            if temppath != '':
                 try:
-                    tempk = SPKType21.open(os.path.join(common.bspdir, temppath))
+                    tempk = SPKType21.open(temppath)
                 except FileNotFoundError:
-                    fname = os.path.basename(temppath)
-                    QMessageBox.critical(self, 'File not Found',
-                        'SPK file {0} not found. Store it in "data" folder'.format(fname),
-                        0, 1, 0)
-                    return
-            g.manplan['target']['data_type'] = tempk.segments[0].data_type
-        else:
-            g.manplan['target']['data_type'] = 0
+                    try:
+                        fname = os.path.basename(temppath)
+                        tempk = SPKType21.open(os.path.join(common.bspdir, fname))
+                    except FileNotFoundError:
+                        QMessageBox.critical(self, 'File not Found',
+                            "Target's SPK file {0} is not found.  Store it in 'data' folder".format(fname),
+                            0, 1, 0)
+                        return
+                g.manplan['target']['data_type'] = tempk.segments[0].data_type
+                tempk.close()
+            else:
+                g.manplan['target']['data_type'] = 0
         
+        if g.mytarget != None:
+            g.mytarget.closesbkernel()
         g.mytarget = target.Target(**g.manplan['target'])
         
         self.dispmanfilename()
@@ -3119,6 +3176,9 @@ class MainForm(QtGui.QMainWindow):
         g.probe_trj = []
         
         erase_TKepler()
+        
+        if g.mytarget != None:
+            g.mytarget.closesbkernel()
         g.mytarget = target.Target(**g.manplan['target'])
         
         self.enablewidgets()
@@ -3750,6 +3810,7 @@ class MainForm(QtGui.QMainWindow):
         g.manplan_saved = False
         g.manplan['target'] = manplan['target']
         erase_TKepler()
+        g.mytarget.closesbkernel()
         g.mytarget = target.Target(**g.manplan['target'])
         
         self.enablewidgets()

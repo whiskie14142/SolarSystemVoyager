@@ -7,6 +7,7 @@ common module for SSVG
 import numpy as np
 import math
 import sys
+import os
 
 solarmu = 1.32712440041e20      # solar gravitational constant
 solark1 = 3.85e26               # total solar flux
@@ -76,7 +77,7 @@ logdir = './log/'
 # SPK kernel
 from jplephem.spk import SPK
 try:
-    SPKkernel = SPK.open( bspdir + 'de430.bsp')
+    SPKkernel = SPK.open(os.path.join(bspdir, 'de430.bsp'))
 except FileNotFoundError:
     print("\n  Cannot open the SPK file 'de430.bsp'")
     print("  Please consult 'Install SSVG' section of the Users Guide")

@@ -4,6 +4,7 @@ target module for SSVG
 (c) 2016-2017 Shushi Uetsuki (whiskie14142)
 """
 
+import os
 import common
 from pytwobodyorbit import TwoBodyOrbit
 from spktype01 import SPKType01
@@ -37,12 +38,14 @@ class Target:
 
         
     def __init__(self, name='Mars', file='', SPKID1A=0, SPKID1B=4, SPKID2A=0, 
-                 SPKID2B=0, data_type=21):
+                 SPKID2B=0, data_type=0):
+        self.sbkernel = None
         if file == '':
             self.kernel = common.SPKkernel
             self.ephem = self.de430_ephem
         else:
             filename = os.path.basename(file)
+            mes = "Target's SPK file {0} is not found.  Store it in 'data' folder".format(filename)
             if data_type == 1:
                 try:
                     self.sbkernel = SPKType01.open(file)
@@ -51,8 +54,7 @@ class Target:
                         self.sbkernel = SPKType01.open(
                             os.path.join(common.bspdir, filename))
                     except FileNotFoundError:
-                        raise RuntimeError("Target's SPK file is not found: "
-                            + filename)
+                        raise RuntimeError(mes)
                 self.ephem = self.nasa_sb_type01
             elif data_type == 21:
                 try:
@@ -62,8 +64,7 @@ class Target:
                         self.sbkernel = SPKType21.open(
                             os.path.join(common.bspdir, filename))
                     except FileNotFoundError:
-                        raise RuntimeError("Target's SPK file is not found: "
-                            + filename)
+                        raise RuntimeError(mes)
                 self.ephem = self.nasa_sb_type21
             else:
                 raise RuntimeError("Illegal data_type: " + str(data_type))
@@ -99,5 +100,7 @@ class Target:
             return self.idx2b
         
         
-    
+    def closesbkernel(self):
+        if self.sbkernel != None:
+            self.sbkernel.close()
         
