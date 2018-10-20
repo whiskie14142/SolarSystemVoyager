@@ -3841,10 +3841,13 @@ def resource_path(relative):
         return os.path.join(sys._MEIPASS, relative)
     return os.path.join(relative)
     
-if __name__ == '__main__':
+def main():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(resource_path('SSVG.ico')))
     #print(os.path.abspath(os.path.dirname(sys.argv[0])))
     g.mainform = MainForm()
     g.mainform.show()
     sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    main()
