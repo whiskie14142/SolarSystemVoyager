@@ -259,7 +259,8 @@ class NewFlightPlanDialog(QtGui.QDialog):
             
     def spkfileselectclicked(self):
         ans = QFileDialog.getOpenFileName(parent=self,
-            caption='Select SPK file', directory=os.path.join(common.bspdir))
+            caption='Select SPK file', directory=os.path.join(common.bspdir),
+            filter='SPK Files (*.bsp);;All Files (*.*)')
         if ans == '': return
         filename = os.path.basename(ans)
         filepath = os.path.join(common.bspdir, filename)
@@ -326,11 +327,11 @@ class NewFlightPlanDialog(QtGui.QDialog):
         try:
             mass = float(self.ui.probemass.text())
         except ValueError:
-            QMessageBox.information(self, 'Info', 
+            QMessageBox.critical(self, 'Error', 
                             'Probe mass should be a float number.', 0, 1, 0)
             return
         if mass <= 0.0:
-            QMessageBox.information(self, 'Info', 'Invalid Probe mass.', 
+            QMessageBox.critical(self, 'Error', 'Invalid Probe mass.', 
                                     0, 1, 0)
             return
         probe['pmass'] = mass
@@ -354,13 +355,13 @@ class NewFlightPlanDialog(QtGui.QDialog):
         if self.ui.smallbodybutton.isChecked():
             target['name'] = self.ui.targetname.text()
             if target['name'].strip() == '':
-                QMessageBox.information(self, 'Info', 
-                                    'Specify target name.', 0, 1, 0)
+                QMessageBox.critical(self, 'Error', 
+                                    'Enter Target name.', 0, 1, 0)
                 return
             target['file'] = self.ui.spkfilepath.text()
             if target['file'].strip() == '':
-                QMessageBox.information(self, 'Info', 
-                    'Click Find button and pecify SPK file of the target', 
+                QMessageBox.critical(self, 'Error', 
+                    'Click Find button and pecify SPK file of the Target', 
                     0, 1, 0)
                 return
 #
@@ -423,11 +424,11 @@ class EditProbeDialog(NewFlightPlanDialog):
         try:
             mass = float(self.ui.probemass.text())
         except ValueError:
-            QMessageBox.information(self, 'Info', 
+            QMessageBox.critical(self, 'Error', 
                             'Probe mass should be a float number.', 0, 1, 0)
             return
         if mass <= 0.0:
-            QMessageBox.information(self, 'Info', 'Invalid Probe mass.', 
+            QMessageBox.critical(self, 'Error', 'Invalid Probe mass.', 
                                     0, 1, 0)
             return
         probe['pmass'] = mass
@@ -518,13 +519,13 @@ class EditTargetDialog(NewFlightPlanDialog):
         if self.ui.smallbodybutton.isChecked():
             target['name'] = self.ui.targetname.text()
             if target['name'].strip() == '':
-                QMessageBox.information(self, 'Info', 
-                                    'Specify target name.', 0, 1, 0)
+                QMessageBox.critical(self, 'Error', 
+                                    'Enter Target name.', 0, 1, 0)
                 return
             target['file'] = self.ui.spkfilepath.text()
             if target['file'].strip() == '':
-                QMessageBox.information(self, 'Info', 
-                    'Click Find button and pecify SPK file of the target', 
+                QMessageBox.critical(self, 'Error', 
+                    'Click Find button and pecify SPK file of the Target', 
                     0, 1, 0)
                 return
 #
@@ -593,11 +594,11 @@ class FTAsettingDialog(QtGui.QDialog):
         try:        
             delta_jd = float(self.ui.timetoarrival.text())
         except ValueError:
-            QMessageBox.information(self, 'Info', 
+            QMessageBox.critical(self, 'Error', 
                 'Enter a floating point number for Time to Arrival.', 0, 1, 0)
             return
         if delta_jd < 1.0:
-            QMessageBox.information(self, 'Info', 
+            QMessageBox.critical(self, 'Error', 
                 'To use FTA, Time to Arrival shall be\n' \
                 + 'greater than 1.0 day', 0, 1, 0)
             return
@@ -608,7 +609,7 @@ class FTAsettingDialog(QtGui.QDialog):
                 r = float(self.ui.Brangeedit.text()) * 1000.0
                 beta = float(self.ui.betaedit.text())
             except ValueError:
-                QMessageBox.information(self, 'Info', 
+                QMessageBox.critical(self, 'Error', 
                                 'Parameter should be floating numbers.', 0, 1, 0)
                 return
         
@@ -625,7 +626,7 @@ class FTAsettingDialog(QtGui.QDialog):
                     phi = float(self.ui.phiedit.text())
                     elv = float(self.ui.elvedit.text())
                 except ValueError:
-                    QMessageBox.information(self, 'Info', 
+                    QMessageBox.critical(self, 'Error', 
                                     'Parameter should be floating numbers.', 0, 1, 0)
                     return
             else:
@@ -1299,12 +1300,11 @@ class EditManDialog(QtGui.QDialog):
         self.stringitems = []
         
         self.mes1 = 'You requested to apply parameters optimized for the time\n'
-        self.mes2 = '  to the editing maneuver.\n\n' \
-            'Applied maneuver should be executed at that time.  ' \
-            'You need to adjust preceding maneuver(s) before execution of '   \
-            'this maneuver.\n\n' \
-            'The time for which parameters are optimized has been copied ' \
-            'to the system clipboard.'
+        self.mes2 = '  to the editing Maneuver.\n\n' \
+            'Applied Maneuver should be executed at that time.  ' \
+            'You need to adjust preceding Maneuver(s) before execution of '   \
+            'this Maneuver.\n\n' \
+            'The time has been copied to system clipboard.'
         
         for item in paramdesc:
             self.stringitems.append(QTableWidgetItem(item))
@@ -1455,7 +1455,7 @@ class EditManDialog(QtGui.QDialog):
         except ValueError:
             self.ui.isotedit.setText(common.jd2isot(
                 float(self.ui.jdedit.text())))
-            QMessageBox.information(self, 'Time Error', 'Invalid ISOT', 
+            QMessageBox.critical(self, 'Error', 'Invalid ISOT', 
                                     0, 1, 0)
             return
         self.ui.jdedit.setText('{:.8f}'.format(jd))
@@ -1469,7 +1469,7 @@ class EditManDialog(QtGui.QDialog):
         except ValueError:
             self.ui.jdedit.setText('{:.8f}'.format(
                 common.isot2jd(self.ui.isotedit.text())))
-            QMessageBox.information(self, 'Time Error', 'Invalid JD', 0, 1, 0)
+            QMessageBox.critical(self, 'Error', 'Invalid JD', 0, 1, 0)
             return
         self.ui.isotedit.setText(common.jd2isot(jd))
         if self.ui.duration.isEnabled():
@@ -1484,8 +1484,8 @@ class EditManDialog(QtGui.QDialog):
             if newval != 'L' and newval != 'E':
                 self.ui.parameters.item(row, colmn).setText(
                     self.fmttbl[row+1].format(prevval))
-                QMessageBox.information(self, 
-                    'Parameter Error', 'Enter L or E for tvmode', 0, 1, 0)
+                QMessageBox.critical(self, 
+                    'Error', 'Enter L or E for tvmode', 0, 1, 0)
                 return
         else:
             try:
@@ -1493,8 +1493,8 @@ class EditManDialog(QtGui.QDialog):
             except ValueError:
                 self.ui.parameters.item(row, colmn).setText(
                     self.fmttbl[row+1].format(prevval))
-                QMessageBox.information(self, 
-                    'Parameter Error', 'Enter a floating number', 0, 1, 0)
+                QMessageBox.critical(self, 
+                    'Error', 'Enter a floating number', 0, 1, 0)
                 return
         self.editman[self.paramname[row+1]] = newval
 
@@ -1789,8 +1789,7 @@ class EditManDialog(QtGui.QDialog):
             mantime = common.jd2isot(dialog.result_it)
             g.clipboard.setText(mantime)
             mes = self.mes1 + mantime + self.mes2
-            QMessageBox.information(self, 'Urgent!', 
-                mes, 0, 1, 0)
+            QMessageBox.warning(self, 'Urgent!', mes, 0, 1, 0)
 
         self.editman['dv'] = dialog.result_dv
         self.editman['phi'] = dialog.result_phi
@@ -1826,7 +1825,7 @@ class EditManDialog(QtGui.QDialog):
         try:
             dt = float(self.ui.duration.text())
         except ValueError:
-            QMessageBox.information(self, 'Info', 'Invalid Duration days', 
+            QMessageBox.critical(self, 'Error', 'Invalid Duration days', 
                                     0, 1, 0)
             return
         jd = g.myprobe.jd + dt
@@ -2089,7 +2088,7 @@ class ShowOrbitDialog(QtGui.QDialog):
             value = float(text)
         except ValueError:
             self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
-            QMessageBox.information(self, 'Info', 
+            QMessageBox.critical(self, 'Error', 
                                     'Enter a floating point number.', 0, 1, 0)
             return
         self.delta_jd = value
