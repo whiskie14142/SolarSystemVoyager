@@ -3326,8 +3326,8 @@ class MainForm(QtGui.QMainWindow):
         ptext = 'Processing:  ' + str(g.nextman + 1) + ' ' + \
             g.maneuvers[g.nextman]['type']
 #
-        success, emes = g.myprobe.exec_man(g.maneuvers[g.nextman],  
-                             pbar=self.pbar, plabel=self.plabel, ptext=ptext)
+        success, emes = g.myprobe.exec_man(g.maneuvers[g.nextman], 
+            g.mytarget, pbar=self.pbar, plabel=self.plabel, ptext=ptext)
         if success:
             self.ui.reviewthroughout.setEnabled(True)
             if g.myprobe.trj_record[-1][0]['type'] == 'FLYTO':

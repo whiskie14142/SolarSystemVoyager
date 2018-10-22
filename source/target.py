@@ -13,6 +13,7 @@ from spktype21 import SPKType21
 
 class Target:
     """class for the target
+    
     """
     def de430_ephem(self, jd):
         pos, vel = self.kernel[self.idx1a, self.idx1b].compute_and_differentiate(jd)
@@ -43,6 +44,8 @@ class Target:
         if file == '':
             self.kernel = common.SPKkernel
             self.ephem = self.de430_ephem
+            self.startjd = common.SPKstart
+            self.endjd = common.SPKend
         else:
             filename = os.path.basename(file)
             mes = "Target's SPK file {0} is not found.  Store it in 'data' folder".format(filename)
@@ -68,6 +71,19 @@ class Target:
                 self.ephem = self.nasa_sb_type21
             else:
                 raise RuntimeError("Illegal data_type: " + str(data_type))
+
+            # start time and end time of Target's SPK file
+            # self.startjd is inclusive
+            # self.endjd is exclusive
+            self.startjd = common.SPKend
+            self.endjd = common.SPKstart
+            for seg in self.sbkernel.segments:
+                if seg.source == SPKID1A and seg.target == SPKID1B:
+                    if self.startjd > seg.start_jd:
+                        self.startjd = seg.start_jd
+                    if self.endjd < seg.end_jd:
+                        self.endjd = seg.end_jd
+
         self.name = name
         self.idx1a = SPKID1A
         self.idx1b = SPKID1B
@@ -98,7 +114,18 @@ class Target:
             return self.idx1b
         else:
             return self.idx2b
+            
+    def getstartjd(self):
+        return self.startjd
         
+    def getendjd(self):
+        # endjd is exclusive
+        return self.endjd
+        
+    def getsejd(self):
+        # startjd is inclusive
+        # endjd is exclusive
+        return self.startjd, self.endjd
         
     def closesbkernel(self):
         if self.sbkernel != None:

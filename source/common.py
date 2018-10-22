@@ -90,6 +90,13 @@ except FileNotFoundError:
     input("")
     sys.exit()
 
+# Start time of SPKkernel (inclusive)
+SPKstart = 2287184.50
+
+# end time of SPKkernel (inclusive)
+SPKend = 2688976.50
+
+
 _TX = np.array([[1., 0., 0.,],
                 [0., np.cos(_eclinc), np.sin(_eclinc)],
                 [0., (-1.)*np.sin(_eclinc), np.cos(_eclinc)]])
@@ -215,4 +222,3 @@ def polar2rect(r, phi, elv):
     v[1] = r * np.cos(relv) * np.sin(rphi)
     v[2] = r * np.sin(relv)
     return v
-

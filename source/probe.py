@@ -51,7 +51,7 @@ class Probe:
         self.accumdv = {'CP':0.0, 'EP':0.0, 'SS':0.0}
 
 #        
-    def exec_man(self, man, pbar=None, plabel=None, ptext=''):
+    def exec_man(self, man, target, pbar=None, plabel=None, ptext=''):
         if man['type'] != 'START' and not self.onflight:
             return False, 'Your probe has not started yet.  Man. Type : '   \
                 + man['type']
@@ -69,6 +69,10 @@ class Probe:
 
         if man['type'] == 'START':
             self.jd = man['time']
+            try:
+                target.posvel(self.jd)
+            except ValueError:
+                return False, "Invalid start time : out of range of Target's SPK file"
             self.pos, self.vel = self.pseudostart(self.jd, dv=man['dv'], 
                                             elv=man['elv'], phi=man['phi'])
             self.orbit.setCurrentCart(self.jd*common.secofday, self.pos, 
@@ -144,7 +148,12 @@ class Probe:
         elif man['type'] == 'FLYTO':
             jdto = man['time']
             if jdto < self.jd:
-                return False, 'Invalid FLYTO time : ' + common.jd2isot(jdto)
+                return False, 'Invalid end time : earier than current time'
+            try:
+                target.posvel(jdto)
+            except ValueError:
+                return False, "Invalid end time : out of range of Target's SPK file"
+
             duration = jdto - self.jd
             if pbar != None:
                 pbar.setVisible(True)
