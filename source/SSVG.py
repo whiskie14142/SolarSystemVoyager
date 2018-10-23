@@ -1891,9 +1891,8 @@ class ShowOrbitDialog(QtGui.QDialog):
         if g.myprobe.onflight:
             jd = g.myprobe.jd
         else:
-            dt = datetime.now()
-            jdtoday = julian.to_jd(dt, fmt='jd')
-            jd = int(jdtoday + 0.5) - 0.5
+            tsjd, tejd =g.mytarget.getsejd()
+            jd = (tsjd + tejd) * 0.5
         xs, ys, zs, ts = g.mytarget.points(jd, g.ndata)
         g.target_Kepler = [xs, ys, zs]
         
@@ -1931,6 +1930,8 @@ class ShowOrbitDialog(QtGui.QDialog):
         if self.ui.check_PKepler.isChecked():
             draw_PKepler()
         
+        xs, ys, zs, ts = g.mytarget.points(self.jd, g.ndata)
+        g.target_Kepler = [xs, ys, zs]
         erase_TKepler()
         if self.ui.check_TKepler.isChecked():
             draw_TKepler()
@@ -1946,6 +1947,11 @@ class ShowOrbitDialog(QtGui.QDialog):
         self.delta_jd = float(self.ui.delta_t_edit.text())
         tempjd = self.jd + self.delta_jd
         self.ui.preddate.setText(common.jd2isot(tempjd))
+
+        # Check time
+        tsjd, tejd =g.mytarget.getsejd()
+        if tempjd < tsjd or tempjd >= tejd:
+            return
         
         probe_pos, probe_vel = self.tbpred.posvelatt(tempjd)
         self.target_pos, target_vel = g.mytarget.posvel(tempjd)
@@ -2154,6 +2160,14 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
         self.phi = self.editman['phi']
         self.elv = self.editman['elv']
 
+        # Check time
+        tsjd, tejd =g.mytarget.getsejd()
+        if self.jd < tsjd or self.jd >= tejd:
+            oormes = "Start Time is OUTSIDE of Target's time span.\n" + \
+                     "Enter approrpiate Start Time."
+            QMessageBox.critical(self, 'Invalid Start Time', oormes)
+            return
+
         if self.tbpred == None:
             self.tbpred = TwoBodyPred(g.myprobe.name)
 
@@ -2165,6 +2179,8 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
         if self.ui.check_PKepler.isChecked():
             draw_PKepler()
         
+        xs, ys, zs, ts = g.mytarget.points(self.jd, g.ndata)
+        g.target_Kepler = [xs, ys, zs]
         erase_TKepler()
         if self.ui.check_TKepler.isChecked():
             draw_TKepler()
@@ -3044,7 +3060,7 @@ class MainForm(QtGui.QMainWindow):
                 return
             
         ans = QFileDialog.getOpenFileName(parent=self,
-            caption='Select input maneuver file',
+            caption='Select Flight Plan File',
             directory=g.currentdir, filter='JSON files (*.json)')
         if ans == '': return
 
@@ -3126,13 +3142,28 @@ class MainForm(QtGui.QMainWindow):
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
         self.erasecheckpoint()
+
+        # Check Time of Maneuver with time range of Target
+        tsjd, tejd =g.mytarget.getsejd()
+        outofrange = False
+        for man in g.manplan['maneuvers']:
+            if man['type'] == 'START' or man['type'] == 'FLYTO':
+                if man['time'] < tsjd or man['time'] >= tejd:
+                    outofrange = True
+        if outofrange:
+            oormes = "The Flight Plan file containes Maneuver(s) that " + \
+                "is OUTSIDE of Target's time span."
+            oormes2 = "\nYou could encounter " + \
+                "trouble(s) in running and/or editing this Flight Plan"
+            QMessageBox.warning(self, 'Warning', oormes + oormes2)
         
         if g.options['log']:
-            logstring = 'open flight plan: ' + nowtimestr() + '\n'
-            g.logfile.write(logstring)
-            logstring = '    file name: ' + g.manfilename + '\n'
-            g.logfile.write(logstring)
-
+            logstring = []
+            logstring.append('open flight plan: ' + nowtimestr() + '\n')
+            logstring.append('    file name: ' + g.manfilename + '\n')
+            if outofrange:
+                logstring.append('    *** Warning *** ' + oormes + '\n')
+            g.logfile.writelines(logstring)
     def newmanplan(self):
         if not g.manplan_saved:
             ans = QMessageBox.question(self, 'New Flight Plan', 
@@ -3461,7 +3492,16 @@ class MainForm(QtGui.QMainWindow):
             QMessageBox.information(self, 'Info', 
                                 'The 1st maneuver shall be START', 0, 1, 0)
             return
-        
+
+        # Check time
+        if g.editedman['type']  == 'START' or g.editedman['type'] == 'FLYTO':
+            tsjd, tejd =g.mytarget.getsejd()
+            if g.editedman['time'] < tsjd or g.editedman['time'] >= tejd:
+                oormes = "The time specified in the Maneuver is outside " + \
+                "of the valid time span of the Target.\nTry again."
+                QMessageBox.critical(self, 'Invalid Parameter', oormes)
+                return
+
         g.manplan_saved = False
         if self.currentrow < len(g.maneuvers):
             g.maneuvers[self.currentrow] = g.editedman
@@ -3822,17 +3862,35 @@ class MainForm(QtGui.QMainWindow):
         self.ui.actionSave_as.setEnabled(True)
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
+
+        # Check Time of Maneuver with time range of Target
+        tsjd, tejd =g.mytarget.getsejd()
+        outofrange = False
+        for man in g.manplan['maneuvers']:
+            if man['type'] == 'START' or man['type'] == 'FLYTO':
+                if man['time'] < tsjd or man['time'] >= tejd:
+                    outofrange = True
+        if outofrange:
+            oormes = "The Flight Plan file containes Maneuver(s) that " + \
+                "is OUTSIDE of Target's time span."
+            oormes2 = "\nYou could encounter " + \
+                "trouble(s) in running and/or editing this Flight Plan." + \
+                "\nIt is recommended that you select another SPK file."
+            QMessageBox.warning(self, 'Warning', oormes + oormes2)
+
     
         if g.options['log']:
             logstring = []
             logstring.append('edit target: ' + nowtimestr() + '\n')
             logstring.append('    target name: ' +
                             g.manplan['target']['name'] + '\n')
-            if g.manplan['target']['SPKID2B'] > 10000:
+            if g.manplan['target']['file'] != '':
                 logstring.append('    target SPK file: ' +
                     g.manplan['target']['file'] + '\n')
                 logstring.append('    target SPKID: ' +
-                    str(g.manplan['target']['SPKID2B']) + '\n')
+                    str(g.manplan['target']['SPKID1B']) + '\n')
+            if outofrange:
+                logstring.append('    *** Warning *** ' + oormes + '\n')
             g.logfile.writelines(logstring)
 
 def resource_path(relative):

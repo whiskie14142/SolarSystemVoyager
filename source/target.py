@@ -78,7 +78,7 @@ class Target:
             self.startjd = common.SPKend
             self.endjd = common.SPKstart
             for seg in self.sbkernel.segments:
-                if seg.source == SPKID1A and seg.target == SPKID1B:
+                if seg.center == SPKID1A and seg.target == SPKID1B:
                     if self.startjd > seg.start_jd:
                         self.startjd = seg.start_jd
                     if self.endjd < seg.end_jd:
