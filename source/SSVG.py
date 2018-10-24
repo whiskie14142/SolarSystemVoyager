@@ -602,6 +602,13 @@ class FTAsettingDialog(QtGui.QDialog):
                 'To use FTA, Time to Arrival shall be\n' \
                 + 'greater than 1.0 day', 0, 1, 0)
             return
+
+        if g.showorbitcontrol.jd + delta_jd >= g.mytarget.getendjd():
+            QMessageBox.critical(self, 'Error', 
+                'Invalid Time to Arrival.\nArrival time is OUTSIDE of ' +
+                "Target's time span", 0, 1, 0)
+            return
+
         param[0] = g.showorbitcontrol.jd + delta_jd
         
         if self.ui.selBplanecoord.isChecked():
@@ -737,27 +744,42 @@ class StartOptimizeDialog(QtGui.QDialog):
             self.ttto, self.cduration))
     
     def drawfixedorbit(self):
+        tsjd, tejd = g.mytarget.getsejd()
         # Probe Kepler Orbit
         ndata = self.sl_maxval - self.sl_minval + 1
-        x = np.zeros(ndata)
-        y = np.zeros(ndata)
-        z = np.zeros(ndata)
+        x = []
+        y = []
+        z = []
         for i in range(ndata):
             pos = i + self.sl_minval
             jd = self.sl_pos2real(self.itfrom, self.itto, pos) + self.itcenter
-            ppos, pvel = self.orgorbposvel(jd)
-            x[i] = ppos[0]
-            y[i] = ppos[1]
-            z[i] = ppos[2]
+            if jd >= tsjd and jd < tejd:
+                ppos, pvel = self.orgorbposvel(jd)
+                x.append(ppos[0])
+                y.append(ppos[1])
+                z.append(ppos[2])
         g.probe_Kepler = [x, y, z]
         
         # Target Kepler Orbit
-        x, y, z, t = g.mytarget.points(self.itcenter, g.ndata)
+        if self.itcenter >= tsjd and self.itcenter < tejd:
+            jd = self.itcenter
+        else:
+            jd = (tsjd + tejd) * 0.5
+        x, y, z, t = g.mytarget.points(jd, g.ndata)
         g.target_Kepler = [x, y, z]
         
         self.fixedorbitchanged()
         
     def draworbit(self):
+        self.ui.finishbutton.setEnabled(False)        
+        
+        # Check time
+        tsjd, tejd = g.mytarget.getsejd()
+        if self.itcurrent < tsjd or self.itcurrent >= tejd:
+            return
+        if self.ttcurrent < tsjd or self.ttcurrent >= tejd:
+            return
+
         ppos, pvel = self.orgorbposvel(self.itcurrent)
         
         # erase positions and orbit
@@ -780,13 +802,14 @@ class StartOptimizeDialog(QtGui.QDialog):
         # FTA
         ttpos, ttvel = g.mytarget.posvel(self.ttcurrent)
         self.predorbit.fix_state(self.itcurrent, ppos, pvel)
-        if self.itcurrent >= self.ttcurrent:
+        if self.itcurrent + 1.0 >= self.ttcurrent:
             return
         try:
             dv, phi, elv, ivel, tvel = self.predorbit.ftavel(self.ttcurrent, 
                                                              ttpos)
         except ValueError:
             return
+
         self.predorbit.fix_state(self.itcurrent, ppos, ivel)
         
         # Draw
@@ -805,6 +828,7 @@ class StartOptimizeDialog(QtGui.QDialog):
             self.artist_Porbit = g.ax.plot(x, y, z,color='c', lw=0.75)
 
         if g.fig != None: plt.draw()
+        self.ui.finishbutton.setEnabled(True)
         
         # Print
         idv = ivel - pvel
@@ -856,7 +880,6 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.ui.totalDV_cur.setText('{:.3f}'.format(tdv))
         self.ui.totalDV_min.setText('{:.3f}'.format(self.statTDVmin))
         self.ui.totalDV_max.setText('{:.3f}'.format(self.statTDVmax))
-        
         
     def sl_real2pos(self, rfrom, rto, rval):
         pos = int((rval - rfrom) / (rto - rfrom) * self.sl_maxval + 0.5) \
@@ -1568,6 +1591,13 @@ class EditManDialog(QtGui.QDialog):
         g.showorbitcontrol.set_affect_parent(False)
     
     def showorbitSTART(self):
+        # Check time
+        tsjd, tejd = g.mytarget.getsejd()
+        if self.editman['time'] < tsjd or self.editman['time'] >= tejd:
+            if g.showorbitcontrol != None:
+                g.showorbitcontrol.close()
+            return
+    
         if g.showorbitcontrol == None:
             g.showorbitcontrol = ShowStartOrbitDialog(self, self.editman)
             g.showorbitcontrol.show()
@@ -1891,7 +1921,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         if g.myprobe.onflight:
             jd = g.myprobe.jd
         else:
-            tsjd, tejd =g.mytarget.getsejd()
+            tsjd, tejd = g.mytarget.getsejd()
             jd = (tsjd + tejd) * 0.5
         xs, ys, zs, ts = g.mytarget.points(jd, g.ndata)
         g.target_Kepler = [xs, ys, zs]
@@ -1949,7 +1979,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         self.ui.preddate.setText(common.jd2isot(tempjd))
 
         # Check time
-        tsjd, tejd =g.mytarget.getsejd()
+        tsjd, tejd = g.mytarget.getsejd()
         if tempjd < tsjd or tempjd >= tejd:
             return
         
@@ -2161,7 +2191,7 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
         self.elv = self.editman['elv']
 
         # Check time
-        tsjd, tejd =g.mytarget.getsejd()
+        tsjd, tejd = g.mytarget.getsejd()
         if self.jd < tsjd or self.jd >= tejd:
             oormes = "Start Time is OUTSIDE of Target's time span.\n" + \
                      "Enter approrpiate Start Time."
@@ -3144,7 +3174,7 @@ class MainForm(QtGui.QMainWindow):
         self.erasecheckpoint()
 
         # Check Time of Maneuver with time range of Target
-        tsjd, tejd =g.mytarget.getsejd()
+        tsjd, tejd = g.mytarget.getsejd()
         outofrange = False
         for man in g.manplan['maneuvers']:
             if man['type'] == 'START' or man['type'] == 'FLYTO':
@@ -3495,7 +3525,7 @@ class MainForm(QtGui.QMainWindow):
 
         # Check time
         if g.editedman['type']  == 'START' or g.editedman['type'] == 'FLYTO':
-            tsjd, tejd =g.mytarget.getsejd()
+            tsjd, tejd = g.mytarget.getsejd()
             if g.editedman['time'] < tsjd or g.editedman['time'] >= tejd:
                 oormes = "The time specified in the Maneuver is outside " + \
                 "of the valid time span of the Target.\nTry again."
@@ -3864,7 +3894,7 @@ class MainForm(QtGui.QMainWindow):
         self.ui.menuCheckpoint.setEnabled(False)
 
         # Check Time of Maneuver with time range of Target
-        tsjd, tejd =g.mytarget.getsejd()
+        tsjd, tejd = g.mytarget.getsejd()
         outofrange = False
         for man in g.manplan['maneuvers']:
             if man['type'] == 'START' or man['type'] == 'FLYTO':

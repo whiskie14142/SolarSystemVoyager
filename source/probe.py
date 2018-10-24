@@ -66,13 +66,12 @@ class Probe:
         cman['sson'] = False
         cman['ssmode'] = 'L'
         status = np.zeros(7)
+        tsjd, tejd = target.getsejd()
 
         if man['type'] == 'START':
             self.jd = man['time']
-            try:
-                target.posvel(self.jd)
-            except ValueError:
-                return False, "Invalid start time : out of range of Target's SPK file"
+            if self.jd < tsjd or self.jd >= tejd:
+                return False, "Invalid start time : OUTSIDE of Target's time span"
             self.pos, self.vel = self.pseudostart(self.jd, dv=man['dv'], 
                                             elv=man['elv'], phi=man['phi'])
             self.orbit.setCurrentCart(self.jd*common.secofday, self.pos, 
@@ -148,11 +147,9 @@ class Probe:
         elif man['type'] == 'FLYTO':
             jdto = man['time']
             if jdto < self.jd:
-                return False, 'Invalid end time : earier than current time'
-            try:
-                target.posvel(jdto)
-            except ValueError:
-                return False, "Invalid end time : out of range of Target's SPK file"
+                return False, 'Invalid end time of FLYTO : earier than current time'
+            if jdto >= tejd:
+                return False, "Invalid end time of FLYTO : OUTSIDE of Target's time span"
 
             duration = jdto - self.jd
             if pbar != None:
