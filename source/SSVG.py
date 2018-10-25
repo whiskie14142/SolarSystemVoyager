@@ -162,7 +162,7 @@ def nowtimestrf():
     return datetime.now().strftime('%Y%m%d_%H%M%S')
 
 
-from aboutSSVG import *
+from ui.aboutSSVG import *
 
 class AboutSSVG(QtGui.QDialog):
     """class for 'About SSVG' dialog
@@ -217,7 +217,7 @@ This program uses following programs and modules:
                 
 
 
-from newflightplandialog import *
+from ui.newflightplandialog import *
 
 class NewFlightPlanDialog(QtGui.QDialog):
     """class for 'New Flight Plan' dialog
@@ -544,7 +544,7 @@ class EditTargetDialog(NewFlightPlanDialog):
 
 
 
-from ftasettingdialog import *
+from ui.ftasettingdialog import *
 
 class FTAsettingDialog(QtGui.QDialog):
     """class for the dialog to specity parameters for FTA
@@ -597,10 +597,10 @@ class FTAsettingDialog(QtGui.QDialog):
             QMessageBox.critical(self, 'Error', 
                 'Enter a floating point number for Time to Arrival.', 0, 1, 0)
             return
-        if delta_jd < 1.0:
+        if delta_jd < common.minft:
             QMessageBox.critical(self, 'Error', 
-                'To use FTA, Time to Arrival shall be\n' \
-                + 'greater than 1.0 day', 0, 1, 0)
+                ('To use FTA, Time to Arrival shall be\n' 
+                + 'greater than {0:.1f} day').format(common.minft), 0, 1, 0)
             return
 
         if g.showorbitcontrol.jd + delta_jd >= g.mytarget.getendjd():
@@ -649,7 +649,7 @@ class FTAsettingDialog(QtGui.QDialog):
         g.fta_parameters = param
         self.accept()
 
-from orbitoptimizedialog import *
+from ui.orbitoptimizedialog import *
 
 class StartOptimizeDialog(QtGui.QDialog):
     """class for the Start Optimize Assistant
@@ -802,7 +802,7 @@ class StartOptimizeDialog(QtGui.QDialog):
         # FTA
         ttpos, ttvel = g.mytarget.posvel(self.ttcurrent)
         self.predorbit.fix_state(self.itcurrent, ppos, pvel)
-        if self.itcurrent + 1.0 >= self.ttcurrent:
+        if self.itcurrent + common.minft >= self.ttcurrent:
             return
         try:
             dv, phi, elv, ivel, tvel = self.predorbit.ftavel(self.ttcurrent, 
@@ -1247,7 +1247,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
         return self.orgorb.posvelatt(jd)
 
 
-from editmandialog import *
+from ui.editmandialog import *
 
 class EditManDialog(QtGui.QDialog):
     """class for 'Edit Maneuver' dialog
@@ -1864,7 +1864,7 @@ class EditManDialog(QtGui.QDialog):
         
 
 
-from showorbitcontrol import *
+from ui.showorbitcontrol import *
 
 class ShowOrbitDialog(QtGui.QDialog):
     """class for 'Show Orbit' window
@@ -2224,7 +2224,7 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
         
 
 
-from flightreviewcontrol import *
+from ui.flightreviewcontrol import *
 
 class FlightReviewControl(QtGui.QDialog):
     """class for 'Flight Review' window
@@ -2480,7 +2480,7 @@ class FlightReviewControl(QtGui.QDialog):
         remove_planets()
         remove_time()
 
-from reviewthroughoutcontrol import *
+from ui.reviewthroughoutcontrol import *
 
 class ReviewThroughoutControl(QtGui.QDialog):
     """class for 'Review Throughout' window
@@ -2888,7 +2888,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
         remove_time()
 
 
-from mainwindow import *
+from ui.mainwindow import *
 
 class MainForm(QtGui.QMainWindow):
     """class for the main window (SSVG window)

@@ -74,6 +74,9 @@ integ_rel_tol = [1e-10,1e-10,1e-10,1e-10,1e-10,1e-10]   # relative tolerance
 bspdir = './data/'
 logdir = './log/'
 
+# minimum flight time (days)
+minft = 1.0
+
 # SPK kernel
 from jplephem.spk import SPK
 try:
