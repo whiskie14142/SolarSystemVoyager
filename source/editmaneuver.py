@@ -18,13 +18,25 @@ from optimize import StartOptimizeDialog
 from optimize import CpOptimizeDialog
 
 from ui.editmandialog import *
+from showorbit import ShowOrbitDialog
+from showorbit import ShowStartOrbitDialog
 
-# global variables: SSVG sets real instances
-g = None
-nowtimestr = None
-# temp
-ShowOrbitDialog = None
-ShowStartOrbitDialog = None
+from globaldata import *
+# Import followings
+#     g : container of global data
+#     erase_Ptrj()
+#     draw_Ptrj()
+#     erase_PKepler()
+#     draw_PKepler()
+#     erase_TKepler()
+#     draw_TKepler()
+#     remove_planets()
+#     replot_planets(jd)
+#     remove_time()
+#     replot_time(jd, ttype='')
+#     nowtimestr()
+#     nowtimestrf()
+
 
 class EditManDialog(QtGui.QDialog):
     """class for 'Edit Maneuver' dialog

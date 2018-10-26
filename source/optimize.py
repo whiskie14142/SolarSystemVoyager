@@ -16,14 +16,21 @@ from twobodypred import TwoBodyPred
 
 from ui.orbitoptimizedialog import *
 
-# global variables: SSVG sets real instances
-g = None
-erase_PKepler = None
-draw_PKepler = None
-erase_TKepler = None
-draw_TKepler = None
-erase_Ptrj = None
-draw_Ptrj = None
+from globaldata import *
+# Import followings
+#     g : container of global data
+#     erase_Ptrj()
+#     draw_Ptrj()
+#     erase_PKepler()
+#     draw_PKepler()
+#     erase_TKepler()
+#     draw_TKepler()
+#     remove_planets()
+#     replot_planets(jd)
+#     remove_time()
+#     replot_time(jd, ttype='')
+#     nowtimestr()
+#     nowtimestrf()
 
 class StartOptimizeDialog(QtGui.QDialog):
     """class for the Start Optimize Assistant
