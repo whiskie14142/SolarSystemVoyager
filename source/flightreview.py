@@ -43,7 +43,7 @@ class FlightReviewControl(QtGui.QDialog):
         self.ui.setupUi(self)
 
         # Get Settings of 'Look at' from showorbitsettings
-        if g.showorbitsettings != None:
+        if g.showorbitsettings is not None:
             s = g.showorbitsettings
             self.ui.tobarycenter.setChecked(s['SSB'])
             self.ui.toprobe.setChecked(s['Probe'])
@@ -85,10 +85,10 @@ class FlightReviewControl(QtGui.QDialog):
         self.redraw()
 
     def redraw(self):
-#        if self.artist_of_orbit != None:
+#        if self.artist_of_orbit is not None:
 #            self.artist_of_orbit[0].remove()
 #            self.artist_of_orbit = None
-        if g.myprobe == None:
+        if g.myprobe is None:
             QMessageBox.information(self, 'Info', 
                                     'You have no valid probe.', 0, 1, 0)
             return
@@ -141,7 +141,7 @@ class FlightReviewControl(QtGui.QDialog):
         erase_PKepler()
 
         if self.ui.check_PKepler.isChecked():
-            if self.tbpred == None:
+            if self.tbpred is None:
                 self.tbpred = TwoBodyPred(g.myprobe.name)
             self.tbpred.fix_state(c_time, ppos, pvel)
             x, y, z, t = self.tbpred.points(g.ndata)
@@ -165,23 +165,23 @@ class FlightReviewControl(QtGui.QDialog):
         g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
         g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
 
-        if self.artist_of_probe != None:
+        if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
         self.artist_of_probe = g.ax.scatter(*ppos, s=50, c='r',
                                             depthshade=False, marker='x')
-        if self.artist_of_target != None:
+        if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
         self.artist_of_target = g.ax.scatter(*target_pos, s=40, c='g',
                                              depthshade=False, marker='+')
-        if self.artist_of_sun != None:
+        if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
         self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='w',
                                           depthshade=False, marker='o')
 
-        if self.artist_of_epssinfo != None:
+        if self.artist_of_epssinfo is not None:
             self.artist_of_epssinfo.remove()
             self.artist_of_epssinfo = None
         epsstext = ''
@@ -201,7 +201,7 @@ class FlightReviewControl(QtGui.QDialog):
         remove_time()
         replot_time(c_time, 'Real')
         
-        if g.fig != None: plt.draw()
+        if g.fig is not None: plt.draw()
         
         # display relative position and velocity
         rel_pos = target_pos - ppos
@@ -257,7 +257,7 @@ class FlightReviewControl(QtGui.QDialog):
         self._redrawmark()
 
     def save_settings(self):
-        if g.showorbitsettings != None:
+        if g.showorbitsettings is not None:
             s = g.showorbitsettings
             s['SSB'] = self.ui.tobarycenter.isChecked()
             s['Probe'] = self.ui.toprobe.isChecked()
@@ -267,16 +267,16 @@ class FlightReviewControl(QtGui.QDialog):
     def closeEvent(self, event):
         g.flightreviewcontrol = None
         event.accept()
-        if self.artist_of_probe != None:
+        if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
-        if self.artist_of_target != None:
+        if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
-        if self.artist_of_sun != None:
+        if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        if self.artist_of_epssinfo != None:
+        if self.artist_of_epssinfo is not None:
             self.artist_of_epssinfo.remove()
             self.artist_of_epssinfo = None
         erase_Ptrj()

@@ -202,7 +202,7 @@ class MainForm(QtGui.QMainWindow):
             
 
     def init3Dfigure(self):
-        if g.fig != None:
+        if g.fig is not None:
             return
         g.fig=plt.figure(figsize=(11,11))
         g.ax=g.fig.gca(projection='3d', aspect='equal')
@@ -269,11 +269,11 @@ class MainForm(QtGui.QMainWindow):
 
         g.currentdir = os.path.split(ans)[0]
         
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
-        if g.flightreviewcontrol != None:
+        if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
-        if g.reviewthroughoutcontrol != None:
+        if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
             
         g.ax.set_xlim(-3.0e11, 3.0e11)
@@ -309,7 +309,7 @@ class MainForm(QtGui.QMainWindow):
             else:
                 g.manplan['target']['data_type'] = 0
         
-        if g.mytarget != None:
+        if g.mytarget is not None:
             g.mytarget.closesbkernel()
         g.mytarget = target.Target(**g.manplan['target'])
         
@@ -384,11 +384,11 @@ class MainForm(QtGui.QMainWindow):
         if ans == QDialog.Rejected:
             return
 
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
-        if g.flightreviewcontrol != None:
+        if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
-        if g.reviewthroughoutcontrol != None:
+        if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
 
         g.ax.set_xlim(-3.0e11, 3.0e11)
@@ -410,7 +410,7 @@ class MainForm(QtGui.QMainWindow):
         
         erase_TKepler()
         
-        if g.mytarget != None:
+        if g.mytarget is not None:
             g.mytarget.closesbkernel()
         g.mytarget = target.Target(**g.manplan['target'])
         
@@ -451,7 +451,7 @@ class MainForm(QtGui.QMainWindow):
 
 
     def reviewthroughout(self):
-        if g.myprobe == None:
+        if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
                                     0, 1, 0)
             return
@@ -461,12 +461,12 @@ class MainForm(QtGui.QMainWindow):
             return
         
         self.init3Dfigure()
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
-        if g.flightreviewcontrol != None:
+        if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
         
-        if g.reviewthroughoutcontrol == None:
+        if g.reviewthroughoutcontrol is None:
             g.reviewthroughoutcontrol = ReviewThroughoutControl(self)
             g.reviewthroughoutcontrol.show()
         else:
@@ -474,7 +474,7 @@ class MainForm(QtGui.QMainWindow):
 
 
     def savemanplan(self):
-        if g.manfilename == None:
+        if g.manfilename is None:
             self.saveasmanplan()
             return
         manfile = open(g.manfilename, 'w')
@@ -490,7 +490,7 @@ class MainForm(QtGui.QMainWindow):
             g.logfile.write(logstring)
         
     def saveasmanplan(self):
-        if g.manfilename == None:
+        if g.manfilename is None:
             dr = g.currentdir
         else:
             dr = g.manfilename
@@ -516,7 +516,7 @@ class MainForm(QtGui.QMainWindow):
         self.ui.manplans.clearContents()  # clear previous table
         self.ui.manplans.setRowCount(len(g.maneuvers)+1)
         for i in range(len(g.maneuvers)):
-            if g.maneuvers[i] == None: continue
+            if g.maneuvers[i] is None: continue
             mtype = g.maneuvers[i]['type']
             anitem = QTableWidgetItem(mtype)
             self.ui.manplans.setItem(i, 0, anitem)
@@ -543,7 +543,7 @@ class MainForm(QtGui.QMainWindow):
         self.close()
 
     def execnext(self):
-        if g.myprobe == None:
+        if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
                                     0, 1, 0)
             return False
@@ -551,7 +551,7 @@ class MainForm(QtGui.QMainWindow):
             QMessageBox.information(self, 
                         'Info', "You don't have valid maneuver.", 0, 1, 0)
             return False
-        if g.maneuvers[g.nextman] == None:
+        if g.maneuvers[g.nextman] is None:
             QMessageBox.information(self, 'Info', 
                         "You don't have valid maneuver.", 0, 1, 0)
             return False
@@ -579,7 +579,7 @@ class MainForm(QtGui.QMainWindow):
             self.ui.manplans.selectRow(self.currentrow)
             
             self.init3Dfigure()
-            if g.showorbitcontrol == None:
+            if g.showorbitcontrol is None:
                 self.showorbit()
                 self.ui.showOrbit.setEnabled(True)
         else:
@@ -611,11 +611,11 @@ class MainForm(QtGui.QMainWindow):
         
         g.myprobe.execinitialize()
         g.nextman = 0
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
-        if g.flightreviewcontrol != None:
+        if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
-        if g.reviewthroughoutcontrol != None:
+        if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
         self.ui.showOrbit.setEnabled(False)
         self.ui.flightreview.setEnabled(False)
@@ -625,7 +625,7 @@ class MainForm(QtGui.QMainWindow):
         self.ui.menuCheckpoint.setEnabled(False)
 
     def showorbit(self):
-        if g.myprobe == None:
+        if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
                                     0, 1, 0)
             return
@@ -634,11 +634,11 @@ class MainForm(QtGui.QMainWindow):
                                     'Your probe has no valid orbit.', 0, 1, 0)
             return
         self.init3Dfigure()
-        if g.flightreviewcontrol != None:
+        if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
-        if g.reviewthroughoutcontrol != None:
+        if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
-        if g.showorbitcontrol == None:
+        if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
         else:
@@ -667,11 +667,11 @@ class MainForm(QtGui.QMainWindow):
             logstring.append('    line: ' + str(self.currentrow + 1) + '\n')
             g.logfile.writelines(logstring)
         
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
-        if g.flightreviewcontrol != None:
+        if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
-        if g.reviewthroughoutcontrol != None:
+        if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
         if self.currentrow < len(g.maneuvers):
             man = g.maneuvers[self.currentrow]
@@ -745,7 +745,7 @@ class MainForm(QtGui.QMainWindow):
                                    button2=2)
         if ans == 2: return
         if self.currentrow < len(g.maneuvers):
-            if g.maneuvers[self.currentrow] == None:
+            if g.maneuvers[self.currentrow] is None:
                 deltype = 'BLANK'
             else:
                 deltype = g.maneuvers[self.currentrow]['type']
@@ -764,14 +764,14 @@ class MainForm(QtGui.QMainWindow):
                 g.logfile.writelines(logstring)
 
     def dispmanfilename(self):
-        if g.manfilename == None:
+        if g.manfilename is None:
             filename = ''
         else:
             filename = os.path.basename(g.manfilename)
         self.ui.manfilename.setText(filename)
 
     def showflightreview(self):
-        if g.myprobe == None:
+        if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
                                     0, 1, 0)
             return
@@ -785,19 +785,19 @@ class MainForm(QtGui.QMainWindow):
             return  
         
         self.init3Dfigure()
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
-        if g.reviewthroughoutcontrol != None:
+        if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
         
-        if g.flightreviewcontrol == None:
+        if g.flightreviewcontrol is None:
             g.flightreviewcontrol = FlightReviewControl(self)
             g.flightreviewcontrol.show()
         else:
             g.flightreviewcontrol.redraw()
 
     def dispcurrentstatus(self):
-        if self.tbpred_formain == None:
+        if self.tbpred_formain is None:
             self.tbpred_formain = TwoBodyPred(g.myprobe.name)
         self.tbpred_formain.fix_state(g.myprobe.jd, g.myprobe.pos, 
                                       g.myprobe.vel)
@@ -892,7 +892,7 @@ class MainForm(QtGui.QMainWindow):
         if self.currentrow < 0 or self.currentrow >= lenman:
             return
         man = g.manplan['maneuvers'][self.currentrow]
-        if man == None:
+        if man is None:
             return
         typeID = self.typedict[man['type']]
         
@@ -964,11 +964,11 @@ class MainForm(QtGui.QMainWindow):
     def resumecheckpoint(self):
         if not self.checkpoint:
             return
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
-        if g.flightreviewcontrol != None:
+        if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
-        if g.reviewthroughoutcontrol != None:
+        if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
 
         g.myprobe.resumeCheckpoint()

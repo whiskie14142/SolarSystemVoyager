@@ -44,7 +44,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
         self.ui.setupUi(self)
 
         # Get Settings of 'Look at' from showorbitsettings
-        if g.showorbitsettings != None:
+        if g.showorbitsettings is not None:
             s = g.showorbitsettings
             self.ui.tobarycenter.setChecked(s['SSB'])
             self.ui.toprobe.setChecked(s['Probe'])
@@ -168,14 +168,14 @@ class ReviewThroughoutControl(QtGui.QDialog):
             draw_TKepler()
 
         # Probe mark
-        if self.artist_of_probe != None:
+        if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
         self.artist_of_probe = g.ax.scatter(*status[1:4], s=50, c='r',
                                             depthshade=False, marker='x')
         
         # Maneuver Type
-        if self.artist_of_type != None:
+        if self.artist_of_type is not None:
             self.artist_of_type.remove()
             self.artist_of_type = None
         if self.ui.showmantype.isChecked():
@@ -191,14 +191,14 @@ class ReviewThroughoutControl(QtGui.QDialog):
                                                 color='r', fontsize=11)
         
         # Target mark
-        if self.artist_of_target != None:
+        if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
         self.artist_of_target = g.ax.scatter(*target_pos, s=40, c='g',
                                              depthshade=False, marker='+')
         
         # Sun mark
-        if self.artist_of_sun != None:
+        if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
         sun_pos, sun_vel = common.SPKposvel(10, status[0])
@@ -209,7 +209,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
         remove_time()
         replot_time(status[0], 'Real')
         
-        if g.fig != None: plt.draw()
+        if g.fig is not None: plt.draw()
         
         # display relative position and velocity, and time
         rel_pos = target_pos - status[1:4]
@@ -280,17 +280,17 @@ class ReviewThroughoutControl(QtGui.QDialog):
         if self.ui.showplanets.isChecked():
             replot_planets(c_time)
 
-        if self.artist_of_probe != None:
+        if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
         self.artist_of_probe = g.ax.scatter(*ppos, s=50, c='r',
                                             depthshade=False, marker='x')
-        if self.artist_of_target != None:
+        if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
 
         # Maneuver Type
-        if self.artist_of_type != None:
+        if self.artist_of_type is not None:
             self.artist_of_type.remove()
             self.artist_of_type = None
         if self.ui.showmantype.isChecked():
@@ -309,7 +309,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
 
         self.artist_of_target = g.ax.scatter(*target_pos, s=40, c='g',
                                              depthshade=False, marker='+')
-        if self.artist_of_sun != None:
+        if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
         self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='w',
@@ -318,7 +318,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
         remove_time()
         replot_time(c_time, 'Real')
         
-        if g.fig != None: plt.draw()
+        if g.fig is not None: plt.draw()
         
         # display relative position and velocity
         rel_pos = target_pos - ppos
@@ -409,7 +409,7 @@ class ReviewThroughoutControl(QtGui.QDialog):
             self.drawman()
     
     def save_settings(self):
-        if g.showorbitsettings != None:
+        if g.showorbitsettings is not None:
             s = g.showorbitsettings
             s['SSB'] = self.ui.tobarycenter.isChecked()
             s['Probe'] = self.ui.toprobe.isChecked()
@@ -419,16 +419,16 @@ class ReviewThroughoutControl(QtGui.QDialog):
     def closeEvent(self, event):
         g.reviewthroughoutcontrol = None
         event.accept()
-        if self.artist_of_probe != None:
+        if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
-        if self.artist_of_type != None:
+        if self.artist_of_type is not None:
             self.artist_of_type.remove()
             self.artist_of_type = None
-        if self.artist_of_target != None:
+        if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
-        if self.artist_of_sun != None:
+        if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
         erase_Ptrj()

@@ -93,7 +93,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         self.redraw()
         
     def redraw(self):
-        if g.myprobe == None:
+        if g.myprobe is None:
             QMessageBox.information(self, 'Info', 
                                     'You have no valid probe.', 0, 1, 0)
             return
@@ -109,7 +109,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         
         self.ppos = g.myprobe.pos
         self.pvel = g.myprobe.vel
-        if self.tbpred == None:
+        if self.tbpred is None:
             self.tbpred = TwoBodyPred(g.myprobe.name)
 
         erase_Ptrj()
@@ -166,19 +166,19 @@ class ShowOrbitDialog(QtGui.QDialog):
         g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
         g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
 
-        if self.artist_of_probe != None:
+        if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
         self.artist_of_probe = g.ax.scatter(*probe_pos, s=50, c='r', 
                                             depthshade=False, marker='x')
         
-        if self.artist_of_target != None:
+        if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
         self.artist_of_target = g.ax.scatter(*self.target_pos, s=40, c='g', 
                                              depthshade=False, marker='+')
             
-        if self.artist_of_sun != None:
+        if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
         self.artist_of_sun = g.ax.scatter(*self.sun_pos, s=50, c='w',
@@ -195,7 +195,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         else:
             replot_time(tempjd, 'Prediction')
 
-        if g.fig != None: plt.draw()
+        if g.fig is not None: plt.draw()
         
         # display relative position and velocity
         rel_pos = self.target_pos - probe_pos
@@ -300,13 +300,13 @@ class ShowOrbitDialog(QtGui.QDialog):
         g.showorbitcontrol = None
         self.save_settings()
         event.accept()
-        if self.artist_of_probe != None:
+        if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
-        if self.artist_of_target != None:
+        if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
-        if self.artist_of_sun != None:
+        if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
         erase_Ptrj()
@@ -323,7 +323,7 @@ class ShowOrbitDialog(QtGui.QDialog):
         g.showorbitsettings = settings
         
     def restore_settings(self):
-        if g.showorbitsettings != None:
+        if g.showorbitsettings is not None:
             s = g.showorbitsettings
             self.ui.tobarycenter.setChecked(s['SSB'])
             self.ui.toprobe.setChecked(s['Probe'])
@@ -360,7 +360,7 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
             QMessageBox.critical(self, 'Invalid Start Time', oormes)
             return
 
-        if self.tbpred == None:
+        if self.tbpred is None:
             self.tbpred = TwoBodyPred(g.myprobe.name)
 
         self.tbpred.fix_state(self.jd, self.ppos, self.pvel)

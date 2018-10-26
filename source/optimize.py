@@ -164,19 +164,19 @@ class StartOptimizeDialog(QtGui.QDialog):
         ppos, pvel = self.orgorbposvel(self.itcurrent)
         
         # erase positions and orbit
-        if self.artist_PCpos != None:
+        if self.artist_PCpos is not None:
             self.artist_PCpos.remove()
             self.artist_PCpos = None
-        if self.artist_PEpos != None:
+        if self.artist_PEpos is not None:
             self.artist_PEpos.remove()
             self.artist_PEpos = None
-        if self.artist_TCpos != None:
+        if self.artist_TCpos is not None:
             self.artist_TCpos.remove()
             self.artist_TCpos = None
-        if self.artist_sol != None:
+        if self.artist_sol is not None:
             self.artist_sol.remove()
             self.artist_sol = None
-        if self.artist_Porbit != None:
+        if self.artist_Porbit is not None:
             self.artist_Porbit[0].remove()
             self.artist_Porbit = None
         
@@ -208,17 +208,17 @@ class StartOptimizeDialog(QtGui.QDialog):
             x, y, z, t = self.predorbit.points(101)
             self.artist_Porbit = g.ax.plot(x, y, z,color='c', lw=0.75)
 
-        if g.fig != None: plt.draw()
+        if g.fig is not None: plt.draw()
         self.ui.finishbutton.setEnabled(True)
         
         # Print
         idv = ivel - pvel
         idvabs = np.sqrt(np.dot(idv, idv))
-        if self.statIDVmin == None:
+        if self.statIDVmin is None:
             self.statIDVmin = idvabs
         elif idvabs < self.statIDVmin:
             self.statIDVmin = idvabs
-        if self.statIDVmax == None:
+        if self.statIDVmax is None:
             self.statIDVmax = idvabs
         elif idvabs > self.statIDVmax:
             self.statIDVmax = idvabs
@@ -237,11 +237,11 @@ class StartOptimizeDialog(QtGui.QDialog):
         
         trv = ttvel - tvel
         trvabs = np.sqrt(np.dot(trv, trv))
-        if self.statTRVmin == None:
+        if self.statTRVmin is None:
             self.statTRVmin = trvabs
         elif trvabs < self.statTRVmin:
             self.statTRVmin = trvabs
-        if self.statTRVmax == None:
+        if self.statTRVmax is None:
             self.statTRVmax = trvabs
         elif trvabs > self.statTRVmax:
             self.statTRVmax = trvabs
@@ -250,11 +250,11 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.ui.terminalRV_max.setText('{:.3f}'.format(self.statTRVmax))
         
         tdv = idvabs + trvabs
-        if self.statTDVmin == None:
+        if self.statTDVmin is None:
             self.statTDVmin = tdv
         elif tdv < self.statTDVmin:
             self.statTDVmin = tdv
-        if self.statTDVmax == None:
+        if self.statTDVmax is None:
             self.statTDVmax = tdv
         elif tdv > self.statTDVmax:
             self.statTDVmax = tdv
@@ -336,7 +336,7 @@ class StartOptimizeDialog(QtGui.QDialog):
         if self.ui.check_Ptrj.isChecked():
             draw_Ptrj()
 
-        if g.fig != None: plt.draw()
+        if g.fig is not None: plt.draw()
     
     def fdchanged(self):
         self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
@@ -544,19 +544,19 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.eraseall()
     
     def eraseall(self):
-        if self.artist_PCpos != None:
+        if self.artist_PCpos is not None:
             self.artist_PCpos.remove()
             self.artist_PCpos = None
-        if self.artist_PEpos != None:
+        if self.artist_PEpos is not None:
             self.artist_PEpos.remove()
             self.artist_PEpos = None
-        if self.artist_TCpos != None:
+        if self.artist_TCpos is not None:
             self.artist_TCpos.remove()
             self.artist_TCpos = None
-        if self.artist_sol != None:
+        if self.artist_sol is not None:
             self.artist_sol.remove()
             self.artist_sol = None
-        if self.artist_Porbit != None:
+        if self.artist_Porbit is not None:
             self.artist_Porbit[0].remove()
             self.artist_Porbit = None
         erase_PKepler()

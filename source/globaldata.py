@@ -62,25 +62,25 @@ def draw_Ptrj():
         g.artist_Ptrj.append(g.ax.plot(*trj[2:5], color='blue', lw=0.75))
     
 def erase_PKepler():
-    if g.artist_PKepler != None:
+    if g.artist_PKepler is not None:
         g.artist_PKepler[0].remove()
     g.artist_PKepler = None
     
 def draw_PKepler():
-    if g.probe_Kepler != None:
+    if g.probe_Kepler is not None:
         g.artist_PKepler = g.ax.plot(*g.probe_Kepler, color='red', lw=0.75)
     
 def erase_TKepler():
-    if g.artist_TKepler != None:
+    if g.artist_TKepler is not None:
         g.artist_TKepler[0].remove()
     g.artist_TKepler = None
     
 def draw_TKepler():
-    if g.target_Kepler != None:
+    if g.target_Kepler is not None:
         g.artist_TKepler = g.ax.plot(*g.target_Kepler, color='green', lw=0.75)
 
 def remove_planets():
-    if g.artist_mark_of_planets != None:
+    if g.artist_mark_of_planets is not None:
         g.artist_mark_of_planets.remove()
         g.artist_mark_of_planets = None
     for art in g.artist_name_of_planets:
@@ -118,7 +118,7 @@ def replot_planets(jd):
                                       ' '+names[i], color='c', fontsize=9))
 
 def remove_time():
-    if g.artist_of_time != None:
+    if g.artist_of_time is not None:
         g.artist_of_time.remove()
         g.artist_of_time = None
 

@@ -152,7 +152,7 @@ class Probe:
                 return False, "Invalid end time of FLYTO : OUTSIDE of Target's time span"
 
             duration = jdto - self.jd
-            if pbar != None:
+            if pbar is not None:
                 pbar.setVisible(True)
                 pbar.setValue(0)
                 plabel.setText(ptext)
@@ -162,7 +162,7 @@ class Probe:
                 secto, inter, common.SPKkernel, common.planets_grav, 
                 common.planets_mu, common.integ_abs_tol, common.integ_rel_tol, 
                 pbar)
-            if pbar != None:
+            if pbar is not None:
                 pbar.setVisible(False)
                 plabel.setText('')
             if runerror: 

@@ -128,6 +128,6 @@ class Target:
         return self.startjd, self.endjd
         
     def closesbkernel(self):
-        if self.sbkernel != None:
+        if self.sbkernel is not None:
             self.sbkernel.close()
         

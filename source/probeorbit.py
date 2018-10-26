@@ -243,7 +243,7 @@ class ProbeOrbit:
             zd[i] = posvel[5]
             if self._sson:
                 ssdvpd[i] = self.compssdvpd(r.t, posvel, kernel)
-            if pbar != None:
+            if pbar is not None:
                 if i % 10 == 0:
                     percent = i * 100 // ninter
                     pbar.setValue(percent)

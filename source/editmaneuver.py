@@ -131,7 +131,7 @@ class EditManDialog(QtGui.QDialog):
             self.ui.parameters.item(row, 0).setFlags(Qt.ItemIsEnabled)
         
         self.currentrow = currentrow
-        if editman == None:
+        if editman is None:
             self.editman = None
             self.dispman()
         else:
@@ -148,7 +148,7 @@ class EditManDialog(QtGui.QDialog):
         self.ui.applyduration.setEnabled(False)
         self.ui.label_duration.setEnabled(False)
         self.ui.finishbutton.setEnabled(False)
-        if self.editman == None: return
+        if self.editman is None: return
             
         self.ui.finishbutton.setEnabled(True)
         
@@ -180,7 +180,7 @@ class EditManDialog(QtGui.QDialog):
         jdtoday = julian.to_jd(dt, fmt='jd')
         jdtoday = int(jdtoday + 0.5) - 0.5
         ival = [jdtoday, 0.0, 0.0, 0.0, 0.0, 10000.0, 35.26, 'L', 1.0]
-        if g.myprobe != None:
+        if g.myprobe is not None:
             if g.myprobe.onflight:
                 ival[0] = g.myprobe.jd
         self.editman = {}
@@ -190,7 +190,7 @@ class EditManDialog(QtGui.QDialog):
                 self.editman[self.paramname[i]] = ival[i]
         
     def dispman(self):
-        if self.editman == None:
+        if self.editman is None:
             self.ui.mantype.setCurrentIndex(-1)
             self.ui.mantypedisp.setText('Not Defined')
             self.ui.isotedit.setEnabled(False)
@@ -240,10 +240,10 @@ class EditManDialog(QtGui.QDialog):
                 
     def applymantype(self):
         newID = self.ui.mantype.currentIndex()
-        if self.editman == None:
+        if self.editman is None:
             self.initman(newID)
             self.dispman()
-            if g.showorbitcontrol != None:
+            if g.showorbitcontrol is not None:
                 g.showorbitcontrol.close()
             self.setenable()
             
@@ -255,7 +255,7 @@ class EditManDialog(QtGui.QDialog):
         if ans == 1:
             self.initman(newID)
             self.dispman()
-            if g.showorbitcontrol != None:
+            if g.showorbitcontrol is not None:
                 g.showorbitcontrol.close()
             self.setenable()
         else:
@@ -312,20 +312,20 @@ class EditManDialog(QtGui.QDialog):
 
     def finish_exec(self):
         g.editedman = self.editman
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
         self.writeloglines()
         self.done(g.finish_exec)
         
     def finishbutton(self):
         g.editedman = self.editman
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
         self.writeloglines()
         self.accept()
         
     def cancelbutton(self):
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
         self.reject()
 
@@ -352,7 +352,7 @@ class EditManDialog(QtGui.QDialog):
         if ans == 2:
             event.ignore()
             return
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
         event.accept()
 
@@ -371,7 +371,7 @@ class EditManDialog(QtGui.QDialog):
         dv = self.editman['dv']
         phi = self.editman['phi']
         elv = self.editman['elv']
-        if g.showorbitcontrol == None:
+        if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
         g.showorbitcontrol.ui.groupBox.setEnabled(True)
@@ -383,11 +383,11 @@ class EditManDialog(QtGui.QDialog):
         # Check time
         tsjd, tejd = g.mytarget.getsejd()
         if self.editman['time'] < tsjd or self.editman['time'] >= tejd:
-            if g.showorbitcontrol != None:
+            if g.showorbitcontrol is not None:
                 g.showorbitcontrol.close()
             return
     
-        if g.showorbitcontrol == None:
+        if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowStartOrbitDialog(self, self.editman)
             g.showorbitcontrol.show()
         else:
@@ -396,7 +396,7 @@ class EditManDialog(QtGui.QDialog):
         g.showorbitcontrol.set_affect_parent(False)
 
     def showorbitFLYTO(self):
-        if g.showorbitcontrol == None:
+        if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
         g.showorbitcontrol.set_pred_DT(self.editman['time'])
@@ -405,7 +405,7 @@ class EditManDialog(QtGui.QDialog):
         g.showorbitcontrol.set_affect_parent(True)
             
     def showorbitOTHER(self):
-        if g.showorbitcontrol == None:
+        if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
         g.showorbitcontrol.set_pred_dv(0.0, 0.0, 0.0)
@@ -416,7 +416,7 @@ class EditManDialog(QtGui.QDialog):
             
     def computefta(self):
         norm = lambda x : x / np.sqrt(np.dot(x,x))
-        if g.showorbitcontrol == None:
+        if g.showorbitcontrol is None:
             QMessageBox.information(self, 
                 'Info', 'To use FTA, open Show Orbit window and\n' 
                 + 'try again', 0, 1, 0)
@@ -562,7 +562,7 @@ class EditManDialog(QtGui.QDialog):
             self.cp_optimize()
             
     def start_optimize(self):
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
             
         orgjd = float(self.ui.jdedit.text())
@@ -595,7 +595,7 @@ class EditManDialog(QtGui.QDialog):
         
     
     def cp_optimize(self):
-        if g.showorbitcontrol != None:
+        if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
             
         orgjd = g.myprobe.jd
