@@ -254,10 +254,9 @@ class ReviewThroughoutControl(QtGui.QDialog):
         erase_PKepler()
         if self.ui.check_PKepler.isChecked():
             self.tbpred.fix_state(c_time, ppos, pvel)
-            x, y, z, t = self.tbpred.points(g.ndata)
+            x, y, z, t = self.tbpred.points(g.ndata_s)
             g.probe_Kepler = [x, y, z]
-            if self.ui.check_PKepler.isChecked():
-                draw_PKepler()
+            draw_PKepler()
 
         target_pos, target_vel = g.mytarget.posvel(c_time)
         sun_pos, sun_vel = common.SPKposvel(10, c_time)        

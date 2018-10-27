@@ -205,7 +205,7 @@ class StartOptimizeDialog(QtGui.QDialog):
         self.artist_sol = g.ax.scatter(*sunpos, s=50, c='w',depthshade=False, 
                                        marker='o')
         if self.ui.check_Ppred.isChecked():
-            x, y, z, t = self.predorbit.points(101)
+            x, y, z, t = self.predorbit.points(g.ndata_s)
             self.artist_Porbit = g.ax.plot(x, y, z,color='c', lw=0.75)
 
         if g.fig is not None: plt.draw()

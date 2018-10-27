@@ -165,6 +165,7 @@ class MainForm(QtGui.QMainWindow):
         g.maneuvers = None
         g.manplan_saved = True
         g.ndata = 1001
+        g.ndata_s = 301
         g.myprobe = None
         
         g.mytarget = None

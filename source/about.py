@@ -8,8 +8,21 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from ui.aboutSSVG import *
 
-# global variables: SSVG sets real instances
-g = None
+from globaldata import *
+# Import followings
+#     g : container of global data
+#     erase_Ptrj()
+#     draw_Ptrj()
+#     erase_PKepler()
+#     draw_PKepler()
+#     erase_TKepler()
+#     draw_TKepler()
+#     remove_planets()
+#     replot_planets(jd)
+#     remove_time()
+#     replot_time(jd, ttype='')
+#     nowtimestr()
+#     nowtimestrf()
 
 
 

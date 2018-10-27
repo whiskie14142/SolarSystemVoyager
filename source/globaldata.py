@@ -30,6 +30,7 @@ class _Gdata:
         'myprobe',                  # instance of space probe
         'mytarget',                 # instance of Target (destination of the probe)
         'ndata',                    # number of points to draw orbit
+        'ndata_s',                  # number of points to draw orbit (shortend)
         'nextman',                  # index of next maneuver
         'probe_trj',                # list of probe trajectories of each FLYTO
         'probe_Kepler',             # points of Kepler orbit of probe
