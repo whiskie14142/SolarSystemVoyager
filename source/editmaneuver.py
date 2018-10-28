@@ -646,6 +646,8 @@ class EditManDialog(QtGui.QDialog):
         except ValueError:
             QMessageBox.critical(self, 'Error', 'Invalid Duration days', 
                                     0, 1, 0)
+            self.ui.duration.setText('{:.8f}'.format(
+                self.editman[self.paramname[0]] - g.myprobe.jd))
             return
         jd = g.myprobe.jd + dt
         self.ui.jdedit.setText('{:.8f}'.format(jd))

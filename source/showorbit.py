@@ -230,7 +230,6 @@ class ShowOrbitDialog(QtGui.QDialog):
         return self.jd + self.delta_jd
         
     def forward(self):
-        self.delta_jd = float(self.ui.delta_t_edit.text())
         exp = self.ui.timescale.value()
         self.delta_jd += 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -239,7 +238,6 @@ class ShowOrbitDialog(QtGui.QDialog):
             self.mother.gettime(self.jd + self.delta_jd)
         
     def backward(self):
-        self.delta_jd = float(self.ui.delta_t_edit.text())
         exp = self.ui.timescale.value()
         self.delta_jd -= 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -248,7 +246,6 @@ class ShowOrbitDialog(QtGui.QDialog):
             self.mother.gettime(self.jd + self.delta_jd)
         
     def fastforward(self):
-        self.delta_jd = float(self.ui.delta_t_edit.text())
         exp = self.ui.timescale.value() + 1
         self.delta_jd += 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -257,7 +254,6 @@ class ShowOrbitDialog(QtGui.QDialog):
             self.mother.gettime(self.jd + self.delta_jd)
 
     def fastbackward(self):
-        self.delta_jd = float(self.ui.delta_t_edit.text())
         exp = self.ui.timescale.value() + 1
         self.delta_jd -= 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -287,11 +283,12 @@ class ShowOrbitDialog(QtGui.QDialog):
         try:
             value = float(text)
         except ValueError:
-            self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
             QMessageBox.critical(self, 'Error', 
                                     'Enter a floating point number.', 0, 1, 0)
+            self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
             return
         self.delta_jd = value
+        self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
         self._redrawmark()
         if self.affect_parent:
             self.mother.gettime(self.jd + self.delta_jd)
