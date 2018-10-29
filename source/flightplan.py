@@ -108,7 +108,7 @@ class NewFlightPlanDialog(QtGui.QDialog):
                     'Invalid SPK file: more than one data type', 0, 1, 0)
                 tempk.close()
                 return
-        self.data_type = datatype0
+        g.data_type = datatype0
         # Prepare the combo-box of SPKID
         # idlist is a list of [SPKID]
         idlist = [tempk.segments[0].target]
@@ -152,7 +152,7 @@ class NewFlightPlanDialog(QtGui.QDialog):
             target['name'] = self.ui.planets.currentText()
             target['file'] = ''
             target['SPKID1A'] = 0
-            target['data_type'] = 0
+            g.data_type = 0
             for planet in common.planets_id:
                 if planet[1] != target['name']: continue
                 if planet[1] == 'Moon' or planet[1] == 'Earth':
@@ -183,7 +183,6 @@ class NewFlightPlanDialog(QtGui.QDialog):
             target['SPKID2A'] = 0
             target['SPKID2B'] = 0
             target['SPKID1B'] = int(self.ui.spkid_list.currentText())
-            target['data_type'] = self.data_type
             
         newplan['probe'] = probe
         newplan['target'] = target
@@ -223,7 +222,6 @@ class EditProbeDialog(NewFlightPlanDialog):
             self.ui.planets.setCurrentIndex(index)
         
         self.center = target['SPKID1A']
-        self.data_type = target['data_type']
 
         self.setWindowTitle('Edit Probe Properties')
         self.ui.target_box.setEnabled(False)
@@ -305,7 +303,6 @@ class EditTargetDialog(NewFlightPlanDialog):
             self.ui.planets.setCurrentIndex(index)
         
         self.center = target['SPKID1A']
-        self.data_type = target['data_type']
 
         self.setWindowTitle('Select New Target')
         self.ui.probe_box.setEnabled(False)
@@ -316,7 +313,7 @@ class EditTargetDialog(NewFlightPlanDialog):
             target['name'] = self.ui.planets.currentText()
             target['file'] = ''
             target['SPKID1A'] = 0
-            target['data_type'] = 0
+            g.data_type = 0
             for planet in common.planets_id:
                 if planet[1] != target['name']: continue
                 if planet[1] == 'Moon' or planet[1] == 'Earth':
@@ -347,7 +344,6 @@ class EditTargetDialog(NewFlightPlanDialog):
             target['SPKID2A'] = 0
             target['SPKID2B'] = 0
             target['SPKID1B'] = int(self.ui.spkid_list.currentText())
-            target['data_type'] = self.data_type
             
         self.manplan['target'] = target
         self.accept()

@@ -290,25 +290,24 @@ class MainForm(QtGui.QMainWindow):
         g.manplan = json.load(manfile)
         manfile.close()
         
-        # for old manplan data, check SPK file, and set data_type
-        if not ('data_type' in g.manplan['target']):
-            temppath = g.manplan['target']['file']
-            if temppath != '':
+        # Check SPK file, and set data_type
+        temppath = g.manplan['target']['file']
+        if temppath != '':
+            try:
+                tempk = SPKType21.open(temppath)
+            except FileNotFoundError:
                 try:
-                    tempk = SPKType21.open(temppath)
+                    fname = os.path.basename(temppath)
+                    tempk = SPKType21.open(os.path.join(common.bspdir, fname))
                 except FileNotFoundError:
-                    try:
-                        fname = os.path.basename(temppath)
-                        tempk = SPKType21.open(os.path.join(common.bspdir, fname))
-                    except FileNotFoundError:
-                        QMessageBox.critical(self, 'File not Found',
-                            "Target's SPK file {0} is not found.  Store it in 'data' folder".format(fname),
-                            0, 1, 0)
-                        return
-                g.manplan['target']['data_type'] = tempk.segments[0].data_type
-                tempk.close()
-            else:
-                g.manplan['target']['data_type'] = 0
+                    QMessageBox.critical(self, 'File not Found',
+                        "Target's SPK file {0} is not found.  Store it in 'data' folder".format(fname),
+                        0, 1, 0)
+                    return
+            g.data_type = tempk.segments[0].data_type
+            tempk.close()
+        else:
+            g.data_type = 0
         
         if g.mytarget is not None:
             g.mytarget.closesbkernel()

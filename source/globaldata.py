@@ -20,6 +20,7 @@ class _Gdata:
         'currentdir',               # current directory of application
         'clipboard',                # system clipboard object
         'editedman',                # edited maneuver : output of EditManDialog
+        'data_type',                # data type of small body SPK file
         'fig',                      # figure of matplotlib
         'logfile',                  # file object of the SSVG LOG
         'mainform',                 # mainform of this application

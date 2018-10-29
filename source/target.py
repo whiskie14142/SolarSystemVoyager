@@ -9,6 +9,7 @@ import common
 from pytwobodyorbit import TwoBodyOrbit
 from spktype01 import SPKType01
 from spktype21 import SPKType21
+from globaldata import g
 
 
 class Target:
@@ -39,7 +40,7 @@ class Target:
 
         
     def __init__(self, name='Mars', file='', SPKID1A=0, SPKID1B=4, SPKID2A=0, 
-                 SPKID2B=0, data_type=0):
+                 SPKID2B=0):
         self.sbkernel = None
         if file == '':
             self.kernel = common.SPKkernel
@@ -49,7 +50,7 @@ class Target:
         else:
             filename = os.path.basename(file)
             mes = "Target's SPK file {0} is not found.  Store it in 'data' folder".format(filename)
-            if data_type == 1:
+            if g.data_type == 1:
                 try:
                     self.sbkernel = SPKType01.open(file)
                 except FileNotFoundError:
@@ -59,7 +60,7 @@ class Target:
                     except FileNotFoundError:
                         raise RuntimeError(mes)
                 self.ephem = self.nasa_sb_type01
-            elif data_type == 21:
+            elif g.data_type == 21:
                 try:
                     self.sbkernel = SPKType21.open(file)
                 except FileNotFoundError:
@@ -70,7 +71,7 @@ class Target:
                         raise RuntimeError(mes)
                 self.ephem = self.nasa_sb_type21
             else:
-                raise RuntimeError("Illegal data_type: " + str(data_type))
+                raise RuntimeError("Illegal data_type: " + str(g.data_type))
 
             # start time and end time of Target's SPK file
             # self.startjd is inclusive
@@ -89,7 +90,6 @@ class Target:
         self.idx1b = SPKID1B
         self.idx2a = SPKID2A
         self.idx2b = SPKID2B
-        self.data_type = data_type
         return
     
     def posvel(self, jd):
