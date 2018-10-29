@@ -17,8 +17,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Source code and license terms will be retrieved from:
 <https://github.com/whiskie14142/SolarSystemVoyager/>
 """
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
 
 import sys
 import os
@@ -63,7 +64,7 @@ from globaldata import *
 
 from ui.mainwindow import *
 
-class MainForm(QtGui.QMainWindow):
+class MainForm(QMainWindow):
     """class for the main window (SSVG window)
     """
     def __init__(self, parent=None):

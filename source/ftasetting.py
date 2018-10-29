@@ -6,8 +6,8 @@ Created on Thu Oct 25 14:29:07 2018
 """
 
 import numpy as np
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 
 import common
 
@@ -30,7 +30,7 @@ from globaldata import *
 #     nowtimestrf()
 
 
-class FTAsettingDialog(QtGui.QDialog):
+class FTAsettingDialog(QDialog):
     """class for the dialog to specity parameters for FTA
     """
     

@@ -5,8 +5,8 @@ Created on Fri Oct 26 08:12:16 2018
 @author: shush_000
 """
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -31,7 +31,7 @@ from globaldata import *
 
 from ui.flightreviewcontrol import *
 
-class FlightReviewControl(QtGui.QDialog):
+class FlightReviewControl(QDialog):
     """class for 'Flight Review' window
     """
     def __init__(self, parent=None):

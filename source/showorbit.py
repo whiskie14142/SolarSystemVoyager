@@ -5,8 +5,8 @@ Created on Fri Oct 26 07:55:28 2018
 @author: shush_000
 """
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 import numpy as np
 
 import common
@@ -30,7 +30,7 @@ from globaldata import *
 
 from ui.showorbitcontrol import *
 
-class ShowOrbitDialog(QtGui.QDialog):
+class ShowOrbitDialog(QDialog):
     """class for 'Show Orbit' window
     """
     def __init__(self, parent=None):

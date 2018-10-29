@@ -4,8 +4,8 @@ Created on Thu Oct 25 14:17:47 2018
 
 @author: shush_000
 """
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 from ui.aboutSSVG import *
 
 from globaldata import *
@@ -26,7 +26,7 @@ from globaldata import *
 
 
 
-class AboutSSVG(QtGui.QDialog):
+class AboutSSVG(QDialog):
     """class for 'About SSVG' dialog
     """
     def __init__(self, parent=None):
@@ -63,7 +63,7 @@ This program uses following programs and modules:
   matplotlib : http://matplotlib.org/
     Copyright (c) 2012-2013 Matplotlib Development Team;
     All Rights Reserved
-  PyQt4 : https://www.riverbankcomputing.com/news/
+  PyQt5 : https://www.riverbankcomputing.com/news/
   jplephem : https://github.com/brandon-rhodes/python-jplephem/
   julian : https://github.com/dannyzed/julian/
     Copyright (c) 2016 Daniel Zawada

@@ -6,8 +6,8 @@ Created on Thu Oct 25 14:41:18 2018
 """
 
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -32,7 +32,7 @@ from globaldata import *
 #     nowtimestr()
 #     nowtimestrf()
 
-class StartOptimizeDialog(QtGui.QDialog):
+class StartOptimizeDialog(QDialog):
     """class for the Start Optimize Assistant
     """
     def __init__(self, orgjd, parent=None):

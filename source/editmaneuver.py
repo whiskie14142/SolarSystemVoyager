@@ -5,8 +5,8 @@ Created on Thu Oct 25 15:03:07 2018
 @author: shush_000
 """
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 import numpy as np
 import math
 from datetime import datetime
@@ -38,7 +38,7 @@ from globaldata import *
 #     nowtimestrf()
 
 
-class EditManDialog(QtGui.QDialog):
+class EditManDialog(QDialog):
     """class for 'Edit Maneuver' dialog
     """
     

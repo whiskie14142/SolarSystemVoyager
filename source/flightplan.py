@@ -6,8 +6,8 @@ Created on Thu Oct 25 11:07:31 2018
 """
 
 import os
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 
 import common
 from spktype21 import SPKType21
@@ -30,7 +30,7 @@ from globaldata import *
 
 from ui.newflightplandialog import *
 
-class NewFlightPlanDialog(QtGui.QDialog):
+class NewFlightPlanDialog(QDialog):
     """class for 'New Flight Plan' dialog
     """
     
