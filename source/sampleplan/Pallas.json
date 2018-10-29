@@ -1,0 +1,113 @@
+{
+    "probe": {
+        "pmass": 500.0,
+        "name": "myprobe",
+        "base": "EarthL2"
+    },
+    "maneuvers": [
+        {
+            "time": 2462555.5,
+            "dv": 8606.299,
+            "type": "START",
+            "phi": 7.28,
+            "elv": 11.67
+        },
+        {
+            "time": 2462655.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "phi": -62.34,
+            "dv": 87.617,
+            "type": "CP",
+            "elv": -0.4
+        },
+        {
+            "time": 2463749.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "phi": -75.26,
+            "dv": 137.224,
+            "type": "CP",
+            "elv": 2.26
+        },
+        {
+            "phi": -121.25,
+            "dv": 12.719,
+            "type": "CP",
+            "elv": -50.0
+        },
+        {
+            "time": 2464415.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "phi": 45.72,
+            "dv": 362.063,
+            "type": "CP",
+            "elv": 15.21
+        },
+        {
+            "time": 2464865.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "phi": 32.61,
+            "dv": 7.774,
+            "type": "CP",
+            "elv": -2.94
+        },
+        {
+            "time": 2465265.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "phi": -119.7,
+            "dv": 31.693,
+            "type": "CP",
+            "elv": -20.01
+        },
+        {
+            "time": 2465366.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        },
+        {
+            "phi": 168.53,
+            "dv": 2141.614,
+            "type": "CP",
+            "elv": 9.24
+        },
+        {
+            "phi": -97.48,
+            "dv": 0.089,
+            "type": "CP",
+            "elv": 28.17
+        },
+        {
+            "phi": -90.014,
+            "dv": 4.51,
+            "type": "CP",
+            "elv": 0.0
+        },
+        {
+            "time": 2465666.5,
+            "type": "FLYTO",
+            "inter": 1.0
+        }
+    ],
+    "target": {
+        "name": "Pallas",
+        "SPKID2B": 0,
+        "SPKID1B": 2000002,
+        "SPKID1A": 0,
+        "SPKID2A": 0,
+        "file": "2000002_Pallas_21.bsp"
+    }
+}
