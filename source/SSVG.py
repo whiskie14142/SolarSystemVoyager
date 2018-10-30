@@ -76,47 +76,69 @@ class MainForm(QMainWindow):
         self.ui.manplans.setColumnWidth(1,330)
         self.ui.manplans.setColumnWidth(2,80)
         self.ui.manplans.setCornerButtonEnabled(False)              # Disable table selection by clicking corner button
-        self.ui.manplans.horizontalHeader().setClickable(False)     # Disable colomn selection by clicking
-        self.ui.manplans.verticalHeader().setClickable(False)       # Disable row selection by clicking
+        self.ui.manplans.horizontalHeader().setSectionsClickable(False)     # Disable colomn selection by clicking
+        self.ui.manplans.verticalHeader().setSectionsClickable(False)       # Disable row selection by clicking
         self.ui.selectedman.setColumnWidth(0,100)
         self.ui.selectedman.setColumnWidth(1,139)
-        self.connect(self.ui.actionOpen, SIGNAL('triggered()'), 
-                                             self.openmanplan)
-        self.connect(self.ui.actionNew, SIGNAL('triggered()'), 
-                                             self.newmanplan)
-        self.connect(self.ui.actionQuit, SIGNAL('triggered()'), 
-                                             self.appquit)
-        self.connect(self.ui.actionSave, SIGNAL('triggered()'), 
-                                             self.savemanplan)
-        self.connect(self.ui.actionSave_as, SIGNAL('triggered()'), 
-                                             self.saveasmanplan)
-        self.connect(self.ui.actionProbe, SIGNAL('triggered()'), 
-                                             self.editprobe)
-        self.connect(self.ui.actionTarget, SIGNAL('triggered()'), 
-                                             self.edittarget)
-        self.connect(self.ui.actionCreate, SIGNAL('triggered()'), 
-                                             self.createcheckpoint)
-        self.connect(self.ui.actionResume, SIGNAL('triggered()'), 
-                                             self.resumecheckpoint)
-        self.connect(self.ui.actionAbout_SSVG, SIGNAL('triggered()'), 
-                                             self.aboutselected)
-        self.connect(self.ui.execNext, SIGNAL('clicked()'), self.execnext)
-        self.connect(self.ui.reviewthroughout, SIGNAL('clicked()'), 
-                                             self.reviewthroughout)
-        self.connect(self.ui.flightreview, SIGNAL('clicked()'), 
-                                             self.showflightreview)
-        self.connect(self.ui.showOrbit, SIGNAL('clicked()'), self.showorbit)
-        self.connect(self.ui.editnext, SIGNAL('clicked()'), self.editnext)
-        self.connect(self.ui.initexec, SIGNAL('clicked()'), self.initexec)
-        self.connect(self.ui.manplans, 
-                     SIGNAL('currentCellChanged(int,int,int,int)'), 
-                     self.manplanscellchanged)
-        self.connect(self.ui.manplans, SIGNAL('cellDoubleClicked(int,int)'), 
-                     self.editman)
-        self.connect(self.ui.execto, SIGNAL('clicked()'), self.execto)
-        self.connect(self.ui.editMan, SIGNAL('clicked()'), self.editman)
-        self.connect(self.ui.insertMan, SIGNAL('clicked()'), self.insertman)
-        self.connect(self.ui.deleteMan, SIGNAL('clicked()'), self.deleteman)
+#        self.connect(self.ui.actionOpen, SIGNAL('triggered()'), 
+#                                             self.openmanplan)
+        self.ui.actionOpen.triggered.connect(self.openmanplan)
+#        self.connect(self.ui.actionNew, SIGNAL('triggered()'), 
+#                                             self.newmanplan)
+        self.ui.actionNew.triggered.connect(self.newmanplan)
+#        self.connect(self.ui.actionQuit, SIGNAL('triggered()'), 
+#                                             self.appquit)
+        self.ui.actionQuit.triggered.connect(self.appquit)
+#        self.connect(self.ui.actionSave, SIGNAL('triggered()'), 
+#                                             self.savemanplan)
+        self.ui.actionSave.triggered.connect(self.savemanplan)
+#        self.connect(self.ui.actionSave_as, SIGNAL('triggered()'), 
+#                                             self.saveasmanplan)
+        self.ui.actionSave_as.triggered.connect(self.saveasmanplan)
+#        self.connect(self.ui.actionProbe, SIGNAL('triggered()'), 
+#                                             self.editprobe)
+        self.ui.actionProbe.triggered.connect(self.editprobe)
+#        self.connect(self.ui.actionTarget, SIGNAL('triggered()'), 
+#                                             self.edittarget)
+        self.ui.actionTarget.triggered.connect(self.edittarget)
+#        self.connect(self.ui.actionCreate, SIGNAL('triggered()'), 
+#                                             self.createcheckpoint)
+        self.ui.actionCreate.triggered.connect(self.createcheckpoint)
+#        self.connect(self.ui.actionResume, SIGNAL('triggered()'), 
+#                                             self.resumecheckpoint)
+        self.ui.actionResume.triggered.connect(self.resumecheckpoint)
+#        self.connect(self.ui.actionAbout_SSVG, SIGNAL('triggered()'), 
+#                                            self.aboutselected)
+        self.ui.actionAbout_SSVG.triggered.connect(self.aboutselected)
+#        self.connect(self.ui.execNext, SIGNAL('clicked()'), self.execnext)
+        self.ui.execNext.clicked.connect(self.execnext)
+#        self.connect(self.ui.reviewthroughout, SIGNAL('clicked()'), 
+#                                             self.reviewthroughout)
+        self.ui.reviewthroughout.clicked.connect(self.reviewthroughout)
+#        self.connect(self.ui.flightreview, SIGNAL('clicked()'), 
+#                                             self.showflightreview)
+        self.ui.flightreview.clicked.connect(self.showflightreview)
+#        self.connect(self.ui.showOrbit, SIGNAL('clicked()'), self.showorbit)
+        self.ui.showOrbit.clicked.connect(self.showorbit)
+#        self.connect(self.ui.editnext, SIGNAL('clicked()'), self.editnext)
+        self.ui.editnext.clicked.connect(self.editnext)
+#        self.connect(self.ui.initexec, SIGNAL('clicked()'), self.initexec)
+        self.ui.initexec.clicked.connect(self.initexec)
+#        self.connect(self.ui.manplans, 
+#                     SIGNAL('currentCellChanged(int,int,int,int)'), 
+#                     self.manplanscellchanged)
+        self.ui.manplans.currentCellChanged.connect(self.manplanscellchanged)
+#        self.connect(self.ui.manplans, SIGNAL('cellDoubleClicked(int,int)'), 
+#                     self.editman)
+        self.ui.manplans.cellDoubleClicked.connect(self.editman)
+#        self.connect(self.ui.execto, SIGNAL('clicked()'), self.execto)
+        self.ui.execto.clicked.connect(self.execto)
+#        self.connect(self.ui.editMan, SIGNAL('clicked()'), self.editman)
+        self.ui.editMan.clicked.connect(self.editman)
+#        self.connect(self.ui.insertMan, SIGNAL('clicked()'), self.insertman)
+        self.ui.insertMan.clicked.connect(self.insertman)
+#        self.connect(self.ui.deleteMan, SIGNAL('clicked()'), self.deleteman)
+        self.ui.deleteMan.clicked.connect(self.deleteman)
 
         self.ui.manplans.verticalHeader().setFixedWidth(30)     # Qt document has no information about this method.
         self.ui.progressBar.setVisible(False)
@@ -236,10 +258,11 @@ class MainForm(QMainWindow):
         else:
             ans = QMessageBox.question(self, 'Quit SSV', 
                 'Flight Plan has not been saved.\nDo you want to save?', 
-                ' Save and Quit ', ' Discard and Quit ', ' Cancel ')
-            if ans == 0:
+                QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
+                QMessageBox.Cancel)
+            if ans == QMessageBox.Save:
                 self.savemanplan()
-            elif ans == 1:
+            elif ans == QMessageBox.Discard:
                 pass
             else:
                 event.ignore()
@@ -256,10 +279,11 @@ class MainForm(QMainWindow):
         if not g.manplan_saved:
             ans = QMessageBox.question(self, 'Open Flight Plan File', 
                'Current Flight Plan has not been saved.\nDo you want to save?', 
-               ' Save and Proceed ', ' Discard and Proceed ', ' Cancel ')
-            if ans == 0:
+               QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
+                QMessageBox.Cancel)
+            if ans == QMessageBox.Save :
                 self.savemanplan()
-            elif ans == 1:
+            elif ans == QMessageBox.Discard :
                 pass
             else:
                 return
@@ -267,6 +291,7 @@ class MainForm(QMainWindow):
         ans = QFileDialog.getOpenFileName(parent=self,
             caption='Select Flight Plan File',
             directory=g.currentdir, filter='JSON files (*.json)')
+        ans = ans[0]
         if ans == '': return
 
         g.currentdir = os.path.split(ans)[0]
@@ -303,7 +328,7 @@ class MainForm(QMainWindow):
                 except FileNotFoundError:
                     QMessageBox.critical(self, 'File not Found',
                         "Target's SPK file {0} is not found.  Store it in 'data' folder".format(fname),
-                        0, 1, 0)
+                        QMessageBox.Ok)
                     return
             g.data_type = tempk.segments[0].data_type
             tempk.close()
@@ -372,10 +397,11 @@ class MainForm(QMainWindow):
         if not g.manplan_saved:
             ans = QMessageBox.question(self, 'New Flight Plan', 
                'Current Flight Plan has not been saved.\nDo you want to save?', 
-               ' Save and Proceed ', ' Discard and Proceed ', ' Cancel ')
-            if ans == 0:
+               QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
+               QMessageBox.Cancel)
+            if ans == QMessageBox.Save :
                 self.savemanplan()
-            elif ans == 1:
+            elif ans == QMessageBox.Discard :
                 pass
             else:
                 return
@@ -454,11 +480,11 @@ class MainForm(QMainWindow):
     def reviewthroughout(self):
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
-                                    0, 1, 0)
+                                    QMessageBox.Ok)
             return
         if not g.myprobe.onflight:
             QMessageBox.information(self, 'Info', 
-                                    'Your probe is not on flight.', 0, 1, 0)
+                                    'Your probe is not on flight.', QMessageBox.Ok)
             return
         
         self.init3Dfigure()
@@ -482,7 +508,7 @@ class MainForm(QMainWindow):
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
         QMessageBox.information(self, 'Info', 
-                                'Flight Plan was saved.', 0, 1, 0)
+                                'Flight Plan was saved.', QMessageBox.Ok)
         
         if g.options['log']:
             logstring = 'save flight plan: ' + nowtimestr() + '\n'
@@ -546,15 +572,15 @@ class MainForm(QMainWindow):
     def execnext(self):
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
-                                    0, 1, 0)
+                                    QMessageBox.Ok)
             return False
         if len(g.maneuvers) <= g.nextman:
             QMessageBox.information(self, 
-                        'Info', "You don't have valid maneuver.", 0, 1, 0)
+                        'Info', "You don't have valid maneuver.", QMessageBox.Ok)
             return False
         if g.maneuvers[g.nextman] is None:
             QMessageBox.information(self, 'Info', 
-                        "You don't have valid maneuver.", 0, 1, 0)
+                        "You don't have valid maneuver.", QMessageBox.Ok)
             return False
         
         # prepare progress bar
@@ -586,7 +612,7 @@ class MainForm(QMainWindow):
         else:
             QMessageBox.information(self, 'Info', 
                                 "Cannot Execute this Maneuver.\n\n"    \
-                                + emes, 0, 1, 0)
+                                + emes, QMessageBox.Ok)
             return False
 
         g.showorbitcontrol.reset()
@@ -599,7 +625,7 @@ class MainForm(QMainWindow):
         stop = self.currentrow
         if start > stop:
             QMessageBox.information(self, 'Info', 
-                                "Select maneuver later than 'Next'", 0, 1, 0)
+                                "Select maneuver later than 'Next'", QMessageBox.Ok)
             return
         for i in range(start, stop + 1):
             result = self.execnext()
@@ -628,11 +654,11 @@ class MainForm(QMainWindow):
     def showorbit(self):
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
-                                    0, 1, 0)
+                                    QMessageBox.Ok)
             return
         if not g.myprobe.onflight:
             QMessageBox.information(self, 'Info', 
-                                    'Your probe has no valid orbit.', 0, 1, 0)
+                                    'Your probe has no valid orbit.', QMessageBox.Ok)
             return
         self.init3Dfigure()
         if g.flightreviewcontrol is not None:
@@ -690,11 +716,11 @@ class MainForm(QMainWindow):
             return
         if g.editedman['type'] == 'START' and self.currentrow != 0:
             QMessageBox.information(self, 'Info', 
-                                'START shall be the 1st maneuver', 0, 1, 0)
+                                'START shall be the 1st maneuver', QMessageBox.Ok)
             return
         if g.editedman['type'] != 'START' and self.currentrow == 0:
             QMessageBox.information(self, 'Info', 
-                                'The 1st maneuver shall be START', 0, 1, 0)
+                                'The 1st maneuver shall be START', QMessageBox.Ok)
             return
 
         # Check time
@@ -703,7 +729,8 @@ class MainForm(QMainWindow):
             if g.editedman['time'] < tsjd or g.editedman['time'] >= tejd:
                 oormes = "The time specified in the Maneuver is outside " + \
                 "of the valid time span of the Target.\nTry again."
-                QMessageBox.critical(self, 'Invalid Parameter', oormes)
+                QMessageBox.critical(self, 'Invalid Parameter', oormes,
+                                     QMessageBox.Ok)
                 return
 
         g.manplan_saved = False
@@ -742,9 +769,9 @@ class MainForm(QMainWindow):
         if self.currentrow == len(g.maneuvers):
             return
         mes = 'Line No. ' + str(self.currentrow + 1) + ' will be deleted. OK?'
-        ans = QMessageBox.question(self, 'Delete Man.', mes, 0, button1=1, 
-                                   button2=2)
-        if ans == 2: return
+        ans = QMessageBox.question(self, 'Delete Man.', mes, QMessageBox.Ok | \
+                QMessageBox.Cancel, QMessageBox.Cancel)
+        if ans == QMessageBox.Cancel : return
         if self.currentrow < len(g.maneuvers):
             if g.maneuvers[self.currentrow] is None:
                 deltype = 'BLANK'
@@ -774,15 +801,15 @@ class MainForm(QMainWindow):
     def showflightreview(self):
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
-                                    0, 1, 0)
+                                    QMessageBox.Ok)
             return
         if not g.myprobe.onflight:
             QMessageBox.information(self, 'Info', 
-                                    'Your probe is not on flight.', 0, 1, 0)
+                                    'Your probe is not on flight.', QMessageBox.Ok)
             return
         if g.myprobe.trj_record[-1][0]['type'] != 'FLYTO':
             QMessageBox.information(self, 'Info', 
-                                    'Latest maneuver was not FLYTO.', 0, 1, 0)
+                                    'Latest maneuver was not FLYTO.', QMessageBox.Ok)
             return  
         
         self.init3Dfigure()
@@ -934,9 +961,9 @@ class MainForm(QMainWindow):
             return
         if self.checkpoint:
             ans = QMessageBox.question(self, 'Create New Checkpoint', 
-                'Existing checkpoint will be lost.  OK?', 0, button1=1, 
-                button2=2)
-            if ans != 1:
+                'Existing checkpoint will be lost.  OK?', QMessageBox.Ok | \
+                QMessageBox.Cancel, QMessageBox.Cancel)
+            if ans != QMessageBox.Ok :
                 return
             self.erasecheckpoint()
         self.checkpoint = True
@@ -989,10 +1016,11 @@ class MainForm(QMainWindow):
         if not g.manplan_saved:
             ans = QMessageBox.question(self, 'Edit Probe Properties', 
                'Current Flight Plan has not been saved.\nDo you want to save?', 
-               ' Save and Proceed ', ' Proceed ', ' Cancel ')
-            if ans == 0:
+               QMessageBox.Save | QMessageBox.Ignore | QMessageBox.Cancel, 
+               QMessageBox.Cancel)
+            if ans == QMessageBox.Save :
                 self.savemanplan()
-            elif ans == 1:
+            elif ans == QMessageBox.Ignore :
                 pass
             else:
                 return
@@ -1035,10 +1063,11 @@ class MainForm(QMainWindow):
         if not g.manplan_saved:
             ans = QMessageBox.question(self, 'Edit Target', 
                'Current Flight Plan has not been saved.\nDo you want to save?', 
-               ' Save and Proceed ', ' Proceed ', ' Cancel ')
-            if ans == 0:
+               QMessageBox.Save | QMessageBox.Ignore | QMessageBox.Cancel, 
+               QMessageBox.Cancel)
+            if ans == QMessageBox.Save :
                 self.savemanplan()
-            elif ans == 1:
+            elif ans == QMessageBox.Ignore :
                 pass
             else:
                 return

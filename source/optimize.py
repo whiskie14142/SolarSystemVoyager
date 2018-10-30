@@ -62,46 +62,71 @@ class StartOptimizeDialog(QDialog):
         
         self.draworbit()
         
-        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
-                     self.fixedorbitchanged)
-        self.connect(self.ui.check_orgorb, SIGNAL('clicked()'), 
-                                             self.fixedorbitchanged)
-        self.connect(self.ui.check_Ppred, SIGNAL('clicked()'), self.draworbit)
-        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
-                                             self.fixedorbitchanged)
-        self.connect(self.ui.radio_fd, SIGNAL('clicked()'), self.fdchanged)
-        self.connect(self.ui.radio_tt, SIGNAL('clicked()'), self.fdchanged)
-        self.connect(self.ui.fixed_to_ct, SIGNAL('clicked()'), 
-                                             self.fixed_to_ct_changed)
-        
-        self.connect(self.ui.it_fb, SIGNAL('clicked()'), self.it_fb)
-        self.connect(self.ui.it_ff, SIGNAL('clicked()'), self.it_ff)
-        self.connect(self.ui.tt_fb, SIGNAL('clicked()'), self.tt_fb)
-        self.connect(self.ui.tt_ff, SIGNAL('clicked()'), self.tt_ff)
-        
-        self.connect(self.ui.it_b, SIGNAL('clicked()'), self.it_b)
-        self.connect(self.ui.it_f, SIGNAL('clicked()'), self.it_f)
-        self.connect(self.ui.tt_b, SIGNAL('clicked()'), self.tt_b)
-        self.connect(self.ui.tt_f, SIGNAL('clicked()'), self.tt_f)
-        
-        self.connect(self.ui.it_wide, SIGNAL('clicked()'), self.itwnchanged)
-        self.connect(self.ui.it_narrow, SIGNAL('clicked()'), self.itwnchanged)
-        self.connect(self.ui.tt_wide, SIGNAL('clicked()'), self.fdchanged)
-        self.connect(self.ui.tt_narrow, SIGNAL('clicked()'), self.fdchanged)
-        self.connect(self.ui.clearstat, SIGNAL('clicked()'), 
-                                             self.clearstatistics)
-        
-        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                                             self.itslchanged)
-        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
-                                             self.ttslchanged)
-
-        self.connect(self.ui.reopenbutton, SIGNAL('clicked()'),
-                                             self.reopen3dorbit)
-        self.connect(self.ui.finishbutton, SIGNAL('clicked()'), 
-                                             self.finishbutton)
-        self.connect(self.ui.cancelbutton, SIGNAL('clicked()'), 
-                                             self.cancelbutton)
+#        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
+#                     self.fixedorbitchanged)
+        self.ui.check_Ptrj.clicked.connect(self.fixedorbitchanged)
+#        self.connect(self.ui.check_orgorb, SIGNAL('clicked()'), 
+#                                             self.fixedorbitchanged)
+        self.ui.check_orgorb.clicked.connect(self.fixedorbitchanged)
+#        self.connect(self.ui.check_Ppred, SIGNAL('clicked()'), self.draworbit)
+        self.ui.check_Ppred.clicked.connect(self.draworbit)
+#        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
+#                                             self.fixedorbitchanged)
+        self.ui.check_TKepler.clicked.connect(self.fixedorbitchanged)
+#        self.connect(self.ui.radio_fd, SIGNAL('clicked()'), self.fdchanged)
+        self.ui.radio_fd.clicked.connect(self.fdchanged)
+#        self.connect(self.ui.radio_tt, SIGNAL('clicked()'), self.fdchanged)
+        self.ui.radio_tt.clicked.connect(self.fdchanged)
+#        self.connect(self.ui.fixed_to_ct, SIGNAL('clicked()'), 
+#                                             self.fixed_to_ct_changed)
+        self.ui.fixed_to_ct.clicked.connect(self.fixed_to_ct_changed)
+#        
+#        self.connect(self.ui.it_fb, SIGNAL('clicked()'), self.it_fb)
+        self.ui.it_fb.clicked.connect(self.it_fb)
+#        self.connect(self.ui.it_ff, SIGNAL('clicked()'), self.it_ff)
+        self.ui.it_ff.clicked.connect(self.it_ff)
+#        self.connect(self.ui.tt_fb, SIGNAL('clicked()'), self.tt_fb)
+        self.ui.tt_fb.clicked.connect(self.tt_fb)
+#        self.connect(self.ui.tt_ff, SIGNAL('clicked()'), self.tt_ff)
+        self.ui.tt_ff.clicked.connect(self.tt_ff)
+#        
+#        self.connect(self.ui.it_b, SIGNAL('clicked()'), self.it_b)
+        self.ui.it_b.clicked.connect(self.it_b)
+#        self.connect(self.ui.it_f, SIGNAL('clicked()'), self.it_f)
+        self.ui.it_f.clicked.connect(self.it_f)
+#        self.connect(self.ui.tt_b, SIGNAL('clicked()'), self.tt_b)
+        self.ui.tt_b.clicked.connect(self.tt_b)
+#        self.connect(self.ui.tt_f, SIGNAL('clicked()'), self.tt_f)
+        self.ui.tt_f.clicked.connect(self.tt_f)
+#        
+#        self.connect(self.ui.it_wide, SIGNAL('clicked()'), self.itwnchanged)
+        self.ui.it_wide.clicked.connect(self.itwnchanged)
+#        self.connect(self.ui.it_narrow, SIGNAL('clicked()'), self.itwnchanged)
+        self.ui.it_narrow.clicked.connect(self.itwnchanged)
+#        self.connect(self.ui.tt_wide, SIGNAL('clicked()'), self.fdchanged)
+        self.ui.tt_wide.clicked.connect(self.fdchanged)
+#        self.connect(self.ui.tt_narrow, SIGNAL('clicked()'), self.fdchanged)
+        self.ui.tt_narrow.clicked.connect(self.fdchanged)
+#        self.connect(self.ui.clearstat, SIGNAL('clicked()'), 
+#                                             self.clearstatistics)
+        self.ui.clearstat.clicked.connect(self.clearstatistic)
+#        
+#        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                                             self.itslchanged)
+        self.ui.sl_inittime.valueChanged.connect(self.itslchanged)
+#        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+#                                             self.ttslchanged)
+        self.ui.sl_duration.valueChanged.connect(self.ttslchanged)
+#
+#        self.connect(self.ui.reopenbutton, SIGNAL('clicked()'),
+#                                             self.reopen3dorbit)
+        self.ui.reopenbutton.clicked.connect(self.reopen3dorbit)
+#        self.connect(self.ui.finishbutton, SIGNAL('clicked()'), 
+#                                             self.finishbutton)
+        self.ui.finishbutton.clicked.connect(self.finishbutton)
+#        self.connect(self.ui.cancelbutton, SIGNAL('clicked()'), 
+#                                             self.cancelbutton)
+        self.ui.cancelbutton.clicked.connect(self.cancelbutton)
         
     
     def initdialog(self):
@@ -339,8 +364,9 @@ class StartOptimizeDialog(QDialog):
         if g.fig is not None: plt.draw()
     
     def fdchanged(self):
-        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
-                        self.ttslchanged)
+#        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+#                        self.ttslchanged)
+        self.ui.sl_duration.valueChanged.disconnect([self.ttslchanged])
         if self.ui.tt_wide.isChecked():
             dev = 250.0
         else:
@@ -371,8 +397,9 @@ class StartOptimizeDialog(QDialog):
             self.ui.sl_duration.setValue(pos)
             
         self.disptt()
-        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
-                     self.ttslchanged)
+#        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+#                     self.ttslchanged)
+        self.ui.sl_duration.valueChanged.connect(self.ttslchanged)
 
     def it_fb(self):
         if self.ui.it_wide.isChecked():
@@ -386,11 +413,13 @@ class StartOptimizeDialog(QDialog):
             pos = self.sl_maxval
         if pos < self.sl_minval:
             pos = self.sl_minval
-        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                                             self.itslchanged)
+#        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                                             self.itslchanged)
+        self.ui.sl_inittime.valueChanged.disconnect([self.itslchanged])
         self.ui.sl_inittime.setValue(pos)
-        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                                             self.itslchanged)
+#        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                                             self.itslchanged)
+        self.ui.sl_inittime.valueChanged.connect(self.itslchanged)
         self.drawfixedorbit()
         self.itslchanged(pos) 
         self.dispit()
@@ -408,11 +437,14 @@ class StartOptimizeDialog(QDialog):
             pos = self.sl_maxval
         if pos < self.sl_minval:
             pos = self.sl_minval
-        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                                             self.itslchanged)
+#        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                                             self.itslchanged)
+        self.ui.sl_inittime.valueChanged.disconnect([self.itslchanged])
+        
         self.ui.sl_inittime.setValue(pos)
-        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                                             self.itslchanged)
+#        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                                             self.itslchanged)
+        self.ui.sl_inittime.valueChanged.connect(self.itslchanged)
         self.drawfixedorbit()
         self.itslchanged(pos) 
         self.dispit()
@@ -442,11 +474,13 @@ class StartOptimizeDialog(QDialog):
             pos = self.sl_maxval
         if pos < self.sl_minval:
             pos = self.sl_minval
-        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
-                                             self.ttslchanged)
+#        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+#                                             self.ttslchanged)
+        self.ui.sl_duration.valueChanged.disconnect([self.ttslchanged])
         self.ui.sl_duration.setValue(pos)
-        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
-                                             self.ttslchanged)
+#        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+#                                             self.ttslchanged)
+        self.ui.sl_duration.valueChanged.connect(self.ttslchanged)
         self.ttslchanged(pos) 
         self.disptt()
     
@@ -471,11 +505,13 @@ class StartOptimizeDialog(QDialog):
             pos = self.sl_maxval
         if pos < self.sl_minval:
             pos = self.sl_minval
-        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
-                                             self.ttslchanged)
+#        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+#                                             self.ttslchanged)
+        self.ui.sl_duration.valueChanged.disconnect([self.ttslchanged])
         self.ui.sl_duration.setValue(pos)
-        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
-                                             self.ttslchanged)
+#        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
+#                                             self.ttslchanged)
+        self.ui.sl_duration.valueChanged.connect(self.ttslchanged)
         self.ttslchanged(pos) 
         self.disptt()
         
@@ -516,12 +552,14 @@ class StartOptimizeDialog(QDialog):
         self.itto = 0.0 + dev
         self.itcenter = self.itcurrent
         pos = self.sl_real2pos(self.itfrom, self.itto, 0.0)
-        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                        self.itslchanged)
+#        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                        self.itslchanged)
+        self.ui.sl_inittime.valueChanged.disconnect([self.itslchanged])
         self.ui.sl_inittime.setValue(pos)
         self.dispit()
-        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                     self.itslchanged)
+#        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                     self.itslchanged)
+        self.ui.sl_inittime.valueChanged.connect(self.itslchanged)
         
         self.drawfixedorbit()
     
@@ -612,12 +650,14 @@ class CpOptimizeDialog(StartOptimizeDialog):
             self.itcenter = self.orgjd
             self.itcurrent = self.orgjd
             self.dispit()
-            self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                                                    self.itslchanged)
+#            self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                                                    self.itslchanged)
+            self.ui.sl_inittime.valueChanged.disconnect([self.itslchanged])
             self.ui.sl_inittime.setValue(self.sl_real2pos(self.itfrom, 
                 self.itto, self.itcurrent - self.itcenter))
-            self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
-                                                 self.itslchanged)
+#            self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
+#                                                 self.itslchanged)
+            self.ui.sl_inittime.valueChanged.connect(self.itslchanged)
             self.draworbit()
             self.fixed_to_ct = True
         else:

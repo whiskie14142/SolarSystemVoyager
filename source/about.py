@@ -75,5 +75,6 @@ This program uses following programs and modules:
 
         self.ui.versionlabel.setText(g.version)        
         self.ui.licensetext.setPlainText(abouttext)
-        self.connect(self.ui.okButton, SIGNAL('clicked()'), self.accept)
+#        self.connect(self.ui.okButton, SIGNAL('clicked()'), self.accept)
+        self.ui.okButton.clicked.connect(self.accept)
                 

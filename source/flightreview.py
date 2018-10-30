@@ -49,26 +49,37 @@ class FlightReviewControl(QDialog):
             self.ui.toprobe.setChecked(s['Probe'])
             self.ui.totarget.setChecked(s['Target'])
         
-        self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
-        self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
-        self.connect(self.ui.fastforward, SIGNAL('clicked()'), 
-                                             self.fastforward)
-        self.connect(self.ui.fastbackward, SIGNAL('clicked()'), 
-                                             self.fastbackward)
-        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.showplanets, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.toprobe, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.totarget, SIGNAL('clicked()'), 
-                                             self._statuschanged)
+#        self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
+        self.ui.forward.clicked.connect(self.forward)
+#        self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
+        self.ui.backward.clicked.connect(self.backward)
+#        self.connect(self.ui.fastforward, SIGNAL('clicked()'), 
+#                                             self.fastforward)
+        self.ui.fastforward.clicked.connect(self.fastforward)
+#        self.connect(self.ui.fastbackward, SIGNAL('clicked()'), 
+#                                             self.fastbackward)
+        self.ui.fastbackward.clicked.connect(self.fastbackward)
+#        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_Ptrj.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_PKepler.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_TKepler.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.showplanets, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.showplanets.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.tobarycenter.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.toprobe, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.toprobe.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.totarget, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.totarget.clicked.connect(self._statuschanged)
 
         self.artist_of_probe = None
         self.artist_of_target = None
@@ -90,16 +101,16 @@ class FlightReviewControl(QDialog):
 #            self.artist_of_orbit = None
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 
-                                    'You have no valid probe.', 0, 1, 0)
+                                    'You have no valid probe.', QMessageBox.Ok)
             return
         if not g.myprobe.onflight:
             QMessageBox.information(self, 'Info', 
-                                    'Your probe has no valid orbit.', 0, 1, 0)
+                                    'Your probe has no valid orbit.', QMessageBox.Ok)
             return
 
         if g.myprobe.trj_record[-1][0]['type'] != 'FLYTO':
             QMessageBox.information(self, 'Info', 
-                                    'Last maneuver was not FLYTO.', 0, 1, 0)
+                                    'Last maneuver was not FLYTO.', QMessageBox.Ok)
             return
 
         self.last_trj = g.probe_trj[-1][1:]

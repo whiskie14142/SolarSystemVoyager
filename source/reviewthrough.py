@@ -50,31 +50,45 @@ class ReviewThroughoutControl(QDialog):
             self.ui.toprobe.setChecked(s['Probe'])
             self.ui.totarget.setChecked(s['Target'])
 
-        self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
-        self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
-        self.connect(self.ui.fastforward, SIGNAL('clicked()'), 
-                                             self.fastforward)
-        self.connect(self.ui.fastbackward, SIGNAL('clicked()'), 
-                                             self.fastbackward)
-        self.connect(self.ui.previousman, SIGNAL('clicked()'), 
-                                             self.previousman)
-        self.connect(self.ui.nextman, SIGNAL('clicked()'), self.nextman)
-        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.showplanets, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.showmantype, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.toprobe, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.totarget, SIGNAL('clicked()'), 
-                                             self._statuschanged)
+#        self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
+        self.ui.forward.clicked.connect(self.forward)
+#        self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
+        self.ui.backward.clicked.connect(self.backward)
+#        self.connect(self.ui.fastforward, SIGNAL('clicked()'), 
+#                                             self.fastforward)
+        self.ui.fastforward.clicked.connect(self.fastforward)
+#        self.connect(self.ui.fastbackward, SIGNAL('clicked()'), 
+#                                             self.fastbackward)
+        self.ui.fastbackward.clicked.connect(self.fastbackward)
+#        self.connect(self.ui.previousman, SIGNAL('clicked()'), 
+#                                             self.previousman)
+        self.ui.previousman.clicked.connect(self.previousman)
+#        self.connect(self.ui.nextman, SIGNAL('clicked()'), self.nextman)
+        self.ui.nextman.clicked.connect(self.nextman)
+#        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_Ptrj.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_PKepler.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_TKepler.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.showplanets, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.showplanets.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.showmantype, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.self.ui.showmantype.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.tobarycenter.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.toprobe, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.toprobe.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.totarget, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.totarget.clicked.connect(self._statuschanged)
 
         self.mainwindow = parent
         self.artist_of_probe = None

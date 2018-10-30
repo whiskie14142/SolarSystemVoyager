@@ -49,25 +49,36 @@ class EditManDialog(QDialog):
         self.setGeometry(left, top+380, 640, 320)
         self.ui = Ui_editmandialog()
         self.ui.setupUi(self)
-        self.connect(self.ui.applymantype, SIGNAL('clicked()'), 
-                                             self.applymantype)
-        self.connect(self.ui.isotedit, SIGNAL('editingFinished()'), 
-                                             self.isotedited)
-        self.connect(self.ui.jdedit, SIGNAL('editingFinished()'), 
-                                             self.jdedited)
-        self.connect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
-                                             self.parameterchanged)
-        self.connect(self.ui.finish_exec, SIGNAL('clicked()'), 
-                                             self.finish_exec)
-        self.connect(self.ui.finishbutton, SIGNAL('clicked()'), 
-                                             self.finishbutton)
-        self.connect(self.ui.cancelbutton, SIGNAL('clicked()'), 
-                                             self.cancelbutton)
-        self.connect(self.ui.showorbit, SIGNAL('clicked()'), self.showorbit)
-        self.connect(self.ui.computeFTA, SIGNAL('clicked()'), self.computefta)
-        self.connect(self.ui.optimize, SIGNAL('clicked()'), self.optimize)
-        self.connect(self.ui.applyduration, SIGNAL('clicked()'), 
-                                             self.applyduration)
+#        self.connect(self.ui.applymantype, SIGNAL('clicked()'), 
+#                                             self.applymantype)
+        self.ui.applymantyp.clicked.connect(self.applymantype)
+#        self.connect(self.ui.isotedit, SIGNAL('editingFinished()'), 
+#                                             self.isotedited)
+        self.ui.isotedit.editingFinished.connect(self.isotedited)
+#        self.connect(self.ui.jdedit, SIGNAL('editingFinished()'), 
+#                                             self.jdedited)
+        self.ui.jdedit.editingFinished.connect(self.jdedited)
+#        self.connect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
+#                                             self.parameterchanged)
+        self.ui.parameters.cellChanged.connect(self.parameterchanged)
+#        self.connect(self.ui.finish_exec, SIGNAL('clicked()'), 
+#                                             self.finish_exec)
+        self.ui.finish_exec.clicked.connect(self.finish_exec)
+#        self.connect(self.ui.finishbutton, SIGNAL('clicked()'), 
+#                                             self.finishbutton)
+        self.ui.finishbutton.clicked.connect(self.finishbutton)
+#        self.connect(self.ui.cancelbutton, SIGNAL('clicked()'), 
+#                                             self.cancelbutton)
+        self.ui.cancelbutton.clicked.connect(self.cancelbutton)
+#        self.connect(self.ui.showorbit, SIGNAL('clicked()'), self.showorbit)
+        self.ui.showorbit.clicked.connect(self.showorbit)
+#        self.connect(self.ui.computeFTA, SIGNAL('clicked()'), self.computefta)
+        self.ui.computeFTA.clicked.connect(self.computefta)
+#        self.connect(self.ui.optimize, SIGNAL('clicked()'), self.optimize)
+        self.ui.optimize.clicked.connect(self.optimize)
+#        self.connect(self.ui.applyduration, SIGNAL('clicked()'), 
+#                                             self.applyduration)
+        self.ui.applyduration.clicked.connect(self.applyduration)
         
         self.types = ['START', 'CP', 'EP_ON', 'EP_OFF', 'SS_ON', 'SS_OFF', 
                       'FLYTO']
@@ -216,8 +227,9 @@ class EditManDialog(QDialog):
                 self.ui.jdedit.setEnabled(False)
                 self.ui.isotedit.setEnabled(False)
 
-            self.disconnect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
-                            self.parameterchanged)
+#            self.disconnect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
+#                            self.parameterchanged)
+            self.ui.parameters.cellChanged.disconnect([self.parameterchanged])
             
             for i in range(1, 9):
                 row = i - 1
@@ -235,8 +247,9 @@ class EditManDialog(QDialog):
                     self.ui.parameters.item(row, 1).setFlags(Qt.NoItemFlags)
                     self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
     
-            self.connect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
-                         self.parameterchanged)
+#            self.connect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
+#                         self.parameterchanged)
+            self.ui.parameters.cellChanged.connect(self.parameterchanged)
                 
     def applymantype(self):
         newID = self.ui.mantype.currentIndex()
@@ -251,8 +264,8 @@ class EditManDialog(QDialog):
             return
         ans = QMessageBox.question(self, 
             'Mantype changed', 'Parameters will be lost. OK?', 
-            0, button1=1, button2=2)
-        if ans == 1:
+            QMessageBox.Ok | QMessageBox.Cancel, QMessageBox.Cancel)
+        if ans == QMessageBox.Ok :
             self.initman(newID)
             self.dispman()
             if g.showorbitcontrol is not None:
@@ -268,7 +281,7 @@ class EditManDialog(QDialog):
             self.ui.isotedit.setText(common.jd2isot(
                 float(self.ui.jdedit.text())))
             QMessageBox.critical(self, 'Error', 'Invalid ISOT', 
-                                    0, 1, 0)
+                                    QMessageBox.Ok)
             return
         self.ui.jdedit.setText('{:.8f}'.format(jd))
         if self.ui.duration.isEnabled():
@@ -281,7 +294,7 @@ class EditManDialog(QDialog):
         except ValueError:
             self.ui.jdedit.setText('{:.8f}'.format(
                 common.isot2jd(self.ui.isotedit.text())))
-            QMessageBox.critical(self, 'Error', 'Invalid JD', 0, 1, 0)
+            QMessageBox.critical(self, 'Error', 'Invalid JD', QMessageBox.Ok)
             return
         self.ui.isotedit.setText(common.jd2isot(jd))
         if self.ui.duration.isEnabled():
@@ -297,7 +310,7 @@ class EditManDialog(QDialog):
                 self.ui.parameters.item(row, colmn).setText(
                     self.fmttbl[row+1].format(prevval))
                 QMessageBox.critical(self, 
-                    'Error', 'Enter L or E for tvmode', 0, 1, 0)
+                    'Error', 'Enter L or E for tvmode', QMessageBox.Ok)
                 return
         else:
             try:
@@ -306,7 +319,7 @@ class EditManDialog(QDialog):
                 self.ui.parameters.item(row, colmn).setText(
                     self.fmttbl[row+1].format(prevval))
                 QMessageBox.critical(self, 
-                    'Error', 'Enter a floating number', 0, 1, 0)
+                    'Error', 'Enter a floating number', QMessageBox.Ok)
                 return
         self.editman[self.paramname[row+1]] = newval
 
@@ -348,8 +361,8 @@ class EditManDialog(QDialog):
         
     def closeEvent(self, event):
         ans = QMessageBox.question(self, 'Exit Editor', 'Discard changes?', 
-                                   0, button1=1, button2=2)
-        if ans == 2:
+            QMessageBox.Discard | QMessageBox.Cancel, QMessageBox.Cancel)
+        if ans == QMessageBox.Cancel :
             event.ignore()
             return
         if g.showorbitcontrol is not None:
@@ -419,7 +432,7 @@ class EditManDialog(QDialog):
         if g.showorbitcontrol is None:
             QMessageBox.information(self, 
                 'Info', 'To use FTA, open Show Orbit window and\n' 
-                + 'try again', 0, 1, 0)
+                + 'try again', QMessageBox.Ok)
             return
 
         ftadialog = FTAsettingDialog(self)
@@ -443,7 +456,7 @@ class EditManDialog(QDialog):
             except ValueError:
                 QMessageBox.information(self, 'Info', 
                     'Error occured during FTA computation.\n' 
-                    + 'Try different parameters', 0, 1, 0)
+                    + 'Try different parameters', QMessageBox.Ok)
                 return
     
             dv = round(dv, 3)
@@ -454,9 +467,9 @@ class EditManDialog(QDialog):
                 'dv = ' + str(dv) + '\n' + \
                 'phi = ' + str(phi) + '\n' + \
                 'elv = ' + str(elv)
-            ans = QMessageBox.question(self, 'FTA Results', mes, 0, button1=1, 
-                                       button2=2)
-            if ans == 1:
+            ans = QMessageBox.question(self, 'FTA Results', mes, 
+                    QMessageBox.Apply | QMessageBox.Cancel, QMessageBox.Cancel)
+            if ans == QMessageBox.Apply :
                 self.editman['dv'] = dv
                 self.editman['phi'] = phi
                 self.editman['elv'] = elv
@@ -491,7 +504,7 @@ class EditManDialog(QDialog):
             except ValueError:
                 QMessageBox.information(self, 'Info', 
                     'Error occured during FTA computation.\n' 
-                    + 'Try different parameters', 0, 1, 0)
+                    + 'Try different parameters', QMessageBox.Ok)
                 return
             
             # compute B-Plane Unit Vectors
@@ -517,7 +530,7 @@ class EditManDialog(QDialog):
             except ValueError:
                 QMessageBox.information(self, 'Info', 
                     'Error occured during FTA computation.\n' 
-                    + 'Try different parameters', 0, 1, 0)
+                    + 'Try different parameters', QMessageBox.Ok)
                 return
     
             dv = round(dv, 3)
@@ -528,9 +541,9 @@ class EditManDialog(QDialog):
                 'dv = ' + str(dv) + '\n' + \
                 'phi = ' + str(phi) + '\n' + \
                 'elv = ' + str(elv)
-            ans = QMessageBox.question(self, 'FTA Results', mes, 0, button1=1, 
-                                       button2=2)
-            if ans == 1:
+            ans = QMessageBox.question(self, 'FTA Results', mes,
+                    QMessageBox.Apply | QMessageBox.Cancel, QMessageBox.Cancel)
+            if ans == QMessageBox.Apply :
                 self.editman['dv'] = dv
                 self.editman['phi'] = phi
                 self.editman['elv'] = elv
@@ -645,7 +658,7 @@ class EditManDialog(QDialog):
             dt = float(self.ui.duration.text())
         except ValueError:
             QMessageBox.critical(self, 'Error', 'Invalid Duration days', 
-                                    0, 1, 0)
+                                    QMessageBox.Ok)
             self.ui.duration.setText('{:.8f}'.format(
                 self.editman[self.paramname[0]] - g.myprobe.jd))
             return

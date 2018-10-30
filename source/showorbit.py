@@ -42,29 +42,43 @@ class ShowOrbitDialog(QDialog):
         self.ui = Ui_ShowOrbitControl()
         self.ui.setupUi(self)
         
-        self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
-        self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
-        self.connect(self.ui.fastforward, SIGNAL('clicked()'), 
-                                             self.fastforward)
-        self.connect(self.ui.fastbackward, SIGNAL('clicked()'), 
-                                             self.fastbackward)
-        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.showplanets, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.toprobe, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.totarget, SIGNAL('clicked()'), 
-                                             self._statuschanged)
-        self.connect(self.ui.timescale, SIGNAL('valueChanged(int)'), 
-                                             self._valuechanged)
-        self.connect(self.ui.dtApply, SIGNAL('clicked()'), self.dtapply)
+#        self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
+        self.ui.forward.clicked.connect(self.forward)
+#        self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
+        self.ui.backward.clicked.connect(self.backward)
+#        self.connect(self.ui.fastforward, SIGNAL('clicked()'), 
+#                                             self.fastforward)
+        self.ui.fastforward.clicked.connect(self.fastforward)
+#        self.connect(self.ui.fastbackward, SIGNAL('clicked()'), 
+#                                             self.fastbackward)
+        self.ui.fastbackward.clicked.connect(self.fastbackward)
+#        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_Ptrj.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_PKepler.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.check_TKepler.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.showplanets, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.showplanets.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.tobarycenter.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.toprobe, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.toprobe.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.totarget, SIGNAL('clicked()'), 
+#                                             self._statuschanged)
+        self.ui.totarget.clicked.connect(self._statuschanged)
+#        self.connect(self.ui.dtApply, SIGNAL('clicked()'), self.dtapply)
+        self.ui.dtApply.clicked.connect(self.dtapply)
+
+# No use
+#        self.connect(self.ui.timescale, SIGNAL('valueChanged(int)'), 
+#                                             self._valuechanged)
 
         self.artist_of_probe = None
         self.artist_of_target = None
@@ -95,11 +109,11 @@ class ShowOrbitDialog(QDialog):
     def redraw(self):
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 
-                                    'You have no valid probe.', 0, 1, 0)
+                                    'You have no valid probe.', QMessageBox.Ok)
             return
         if not g.myprobe.onflight:
             QMessageBox.information(self, 'Info', 
-                                    'Your probe has no valid orbit.', 0, 1, 0)
+                                    'Your probe has no valid orbit.', QMessageBox.Ok)
             return
 
         self.jd = g.myprobe.jd
@@ -274,9 +288,10 @@ class ShowOrbitDialog(QDialog):
 
         self.save_settings()
         self._redrawmark()
-        
-    def _valuechanged(self):
-        self.save_settings()
+
+# No use        
+#    def _valuechanged(self):
+#        self.save_settings()
     
     def dtapply(self):
         text = self.ui.delta_t_edit.text()
