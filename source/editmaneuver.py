@@ -51,7 +51,7 @@ class EditManDialog(QDialog):
         self.ui.setupUi(self)
 #        self.connect(self.ui.applymantype, SIGNAL('clicked()'), 
 #                                             self.applymantype)
-        self.ui.applymantyp.clicked.connect(self.applymantype)
+        self.ui.applymantype.clicked.connect(self.applymantype)
 #        self.connect(self.ui.isotedit, SIGNAL('editingFinished()'), 
 #                                             self.isotedited)
         self.ui.isotedit.editingFinished.connect(self.isotedited)
@@ -229,7 +229,7 @@ class EditManDialog(QDialog):
 
 #            self.disconnect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
 #                            self.parameterchanged)
-            self.ui.parameters.cellChanged.disconnect([self.parameterchanged])
+            self.ui.parameters.cellChanged.disconnect()
             
             for i in range(1, 9):
                 row = i - 1

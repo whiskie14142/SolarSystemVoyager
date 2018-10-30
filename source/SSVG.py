@@ -523,6 +523,7 @@ class MainForm(QMainWindow):
             dr = g.manfilename
         ans = QFileDialog.getSaveFileName(self, 
             'Define output maneuver file', dr, 'JSON files (*.json)')
+        ans = ans[0]
         if ans == '': return
 
         g.currentdir = os.path.split(ans)[0]

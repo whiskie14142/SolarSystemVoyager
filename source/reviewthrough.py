@@ -79,7 +79,7 @@ class ReviewThroughoutControl(QDialog):
         self.ui.showplanets.clicked.connect(self._statuschanged)
 #        self.connect(self.ui.showmantype, SIGNAL('clicked()'), 
 #                                             self._statuschanged)
-        self.ui.self.ui.showmantype.clicked.connect(self._statuschanged)
+        self.ui.showmantype.clicked.connect(self._statuschanged)
 #        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
 #                                             self._statuschanged)
         self.ui.tobarycenter.clicked.connect(self._statuschanged)

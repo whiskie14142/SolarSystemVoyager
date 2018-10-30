@@ -109,7 +109,7 @@ class StartOptimizeDialog(QDialog):
         self.ui.tt_narrow.clicked.connect(self.fdchanged)
 #        self.connect(self.ui.clearstat, SIGNAL('clicked()'), 
 #                                             self.clearstatistics)
-        self.ui.clearstat.clicked.connect(self.clearstatistic)
+        self.ui.clearstat.clicked.connect(self.clearstatistics)
 #        
 #        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
 #                                             self.itslchanged)
@@ -366,7 +366,7 @@ class StartOptimizeDialog(QDialog):
     def fdchanged(self):
 #        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
 #                        self.ttslchanged)
-        self.ui.sl_duration.valueChanged.disconnect([self.ttslchanged])
+        self.ui.sl_duration.valueChanged.disconnect()
         if self.ui.tt_wide.isChecked():
             dev = 250.0
         else:
@@ -415,7 +415,7 @@ class StartOptimizeDialog(QDialog):
             pos = self.sl_minval
 #        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
 #                                             self.itslchanged)
-        self.ui.sl_inittime.valueChanged.disconnect([self.itslchanged])
+        self.ui.sl_inittime.valueChanged.disconnect()
         self.ui.sl_inittime.setValue(pos)
 #        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
 #                                             self.itslchanged)
@@ -439,7 +439,7 @@ class StartOptimizeDialog(QDialog):
             pos = self.sl_minval
 #        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
 #                                             self.itslchanged)
-        self.ui.sl_inittime.valueChanged.disconnect([self.itslchanged])
+        self.ui.sl_inittime.valueChanged.disconnect()
         
         self.ui.sl_inittime.setValue(pos)
 #        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
@@ -476,7 +476,7 @@ class StartOptimizeDialog(QDialog):
             pos = self.sl_minval
 #        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
 #                                             self.ttslchanged)
-        self.ui.sl_duration.valueChanged.disconnect([self.ttslchanged])
+        self.ui.sl_duration.valueChanged.disconnect()
         self.ui.sl_duration.setValue(pos)
 #        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
 #                                             self.ttslchanged)
@@ -507,7 +507,7 @@ class StartOptimizeDialog(QDialog):
             pos = self.sl_minval
 #        self.disconnect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
 #                                             self.ttslchanged)
-        self.ui.sl_duration.valueChanged.disconnect([self.ttslchanged])
+        self.ui.sl_duration.valueChanged.disconnect()
         self.ui.sl_duration.setValue(pos)
 #        self.connect(self.ui.sl_duration, SIGNAL('valueChanged(int)'), 
 #                                             self.ttslchanged)
@@ -554,7 +554,7 @@ class StartOptimizeDialog(QDialog):
         pos = self.sl_real2pos(self.itfrom, self.itto, 0.0)
 #        self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
 #                        self.itslchanged)
-        self.ui.sl_inittime.valueChanged.disconnect([self.itslchanged])
+        self.ui.sl_inittime.valueChanged.disconnect()
         self.ui.sl_inittime.setValue(pos)
         self.dispit()
 #        self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
@@ -652,7 +652,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
             self.dispit()
 #            self.disconnect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
 #                                                    self.itslchanged)
-            self.ui.sl_inittime.valueChanged.disconnect([self.itslchanged])
+            self.ui.sl_inittime.valueChanged.disconnect()
             self.ui.sl_inittime.setValue(self.sl_real2pos(self.itfrom, 
                 self.itto, self.itcurrent - self.itcenter))
 #            self.connect(self.ui.sl_inittime, SIGNAL('valueChanged(int)'), 
