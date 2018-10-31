@@ -384,7 +384,7 @@ class MainForm(QMainWindow):
                 "is OUTSIDE of Target's time span."
             oormes2 = "\nYou could encounter " + \
                 "trouble(s) in running and/or editing this Flight Plan"
-            QMessageBox.warning(self, 'Warning', oormes + oormes2)
+            QMessageBox.warning(self, 'Warning', oormes + oormes2, QMessageBox.Ok)
         
         if g.options['log']:
             logstring = []
@@ -1110,7 +1110,7 @@ class MainForm(QMainWindow):
             oormes2 = "\nYou could encounter " + \
                 "trouble(s) in running and/or editing this Flight Plan." + \
                 "\nIt is recommended that you select another SPK file."
-            QMessageBox.warning(self, 'Warning', oormes + oormes2)
+            QMessageBox.warning(self, 'Warning', oormes + oormes2, QMessageBox.Ok)
 
     
         if g.options['log']:

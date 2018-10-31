@@ -299,7 +299,7 @@ class ShowOrbitDialog(QDialog):
             value = float(text)
         except ValueError:
             QMessageBox.critical(self, 'Error', 
-                                    'Enter a floating point number.', 0, 1, 0)
+                                    'Enter a floating point number.', QMessageBox.Ok)
             self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
             return
         self.delta_jd = value
@@ -369,7 +369,7 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
         if self.jd < tsjd or self.jd >= tejd:
             oormes = "Start Time is OUTSIDE of Target's time span.\n" + \
                      "Enter approrpiate Start Time."
-            QMessageBox.critical(self, 'Invalid Start Time', oormes)
+            QMessageBox.critical(self, 'Invalid Start Time', oormes, QMessageBox.Ok)
             return
 
         if self.tbpred is None:

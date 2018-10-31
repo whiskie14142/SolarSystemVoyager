@@ -278,10 +278,10 @@ class EditManDialog(QDialog):
         try:
             jd = common.isot2jd(self.ui.isotedit.text())
         except ValueError:
-            self.ui.isotedit.setText(common.jd2isot(
-                float(self.ui.jdedit.text())))
             QMessageBox.critical(self, 'Error', 'Invalid ISOT', 
                                     QMessageBox.Ok)
+            self.ui.isotedit.setText(common.jd2isot(
+                float(self.ui.jdedit.text())))
             return
         self.ui.jdedit.setText('{:.8f}'.format(jd))
         if self.ui.duration.isEnabled():
@@ -292,9 +292,9 @@ class EditManDialog(QDialog):
         try:
             jd = float(self.ui.jdedit.text())
         except ValueError:
+            QMessageBox.critical(self, 'Error', 'Invalid JD', QMessageBox.Ok)
             self.ui.jdedit.setText('{:.8f}'.format(
                 common.isot2jd(self.ui.isotedit.text())))
-            QMessageBox.critical(self, 'Error', 'Invalid JD', QMessageBox.Ok)
             return
         self.ui.isotedit.setText(common.jd2isot(jd))
         if self.ui.duration.isEnabled():
@@ -398,6 +398,9 @@ class EditManDialog(QDialog):
         if self.editman['time'] < tsjd or self.editman['time'] >= tejd:
             if g.showorbitcontrol is not None:
                 g.showorbitcontrol.close()
+            QMessageBox.critical(self, 'Error', 
+                'Invalid Start Time\nStart Time is OUTSIDE of ' +
+                "Target's time span", QMessageBox.Ok)
             return
     
         if g.showorbitcontrol is None:
@@ -468,8 +471,8 @@ class EditManDialog(QDialog):
                 'phi = ' + str(phi) + '\n' + \
                 'elv = ' + str(elv)
             ans = QMessageBox.question(self, 'FTA Results', mes, 
-                    QMessageBox.Apply | QMessageBox.Cancel, QMessageBox.Cancel)
-            if ans == QMessageBox.Apply :
+                    QMessageBox.Ok | QMessageBox.Cancel, QMessageBox.Cancel)
+            if ans == QMessageBox.Ok :
                 self.editman['dv'] = dv
                 self.editman['phi'] = phi
                 self.editman['elv'] = elv
@@ -542,8 +545,8 @@ class EditManDialog(QDialog):
                 'phi = ' + str(phi) + '\n' + \
                 'elv = ' + str(elv)
             ans = QMessageBox.question(self, 'FTA Results', mes,
-                    QMessageBox.Apply | QMessageBox.Cancel, QMessageBox.Cancel)
-            if ans == QMessageBox.Apply :
+                    QMessageBox.Ok | QMessageBox.Cancel, QMessageBox.Cancel)
+            if ans == QMessageBox.Ok :
                 self.editman['dv'] = dv
                 self.editman['phi'] = phi
                 self.editman['elv'] = elv
@@ -621,7 +624,7 @@ class EditManDialog(QDialog):
             mantime = common.jd2isot(dialog.result_it)
             g.clipboard.setText(mantime)
             mes = self.mes1 + mantime + self.mes2
-            QMessageBox.warning(self, 'Urgent!', mes, 0, 1, 0)
+            QMessageBox.warning(self, 'Urgent!', mes, QMessageBox.Ok)
 
         self.editman['dv'] = dialog.result_dv
         self.editman['phi'] = dialog.result_phi

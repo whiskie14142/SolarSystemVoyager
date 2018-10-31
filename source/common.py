@@ -178,18 +178,7 @@ def jd2isot(jd):
 
 def isot2jd(isot):
     # convert ISOT (str) to Julian Day
-    d_and_t = isot.split('T')
-    ymd = d_and_t[0].split('-')
-    hms = d_and_t[1].split(':')
-    year = int(ymd[0])
-    month = int(ymd[1])
-    day = int(ymd[2])
-    hour = int(hms[0])
-    minute = int(hms[1])
-    fsec = float(hms[2])
-    second = int(fsec)
-    msecond = int((fsec - second) * 1.0e6)
-    dt = datetime(year, month, day, hour, minute, second, msecond)
+    dt = datetime.fromisoformat(isot)
     return julian.to_jd(dt)
     
 def jd2datetime(jd):

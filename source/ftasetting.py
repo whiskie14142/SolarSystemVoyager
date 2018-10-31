@@ -86,18 +86,18 @@ class FTAsettingDialog(QDialog):
             delta_jd = float(self.ui.timetoarrival.text())
         except ValueError:
             QMessageBox.critical(self, 'Error', 
-                'Enter a floating point number for Time to Arrival.', 0, 1, 0)
+                'Enter a floating point number for Time to Arrival.', QMessageBox.Ok)
             return
         if delta_jd < common.minft:
             QMessageBox.critical(self, 'Error', 
                 ('To use FTA, Time to Arrival shall be\n' 
-                + 'greater than {0:.1f} day').format(common.minft), 0, 1, 0)
+                + 'greater than {0:.1f} day').format(common.minft), QMessageBox.Ok)
             return
 
         if g.showorbitcontrol.jd + delta_jd >= g.mytarget.getendjd():
             QMessageBox.critical(self, 'Error', 
                 'Invalid Time to Arrival.\nArrival time is OUTSIDE of ' +
-                "Target's time span", 0, 1, 0)
+                "Target's time span", QMessageBox.Ok)
             return
 
         param[0] = g.showorbitcontrol.jd + delta_jd
@@ -108,7 +108,7 @@ class FTAsettingDialog(QDialog):
                 beta = float(self.ui.betaedit.text())
             except ValueError:
                 QMessageBox.critical(self, 'Error', 
-                                'Parameter should be floating numbers.', 0, 1, 0)
+                                'Parameter should be floating numbers.', QMessageBox.Ok)
                 return
         
             param[1] = 'BP'
@@ -125,7 +125,7 @@ class FTAsettingDialog(QDialog):
                     elv = float(self.ui.elvedit.text())
                 except ValueError:
                     QMessageBox.critical(self, 'Error', 
-                                    'Parameter should be floating numbers.', 0, 1, 0)
+                                    'Parameter should be floating numbers.', QMessageBox.Ok)
                     return
             else:
                 r = 0.0
