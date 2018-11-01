@@ -185,7 +185,7 @@ class ReviewThroughoutControl(QDialog):
         if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
-        self.artist_of_probe = g.ax.scatter(*status[1:4], s=50, c='r',
+        self.artist_of_probe = g.ax.scatter(*status[1:4], s=40, c='r',
                                             depthshade=False, marker='x')
         
         # Maneuver Type
@@ -199,16 +199,16 @@ class ReviewThroughoutControl(QDialog):
                     acctext = ' SSacc={:.3f}'.format(ssacc)
                 self.artist_of_type = g.ax.text(*status[1:4], 
                             self.mantext+acctext+' (start)', color='r', 
-                            fontsize=11)
+                            fontsize=10)
             else:
                 self.artist_of_type = g.ax.text(*status[1:4], self.mantext, 
-                                                color='r', fontsize=11)
+                                                color='r', fontsize=10)
         
         # Target mark
         if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
-        self.artist_of_target = g.ax.scatter(*target_pos, s=40, c='g',
+        self.artist_of_target = g.ax.scatter(*target_pos, s=50, c='g',
                                              depthshade=False, marker='+')
         
         # Sun mark
@@ -216,7 +216,7 @@ class ReviewThroughoutControl(QDialog):
             self.artist_of_sun.remove()
             self.artist_of_sun = None
         sun_pos, sun_vel = common.SPKposvel(10, status[0])
-        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='w',
+        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='y',
                                           depthshade=False, marker='o')
         
         # time
@@ -296,7 +296,7 @@ class ReviewThroughoutControl(QDialog):
         if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
-        self.artist_of_probe = g.ax.scatter(*ppos, s=50, c='r',
+        self.artist_of_probe = g.ax.scatter(*ppos, s=40, c='r',
                                             depthshade=False, marker='x')
         if self.artist_of_target is not None:
             self.artist_of_target.remove()
@@ -312,20 +312,20 @@ class ReviewThroughoutControl(QDialog):
                 acctext = ' SSacc={:.3f}'.format(ssacc)
             if self.c_index == 0:
                 self.artist_of_type = g.ax.text(*ppos, self.mantext+acctext+
-                    ' (start)', color='r', fontsize=11)
+                    ' (start)', color='r', fontsize=10)
             elif self.c_index + 1 == len(self.last_trj[0]):
                 self.artist_of_type = g.ax.text(*ppos, self.mantext+acctext+
-                    ' (end)', color='r', fontsize=11)
+                    ' (end)', color='r', fontsize=10)
             else:
                 self.artist_of_type = g.ax.text(*ppos, self.mantext+acctext, 
-                    color='r', fontsize=11)
+                    color='r', fontsize=10)
 
-        self.artist_of_target = g.ax.scatter(*target_pos, s=40, c='g',
+        self.artist_of_target = g.ax.scatter(*target_pos, s=50, c='g',
                                              depthshade=False, marker='+')
         if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='w',
+        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='y',
                                           depthshade=False, marker='o')
 
         remove_time()

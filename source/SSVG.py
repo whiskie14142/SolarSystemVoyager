@@ -33,6 +33,7 @@ from spktype21 import SPKType21
 
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+import matplotlib
 import numpy as np
 
 from flightplan import NewFlightPlanDialog
@@ -203,6 +204,7 @@ class MainForm(QMainWindow):
         g.probe_Kepler = None
         g.target_Kepler = None
     
+        matplotlib.rcParams['toolbar'] = 'None'
         plt.ion()
         g.fig = None
         self.init3Dfigure()

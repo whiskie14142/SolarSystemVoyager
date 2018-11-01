@@ -183,19 +183,19 @@ class ShowOrbitDialog(QDialog):
         if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
-        self.artist_of_probe = g.ax.scatter(*probe_pos, s=50, c='r', 
+        self.artist_of_probe = g.ax.scatter(*probe_pos, s=40, c='r', 
                                             depthshade=False, marker='x')
         
         if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
-        self.artist_of_target = g.ax.scatter(*self.target_pos, s=40, c='g', 
+        self.artist_of_target = g.ax.scatter(*self.target_pos, s=50, c='g', 
                                              depthshade=False, marker='+')
             
         if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        self.artist_of_sun = g.ax.scatter(*self.sun_pos, s=50, c='w',
+        self.artist_of_sun = g.ax.scatter(*self.sun_pos, s=50, c='y',
                                           depthshade=False, marker='o')
 
         # redraw planets

@@ -178,17 +178,17 @@ class FlightReviewControl(QDialog):
         if self.artist_of_probe is not None:
             self.artist_of_probe.remove()
             self.artist_of_probe = None
-        self.artist_of_probe = g.ax.scatter(*ppos, s=50, c='r',
+        self.artist_of_probe = g.ax.scatter(*ppos, s=40, c='r',
                                             depthshade=False, marker='x')
         if self.artist_of_target is not None:
             self.artist_of_target.remove()
             self.artist_of_target = None
-        self.artist_of_target = g.ax.scatter(*target_pos, s=40, c='g',
+        self.artist_of_target = g.ax.scatter(*target_pos, s=50, c='g',
                                              depthshade=False, marker='+')
         if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='w',
+        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='y',
                                           depthshade=False, marker='o')
 
         if self.artist_of_epssinfo is not None:
@@ -201,7 +201,7 @@ class FlightReviewControl(QDialog):
             epsstext = epsstext + '  SS({0}) SSacc={1:.3f}'.format(
                 self.maninfo['ssmode'], ssacc)
         self.artist_of_epssinfo = g.ax.text(*ppos, epsstext, color='r', 
-                                            fontsize=11)
+                                            fontsize=10)
 
         # redraw planets
         remove_planets()
