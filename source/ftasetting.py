@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Oct 25 14:29:07 2018
-
-@author: shush_000
+ftasetting module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
 
 import numpy as np
@@ -38,25 +37,13 @@ class FTAsettingDialog(QDialog):
         QWidget.__init__(self, parent)
         self.ui = Ui_ftasettingdialog()
         self.ui.setupUi(self)
-#        self.connect(self.ui.fromshoworbit, SIGNAL('clicked()'), 
-#                                                 self.ta_radioclicked)
         self.ui.fromshoworbit.clicked.connect(self.ta_radioclicked)
-#        self.connect(self.ui.directinput, SIGNAL('clicked()'), 
-#                                                 self.ta_radioclicked)
         self.ui.directinput.clicked.connect(self.ta_radioclicked)
-#        self.connect(self.ui.selTargetcenter, SIGNAL('clicked()'), 
-#                                                 self.pt_radioclicked)
         self.ui.selTargetcenter.clicked.connect(self.pt_radioclicked)
-#        self.connect(self.ui.selBplanecoord, SIGNAL('clicked()'), 
-#                                                 self.pt_radioclicked)
         self.ui.selBplanecoord.clicked.connect(self.pt_radioclicked)
-#        self.connect(self.ui.selOLcoord, SIGNAL('clicked()'), 
-#                                                 self.pt_radioclicked)
         self.ui.selOLcoord.clicked.connect(self.pt_radioclicked)
-#
-#        self.connect(self.ui.ok_button, SIGNAL('clicked()'), self.ok_clicked)
+
         self.ui.ok_button.clicked.connect(self.ok_clicked)
-#        self.connect(self.ui.cancel_button, SIGNAL('clicked()'), self.reject)
         self.ui.cancel_button.clicked.connect(self.reject)
         
         self.ta_radioclicked()

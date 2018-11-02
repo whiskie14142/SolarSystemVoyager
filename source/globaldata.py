@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Oct 26 07:26:19 2018
-
-@author: shush_000
+globaldata module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
 
 from datetime import datetime
@@ -53,6 +52,7 @@ class _Gdata:
 # global data container instance    
 g = _Gdata()
     
+# global functions
 def erase_Ptrj():
     for artist in g.artist_Ptrj:
         artist[0].remove()

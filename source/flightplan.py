@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Oct 25 11:07:31 2018
-
-@author: shush_000
+flightplan module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
 
 import os
@@ -51,18 +50,10 @@ class NewFlightPlanDialog(QDialog):
             self.ui.planets.addItem(planet_id[1])
         self.ui.planets.setCurrentIndex(0)
         
-#        self.connect(self.ui.planetbutton, SIGNAL('clicked()'), 
-#                     self.planetbuttonclicked)
         self.ui.planetbutton.clicked.connect(self.planetbuttonclicked)
-#        self.connect(self.ui.smallbodybutton, SIGNAL('clicked()'), 
-#                     self.planetbuttonclicked)
         self.ui.smallbodybutton.clicked.connect(self.planetbuttonclicked)
-#        self.connect(self.ui.spkfileselect, SIGNAL('clicked()'), 
-#                     self.spkfileselectclicked)
         self.ui.spkfileselect.clicked.connect(self.spkfileselectclicked)
-#        self.connect(self.ui.okbutton, SIGNAL('clicked()'), self.ok_clicked)
         self.ui.okbutton.clicked.connect(self.ok_clicked)
-#        self.connect(self.ui.cancelbutton, SIGNAL('clicked()'), self.reject)
         self.ui.cancelbutton.clicked.connect(self.reject)
             
     def planetbuttonclicked(self):

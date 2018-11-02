@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-target module for SSVG
-(c) 2016-2017 Shushi Uetsuki (whiskie14142)
+target module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
 
 import os

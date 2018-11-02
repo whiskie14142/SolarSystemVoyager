@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Oct 26 07:55:28 2018
-
-@author: shush_000
+showorbit module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
 
 from PyQt5.QtCore import *
@@ -42,43 +41,18 @@ class ShowOrbitDialog(QDialog):
         self.ui = Ui_ShowOrbitControl()
         self.ui.setupUi(self)
         
-#        self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
         self.ui.forward.clicked.connect(self.forward)
-#        self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
         self.ui.backward.clicked.connect(self.backward)
-#        self.connect(self.ui.fastforward, SIGNAL('clicked()'), 
-#                                             self.fastforward)
         self.ui.fastforward.clicked.connect(self.fastforward)
-#        self.connect(self.ui.fastbackward, SIGNAL('clicked()'), 
-#                                             self.fastbackward)
         self.ui.fastbackward.clicked.connect(self.fastbackward)
-#        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.check_Ptrj.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.check_PKepler.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.check_TKepler.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.showplanets, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.showplanets.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.tobarycenter.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.toprobe, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.toprobe.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.totarget, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.totarget.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.dtApply, SIGNAL('clicked()'), self.dtapply)
         self.ui.dtApply.clicked.connect(self.dtapply)
-
-# No use
-#        self.connect(self.ui.timescale, SIGNAL('valueChanged(int)'), 
-#                                             self._valuechanged)
 
         self.artist_of_probe = None
         self.artist_of_target = None
@@ -156,6 +130,14 @@ class ShowOrbitDialog(QDialog):
         tempjd = self.jd + self.delta_jd
         self.ui.preddate.setText(common.jd2isot(tempjd))
 
+        if self.artist_of_probe is not None:
+            self.artist_of_probe.remove()
+            self.artist_of_probe = None
+
+        if self.artist_of_target is not None:
+            self.artist_of_target.remove()
+            self.artist_of_target = None
+
         # Check time
         tsjd, tejd = g.mytarget.getsejd()
         if tempjd < tsjd or tempjd >= tejd:
@@ -180,22 +162,16 @@ class ShowOrbitDialog(QDialog):
         g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
         g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
 
-        if self.artist_of_probe is not None:
-            self.artist_of_probe.remove()
-            self.artist_of_probe = None
         self.artist_of_probe = g.ax.scatter(*probe_pos, s=40, c='r', 
                                             depthshade=False, marker='x')
         
-        if self.artist_of_target is not None:
-            self.artist_of_target.remove()
-            self.artist_of_target = None
         self.artist_of_target = g.ax.scatter(*self.target_pos, s=50, c='g', 
                                              depthshade=False, marker='+')
             
         if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        self.artist_of_sun = g.ax.scatter(*self.sun_pos, s=50, c='y',
+        self.artist_of_sun = g.ax.scatter(*self.sun_pos, s=50, c='#FFAF00',
                                           depthshade=False, marker='o')
 
         # redraw planets
@@ -289,10 +265,6 @@ class ShowOrbitDialog(QDialog):
         self.save_settings()
         self._redrawmark()
 
-# No use        
-#    def _valuechanged(self):
-#        self.save_settings()
-    
     def dtapply(self):
         text = self.ui.delta_t_edit.text()
         try:

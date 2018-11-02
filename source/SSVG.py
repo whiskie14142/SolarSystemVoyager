@@ -81,64 +81,27 @@ class MainForm(QMainWindow):
         self.ui.manplans.verticalHeader().setSectionsClickable(False)       # Disable row selection by clicking
         self.ui.selectedman.setColumnWidth(0,100)
         self.ui.selectedman.setColumnWidth(1,139)
-#        self.connect(self.ui.actionOpen, SIGNAL('triggered()'), 
-#                                             self.openmanplan)
         self.ui.actionOpen.triggered.connect(self.openmanplan)
-#        self.connect(self.ui.actionNew, SIGNAL('triggered()'), 
-#                                             self.newmanplan)
         self.ui.actionNew.triggered.connect(self.newmanplan)
-#        self.connect(self.ui.actionQuit, SIGNAL('triggered()'), 
-#                                             self.appquit)
         self.ui.actionQuit.triggered.connect(self.appquit)
-#        self.connect(self.ui.actionSave, SIGNAL('triggered()'), 
-#                                             self.savemanplan)
         self.ui.actionSave.triggered.connect(self.savemanplan)
-#        self.connect(self.ui.actionSave_as, SIGNAL('triggered()'), 
-#                                             self.saveasmanplan)
         self.ui.actionSave_as.triggered.connect(self.saveasmanplan)
-#        self.connect(self.ui.actionProbe, SIGNAL('triggered()'), 
-#                                             self.editprobe)
         self.ui.actionProbe.triggered.connect(self.editprobe)
-#        self.connect(self.ui.actionTarget, SIGNAL('triggered()'), 
-#                                             self.edittarget)
         self.ui.actionTarget.triggered.connect(self.edittarget)
-#        self.connect(self.ui.actionCreate, SIGNAL('triggered()'), 
-#                                             self.createcheckpoint)
         self.ui.actionCreate.triggered.connect(self.createcheckpoint)
-#        self.connect(self.ui.actionResume, SIGNAL('triggered()'), 
-#                                             self.resumecheckpoint)
         self.ui.actionResume.triggered.connect(self.resumecheckpoint)
-#        self.connect(self.ui.actionAbout_SSVG, SIGNAL('triggered()'), 
-#                                            self.aboutselected)
         self.ui.actionAbout_SSVG.triggered.connect(self.aboutselected)
-#        self.connect(self.ui.execNext, SIGNAL('clicked()'), self.execnext)
         self.ui.execNext.clicked.connect(self.execnext)
-#        self.connect(self.ui.reviewthroughout, SIGNAL('clicked()'), 
-#                                             self.reviewthroughout)
         self.ui.reviewthroughout.clicked.connect(self.reviewthroughout)
-#        self.connect(self.ui.flightreview, SIGNAL('clicked()'), 
-#                                             self.showflightreview)
         self.ui.flightreview.clicked.connect(self.showflightreview)
-#        self.connect(self.ui.showOrbit, SIGNAL('clicked()'), self.showorbit)
         self.ui.showOrbit.clicked.connect(self.showorbit)
-#        self.connect(self.ui.editnext, SIGNAL('clicked()'), self.editnext)
         self.ui.editnext.clicked.connect(self.editnext)
-#        self.connect(self.ui.initexec, SIGNAL('clicked()'), self.initexec)
         self.ui.initexec.clicked.connect(self.initexec)
-#        self.connect(self.ui.manplans, 
-#                     SIGNAL('currentCellChanged(int,int,int,int)'), 
-#                     self.manplanscellchanged)
         self.ui.manplans.currentCellChanged.connect(self.manplanscellchanged)
-#        self.connect(self.ui.manplans, SIGNAL('cellDoubleClicked(int,int)'), 
-#                     self.editman)
         self.ui.manplans.cellDoubleClicked.connect(self.editman)
-#        self.connect(self.ui.execto, SIGNAL('clicked()'), self.execto)
         self.ui.execto.clicked.connect(self.execto)
-#        self.connect(self.ui.editMan, SIGNAL('clicked()'), self.editman)
         self.ui.editMan.clicked.connect(self.editman)
-#        self.connect(self.ui.insertMan, SIGNAL('clicked()'), self.insertman)
         self.ui.insertMan.clicked.connect(self.insertman)
-#        self.connect(self.ui.deleteMan, SIGNAL('clicked()'), self.deleteman)
         self.ui.deleteMan.clicked.connect(self.deleteman)
 
         self.ui.manplans.verticalHeader().setFixedWidth(30)     # Qt document has no information about this method.
@@ -204,7 +167,8 @@ class MainForm(QMainWindow):
         g.probe_Kepler = None
         g.target_Kepler = None
     
-        matplotlib.rcParams['toolbar'] = 'None'
+        matplotlib.rcParams['toolbar'] = 'none'
+        matplotlib.rcParams['grid.linewidth'] = 0.25
         plt.ion()
         g.fig = None
         self.init3Dfigure()
@@ -244,13 +208,12 @@ class MainForm(QMainWindow):
         left = self.geometry().left()
         top = self.geometry().top()
         mngr = plt.get_current_fig_manager()
-        mngr.window.setGeometry(left+650, top, 960, 960)
+        mngr.window.setGeometry(left+650, top, 700, 700)
         g.fig.canvas.set_window_title('3D Orbit')
         self.figcid = g.fig.canvas.mpl_connect('close_event', 
                                                self.handle_3Dclose)
         
     def handle_3Dclose(self, event):
-#        print('Closed: 3D Orbit')
         g.fig.canvas.mpl_disconnect(self.figcid)
         g.fig = None
 
@@ -1137,7 +1100,6 @@ def resource_path(relative):
 def main():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(resource_path('SSVG.ico')))
-    #print(os.path.abspath(os.path.dirname(sys.argv[0])))
     g.mainform = MainForm()
     g.mainform.show()
     sys.exit(app.exec_())

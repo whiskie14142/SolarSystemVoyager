@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Oct 26 08:12:16 2018
-
-@author: shush_000
+flightreview module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
 
 from PyQt5.QtCore import *
@@ -49,36 +48,16 @@ class FlightReviewControl(QDialog):
             self.ui.toprobe.setChecked(s['Probe'])
             self.ui.totarget.setChecked(s['Target'])
         
-#        self.connect(self.ui.forward, SIGNAL('clicked()'), self.forward)
         self.ui.forward.clicked.connect(self.forward)
-#        self.connect(self.ui.backward, SIGNAL('clicked()'), self.backward)
         self.ui.backward.clicked.connect(self.backward)
-#        self.connect(self.ui.fastforward, SIGNAL('clicked()'), 
-#                                             self.fastforward)
         self.ui.fastforward.clicked.connect(self.fastforward)
-#        self.connect(self.ui.fastbackward, SIGNAL('clicked()'), 
-#                                             self.fastbackward)
         self.ui.fastbackward.clicked.connect(self.fastbackward)
-#        self.connect(self.ui.check_Ptrj, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.check_Ptrj.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.check_PKepler, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.check_PKepler.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.check_TKepler, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.check_TKepler.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.showplanets, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.showplanets.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.tobarycenter, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.tobarycenter.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.toprobe, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.toprobe.clicked.connect(self._statuschanged)
-#        self.connect(self.ui.totarget, SIGNAL('clicked()'), 
-#                                             self._statuschanged)
         self.ui.totarget.clicked.connect(self._statuschanged)
 
         self.artist_of_probe = None
@@ -96,9 +75,6 @@ class FlightReviewControl(QDialog):
         self.redraw()
 
     def redraw(self):
-#        if self.artist_of_orbit is not None:
-#            self.artist_of_orbit[0].remove()
-#            self.artist_of_orbit = None
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 
                                     'You have no valid probe.', QMessageBox.Ok)
@@ -116,7 +92,6 @@ class FlightReviewControl(QDialog):
         self.last_trj = g.probe_trj[-1][1:]
         self.maninfo = g.probe_trj[-1][0]
         self.start_time = self.last_trj[0][0]
-#        self.end_time = self.last_trj[0][-1]  not used?
         self.ui.starttime.setText(common.jd2isot(self.start_time))
         
         xs, ys, zs, ts = g.mytarget.points(self.start_time, g.ndata)
@@ -188,7 +163,7 @@ class FlightReviewControl(QDialog):
         if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='y',
+        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='#FFAF00',
                                           depthshade=False, marker='o')
 
         if self.artist_of_epssinfo is not None:

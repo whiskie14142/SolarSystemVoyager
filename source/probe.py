@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 probe module for SSVG
-(c) 2016-2017 Shushi Uetsuki (whiskie14142)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
 
 import common

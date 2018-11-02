@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Oct 25 15:03:07 2018
-
-@author: shush_000
+editmaneuver module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
 
 from PyQt5.QtCore import *
@@ -49,35 +48,16 @@ class EditManDialog(QDialog):
         self.setGeometry(left, top+380, 640, 320)
         self.ui = Ui_editmandialog()
         self.ui.setupUi(self)
-#        self.connect(self.ui.applymantype, SIGNAL('clicked()'), 
-#                                             self.applymantype)
         self.ui.applymantype.clicked.connect(self.applymantype)
-#        self.connect(self.ui.isotedit, SIGNAL('editingFinished()'), 
-#                                             self.isotedited)
         self.ui.isotedit.editingFinished.connect(self.isotedited)
-#        self.connect(self.ui.jdedit, SIGNAL('editingFinished()'), 
-#                                             self.jdedited)
         self.ui.jdedit.editingFinished.connect(self.jdedited)
-#        self.connect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
-#                                             self.parameterchanged)
         self.ui.parameters.cellChanged.connect(self.parameterchanged)
-#        self.connect(self.ui.finish_exec, SIGNAL('clicked()'), 
-#                                             self.finish_exec)
         self.ui.finish_exec.clicked.connect(self.finish_exec)
-#        self.connect(self.ui.finishbutton, SIGNAL('clicked()'), 
-#                                             self.finishbutton)
         self.ui.finishbutton.clicked.connect(self.finishbutton)
-#        self.connect(self.ui.cancelbutton, SIGNAL('clicked()'), 
-#                                             self.cancelbutton)
         self.ui.cancelbutton.clicked.connect(self.cancelbutton)
-#        self.connect(self.ui.showorbit, SIGNAL('clicked()'), self.showorbit)
         self.ui.showorbit.clicked.connect(self.showorbit)
-#        self.connect(self.ui.computeFTA, SIGNAL('clicked()'), self.computefta)
         self.ui.computeFTA.clicked.connect(self.computefta)
-#        self.connect(self.ui.optimize, SIGNAL('clicked()'), self.optimize)
         self.ui.optimize.clicked.connect(self.optimize)
-#        self.connect(self.ui.applyduration, SIGNAL('clicked()'), 
-#                                             self.applyduration)
         self.ui.applyduration.clicked.connect(self.applyduration)
         
         self.types = ['START', 'CP', 'EP_ON', 'EP_OFF', 'SS_ON', 'SS_OFF', 
@@ -227,8 +207,6 @@ class EditManDialog(QDialog):
                 self.ui.jdedit.setEnabled(False)
                 self.ui.isotedit.setEnabled(False)
 
-#            self.disconnect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
-#                            self.parameterchanged)
             self.ui.parameters.cellChanged.disconnect()
             
             for i in range(1, 9):
@@ -247,8 +225,6 @@ class EditManDialog(QDialog):
                     self.ui.parameters.item(row, 1).setFlags(Qt.NoItemFlags)
                     self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
     
-#            self.connect(self.ui.parameters, SIGNAL('cellChanged(int,int)'), 
-#                         self.parameterchanged)
             self.ui.parameters.cellChanged.connect(self.parameterchanged)
                 
     def applymantype(self):
@@ -654,7 +630,7 @@ class EditManDialog(QDialog):
         self.ui.jdedit.setText('{:.8f}'.format(jd))
         self.jdedited()
         dt = jd - g.myprobe.jd
-        self.ui.duration.setText('{:.5f}'.format(dt))
+        self.ui.duration.setText('{:.8f}'.format(dt))
 
     def applyduration(self):
         try:

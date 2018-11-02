@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Oct 25 14:17:47 2018
-
-@author: shush_000
+about module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 """
+
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from ui.aboutSSVG import *
@@ -53,7 +53,7 @@ Source code and license terms will be retrieved from:
 
 This program uses following programs and modules:
   Numpy : http://www.numpy.org/
-    Copyright (c) 2005-2016, NumPy Developers.
+    Copyright (c) 2005-2018, NumPy Developers.
     All rights reserved.
   Scipy : http://scipy.org/
     Copyright (c) 2001, 2002 Enthought, Inc.
@@ -63,18 +63,19 @@ This program uses following programs and modules:
   matplotlib : http://matplotlib.org/
     Copyright (c) 2012-2013 Matplotlib Development Team;
     All Rights Reserved
-  PyQt5 : https://www.riverbankcomputing.com/news/
+  PyQt5 : https://www.riverbankcomputing.com/software/pyqt/intro
   jplephem : https://github.com/brandon-rhodes/python-jplephem/
   julian : https://github.com/dannyzed/julian/
     Copyright (c) 2016 Daniel Zawada
   pytwobodyorbit : https://github.com/whiskie14142/pytwobodyorbit/
     Copyright (c) 2016 Shushi Uetsuki (whiskie14142)
   spktype01 : https://github.com/whiskie14142/spktype01/
-    Copyright (c) 2016 Shushi Uetsuki (whiskie14142)
+    Copyright (c) 2016-2018 Shushi Uetsuki (whiskie14142)
+  spktype21 : https://github.com/whiskie14142/spktype21
+    Copyright (c) 2018 Shushi Uetsuki (whiskie14142)
   PyInstaller : http://www.pyinstaller.org/"""
 
         self.ui.versionlabel.setText(g.version)        
         self.ui.licensetext.setPlainText(abouttext)
-#        self.connect(self.ui.okButton, SIGNAL('clicked()'), self.accept)
         self.ui.okButton.clicked.connect(self.accept)
                 

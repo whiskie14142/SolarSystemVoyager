@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-probeorbit module for SSVG
-(c) 2016-2017 Shushi Uetsuki (whiskie14142)
+probeorbit module for SSVG (Solar System Voyager)
+(c) 2016-2018 Shushi Uetsuki (whiskie14142)
 
 This module computes the trajectory of the probe with numerical integration
 This module can use gravitational attraction of all planets, Pluto, 
