@@ -70,13 +70,13 @@ class NewFlightPlanDialog(QDialog):
             filter='SPK Files (*.bsp);;All Files (*.*)')
         ans = ans[0]
         if ans == '': return
-        filename = os.path.basename(ans)
+        filename = os.path.relpath(ans, start=common.bspdir)
         filepath = os.path.join(common.bspdir, filename)
         try:
             tempk = SPKType21.open(filepath)
-        except FileNotFoundError:
+        except ValueError:
             QMessageBox.critical(self, 'Error', 
-                'SPK file must be stored in "data" folder', QMessageBox.Ok)
+                'Invalid file: This is not a SPK file', QMessageBox.Ok)
             return
         self.ui.spkfilepath.setText(filename)
         
@@ -265,18 +265,31 @@ class EditTargetDialog(NewFlightPlanDialog):
             self.ui.spkfilepath.setText(target['file'])
 
             temppath = target['file']
+            fname = os.path.basename(temppath)
             if temppath != '':
-                try:
-                    tempk = SPKType21.open(temppath)
-                except FileNotFoundError:
+                if os.path.isabs(temppath):
                     try:
-                        fname = os.path.basename(temppath)
-                        tempk = SPKType21.open(os.path.join(common.bspdir, fname))
+                        tempk = SPKType21.open(temppath)
                     except FileNotFoundError:
-                        QMessageBox.critical(self, 'File not Found',
-                            "Target's SPK file {0} is not found.  Store it in 'data' folder".format(fname),
-                            QMessageBox.Ok)
-                        return
+                        try:
+                            tempk = SPKType21.open(os.path.join(common.bspdir, fname))
+                        except FileNotFoundError:
+                            QMessageBox.critical(self, 'File not Found',
+                                "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(fname),
+                                QMessageBox.Ok)
+                            return
+                else:
+                    temppath = os.path.join(common.bspdir, temppath)
+                    try:
+                        tempk = SPKType21.open(temppath)
+                    except FileNotFoundError:
+                        try:
+                            tempk = SPKType21.open(os.path.join(common.bspdir, fname))
+                        except FileNotFoundError:
+                            QMessageBox.critical(self, 'File not Found',
+                                "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(fname),
+                                QMessageBox.Ok)
+                            return
 
                 idlist = [tempk.segments[0].target]
                 for seg in tempk.segments:

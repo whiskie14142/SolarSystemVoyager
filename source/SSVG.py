@@ -146,7 +146,7 @@ class MainForm(QMainWindow):
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
-        g.currentdir = os.path.join('')
+        g.currentdir = os.path.join(common.plandir)
         g.manfilename = None
         g.manplan = None
         g.maneuvers = None
@@ -283,18 +283,32 @@ class MainForm(QMainWindow):
         
         # Check SPK file, and set data_type
         temppath = g.manplan['target']['file']
+        fname = os.path.basename(temppath)
         if temppath != '':
-            try:
-                tempk = SPKType21.open(temppath)
-            except FileNotFoundError:
+            if os.path.isabs(temppath):
                 try:
-                    fname = os.path.basename(temppath)
-                    tempk = SPKType21.open(os.path.join(common.bspdir, fname))
+                    tempk = SPKType21.open(temppath)
                 except FileNotFoundError:
-                    QMessageBox.critical(self, 'File not Found',
-                        "Target's SPK file {0} is not found.  Store it in 'data' folder".format(fname),
-                        QMessageBox.Ok)
-                    return
+                    try:
+                        tempk = SPKType21.open(os.path.join(common.bspdir, fname))
+                    except FileNotFoundError:
+                        QMessageBox.critical(self, 'File not Found',
+                            "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(fname),
+                            QMessageBox.Ok)
+                        return
+            else:
+                temppath = os.path.join(common.bspdir, temppath)
+                try:
+                    tempk = SPKType21.open(temppath)
+                except FileNotFoundError:
+                    try:
+                        tempk = SPKType21.open(os.path.join(common.bspdir, fname))
+                    except FileNotFoundError:
+                        QMessageBox.critical(self, 'File not Found',
+                            "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(fname),
+                            QMessageBox.Ok)
+                        return
+
             g.data_type = tempk.segments[0].data_type
             tempk.close()
         else:
@@ -469,7 +483,12 @@ class MainForm(QMainWindow):
         if g.manfilename is None:
             self.saveasmanplan()
             return
-        manfile = open(g.manfilename, 'w')
+        try:
+            manfile = open(g.manfilename, 'w')
+        except PermissionError:
+            QMessageBox.critical(self, 'Permission Error',
+                'Can not overwrite.  This file is read only.', QMessageBox.Ok)
+            return
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
         QMessageBox.information(self, 'Info', 
@@ -494,7 +513,13 @@ class MainForm(QMainWindow):
         g.currentdir = os.path.split(ans)[0]
         
         g.manfilename = ans
-        manfile = open(g.manfilename, 'w')
+        try:
+            manfile = open(g.manfilename, 'w')
+        except PermissionError:
+            QMessageBox.critical(self, 'Permission Error',
+                'Can not overwrite.  Specified file is read only.', QMessageBox.Ok)
+            return
+            
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
         self.dispmanfilename()
@@ -1099,7 +1124,7 @@ def resource_path(relative):
     
 def main():
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(resource_path('SSVG.ico')))
+    app.setWindowIcon(QIcon(resource_path('ssvgicon.ico')))
     g.mainform = MainForm()
     g.mainform.show()
     sys.exit(app.exec_())

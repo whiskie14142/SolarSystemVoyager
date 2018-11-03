@@ -49,27 +49,47 @@ class Target:
             self.endjd = common.SPKend
         else:
             filename = os.path.basename(file)
-            mes = "Target's SPK file {0} is not found.  Store it in 'data' folder".format(filename)
+            mes = "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(filename)
             if g.data_type == 1:
-                try:
-                    self.sbkernel = SPKType01.open(file)
-                except FileNotFoundError:
+                if os.path.isabs(file):
                     try:
-                        self.sbkernel = SPKType01.open(
-                            os.path.join(common.bspdir, filename))
+                        self.sbkernel = SPKType01.open(file)
                     except FileNotFoundError:
-                        raise RuntimeError(mes)
+                        try:
+                            self.sbkernel = SPKType01.open(os.path.join(common.bspdir, filename))
+                        except FileNotFoundError:
+                            raise RuntimeError(mes)
+                else:
+                    file = os.path.join(common.bspdir, file)
+                    try:
+                        self.sbkernel = SPKType01.open(file)
+                    except FileNotFoundError:
+                        try:
+                            self.sbkernel = SPKType01.open(os.path.join(common.bspdir, filename))
+                        except FileNotFoundError:
+                            raise RuntimeError(mes)
                 self.ephem = self.nasa_sb_type01
+
             elif g.data_type == 21:
-                try:
-                    self.sbkernel = SPKType21.open(file)
-                except FileNotFoundError:
+                if os.path.isabs(file):
                     try:
-                        self.sbkernel = SPKType21.open(
-                            os.path.join(common.bspdir, filename))
+                        self.sbkernel = SPKType21.open(file)
                     except FileNotFoundError:
-                        raise RuntimeError(mes)
+                        try:
+                            self.sbkernel = SPKType21.open(os.path.join(common.bspdir, filename))
+                        except FileNotFoundError:
+                            raise RuntimeError(mes)
+                else:
+                    file = os.path.join(common.bspdir, file)
+                    try:
+                        self.sbkernel = SPKType21.open(file)
+                    except FileNotFoundError:
+                        try:
+                            self.sbkernel = SPKType21.open(os.path.join(common.bspdir, filename))
+                        except FileNotFoundError:
+                            raise RuntimeError(mes)
                 self.ephem = self.nasa_sb_type21
+
             else:
                 raise RuntimeError("Illegal data_type: " + str(g.data_type))
 
