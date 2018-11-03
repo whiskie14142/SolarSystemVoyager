@@ -299,7 +299,7 @@ class ReviewThroughoutControl(QDialog):
         if self.artist_of_sun is not None:
             self.artist_of_sun.remove()
             self.artist_of_sun = None
-        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='y',
+        self.artist_of_sun = g.ax.scatter(*sun_pos, s=50, c='#FFAF00',
                                           depthshade=False, marker='o')
 
         remove_time()
