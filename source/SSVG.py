@@ -69,7 +69,7 @@ class MainForm(QMainWindow):
     """class for the main window (SSVG window)
     """
     def __init__(self, parent=None):
-        QWidget.__init__(self, parent)
+        super().__init__(parent)
         self.setGeometry(10, 40, 640, 700)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)

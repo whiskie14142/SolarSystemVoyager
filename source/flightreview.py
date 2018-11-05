@@ -34,7 +34,7 @@ class FlightReviewControl(QDialog):
     """class for 'Flight Review' window
     """
     def __init__(self, parent=None):
-        QWidget.__init__(self, parent)
+        super().__init__(parent)
         left = g.mainform.geometry().left()
         top = g.mainform.geometry().top()
         self.setGeometry(left, top+740, 640, 211)

@@ -34,7 +34,7 @@ class NewFlightPlanDialog(QDialog):
     """
     
     def __init__(self, parent=None):
-        QWidget.__init__(self, parent)
+        super().__init__(parent)
         self.ui = Ui_NewFlightPlanDialog()
         self.ui.setupUi(self)
         

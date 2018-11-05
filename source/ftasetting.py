@@ -34,7 +34,7 @@ class FTAsettingDialog(QDialog):
     """
     
     def __init__(self, parent=None):
-        QWidget.__init__(self, parent)
+        super().__init__(parent)
         self.ui = Ui_ftasettingdialog()
         self.ui.setupUi(self)
         self.ui.fromshoworbit.clicked.connect(self.ta_radioclicked)

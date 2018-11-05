@@ -35,7 +35,7 @@ class StartOptimizeDialog(QDialog):
     """class for the Start Optimize Assistant
     """
     def __init__(self, orgjd, parent=None):
-        QWidget.__init__(self, parent)
+        super().__init__(parent)
         g.probe_Kepler = None
         g.target_Kepler = None
         

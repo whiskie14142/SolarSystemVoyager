@@ -30,7 +30,7 @@ class AboutSSVG(QDialog):
     """class for 'About SSVG' dialog
     """
     def __init__(self, parent=None):
-        QWidget.__init__(self, parent)
+        super().__init__(parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
         abouttext = """SSVG (Solar System Voyager) (c) 2016-2018 Shushi Uetsuki (whiskie14142)

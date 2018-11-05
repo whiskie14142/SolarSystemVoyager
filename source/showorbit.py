@@ -33,7 +33,7 @@ class ShowOrbitDialog(QDialog):
     """class for 'Show Orbit' window
     """
     def __init__(self, parent=None):
-        QWidget.__init__(self, parent)
+        super().__init__(parent)
         self.mother = parent
         left = g.mainform.geometry().left()
         top = g.mainform.geometry().top()
