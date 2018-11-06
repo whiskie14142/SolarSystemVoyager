@@ -12,6 +12,8 @@ class Ui_ShowOrbitControl(object):
     def setupUi(self, ShowOrbitControl):
         ShowOrbitControl.setObjectName("ShowOrbitControl")
         ShowOrbitControl.resize(640, 216)
+        ShowOrbitControl.setMinimumSize(QtCore.QSize(640, 216))
+        ShowOrbitControl.setMaximumSize(QtCore.QSize(640, 216))
         self.label = QtWidgets.QLabel(ShowOrbitControl)
         self.label.setGeometry(QtCore.QRect(340, 50, 111, 18))
         self.label.setObjectName("label")

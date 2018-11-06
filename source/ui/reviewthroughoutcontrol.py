@@ -12,6 +12,8 @@ class Ui_ReviewThroughoutControl(object):
     def setupUi(self, ReviewThroughoutControl):
         ReviewThroughoutControl.setObjectName("ReviewThroughoutControl")
         ReviewThroughoutControl.resize(640, 216)
+        ReviewThroughoutControl.setMinimumSize(QtCore.QSize(640, 216))
+        ReviewThroughoutControl.setMaximumSize(QtCore.QSize(640, 216))
         self.label = QtWidgets.QLabel(ReviewThroughoutControl)
         self.label.setGeometry(QtCore.QRect(350, 50, 111, 16))
         self.label.setObjectName("label")

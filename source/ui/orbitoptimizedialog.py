@@ -13,6 +13,8 @@ class Ui_OrbitOptimizeDialog(object):
         OrbitOptimizeDialog.setObjectName("OrbitOptimizeDialog")
         OrbitOptimizeDialog.setWindowModality(QtCore.Qt.WindowModal)
         OrbitOptimizeDialog.resize(601, 651)
+        OrbitOptimizeDialog.setMinimumSize(QtCore.QSize(601, 651))
+        OrbitOptimizeDialog.setMaximumSize(QtCore.QSize(601, 651))
         OrbitOptimizeDialog.setModal(True)
         self.starttime = QtWidgets.QLabel(OrbitOptimizeDialog)
         self.starttime.setGeometry(QtCore.QRect(432, 10, 201, 16))

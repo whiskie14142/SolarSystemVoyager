@@ -12,7 +12,10 @@ class Ui_aboutSSVG(object):
     def setupUi(self, aboutSSVG):
         aboutSSVG.setObjectName("aboutSSVG")
         aboutSSVG.resize(480, 449)
+        aboutSSVG.setMinimumSize(QtCore.QSize(480, 449))
+        aboutSSVG.setMaximumSize(QtCore.QSize(480, 449))
         aboutSSVG.setAutoFillBackground(False)
+        aboutSSVG.setModal(True)
         self.okButton = QtWidgets.QPushButton(aboutSSVG)
         self.okButton.setGeometry(QtCore.QRect(370, 410, 75, 23))
         self.okButton.setObjectName("okButton")

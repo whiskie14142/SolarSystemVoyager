@@ -13,6 +13,8 @@ class Ui_NewFlightPlanDialog(object):
         NewFlightPlanDialog.setObjectName("NewFlightPlanDialog")
         NewFlightPlanDialog.setWindowModality(QtCore.Qt.ApplicationModal)
         NewFlightPlanDialog.resize(480, 360)
+        NewFlightPlanDialog.setMinimumSize(QtCore.QSize(480, 360))
+        NewFlightPlanDialog.setMaximumSize(QtCore.QSize(480, 360))
         NewFlightPlanDialog.setModal(True)
         self.probe_box = QtWidgets.QGroupBox(NewFlightPlanDialog)
         self.probe_box.setGeometry(QtCore.QRect(10, 20, 461, 81))

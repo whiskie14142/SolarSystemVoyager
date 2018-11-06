@@ -13,6 +13,8 @@ class Ui_editmandialog(object):
         editmandialog.setObjectName("editmandialog")
         editmandialog.setWindowModality(QtCore.Qt.WindowModal)
         editmandialog.resize(640, 320)
+        editmandialog.setMinimumSize(QtCore.QSize(640, 320))
+        editmandialog.setMaximumSize(QtCore.QSize(640, 320))
         editmandialog.setModal(True)
         self.label = QtWidgets.QLabel(editmandialog)
         self.label.setGeometry(QtCore.QRect(10, 10, 81, 16))

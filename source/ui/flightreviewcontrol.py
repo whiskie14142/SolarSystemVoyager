@@ -12,6 +12,8 @@ class Ui_FlightReviewControl(object):
     def setupUi(self, FlightReviewControl):
         FlightReviewControl.setObjectName("FlightReviewControl")
         FlightReviewControl.resize(640, 216)
+        FlightReviewControl.setMinimumSize(QtCore.QSize(640, 216))
+        FlightReviewControl.setMaximumSize(QtCore.QSize(640, 216))
         self.label = QtWidgets.QLabel(FlightReviewControl)
         self.label.setGeometry(QtCore.QRect(350, 50, 111, 16))
         self.label.setObjectName("label")

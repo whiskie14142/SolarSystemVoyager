@@ -13,6 +13,8 @@ class Ui_ftasettingdialog(object):
         ftasettingdialog.setObjectName("ftasettingdialog")
         ftasettingdialog.setWindowModality(QtCore.Qt.ApplicationModal)
         ftasettingdialog.resize(480, 480)
+        ftasettingdialog.setMinimumSize(QtCore.QSize(480, 480))
+        ftasettingdialog.setMaximumSize(QtCore.QSize(480, 480))
         ftasettingdialog.setModal(True)
         self.groupBox = QtWidgets.QGroupBox(ftasettingdialog)
         self.groupBox.setGeometry(QtCore.QRect(20, 10, 441, 91))
