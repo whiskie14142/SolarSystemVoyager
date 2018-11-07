@@ -19,6 +19,7 @@ from optimize import CpOptimizeDialog
 from ui.editmandialog import *
 from showorbit import ShowOrbitDialog
 from showorbit import ShowStartOrbitDialog
+from editdatetime import EditDateTimeDialog
 
 from globaldata import *
 # Import followings
@@ -49,8 +50,8 @@ class EditManDialog(QDialog):
         self.ui = Ui_editmandialog()
         self.ui.setupUi(self)
         self.ui.applymantype.clicked.connect(self.applymantype)
-        self.ui.isotedit.editingFinished.connect(self.isotedited)
-        self.ui.jdedit.editingFinished.connect(self.jdedited)
+#        self.ui.isotedit.editingFinished.connect(self.isotedited)
+#        self.ui.jdedit.editingFinished.connect(self.jdedited)
         self.ui.parameters.cellChanged.connect(self.parameterchanged)
         self.ui.finish_exec.clicked.connect(self.finish_exec)
         self.ui.finishbutton.clicked.connect(self.finishbutton)
@@ -58,7 +59,8 @@ class EditManDialog(QDialog):
         self.ui.showorbit.clicked.connect(self.showorbit)
         self.ui.computeFTA.clicked.connect(self.computefta)
         self.ui.optimize.clicked.connect(self.optimize)
-        self.ui.applyduration.clicked.connect(self.applyduration)
+#        self.ui.applyduration.clicked.connect(self.applyduration)
+        self.ui.EditDateTime.clicked.connect(self.editdatetime)
         
         self.types = ['START', 'CP', 'EP_ON', 'EP_OFF', 'SS_ON', 'SS_OFF', 
                       'FLYTO']
@@ -135,9 +137,6 @@ class EditManDialog(QDialog):
         self.ui.optimize.setEnabled(False)
         self.ui.showorbit.setEnabled(False)
         self.ui.finish_exec.setEnabled(False)
-        self.ui.duration.setEnabled(False)
-        self.ui.applyduration.setEnabled(False)
-        self.ui.label_duration.setEnabled(False)
         self.ui.finishbutton.setEnabled(False)
         if self.editman is None: return
             
@@ -159,8 +158,6 @@ class EditManDialog(QDialog):
         duration = self.typeID == 6 and self.currentrow == g.nextman and \
             g.myprobe.onflight
         if duration:
-            self.ui.duration.setEnabled(True)
-            self.ui.applyduration.setEnabled(True)
             self.ui.label_duration.setEnabled(True)
         
         if buttons:
@@ -184,8 +181,7 @@ class EditManDialog(QDialog):
         if self.editman is None:
             self.ui.mantype.setCurrentIndex(-1)
             self.ui.mantypedisp.setText('Not Defined')
-            self.ui.isotedit.setEnabled(False)
-            self.ui.jdedit.setEnabled(False)
+            self.disableDateTime()
             for i in range(1, 9):
                 row = i - 1
                 self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
@@ -196,16 +192,13 @@ class EditManDialog(QDialog):
             self.ui.label_time.setText(self.timedesc[self.typeID])
             if self.paramflag[self.typeID][0] == 1:
                 jd = self.editman[self.paramname[0]]
-                self.ui.jdedit.setText(self.fmttbl[0].format(jd))
-                self.ui.jdedit.setEnabled(True)
-                self.ui.isotedit.setText(common.jd2isot(jd))
-                self.ui.isotedit.setEnabled(True)
+                duration = False
                 if self.typeID == 6 and self.currentrow == g.nextman and \
                         g.myprobe.onflight:
-                    self.ui.duration.setText('{:.8f}'.format(jd - g.myprobe.jd))
+                    duration = True
+                self.enableDateTime(jd, duration)
             else:
-                self.ui.jdedit.setEnabled(False)
-                self.ui.isotedit.setEnabled(False)
+                self.disableDateTime()
 
             self.ui.parameters.cellChanged.disconnect()
             
@@ -226,6 +219,35 @@ class EditManDialog(QDialog):
                     self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
     
             self.ui.parameters.cellChanged.connect(self.parameterchanged)
+
+    def enableDateTime(self, jd, duration):
+        self.ui.label_time.setEnabled(True)
+        self.ui.label_3.setEnabled(True)
+        self.ui.label_4.setEnabled(True)
+        self.ui.EditDateTime.setEnabled(True)
+        
+        self.ui.isotedit.setText(common.jd2isot(jd))
+        self.ui.jdedit.setText('{:.8f}'.format(jd))
+        
+        if duration:
+            self.ui.label_duration.setEnabled(True)
+            dt = jd - g.myprobe.jd
+            self.ui.duration.setText('{:.8f}'.format(dt))
+        else:
+            self.ui.label_duration.setEnabled(False)
+            self.ui.duration.setText('')
+    
+    def disableDateTime(self):
+        self.ui.label_time.setEnabled(False)
+        self.ui.label_3.setEnabled(False)
+        self.ui.label_4.setEnabled(False)
+        self.ui.EditDateTime.setEnabled(False)
+        self.ui.label_duration.setEnabled(False)
+        
+        self.ui.isotedit.setText('')
+        self.ui.jdedit.setText('')
+        self.ui.duration.setText('')
+
                 
     def applymantype(self):
         newID = self.ui.mantype.currentIndex()
@@ -249,33 +271,23 @@ class EditManDialog(QDialog):
             self.setenable()
         else:
             self.ui.mantype.setCurrentIndex(self.typeID)
-        
-    def isotedited(self):
-        try:
-            jd = common.isot2jd(self.ui.isotedit.text())
-        except ValueError:
-            QMessageBox.critical(self, 'Error', 'Invalid ISOT', 
-                                    QMessageBox.Ok)
-            self.ui.isotedit.setText(common.jd2isot(
-                float(self.ui.jdedit.text())))
+
+    def editdatetime(self):
+        jd = self.editman[self.paramname[0]]
+        startjd, endjd = g.mytarget.getsejd()
+        duration = False
+        if self.typeID == 6 and self.currentrow == g.nextman and \
+                g.myprobe.onflight:
+            duration = True
+
+        dialog = EditDateTimeDialog(self, jd, startjd, endjd, duration)
+        ans = dialog.exec_()
+        if ans == QDialog.Rejected:
             return
-        self.ui.jdedit.setText('{:.8f}'.format(jd))
-        if self.ui.duration.isEnabled():
-            self.ui.duration.setText('{:.8f}'.format(jd - g.myprobe.jd))
-        self.editman[self.paramname[0]] = jd
-        
-    def jdedited(self):
-        try:
-            jd = float(self.ui.jdedit.text())
-        except ValueError:
-            QMessageBox.critical(self, 'Error', 'Invalid JD', QMessageBox.Ok)
-            self.ui.jdedit.setText('{:.8f}'.format(
-                common.isot2jd(self.ui.isotedit.text())))
-            return
-        self.ui.isotedit.setText(common.jd2isot(jd))
-        if self.ui.duration.isEnabled():
-            self.ui.duration.setText('{:.8f}'.format(jd - g.myprobe.jd))
-        self.editman[self.paramname[0]] = jd
+
+        self.editman[self.paramname[0]] = self.editedjd
+        self.enableDateTime(self.editedjd, duration)
+        self.showorbit()
         
     def parameterchanged(self, row, colmn):
         if colmn != 1: return
@@ -627,21 +639,10 @@ class EditManDialog(QDialog):
 
     def gettime(self, jd):
         # this method is called from Show Orbit
+        self.editman[self.paramname[0]] = jd
+        self.ui.isotedit.setText(common.jd2isot(jd))
         self.ui.jdedit.setText('{:.8f}'.format(jd))
-        self.jdedited()
         dt = jd - g.myprobe.jd
         self.ui.duration.setText('{:.8f}'.format(dt))
 
-    def applyduration(self):
-        try:
-            dt = float(self.ui.duration.text())
-        except ValueError:
-            QMessageBox.critical(self, 'Error', 'Invalid Duration days', 
-                                    QMessageBox.Ok)
-            self.ui.duration.setText('{:.8f}'.format(
-                self.editman[self.paramname[0]] - g.myprobe.jd))
-            return
-        jd = g.myprobe.jd + dt
-        self.ui.jdedit.setText('{:.8f}'.format(jd))
-        self.jdedited()
         

@@ -13,6 +13,18 @@
     <height>700</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>640</width>
+    <height>700</height>
+   </size>
+  </property>
   <property name="font">
    <font>
     <family>MS UI Gothic</family>
@@ -21,6 +33,12 @@
   </property>
   <property name="windowTitle">
    <string>SSVG</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>64</width>
+    <height>64</height>
+   </size>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTableWidget" name="manplans">
