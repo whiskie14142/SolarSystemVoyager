@@ -126,7 +126,6 @@ class ShowOrbitDialog(QDialog):
         self._redrawmark()
 
     def _redrawmark(self):
-        self.delta_jd = float(self.ui.delta_t_edit.text())
         tempjd = self.jd + self.delta_jd
         self.ui.preddate.setText(common.jd2isot(tempjd))
 
@@ -214,6 +213,7 @@ class ShowOrbitDialog(QDialog):
     def set_pred_DT(self, jd):
         dt = jd - self.jd
         self.ui.delta_t_edit.setText('{:.8f}'.format(dt))
+        self.delta_jd = dt
         self.dtapply()
 
     def get_pred_jd(self):
@@ -270,9 +270,8 @@ class ShowOrbitDialog(QDialog):
         try:
             value = float(text)
         except ValueError:
-            QMessageBox.critical(self, 'Error', 
-                                    'Enter a floating point number.', QMessageBox.Ok)
-            self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
+            QMessageBox.warning(self, 'Warning', 
+                'Invalid Elapsed Time.  It cannot be apply', QMessageBox.Ok)
             return
         self.delta_jd = value
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))

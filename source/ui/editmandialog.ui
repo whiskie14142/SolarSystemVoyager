@@ -37,7 +37,7 @@
      <x>10</x>
      <y>10</y>
      <width>81</width>
-     <height>16</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
@@ -47,9 +47,9 @@
   <widget class="QComboBox" name="mantype">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>100</x>
      <y>10</y>
-     <width>81</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
@@ -261,38 +261,6 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="applymantype">
-   <property name="geometry">
-    <rect>
-     <x>274</x>
-     <y>9</y>
-     <width>41</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="toolTip">
-    <string>Select maneuver type and click Apply button</string>
-   </property>
-   <property name="text">
-    <string>Apply</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="mantypedisp">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>10</y>
-     <width>71</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="computeFTA">
    <property name="enabled">
     <bool>false</bool>
@@ -430,7 +398,6 @@
  </widget>
  <tabstops>
   <tabstop>mantype</tabstop>
-  <tabstop>applymantype</tabstop>
   <tabstop>isotedit</tabstop>
   <tabstop>jdedit</tabstop>
   <tabstop>parameters</tabstop>

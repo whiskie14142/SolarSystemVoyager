@@ -49,17 +49,12 @@ class EditManDialog(QDialog):
         self.setGeometry(left, top+380, 640, 320)
         self.ui = Ui_editmandialog()
         self.ui.setupUi(self)
-        self.ui.applymantype.clicked.connect(self.applymantype)
-#        self.ui.isotedit.editingFinished.connect(self.isotedited)
-#        self.ui.jdedit.editingFinished.connect(self.jdedited)
-        self.ui.parameters.cellChanged.connect(self.parameterchanged)
         self.ui.finish_exec.clicked.connect(self.finish_exec)
         self.ui.finishbutton.clicked.connect(self.finishbutton)
         self.ui.cancelbutton.clicked.connect(self.cancelbutton)
         self.ui.showorbit.clicked.connect(self.showorbit)
         self.ui.computeFTA.clicked.connect(self.computefta)
         self.ui.optimize.clicked.connect(self.optimize)
-#        self.ui.applyduration.clicked.connect(self.applyduration)
         self.ui.EditDateTime.clicked.connect(self.editdatetime)
         
         self.types = ['START', 'CP', 'EP_ON', 'EP_OFF', 'SS_ON', 'SS_OFF', 
@@ -132,6 +127,13 @@ class EditManDialog(QDialog):
             self.dispman()
         self.setenable()
 
+        if editman is None:
+            self.ui.mantype.setCurrentIndex(-1)
+            self.ui.mantype.setEnabled(True)
+            self.ui.mantype.currentIndexChanged.connect(self.mantypeChanged)
+        else:
+            self.ui.mantype.setEnabled(False)
+
     def setenable(self):
         self.ui.computeFTA.setEnabled(False)
         self.ui.optimize.setEnabled(False)
@@ -179,8 +181,7 @@ class EditManDialog(QDialog):
         
     def dispman(self):
         if self.editman is None:
-            self.ui.mantype.setCurrentIndex(-1)
-            self.ui.mantypedisp.setText('Not Defined')
+            self.typeID = -1
             self.disableDateTime()
             for i in range(1, 9):
                 row = i - 1
@@ -188,7 +189,6 @@ class EditManDialog(QDialog):
         else:
             self.typeID = self.typedict[self.editman['type']]
             self.ui.mantype.setCurrentIndex(self.typeID)
-            self.ui.mantypedisp.setText(self.editman['type'])
             self.ui.label_time.setText(self.timedesc[self.typeID])
             if self.paramflag[self.typeID][0] == 1:
                 jd = self.editman[self.paramname[0]]
@@ -200,8 +200,6 @@ class EditManDialog(QDialog):
             else:
                 self.disableDateTime()
 
-            self.ui.parameters.cellChanged.disconnect()
-            
             for i in range(1, 9):
                 row = i - 1
                 if self.paramflag[self.typeID][i] == 1:
@@ -218,8 +216,6 @@ class EditManDialog(QDialog):
                     self.ui.parameters.item(row, 1).setFlags(Qt.NoItemFlags)
                     self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
     
-            self.ui.parameters.cellChanged.connect(self.parameterchanged)
-
     def enableDateTime(self, jd, duration):
         self.ui.label_time.setEnabled(True)
         self.ui.label_3.setEnabled(True)
@@ -249,8 +245,7 @@ class EditManDialog(QDialog):
         self.ui.duration.setText('')
 
                 
-    def applymantype(self):
-        newID = self.ui.mantype.currentIndex()
+    def mantypeChanged(self, newID):
         if self.editman is None:
             self.initman(newID)
             self.dispman()
@@ -260,17 +255,11 @@ class EditManDialog(QDialog):
             
         if self.typeID == newID:
             return
-        ans = QMessageBox.question(self, 
-            'Mantype changed', 'Parameters will be lost. OK?', 
-            QMessageBox.Ok | QMessageBox.Cancel, QMessageBox.Cancel)
-        if ans == QMessageBox.Ok :
-            self.initman(newID)
-            self.dispman()
-            if g.showorbitcontrol is not None:
-                g.showorbitcontrol.close()
-            self.setenable()
-        else:
-            self.ui.mantype.setCurrentIndex(self.typeID)
+        self.initman(newID)
+        self.dispman()
+        if g.showorbitcontrol is not None:
+            g.showorbitcontrol.close()
+        self.setenable()
 
     def editdatetime(self):
         jd = self.editman[self.paramname[0]]
@@ -289,29 +278,10 @@ class EditManDialog(QDialog):
         self.enableDateTime(self.editedjd, duration)
         self.showorbit()
         
-    def parameterchanged(self, row, colmn):
-        if colmn != 1: return
-        prevval = self.editman[self.paramname[row+1]]
-        if self.paramname[row+1] == 'tvmode':
-            newval = self.ui.parameters.item(row, colmn).text().upper()
-            if newval != 'L' and newval != 'E':
-                self.ui.parameters.item(row, colmn).setText(
-                    self.fmttbl[row+1].format(prevval))
-                QMessageBox.critical(self, 
-                    'Error', 'Enter L or E for tvmode', QMessageBox.Ok)
-                return
-        else:
-            try:
-                newval = float(self.ui.parameters.item(row, colmn).text())
-            except ValueError:
-                self.ui.parameters.item(row, colmn).setText(
-                    self.fmttbl[row+1].format(prevval))
-                QMessageBox.critical(self, 
-                    'Error', 'Enter a floating number', QMessageBox.Ok)
-                return
-        self.editman[self.paramname[row+1]] = newval
 
     def finish_exec(self):
+        if not self.applyParameters():
+            return
         g.editedman = self.editman
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
@@ -319,11 +289,40 @@ class EditManDialog(QDialog):
         self.done(g.finish_exec)
         
     def finishbutton(self):
+        if not self.applyParameters():
+            return
         g.editedman = self.editman
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
         self.writeloglines()
         self.accept()
+
+    def applyParameters(self):
+        inputError = 0
+        for paramIdx in range(8):
+            if self.paramflag[self.typeID][paramIdx+1] == 1:
+                paramText = self.ui.parameters.item(paramIdx, 1).text().upper().strip()
+                if self.paramname[paramIdx+1] == 'tvmode':
+                    if paramText != 'L' and paramText != 'E':
+                        inputError += 1
+                        QMessageBox.critical(self, 
+                            'Error', 'tvmode should be L or E', QMessageBox.Ok)
+                    else:
+                        self.editman[self.paramname[paramIdx+1]] = paramText
+                else:
+                    try:
+                        newval = float(paramText)
+                    except ValueError:
+                        inputError += 1
+                        QMessageBox.critical(self, 'Error', 
+                            self.paramname[paramIdx+1] + ' should be a floating number', 
+                            QMessageBox.Ok)
+                        continue
+                    self.editman[self.paramname[paramIdx+1]] = newval
+        
+        if inputError == 0:
+            return True
+        return False
         
     def cancelbutton(self):
         if g.showorbitcontrol is not None:
@@ -358,6 +357,8 @@ class EditManDialog(QDialog):
         event.accept()
 
     def showorbit(self):
+        if not self.applyParameters():
+            return
         g.mainform.init3Dfigure()
         if self.typeID == 1:
             self.showorbitCP()
