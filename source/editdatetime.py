@@ -100,8 +100,7 @@ class EditDateTimeDialog(QDialog):
             if jd < self.fromjd or jd >= self.tojd:
                 mes = ('JD is out of range.\nIn this Flight Plan, ' + 
                        'JD should be in following range:\n from {0:.2f}\n' +
-                       ' to   {1:.2f}').format(
-                        common.jd2isot(self.fromjd), common.jd2isot(self.tojd))
+                       ' to   {1:.2f}').format(self.fromjd, self.tojd)
                 QMessageBox.critical(self, 'Error', mes, QMessageBox.Ok)
                 return
             
@@ -121,6 +120,7 @@ class EditDateTimeDialog(QDialog):
                 mes = 'Duration is too large.\nIn this case, Duration ' + \
                     'should less than {:.2f}'.format(self.tojd - g.myprobe.jd)
                 QMessageBox.critical(self, 'Error', mes, QMessageBox.Ok)
+                return
 
         self.maneuverEditor.editedjd = jd
         self.accept()
