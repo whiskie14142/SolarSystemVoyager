@@ -119,20 +119,37 @@ class EditManDialog(QDialog):
             self.ui.parameters.item(row, 0).setFlags(Qt.ItemIsEnabled)
         
         self.currentrow = currentrow
-        if editman is None:
-            self.editman = None
-            self.dispman()
-        else:
-            self.editman = editman.copy()
-            self.dispman()
-        self.setenable()
+#        if editman is None:
+#            self.editman = None
+#            self.dispman()
+#        else:
+#            self.editman = editman.copy()
+#            self.dispman()
+#        self.setenable()
 
         if editman is None:
-            self.ui.mantype.setCurrentIndex(-1)
-            self.ui.mantype.setEnabled(True)
-            self.ui.mantype.currentIndexChanged.connect(self.mantypeChanged)
+            if self.currentrow == 0:
+                type = 0
+                self.initman(type)
+                self.ui.mantype.setCurrentIndex(type)
+                self.ui.mantype.setEnabled(False)
+                self.ui.label_Click.setText('')
+                self.dispman()
+                self.setenable()
+            else:
+                self.editman = None
+                self.ui.mantype.setCurrentIndex(-1)
+                self.ui.mantype.setEnabled(True)
+                self.ui.label_Click.setText('Click & Select')
+                self.dispman()
+                self.setenable()
+                self.ui.mantype.currentIndexChanged.connect(self.mantypeChanged)
         else:
+            self.editman = editman.copy()
             self.ui.mantype.setEnabled(False)
+            self.ui.label_Click.setText('')
+            self.dispman()
+            self.setenable()
 
     def setenable(self):
         self.ui.computeFTA.setEnabled(False)
@@ -183,9 +200,10 @@ class EditManDialog(QDialog):
         if self.editman is None:
             self.typeID = -1
             self.disableDateTime()
-            for i in range(1, 9):
-                row = i - 1
+            for row in range(8):
                 self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
+                self.ui.parameters.setItem(row, 1, QTableWidgetItem(''))
+                self.ui.parameters.item(row, 1).setFlags(Qt.NoItemFlags)
         else:
             self.typeID = self.typedict[self.editman['type']]
             self.ui.mantype.setCurrentIndex(self.typeID)
@@ -200,8 +218,8 @@ class EditManDialog(QDialog):
             else:
                 self.disableDateTime()
 
-            for i in range(1, 9):
-                row = i - 1
+            for row in range(8):
+                i = row + 1
                 if self.paramflag[self.typeID][i] == 1:
                     anitem = QTableWidgetItem(self.fmttbl[i].format(
                         self.editman[self.paramname[i]]))
@@ -211,8 +229,7 @@ class EditManDialog(QDialog):
                         Qt.ItemIsEnabled)
                     self.ui.parameters.item(row, 0).setFlags(Qt.ItemIsEnabled)
                 else:
-                    anitem = QTableWidgetItem('')
-                    self.ui.parameters.setItem(row, 1, anitem)
+                    self.ui.parameters.setItem(row, 1, QTableWidgetItem(''))
                     self.ui.parameters.item(row, 1).setFlags(Qt.NoItemFlags)
                     self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
     
@@ -246,15 +263,29 @@ class EditManDialog(QDialog):
 
                 
     def mantypeChanged(self, newID):
-        if self.editman is None:
-            self.initman(newID)
+        if newID == 0:
+            self.editman = None
             self.dispman()
+            self.setenable()
+            self.ui.label_Click.setText('Click & Select')
             if g.showorbitcontrol is not None:
                 g.showorbitcontrol.close()
-            self.setenable()
-            
-        if self.typeID == newID:
+            QMessageBox.information(self, 'Inappropriate Maneuver Type', 
+                'START can be used for the first Maneuver only.\n\n' +
+                'Select another Maneuver Type.', QMessageBox.Ok)
             return
+
+        self.ui.label_Click.setText('')
+        
+#        if self.editman is None:
+#            self.initman(newID)
+#            self.dispman()
+#            if g.showorbitcontrol is not None:
+#                g.showorbitcontrol.close()
+#            self.setenable()
+#            
+#        if self.typeID == newID:
+#            return
         self.initman(newID)
         self.dispman()
         if g.showorbitcontrol is not None:
