@@ -787,6 +787,7 @@ class MainForm(QMainWindow):
             filename = ''
         else:
             filename = os.path.basename(g.manfilename)
+            filename, ext = os.path.splitext(filename)
         self.ui.manfilename.setText(filename)
 
     def showflightreview(self):

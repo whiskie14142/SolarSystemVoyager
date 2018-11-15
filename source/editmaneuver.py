@@ -119,13 +119,6 @@ class EditManDialog(QDialog):
             self.ui.parameters.item(row, 0).setFlags(Qt.ItemIsEnabled)
         
         self.currentrow = currentrow
-#        if editman is None:
-#            self.editman = None
-#            self.dispman()
-#        else:
-#            self.editman = editman.copy()
-#            self.dispman()
-#        self.setenable()
 
         if editman is None:
             if self.currentrow == 0:
@@ -277,15 +270,6 @@ class EditManDialog(QDialog):
 
         self.ui.label_Click.setText('')
         
-#        if self.editman is None:
-#            self.initman(newID)
-#            self.dispman()
-#            if g.showorbitcontrol is not None:
-#                g.showorbitcontrol.close()
-#            self.setenable()
-#            
-#        if self.typeID == newID:
-#            return
         self.initman(newID)
         self.dispman()
         if g.showorbitcontrol is not None:
@@ -349,6 +333,22 @@ class EditManDialog(QDialog):
                             self.paramname[paramIdx+1] + ' should be a floating number', 
                             QMessageBox.Ok)
                         continue
+                    if self.paramname[paramIdx+1] == 'inter':
+                        if newval < 0.00001:
+                            inputError += 1
+                            QMessageBox.critical(self, 'Error', 
+                                self.paramname[paramIdx+1] + ' should be greater than or equal to 0.00001', 
+                                QMessageBox.Ok)
+                            continue
+                    elif self.paramname[paramIdx+1] == 'dv' or \
+                         self.paramname[paramIdx+1] == 'dvpd' or \
+                         self.paramname[paramIdx+1] == 'area' :
+                        if newval < 0.0:
+                            inputError += 1
+                            QMessageBox.critical(self, 'Error', 
+                                self.paramname[paramIdx+1] + ' should not be a negative value', 
+                                QMessageBox.Ok)
+                            continue
                     self.editman[self.paramname[paramIdx+1]] = newval
         
         if inputError == 0:

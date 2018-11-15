@@ -97,7 +97,11 @@ class FTAsettingDialog(QDialog):
                 QMessageBox.critical(self, 'Error', 
                                 'Parameter should be floating numbers.', QMessageBox.Ok)
                 return
-        
+            if r < 0.0:
+                QMessageBox.critical(self, 'Error', 
+                                'offset distance should not be negative.', QMessageBox.Ok)
+                return
+            
             param[1] = 'BP'
             param[2][0] = delta_jd
             param[2][1] = r
@@ -114,6 +118,11 @@ class FTAsettingDialog(QDialog):
                     QMessageBox.critical(self, 'Error', 
                                     'Parameter should be floating numbers.', QMessageBox.Ok)
                     return
+                if r < 0.0:
+                    QMessageBox.critical(self, 'Error', 
+                                    'offset distance should not be negative.', QMessageBox.Ok)
+                    return
+
             else:
                 r = 0.0
                 phi = 0.0
