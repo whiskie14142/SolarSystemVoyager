@@ -99,12 +99,13 @@ class EditManDialog(QDialog):
             ]
         self.stringitems = []
         
-        self.mes1 = 'You requested to apply parameters optimized for the time\n'
-        self.mes2 = '  to the editing Maneuver.\n\n' \
+        self.mes1 = '<p style="font-size:14px;">You requested to apply ' \
+            'parameters optimized for the time<br>'
+        self.mes2 = '<br>to the editing Maneuver.<br><br>' \
             'Applied Maneuver should be executed at that time.  ' \
-            'You need to adjust preceding Maneuver(s) before execution of '   \
-            'this Maneuver.\n\n' \
-            'The time has been copied to system clipboard.'
+            'You need to adjust preceding Maneuver(s) before execution of '  \
+            'this Maneuver.<br><br>' \
+            'The time (ISOT format) has been copied to system clipboard.</p>'
         
         for item in paramdesc:
             self.stringitems.append(QTableWidgetItem(item))
