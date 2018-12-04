@@ -1,0 +1,42 @@
+Anakondaの新版(3.5)で遭遇したPyInstallerでの問題と対策
+(PyInstaller version 3.4)
+
+（その１）
+PyInstaller実行時に「再起呼び出しが最大レベルを超えた」というメッセージが出て処理が止まる。
+→対策はspecファイルの先頭に次の2行を追加してPI.batを動かす。
+import sys
+sys.setrecursionlimit(5000)
+
+（その２）
+PyInstaller実行時に次のエラーメッセージが表示され処理が止まる。
+ーーーー前略
+  File "<frozen importlib._bootstrap_external>", line 907, in load_module
+  File "<frozen importlib._bootstrap_external>", line 732, in load_module
+  File "<frozen importlib._bootstrap>", line 265, in _load_module_shim
+  File "<frozen importlib._bootstrap>", line 696, in _load
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "c:\users\shush_000\anaconda35\lib\site-packages\PyInstaller\hooks\hook-PyQt5.QtGui.py", line 11, in <module>
+    hiddenimports, binaries, datas = add_qt5_dependencies(__file__)
+  File "c:\users\shush_000\anaconda35\lib\site-packages\PyInstaller\utils\hooks\qt.py", line 514, in add_qt5_dependencies
+    more_binaries = qt_plugins_binaries(plugin, namespace=namespace)
+  File "c:\users\shush_000\anaconda35\lib\site-packages\PyInstaller\utils\hooks\qt.py", line 132, in qt_plugins_binaries
+    pdir = qt_plugins_dir(namespace=namespace)
+  File "c:\users\shush_000\anaconda35\lib\site-packages\PyInstaller\utils\hooks\qt.py", line 117, in qt_plugins_dir
+    """.format(namespace, ", ".join(paths)))
+Exception:
+            Cannot find existing PyQt5 plugin directories
+            Paths checked: C:/Miniconda3/conda-bld/qt_1535195524645/_h_env/Library/plugins
+ーーーーーここまで
+どうやら、Qt5（PyQt5.QtCore.QLibraryInfo）がQLibraryInfo.PluginsPathの問合せに対して、
+C:/Miniconda3/conda-bld/qt_1535195524645/_h_env/Library/plugins
+という意味のないパスを返すことが問題のようである。
+→対策は以下。
+これを処理しているのは、
+C:\Users\shush_000\Anaconda35\Lib\site-packages\PyInstaller\utils\hooks\qt.py
+というスクリプト。
+これの95行目を正しいパスを含むように書き換えてやれば成功しそう。正しいパスはこれではないか。
+C:/Users/shush_000/Anaconda35/Library/plugins
+
+OK。通った。

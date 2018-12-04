@@ -1,1 +1,1 @@
-pyinstaller --icon=SSVG.ico SSVG.py
+pyinstaller --icon=ssvgicon.ico SSVG.py
