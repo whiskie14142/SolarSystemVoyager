@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""SSVG (Solar System Voyager) (c) 2016-2018 Shushi Uetsuki (whiskie14142)
+"""SSVG (Solar System Voyager) (c) 2016-2019 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -142,7 +142,7 @@ class MainForm(QMainWindow):
         self.initSSV()
 
     def initSSV(self):
-        g.version = '1.2.0'
+        g.version = '1.2.1'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -831,12 +831,12 @@ class MainForm(QMainWindow):
         self.ui.label_SMAAU.setText('{:.8f}'.format(kepl['a'] / common.au))
         self.ui.label_Ecc.setText('{:.8f}'.format(kepl['e']))
         self.ui.label_Inc.setText('{:.6f}'.format(kepl['i']))
-        self.ui.label_LAN.setText('{:.6f}'.format(kepl['Lomega']))
-        self.ui.label_APH.setText('{:.6f}'.format(kepl['Somega']))
+        self.ui.label_LAN.setText('{:.6f}'.format(kepl['LoAN']))
+        self.ui.label_APH.setText('{:.6f}'.format(kepl['AoP']))
         self.ui.label_PPT.setText('{0}'.format(common.jd2isot(kepl['T'])))
         self.ui.label_PPTJD.setText('{:.8f}'.format(kepl['T']))
         if kepl['e'] < 1.0:
-            self.ui.label_MA.setText('{:.6f}'.format(kepl['ma']))
+            self.ui.label_MA.setText('{:.6f}'.format(kepl['MA']))
             self.ui.label_OP.setText('{:.6f}'.format(kepl['P']))
         else:
             self.ui.label_MA.setText('N/A')

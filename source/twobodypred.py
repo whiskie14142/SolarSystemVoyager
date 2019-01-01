@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 twobodypred module for SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 import common
 from pytwobodyorbit import TwoBodyOrbit
-from pytwobodyorbit import solveGauss
+from pytwobodyorbit import lambert
 import numpy as np
 import math
 
@@ -70,7 +70,7 @@ class TwoBodyPred:
         esunpos, esunvel = common.SPKposvel(10, jd)
         
         tpos = tepos - esunpos
-        ivel, tvel = solveGauss(ipos, tpos, dsec, common.solarmu, ccw=True)
+        ivel, tvel = lambert(ipos, tpos, dsec, common.solarmu, ccw=True)
         iprobe_vel = self.pvel - self.sunvel
         delta_v = ivel - iprobe_vel
         
@@ -89,7 +89,7 @@ class TwoBodyPred:
         esunpos, esunvel = common.SPKposvel(10, jd)
         
         tpos = tepos - esunpos
-        ivel, tvel = solveGauss(ipos, tpos, dsec, common.solarmu, ccw=True)
+        ivel, tvel = lambert(ipos, tpos, dsec, common.solarmu, ccw=True)
         iprobe_vel = self.pvel - self.sunvel
         delta_v = ivel - iprobe_vel
         localdv = common.eclv2lv(delta_v, self.ppos, self.pvel, self.sunpos, 
