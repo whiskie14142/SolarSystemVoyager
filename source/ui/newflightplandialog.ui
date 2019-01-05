@@ -294,6 +294,9 @@
        <family>Lucida Console</family>
       </font>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="frame">
       <bool>false</bool>
      </property>
@@ -388,6 +391,19 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>probename</tabstop>
+  <tabstop>spacebase</tabstop>
+  <tabstop>probemass</tabstop>
+  <tabstop>planetbutton</tabstop>
+  <tabstop>smallbodybutton</tabstop>
+  <tabstop>planets</tabstop>
+  <tabstop>spkfileselect</tabstop>
+  <tabstop>spkid_list</tabstop>
+  <tabstop>targetname</tabstop>
+  <tabstop>okbutton</tabstop>
+  <tabstop>cancelbutton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

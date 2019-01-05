@@ -9,20 +9,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>601</width>
-    <height>651</height>
+    <width>621</width>
+    <height>664</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>601</width>
-    <height>651</height>
+    <width>621</width>
+    <height>664</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>601</width>
-    <height>651</height>
+    <width>621</width>
+    <height>664</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -56,7 +56,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>460</y>
+     <y>490</y>
      <width>111</width>
      <height>16</height>
     </rect>
@@ -69,7 +69,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>460</y>
+     <y>490</y>
      <width>181</width>
      <height>16</height>
     </rect>
@@ -82,7 +82,7 @@
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>480</y>
+     <y>510</y>
      <width>41</width>
      <height>16</height>
     </rect>
@@ -95,7 +95,7 @@
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>500</y>
+     <y>530</y>
      <width>41</width>
      <height>16</height>
     </rect>
@@ -104,24 +104,11 @@
     <string>Min.</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_17">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>520</y>
-     <width>41</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Max.</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="terminalRV_cur">
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>480</y>
+     <y>510</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -130,6 +117,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -145,7 +135,7 @@
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>500</y>
+     <y>530</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -155,29 +145,8 @@
      <family>Lucida Console</family>
     </font>
    </property>
-   <property name="toolTip">
-    <string/>
-   </property>
-   <property name="frame">
-    <bool>false</bool>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="terminalRV_max">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>520</y>
-     <width>91</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -340,7 +309,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>500</y>
+     <y>530</y>
      <width>41</width>
      <height>16</height>
     </rect>
@@ -353,7 +322,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>500</y>
+     <y>530</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -362,6 +331,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -377,7 +349,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>480</y>
+     <y>510</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -386,6 +358,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -401,7 +376,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>480</y>
+     <y>510</y>
      <width>41</width>
      <height>16</height>
     </rect>
@@ -410,51 +385,17 @@
     <string>Current</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_19">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>520</y>
-     <width>41</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Max.</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="initialDV_max">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>520</y>
-     <width>91</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
-   </property>
-   <property name="toolTip">
-    <string/>
-   </property>
-   <property name="frame">
-    <bool>false</bool>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="QPushButton" name="finishbutton">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>610</y>
+     <x>260</x>
+     <y>620</y>
      <width>121</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>Finish Optimize and Apply</string>
    </property>
    <property name="text">
     <string>Finish and Apply</string>
@@ -466,11 +407,14 @@
   <widget class="QPushButton" name="cancelbutton">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>610</y>
+     <x>510</x>
+     <y>620</y>
      <width>91</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>Cancel Optimize</string>
    </property>
    <property name="text">
     <string>Cancel</string>
@@ -483,19 +427,19 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>130</y>
-     <width>581</width>
-     <height>141</height>
+     <y>120</y>
+     <width>601</width>
+     <height>151</height>
     </rect>
    </property>
    <property name="title">
-    <string>Start Time</string>
+    <string>Adjust Start Time</string>
    </property>
    <widget class="QSlider" name="sl_inittime">
     <property name="geometry">
      <rect>
-      <x>35</x>
-      <y>85</y>
+      <x>45</x>
+      <y>50</y>
       <width>511</width>
       <height>22</height>
      </rect>
@@ -514,7 +458,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>110</y>
+      <y>23</y>
       <width>81</width>
       <height>20</height>
      </rect>
@@ -530,8 +474,8 @@
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>110</y>
-      <width>191</width>
+      <y>22</y>
+      <width>161</width>
       <height>20</height>
      </rect>
     </property>
@@ -539,6 +483,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="acceptDrops">
      <bool>false</bool>
@@ -557,7 +504,7 @@
     <property name="geometry">
      <rect>
       <x>5</x>
-      <y>65</y>
+      <y>30</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -573,7 +520,7 @@
     <property name="geometry">
      <rect>
       <x>505</x>
-      <y>65</y>
+      <y>30</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -588,10 +535,10 @@
    <widget class="QPushButton" name="it_b">
     <property name="geometry">
      <rect>
-      <x>8</x>
-      <y>85</y>
+      <x>270</x>
+      <y>76</y>
       <width>21</width>
-      <height>23</height>
+      <height>22</height>
      </rect>
     </property>
     <property name="font">
@@ -599,6 +546,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Move the Handle Left</string>
     </property>
     <property name="text">
      <string>&lt;</string>
@@ -613,10 +563,10 @@
    <widget class="QPushButton" name="it_f">
     <property name="geometry">
      <rect>
-      <x>552</x>
-      <y>85</y>
+      <x>300</x>
+      <y>76</y>
       <width>21</width>
-      <height>23</height>
+      <height>22</height>
      </rect>
     </property>
     <property name="font">
@@ -624,6 +574,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Move the Handle Right</string>
     </property>
     <property name="text">
      <string>&gt;</string>
@@ -638,10 +591,10 @@
    <widget class="QGroupBox" name="groupBox_itsr">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>15</y>
-      <width>311</width>
-      <height>51</height>
+      <x>350</x>
+      <y>80</y>
+      <width>181</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="title">
@@ -650,8 +603,8 @@
     <widget class="QRadioButton" name="it_wide">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>10</y>
+       <x>50</x>
+       <y>17</y>
        <width>121</width>
        <height>16</height>
       </rect>
@@ -666,8 +619,8 @@
     <widget class="QRadioButton" name="it_narrow">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>30</y>
+       <x>50</x>
+       <y>37</y>
        <width>121</width>
        <height>16</height>
       </rect>
@@ -679,72 +632,112 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="it_ff">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>17</y>
-       <width>31</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>&gt;&gt;</string>
-     </property>
-     <property name="autoRepeat">
-      <bool>true</bool>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="it_fb">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>17</y>
-       <width>31</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;&lt;</string>
-     </property>
-     <property name="autoRepeat">
-      <bool>true</bool>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>20</y>
-       <width>41</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Shift</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
+   </widget>
+   <widget class="QPushButton" name="it_ff">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>50</y>
+      <width>31</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Shift Range to Right</string>
+    </property>
+    <property name="text">
+     <string>&gt;&gt;&gt;</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="it_fb">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>31</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Shift Range to Left</string>
+    </property>
+    <property name="text">
+     <string>&lt;&lt;&lt;</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>555</x>
+      <y>74</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Shift
+Range</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>74</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Shift
+Range</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>77</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tweak Handle</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox_6">
@@ -752,18 +745,18 @@
     <rect>
      <x>10</x>
      <y>290</y>
-     <width>581</width>
-     <height>141</height>
+     <width>601</width>
+     <height>161</height>
     </rect>
    </property>
    <property name="title">
-    <string>Flight Time</string>
+    <string>Adjust Flight Time</string>
    </property>
    <widget class="QSlider" name="sl_duration">
     <property name="geometry">
      <rect>
-      <x>35</x>
-      <y>85</y>
+      <x>45</x>
+      <y>60</y>
       <width>511</width>
       <height>22</height>
      </rect>
@@ -782,7 +775,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>110</y>
+      <y>20</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -798,7 +791,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>110</y>
+      <y>20</y>
       <width>81</width>
       <height>20</height>
      </rect>
@@ -807,6 +800,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="acceptDrops">
      <bool>false</bool>
@@ -825,7 +821,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>110</y>
+      <y>20</y>
       <width>81</width>
       <height>20</height>
      </rect>
@@ -841,8 +837,8 @@
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>110</y>
-      <width>191</width>
+      <y>20</y>
+      <width>161</width>
       <height>20</height>
      </rect>
     </property>
@@ -850,6 +846,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="acceptDrops">
      <bool>false</bool>
@@ -867,8 +866,8 @@
    <widget class="QLabel" name="label_ttto">
     <property name="geometry">
      <rect>
-      <x>505</x>
-      <y>65</y>
+      <x>515</x>
+      <y>40</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -883,8 +882,8 @@
    <widget class="QLabel" name="label_ttfrom">
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>65</y>
+      <x>15</x>
+      <y>40</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -899,8 +898,8 @@
    <widget class="QPushButton" name="tt_b">
     <property name="geometry">
      <rect>
-      <x>8</x>
-      <y>85</y>
+      <x>270</x>
+      <y>86</y>
       <width>21</width>
       <height>23</height>
      </rect>
@@ -910,6 +909,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Move the Handle Left</string>
     </property>
     <property name="text">
      <string>&lt;</string>
@@ -924,8 +926,8 @@
    <widget class="QPushButton" name="tt_f">
     <property name="geometry">
      <rect>
-      <x>552</x>
-      <y>85</y>
+      <x>300</x>
+      <y>86</y>
       <width>21</width>
       <height>23</height>
      </rect>
@@ -935,6 +937,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Move the Handle Right</string>
     </property>
     <property name="text">
      <string>&gt;</string>
@@ -949,10 +954,10 @@
    <widget class="QGroupBox" name="groupBox_ttsr">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>15</y>
-      <width>311</width>
-      <height>51</height>
+      <x>350</x>
+      <y>90</y>
+      <width>181</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="title">
@@ -961,8 +966,8 @@
     <widget class="QRadioButton" name="tt_wide">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>10</y>
+       <x>50</x>
+       <y>17</y>
        <width>121</width>
        <height>16</height>
       </rect>
@@ -977,8 +982,8 @@
     <widget class="QRadioButton" name="tt_narrow">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>30</y>
+       <x>50</x>
+       <y>37</y>
        <width>121</width>
        <height>16</height>
       </rect>
@@ -990,90 +995,114 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="tt_fb">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>17</y>
-       <width>31</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;&lt;</string>
-     </property>
-     <property name="autoRepeat">
-      <bool>true</bool>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="tt_ff">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>17</y>
-       <width>31</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>&gt;&gt;</string>
-     </property>
-     <property name="autoRepeat">
-      <bool>true</bool>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_11">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>19</y>
-       <width>41</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Shift</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
+   </widget>
+   <widget class="QPushButton" name="tt_fb">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>31</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Shift Range to Left</string>
+    </property>
+    <property name="text">
+     <string>&lt;&lt;&lt;</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tt_ff">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>60</y>
+      <width>31</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Sift Range to Right</string>
+    </property>
+    <property name="text">
+     <string>&gt;&gt;&gt;</string>
+    </property>
+    <property name="autoRepeat">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>4</x>
+      <y>83</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Shift
+Range</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>555</x>
+      <y>85</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Shift
+Range</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>15</y>
+      <x>50</x>
+      <y>90</y>
       <width>131</width>
-      <height>51</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="title">
-     <string>by</string>
+     <string>Slyder Defines</string>
     </property>
     <widget class="QRadioButton" name="radio_fd">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>10</y>
+       <y>17</y>
        <width>91</width>
        <height>16</height>
       </rect>
@@ -1089,7 +1118,7 @@
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>30</y>
+       <y>37</y>
        <width>91</width>
        <height>16</height>
       </rect>
@@ -1102,12 +1131,28 @@
      </property>
     </widget>
    </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>86</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tweak Handle</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>430</x>
-     <y>460</y>
+     <y>490</y>
      <width>121</width>
      <height>20</height>
     </rect>
@@ -1120,7 +1165,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>500</y>
+     <y>530</y>
      <width>41</width>
      <height>16</height>
     </rect>
@@ -1133,7 +1178,7 @@
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>499</y>
+     <y>529</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -1143,29 +1188,8 @@
      <family>Lucida Console</family>
     </font>
    </property>
-   <property name="toolTip">
-    <string/>
-   </property>
-   <property name="frame">
-    <bool>false</bool>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="totalDV_max">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>519</y>
-     <width>91</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -1175,26 +1199,13 @@
    </property>
    <property name="readOnly">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_21">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>520</y>
-     <width>41</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Max.</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="totalDV_cur">
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>479</y>
+     <y>509</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -1203,6 +1214,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -1218,7 +1232,7 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>480</y>
+     <y>510</y>
      <width>41</width>
      <height>16</height>
     </rect>
@@ -1231,10 +1245,13 @@
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>550</y>
+     <y>560</y>
      <width>91</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>Clear all Minimums</string>
    </property>
    <property name="text">
     <string>Clear Statistics</string>
@@ -1247,7 +1264,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>550</y>
+     <y>560</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -1256,6 +1273,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -1271,7 +1291,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>570</y>
+     <y>580</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -1280,6 +1300,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -1295,7 +1318,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>550</y>
+     <y>560</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -1308,7 +1331,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>570</y>
+     <y>580</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -1320,11 +1343,14 @@
   <widget class="QPushButton" name="reopenbutton">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>610</y>
+     <x>20</x>
+     <y>620</y>
      <width>91</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>Show 3D Orbit Window</string>
    </property>
    <property name="text">
     <string>SHOW Orbit</string>
@@ -1336,8 +1362,8 @@
   <widget class="QCheckBox" name="fixed_to_ct">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>160</y>
+     <x>130</x>
+     <y>142</y>
      <width>131</width>
      <height>21</height>
     </rect>
@@ -1355,26 +1381,20 @@
   <zorder>label_9</zorder>
   <zorder>label_14</zorder>
   <zorder>label_16</zorder>
-  <zorder>label_17</zorder>
   <zorder>terminalRV_cur</zorder>
   <zorder>terminalRV_min</zorder>
-  <zorder>terminalRV_max</zorder>
   <zorder>groupBox</zorder>
   <zorder>groupBox_3</zorder>
   <zorder>label_18</zorder>
   <zorder>initialDV_min</zorder>
   <zorder>initialDV_cur</zorder>
   <zorder>label_15</zorder>
-  <zorder>label_19</zorder>
-  <zorder>initialDV_max</zorder>
   <zorder>finishbutton</zorder>
   <zorder>cancelbutton</zorder>
   <zorder>groupBox_6</zorder>
   <zorder>label</zorder>
   <zorder>label_20</zorder>
   <zorder>totalDV_min</zorder>
-  <zorder>totalDV_max</zorder>
-  <zorder>label_21</zorder>
   <zorder>totalDV_cur</zorder>
   <zorder>label_22</zorder>
   <zorder>clearstat</zorder>
@@ -1389,6 +1409,31 @@
   <tabstop>tobarycenter</tabstop>
   <tabstop>toprobe</tabstop>
   <tabstop>totarget</tabstop>
+  <tabstop>check_orgorb</tabstop>
+  <tabstop>check_Ppred</tabstop>
+  <tabstop>check_TKepler</tabstop>
+  <tabstop>check_Ptrj</tabstop>
+  <tabstop>fixed_to_ct</tabstop>
+  <tabstop>it_fb</tabstop>
+  <tabstop>sl_inittime</tabstop>
+  <tabstop>it_ff</tabstop>
+  <tabstop>it_b</tabstop>
+  <tabstop>it_f</tabstop>
+  <tabstop>it_wide</tabstop>
+  <tabstop>it_narrow</tabstop>
+  <tabstop>tt_fb</tabstop>
+  <tabstop>sl_duration</tabstop>
+  <tabstop>tt_ff</tabstop>
+  <tabstop>tt_b</tabstop>
+  <tabstop>tt_f</tabstop>
+  <tabstop>radio_fd</tabstop>
+  <tabstop>radio_tt</tabstop>
+  <tabstop>tt_wide</tabstop>
+  <tabstop>tt_narrow</tabstop>
+  <tabstop>clearstat</tabstop>
+  <tabstop>reopenbutton</tabstop>
+  <tabstop>finishbutton</tabstop>
+  <tabstop>cancelbutton</tabstop>
  </tabstops>
  <resources/>
  <connections/>

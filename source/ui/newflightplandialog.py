@@ -91,6 +91,7 @@ class Ui_NewFlightPlanDialog(object):
         font = QtGui.QFont()
         font.setFamily("Lucida Console")
         self.spkfilepath.setFont(font)
+        self.spkfilepath.setFocusPolicy(QtCore.Qt.NoFocus)
         self.spkfilepath.setFrame(False)
         self.spkfilepath.setReadOnly(True)
         self.spkfilepath.setObjectName("spkfilepath")
@@ -122,6 +123,16 @@ class Ui_NewFlightPlanDialog(object):
         self.spacebase.setCurrentIndex(-1)
         self.planets.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(NewFlightPlanDialog)
+        NewFlightPlanDialog.setTabOrder(self.probename, self.spacebase)
+        NewFlightPlanDialog.setTabOrder(self.spacebase, self.probemass)
+        NewFlightPlanDialog.setTabOrder(self.probemass, self.planetbutton)
+        NewFlightPlanDialog.setTabOrder(self.planetbutton, self.smallbodybutton)
+        NewFlightPlanDialog.setTabOrder(self.smallbodybutton, self.planets)
+        NewFlightPlanDialog.setTabOrder(self.planets, self.spkfileselect)
+        NewFlightPlanDialog.setTabOrder(self.spkfileselect, self.spkid_list)
+        NewFlightPlanDialog.setTabOrder(self.spkid_list, self.targetname)
+        NewFlightPlanDialog.setTabOrder(self.targetname, self.okbutton)
+        NewFlightPlanDialog.setTabOrder(self.okbutton, self.cancelbutton)
 
     def retranslateUi(self, NewFlightPlanDialog):
         _translate = QtCore.QCoreApplication.translate

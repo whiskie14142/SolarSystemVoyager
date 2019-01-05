@@ -54,10 +54,13 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Select maneuver type and click Apply button</string>
+    <string>Click and Select a Maneuver type</string>
    </property>
    <property name="maxVisibleItems">
     <number>7</number>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_time">
@@ -87,8 +90,11 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="toolTip">
-    <string>Date and Time (ISOT format)</string>
+    <string/>
    </property>
    <property name="frame">
     <bool>false</bool>
@@ -124,8 +130,11 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="toolTip">
-    <string>Date and Time (Julian day)</string>
+    <string/>
    </property>
    <property name="frame">
     <bool>false</bool>
@@ -169,6 +178,12 @@
      <height>164</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="toolTip">
+    <string>Double Click a Cell to Edit</string>
+   </property>
    <property name="cornerButtonEnabled">
     <bool>false</bool>
    </property>
@@ -211,7 +226,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Finish editing</string>
+    <string>Finish editing the Maneuver</string>
    </property>
    <property name="text">
     <string>Finish</string>
@@ -230,7 +245,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Discard changes and quit editing</string>
+    <string>Discard Changes and Quit Editing</string>
    </property>
    <property name="text">
     <string>Cancel</string>
@@ -252,7 +267,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Show orbit</string>
+    <string>Apply current Parameters</string>
    </property>
    <property name="text">
     <string>SHOW Orbit</string>
@@ -274,7 +289,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Comute fixed time arrival guidance</string>
+    <string>Invoke FTA Function</string>
    </property>
    <property name="text">
     <string>FTA</string>
@@ -296,7 +311,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Finish editing and execute this maneuver</string>
+    <string>Finish Editing and Execute the Maneuver</string>
    </property>
    <property name="text">
     <string>Finish and Exec</string>
@@ -322,8 +337,11 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="toolTip">
-    <string>Flight Duration for FLYTO</string>
+    <string/>
    </property>
    <property name="frame">
     <bool>false</bool>
@@ -345,7 +363,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string/>
+    <string>Edit Date &amp; Time</string>
    </property>
    <property name="text">
     <string>Edit</string>
@@ -386,7 +404,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Optimize Assistant</string>
+    <string>Invoke Optimize Assistant</string>
    </property>
    <property name="text">
     <string>OPTIMIZE</string>
@@ -417,11 +435,10 @@
  </widget>
  <tabstops>
   <tabstop>mantype</tabstop>
-  <tabstop>isotedit</tabstop>
-  <tabstop>jdedit</tabstop>
-  <tabstop>parameters</tabstop>
+  <tabstop>EditDateTime</tabstop>
   <tabstop>showorbit</tabstop>
   <tabstop>computeFTA</tabstop>
+  <tabstop>optimize</tabstop>
   <tabstop>finish_exec</tabstop>
   <tabstop>finishbutton</tabstop>
   <tabstop>cancelbutton</tabstop>

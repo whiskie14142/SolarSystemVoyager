@@ -394,6 +394,21 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>fromshoworbit</tabstop>
+  <tabstop>directinput</tabstop>
+  <tabstop>timetoarrival</tabstop>
+  <tabstop>selTargetcenter</tabstop>
+  <tabstop>selBplanecoord</tabstop>
+  <tabstop>Brangeedit</tabstop>
+  <tabstop>betaedit</tabstop>
+  <tabstop>selOLcoord</tabstop>
+  <tabstop>rangeedit</tabstop>
+  <tabstop>phiedit</tabstop>
+  <tabstop>elvedit</tabstop>
+  <tabstop>ok_button</tabstop>
+  <tabstop>cancel_button</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

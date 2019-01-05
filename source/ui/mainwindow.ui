@@ -53,6 +53,9 @@
       <height>251</height>
      </rect>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="editTriggers">
      <set>QAbstractItemView::NoEditTriggers</set>
     </property>
@@ -148,7 +151,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Execute 'Next' maneuver</string>
+     <string>Execute 'Next' Maneuver</string>
     </property>
     <property name="text">
      <string>EXEC Next</string>
@@ -167,7 +170,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Insert a blank maneuver</string>
+     <string>Insert an empty Maneuver</string>
     </property>
     <property name="statusTip">
      <string/>
@@ -192,7 +195,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Show Orbit</string>
+     <string>Show current Orbits</string>
     </property>
     <property name="text">
      <string>SHOW Orbit</string>
@@ -211,7 +214,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Edit selected maneuver</string>
+     <string>Edit selected Maneuver</string>
     </property>
     <property name="text">
      <string>EDIT *</string>
@@ -230,7 +233,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Execute maneuvers to the selected line </string>
+     <string>Execute multiple Maneuvers</string>
     </property>
     <property name="text">
      <string>EXEC to *</string>
@@ -313,7 +316,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Delete selected maneuver</string>
+     <string>Delete selected Maneuver</string>
     </property>
     <property name="statusTip">
      <string/>
@@ -367,7 +370,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Edit 'Next' maneuver</string>
+     <string>Edit 'Next' Maneuver</string>
     </property>
     <property name="text">
      <string>EDIT Next</string>
@@ -386,7 +389,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Initialize execution of the flight plan</string>
+     <string>Clear Execution State</string>
     </property>
     <property name="text">
      <string>CLEAR EX</string>
@@ -405,7 +408,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Review throughout the flight</string>
+     <string>Review throughout the Flight</string>
     </property>
     <property name="text">
      <string>REVIEW Through</string>
@@ -631,7 +634,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>Review recent FLYTO maneuver</string>
+     <string>Review recent FLYTO Maneuver</string>
     </property>
     <property name="text">
      <string>REVIEW Recent</string>
@@ -717,6 +720,9 @@
       <width>241</width>
       <height>164</height>
      </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="rowCount">
      <number>8</number>
@@ -811,6 +817,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -834,6 +843,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="toolTip">
      <string/>
@@ -859,6 +871,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -882,6 +897,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="toolTip">
      <string/>
@@ -907,6 +925,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -930,6 +951,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="toolTip">
      <string/>
@@ -955,6 +979,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -978,6 +1005,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="toolTip">
      <string/>
@@ -1003,6 +1033,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -1026,6 +1059,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="toolTip">
      <string/>
@@ -1051,6 +1087,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -1074,6 +1113,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="toolTip">
      <string/>
@@ -1099,6 +1141,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -1123,6 +1168,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -1146,6 +1194,9 @@
      <font>
       <family>Lucida Console</family>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="toolTip">
      <string/>
@@ -1205,6 +1256,9 @@
       <family>Lucida Console</family>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
     <property name="toolTip">
      <string/>
     </property>
@@ -1245,6 +1299,39 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="sysMessage">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>566</y>
+      <width>241</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string>System Messages</string>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -1303,10 +1390,16 @@
    <property name="text">
     <string>&amp;Open</string>
    </property>
+   <property name="toolTip">
+    <string>Open a Flight Plan</string>
+   </property>
   </action>
   <action name="actionNew">
    <property name="text">
     <string>&amp;New</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a Flight Plan</string>
    </property>
   </action>
   <action name="actionSave">
@@ -1316,6 +1409,9 @@
    <property name="text">
     <string>&amp;Save</string>
    </property>
+   <property name="toolTip">
+    <string>Save the Flight Plan</string>
+   </property>
   </action>
   <action name="actionSave_as">
    <property name="enabled">
@@ -1324,10 +1420,16 @@
    <property name="text">
     <string>Save &amp;as</string>
    </property>
+   <property name="toolTip">
+    <string>Save the Flight Plan with new Name</string>
+   </property>
   </action>
   <action name="actionQuit">
    <property name="text">
     <string>&amp;Quit</string>
+   </property>
+   <property name="toolTip">
+    <string>Quit SSVG</string>
    </property>
   </action>
   <action name="actionNew_from_current_status">
@@ -1340,12 +1442,12 @@
   </action>
   <action name="actionAbout_SSVG">
    <property name="text">
-    <string>about SSVG</string>
+    <string>&amp;about SSVG</string>
    </property>
   </action>
   <action name="actionCreate">
    <property name="text">
-    <string>Create</string>
+    <string>&amp;Create</string>
    </property>
   </action>
   <action name="actionResume">
@@ -1353,25 +1455,28 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Resume</string>
+    <string>&amp;Resume</string>
    </property>
   </action>
   <action name="actionProbe">
    <property name="text">
-    <string>Probe</string>
+    <string>&amp;Probe</string>
    </property>
   </action>
   <action name="actionTarget">
    <property name="text">
-    <string>Target</string>
+    <string>&amp;Target</string>
    </property>
   </action>
  </widget>
  <tabstops>
-  <tabstop>manplans</tabstop>
+  <tabstop>reviewthroughout</tabstop>
+  <tabstop>flightreview</tabstop>
   <tabstop>showOrbit</tabstop>
   <tabstop>execNext</tabstop>
   <tabstop>execto</tabstop>
+  <tabstop>initexec</tabstop>
+  <tabstop>editnext</tabstop>
   <tabstop>editMan</tabstop>
   <tabstop>insertMan</tabstop>
   <tabstop>deleteMan</tabstop>

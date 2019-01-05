@@ -116,6 +116,18 @@ class Ui_ftasettingdialog(object):
 
         self.retranslateUi(ftasettingdialog)
         QtCore.QMetaObject.connectSlotsByName(ftasettingdialog)
+        ftasettingdialog.setTabOrder(self.fromshoworbit, self.directinput)
+        ftasettingdialog.setTabOrder(self.directinput, self.timetoarrival)
+        ftasettingdialog.setTabOrder(self.timetoarrival, self.selTargetcenter)
+        ftasettingdialog.setTabOrder(self.selTargetcenter, self.selBplanecoord)
+        ftasettingdialog.setTabOrder(self.selBplanecoord, self.Brangeedit)
+        ftasettingdialog.setTabOrder(self.Brangeedit, self.betaedit)
+        ftasettingdialog.setTabOrder(self.betaedit, self.selOLcoord)
+        ftasettingdialog.setTabOrder(self.selOLcoord, self.rangeedit)
+        ftasettingdialog.setTabOrder(self.rangeedit, self.phiedit)
+        ftasettingdialog.setTabOrder(self.phiedit, self.elvedit)
+        ftasettingdialog.setTabOrder(self.elvedit, self.ok_button)
+        ftasettingdialog.setTabOrder(self.ok_button, self.cancel_button)
 
     def retranslateUi(self, ftasettingdialog):
         _translate = QtCore.QCoreApplication.translate

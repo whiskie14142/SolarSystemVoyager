@@ -38,6 +38,7 @@ class Ui_edittimedialog(object):
         font = QtGui.QFont()
         font.setFamily("Lucida Console")
         self.lineEditISOT.setFont(font)
+        self.lineEditISOT.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.lineEditISOT.setObjectName("lineEditISOT")
         self.lineEditJD = QtWidgets.QLineEdit(edittimedialog)
         self.lineEditJD.setEnabled(False)
@@ -45,6 +46,7 @@ class Ui_edittimedialog(object):
         font = QtGui.QFont()
         font.setFamily("Lucida Console")
         self.lineEditJD.setFont(font)
+        self.lineEditJD.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.lineEditJD.setObjectName("lineEditJD")
         self.lineEditDuration = QtWidgets.QLineEdit(edittimedialog)
         self.lineEditDuration.setEnabled(False)
@@ -52,6 +54,7 @@ class Ui_edittimedialog(object):
         font = QtGui.QFont()
         font.setFamily("Lucida Console")
         self.lineEditDuration.setFont(font)
+        self.lineEditDuration.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.lineEditDuration.setObjectName("lineEditDuration")
         self.labelISOT = QtWidgets.QLabel(edittimedialog)
         self.labelISOT.setGeometry(QtCore.QRect(153, 11, 201, 16))
@@ -62,6 +65,13 @@ class Ui_edittimedialog(object):
 
         self.retranslateUi(edittimedialog)
         QtCore.QMetaObject.connectSlotsByName(edittimedialog)
+        edittimedialog.setTabOrder(self.radioISOT, self.radioJD)
+        edittimedialog.setTabOrder(self.radioJD, self.radioDuration)
+        edittimedialog.setTabOrder(self.radioDuration, self.lineEditISOT)
+        edittimedialog.setTabOrder(self.lineEditISOT, self.lineEditJD)
+        edittimedialog.setTabOrder(self.lineEditJD, self.lineEditDuration)
+        edittimedialog.setTabOrder(self.lineEditDuration, self.finishbutton)
+        edittimedialog.setTabOrder(self.finishbutton, self.cancelbutton)
 
     def retranslateUi(self, edittimedialog):
         _translate = QtCore.QCoreApplication.translate

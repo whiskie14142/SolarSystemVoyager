@@ -214,7 +214,7 @@ class StartOptimizeDialog(QDialog):
             self.statIDVmax = idvabs
         self.ui.initialDV_cur.setText('{:.3f}'.format(idvabs))
         self.ui.initialDV_min.setText('{:.3f}'.format(self.statIDVmin))
-        self.ui.initialDV_max.setText('{:.3f}'.format(self.statIDVmax))
+#        self.ui.initialDV_max.setText('{:.3f}'.format(self.statIDVmax))
         
         self.ui.idv_phi.setText('{:.2f}'.format(phi))
         self.ui.idv_elv.setText('{:.2f}'.format(elv))
@@ -237,7 +237,7 @@ class StartOptimizeDialog(QDialog):
             self.statTRVmax = trvabs
         self.ui.terminalRV_cur.setText('{:.3f}'.format(trvabs))
         self.ui.terminalRV_min.setText('{:.3f}'.format(self.statTRVmin))
-        self.ui.terminalRV_max.setText('{:.3f}'.format(self.statTRVmax))
+#        self.ui.terminalRV_max.setText('{:.3f}'.format(self.statTRVmax))
         
         tdv = idvabs + trvabs
         if self.statTDVmin is None:
@@ -250,7 +250,7 @@ class StartOptimizeDialog(QDialog):
             self.statTDVmax = tdv
         self.ui.totalDV_cur.setText('{:.3f}'.format(tdv))
         self.ui.totalDV_min.setText('{:.3f}'.format(self.statTDVmin))
-        self.ui.totalDV_max.setText('{:.3f}'.format(self.statTDVmax))
+#        self.ui.totalDV_max.setText('{:.3f}'.format(self.statTDVmax))
         
     def sl_real2pos(self, rfrom, rto, rval):
         pos = int((rval - rfrom) / (rto - rfrom) * self.sl_maxval + 0.5) \
@@ -271,7 +271,7 @@ class StartOptimizeDialog(QDialog):
             + self.itcenter
         todate = common.jd2isot(tojd).split('T')[0]
         self.ui.label_itto.setText(todate)
-        self.ui.initialtime.setText(common.jd2isot(self.itcurrent))
+        self.ui.initialtime.setText(common.jd2isot(self.itcurrent).split('.')[0])
 
     def disptt(self):
         if self.ui.radio_fd.isChecked():
@@ -287,15 +287,15 @@ class StartOptimizeDialog(QDialog):
             todate = common.jd2isot(tojd).split('T')[0]
             self.ui.label_ttto.setText(todate)
         self.ui.duration.setText('{:.1f}'.format(self.cduration))
-        self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent))
+        self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent).split('.')[0])
         
     def itslchanged(self, pos):
         self.itcurrent = self.sl_pos2real(self.itfrom, self.itto, pos)  \
             + self.itcenter
-        self.ui.initialtime.setText(common.jd2isot(self.itcurrent))
+        self.ui.initialtime.setText(common.jd2isot(self.itcurrent).split('.')[0])
         if self.ui.radio_fd.isChecked():
             self.ttcurrent = self.itcurrent + self.cduration
-            self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent))
+            self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent).split('.')[0])
         else:
             self.cduration = self.ttcurrent - self.itcurrent
             self.ui.duration.setText('{:.1f}'.format(self.cduration))
@@ -306,13 +306,13 @@ class StartOptimizeDialog(QDialog):
             self.cduration = self.sl_pos2real(self.ttfrom, self.ttto, pos)
             self.ttcurrent = self.cduration + self.itcurrent
             self.ui.duration.setText('{:.1f}'.format(self.cduration))
-            self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent))
+            self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent).split('.')[0])
         else:
             self.ttcurrent = self.sl_pos2real(self.ttfrom, self.ttto, pos)  \
                 + self.ttcenter
             self.cduration = self.ttcurrent - self.itcurrent
             self.ui.duration.setText('{:.1f}'.format(self.cduration))
-            self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent))
+            self.ui.terminaltime.setText(common.jd2isot(self.ttcurrent).split('.')[0])
         self.draworbit()
         
     def fixedorbitchanged(self):
@@ -512,11 +512,11 @@ class StartOptimizeDialog(QDialog):
         self.statTDVmin = None
         self.statTDVmax = None
         self.ui.initialDV_min.setText('')
-        self.ui.initialDV_max.setText('')
+#        self.ui.initialDV_max.setText('')
         self.ui.terminalRV_min.setText('')
-        self.ui.terminalRV_max.setText('')
+#        self.ui.terminalRV_max.setText('')
         self.ui.totalDV_min.setText('')
-        self.ui.totalDV_max.setText('')
+#        self.ui.totalDV_max.setText('')
     
     def closeEvent(self, event):
         event.accept()

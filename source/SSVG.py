@@ -407,7 +407,7 @@ class MainForm(QMainWindow):
         g.manfilename = None
         self.dispmanfilename()
         g.maneuvers = g.manplan['maneuvers']
-        g.manplan_saved = False
+        g.manplan_saved = True      # Empty flight plan does not need saving
         g.nextman = 0
         g.myprobe = probe.Probe(**g.manplan['probe'])
         

@@ -184,7 +184,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Select exponent</string>
+    <string>Expornent of 10 (days)</string>
    </property>
    <property name="minimum">
     <number>-8</number>
@@ -411,6 +411,9 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="acceptDrops">
     <bool>false</bool>
    </property>
@@ -438,6 +441,9 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="toolTip">
     <string/>
    </property>
@@ -462,6 +468,9 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="toolTip">
     <string/>
    </property>
@@ -485,6 +494,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -751,6 +763,9 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="acceptDrops">
     <bool>false</bool>
    </property>
@@ -778,6 +793,9 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="toolTip">
     <string/>
    </property>
@@ -801,6 +819,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -826,6 +847,9 @@
      <family>Lucida Console</family>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="toolTip">
     <string/>
    </property>
@@ -849,6 +873,9 @@
     <font>
      <family>Lucida Console</family>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -899,13 +926,16 @@
   <tabstop>tobarycenter</tabstop>
   <tabstop>toprobe</tabstop>
   <tabstop>totarget</tabstop>
+  <tabstop>check_Ptrj</tabstop>
+  <tabstop>check_PKepler</tabstop>
+  <tabstop>check_TKepler</tabstop>
+  <tabstop>showplanets</tabstop>
+  <tabstop>delta_t_edit</tabstop>
+  <tabstop>dtApply</tabstop>
   <tabstop>fastbackward</tabstop>
   <tabstop>backward</tabstop>
   <tabstop>forward</tabstop>
   <tabstop>fastforward</tabstop>
-  <tabstop>preddate</tabstop>
-  <tabstop>delta_t_edit</tabstop>
-  <tabstop>dtApply</tabstop>
   <tabstop>timescale</tabstop>
  </tabstops>
  <resources/>
