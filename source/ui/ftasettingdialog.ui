@@ -99,14 +99,17 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>80</x>
       <y>60</y>
-      <width>121</width>
-      <height>16</height>
+      <width>191</width>
+      <height>18</height>
      </rect>
     </property>
     <property name="text">
      <string>Time to Arrival (days)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
   </widget>
@@ -223,6 +226,9 @@
      <property name="text">
       <string>offset distance (km)</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
     <widget class="QLineEdit" name="Brangeedit">
      <property name="geometry">
@@ -253,6 +259,9 @@
      </property>
      <property name="text">
       <string>beta (deg)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLineEdit" name="betaedit">
@@ -304,6 +313,9 @@
      <property name="text">
       <string>offset distance (km)</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
@@ -317,6 +329,9 @@
      <property name="text">
       <string>phi (deg)</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
@@ -329,6 +344,9 @@
      </property>
      <property name="text">
       <string>elv (deg)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLineEdit" name="rangeedit">

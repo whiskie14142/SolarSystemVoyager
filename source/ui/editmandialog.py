@@ -58,7 +58,7 @@ class Ui_editmandialog(object):
         self.label_5.setObjectName("label_5")
         self.parameters = QtWidgets.QTableWidget(editmandialog)
         self.parameters.setGeometry(QtCore.QRect(100, 110, 521, 164))
-        self.parameters.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.parameters.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.parameters.setCornerButtonEnabled(False)
         self.parameters.setRowCount(8)
         self.parameters.setColumnCount(2)

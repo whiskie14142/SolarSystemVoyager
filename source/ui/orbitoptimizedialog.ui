@@ -55,60 +55,72 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>30</x>
      <y>490</y>
-     <width>111</width>
-     <height>16</height>
+     <width>171</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Initial Delta-V (m/s)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>210</x>
      <y>490</y>
-     <width>181</width>
-     <height>16</height>
+     <width>191</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Terminal Relative Velocity (m/s)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>510</y>
-     <width>41</width>
-     <height>16</height>
+     <x>200</x>
+     <y>513</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Current</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_16">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>530</y>
-     <width>41</width>
-     <height>16</height>
+     <x>200</x>
+     <y>533</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Min.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="terminalRV_cur">
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>510</y>
+     <y>515</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -135,7 +147,7 @@
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>530</y>
+     <y>535</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -175,7 +187,7 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>61</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -197,7 +209,7 @@
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>61</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -216,7 +228,7 @@
      <rect>
       <x>10</x>
       <y>60</y>
-      <width>61</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -308,21 +320,24 @@
   <widget class="QLabel" name="label_18">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>530</y>
-     <width>41</width>
-     <height>16</height>
+     <x>10</x>
+     <y>533</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Min.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="initialDV_min">
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>530</y>
+     <y>535</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -349,7 +364,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>510</y>
+     <y>515</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -375,21 +390,24 @@
   <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>510</y>
-     <width>41</width>
-     <height>16</height>
+     <x>10</x>
+     <y>513</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Current</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="finishbutton">
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>620</y>
+     <y>625</y>
      <width>121</width>
      <height>23</height>
     </rect>
@@ -408,7 +426,7 @@
    <property name="geometry">
     <rect>
      <x>510</x>
-     <y>620</y>
+     <y>625</y>
      <width>91</width>
      <height>23</height>
     </rect>
@@ -427,7 +445,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>120</y>
+     <y>130</y>
      <width>601</width>
      <height>151</height>
     </rect>
@@ -535,9 +553,9 @@
    <widget class="QPushButton" name="it_b">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>263</x>
       <y>76</y>
-      <width>21</width>
+      <width>31</width>
       <height>22</height>
      </rect>
     </property>
@@ -563,9 +581,9 @@
    <widget class="QPushButton" name="it_f">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>303</x>
       <y>76</y>
-      <width>21</width>
+      <width>31</width>
       <height>22</height>
      </rect>
     </property>
@@ -591,9 +609,9 @@
    <widget class="QGroupBox" name="groupBox_itsr">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>360</x>
       <y>80</y>
-      <width>181</width>
+      <width>161</width>
       <height>61</height>
      </rect>
     </property>
@@ -603,7 +621,7 @@
     <widget class="QRadioButton" name="it_wide">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>30</x>
        <y>17</y>
        <width>121</width>
        <height>16</height>
@@ -619,7 +637,7 @@
     <widget class="QRadioButton" name="it_narrow">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>30</x>
        <y>37</y>
        <width>121</width>
        <height>16</height>
@@ -692,9 +710,9 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>555</x>
+      <x>549</x>
       <y>74</y>
-      <width>41</width>
+      <width>51</width>
       <height>31</height>
      </rect>
     </property>
@@ -709,9 +727,9 @@ Range</string>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>5</x>
+      <x>1</x>
       <y>74</y>
-      <width>41</width>
+      <width>51</width>
       <height>31</height>
      </rect>
     </property>
@@ -726,9 +744,9 @@ Range</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>77</y>
-      <width>81</width>
+      <x>253</x>
+      <y>100</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -736,7 +754,7 @@ Range</string>
      <string>Tweak Handle</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
@@ -744,7 +762,7 @@ Range</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>290</y>
+     <y>310</y>
      <width>601</width>
      <height>161</height>
     </rect>
@@ -898,9 +916,9 @@ Range</string>
    <widget class="QPushButton" name="tt_b">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>263</x>
       <y>86</y>
-      <width>21</width>
+      <width>31</width>
       <height>23</height>
      </rect>
     </property>
@@ -926,9 +944,9 @@ Range</string>
    <widget class="QPushButton" name="tt_f">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>303</x>
       <y>86</y>
-      <width>21</width>
+      <width>31</width>
       <height>23</height>
      </rect>
     </property>
@@ -954,9 +972,9 @@ Range</string>
    <widget class="QGroupBox" name="groupBox_ttsr">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>360</x>
       <y>90</y>
-      <width>181</width>
+      <width>161</width>
       <height>61</height>
      </rect>
     </property>
@@ -966,9 +984,9 @@ Range</string>
     <widget class="QRadioButton" name="tt_wide">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>30</x>
        <y>17</y>
-       <width>121</width>
+       <width>131</width>
        <height>16</height>
       </rect>
      </property>
@@ -982,9 +1000,9 @@ Range</string>
     <widget class="QRadioButton" name="tt_narrow">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>30</x>
        <y>37</y>
-       <width>121</width>
+       <width>131</width>
        <height>16</height>
       </rect>
      </property>
@@ -1055,9 +1073,9 @@ Range</string>
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>4</x>
-      <y>83</y>
-      <width>41</width>
+      <x>0</x>
+      <y>84</y>
+      <width>51</width>
       <height>31</height>
      </rect>
     </property>
@@ -1072,9 +1090,9 @@ Range</string>
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>555</x>
+      <x>549</x>
       <y>85</y>
-      <width>41</width>
+      <width>51</width>
       <height>31</height>
      </rect>
     </property>
@@ -1089,9 +1107,9 @@ Range</string>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>78</x>
       <y>90</y>
-      <width>131</width>
+      <width>161</width>
       <height>61</height>
      </rect>
     </property>
@@ -1101,9 +1119,9 @@ Range</string>
     <widget class="QRadioButton" name="radio_fd">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>40</x>
        <y>17</y>
-       <width>91</width>
+       <width>121</width>
        <height>16</height>
       </rect>
      </property>
@@ -1117,9 +1135,9 @@ Range</string>
     <widget class="QRadioButton" name="radio_tt">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>40</x>
        <y>37</y>
-       <width>91</width>
+       <width>121</width>
        <height>16</height>
       </rect>
      </property>
@@ -1134,9 +1152,9 @@ Range</string>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>86</y>
-      <width>81</width>
+      <x>254</x>
+      <y>110</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -1144,41 +1162,47 @@ Range</string>
      <string>Tweak Handle</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>410</x>
      <y>490</y>
-     <width>121</width>
+     <width>181</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Total DV (IDV + TRV)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_20">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>530</y>
-     <width>41</width>
-     <height>16</height>
+     <x>390</x>
+     <y>533</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Min.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="totalDV_min">
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>529</y>
+     <y>534</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -1205,7 +1229,7 @@ Range</string>
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>509</y>
+     <y>514</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -1231,30 +1255,33 @@ Range</string>
   <widget class="QLabel" name="label_22">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>510</y>
-     <width>41</width>
-     <height>16</height>
+     <x>390</x>
+     <y>513</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Current</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QPushButton" name="clearstat">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>510</x>
      <y>560</y>
      <width>91</width>
      <height>23</height>
     </rect>
    </property>
    <property name="toolTip">
-    <string>Clear all Minimums</string>
+    <string>Clear all Minimum Values</string>
    </property>
    <property name="text">
-    <string>Clear Statistics</string>
+    <string>Clear Minimums</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -1264,7 +1291,7 @@ Range</string>
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>560</y>
+     <y>565</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -1291,7 +1318,7 @@ Range</string>
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>580</y>
+     <y>585</y>
      <width>91</width>
      <height>18</height>
     </rect>
@@ -1317,34 +1344,40 @@ Range</string>
   <widget class="QLabel" name="label_23">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>560</y>
-     <width>51</width>
-     <height>16</height>
+     <x>10</x>
+     <y>565</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>phi (deg)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_24">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>580</y>
-     <width>51</width>
-     <height>16</height>
+     <x>10</x>
+     <y>585</y>
+     <width>71</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>elv (deg)</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="reopenbutton">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>620</y>
+     <y>625</y>
      <width>91</width>
      <height>23</height>
     </rect>

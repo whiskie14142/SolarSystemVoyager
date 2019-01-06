@@ -46,40 +46,49 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>0</x>
       <y>20</y>
-      <width>51</width>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Name</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>240</x>
       <y>20</y>
-      <width>61</width>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Space Base</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>0</x>
       <y>50</y>
-      <width>61</width>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Mass (kg)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="probename">
@@ -187,7 +196,7 @@
    <widget class="QComboBox" name="planets">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>110</x>
       <y>20</y>
       <width>111</width>
       <height>22</height>
@@ -208,9 +217,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>110</x>
       <y>60</y>
-      <width>321</width>
+      <width>341</width>
       <height>111</height>
      </rect>
     </property>
@@ -225,18 +234,21 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>41</width>
+       <width>61</width>
        <height>21</height>
       </rect>
      </property>
      <property name="text">
       <string>SPK file</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
     <widget class="QPushButton" name="spkfileselect">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>290</x>
        <y>20</y>
        <width>41</width>
        <height>23</height>
@@ -252,7 +264,7 @@
     <widget class="QLineEdit" name="targetname">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>80</x>
        <y>80</y>
        <width>121</width>
        <height>20</height>
@@ -272,18 +284,21 @@
       <rect>
        <x>10</x>
        <y>50</y>
-       <width>41</width>
+       <width>61</width>
        <height>21</height>
       </rect>
      </property>
      <property name="text">
       <string>SPKID</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
     <widget class="QLineEdit" name="spkfilepath">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>80</x>
        <y>20</y>
        <width>201</width>
        <height>20</height>
@@ -309,18 +324,21 @@
       <rect>
        <x>10</x>
        <y>80</y>
-       <width>41</width>
+       <width>61</width>
        <height>20</height>
       </rect>
      </property>
      <property name="text">
       <string>Name</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
     <widget class="QComboBox" name="spkid_list">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>80</x>
        <y>50</y>
        <width>121</width>
        <height>22</height>
@@ -336,7 +354,7 @@
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>210</x>
        <y>50</y>
        <width>121</width>
        <height>21</height>
@@ -349,7 +367,7 @@
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>210</x>
        <y>80</y>
        <width>121</width>
        <height>21</height>

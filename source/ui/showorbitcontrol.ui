@@ -28,22 +28,25 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>50</y>
-     <width>111</width>
-     <height>18</height>
+     <x>350</x>
+     <y>52</y>
+     <width>116</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Elapsed Time (days)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLineEdit" name="delta_t_edit">
    <property name="geometry">
     <rect>
-     <x>462</x>
+     <x>472</x>
      <y>51</y>
-     <width>121</width>
+     <width>111</width>
      <height>21</height>
     </rect>
    </property>
@@ -196,20 +199,23 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>560</x>
      <y>80</y>
-     <width>61</width>
+     <width>81</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Scale 10**</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="ctimeLabel">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>350</x>
      <y>10</y>
      <width>81</width>
      <height>16</height>
@@ -218,11 +224,14 @@
    <property name="text">
     <string>Current Time</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>350</x>
      <y>30</y>
      <width>81</width>
      <height>16</height>
@@ -230,6 +239,9 @@
    </property>
    <property name="text">
     <string>Predict. Time</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="dtApply">
@@ -253,12 +265,15 @@
     <rect>
      <x>10</x>
      <y>130</y>
-     <width>161</width>
+     <width>211</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Relative Position of Target</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">
@@ -273,109 +288,136 @@
    <property name="text">
     <string>Relative Velocity of Target</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>150</y>
-     <width>71</width>
+     <width>81</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>distance (km)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_11">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>170</y>
-     <width>61</width>
+     <width>81</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>phi (deg)</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>190</y>
-     <width>61</width>
-     <height>16</height>
+     <width>81</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>elv (deg)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>237</x>
+     <x>235</x>
      <y>150</y>
-     <width>51</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>vel (m/s)</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>420</x>
      <y>150</y>
-     <width>51</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>vel (m/s)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_16">
    <property name="geometry">
     <rect>
-     <x>237</x>
+     <x>235</x>
      <y>170</y>
-     <width>51</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>phi (deg)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_17">
    <property name="geometry">
     <rect>
-     <x>237</x>
+     <x>235</x>
      <y>190</y>
-     <width>51</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>elv (deg)</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_18">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>440</x>
      <y>130</y>
-     <width>181</width>
-     <height>21</height>
+     <width>161</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Line of Sight Velocity</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
    <property name="wordWrap">
     <bool>false</bool>
@@ -384,14 +426,17 @@
   <widget class="QLabel" name="label_19">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>380</x>
      <y>80</y>
-     <width>161</width>
+     <width>171</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Prediction Time Manipulator</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
    <property name="wordWrap">
     <bool>false</bool>
@@ -400,9 +445,9 @@
   <widget class="QLineEdit" name="preddate">
    <property name="geometry">
     <rect>
-     <x>425</x>
+     <x>440</x>
      <y>29</y>
-     <width>206</width>
+     <width>191</width>
      <height>18</height>
     </rect>
    </property>
@@ -430,9 +475,9 @@
   <widget class="QLineEdit" name="RVTvel">
    <property name="geometry">
     <rect>
-     <x>292</x>
+     <x>310</x>
      <y>149</y>
-     <width>141</width>
+     <width>91</width>
      <height>18</height>
     </rect>
    </property>
@@ -457,9 +502,9 @@
   <widget class="QLineEdit" name="RVTphi">
    <property name="geometry">
     <rect>
-     <x>292</x>
+     <x>310</x>
      <y>169</y>
-     <width>141</width>
+     <width>91</width>
      <height>18</height>
     </rect>
    </property>
@@ -484,9 +529,9 @@
   <widget class="QLineEdit" name="RVTelv">
    <property name="geometry">
     <rect>
-     <x>292</x>
+     <x>310</x>
      <y>189</y>
-     <width>141</width>
+     <width>91</width>
      <height>18</height>
     </rect>
    </property>
@@ -511,7 +556,7 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>250</x>
      <y>10</y>
      <width>91</width>
      <height>111</height>
@@ -619,7 +664,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>71</width>
+     <width>91</width>
      <height>111</height>
     </rect>
    </property>
@@ -631,7 +676,7 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>61</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -650,7 +695,7 @@
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>61</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -663,7 +708,7 @@
      <rect>
       <x>10</x>
       <y>60</y>
-      <width>61</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
@@ -675,9 +720,9 @@
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>110</x>
      <y>10</y>
-     <width>141</width>
+     <width>131</width>
      <height>111</height>
     </rect>
    </property>
@@ -752,9 +797,9 @@
   <widget class="QLineEdit" name="currentdate">
    <property name="geometry">
     <rect>
-     <x>425</x>
+     <x>440</x>
      <y>9</y>
-     <width>206</width>
+     <width>191</width>
      <height>18</height>
     </rect>
    </property>
@@ -782,9 +827,9 @@
   <widget class="QLineEdit" name="RPTrange">
    <property name="geometry">
     <rect>
-     <x>83</x>
+     <x>90</x>
      <y>149</y>
-     <width>141</width>
+     <width>131</width>
      <height>18</height>
     </rect>
    </property>
@@ -809,9 +854,9 @@
   <widget class="QLineEdit" name="RPTphi">
    <property name="geometry">
     <rect>
-     <x>83</x>
+     <x>90</x>
      <y>169</y>
-     <width>141</width>
+     <width>131</width>
      <height>18</height>
     </rect>
    </property>
@@ -836,9 +881,9 @@
   <widget class="QLineEdit" name="RPTelv">
    <property name="geometry">
     <rect>
-     <x>83</x>
+     <x>90</x>
      <y>189</y>
-     <width>141</width>
+     <width>131</width>
      <height>18</height>
     </rect>
    </property>
@@ -865,7 +910,7 @@
     <rect>
      <x>503</x>
      <y>149</y>
-     <width>126</width>
+     <width>101</width>
      <height>18</height>
     </rect>
    </property>
@@ -882,6 +927,30 @@
    </property>
    <property name="frame">
     <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="sysMessage">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>176</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="toolTip">
+    <string>System Messages</string>
    </property>
    <property name="readOnly">
     <bool>true</bool>
@@ -921,6 +990,7 @@
   <zorder>RPTphi</zorder>
   <zorder>RPTelv</zorder>
   <zorder>LoSVvel</zorder>
+  <zorder>sysMessage</zorder>
  </widget>
  <tabstops>
   <tabstop>tobarycenter</tabstop>

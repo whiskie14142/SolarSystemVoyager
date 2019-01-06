@@ -54,7 +54,7 @@
      </rect>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="editTriggers">
      <set>QAbstractItemView::NoEditTriggers</set>
@@ -242,27 +242,33 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>10</y>
-      <width>71</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Probe Name : </string>
+     <string>Probe Name</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>30</y>
-      <width>71</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Target        :</string>
+     <string>Target Name</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="probename">
@@ -328,22 +334,25 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>240</x>
       <y>50</y>
-      <width>71</width>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Plan File     :</string>
+     <string>Flight Plan Name</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="manfilename">
     <property name="geometry">
      <rect>
-      <x>322</x>
+      <x>342</x>
       <y>50</y>
-      <width>301</width>
+      <width>281</width>
       <height>16</height>
      </rect>
     </property>
@@ -419,7 +428,7 @@
      <rect>
       <x>20</x>
       <y>370</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -438,7 +447,7 @@
      <rect>
       <x>20</x>
       <y>390</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -451,7 +460,7 @@
      <rect>
       <x>20</x>
       <y>350</y>
-      <width>141</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -470,7 +479,7 @@
      <rect>
       <x>20</x>
       <y>450</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -483,7 +492,7 @@
      <rect>
       <x>20</x>
       <y>490</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -496,7 +505,7 @@
      <rect>
       <x>20</x>
       <y>510</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -509,7 +518,7 @@
      <rect>
       <x>20</x>
       <y>530</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -522,7 +531,7 @@
      <rect>
       <x>20</x>
       <y>550</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -535,7 +544,7 @@
      <rect>
       <x>20</x>
       <y>610</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -548,7 +557,7 @@
      <rect>
       <x>20</x>
       <y>630</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -561,7 +570,7 @@
      <rect>
       <x>20</x>
       <y>570</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -574,7 +583,7 @@
      <rect>
       <x>20</x>
       <y>590</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -587,7 +596,7 @@
      <rect>
       <x>20</x>
       <y>470</y>
-      <width>131</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -600,7 +609,7 @@
      <rect>
       <x>20</x>
       <y>410</y>
-      <width>141</width>
+      <width>151</width>
       <height>16</height>
      </rect>
     </property>
@@ -701,7 +710,7 @@
      <rect>
       <x>380</x>
       <y>368</y>
-      <width>61</width>
+      <width>121</width>
       <height>16</height>
      </rect>
     </property>
@@ -1272,14 +1281,17 @@
    <widget class="QLabel" name="label_23">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>50</y>
-      <width>71</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Space Base :</string>
+     <string>Space Base</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="spacebase">
