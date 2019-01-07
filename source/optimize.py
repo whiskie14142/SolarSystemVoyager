@@ -578,7 +578,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
         self.ui.fixed_to_ct.setChecked(True)
         self.ui.box_initialtime.setEnabled(False)
         self.ui.check_orgorb.setText('Previous')
-        self.ui.box_initialtime.setTitle('Maneuver Time')
+        self.ui.box_initialtime.setTitle('Adjust Maneuver Time')
         self.ui.label_it.setText('Maneuver Time')
         
         self.orgorb = TwoBodyPred('orgorb')

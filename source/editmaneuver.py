@@ -292,7 +292,8 @@ class EditManDialog(QDialog):
 
         self.editman[self.paramname[0]] = self.editedjd
         self.enableDateTime(self.editedjd, duration)
-        self.showorbit()
+        if self.currentrow == g.nextman:
+            self.showorbit()
         
 
     def finish_exec(self):

@@ -408,7 +408,7 @@ class Ui_OrbitOptimizeDialog(object):
         self.reopenbutton.setAutoDefault(False)
         self.reopenbutton.setObjectName("reopenbutton")
         self.fixed_to_ct = QtWidgets.QCheckBox(OrbitOptimizeDialog)
-        self.fixed_to_ct.setGeometry(QtCore.QRect(130, 142, 131, 21))
+        self.fixed_to_ct.setGeometry(QtCore.QRect(110, 151, 131, 21))
         self.fixed_to_ct.setChecked(False)
         self.fixed_to_ct.setObjectName("fixed_to_ct")
         self.box_initialtime.raise_()

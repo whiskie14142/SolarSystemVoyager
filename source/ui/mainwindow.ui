@@ -249,7 +249,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Probe Name</string>
+     <string>Probe</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -265,7 +265,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Target Name</string>
+     <string>Target</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -341,7 +341,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Flight Plan Name</string>
+     <string>Flight Plan</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
