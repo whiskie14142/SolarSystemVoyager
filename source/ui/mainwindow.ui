@@ -766,7 +766,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>630</y>
+      <y>560</y>
       <width>241</width>
       <height>16</height>
      </rect>
@@ -782,7 +782,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>650</y>
+      <y>580</y>
       <width>241</width>
       <height>15</height>
      </rect>
@@ -1320,9 +1320,9 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>566</y>
-      <width>241</width>
-      <height>55</height>
+      <y>608</y>
+      <width>256</width>
+      <height>67</height>
      </rect>
     </property>
     <property name="font">
@@ -1338,6 +1338,15 @@
     </property>
     <property name="toolTip">
      <string>System Messages</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
     </property>
     <property name="undoRedoEnabled">
      <bool>false</bool>

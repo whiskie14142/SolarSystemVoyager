@@ -175,7 +175,7 @@ def jd2isot(jd):
     isot = dt.isoformat(sep='T')
     if dt.microsecond == 0:
         isot = isot + '.000000'
-    return isot
+    return isot[:-2]
 
 def isot2jd(isot):
     # convert ISOT (str) to Julian Day
@@ -188,7 +188,7 @@ def jd2datetime(jd):
     d_and_t = dt.isoformat(sep='T').split('T')
     if dt.microsecond == 0:
         d_and_t[1] = d_and_t[1] + '.000000'
-    return d_and_t[0], d_and_t[1]
+    return d_and_t[0], d_and_t[1][:-2]
 
 def datetime2jd(sdate, stime):
     # convert Date(str) and Time(str) to Julian Day

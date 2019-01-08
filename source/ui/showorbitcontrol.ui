@@ -935,10 +935,10 @@
   <widget class="QPlainTextEdit" name="sysMessage">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>176</y>
-     <width>211</width>
-     <height>31</height>
+     <x>409</x>
+     <y>175</y>
+     <width>227</width>
+     <height>37</height>
     </rect>
    </property>
    <property name="font">
@@ -951,6 +951,15 @@
    </property>
    <property name="toolTip">
     <string>System Messages</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>0</number>
    </property>
    <property name="readOnly">
     <bool>true</bool>

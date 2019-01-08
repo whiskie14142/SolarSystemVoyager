@@ -138,8 +138,8 @@ class MainForm(QMainWindow):
             '{}',
             '{:.5f}'
             ]
-        self.initMessage()
         self.initConstants()
+        self.initMessage()
         self.initselectedman()
         self.eraseselectedman()
         self.initSSV()
@@ -149,10 +149,19 @@ class MainForm(QMainWindow):
         self.sysMes02 = 'Edited: Line {}'
         self.sysMes03 = 'Executed: {0} on {1}'
         self.sysMes04 = 'Cleared: Execution State'
-        self.sysMes05 = 'Created: New Flight Plan'
+        self.sysMes05 = 'Created: Flight Plan'
+        self.sysMes06 = 'Opened: {}'
+        self.sysMes07 = 'Edited: Probe of {}'
+        self.sysMes08 = 'Edited: Target of {}'
+        self.sysMes09 = 'Created: Checkpoint'
+        self.sysMes10 = 'Resumed: Checkpoint'
+        self.sysMes11 = 'Erased: Checkpoint'
+        self.sysMes12 = 'Inserted: Line {}'
+        self.sysMes13 = 'Deleted: Line {}'
         
     def initConstants(self):
         self.defaultFileName = 'newplan'
+        self.name = 'main'
 
     def initSSV(self):
         g.version = '1.2.1'
@@ -365,6 +374,7 @@ class MainForm(QMainWindow):
         self.ui.menuCheckpoint.setEnabled(False)
         self.erasecheckpoint()
         self.dispmanfilename()
+        self.dispSysMes(self.sysMes06.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
 
         # Check Time of Maneuver with time range of Target
         tsjd, tejd = g.mytarget.getsejd()
@@ -525,7 +535,7 @@ class MainForm(QMainWindow):
     def saveasmanplan(self):
         self.clearSysMes()
         if g.manfilename == self.defaultFileName:
-            dr = g.currentdir
+            dr = os.path.join(g.currentdir, self.defaultFileName)
         else:
             dr = g.manfilename
         ans = QFileDialog.getSaveFileName(self, 
@@ -655,6 +665,8 @@ class MainForm(QMainWindow):
                 break
 
     def execinitialize(self):
+        if not g.myprobe.onflight:
+            return
         erase_Ptrj()
         g.probe_trj = []
         
@@ -787,6 +799,7 @@ class MainForm(QMainWindow):
             g.maneuvers.insert(self.currentrow, None)
         else:
             g.maneuvers.append(None)
+        self.dispSysMes(self.sysMes12.format(self.currentrow+1))
         if self.currentrow < g.nextman:
             self.execinitialize()
         g.manplan_saved = False
@@ -813,7 +826,9 @@ class MainForm(QMainWindow):
                 deltype = 'BLANK'
             else:
                 deltype = g.maneuvers[self.currentrow]['type']
-            del(g.maneuvers[self.currentrow])
+            del g.maneuvers[self.currentrow]
+            self.dispSysMes(self.sysMes13.format(self.currentrow+1))
+
             if self.currentrow < g.nextman:
                 self.execinitialize()
             g.manplan_saved = False
@@ -1008,6 +1023,7 @@ class MainForm(QMainWindow):
         g.myprobe.createCheckpoint()
         self.ui.actionResume.setEnabled(True)
         self.dispcheckpoint()
+        self.dispSysMes(self.sysMes09)
 
     def dispcheckpoint(self):
         if self.checkpoint:
@@ -1021,6 +1037,7 @@ class MainForm(QMainWindow):
             anitem = QTableWidgetItem('')
             self.ui.manplans.setItem(self.checkpointdata['checkrow'], 2, 
                                      anitem)
+            self.dispSysMes(self.sysMes11)
         self.checkpoint = False
     
     def resumecheckpoint(self):
@@ -1046,6 +1063,7 @@ class MainForm(QMainWindow):
         
         self.showorbit()
         self.dispcurrentstatus()
+        self.dispSysMes(self.sysMes10)
 
     def editprobe(self):
         self.clearSysMes()
@@ -1071,6 +1089,7 @@ class MainForm(QMainWindow):
         self.ui.actionSave_as.setEnabled(True)
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
+        self.dispSysMes(self.sysMes07.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
 
         if g.options['log']:
             logstring = []
@@ -1108,7 +1127,8 @@ class MainForm(QMainWindow):
         self.ui.actionSave_as.setEnabled(True)
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
-
+        self.dispSysMes(self.sysMes08.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
+        
         # Check Time of Maneuver with time range of Target
         tsjd, tejd = g.mytarget.getsejd()
         outofrange = False

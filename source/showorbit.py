@@ -52,7 +52,7 @@ class ShowOrbitDialog(QDialog):
         self.ui.tobarycenter.clicked.connect(self._statuschanged)
         self.ui.toprobe.clicked.connect(self._statuschanged)
         self.ui.totarget.clicked.connect(self._statuschanged)
-        self.ui.dtApply.clicked.connect(self.dtapply)
+        self.ui.dtApply.clicked.connect(self.dtapplyclicked)
 
         self.artist_of_probe = None
         self.artist_of_target = None
@@ -62,6 +62,8 @@ class ShowOrbitDialog(QDialog):
         self.reset()
         
         self.affect_parent = False
+        
+        self.sysMes01 = 'Editing parameters were applied'
 
     def reset(self):
         self.dv = 0.0
@@ -78,6 +80,10 @@ class ShowOrbitDialog(QDialog):
         xs, ys, zs, ts = g.mytarget.points(jd, g.ndata)
         g.target_Kepler = [xs, ys, zs]
         
+        self.redraw()
+
+    def editingRedraw(self):
+        self.dispSysMes(self.sysMes01)
         self.redraw()
         
     def redraw(self):
@@ -220,6 +226,7 @@ class ShowOrbitDialog(QDialog):
         return self.jd + self.delta_jd
         
     def forward(self):
+        self.clearSysMes()
         exp = self.ui.timescale.value()
         self.delta_jd += 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -228,6 +235,7 @@ class ShowOrbitDialog(QDialog):
             self.mother.gettime(self.jd + self.delta_jd)
         
     def backward(self):
+        self.clearSysMes()
         exp = self.ui.timescale.value()
         self.delta_jd -= 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -236,6 +244,7 @@ class ShowOrbitDialog(QDialog):
             self.mother.gettime(self.jd + self.delta_jd)
         
     def fastforward(self):
+        self.clearSysMes()
         exp = self.ui.timescale.value() + 1
         self.delta_jd += 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -244,6 +253,7 @@ class ShowOrbitDialog(QDialog):
             self.mother.gettime(self.jd + self.delta_jd)
 
     def fastbackward(self):
+        self.clearSysMes()
         exp = self.ui.timescale.value() + 1
         self.delta_jd -= 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -265,6 +275,10 @@ class ShowOrbitDialog(QDialog):
         self.save_settings()
         self._redrawmark()
 
+    def dtapplyclicked(self):
+        self.clearSysMes()
+        self.dtapply()
+        
     def dtapply(self):
         text = self.ui.delta_t_edit.text()
         try:
@@ -314,6 +328,12 @@ class ShowOrbitDialog(QDialog):
     
     def set_affect_parent(self, flag=False):
         self.affect_parent = flag
+
+    def dispSysMes(self, message):
+        self.ui.sysMessage.appendPlainText(message)
+        
+    def clearSysMes(self):
+        self.ui.sysMessage.clear()
 
 class ShowStartOrbitDialog(ShowOrbitDialog):
     """class for 'Show Start Orbit' window
@@ -366,3 +386,4 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
 
         self.restore_settings()
         self._redrawmark()
+    
