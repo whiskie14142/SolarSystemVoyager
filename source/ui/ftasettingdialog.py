@@ -139,8 +139,8 @@ class Ui_ftasettingdialog(object):
         _translate = QtCore.QCoreApplication.translate
         ftasettingdialog.setWindowTitle(_translate("ftasettingdialog", "FTA Setting"))
         self.groupBox.setTitle(_translate("ftasettingdialog", "Time to Arrival"))
-        self.fromshoworbit.setText(_translate("ftasettingdialog", "Get Elapsed Time of Show Orbit window"))
-        self.directinput.setText(_translate("ftasettingdialog", "Specify Time to Arrival"))
+        self.fromshoworbit.setText(_translate("ftasettingdialog", "Use Elapsed Time of Show Orbit Window"))
+        self.directinput.setText(_translate("ftasettingdialog", "Specify Now"))
         self.timetoarrival.setText(_translate("ftasettingdialog", "100.00000"))
         self.label.setText(_translate("ftasettingdialog", "Time to Arrival (days)"))
         self.cancel_button.setText(_translate("ftasettingdialog", "Cancel"))

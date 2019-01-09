@@ -179,7 +179,7 @@ def jd2isot(jd):
 
 def isot2jd(isot):
     # convert ISOT (str) to Julian Day
-    dt = datetime.fromisoformat(isot)
+    dt = datetime.fromisoformat(isot + '00')
     return julian.to_jd(dt)
     
 def jd2datetime(jd):

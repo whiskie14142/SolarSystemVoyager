@@ -54,7 +54,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Finish and Apply</string>
+    <string>Finish</string>
    </property>
   </widget>
   <widget class="QRadioButton" name="radioISOT">
@@ -177,7 +177,7 @@
     </font>
    </property>
    <property name="text">
-    <string>yyyy-mm-ddThh:mm:ss.ssssss</string>
+    <string>yyyy-mm-ddThh:mm:ss.ssss</string>
    </property>
   </widget>
  </widget>

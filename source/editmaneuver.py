@@ -86,7 +86,8 @@ class EditManDialog(QDialog):
             'tvmode : thrust vector mode (L|E)',
             'inter : integration interval (days)'
             ]
-        self.timedesc = ['Start Time', '', '', '', '', '', 'End Time']
+        self.timedesc = ['Start Time', 'Date & Time', 'Date & Time', 
+            'Date & Time', 'Date & Time', 'Date & Time', 'End Time']
         self.fmttbl = [
             '{:.8f}',
             '{:.3f}',
@@ -238,10 +239,8 @@ class EditManDialog(QDialog):
                     self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
     
     def enableDateTime(self, jd, duration):
+        self.ui.frameDT.setEnabled(True)
         self.ui.label_time.setEnabled(True)
-        self.ui.label_3.setEnabled(True)
-        self.ui.label_4.setEnabled(True)
-        self.ui.EditDateTime.setEnabled(True)
         
         self.ui.isotedit.setText(common.jd2isot(jd))
         self.ui.jdedit.setText('{:.8f}'.format(jd))
@@ -255,11 +254,8 @@ class EditManDialog(QDialog):
             self.ui.duration.setText('')
     
     def disableDateTime(self):
+        self.ui.frameDT.setEnabled(False)
         self.ui.label_time.setEnabled(False)
-        self.ui.label_3.setEnabled(False)
-        self.ui.label_4.setEnabled(False)
-        self.ui.EditDateTime.setEnabled(False)
-        self.ui.label_duration.setEnabled(False)
         
         self.ui.isotedit.setText('')
         self.ui.jdedit.setText('')

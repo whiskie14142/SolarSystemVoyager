@@ -63,7 +63,7 @@ class ShowOrbitDialog(QDialog):
         
         self.affect_parent = False
         
-        self.sysMes01 = 'Editing parameters were applied'
+        self.sysMes01 = 'Applied: Parameters from Maneuver Editor'
 
     def reset(self):
         self.dv = 0.0

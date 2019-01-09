@@ -578,7 +578,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
         self.ui.fixed_to_ct.setChecked(True)
         self.ui.box_initialtime.setEnabled(False)
         self.ui.check_orgorb.setText('Previous')
-        self.ui.box_initialtime.setTitle('Adjust Maneuver Time')
+        self.ui.label_initialtime.setText('Adjust Maneuver Time')
         self.ui.label_it.setText('Maneuver Time')
         
         self.orgorb = TwoBodyPred('orgorb')
@@ -595,6 +595,13 @@ class CpOptimizeDialog(StartOptimizeDialog):
             self.ui.sl_inittime.setValue(self.sl_real2pos(self.itfrom, 
                 self.itto, self.itcurrent - self.itcenter))
             self.ui.sl_inittime.valueChanged.connect(self.itslchanged)
+            
+            if self.ui.radio_fd.isChecked():
+                self.ttcurrent = self.itcurrent + self.cduration
+            else:
+                self.cduration = self.ttcurrent - self.itcurrent
+            self.disptt()    
+            
             self.draworbit()
             self.fixed_to_ct = True
         else:

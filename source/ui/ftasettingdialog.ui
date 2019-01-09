@@ -53,7 +53,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Get Elapsed Time of Show Orbit window</string>
+     <string>Use Elapsed Time of Show Orbit Window</string>
     </property>
     <property name="checked">
      <bool>true</bool>
@@ -69,7 +69,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Specify Time to Arrival</string>
+     <string>Specify Now</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="timetoarrival">

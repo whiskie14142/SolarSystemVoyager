@@ -77,9 +77,9 @@ class Ui_edittimedialog(object):
         _translate = QtCore.QCoreApplication.translate
         edittimedialog.setWindowTitle(_translate("edittimedialog", "Date and Time Editor"))
         self.cancelbutton.setText(_translate("edittimedialog", "Cancel"))
-        self.finishbutton.setText(_translate("edittimedialog", "Finish and Apply"))
+        self.finishbutton.setText(_translate("edittimedialog", "Finish"))
         self.radioISOT.setText(_translate("edittimedialog", "Edit by ISOT"))
         self.radioJD.setText(_translate("edittimedialog", "Edit by JD"))
         self.radioDuration.setText(_translate("edittimedialog", "Edit by Duration"))
-        self.labelISOT.setText(_translate("edittimedialog", "yyyy-mm-ddThh:mm:ss.ssssss"))
+        self.labelISOT.setText(_translate("edittimedialog", "yyyy-mm-ddThh:mm:ss.ssss"))
 

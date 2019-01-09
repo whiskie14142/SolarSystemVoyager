@@ -75,7 +75,7 @@ class MainForm(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.manplans.setColumnWidth(0,60)
-        self.ui.manplans.setColumnWidth(1,330)
+        self.ui.manplans.setColumnWidth(1,300)
         self.ui.manplans.setColumnWidth(2,80)
         self.ui.manplans.setCornerButtonEnabled(False)              # Disable table selection by clicking corner button
         self.ui.manplans.horizontalHeader().setSectionsClickable(False)     # Disable colomn selection by clicking
@@ -106,6 +106,7 @@ class MainForm(QMainWindow):
         self.ui.deleteMan.clicked.connect(self.deleteman)
 
         self.ui.manplans.verticalHeader().setFixedWidth(30)     # Qt document has no information about this method.
+        self.ui.manplans.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
         self.ui.progressBar.setVisible(False)
         
         self.pbar = self.ui.progressBar
@@ -572,6 +573,7 @@ class MainForm(QMainWindow):
             if g.maneuvers[i] is None: continue
             mtype = g.maneuvers[i]['type']
             anitem = QTableWidgetItem(mtype)
+            anitem.setTextAlignment(Qt.AlignCenter)
             self.ui.manplans.setItem(i, 0, anitem)
             desc = ''
             for name in self.paramname:
@@ -888,7 +890,7 @@ class MainForm(QMainWindow):
                                   g.maneuvers[g.nextman-1]['type']))
         self.ui.label_ISOT.setText('{0}'.format(common.jd2isot(g.myprobe.jd)))
         self.ui.label_JD.setText('{:.8f}'.format(g.myprobe.jd))
-        self.ui.label_SMA.setText('{:,.0f}'.format(kepl['a'] / 1000.0))
+        self.ui.label_SMA.setText('{:.0f}'.format(kepl['a'] / 1000.0))
         self.ui.label_SMAAU.setText('{:.8f}'.format(kepl['a'] / common.au))
         self.ui.label_Ecc.setText('{:.8f}'.format(kepl['e']))
         self.ui.label_Inc.setText('{:.6f}'.format(kepl['i']))
@@ -912,7 +914,7 @@ class MainForm(QMainWindow):
         rangekm = np.sqrt(np.dot(relpos, relpos)) / 1000.0
         relvel = g.myprobe.vel - sunvel
         velmag = np.sqrt(np.dot(relvel, relvel))
-        self.ui.label_range.setText('{:,.0f}'.format(rangekm))
+        self.ui.label_range.setText('{:.0f}'.format(rangekm))
         self.ui.label_velocity.setText('{:.3f}'.format(velmag))
 
     

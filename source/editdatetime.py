@@ -75,8 +75,18 @@ class EditDateTimeDialog(QDialog):
     
     def finish_clicked(self):
         if self.ui.radioISOT.isChecked():
+            text = self.ui.lineEditISOT.text()
+            stext = text.split('.')
+            if len(stext) == 2:
+                isot = stext[0] + '.' + (stext[1] + '0000')[0:4]
+            elif len(stext) == 1:
+                isot = stext[0] + '.0000'
+            else:
+                QMessageBox.critical(self, 'Error', 'Invalid ISOT', 
+                                        QMessageBox.Ok)
+                return
             try:
-                jd = common.isot2jd(self.ui.lineEditISOT.text())
+                jd = common.isot2jd(isot)
             except ValueError:
                 QMessageBox.critical(self, 'Error', 'Invalid ISOT', 
                                         QMessageBox.Ok)
