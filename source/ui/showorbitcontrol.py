@@ -296,6 +296,7 @@ class Ui_ShowOrbitControl(object):
         self.sysMessage.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.sysMessage.setFrameShadow(QtWidgets.QFrame.Plain)
         self.sysMessage.setLineWidth(0)
+        self.sysMessage.setUndoRedoEnabled(False)
         self.sysMessage.setReadOnly(True)
         self.sysMessage.setObjectName("sysMessage")
         self.groupBox_3.raise_()

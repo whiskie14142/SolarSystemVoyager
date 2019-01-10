@@ -504,7 +504,7 @@ class Ui_OrbitOptimizeDialog(object):
         self.label_18.setText(_translate("OrbitOptimizeDialog", "Min."))
         self.label_15.setText(_translate("OrbitOptimizeDialog", "Current"))
         self.finishbutton.setToolTip(_translate("OrbitOptimizeDialog", "Finish Optimize and Apply"))
-        self.finishbutton.setText(_translate("OrbitOptimizeDialog", "Finish and Apply"))
+        self.finishbutton.setText(_translate("OrbitOptimizeDialog", "Finish"))
         self.cancelbutton.setToolTip(_translate("OrbitOptimizeDialog", "Cancel Optimize"))
         self.cancelbutton.setText(_translate("OrbitOptimizeDialog", "Cancel"))
         self.label.setText(_translate("OrbitOptimizeDialog", "Total DV (IDV + TRV)"))

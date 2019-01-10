@@ -416,7 +416,7 @@
     <string>Finish Optimize and Apply</string>
    </property>
    <property name="text">
-    <string>Finish and Apply</string>
+    <string>Finish</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>

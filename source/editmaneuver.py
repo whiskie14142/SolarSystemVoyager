@@ -53,7 +53,7 @@ class EditManDialog(QDialog):
         self.ui.finish_exec.clicked.connect(self.finish_exec)
         self.ui.finishbutton.clicked.connect(self.finishbutton)
         self.ui.cancelbutton.clicked.connect(self.cancelbutton)
-        self.ui.showorbit.clicked.connect(self.showorbit)
+        self.ui.showorbit.clicked.connect(self.showorbitclicked)
         self.ui.computeFTA.clicked.connect(self.computefta)
         self.ui.optimize.clicked.connect(self.optimize)
         self.ui.EditDateTime.clicked.connect(self.editdatetime)
@@ -101,14 +101,16 @@ class EditManDialog(QDialog):
             ]
         self.stringitems = []
         
-        self.mes1 = '<p style="font-size:14px;">You requested to apply ' \
-            'parameters optimized for the time<br>'
-        self.mes2 = '<br>to the editing Maneuver.<br><br>' \
+        self.boxMes01 = '<p style="font-size:14px;">You requested to apply ' \
+            'parameters optimized for the time<br>{}' \
+            '<br>to the editing Maneuver.<br><br>' \
             'Applied Maneuver should be executed at that time.  ' \
             'You need to adjust preceding Maneuver(s) before execution of '  \
             'this Maneuver.<br><br>' \
             'The time (ISOT format) has been copied to system clipboard.</p>'
         
+        self.initMessages()
+
         for item in paramdesc:
             self.stringitems.append(QTableWidgetItem(item))
         
@@ -129,32 +131,31 @@ class EditManDialog(QDialog):
                 self.initman(type)
                 self.ui.mantype.setCurrentIndex(type)
                 self.ui.mantype.setEnabled(False)
-                self.ui.label_Click.setText('')
+                self.ui.label_Click.hide()
                 self.dispman()
                 self.setenable()
             else:
                 self.editman = None
                 self.ui.mantype.setCurrentIndex(-1)
                 self.ui.mantype.setEnabled(True)
-                self.ui.label_Click.setText('Click & Select')
+                self.ui.label_Click.show()
                 self.dispman()
                 self.setenable()
                 self.ui.mantype.currentIndexChanged.connect(self.mantypeChanged)
         else:
             self.editman = editman.copy()
             self.ui.mantype.setEnabled(False)
-            self.ui.label_Click.setText('')
+            self.ui.label_Click.hide()
             self.dispman()
             self.setenable()
         
-        self.initMessages()
         
     def initMessages(self):
-        self.sysMes01 = 'Modified: End Time by Show Orbit'
-        self.sysMes02 = 'Applied: FTA Results'
-        self.sysMes03 = 'Applied: OPTIMIZE Results'
-        self.sysMes04 = 'Editing: {} Maneuver'
-        self.sysMes05 = ''
+        self.sysMes01 = 'Received: Date and Time from Show Orbit'
+        self.sysMes02 = 'Received: Results from FTA'
+        self.sysMes03 = 'Received: Results from OPTIMIZE'
+        self.sysMes04 = 'Edited: Date and Time'
+        self.sysMes05 = 'Sent: Parameters to Show Orbit'
 
     def setenable(self):
         self.ui.computeFTA.setEnabled(False)
@@ -267,7 +268,7 @@ class EditManDialog(QDialog):
             self.editman = None
             self.dispman()
             self.setenable()
-            self.ui.label_Click.setText('Click & Select')
+            self.ui.label_Click.show()
             if g.showorbitcontrol is not None:
                 g.showorbitcontrol.close()
             QMessageBox.information(self, 'Inappropriate Maneuver Type', 
@@ -275,7 +276,7 @@ class EditManDialog(QDialog):
                 'Select another Maneuver Type.', QMessageBox.Ok)
             return
 
-        self.ui.label_Click.setText('')
+        self.ui.label_Click.hide()
         
         self.initman(newID)
         self.dispman()
@@ -284,6 +285,7 @@ class EditManDialog(QDialog):
         self.setenable()
 
     def editdatetime(self):
+        self.clearSysMes()
         jd = self.editman[self.paramname[0]]
         startjd, endjd = g.mytarget.getsejd()
         duration = False
@@ -296,6 +298,7 @@ class EditManDialog(QDialog):
         if ans == QDialog.Rejected:
             return
 
+        self.dispSysMes(self.sysMes04)
         self.editman[self.paramname[0]] = self.editedjd
         self.enableDateTime(self.editedjd, duration)
         if self.currentrow == g.nextman:
@@ -394,6 +397,10 @@ class EditManDialog(QDialog):
             g.showorbitcontrol.close()
         event.accept()
 
+    def showorbitclicked(self):
+        self.clearSysMes()
+        self.showorbit()
+
     def showorbit(self):
         if not self.applyParameters():
             return
@@ -411,6 +418,7 @@ class EditManDialog(QDialog):
         dv = self.editman['dv']
         phi = self.editman['phi']
         elv = self.editman['elv']
+        self.dispSysMes(self.sysMes05)
         if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
@@ -430,6 +438,7 @@ class EditManDialog(QDialog):
                 "Target's time span", QMessageBox.Ok)
             return
     
+        self.dispSysMes(self.sysMes05)
         if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowStartOrbitDialog(self, self.editman)
             g.showorbitcontrol.show()
@@ -439,6 +448,7 @@ class EditManDialog(QDialog):
         g.showorbitcontrol.set_affect_parent(False)
 
     def showorbitFLYTO(self):
+        self.dispSysMes(self.sysMes05)
         if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
@@ -448,16 +458,18 @@ class EditManDialog(QDialog):
         g.showorbitcontrol.set_affect_parent(True)
             
     def showorbitOTHER(self):
+        self.dispSysMes(self.sysMes05)
         if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
         g.showorbitcontrol.set_pred_dv(0.0, 0.0, 0.0)
-        g.showorbitcontrol.redraw()
+        g.showorbitcontrol.editingRedraw()
         g.showorbitcontrol.ui.groupBox.setEnabled(False)
         g.showorbitcontrol.set_affect_parent(False)
         
             
     def computefta(self):
+        self.clearSysMes()
         norm = lambda x : x / np.sqrt(np.dot(x,x))
         if g.showorbitcontrol is None:
             QMessageBox.information(self, 
@@ -504,6 +516,7 @@ class EditManDialog(QDialog):
                 self.editman['phi'] = phi
                 self.editman['elv'] = elv
                 self.dispman()
+                self.dispSysMes(self.sysMes02)
                 self.showorbit()
                 
                 if g.options['log']:
@@ -578,6 +591,7 @@ class EditManDialog(QDialog):
                 self.editman['phi'] = phi
                 self.editman['elv'] = elv
                 self.dispman()
+                self.dispSysMes(self.sysMes02)
                 self.showorbit()
                 
                 if g.options['log']:
@@ -598,6 +612,7 @@ class EditManDialog(QDialog):
                     g.logfile.writelines(logstring)
         
     def optimize(self):
+        self.clearSysMes()
         g.mainform.init3Dfigure()
         if self.typeID == 0:
             self.start_optimize()
@@ -619,6 +634,7 @@ class EditManDialog(QDialog):
         self.editman['phi'] = dialog.result_phi
         self.editman['elv'] = dialog.result_elv
         self.dispman()
+        self.dispSysMes(self.sysMes03)
         self.showorbit()
         
         if g.options['log']:
@@ -650,13 +666,14 @@ class EditManDialog(QDialog):
         if orgjd != dialog.result_it:
             mantime = common.jd2isot(dialog.result_it)
             g.clipboard.setText(mantime)
-            mes = self.mes1 + mantime + self.mes2
+            mes = self.boxMes01.format(mantime)
             QMessageBox.warning(self, 'Urgent!', mes, QMessageBox.Ok)
 
         self.editman['dv'] = dialog.result_dv
         self.editman['phi'] = dialog.result_phi
         self.editman['elv'] = dialog.result_elv
         self.dispman()
+        self.dispSysMes(self.sysMes03)
         self.showorbit()
 
         if g.options['log']:
@@ -676,13 +693,14 @@ class EditManDialog(QDialog):
                             str(dialog.result_tt - dialog.result_it) + '\n')
             g.logfile.writelines(logstring)
 
-    def gettime(self, jd):
+    def settime(self, jd):
         # this method is called from Show Orbit
         self.editman[self.paramname[0]] = jd
         self.ui.isotedit.setText(common.jd2isot(jd))
         self.ui.jdedit.setText('{:.8f}'.format(jd))
         dt = jd - g.myprobe.jd
         self.ui.duration.setText('{:.8f}'.format(dt))
+        self.dispSysMes(self.sysMes01)
 
     def dispSysMes(self, message):
         self.ui.sysMessage.appendPlainText(message)

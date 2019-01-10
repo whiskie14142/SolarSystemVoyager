@@ -159,6 +159,7 @@ class MainForm(QMainWindow):
         self.sysMes11 = 'Erased: Checkpoint'
         self.sysMes12 = 'Inserted: Line {}'
         self.sysMes13 = 'Deleted: Line {}'
+        self.sysMes14 = 'Sent: Orbit to Show Orbit'
         
     def initConstants(self):
         self.defaultFileName = 'newplan'
@@ -639,16 +640,18 @@ class MainForm(QMainWindow):
             self.ui.manplans.selectRow(self.currentrow)
             
             self.init3Dfigure()
+            self.ui.showOrbit.setEnabled(True)
             if g.showorbitcontrol is None:
                 self.showorbit()
-                self.ui.showOrbit.setEnabled(True)
+            else:
+                self.dispSysMes(self.sysMes14)
+                g.showorbitcontrol.ssvgReset()
         else:
             QMessageBox.information(self, 'Info', 
                                 "Cannot Execute this Maneuver.\n\n"    \
                                 + emes, QMessageBox.Ok)
             return False
-
-        g.showorbitcontrol.reset()
+        
         self.dispcurrentstatus()
         self.ui.menuCheckpoint.setEnabled(True)
         return True
@@ -710,8 +713,8 @@ class MainForm(QMainWindow):
         if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowOrbitDialog(self)
             g.showorbitcontrol.show()
-        else:
-            g.showorbitcontrol.redraw()
+        self.dispSysMes(self.sysMes14)
+        g.showorbitcontrol.ssvgRedraw()
         g.showorbitcontrol.set_affect_parent(False)
 
     def manplanscellchanged(self, newrow, newcolm, prevrow, prevcolm):
@@ -752,10 +755,6 @@ class MainForm(QMainWindow):
         editdialog = EditManDialog(self, man, self.currentrow)
         ans = editdialog.exec_()
         
-        if g.nextman > 0:
-            self.showorbit()
-            self.ui.showOrbit.setEnabled(True)
-
         if ans == QDialog.Rejected:
             return
         if g.editedman['type'] == 'START' and self.currentrow != 0:
@@ -777,8 +776,12 @@ class MainForm(QMainWindow):
                                      QMessageBox.Ok)
                 return
 
-        g.manplan_saved = False
         self.dispSysMes(self.sysMes02.format(self.currentrow+1))
+        if g.nextman > 0:
+            self.showorbit()
+            self.ui.showOrbit.setEnabled(True)
+
+        g.manplan_saved = False
         if self.currentrow < len(g.maneuvers):
             g.maneuvers[self.currentrow] = g.editedman
             if self.currentrow < g.nextman:

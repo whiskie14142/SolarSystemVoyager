@@ -62,8 +62,32 @@ class ShowOrbitDialog(QDialog):
         self.reset()
         
         self.affect_parent = False
+        self.initMessage()
         
-        self.sysMes01 = 'Applied: Parameters from Maneuver Editor'
+    def initMessage(self):
+        self.sysMes01 = 'Received: Parameters from Maneuver Editor'
+        self.sysMes02 = 'Received: Orbit from SSVG'
+        self.sysMes03 = 'Sent: Date and Time to Maneuver Editor'
+        self.sysMes04 = 'Out of Range: Prediction Time'
+
+    def ssvgReset(self):
+        # this method is called by SSVG
+        self.dv = 0.0
+        self.phi = 0.0
+        self.elv = 0.0
+        self.delta_jd = 0.0
+        self.ui.groupBox.setEnabled(False)
+        
+        if g.myprobe.onflight:
+            jd = g.myprobe.jd
+        else:
+            tsjd, tejd = g.mytarget.getsejd()
+            jd = (tsjd + tejd) * 0.5
+        xs, ys, zs, ts = g.mytarget.points(jd, g.ndata)
+        g.target_Kepler = [xs, ys, zs]
+        
+        self.dispSysMes(self.sysMes02)
+        self.redraw()
 
     def reset(self):
         self.dv = 0.0
@@ -83,7 +107,13 @@ class ShowOrbitDialog(QDialog):
         self.redraw()
 
     def editingRedraw(self):
+        # this method is called by Maneuver Editor
         self.dispSysMes(self.sysMes01)
+        self.redraw()
+    
+    def ssvgRedraw(self):
+        # this method is called by SSVG
+        self.dispSysMes(self.sysMes02)
         self.redraw()
         
     def redraw(self):
@@ -146,6 +176,7 @@ class ShowOrbitDialog(QDialog):
         # Check time
         tsjd, tejd = g.mytarget.getsejd()
         if tempjd < tsjd or tempjd >= tejd:
+            self.dispSysMes(self.sysMes04)
             return
         
         probe_pos, probe_vel = self.tbpred.posvelatt(tempjd)
@@ -214,13 +245,13 @@ class ShowOrbitDialog(QDialog):
         self.dv = dv
         self.phi = phi
         self.elv = elv
-        self.redraw()
+#        self.redraw()
 
     def set_pred_DT(self, jd):
         dt = jd - self.jd
         self.ui.delta_t_edit.setText('{:.8f}'.format(dt))
         self.delta_jd = dt
-        self.dtapply()
+#        self._redrawmark()
 
     def get_pred_jd(self):
         return self.jd + self.delta_jd
@@ -232,7 +263,7 @@ class ShowOrbitDialog(QDialog):
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
         self._redrawmark()
         if self.affect_parent:
-            self.mother.gettime(self.jd + self.delta_jd)
+            self.mother.settime(self.jd + self.delta_jd)
         
     def backward(self):
         self.clearSysMes()
@@ -241,7 +272,7 @@ class ShowOrbitDialog(QDialog):
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
         self._redrawmark()
         if self.affect_parent:
-            self.mother.gettime(self.jd + self.delta_jd)
+            self.mother.settime(self.jd + self.delta_jd)
         
     def fastforward(self):
         self.clearSysMes()
@@ -250,7 +281,7 @@ class ShowOrbitDialog(QDialog):
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
         self._redrawmark()
         if self.affect_parent:
-            self.mother.gettime(self.jd + self.delta_jd)
+            self.mother.settime(self.jd + self.delta_jd)
 
     def fastbackward(self):
         self.clearSysMes()
@@ -259,9 +290,10 @@ class ShowOrbitDialog(QDialog):
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
         self._redrawmark()
         if self.affect_parent:
-            self.mother.gettime(self.jd + self.delta_jd)
+            self.mother.settime(self.jd + self.delta_jd)
         
     def _statuschanged(self):
+        self.clearSysMes()
         erase_Ptrj()
         if self.ui.check_Ptrj.isChecked():
             draw_Ptrj()
@@ -291,7 +323,7 @@ class ShowOrbitDialog(QDialog):
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
         self._redrawmark()
         if self.affect_parent:
-            self.mother.gettime(self.jd + self.delta_jd)
+            self.mother.settime(self.jd + self.delta_jd)
 
     def closeEvent(self, event):
         g.showorbitcontrol = None
