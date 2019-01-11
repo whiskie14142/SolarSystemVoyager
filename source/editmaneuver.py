@@ -46,7 +46,6 @@ class EditManDialog(QDialog):
         super().__init__(parent)
         left = g.mainform.geometry().left()
         top = g.mainform.geometry().top()
-        self.name = 'editman'
         self.setGeometry(left, top+380, 640, 320)
         self.ui = Ui_editmandialog()
         self.ui.setupUi(self)
@@ -167,15 +166,15 @@ class EditManDialog(QDialog):
             
         self.ui.finishbutton.setEnabled(True)
         
-        ftaandopt = (self.typeID == 0 and self.currentrow == 0) or \
+        ftaandopt = (self.typeID == 0 and self.currentrow == g.nextman) or \
             (self.typeID == 1 and self.currentrow == g.nextman and 
             g.myprobe.onflight)
         if ftaandopt:
             self.ui.computeFTA.setEnabled(True)
             self.ui.optimize.setEnabled(True)
 
-        buttons = (self.typeID == 0 and self.currentrow == 0) or \
-            (self.currentrow == g.nextman and g.myprobe.onflight)
+        buttons = (self.currentrow == g.nextman) and \
+                  (g.myprobe.onflight or self.typeID == 0)
         if buttons:
             self.ui.showorbit.setEnabled(True)
             self.ui.finish_exec.setEnabled(True)
@@ -388,11 +387,6 @@ class EditManDialog(QDialog):
         g.logfile.writelines(logstring)
         
     def closeEvent(self, event):
-        ans = QMessageBox.question(self, 'Exit Editor', 'Discard changes?', 
-            QMessageBox.Discard | QMessageBox.Cancel, QMessageBox.Cancel)
-        if ans == QMessageBox.Cancel :
-            event.ignore()
-            return
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
         event.accept()
@@ -442,8 +436,7 @@ class EditManDialog(QDialog):
         if g.showorbitcontrol is None:
             g.showorbitcontrol = ShowStartOrbitDialog(self, self.editman)
             g.showorbitcontrol.show()
-        else:
-            g.showorbitcontrol.editingRedraw()
+        g.showorbitcontrol.editingRedraw()
         g.showorbitcontrol.ui.groupBox.setEnabled(True)
         g.showorbitcontrol.set_affect_parent(False)
 

@@ -69,6 +69,7 @@ class ShowOrbitDialog(QDialog):
         self.sysMes02 = 'Received: Orbit from SSVG'
         self.sysMes03 = 'Sent: Date and Time to Maneuver Editor'
         self.sysMes04 = 'Out of Range: Prediction Time'
+        self.sysMes05 = 'Failed: Prediction of Orbit'
 
     def ssvgReset(self):
         # this method is called by SSVG
@@ -120,11 +121,11 @@ class ShowOrbitDialog(QDialog):
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 
                                     'You have no valid probe.', QMessageBox.Ok)
-            return
+            return False
         if not g.myprobe.onflight:
             QMessageBox.information(self, 'Info', 
                                     'Your probe has no valid orbit.', QMessageBox.Ok)
-            return
+            return False
 
         self.jd = g.myprobe.jd
         self.ui.currentdate.setText(common.jd2isot(self.jd))
@@ -159,7 +160,7 @@ class ShowOrbitDialog(QDialog):
         self.ui.man_elv.setText('{:.2f}'.format(self.elv))
 
         self.restore_settings()
-        self._redrawmark()
+        return self._redrawmark()
 
     def _redrawmark(self):
         tempjd = self.jd + self.delta_jd
@@ -177,9 +178,14 @@ class ShowOrbitDialog(QDialog):
         tsjd, tejd = g.mytarget.getsejd()
         if tempjd < tsjd or tempjd >= tejd:
             self.dispSysMes(self.sysMes04)
-            return
+            return False
+
+        try:
+            probe_pos, probe_vel = self.tbpred.posvelatt(tempjd)
+        except RuntimeError:
+            self.dispSysMes(self.sysMes05)
+            return False
         
-        probe_pos, probe_vel = self.tbpred.posvelatt(tempjd)
         self.target_pos, target_vel = g.mytarget.posvel(tempjd)
         
         sunpos = common.SPKkernel[0, 10].compute(tempjd)
@@ -240,6 +246,8 @@ class ShowOrbitDialog(QDialog):
         self.ui.RVTphi.setText('{:.2f}'.format(tvphi))
         self.ui.RVTelv.setText('{:.2f}'.format(tvelv))
         self.ui.LoSVvel.setText('{:.3f}'.format(losvel))
+        
+        return True
 
     def set_pred_dv(self, dv, phi, elv):
         self.dv = dv
@@ -261,36 +269,40 @@ class ShowOrbitDialog(QDialog):
         exp = self.ui.timescale.value()
         self.delta_jd += 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
-        self._redrawmark()
-        if self.affect_parent:
-            self.mother.settime(self.jd + self.delta_jd)
+        if self._redrawmark():
+            if self.affect_parent:
+                self.dispSysMes(self.sysMes03)
+                self.mother.settime(self.jd + self.delta_jd)
         
     def backward(self):
         self.clearSysMes()
         exp = self.ui.timescale.value()
         self.delta_jd -= 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
-        self._redrawmark()
-        if self.affect_parent:
-            self.mother.settime(self.jd + self.delta_jd)
+        if self._redrawmark():
+            if self.affect_parent:
+                self.dispSysMes(self.sysMes03)
+                self.mother.settime(self.jd + self.delta_jd)
         
     def fastforward(self):
         self.clearSysMes()
         exp = self.ui.timescale.value() + 1
         self.delta_jd += 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
-        self._redrawmark()
-        if self.affect_parent:
-            self.mother.settime(self.jd + self.delta_jd)
+        if self._redrawmark():
+            if self.affect_parent:
+                self.dispSysMes(self.sysMes03)
+                self.mother.settime(self.jd + self.delta_jd)
 
     def fastbackward(self):
         self.clearSysMes()
         exp = self.ui.timescale.value() + 1
         self.delta_jd -= 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
-        self._redrawmark()
-        if self.affect_parent:
-            self.mother.settime(self.jd + self.delta_jd)
+        if self._redrawmark():
+            if self.affect_parent:
+                self.dispSysMes(self.sysMes03)
+                self.mother.settime(self.jd + self.delta_jd)
         
     def _statuschanged(self):
         self.clearSysMes()
@@ -321,9 +333,10 @@ class ShowOrbitDialog(QDialog):
             return
         self.delta_jd = value
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
-        self._redrawmark()
-        if self.affect_parent:
-            self.mother.settime(self.jd + self.delta_jd)
+        if self._redrawmark():
+            if self.affect_parent:
+                self.dispSysMes(self.sysMes03)
+                self.mother.settime(self.jd + self.delta_jd)
 
     def closeEvent(self, event):
         g.showorbitcontrol = None

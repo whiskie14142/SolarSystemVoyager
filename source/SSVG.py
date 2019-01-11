@@ -145,6 +145,9 @@ class MainForm(QMainWindow):
         self.eraseselectedman()
         self.initSSV()
         
+        # Suppress all RuntimeWarnings from Numpy
+        np.warnings.filterwarnings('ignore')
+        
     def initMessage(self):
         self.sysMes01 = 'Saved: {}'
         self.sysMes02 = 'Edited: Line {}'
@@ -163,10 +166,9 @@ class MainForm(QMainWindow):
         
     def initConstants(self):
         self.defaultFileName = 'newplan'
-        self.name = 'main'
 
     def initSSV(self):
-        g.version = '1.2.1'
+        g.version = '1.2.2'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -756,6 +758,8 @@ class MainForm(QMainWindow):
         ans = editdialog.exec_()
         
         if ans == QDialog.Rejected:
+            if g.myprobe.onflight:
+                self.showorbit()
             return
         if g.editedman['type'] == 'START' and self.currentrow != 0:
             QMessageBox.information(self, 'Info', 
@@ -778,7 +782,6 @@ class MainForm(QMainWindow):
 
         self.dispSysMes(self.sysMes02.format(self.currentrow+1))
         if g.nextman > 0:
-            self.showorbit()
             self.ui.showOrbit.setEnabled(True)
 
         g.manplan_saved = False
@@ -795,7 +798,11 @@ class MainForm(QMainWindow):
         self.dispselectedman()
             
         if ans == g.finish_exec:
-            self.execnext()
+            if (not self.execnext()) and g.nextman > 0:
+                self.showorbit()
+        else:
+            if g.nextman > 0:
+                self.showorbit()
         self.dispmanfilename()
             
     def insertman(self):

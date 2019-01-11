@@ -546,8 +546,8 @@
   <widget class="QPushButton" name="clearstat">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>560</y>
+     <x>271</x>
+     <y>570</y>
      <width>91</width>
      <height>23</height>
     </rect>
@@ -651,8 +651,8 @@
   <widget class="QPushButton" name="reopenbutton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>625</y>
+     <x>510</x>
+     <y>20</y>
      <width>91</width>
      <height>23</height>
     </rect>
@@ -835,7 +835,7 @@ Range</string>
    <widget class="QLabel" name="label_itto">
     <property name="geometry">
      <rect>
-      <x>505</x>
+      <x>520</x>
       <y>20</y>
       <width>71</width>
       <height>16</height>
@@ -896,7 +896,7 @@ Range</string>
    <widget class="QLabel" name="label_itfrom">
     <property name="geometry">
      <rect>
-      <x>5</x>
+      <x>10</x>
       <y>20</y>
       <width>71</width>
       <height>16</height>
@@ -1137,7 +1137,7 @@ Range</string>
    <widget class="QLabel" name="label_ttto">
     <property name="geometry">
      <rect>
-      <x>517</x>
+      <x>520</x>
       <y>30</y>
       <width>71</width>
       <height>16</height>
@@ -1289,7 +1289,7 @@ Range</string>
    <widget class="QLabel" name="label_ttfrom">
     <property name="geometry">
      <rect>
-      <x>17</x>
+      <x>10</x>
       <y>30</y>
       <width>71</width>
       <height>16</height>
@@ -1440,6 +1440,30 @@ Range</string>
     <string>Adjust Flight Time</string>
    </property>
   </widget>
+  <widget class="QPlainTextEdit" name="sysMessage">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>563</y>
+     <width>211</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="toolTip">
+    <string>System Messages</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+  </widget>
   <zorder>starttime</zorder>
   <zorder>label_3</zorder>
   <zorder>label_9</zorder>
@@ -1471,6 +1495,7 @@ Range</string>
   <zorder>label_initialtime</zorder>
   <zorder>frame</zorder>
   <zorder>label_5</zorder>
+  <zorder>sysMessage</zorder>
  </widget>
  <tabstops>
   <tabstop>tobarycenter</tabstop>
@@ -1480,6 +1505,7 @@ Range</string>
   <tabstop>check_Ppred</tabstop>
   <tabstop>check_TKepler</tabstop>
   <tabstop>check_Ptrj</tabstop>
+  <tabstop>reopenbutton</tabstop>
   <tabstop>fixed_to_ct</tabstop>
   <tabstop>it_fb</tabstop>
   <tabstop>sl_inittime</tabstop>
@@ -1498,7 +1524,6 @@ Range</string>
   <tabstop>tt_wide</tabstop>
   <tabstop>tt_narrow</tabstop>
   <tabstop>clearstat</tabstop>
-  <tabstop>reopenbutton</tabstop>
   <tabstop>finishbutton</tabstop>
   <tabstop>cancelbutton</tabstop>
  </tabstops>

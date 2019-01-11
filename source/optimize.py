@@ -54,6 +54,8 @@ class StartOptimizeDialog(QDialog):
         g.ax.set_ylim(-3.0e11, 3.0e11)
         g.ax.set_zlim(-3.0e11, 3.0e11)
         
+        self.initMessage()
+        
         self.initdialog()
         self.initforCPoptimize()
         self.predorbit = TwoBodyPred('optimize')
@@ -92,6 +94,10 @@ class StartOptimizeDialog(QDialog):
         self.ui.finishbutton.clicked.connect(self.finishbutton)
         self.ui.cancelbutton.clicked.connect(self.cancelbutton)
         
+    def initMessage(self):
+        self.sysMes01 = 'Out of Range: Start Time'
+        self.sysMes02 = 'Out of Range: Arrival Time'
+        self.sysMes03 = 'Failed: Finding Orbit'
     
     def initdialog(self):
         self.sl_minval = 0
@@ -141,6 +147,7 @@ class StartOptimizeDialog(QDialog):
         self.fixedorbitchanged()
         
     def draworbit(self):
+        self.clearSysMes()
         self.ui.finishbutton.setEnabled(False)        
         
         # erase positions and orbit
@@ -160,8 +167,10 @@ class StartOptimizeDialog(QDialog):
         # Check time
         tsjd, tejd = g.mytarget.getsejd()
         if self.itcurrent < tsjd or self.itcurrent >= tejd:
+            self.dispSysMes(self.sysMes01)
             return
         if self.ttcurrent < tsjd or self.ttcurrent >= tejd:
+            self.dispSysMes(self.sysMes02)
             return
 
         ppos, pvel = self.orgorbposvel(self.itcurrent)
@@ -174,11 +183,13 @@ class StartOptimizeDialog(QDialog):
         ttpos, ttvel = g.mytarget.posvel(self.ttcurrent)
         self.predorbit.fix_state(self.itcurrent, ppos, pvel)
         if self.itcurrent + common.minft >= self.ttcurrent:
+            self.dispSysMes(self.sysMes03)
             return
         try:
             dv, phi, elv, ivel, tvel = self.predorbit.ftavel(self.ttcurrent, 
                                                              ttpos)
         except ValueError:
+            self.dispSysMes(self.sysMes03)
             return
 
         self.predorbit.fix_state(self.itcurrent, ppos, ivel)
@@ -566,6 +577,13 @@ class StartOptimizeDialog(QDialog):
 
     def orgorbposvel(self, jd):
         return g.myprobe.pseudostart(jd, 0.0, 0.0, 0.0)
+    
+    def dispSysMes(self, message):
+        self.ui.sysMessage.appendPlainText(message)
+        
+    def clearSysMes(self):
+        self.ui.sysMessage.clear()
+        
 
 
 
@@ -573,6 +591,11 @@ class CpOptimizeDialog(StartOptimizeDialog):
     """class for the CP Optimize Assistant
     """
 
+    def initMessage(self):
+        self.sysMes01 = 'Out of Range: Maneuver Time'
+        self.sysMes02 = 'Out of Range: Arrival Time'
+        self.sysMes03 = 'Failed: Finding Orbit'
+    
     def initforCPoptimize(self):
         self.setWindowTitle('CP Optimize Assistant')
         self.ui.fixed_to_ct.setChecked(True)
