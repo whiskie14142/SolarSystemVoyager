@@ -144,17 +144,24 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>521</x>
-      <y>238</y>
+      <x>520</x>
+      <y>228</y>
       <width>101</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="toolTip">
      <string>Execute 'Next' Maneuver</string>
     </property>
     <property name="text">
-     <string>EXEC Next</string>
+     <string>EXECUTE</string>
     </property>
    </widget>
    <widget class="QPushButton" name="insertMan">
@@ -164,7 +171,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>130</y>
+      <y>140</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -208,7 +215,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>100</y>
+      <y>110</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -236,7 +243,7 @@
      <string>Execute multiple Maneuvers</string>
     </property>
     <property name="text">
-     <string>EXEC to *</string>
+     <string>EXECUTE *</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -316,7 +323,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>160</y>
+      <y>170</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -372,11 +379,18 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>521</x>
+      <x>520</x>
       <y>70</y>
       <width>101</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="toolTip">
      <string>Edit 'Next' Maneuver</string>
@@ -401,7 +415,7 @@
      <string>Clear Execution State</string>
     </property>
     <property name="text">
-     <string>CLEAR EX</string>
+     <string>CLEAR</string>
     </property>
    </widget>
    <widget class="QPushButton" name="reviewthroughout">
