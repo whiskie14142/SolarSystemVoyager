@@ -56,6 +56,7 @@ class EditManDialog(QDialog):
         self.ui.computeFTA.clicked.connect(self.computefta)
         self.ui.optimize.clicked.connect(self.optimize)
         self.ui.EditDateTime.clicked.connect(self.editdatetime)
+        self.ui.parameters.cellChanged.connect(self.cellChanged)
         
         self.types = ['START', 'CP', 'EP_ON', 'EP_OFF', 'SS_ON', 'SS_OFF', 
                       'FLYTO']
@@ -117,10 +118,13 @@ class EditManDialog(QDialog):
             self.ui.mantype.addItem(item)
         self.ui.parameters.setColumnWidth(0,250)
         self.ui.parameters.setColumnWidth(1,100)
+        
+        self.ui.parameters.cellChanged.disconnect(self.cellChanged)
         for i in range(1, 9):
             row = i - 1
             self.ui.parameters.setItem(row, 0, self.stringitems[i])
             self.ui.parameters.item(row, 0).setFlags(Qt.ItemIsEnabled)
+        self.ui.parameters.cellChanged.connect(self.cellChanged)
         
         self.currentrow = currentrow
 
@@ -148,13 +152,13 @@ class EditManDialog(QDialog):
             self.dispman()
             self.setenable()
         
-        
     def initMessages(self):
         self.sysMes01 = 'Received: Date and Time from Show Orbit'
         self.sysMes02 = 'Received: Results from FTA'
         self.sysMes03 = 'Received: Results from OPTIMIZE'
         self.sysMes04 = 'Edited: Date and Time'
         self.sysMes05 = 'Sent: Parameters to Show Orbit'
+        self.sysMes06 = 'Edited: Parameter {}'
 
     def setenable(self):
         self.ui.computeFTA.setEnabled(False)
@@ -202,6 +206,8 @@ class EditManDialog(QDialog):
                 self.editman[self.paramname[i]] = ival[i]
         
     def dispman(self):
+        self.ui.parameters.cellChanged.disconnect(self.cellChanged)
+        
         if self.editman is None:
             self.typeID = -1
             self.disableDateTime()
@@ -237,6 +243,7 @@ class EditManDialog(QDialog):
                     self.ui.parameters.setItem(row, 1, QTableWidgetItem(''))
                     self.ui.parameters.item(row, 1).setFlags(Qt.NoItemFlags)
                     self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
+        self.ui.parameters.cellChanged.connect(self.cellChanged)
     
     def enableDateTime(self, jd, duration):
         self.ui.frameDT.setEnabled(True)
@@ -368,6 +375,9 @@ class EditManDialog(QDialog):
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
         self.reject()
+    
+    def cellChanged(self, row, column):
+        self.dispSysMes(self.sysMes06.format(self.paramname[row+1]))
 
     def writeloglines(self):
         if not g.options['log']:

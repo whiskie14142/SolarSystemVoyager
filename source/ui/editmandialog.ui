@@ -34,8 +34,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>10</y>
+     <x>370</x>
+     <y>4</y>
      <width>111</width>
      <height>21</height>
     </rect>
@@ -50,8 +50,8 @@
   <widget class="QComboBox" name="mantype">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>10</y>
+     <x>404</x>
+     <y>24</y>
      <width>111</width>
      <height>24</height>
     </rect>
@@ -76,9 +76,9 @@
   <widget class="QLabel" name="label_time">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>70</y>
-     <width>71</width>
+     <x>20</x>
+     <y>8</y>
+     <width>101</width>
      <height>16</height>
     </rect>
    </property>
@@ -86,29 +86,29 @@
     <string>Date &amp; Time</string>
    </property>
    <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>170</y>
-     <width>71</width>
-     <height>31</height>
+     <x>20</x>
+     <y>100</y>
+     <width>101</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
     <string>Parameters</string>
    </property>
    <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QTableWidget" name="parameters">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>20</x>
      <y>120</y>
      <width>352</width>
      <height>162</height>
@@ -174,7 +174,7 @@
   <widget class="QPushButton" name="cancelbutton">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>520</x>
      <y>290</y>
      <width>91</width>
      <height>23</height>
@@ -196,8 +196,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>40</y>
+     <x>520</x>
+     <y>80</y>
      <width>91</width>
      <height>23</height>
     </rect>
@@ -218,8 +218,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>80</y>
+     <x>520</x>
+     <y>120</y>
      <width>91</width>
      <height>23</height>
     </rect>
@@ -262,8 +262,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>120</y>
+     <x>520</x>
+     <y>160</y>
      <width>91</width>
      <height>23</height>
     </rect>
@@ -281,8 +281,8 @@
   <widget class="QLabel" name="label_Click">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>10</y>
+     <x>520</x>
+     <y>24</y>
      <width>111</width>
      <height>21</height>
     </rect>
@@ -300,9 +300,9 @@
   <widget class="QPlainTextEdit" name="sysMessage">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>420</x>
      <y>210</y>
-     <width>191</width>
+     <width>211</width>
      <height>71</height>
     </rect>
    </property>
@@ -336,8 +336,8 @@
   <widget class="QFrame" name="frameDT">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>40</y>
+     <x>20</x>
+     <y>24</y>
      <width>351</width>
      <height>71</height>
     </rect>
@@ -515,10 +515,10 @@
  </widget>
  <tabstops>
   <tabstop>mantype</tabstop>
-  <tabstop>EditDateTime</tabstop>
   <tabstop>showorbit</tabstop>
   <tabstop>computeFTA</tabstop>
   <tabstop>optimize</tabstop>
+  <tabstop>EditDateTime</tabstop>
   <tabstop>finish_exec</tabstop>
   <tabstop>finishbutton</tabstop>
   <tabstop>cancelbutton</tabstop>
