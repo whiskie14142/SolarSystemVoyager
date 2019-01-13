@@ -85,7 +85,7 @@ class Ui_editmandialog(object):
         self.label_Click.setFont(font)
         self.label_Click.setObjectName("label_Click")
         self.sysMessage = QtWidgets.QPlainTextEdit(editmandialog)
-        self.sysMessage.setGeometry(QtCore.QRect(420, 210, 211, 71))
+        self.sysMessage.setGeometry(QtCore.QRect(390, 210, 241, 71))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.sysMessage.setFont(font)

@@ -151,18 +151,18 @@ class MainForm(QMainWindow):
     def initMessage(self):
         self.sysMes01 = 'Saved: {}'
         self.sysMes02 = 'Edited: Line {}'
-        self.sysMes03 = 'Executed: {0} on {1}'
+        self.sysMes03 = 'Executed: {0}, Line {1}'
         self.sysMes04 = 'Cleared: Execution State'
         self.sysMes05 = 'Created: Flight Plan'
         self.sysMes06 = 'Opened: {}'
-        self.sysMes07 = 'Edited: Probe of {}'
-        self.sysMes08 = 'Edited: Target of {}'
+        self.sysMes07 = 'Edited: Probe, of {}'
+        self.sysMes08 = 'Edited: Target, of {}'
         self.sysMes09 = 'Created: Checkpoint'
         self.sysMes10 = 'Resumed: Checkpoint'
         self.sysMes11 = 'Erased: Checkpoint'
         self.sysMes12 = 'Inserted: Line {}'
         self.sysMes13 = 'Deleted: Line {}'
-        self.sysMes14 = 'Sent: Orbit to Show Orbit'
+        self.sysMes14 = 'Sent: Orbit, to Show Orbit'
         
     def initConstants(self):
         self.defaultFileName = 'newplan'

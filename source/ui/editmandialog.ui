@@ -300,9 +300,9 @@
   <widget class="QPlainTextEdit" name="sysMessage">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>390</x>
      <y>210</y>
-     <width>211</width>
+     <width>241</width>
      <height>71</height>
     </rect>
    </property>
