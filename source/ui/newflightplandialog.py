@@ -96,7 +96,7 @@ class Ui_NewFlightPlanDialog(object):
         font = QtGui.QFont()
         font.setFamily("Lucida Console")
         self.spkfilepath.setFont(font)
-        self.spkfilepath.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.spkfilepath.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.spkfilepath.setFrame(False)
         self.spkfilepath.setReadOnly(True)
         self.spkfilepath.setObjectName("spkfilepath")

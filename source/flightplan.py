@@ -38,17 +38,12 @@ class NewFlightPlanDialog(QDialog):
         self.ui = Ui_NewFlightPlanDialog()
         self.ui.setupUi(self)
         
-        spacebaselist = []
-        for baseitem in common.bases:
-            spacebaselist.append(baseitem[0])
-        self.ui.spacebase.addItems(spacebaselist)
+        self.ui.spacebase.addItems(g.i_spacebases)
         self.ui.spacebase.setCurrentIndex(1)
         
-        for planet_id in common.planets_id:
-            if planet_id[1] == 'EMB': continue
-            if planet_id[1] == 'Sun': continue
-            self.ui.planets.addItem(planet_id[1])
-        self.ui.planets.setCurrentIndex(0)
+        for planet in g.i_planetnames:
+            self.ui.planets.addItem(planet[0])
+        self.ui.planets.setCurrentIndex(2)
         
         self.ui.planetbutton.clicked.connect(self.planetbuttonclicked)
         self.ui.smallbodybutton.clicked.connect(self.planetbuttonclicked)
@@ -131,7 +126,8 @@ class NewFlightPlanDialog(QDialog):
         
         probe = {}
         probe['name'] = self.ui.probename.text()
-        probe['base'] = self.ui.spacebase.currentText()
+        ix = self.ui.spacebase.currentIndex()
+        probe['base'] = common.bases[ix][0]
         try:
             mass = float(self.ui.probemass.text())
         except ValueError:
@@ -146,7 +142,8 @@ class NewFlightPlanDialog(QDialog):
         
         target = {}
         if self.ui.planetbutton.isChecked():
-            target['name'] = self.ui.planets.currentText()
+            ix = self.ui.planets.currentIndex()
+            target['name'] = common.planets_id[g.i_planetnames[ix][1]][1]
             target['file'] = ''
             target['SPKID1A'] = 0
             g.data_type = 0
@@ -200,7 +197,10 @@ class EditProbeDialog(NewFlightPlanDialog):
         target = self.manplan['target']
         self.ui.probename.setText(probe['name'])
         self.ui.probemass.setText('{:.3f}'.format(probe['pmass']))
-        index = self.ui.spacebase.findText(probe['base'])
+        for ix in range(16):
+            if common.bases[ix][0] == probe['base']:
+                index = ix
+                break
         self.ui.spacebase.setCurrentIndex(index)
         
         if target['file'] != '':
@@ -209,13 +209,21 @@ class EditProbeDialog(NewFlightPlanDialog):
             self.ui.planets.setEnabled(False)
             self.ui.targetgroupbox.setEnabled(True)
             self.ui.targetname.setText(target['name'])
+            
+            
             self.ui.spkfilepath.setText(target['file'])
             combo = self.ui.spkid_list
             combo.clear()
             combo.addItem(str(target['SPKID1B']))
             combo.setCurrentIndex(0)
         else:
-            index = self.ui.planets.findText(target['name'])
+            for ix in range(12):
+                if target['name'] == common.planets_id[ix][1]:
+                    for iy in range(10):
+                        if g.i_planetnames[iy][1] == ix:
+                            index = iy
+                            break
+                    break
             self.ui.planets.setCurrentIndex(index)
         
         self.center = target['SPKID1A']
@@ -226,7 +234,8 @@ class EditProbeDialog(NewFlightPlanDialog):
     def ok_clicked(self):
         probe = {}
         probe['name'] = self.ui.probename.text()
-        probe['base'] = self.ui.spacebase.currentText()
+        index = self.ui.spacebase.currentIndex()
+        probe['base'] = common.bases[index][0]
         try:
             mass = float(self.ui.probemass.text())
         except ValueError:
@@ -253,7 +262,10 @@ class EditTargetDialog(NewFlightPlanDialog):
         target = self.manplan['target']
         self.ui.probename.setText(probe['name'])
         self.ui.probemass.setText('{:.3f}'.format(probe['pmass']))
-        index = self.ui.spacebase.findText(probe['base'])
+        for ix in range(16):
+            if common.bases[ix][0] == probe['base']:
+                index = ix
+                break
         self.ui.spacebase.setCurrentIndex(index)
         
         if target['file'] != '':
@@ -309,7 +321,13 @@ class EditTargetDialog(NewFlightPlanDialog):
                 combo.setCurrentIndex(index)
                 tempk.close()
         else:
-            index = self.ui.planets.findText(target['name'])
+            for ix in range(12):
+                if target['name'] == common.planets_id[ix][1]:
+                    for iy in range(10):
+                        if g.i_planetnames[iy][1] == ix:
+                            index = iy
+                            break
+                    break
             self.ui.planets.setCurrentIndex(index)
         
         self.center = target['SPKID1A']
@@ -320,7 +338,8 @@ class EditTargetDialog(NewFlightPlanDialog):
     def ok_clicked(self):
         target = {}
         if self.ui.planetbutton.isChecked():
-            target['name'] = self.ui.planets.currentText()
+            ix = self.ui.planets.currentIndex()
+            target['name'] = common.planets_id[g.i_planetnames[ix][1]][1]
             target['file'] = ''
             target['SPKID1A'] = 0
             g.data_type = 0

@@ -131,7 +131,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -158,7 +158,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -348,7 +348,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -375,7 +375,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -488,7 +488,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -515,7 +515,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -577,7 +577,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -604,7 +604,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string/>
@@ -924,7 +924,7 @@ Range</string>
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="acceptDrops">
      <bool>false</bool>
@@ -1091,7 +1091,7 @@ Range</string>
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="acceptDrops">
      <bool>false</bool>
@@ -1271,7 +1271,7 @@ Range</string>
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="acceptDrops">
      <bool>false</bool>
@@ -1455,7 +1455,7 @@ Range</string>
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string>System Messages</string>

@@ -97,6 +97,9 @@
     <property name="cursor" stdset="0">
      <cursorShape>IBeamCursor</cursorShape>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="acceptDrops">
      <bool>false</bool>
     </property>

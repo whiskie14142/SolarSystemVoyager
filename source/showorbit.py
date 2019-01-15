@@ -65,11 +65,11 @@ class ShowOrbitDialog(QDialog):
         self.initMessage()
         
     def initMessage(self):
-        self.sysMes01 = 'Received: Parameters from Maneuver Editor'
-        self.sysMes02 = 'Received: Orbit from SSVG'
-        self.sysMes03 = 'Sent: Date and Time to Maneuver Editor'
+        self.sysMes01 = 'Received: Parameters, from Maneuver Editor'
+        self.sysMes02 = 'Received: Orbit, from SSVG'
+        self.sysMes03 = 'Sent: Date and Time, to Maneuver Editor'
         self.sysMes04 = 'Out of Range: Prediction Time'
-        self.sysMes05 = 'Failed: Prediction of Orbit'
+        self.sysMes05 = 'Failed: Prediction, Position of Probe'
 
     def ssvgReset(self):
         # this method is called by SSVG

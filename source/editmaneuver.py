@@ -153,11 +153,11 @@ class EditManDialog(QDialog):
             self.setenable()
         
     def initMessages(self):
-        self.sysMes01 = 'Received: Date and Time from Show Orbit'
-        self.sysMes02 = 'Received: Results from FTA'
-        self.sysMes03 = 'Received: Results from OPTIMIZE'
+        self.sysMes01 = 'Received: Date and Time, from Show Orbit'
+        self.sysMes02 = 'Received: Results, from FTA'
+        self.sysMes03 = 'Received: Results, from OPTIMIZE'
         self.sysMes04 = 'Edited: Date and Time'
-        self.sysMes05 = 'Sent: Parameters to Show Orbit'
+        self.sysMes05 = 'Sent: Parameters, to Show Orbit'
         self.sysMes06 = 'Edited: Parameter {}'
 
     def setenable(self):

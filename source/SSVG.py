@@ -149,6 +149,7 @@ class MainForm(QMainWindow):
         np.warnings.filterwarnings('ignore')
         
     def initMessage(self):
+        # i18n messages
         self.sysMes01 = 'Saved: {}'
         self.sysMes02 = 'Edited: Line {}'
         self.sysMes03 = 'Executed: {0}, Line {1}'
@@ -163,9 +164,45 @@ class MainForm(QMainWindow):
         self.sysMes12 = 'Inserted: Line {}'
         self.sysMes13 = 'Deleted: Line {}'
         self.sysMes14 = 'Sent: Orbit, to Show Orbit'
+        self.sysMes15 = 'Sent: FLYTO Record, to Flight Review'
+        self.sysMes16 = 'Sent: Flight Records, to Review Throughout'
         
     def initConstants(self):
         self.defaultFileName = 'newplan'
+        
+        # i18n planet names and its indices
+        g.i_planetnames = [
+            ['iMercury', 0],
+            ['金星', 1],
+            ['iMars', 3],
+            ['iJupiter', 4],
+            ['iSaturn', 5],
+            ['iUranus', 6],
+            ['iNeptune', 7],
+            ['iPluto', 8],
+            ['iMoon', 10],
+            ['iEarth', 11]
+        ]
+        
+        # i18n space base names
+        g.i_spacebases = [
+            'Earth L1',
+            '地球 L2',
+            'Mercury L1',
+            'Mercury L2',
+            'Venus L1',
+            'Venus L2',
+            'Mars L1',
+            'Mars L2',
+            'Jupiter L1',
+            'Jupiter L2',
+            'Saturn L1',
+            'Saturn L2',
+            'Uranus L1',
+            'Uranus L2',
+            'Neptune L1',
+            'Neptune L2'
+        ]
 
     def initSSV(self):
         g.version = '1.2.2'
@@ -195,6 +232,7 @@ class MainForm(QMainWindow):
     
         matplotlib.rcParams['toolbar'] = 'none'
         matplotlib.rcParams['grid.linewidth'] = 0.25
+        matplotlib.rcParams['font.family'] = 'IPAexGothic'
         plt.ion()
         g.fig = None
         self.init3Dfigure()
@@ -303,7 +341,7 @@ class MainForm(QMainWindow):
         self.eraseselectedman()
         self.currentrow = 0
         
-        g.manfilename = ans
+        g.manfilename = os.path.relpath(ans)
         manfile = open(g.manfilename, 'r')
         g.manplan = json.load(manfile)
         manfile.close()
@@ -364,8 +402,18 @@ class MainForm(QMainWindow):
             
         self.enablewidgets()
         self.ui.probename.setText(g.manplan['probe']['name'])
-        self.ui.targetname.setText(g.manplan['target']['name'])
-        self.ui.spacebase.setText(g.manplan['probe']['base'])
+        tname = g.manplan['target']['name']
+        for i in range(10):
+            if common.planets_id[g.i_planetnames[i][1]][1] == tname:
+                tname = g.i_planetnames[i][0]
+                break
+        self.ui.targetname.setText(tname)
+        bname = g.manplan['probe']['base']
+        for i in range(16):
+            if common.bases[i][0] == bname:
+                bname = g.i_spacebases[i]
+                break
+        self.ui.spacebase.setText(bname)
         
         g.showorbitsettings = None
         self.dispmanplan()
@@ -454,8 +502,18 @@ class MainForm(QMainWindow):
         self.enablewidgets()
         
         self.ui.probename.setText(g.manplan['probe']['name'])
-        self.ui.targetname.setText(g.manplan['target']['name'])
-        self.ui.spacebase.setText(g.manplan['probe']['base'])
+        tname = g.manplan['target']['name']
+        for i in range(10):
+            if common.planets_id[g.i_planetnames[i][1]][1] == tname:
+                tname = g.i_planetnames[i][0]
+                break
+        self.ui.targetname.setText(tname)
+        bname = g.manplan['probe']['base']
+        for i in range(16):
+            if common.bases[i][0] == bname:
+                bname = g.i_spacebases[i]
+                break
+        self.ui.spacebase.setText(bname)
         
         g.showorbitsettings = None
         self.dispmanplan()
@@ -512,6 +570,8 @@ class MainForm(QMainWindow):
             g.reviewthroughoutcontrol.show()
         else:
             g.reviewthroughoutcontrol.drawman()
+        
+        self.dispSysMes(self.sysMes16)
 
 
     def savemanplan(self):
@@ -549,7 +609,7 @@ class MainForm(QMainWindow):
 
         g.currentdir = os.path.split(ans)[0]
         
-        g.manfilename = ans
+        g.manfilename = os.path.relpath(ans)
         try:
             manfile = open(g.manfilename, 'w')
         except PermissionError:
@@ -888,6 +948,8 @@ class MainForm(QMainWindow):
             g.flightreviewcontrol.show()
         else:
             g.flightreviewcontrol.redraw()
+        
+        self.dispSysMes(self.sysMes15)
 
     def dispcurrentstatus(self):
         if self.tbpred_formain is None:
@@ -1092,7 +1154,12 @@ class MainForm(QMainWindow):
         
         self.enablewidgets()
         self.ui.probename.setText(g.manplan['probe']['name'])
-        self.ui.spacebase.setText(g.manplan['probe']['base'])
+        bname = g.manplan['probe']['base']
+        for i in range(16):
+            if common.bases[i][0] == bname:
+                bname = g.i_spacebases[i]
+                break
+        self.ui.spacebase.setText(bname)
         self.dispmanplan()
         self.ui.showOrbit.setEnabled(False)
         self.ui.flightreview.setEnabled(False)
@@ -1130,7 +1197,12 @@ class MainForm(QMainWindow):
         g.mytarget = target.Target(**g.manplan['target'])
         
         self.enablewidgets()
-        self.ui.targetname.setText(g.manplan['target']['name'])
+        tname = g.manplan['target']['name']
+        for i in range(10):
+            if common.planets_id[g.i_planetnames[i][1]][1] == tname:
+                tname = g.i_planetnames[i][0]
+                break
+        self.ui.targetname.setText(tname)
         self.dispmanplan()
         self.ui.showOrbit.setEnabled(False)
         self.ui.flightreview.setEnabled(False)

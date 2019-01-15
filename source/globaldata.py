@@ -46,7 +46,9 @@ class _Gdata:
         'flightreviewcontrol',      # instance of FlightReviewControl
         'reviewthroughoutcontrol',  # instance of ReviewThroughoutControl
         'finish_exec',              # return code of EditManDialog for finish and execute (== 2)
-        'fta_parameters'            # return parameters from FTAsettingDialog
+        'fta_parameters',           # return parameters from FTAsettingDialog
+        'i_planetnames',            # i18n planet names and its index
+        'i_spacebases'              # i18n space base names
         ]
     
 # global data container instance    
@@ -95,22 +97,19 @@ def replot_planets(jd):
     markz = []
     names = []
     id_of_target = g.mytarget.getID()
-    id_of_EMB = 3
     id_of_Moon = 301
-    id_of_Sun = 10
     
-    for i in range(12):
-        if common.planets_id[i][0] == id_of_target: continue
-        if common.planets_id[i][0] == id_of_EMB: continue
-        if common.planets_id[i][0] == id_of_Sun: continue
-        pos, vel = common.SPKposvel(common.planets_id[i][0], jd)
+    for iplanet in g.i_planetnames:
+        planet_id = common.planets_id[iplanet[1]]
+        if planet_id[0] == id_of_target: continue
+        pos, vel = common.SPKposvel(planet_id[0], jd)
         markx.append(pos[0])
         marky.append(pos[1])
         markz.append(pos[2])
-        if common.planets_id[i][0] == id_of_Moon:
+        if planet_id[0] == id_of_Moon:
             names.append('')
         else:
-            names.append(common.planets_id[i][1])
+            names.append(iplanet[0])
     
     g.artist_mark_of_planets = g.ax.scatter(markx, marky, markz, marker='+', 
                                            s=20, c='c', depthshade=False)
