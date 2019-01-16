@@ -42,6 +42,20 @@ class EditDateTimeDialog(QDialog):
         self.ui.finishbutton.clicked.connect(self.finish_clicked)
         self.ui.cancelbutton.clicked.connect(self.reject)
         
+        self.mbTtl01 = 'Input Error'
+        self.mbMes01 = 'Invalid ISOT'
+        self.mbTtl02 = 'Inappropriate Date & Time'
+        self.mbMes02 = 'ISOT is out of range.\nIn this Flight Plan, ISOT should be in following range:\n from {0}\n to   {1}'
+        self.mbMes03 = 'Invalid JD'
+        self.mbMes04 = 'JD is out of range.\nIn this Flight Plan, JD should be in following range:\n from {0:.2f}\n to   {1:.2f}'
+        self.mbMes05 = 'Invalid Duration'
+        self.mbMes06 = 'Duration should be positive'
+        self.mbTtl07 = 'Inappropriate Duration'
+        self.mbMes07 = 'Duration is too large.\nIn this case, Duration should less than {:.2f}'
+        
+        
+        
+        
         self.orgjd = orgjd
         self.fromjd = fromjd
         self.tojd = tojd
@@ -82,54 +96,49 @@ class EditDateTimeDialog(QDialog):
             elif len(stext) == 1:
                 isot = stext[0] + '.0000'
             else:
-                QMessageBox.critical(self, 'Error', 'Invalid ISOT', 
+                QMessageBox.critical(self, self.mbTtl01, self.mbMes01, 
                                         QMessageBox.Ok)
                 return
             try:
                 jd = common.isot2jd(isot)
             except ValueError:
-                QMessageBox.critical(self, 'Error', 'Invalid ISOT', 
+                QMessageBox.critical(self, self.mbTtl01, self.mbMes01, 
                                         QMessageBox.Ok)
                 return
             
             if jd < self.fromjd or jd >= self.tojd:
-                mes = ('ISOT is out of range.\nIn this Flight Plan, ' + 
-                       'ISOT should be in following range:\n from {0}\n' +
-                       ' to   {1}').format(
-                        common.jd2isot(self.fromjd), common.jd2isot(self.tojd))
-                QMessageBox.critical(self, 'Error', mes, QMessageBox.Ok)
+                mes = self.mbMes02.format(common.jd2isot(self.fromjd), 
+                                          common.jd2isot(self.tojd))
+                QMessageBox.critical(self, self.mbTtl02, mes, QMessageBox.Ok)
                 return
 
         elif self.ui.radioJD.isChecked():
             try:
                 jd = float(self.ui.lineEditJD.text())
             except ValueError:
-                QMessageBox.critical(self, 'Error', 'Invalid JD', 
+                QMessageBox.critical(self, self.mbTtl01, self.mbMes03, 
                                      QMessageBox.Ok)
                 return
             if jd < self.fromjd or jd >= self.tojd:
-                mes = ('JD is out of range.\nIn this Flight Plan, ' + 
-                       'JD should be in following range:\n from {0:.2f}\n' +
-                       ' to   {1:.2f}').format(self.fromjd, self.tojd)
-                QMessageBox.critical(self, 'Error', mes, QMessageBox.Ok)
+                mes = self.mbMes04.format(self.fromjd, self.tojd)
+                QMessageBox.critical(self, self.mbTtl02, mes, QMessageBox.Ok)
                 return
             
         elif self.ui.radioDuration.isChecked():
             try:
                 dt = float(self.ui.lineEditDuration.text())
             except ValueError:
-                QMessageBox.critical(self, 'Error', 'Invalid Duration', 
+                QMessageBox.critical(self, self.mbTtl01, self.mbMes05, 
                                      QMessageBox.Ok)
                 return
             if dt < 0.0:
-                QMessageBox.critical(self, 'Error', 'Duration should be positive', 
+                QMessageBox.critical(self, self.mbTtl01, self.mbMes06, 
                                      QMessageBox.Ok)
                 return
             jd = dt + g.myprobe.jd
             if jd >= self.tojd:
-                mes = 'Duration is too large.\nIn this case, Duration ' + \
-                    'should less than {:.2f}'.format(self.tojd - g.myprobe.jd)
-                QMessageBox.critical(self, 'Error', mes, QMessageBox.Ok)
+                mes = self.mbMes07.format(self.tojd - g.myprobe.jd)
+                QMessageBox.critical(self, self.mbTtl07, mes, QMessageBox.Ok)
                 return
 
         self.maneuverEditor.editedjd = jd

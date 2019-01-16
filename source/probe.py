@@ -39,6 +39,12 @@ class Probe:
         self.spacebase = SpaceBase(base)
         self.orbit = ProbeOrbit(name, pmass)
         self.execinitialize()
+        
+        self.errormes01 = 'Invalid End Time of FLYTO : Earier than Current Time'
+        self.errormes02 = "Invalid End Time of FLYTO : OUTSIDE of Target's Time Span"
+        self.errormes03 = 'Invalid Manuever Type : {}'
+        self.errormes04 = 'Numerical Integration Error(s) occured \nafter {}'
+        self.errormes05 = "Invalid Start Time : OUTSIDE of Target's Time Span"
 
     def execinitialize(self):
         self.trj_record = []
@@ -71,7 +77,7 @@ class Probe:
         if man['type'] == 'START':
             self.jd = man['time']
             if self.jd < tsjd or self.jd >= tejd:
-                return False, "Invalid start time : OUTSIDE of Target's time span"
+                return False, self.errormes05
             self.pos, self.vel = self.pseudostart(self.jd, dv=man['dv'], 
                                             elv=man['elv'], phi=man['phi'])
             self.orbit.setCurrentCart(self.jd*common.secofday, self.pos, 
@@ -147,9 +153,9 @@ class Probe:
         elif man['type'] == 'FLYTO':
             jdto = man['time']
             if jdto < self.jd:
-                return False, 'Invalid end time of FLYTO : earier than current time'
+                return False, self.errormes01
             if jdto >= tejd:
-                return False, "Invalid end time of FLYTO : OUTSIDE of Target's time span"
+                return False, self.errormes02
 
             duration = jdto - self.jd
             if pbar is not None:
@@ -172,8 +178,7 @@ class Probe:
                     if pt[i] < 1.0: break
                     lastsuccess = pt[i]
                 lastsuccess = lastsuccess / common.secofday
-                return False, 'Numerical integration error(s) occured \nafter '\
-                    + common.jd2isot(lastsuccess)
+                return False, self.errormes04.format(common.jd2isot(lastsuccess))
             pt = pt / common.secofday
             self.get_epssstatus(cman)
             self.trj_record.append([cman, pt, px, py, pz, pxd, pyd, pzd, 
@@ -192,7 +197,7 @@ class Probe:
                 self.accumdv['SS'] += ssdv
             return True, ''
         else:
-            return False, 'invalid manuever type : ' + man['type']
+            return False, self.errormes03.format(man['type'])
         
     def pseudostart(self, jd, dv, phi, elv):
         elv = math.radians(elv)

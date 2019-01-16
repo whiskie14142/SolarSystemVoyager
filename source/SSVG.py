@@ -167,27 +167,47 @@ class MainForm(QMainWindow):
         self.sysMes15 = 'Sent: FLYTO Record, to Flight Review'
         self.sysMes16 = 'Sent: Flight Records, to Review Throughout'
         
+        self.mbTtl01 = 'Confirmation'
+        self.mbMes01 = 'Current Flight Plan has not been saved.\nDo you want to save?'
+        self.mbTtl02 = 'SPK File not Found'
+        self.mbMes02 = "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder"
+        self.mbTtl03 = 'Out of Range: Flight Plan'
+        self.mbMes03 = "The Flight Plan file contains Maneuver(s) that is OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing this Flight Plan"
+        self.mbTtl04 = 'Permission Error'
+        self.mbMes04 = 'The File cannot be Overwrite'
+        self.mbTtl05 = 'Invalid Maneuver'
+        self.mbMes05 = 'You do not have valid Maneuver'
+        self.mbTtl06 = 'Execution Failed'
+        self.mbMes06 = 'SSVG failed to execute the Maneuver.\n\n{}'
+        self.mbTtl07 = 'Invalid Line Selection'
+        self.mbMes07 = 'Select a Line below the Next Line, and try again'
+        self.mbTtl09 = 'Invalid Date & Time'
+        self.mbMes09 = "The date and time specified in the Maneuver is outside of the valid time span of the Target.\nTry again."
+        self.mbTtl10 = 'Confirmation to Delete'
+        self.mbMes10 = 'Line {} will be deleted. OK?'
+        self.mbMes11 = "The Flight Plan file containes Maneuver(s) that is OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing this Flight Plan.\nIt is recommended that you select another SPK file."
+        
     def initConstants(self):
         self.defaultFileName = 'newplan'
         
         # i18n planet names and its indices
         g.i_planetnames = [
-            ['iMercury', 0],
-            ['金星', 1],
-            ['iMars', 3],
-            ['iJupiter', 4],
-            ['iSaturn', 5],
-            ['iUranus', 6],
-            ['iNeptune', 7],
-            ['iPluto', 8],
-            ['iMoon', 10],
-            ['iEarth', 11]
+            ['Mercury', 0],
+            ['Venus', 1],
+            ['Mars', 3],
+            ['Jupiter', 4],
+            ['Saturn', 5],
+            ['Uranus', 6],
+            ['Neptune', 7],
+            ['Pluto', 8],
+            ['Moon', 10],
+            ['Earth', 11]
         ]
         
         # i18n space base names
         g.i_spacebases = [
             'Earth L1',
-            '地球 L2',
+            'Earth L2',
             'Mercury L1',
             'Mercury L2',
             'Venus L1',
@@ -203,6 +223,11 @@ class MainForm(QMainWindow):
             'Neptune L1',
             'Neptune L2'
         ]
+        
+        self.winTtl_3D = '3D Orbit'
+        self.winTtl_SFP = 'Select Flight Plan File'
+        self.winTtl_OFP = 'Define Output Flight Plan File'
+        self.procMes = 'Processing:  {0} {1}'
 
     def initSSV(self):
         g.version = '1.2.2'
@@ -273,7 +298,7 @@ class MainForm(QMainWindow):
         top = self.geometry().top()
         mngr = plt.get_current_fig_manager()
         mngr.window.setGeometry(left+650, top, 700, 700)
-        g.fig.canvas.set_window_title('3D Orbit')
+        g.fig.canvas.set_window_title(self.winTtl_3D)
         self.figcid = g.fig.canvas.mpl_connect('close_event', 
                                                self.handle_3Dclose)
         
@@ -285,8 +310,7 @@ class MainForm(QMainWindow):
         if g.manplan_saved:
            pass
         else:
-            ans = QMessageBox.question(self, 'Quit SSV', 
-                'Flight Plan has not been saved.\nDo you want to save?', 
+            ans = QMessageBox.question(self, self.mbTtl01, self.mbMes01, 
                 QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
                 QMessageBox.Cancel)
             if ans == QMessageBox.Save:
@@ -307,8 +331,7 @@ class MainForm(QMainWindow):
     def openmanplan(self):
         self.clearSysMes()
         if not g.manplan_saved:
-            ans = QMessageBox.question(self, 'Open Flight Plan File', 
-               'Current Flight Plan has not been saved.\nDo you want to save?', 
+            ans = QMessageBox.question(self, self.mbTtl01, self.mbMes01, 
                QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
                 QMessageBox.Cancel)
             if ans == QMessageBox.Save :
@@ -318,8 +341,7 @@ class MainForm(QMainWindow):
             else:
                 return
             
-        ans = QFileDialog.getOpenFileName(parent=self,
-            caption='Select Flight Plan File',
+        ans = QFileDialog.getOpenFileName(parent=self, caption=self.winTtl_SFP,
             directory=g.currentdir, filter='JSON files (*.json)')
         ans = ans[0]
         if ans == '': return
@@ -357,9 +379,8 @@ class MainForm(QMainWindow):
                     try:
                         tempk = SPKType21.open(os.path.join(common.bspdir, fname))
                     except FileNotFoundError:
-                        QMessageBox.critical(self, 'File not Found',
-                            "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(fname),
-                            QMessageBox.Ok)
+                        QMessageBox.critical(self, self.mbTtl02, 
+                            self.mbMes02.format(fname), QMessageBox.Ok)
                         return
             else:
                 temppath = os.path.join(common.bspdir, temppath)
@@ -369,9 +390,8 @@ class MainForm(QMainWindow):
                     try:
                         tempk = SPKType21.open(os.path.join(common.bspdir, fname))
                     except FileNotFoundError:
-                        QMessageBox.critical(self, 'File not Found',
-                            "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(fname),
-                            QMessageBox.Ok)
+                        QMessageBox.critical(self, self.mbTtl02, 
+                            self.mbMes02.format(fname), QMessageBox.Ok)
                         return
 
             g.data_type = tempk.segments[0].data_type
@@ -437,25 +457,20 @@ class MainForm(QMainWindow):
                     if man['time'] < tsjd or man['time'] >= tejd:
                         outofrange = True
         if outofrange:
-            oormes = "The Flight Plan file containes Maneuver(s) that " + \
-                "is OUTSIDE of Target's time span."
-            oormes2 = "\nYou could encounter " + \
-                "trouble(s) in running and/or editing this Flight Plan"
-            QMessageBox.warning(self, 'Warning', oormes + oormes2, QMessageBox.Ok)
+            QMessageBox.warning(self, self.mbTtl03, self.mbMes03, QMessageBox.Ok)
         
         if g.options['log']:
             logstring = []
             logstring.append('open flight plan: ' + nowtimestr() + '\n')
             logstring.append('    file name: ' + g.manfilename + '\n')
             if outofrange:
-                logstring.append('    *** Warning *** ' + oormes + '\n')
+                logstring.append('    *** Warning *** ' + self.mbMes03 + '\n')
             g.logfile.writelines(logstring)
 
     def newmanplan(self):
         self.clearSysMes()
         if not g.manplan_saved:
-            ans = QMessageBox.question(self, 'New Flight Plan', 
-               'Current Flight Plan has not been saved.\nDo you want to save?', 
+            ans = QMessageBox.question(self, self.mbTtl01, self.mbMes01,
                QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
                QMessageBox.Cancel)
             if ans == QMessageBox.Save :
@@ -582,8 +597,8 @@ class MainForm(QMainWindow):
         try:
             manfile = open(g.manfilename, 'w')
         except PermissionError:
-            QMessageBox.critical(self, 'Permission Error',
-                'Can not overwrite.  This file is read only.', QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl04, self.mbMes04, 
+                                 QMessageBox.Ok)
             return
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
@@ -602,8 +617,8 @@ class MainForm(QMainWindow):
             dr = os.path.join(g.currentdir, self.defaultFileName)
         else:
             dr = g.manfilename
-        ans = QFileDialog.getSaveFileName(self, 
-            'Define output maneuver file', dr, 'JSON files (*.json)')
+        ans = QFileDialog.getSaveFileName(self, self.winTtl_OFP, dr, 
+                                          'JSON files (*.json)')
         ans = ans[0]
         if ans == '': return
 
@@ -613,8 +628,7 @@ class MainForm(QMainWindow):
         try:
             manfile = open(g.manfilename, 'w')
         except PermissionError:
-            QMessageBox.critical(self, 'Permission Error',
-                'Can not overwrite.  Specified file is read only.', QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl04, self.mbMes04, QMessageBox.Ok)
             return
             
         json.dump(g.manplan, manfile, indent=4)
@@ -670,17 +684,14 @@ class MainForm(QMainWindow):
                                     QMessageBox.Ok)
             return False
         if len(g.maneuvers) <= g.nextman:
-            QMessageBox.information(self, 
-                        'Info', "You don't have valid maneuver.", QMessageBox.Ok)
+            QMessageBox.information(self, self.mbTtl05, self.mbMes05, QMessageBox.Ok)
             return False
         if g.maneuvers[g.nextman] is None:
-            QMessageBox.information(self, 'Info', 
-                        "You don't have valid maneuver.", QMessageBox.Ok)
+            QMessageBox.information(self, self.mbTtl05, self.mbMes05, QMessageBox.Ok)
             return False
         
         # prepare progress bar
-        ptext = 'Processing:  ' + str(g.nextman + 1) + ' ' + \
-            g.maneuvers[g.nextman]['type']
+        ptext = self.procMes.format(str(g.nextman + 1), g.maneuvers[g.nextman]['type'])
 #
         success, emes = g.myprobe.exec_man(g.maneuvers[g.nextman], 
             g.mytarget, pbar=self.pbar, plabel=self.plabel, ptext=ptext)
@@ -709,9 +720,8 @@ class MainForm(QMainWindow):
                 self.dispSysMes(self.sysMes14)
                 g.showorbitcontrol.ssvgReset()
         else:
-            QMessageBox.information(self, 'Info', 
-                                "Cannot Execute this Maneuver.\n\n"    \
-                                + emes, QMessageBox.Ok)
+            QMessageBox.information(self, self.mbTtl06, 
+                                self.mbMes06.format(emes), QMessageBox.Ok)
             return False
         
         self.dispcurrentstatus()
@@ -723,8 +733,7 @@ class MainForm(QMainWindow):
         start = g.nextman
         stop = self.currentrow
         if start > stop:
-            QMessageBox.information(self, 'Info', 
-                                "Select maneuver later than 'Next'", QMessageBox.Ok)
+            QMessageBox.information(self, self.mbTtl07, self.mbMes07, QMessageBox.Ok)
             return
         for i in range(start, stop + 1):
             result = self.execnext()
@@ -821,23 +830,12 @@ class MainForm(QMainWindow):
             if g.myprobe.onflight:
                 self.showorbit()
             return
-        if g.editedman['type'] == 'START' and self.currentrow != 0:
-            QMessageBox.information(self, 'Info', 
-                                'START shall be the 1st maneuver', QMessageBox.Ok)
-            return
-        if g.editedman['type'] != 'START' and self.currentrow == 0:
-            QMessageBox.information(self, 'Info', 
-                                'The 1st maneuver shall be START', QMessageBox.Ok)
-            return
 
         # Check time
         if g.editedman['type']  == 'START' or g.editedman['type'] == 'FLYTO':
             tsjd, tejd = g.mytarget.getsejd()
             if g.editedman['time'] < tsjd or g.editedman['time'] >= tejd:
-                oormes = "The time specified in the Maneuver is outside " + \
-                "of the valid time span of the Target.\nTry again."
-                QMessageBox.critical(self, 'Invalid Parameter', oormes,
-                                     QMessageBox.Ok)
+                QMessageBox.critical(self, self.mbTtl09, self.mbMes09, QMessageBox.Ok)
                 return
 
         self.dispSysMes(self.sysMes02.format(self.currentrow+1))
@@ -889,8 +887,8 @@ class MainForm(QMainWindow):
         if self.currentrow == len(g.maneuvers):
             return
         if g.maneuvers[self.currentrow] is not None:
-            mes = 'Line No. ' + str(self.currentrow + 1) + ' will be deleted. OK?'
-            ans = QMessageBox.question(self, 'Delete Man.', mes, QMessageBox.Ok | \
+            mes = self.mbMes10.format(str(self.currentrow + 1))
+            ans = QMessageBox.question(self, self.mbTtl10, mes, QMessageBox.Ok | \
                     QMessageBox.Cancel, QMessageBox.Cancel)
             if ans == QMessageBox.Cancel : return
         if self.currentrow < len(g.maneuvers):
@@ -1221,13 +1219,7 @@ class MainForm(QMainWindow):
                 if man['time'] < tsjd or man['time'] >= tejd:
                     outofrange = True
         if outofrange:
-            oormes = "The Flight Plan file containes Maneuver(s) that " + \
-                "is OUTSIDE of Target's time span."
-            oormes2 = "\nYou could encounter " + \
-                "trouble(s) in running and/or editing this Flight Plan." + \
-                "\nIt is recommended that you select another SPK file."
-            QMessageBox.warning(self, 'Warning', oormes + oormes2, QMessageBox.Ok)
-
+            QMessageBox.warning(self, self.mbTtl03, self.mbMes11, QMessageBox.Ok)
     
         if g.options['log']:
             logstring = []
@@ -1240,7 +1232,7 @@ class MainForm(QMainWindow):
                 logstring.append('    target SPKID: ' +
                     str(g.manplan['target']['SPKID1B']) + '\n')
             if outofrange:
-                logstring.append('    *** Warning *** ' + oormes + '\n')
+                logstring.append('    *** Warning *** ' + self.mbMes11 + '\n')
             g.logfile.writelines(logstring)
     
     def dispSysMes(self, message):

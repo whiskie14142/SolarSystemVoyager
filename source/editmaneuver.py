@@ -86,8 +86,15 @@ class EditManDialog(QDialog):
             'tvmode : thrust vector mode (L|E)',
             'inter : integration interval (days)'
             ]
-        self.timedesc = ['Start Time', 'Date & Time', 'Date & Time', 
-            'Date & Time', 'Date & Time', 'Date & Time', 'End Time']
+        self.timedesc = [
+                'Start Time', 
+                'Date & Time', 
+                'Date & Time', 
+                'Date & Time', 
+                'Date & Time', 
+                'Date & Time', 
+                'End Time'
+                ]
         self.fmttbl = [
             '{:.8f}',
             '{:.3f}',
@@ -159,6 +166,31 @@ class EditManDialog(QDialog):
         self.sysMes04 = 'Edited: Date and Time'
         self.sysMes05 = 'Sent: Parameters, to Show Orbit'
         self.sysMes06 = 'Edited: Parameter {}'
+        
+        self.mbTtl01 = 'Inappropriate Maneuver Type'
+        self.mbMes01 = 'START can be used for the first Maneuver only.\n\nSelect another Maneuver Type.'
+        self.mbTtl02 = 'Input Error'
+        self.mbMes02 = 'tvmode should be L or E'
+        self.mbMes03 = '{} should be a floating number'
+        self.mbMes04 = '{} should be greater than or equal to 0.00001'
+        self.mbMes05 = '{} should not be a negative value'
+        self.mbTtl06 = 'Out of Range: Start Time'
+        self.mbMes06 = "Invalid Start Time\nStart Time is OUTSIDE of Target's time span"
+        self.mbTtl07 = 'Information'
+        self.mbMes07 = 'To use FTA, open Show Orbit window and try again'
+        self.mbMes08 = 'Error occured during FTA computation.\nTry different parameters'
+        self.mbTtl09 = 'Confirm FTA Results'
+        self.mbMes09 = 'FTA Results are as follows. Apply them?\ndv = {0}\nphi = {1}\nelv = {2}'
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
     def setenable(self):
         self.ui.computeFTA.setEnabled(False)
@@ -277,9 +309,7 @@ class EditManDialog(QDialog):
             self.ui.label_Click.show()
             if g.showorbitcontrol is not None:
                 g.showorbitcontrol.close()
-            QMessageBox.information(self, 'Inappropriate Maneuver Type', 
-                'START can be used for the first Maneuver only.\n\n' +
-                'Select another Maneuver Type.', QMessageBox.Ok)
+            QMessageBox.information(self, self.mbTtl01, self.mbMes01, QMessageBox.Ok)
             return
 
         self.ui.label_Click.hide()
@@ -337,7 +367,7 @@ class EditManDialog(QDialog):
                     if paramText != 'L' and paramText != 'E':
                         inputError += 1
                         QMessageBox.critical(self, 
-                            'Error', 'tvmode should be L or E', QMessageBox.Ok)
+                            self.mbTtl02, self.mbMes02, QMessageBox.Ok)
                     else:
                         self.editman[self.paramname[paramIdx+1]] = paramText
                 else:
@@ -345,15 +375,15 @@ class EditManDialog(QDialog):
                         newval = float(paramText)
                     except ValueError:
                         inputError += 1
-                        QMessageBox.critical(self, 'Error', 
-                            self.paramname[paramIdx+1] + ' should be a floating number', 
+                        QMessageBox.critical(self, self.mbTtl02, 
+                            self.mbMes03.format(self.paramname[paramIdx+1]), 
                             QMessageBox.Ok)
                         continue
                     if self.paramname[paramIdx+1] == 'inter':
                         if newval < 0.00001:
                             inputError += 1
-                            QMessageBox.critical(self, 'Error', 
-                                self.paramname[paramIdx+1] + ' should be greater than or equal to 0.00001', 
+                            QMessageBox.critical(self, self.mbTtl02, 
+                                self.mbMes04.format(self.paramname[paramIdx+1]), 
                                 QMessageBox.Ok)
                             continue
                     elif self.paramname[paramIdx+1] == 'dv' or \
@@ -361,8 +391,8 @@ class EditManDialog(QDialog):
                          self.paramname[paramIdx+1] == 'area' :
                         if newval < 0.0:
                             inputError += 1
-                            QMessageBox.critical(self, 'Error', 
-                                self.paramname[paramIdx+1] + ' should not be a negative value', 
+                            QMessageBox.critical(self, self.mbTtl02, 
+                                self.mbMes05.format(self.paramname[paramIdx+1]), 
                                 QMessageBox.Ok)
                             continue
                     self.editman[self.paramname[paramIdx+1]] = newval
@@ -437,9 +467,7 @@ class EditManDialog(QDialog):
         if self.editman['time'] < tsjd or self.editman['time'] >= tejd:
             if g.showorbitcontrol is not None:
                 g.showorbitcontrol.close()
-            QMessageBox.critical(self, 'Error', 
-                'Invalid Start Time\nStart Time is OUTSIDE of ' +
-                "Target's time span", QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl06, self.mbMes06, QMessageBox.Ok)
             return
     
         self.dispSysMes(self.sysMes05)
@@ -475,9 +503,7 @@ class EditManDialog(QDialog):
         self.clearSysMes()
         norm = lambda x : x / np.sqrt(np.dot(x,x))
         if g.showorbitcontrol is None:
-            QMessageBox.information(self, 
-                'Info', 'To use FTA, open Show Orbit window and\n' 
-                + 'try again', QMessageBox.Ok)
+            QMessageBox.information(self, self.mbTtl07, self.mbMes07, QMessageBox.Ok)
             return
 
         ftadialog = FTAsettingDialog(self)
@@ -499,20 +525,16 @@ class EditManDialog(QDialog):
             try:
                 dv, phi, elv = g.showorbitcontrol.tbpred.fta(jd, tepos)
             except ValueError:
-                QMessageBox.information(self, 'Info', 
-                    'Error occured during FTA computation.\n' 
-                    + 'Try different parameters', QMessageBox.Ok)
+                QMessageBox.information(self, self.mbTtl07, 
+                    self.mbMes08, QMessageBox.Ok)
                 return
     
             dv = round(dv, 3)
             phi = round(phi, 2)
             elv = round(elv, 2)
                 
-            mes = 'FTA Results are as follows. Apply them?\n' + \
-                'dv = ' + str(dv) + '\n' + \
-                'phi = ' + str(phi) + '\n' + \
-                'elv = ' + str(elv)
-            ans = QMessageBox.question(self, 'FTA Results', mes, 
+            mes = self.mbMes09.format(str(dv), str(phi), str(elv))
+            ans = QMessageBox.question(self, self.mbTtl09, mes, 
                     QMessageBox.Ok | QMessageBox.Cancel, QMessageBox.Cancel)
             if ans == QMessageBox.Ok :
                 self.editman['dv'] = dv
@@ -548,9 +570,8 @@ class EditManDialog(QDialog):
                 dv, phi, elv, bc_ivel, bc_tvel              \
                     = g.showorbitcontrol.tbpred.ftavel(jd, tepos)
             except ValueError:
-                QMessageBox.information(self, 'Info', 
-                    'Error occured during FTA computation.\n' 
-                    + 'Try different parameters', QMessageBox.Ok)
+                QMessageBox.information(self, self.mbTtl07, 
+                    self.mbMes08, QMessageBox.Ok)
                 return
             
             # compute B-Plane Unit Vectors
@@ -574,20 +595,16 @@ class EditManDialog(QDialog):
             try:
                 dv, phi, elv = g.showorbitcontrol.tbpred.fta(jd, tepos)
             except ValueError:
-                QMessageBox.information(self, 'Info', 
-                    'Error occured during FTA computation.\n' 
-                    + 'Try different parameters', QMessageBox.Ok)
+                QMessageBox.information(self, self.mbTtl07, 
+                    self.mbMes08, QMessageBox.Ok)
                 return
     
             dv = round(dv, 3)
             phi = round(phi, 2)
             elv = round(elv, 2)
                 
-            mes = 'FTA Results are as follows. Apply them?\n' + \
-                'dv = ' + str(dv) + '\n' + \
-                'phi = ' + str(phi) + '\n' + \
-                'elv = ' + str(elv)
-            ans = QMessageBox.question(self, 'FTA Results', mes,
+            mes = self.mbMes09.format(str(dv), str(phi), str(elv))
+            ans = QMessageBox.question(self, self.mbTtl09, mes,
                     QMessageBox.Ok | QMessageBox.Cancel, QMessageBox.Cancel)
             if ans == QMessageBox.Ok :
                 self.editman['dv'] = dv
