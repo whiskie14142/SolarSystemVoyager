@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 optimize module for SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 

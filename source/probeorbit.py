@@ -263,16 +263,3 @@ class ProbeOrbit:
                     if self._sson:
                         ssdvpd[ndata-1] = self.compssdvpd(r.t, posvel, kernel)
         return t, x, y, z, xd, yd, zd, ssdvpd, runerror
-    
-        
-        
-        
-        
-        
-        
-        
-        
-
-
-        
-        

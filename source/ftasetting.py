@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 ftasetting module for SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 import numpy as np
@@ -48,6 +48,13 @@ class FTAsettingDialog(QDialog):
         
         self.ta_radioclicked()
         
+        self.mbTtl01 = 'Input Error'
+        self.mbMes01 = 'Each parameter should be a floating number'
+        self.mbTtl02 = 'Inappropriate Parameter'
+        self.mbMes02 = 'To use FTA, Time to Arrival shall be\ngreater than {0:.1f} day'
+        self.mbMes03 = "Invalid Time to Arrival.\nArrival time is OUTSIDE of Target's time span"
+        self.mbMes04 = 'Offset distance should not be negative'
+        
     def ta_radioclicked(self):
         if self.ui.fromshoworbit.isChecked():
             ta = g.showorbitcontrol.get_pred_jd() - g.showorbitcontrol.jd
@@ -72,19 +79,15 @@ class FTAsettingDialog(QDialog):
         try:        
             delta_jd = float(self.ui.timetoarrival.text())
         except ValueError:
-            QMessageBox.critical(self, 'Error', 
-                'Enter a floating point number for Time to Arrival.', QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl01, self.mbMes01, QMessageBox.Ok)
             return
         if delta_jd < common.minft:
-            QMessageBox.critical(self, 'Error', 
-                ('To use FTA, Time to Arrival shall be\n' 
-                + 'greater than {0:.1f} day').format(common.minft), QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl02, 
+                self.mbMes02.format(common.minft), QMessageBox.Ok)
             return
 
         if g.showorbitcontrol.jd + delta_jd >= g.mytarget.getendjd():
-            QMessageBox.critical(self, 'Error', 
-                'Invalid Time to Arrival.\nArrival time is OUTSIDE of ' +
-                "Target's time span", QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl02, self.mbMes03, QMessageBox.Ok)
             return
 
         param[0] = g.showorbitcontrol.jd + delta_jd
@@ -94,12 +97,10 @@ class FTAsettingDialog(QDialog):
                 r = float(self.ui.Brangeedit.text()) * 1000.0
                 beta = float(self.ui.betaedit.text())
             except ValueError:
-                QMessageBox.critical(self, 'Error', 
-                                'Parameter should be floating numbers.', QMessageBox.Ok)
+                QMessageBox.critical(self, self.mbTtl01, self.mbMes01, QMessageBox.Ok)
                 return
             if r < 0.0:
-                QMessageBox.critical(self, 'Error', 
-                                'offset distance should not be negative.', QMessageBox.Ok)
+                QMessageBox.critical(self, self.mbTtl02, self.mbMes04, QMessageBox.Ok)
                 return
             
             param[1] = 'BP'
@@ -115,12 +116,10 @@ class FTAsettingDialog(QDialog):
                     phi = float(self.ui.phiedit.text())
                     elv = float(self.ui.elvedit.text())
                 except ValueError:
-                    QMessageBox.critical(self, 'Error', 
-                                    'Parameter should be floating numbers.', QMessageBox.Ok)
+                    QMessageBox.critical(self, self.mbTtl01, self.mbMes01, QMessageBox.Ok)
                     return
                 if r < 0.0:
-                    QMessageBox.critical(self, 'Error', 
-                                    'offset distance should not be negative.', QMessageBox.Ok)
+                    QMessageBox.critical(self, self.mbTtl02, self.mbMes04, QMessageBox.Ok)
                     return
 
             else:

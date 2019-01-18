@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 showorbit module for SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 from PyQt5.QtCore import *
@@ -54,23 +54,30 @@ class ShowOrbitDialog(QDialog):
         self.ui.totarget.clicked.connect(self._statuschanged)
         self.ui.dtApply.clicked.connect(self.dtapplyclicked)
 
+        self.timecap_Real = 'Real'
+        self.timecap_Pred = 'Prediction'
+        self.timelabel = 'Start Time'
+        self.mbTtl01 = 'Input Error'
+        self.mbMes01 = 'Elapsed time should be a floating number'
+        self.mbTtl02 = 'Inappropriate Start Time'
+        self.mbMes02 = "Start Time is OUTSIDE of Target's time span"
+
+        self.initMessage()
         self.artist_of_probe = None
         self.artist_of_target = None
         self.artist_of_sun = None
-        
         self.tbpred = None
         self.reset()
-        
         self.affect_parent = False
-        self.initMessage()
         
+
     def initMessage(self):
         self.sysMes01 = 'Received: Parameters, from Maneuver Editor'
         self.sysMes02 = 'Received: Orbit, from SSVG'
         self.sysMes03 = 'Sent: Date and Time, to Maneuver Editor'
         self.sysMes04 = 'Out of Range: Prediction Time'
         self.sysMes05 = 'Failed: Prediction, Position of Probe'
-
+        
     def ssvgReset(self):
         # this method is called by SSVG
         self.dv = 0.0
@@ -223,9 +230,9 @@ class ShowOrbitDialog(QDialog):
 
         remove_time()
         if self.delta_jd == 0.0:
-            replot_time(tempjd, 'Real')
+            replot_time(tempjd, self.timecap_Real)
         else:
-            replot_time(tempjd, 'Prediction')
+            replot_time(tempjd, self.timecap_Pred)
 
         if g.fig is not None: plt.draw()
         
@@ -328,8 +335,7 @@ class ShowOrbitDialog(QDialog):
         try:
             value = float(text)
         except ValueError:
-            QMessageBox.warning(self, 'Warning', 
-                'Invalid Elapsed Time.  It cannot be apply', QMessageBox.Ok)
+            QMessageBox.warning(self, self.mbTtl01, self.mbMes01, QMessageBox.Ok)
             return
         self.delta_jd = value
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -386,7 +392,7 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
     def __init__(self, parent=None, editman=None):
         self.editman = editman
         super().__init__(parent)
-        self.ui.ctimeLabel.setText('Start Time')
+        self.ui.ctimeLabel.setText(self.timelabel)
         
     def redraw(self):
         self.jd = self.editman['time']
@@ -403,9 +409,8 @@ class ShowStartOrbitDialog(ShowOrbitDialog):
         # Check time
         tsjd, tejd = g.mytarget.getsejd()
         if self.jd < tsjd or self.jd >= tejd:
-            oormes = "Start Time is OUTSIDE of Target's time span.\n" + \
-                     "Enter approrpiate Start Time."
-            QMessageBox.critical(self, 'Invalid Start Time', oormes, QMessageBox.Ok)
+            oormes = self.mbMes02
+            QMessageBox.critical(self, self.mbTtl02, oormes, QMessageBox.Ok)
             return
 
         if self.tbpred is None:

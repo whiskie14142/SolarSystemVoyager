@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 flightplan module for SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 import os
@@ -50,6 +50,22 @@ class NewFlightPlanDialog(QDialog):
         self.ui.spkfileselect.clicked.connect(self.spkfileselectclicked)
         self.ui.okbutton.clicked.connect(self.ok_clicked)
         self.ui.cancelbutton.clicked.connect(self.reject)
+        
+        self.winTtl_SPK = 'Select SPK file'
+        self.winTtl_EP = 'Edit Probe Properties'
+        self.winTtl_ET = 'Select New Target'
+        self.mbTtl01 = 'Invalid SPK file'
+        self.mbMes01 = 'Invalid file format: the file is not an SPK file'
+        self.mbMes02 = 'Invalid SPK file: center is {0}, which should be zero'          # No translation is required
+        self.mbMes03 = 'Invalid SPK file: data type is {0}, which should be 1 or 21'    # No translation is required
+        self.mbMes04 = 'Invalid SPK file: the file contains more than one data type'
+        self.mbTtl05 = 'Input Error'
+        self.mbMes05 = 'Probe mass should be a float number.'
+        self.mbMes06 = 'Invalid Probe mass'
+        self.mbMes07 = 'No Taget name is specified. \nEnter Target name'
+        self.mbMes08 = 'No SPK file is specified. \nClick Find button and specify SPK file of the Target'
+        self.mbTtl09 = 'SPK File not Found'     # No translation is required
+        self.mbMes09 = "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder" # No translation is required
             
     def planetbuttonclicked(self):
         if self.ui.planetbutton.isChecked():
@@ -61,7 +77,7 @@ class NewFlightPlanDialog(QDialog):
             
     def spkfileselectclicked(self):
         ans = QFileDialog.getOpenFileName(parent=self,
-            caption='Select SPK file', directory=os.path.join(common.bspdir),
+            caption=self.winTtl_SPK, directory=os.path.join(common.bspdir),
             filter='SPK Files (*.bsp);;All Files (*.*)')
         ans = ans[0]
         if ans == '': return
@@ -70,17 +86,15 @@ class NewFlightPlanDialog(QDialog):
         try:
             tempk = SPKType21.open(filepath)
         except ValueError:
-            QMessageBox.critical(self, 'Error', 
-                'Invalid file: This is not a SPK file', QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl01, self.mbMes01, QMessageBox.Ok)
             return
         self.ui.spkfilepath.setText(filename)
         
         # Check center of coordinates. it should be 0
         center0 = tempk.segments[0].center
         if center0 != 0:
-            mes = 'Invalid SPK file: center is {0}'.format(center0)
-            QMessageBox.critical(self, 'Invalid SPK file',
-                mes, QMessageBox.Ok)
+            mes = self.mbMes02.format(center0)
+            QMessageBox.critical(self, self.mbTtl01, mes, QMessageBox.Ok)
             tempk.close()
             return
         self.center = center0
@@ -88,16 +102,14 @@ class NewFlightPlanDialog(QDialog):
         # Check data_type. it should be 1 or 21, and all segments has same type
         datatype0 = tempk.segments[0].data_type
         if datatype0 != 1 and datatype0  != 21:
-            mes = 'Invalid SPK file: data_type is {0}'.format(datatype0)
-            QMessageBox.critical(self, 'Invalid SPK file',
-                mes, QMessageBox.Ok)
+            mes = self.mbMes03.format(datatype0)
+            QMessageBox.critical(self, self.mbTtl01, mes, QMessageBox.Ok)
             tempk.close()
             return
 
         for seg in tempk.segments:
             if datatype0 != seg.data_type:
-                QMessageBox.critical(self, 'Invalid SPK file',
-                    'Invalid SPK file: more than one data type', QMessageBox.Ok)
+                QMessageBox.critical(self, self.mbTtl01, self.mbMes04, QMessageBox.Ok)
                 tempk.close()
                 return
         g.data_type = datatype0
@@ -131,12 +143,10 @@ class NewFlightPlanDialog(QDialog):
         try:
             mass = float(self.ui.probemass.text())
         except ValueError:
-            QMessageBox.critical(self, 'Error', 
-                            'Probe mass should be a float number.', QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl05, self.mbMes05, QMessageBox.Ok)
             return
         if mass <= 0.0:
-            QMessageBox.critical(self, 'Error', 'Invalid Probe mass.', 
-                                    QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl05, self.mbMes06, QMessageBox.Ok)
             return
         probe['pmass'] = mass
         
@@ -160,14 +170,11 @@ class NewFlightPlanDialog(QDialog):
         if self.ui.smallbodybutton.isChecked():
             target['name'] = self.ui.targetname.text()
             if target['name'].strip() == '':
-                QMessageBox.critical(self, 'Error', 
-                                    'Enter Target name.', QMessageBox.Ok)
+                QMessageBox.critical(self, self.mbTtl05, self.mbMes07, QMessageBox.Ok)
                 return
             target['file'] = self.ui.spkfilepath.text()
             if target['file'].strip() == '':
-                QMessageBox.critical(self, 'Error', 
-                    'Click Find button and pecify SPK file of the Target', 
-                    QMessageBox.Ok)
+                QMessageBox.critical(self, self.mbTtl05, self.mbMes08, QMessageBox.Ok)
                 return
 #
 #       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 
@@ -228,7 +235,7 @@ class EditProbeDialog(NewFlightPlanDialog):
         
         self.center = target['SPKID1A']
 
-        self.setWindowTitle('Edit Probe Properties')
+        self.setWindowTitle(self.winTtl_EP)
         self.ui.target_box.setEnabled(False)
         
     def ok_clicked(self):
@@ -239,12 +246,10 @@ class EditProbeDialog(NewFlightPlanDialog):
         try:
             mass = float(self.ui.probemass.text())
         except ValueError:
-            QMessageBox.critical(self, 'Error', 
-                            'Probe mass should be a float number.', QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl05, self.mbMes05, QMessageBox.Ok)
             return
         if mass <= 0.0:
-            QMessageBox.critical(self, 'Error', 'Invalid Probe mass.', 
-                                    QMessageBox.Ok)
+            QMessageBox.critical(self, self.mbTtl05, self.mbMes06, QMessageBox.Ok)
             return
         probe['pmass'] = mass
         
@@ -286,9 +291,8 @@ class EditTargetDialog(NewFlightPlanDialog):
                         try:
                             tempk = SPKType21.open(os.path.join(common.bspdir, fname))
                         except FileNotFoundError:
-                            QMessageBox.critical(self, 'File not Found',
-                                "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(fname),
-                                QMessageBox.Ok)
+                            QMessageBox.critical(self, self.mbTtl09, 
+                                self.mbMes09.format(fname), QMessageBox.Ok)
                             return
                 else:
                     temppath = os.path.join(common.bspdir, temppath)
@@ -298,9 +302,8 @@ class EditTargetDialog(NewFlightPlanDialog):
                         try:
                             tempk = SPKType21.open(os.path.join(common.bspdir, fname))
                         except FileNotFoundError:
-                            QMessageBox.critical(self, 'File not Found',
-                                "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder".format(fname),
-                                QMessageBox.Ok)
+                            QMessageBox.critical(self, self.mbTtl09, 
+                                self.mbMes09.format(fname), QMessageBox.Ok)
                             return
 
                 idlist = [tempk.segments[0].target]
@@ -332,7 +335,7 @@ class EditTargetDialog(NewFlightPlanDialog):
         
         self.center = target['SPKID1A']
 
-        self.setWindowTitle('Select New Target')
+        self.setWindowTitle(self.winTtl_ET)
         self.ui.probe_box.setEnabled(False)
         
     def ok_clicked(self):
@@ -356,14 +359,11 @@ class EditTargetDialog(NewFlightPlanDialog):
         if self.ui.smallbodybutton.isChecked():
             target['name'] = self.ui.targetname.text()
             if target['name'].strip() == '':
-                QMessageBox.critical(self, 'Error', 
-                                    'Enter Target name.', QMessageBox.Ok)
+                QMessageBox.critical(self, self.mbTtl05, self.mbMes07, QMessageBox.Ok)
                 return
             target['file'] = self.ui.spkfilepath.text()
             if target['file'].strip() == '':
-                QMessageBox.critical(self, 'Error', 
-                    'Click Find button and pecify SPK file of the Target', 
-                    QMessageBox.Ok)
+                QMessageBox.critical(self, self.mbTtl05, self.mbMes08, QMessageBox.Ok)
                 return
 #
 #       From May 2017, NASA-JPL HORIZONS produces barycentric SPK files 

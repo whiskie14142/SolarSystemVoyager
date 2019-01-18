@@ -80,8 +80,8 @@ class MainForm(QMainWindow):
         self.ui.manplans.setCornerButtonEnabled(False)              # Disable table selection by clicking corner button
         self.ui.manplans.horizontalHeader().setSectionsClickable(False)     # Disable colomn selection by clicking
         self.ui.manplans.verticalHeader().setSectionsClickable(False)       # Disable row selection by clicking
-        self.ui.selectedman.setColumnWidth(0,100)
-        self.ui.selectedman.setColumnWidth(1,139)
+        self.ui.selectedman.setColumnWidth(0,139)
+        self.ui.selectedman.setColumnWidth(1,100)
         self.ui.actionOpen.triggered.connect(self.openmanplan)
         self.ui.actionNew.triggered.connect(self.newmanplan)
         self.ui.actionQuit.triggered.connect(self.appquit)
@@ -139,6 +139,19 @@ class MainForm(QMainWindow):
             '{}',
             '{:.5f}'
             ]
+
+        self.paramdesc = [
+            'time (ISOT)',
+            'dv (m/s)',
+            'dvpd (m/s/day)',
+            'phi (deg)',
+            'elv (deg)',
+            'aria (m**2)',
+            'theta (deg)',
+            'tvmode (L|E)',
+            'inter (days)'
+            ]
+
         self.initConstants()
         self.initMessage()
         self.initselectedman()
@@ -172,21 +185,22 @@ class MainForm(QMainWindow):
         self.mbTtl02 = 'SPK File not Found'
         self.mbMes02 = "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder"
         self.mbTtl03 = 'Out of Range: Flight Plan'
-        self.mbMes03 = "The Flight Plan file contains Maneuver(s) that is OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing this Flight Plan"
+        self.mbMes03 = "The Flight Plan file contains Maneuver(s) OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing the Flight Plan"
         self.mbTtl04 = 'Permission Error'
-        self.mbMes04 = 'The File cannot be Overwrite'
+        self.mbMes04 = 'The File cannot be overwrite'
         self.mbTtl05 = 'Invalid Maneuver'
         self.mbMes05 = 'You do not have valid Maneuver'
         self.mbTtl06 = 'Execution Failed'
         self.mbMes06 = 'SSVG failed to execute the Maneuver.\n\n{}'
-        self.mbTtl07 = 'Invalid Line Selection'
-        self.mbMes07 = 'Select a Line below the Next Line, and try again'
+        self.mbTtl07 = 'Invalid Command'
+        self.mbMes07 = 'To execute Maneuvers in a row, select a Line below the Next Line and click [EXECUTE *]'
         self.mbTtl09 = 'Invalid Date & Time'
-        self.mbMes09 = "The date and time specified in the Maneuver is outside of the valid time span of the Target.\nTry again."
+        self.mbMes09 = "The date and time specified in the Maneuver is OUTSIDE of the valid time span of the Target.\nTry again."
         self.mbTtl10 = 'Confirmation to Delete'
         self.mbMes10 = 'Line {} will be deleted. OK?'
-        self.mbMes11 = "The Flight Plan file containes Maneuver(s) that is OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing this Flight Plan.\nIt is recommended that you select another SPK file."
+        self.mbMes11 = "The Flight Plan file containes Maneuver(s) OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing this Flight Plan.\nIt is recommended that you select another SPK file."
         
+
     def initConstants(self):
         self.defaultFileName = 'newplan'
         
@@ -1022,21 +1036,9 @@ class MainForm(QMainWindow):
         aboutdialog.exec_()
 
     def initselectedman(self):
-        paramdesc = [
-            'time (ISOT)',
-            'dv (m/s)',
-            'dvpd (m/s/day)',
-            'phi (deg)',
-            'elv (deg)',
-            'aria (m**2)',
-            'theta (deg)',
-            'tvmode (L|E)',
-            'inter (days)'
-            ]
-
         for i in range(1, 9):
             row = i - 1
-            self.ui.selectedman.setItem(row, 0, QTableWidgetItem(paramdesc[i]))
+            self.ui.selectedman.setItem(row, 0, QTableWidgetItem(self.paramdesc[i]))
 
     def dispselectedman(self):
         lenman = len(g.manplan['maneuvers'])

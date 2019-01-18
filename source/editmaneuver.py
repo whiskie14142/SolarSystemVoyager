@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 editmaneuver module for SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 from PyQt5.QtCore import *
@@ -108,14 +108,6 @@ class EditManDialog(QDialog):
             ]
         self.stringitems = []
         
-        self.boxMes01 = '<p style="font-size:14px;">You requested to apply ' \
-            'parameters optimized for the time<br>{}' \
-            '<br>to the editing Maneuver.<br><br>' \
-            'Applied Maneuver should be executed at that time.  ' \
-            'You need to adjust preceding Maneuver(s) before execution of '  \
-            'this Maneuver.<br><br>' \
-            'The time (ISOT format) has been copied to system clipboard.</p>'
-        
         self.initMessages()
 
         for item in paramdesc:
@@ -169,28 +161,20 @@ class EditManDialog(QDialog):
         
         self.mbTtl01 = 'Inappropriate Maneuver Type'
         self.mbMes01 = 'START can be used for the first Maneuver only.\n\nSelect another Maneuver Type.'
-        self.mbTtl02 = 'Input Error'
+        self.mbTtl02 = 'Inappropriate Parameter'
         self.mbMes02 = 'tvmode should be L or E'
         self.mbMes03 = '{} should be a floating number'
         self.mbMes04 = '{} should be greater than or equal to 0.00001'
         self.mbMes05 = '{} should not be a negative value'
         self.mbTtl06 = 'Out of Range: Start Time'
-        self.mbMes06 = "Invalid Start Time\nStart Time is OUTSIDE of Target's time span"
+        self.mbMes06 = "Inappropriate Start Time\nStart Time is OUTSIDE of Target's time span"
         self.mbTtl07 = 'Information'
         self.mbMes07 = 'To use FTA, open Show Orbit window and try again'
         self.mbMes08 = 'Error occured during FTA computation.\nTry different parameters'
         self.mbTtl09 = 'Confirm FTA Results'
         self.mbMes09 = 'FTA Results are as follows. Apply them?\ndv = {0}\nphi = {1}\nelv = {2}'
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        self.mbTtl10 = 'Urgent!'
+        self.mbMes10 = 'You requested to apply parameters optimized for the time\n{}\nto the Maneuver.\n\nApplied Maneuver should be executed at that time.  You need to adjust preceding Maneuver(s) before execution of the Maneuver.\n\nThe time (ISOT format) has been copied to system clipboard.'
 
     def setenable(self):
         self.ui.computeFTA.setEnabled(False)
@@ -686,8 +670,8 @@ class EditManDialog(QDialog):
         if orgjd != dialog.result_it:
             mantime = common.jd2isot(dialog.result_it)
             g.clipboard.setText(mantime)
-            mes = self.boxMes01.format(mantime)
-            QMessageBox.warning(self, 'Urgent!', mes, QMessageBox.Ok)
+            mes = self.mbMes10.format(mantime)
+            QMessageBox.warning(self, self.mbTtl10, mes, QMessageBox.Ok)
 
         self.editman['dv'] = dialog.result_dv
         self.editman['phi'] = dialog.result_phi

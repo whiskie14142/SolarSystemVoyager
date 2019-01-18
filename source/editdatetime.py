@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 editdatetime module for editmaneuver module of SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 from PyQt5.QtCore import *
@@ -51,10 +51,7 @@ class EditDateTimeDialog(QDialog):
         self.mbMes05 = 'Invalid Duration'
         self.mbMes06 = 'Duration should be positive'
         self.mbTtl07 = 'Inappropriate Duration'
-        self.mbMes07 = 'Duration is too large.\nIn this case, Duration should less than {:.2f}'
-        
-        
-        
+        self.mbMes07 = 'Duration is too long.\nIn this case, Duration should less than {:.2f}'
         
         self.orgjd = orgjd
         self.fromjd = fromjd

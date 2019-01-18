@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 about module for SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 from PyQt5.QtCore import *
@@ -33,7 +33,10 @@ class AboutSSVG(QDialog):
         super().__init__(parent)
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
-        abouttext = """SSVG (Solar System Voyager) (c) 2016-2018 Shushi Uetsuki (whiskie14142)
+        
+        system_title = 'SSVG (Solar System Voyager)'
+        
+        abouttext = system_title + """ (c) 2016-2019 Shushi Uetsuki (whiskie14142)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

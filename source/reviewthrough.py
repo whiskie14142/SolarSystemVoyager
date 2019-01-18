@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 reviewthrough module for SSVG (Solar System Voyager)
-(c) 2016-2018 Shushi Uetsuki (whiskie14142)
+(c) 2016-2019 Shushi Uetsuki (whiskie14142)
 """
 
 from PyQt5.QtCore import *
@@ -42,6 +42,8 @@ class ReviewThroughoutControl(QDialog):
         self.setGeometry(left, top+740, 640, 211)
         self.ui = Ui_ReviewThroughoutControl()
         self.ui.setupUi(self)
+        
+        self.timecap_real = 'Real'
 
         # Get Settings of 'Look at' from showorbitsettings
         if g.showorbitsettings is not None:
@@ -196,7 +198,7 @@ class ReviewThroughoutControl(QDialog):
         
         # time
         remove_time()
-        replot_time(status[0], 'Real')
+        replot_time(status[0], self.timecap_real)
         
         if g.fig is not None: plt.draw()
         
@@ -304,7 +306,7 @@ class ReviewThroughoutControl(QDialog):
                                           depthshade=False, marker='o')
 
         remove_time()
-        replot_time(c_time, 'Real')
+        replot_time(c_time, self.timecap_real)
         
         if g.fig is not None: plt.draw()
         
