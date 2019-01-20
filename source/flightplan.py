@@ -50,20 +50,22 @@ class NewFlightPlanDialog(QDialog):
         self.ui.spkfileselect.clicked.connect(self.spkfileselectclicked)
         self.ui.okbutton.clicked.connect(self.ok_clicked)
         self.ui.cancelbutton.clicked.connect(self.reject)
+
+        self._translate = QtCore.QCoreApplication.translate
         
-        self.winTtl_SPK = 'Select SPK file'
-        self.winTtl_EP = 'Edit Probe Properties'
-        self.winTtl_ET = 'Select New Target'
-        self.mbTtl01 = 'Invalid SPK file'
-        self.mbMes01 = 'Invalid file format: the file is not an SPK file'
+        self.winTtl_SPK = self._translate('flightplan.py', 'Select SPK file')
+        self.winTtl_EP = self._translate('flightplan.py', 'Edit Probe Properties')
+        self.winTtl_ET = self._translate('flightplan.py', 'Select New Target')
+        self.mbTtl01 = self._translate('flightplan.py', 'Invalid SPK file')
+        self.mbMes01 = self._translate('flightplan.py', 'Invalid file format: the file is not an SPK file')
         self.mbMes02 = 'Invalid SPK file: center is {0}, which should be zero'          # No translation is required
         self.mbMes03 = 'Invalid SPK file: data type is {0}, which should be 1 or 21'    # No translation is required
-        self.mbMes04 = 'Invalid SPK file: the file contains more than one data type'
-        self.mbTtl05 = 'Input Error'
-        self.mbMes05 = 'Probe mass should be a float number.'
-        self.mbMes06 = 'Invalid Probe mass'
-        self.mbMes07 = 'No Taget name is specified. \nEnter Target name'
-        self.mbMes08 = 'No SPK file is specified. \nClick Find button and specify SPK file of the Target'
+        self.mbMes04 = self._translate('flightplan.py', 'Invalid SPK file: the file contains more than one data type')
+        self.mbTtl05 = self._translate('flightplan.py', 'Input Error')
+        self.mbMes05 = self._translate('flightplan.py', 'Probe mass should be a float number.')
+        self.mbMes06 = self._translate('flightplan.py', 'Invalid Probe mass')
+        self.mbMes07 = self._translate('flightplan.py', 'No Taget name is specified. \nEnter Target name')
+        self.mbMes08 = self._translate('flightplan.py', 'No SPK file is specified. \nClick Find button and specify SPK file of the Target')
         self.mbTtl09 = 'SPK File not Found'     # No translation is required
         self.mbMes09 = "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder" # No translation is required
             

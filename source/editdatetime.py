@@ -42,16 +42,18 @@ class EditDateTimeDialog(QDialog):
         self.ui.finishbutton.clicked.connect(self.finish_clicked)
         self.ui.cancelbutton.clicked.connect(self.reject)
         
-        self.mbTtl01 = 'Input Error'
-        self.mbMes01 = 'Invalid ISOT'
-        self.mbTtl02 = 'Inappropriate Date & Time'
-        self.mbMes02 = 'ISOT is out of range.\nIn this Flight Plan, ISOT should be in following range:\n from {0}\n to   {1}'
-        self.mbMes03 = 'Invalid JD'
-        self.mbMes04 = 'JD is out of range.\nIn this Flight Plan, JD should be in following range:\n from {0:.2f}\n to   {1:.2f}'
-        self.mbMes05 = 'Invalid Duration'
-        self.mbMes06 = 'Duration should be positive'
-        self.mbTtl07 = 'Inappropriate Duration'
-        self.mbMes07 = 'Duration is too long.\nIn this case, Duration should less than {:.2f}'
+        self._translate = QtCore.QCoreApplication.translate
+        
+        self.mbTtl01 = self._translate('editdatetime.py', 'Input Error')
+        self.mbMes01 = self._translate('editdatetime.py', 'Invalid ISOT')
+        self.mbTtl02 = self._translate('editdatetime.py', 'Inappropriate Date & Time')
+        self.mbMes02 = self._translate('editdatetime.py', 'ISOT is out of range.\nIn this Flight Plan, ISOT should be in following range:\n from {0}\n to   {1}')
+        self.mbMes03 = self._translate('editdatetime.py', 'Invalid JD')
+        self.mbMes04 = self._translate('editdatetime.py', 'JD is out of range.\nIn this Flight Plan, JD should be in following range:\n from {0:.2f}\n to   {1:.2f}')
+        self.mbMes05 = self._translate('editdatetime.py', 'Invalid Duration')
+        self.mbMes06 = self._translate('editdatetime.py', 'Duration should be positive')
+        self.mbTtl07 = self._translate('editdatetime.py', 'Inappropriate Duration')
+        self.mbMes07 = self._translate('editdatetime.py', 'Duration is too long.\nIn this case, Duration should less than {:.2f}')
         
         self.orgjd = orgjd
         self.fromjd = fromjd

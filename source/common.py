@@ -74,6 +74,7 @@ integ_rel_tol = [1e-10,1e-10,1e-10,1e-10,1e-10,1e-10]   # relative tolerance
 bspdir = 'SSVG_data'
 logdir = 'SSVG_log'
 plandir = 'SSVG_plan'
+i18ndir = 'SSVG_i18n'
 
 # minimum flight time (days)
 minft = 1.0

@@ -140,16 +140,18 @@ class MainForm(QMainWindow):
             '{:.5f}'
             ]
 
+        self._translate = QtCore.QCoreApplication.translate
+
         self.paramdesc = [
-            'time (ISOT)',
-            'dv (m/s)',
-            'dvpd (m/s/day)',
-            'phi (deg)',
-            'elv (deg)',
-            'aria (m**2)',
-            'theta (deg)',
-            'tvmode (L|E)',
-            'inter (days)'
+            self._translate('SSVG.py', 'time (ISOT)'),
+            self._translate('SSVG.py', 'dv (m/s)'),
+            self._translate('SSVG.py', 'dvpd (m/s/day)'),
+            self._translate('SSVG.py', 'phi (deg)'),
+            self._translate('SSVG.py', 'elv (deg)'),
+            self._translate('SSVG.py', 'aria (m**2)'),
+            self._translate('SSVG.py', 'theta (deg)'),
+            self._translate('SSVG.py', 'tvmode (L|E)'),
+            self._translate('SSVG.py', 'inter (days)')
             ]
 
         self.initConstants()
@@ -163,42 +165,42 @@ class MainForm(QMainWindow):
         
     def initMessage(self):
         # i18n messages
-        self.sysMes01 = 'Saved: {}'
-        self.sysMes02 = 'Edited: Line {}'
-        self.sysMes03 = 'Executed: {0}, Line {1}'
-        self.sysMes04 = 'Cleared: Execution State'
-        self.sysMes05 = 'Created: Flight Plan'
-        self.sysMes06 = 'Opened: {}'
-        self.sysMes07 = 'Edited: Probe, of {}'
-        self.sysMes08 = 'Edited: Target, of {}'
-        self.sysMes09 = 'Created: Checkpoint'
-        self.sysMes10 = 'Resumed: Checkpoint'
-        self.sysMes11 = 'Erased: Checkpoint'
-        self.sysMes12 = 'Inserted: Line {}'
-        self.sysMes13 = 'Deleted: Line {}'
-        self.sysMes14 = 'Sent: Orbit, to Show Orbit'
-        self.sysMes15 = 'Sent: FLYTO Record, to Flight Review'
-        self.sysMes16 = 'Sent: Flight Records, to Review Throughout'
+        self.sysMes01 = self._translate('SSVG.py', 'Saved: {}')
+        self.sysMes02 = self._translate('SSVG.py', 'Edited: Line {}')
+        self.sysMes03 = self._translate('SSVG.py', 'Executed: {0}, Line {1}')
+        self.sysMes04 = self._translate('SSVG.py', 'Cleared: Execution State')
+        self.sysMes05 = self._translate('SSVG.py', 'Created: Flight Plan')
+        self.sysMes06 = self._translate('SSVG.py', 'Opened: {}')
+        self.sysMes07 = self._translate('SSVG.py', 'Edited: Probe, of {}')
+        self.sysMes08 = self._translate('SSVG.py', 'Edited: Target, of {}')
+        self.sysMes09 = self._translate('SSVG.py', 'Created: Checkpoint')
+        self.sysMes10 = self._translate('SSVG.py', 'Resumed: Checkpoint')
+        self.sysMes11 = self._translate('SSVG.py', 'Erased: Checkpoint')
+        self.sysMes12 = self._translate('SSVG.py', 'Inserted: Line {}')
+        self.sysMes13 = self._translate('SSVG.py', 'Deleted: Line {}')
+        self.sysMes14 = self._translate('SSVG.py', 'Sent: Orbit, to Show Orbit')
+        self.sysMes15 = self._translate('SSVG.py', 'Sent: FLYTO Record, to Flight Review')
+        self.sysMes16 = self._translate('SSVG.py', 'Sent: Flight Records, to Review Throughout')
         
-        self.mbTtl01 = 'Confirmation'
-        self.mbMes01 = 'Current Flight Plan has not been saved.\nDo you want to save?'
-        self.mbTtl02 = 'SPK File not Found'
-        self.mbMes02 = "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder"
-        self.mbTtl03 = 'Out of Range: Flight Plan'
-        self.mbMes03 = "The Flight Plan file contains Maneuver(s) OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing the Flight Plan"
-        self.mbTtl04 = 'Permission Error'
-        self.mbMes04 = 'The File cannot be overwrite'
-        self.mbTtl05 = 'Invalid Maneuver'
-        self.mbMes05 = 'You do not have valid Maneuver'
-        self.mbTtl06 = 'Execution Failed'
-        self.mbMes06 = 'SSVG failed to execute the Maneuver.\n\n{}'
-        self.mbTtl07 = 'Invalid Command'
-        self.mbMes07 = 'To execute Maneuvers in a row, select a Line below the Next Line and click [EXECUTE *]'
-        self.mbTtl09 = 'Invalid Date & Time'
-        self.mbMes09 = "The date and time specified in the Maneuver is OUTSIDE of the valid time span of the Target.\nTry again."
-        self.mbTtl10 = 'Confirmation to Delete'
-        self.mbMes10 = 'Line {} will be deleted. OK?'
-        self.mbMes11 = "The Flight Plan file containes Maneuver(s) OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing this Flight Plan.\nIt is recommended that you select another SPK file."
+        self.mbTtl01 = self._translate('SSVG.py', 'Confirmation')
+        self.mbMes01 = self._translate('SSVG.py', 'Current Flight Plan has not been saved.\nDo you want to save?')
+        self.mbTtl02 = self._translate('SSVG.py', 'SPK File not Found')
+        self.mbMes02 = self._translate('SSVG.py', "Target's SPK file {0} is not found.  Store it in 'SSVG_data' folder")
+        self.mbTtl03 = self._translate('SSVG.py', 'Out of Range: Flight Plan')
+        self.mbMes03 = self._translate('SSVG.py', "The Flight Plan file contains Maneuver(s) OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing the Flight Plan")
+        self.mbTtl04 = self._translate('SSVG.py', 'Permission Error')
+        self.mbMes04 = self._translate('SSVG.py', 'The File cannot be overwrite')
+        self.mbTtl05 = self._translate('SSVG.py', 'Invalid Maneuver')
+        self.mbMes05 = self._translate('SSVG.py', 'You do not have valid Maneuver')
+        self.mbTtl06 = self._translate('SSVG.py', 'Execution Failed')
+        self.mbMes06 = self._translate('SSVG.py', 'SSVG failed to execute the Maneuver.\n\n{}')
+        self.mbTtl07 = self._translate('SSVG.py', 'Invalid Command')
+        self.mbMes07 = self._translate('SSVG.py', 'To execute Maneuvers in a row, select a Line below the Next Line and click [EXECUTE *]')
+        self.mbTtl09 = self._translate('SSVG.py', 'Invalid Date & Time')
+        self.mbMes09 = self._translate('SSVG.py', "The date and time specified in the Maneuver is OUTSIDE of the valid time span of the Target.\nTry again.")
+        self.mbTtl10 = self._translate('SSVG.py', 'Confirmation to Delete')
+        self.mbMes10 = self._translate('SSVG.py', 'Line {} will be deleted. OK?')
+        self.mbMes11 = self._translate('SSVG.py', "The Flight Plan file containes Maneuver(s) OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing this Flight Plan.\nIt is recommended that you select another SPK file.")
         
 
     def initConstants(self):
@@ -206,45 +208,45 @@ class MainForm(QMainWindow):
         
         # i18n planet names and its indices
         g.i_planetnames = [
-            ['Mercury', 0],
-            ['Venus', 1],
-            ['Mars', 3],
-            ['Jupiter', 4],
-            ['Saturn', 5],
-            ['Uranus', 6],
-            ['Neptune', 7],
-            ['Pluto', 8],
-            ['Moon', 10],
-            ['Earth', 11]
+            [self._translate('SSVG.py', 'Mercury'), 0],
+            [self._translate('SSVG.py', 'Venus'), 1],
+            [self._translate('SSVG.py', 'Mars'), 3],
+            [self._translate('SSVG.py', 'Jupiter'), 4],
+            [self._translate('SSVG.py', 'Saturn'), 5],
+            [self._translate('SSVG.py', 'Uranus'), 6],
+            [self._translate('SSVG.py', 'Neptune'), 7],
+            [self._translate('SSVG.py', 'Pluto'), 8],
+            [self._translate('SSVG.py', 'Moon'), 10],
+            [self._translate('SSVG.py', 'Earth'), 11]
         ]
         
         # i18n space base names
         g.i_spacebases = [
-            'Earth L1',
-            'Earth L2',
-            'Mercury L1',
-            'Mercury L2',
-            'Venus L1',
-            'Venus L2',
-            'Mars L1',
-            'Mars L2',
-            'Jupiter L1',
-            'Jupiter L2',
-            'Saturn L1',
-            'Saturn L2',
-            'Uranus L1',
-            'Uranus L2',
-            'Neptune L1',
-            'Neptune L2'
+            self._translate('SSVG.py', 'Earth L1'),
+            self._translate('SSVG.py', 'Earth L2'),
+            self._translate('SSVG.py', 'Mercury L1'),
+            self._translate('SSVG.py', 'Mercury L2'),
+            self._translate('SSVG.py', 'Venus L1'),
+            self._translate('SSVG.py', 'Venus L2'),
+            self._translate('SSVG.py', 'Mars L1'),
+            self._translate('SSVG.py', 'Mars L2'),
+            self._translate('SSVG.py', 'Jupiter L1'),
+            self._translate('SSVG.py', 'Jupiter L2'),
+            self._translate('SSVG.py', 'Saturn L1'),
+            self._translate('SSVG.py', 'Saturn L2'),
+            self._translate('SSVG.py', 'Uranus L1'),
+            self._translate('SSVG.py', 'Uranus L2'),
+            self._translate('SSVG.py', 'Neptune L1'),
+            self._translate('SSVG.py', 'Neptune L2')
         ]
         
-        self.winTtl_3D = '3D Orbit'
-        self.winTtl_SFP = 'Select Flight Plan File'
-        self.winTtl_OFP = 'Define Output Flight Plan File'
-        self.procMes = 'Processing:  {0} {1}'
+        self.winTtl_3D = self._translate('SSVG.py', '3D Orbit')
+        self.winTtl_SFP = self._translate('SSVG.py', 'Select Flight Plan File')
+        self.winTtl_OFP = self._translate('SSVG.py', 'Define Output Flight Plan File')
+        self.procMes = self._translate('SSVG.py', 'Processing:  {0} {1}')
 
     def initSSV(self):
-        g.version = '1.2.2'
+        g.version = 'v1.3.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -1251,6 +1253,23 @@ def resource_path(relative):
 def main():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(resource_path('ssvgicon.ico')))
+    
+    # Translations of QMessageBox buttons
+    i18ndir = os.path.join(common.i18ndir)
+    qtTranslator = QTranslator()
+    qtTranslator.load(QLocale.system(), 'qt', '_', directory=i18ndir)
+    app.installTranslator(qtTranslator)
+    qtBaseTranslator = QTranslator()
+    qtBaseTranslator.load(QLocale.system(), 'qtbase', '_', directory=i18ndir)
+    app.installTranslator(qtBaseTranslator)
+    
+    # Translate SSVG
+    ssvgTranslator = QTranslator()
+    ssvgTranslator.load(QLocale.system(), 'ssvg', '_', directory=i18ndir)
+    app.installTranslator(ssvgTranslator)
+    
+    
+    
     g.mainform = MainForm()
     g.mainform.show()
     sys.exit(app.exec_())

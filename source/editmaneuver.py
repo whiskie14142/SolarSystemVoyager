@@ -75,25 +75,28 @@ class EditManDialog(QDialog):
             [0, 0, 0, 0, 0, 0, 0, 0, 0], # for SS_OFF
             [1, 0, 0, 0, 0, 0, 0, 0, 1]  # for FLYTO
             ]
+
+        self._translate = QtCore.QCoreApplication.translate
+
         paramdesc = [
-            'time  : Maneuver Time (JD)',
-            'dv      : magnitude of delta-V (m/s)',
-            'dvpd  : magnitude of acceleration (m/s/day)',
-            'phi     : angle phi (deg)',
-            'elv     : angle elv (deg)',
-            'aria    : area of solar sail (m**2)',
-            'theta : angle theta (deg)',
-            'tvmode : thrust vector mode (L|E)',
-            'inter : integration interval (days)'
+            self._translate('editmaneuver.py', 'time  : Maneuver Time (JD)'),
+            self._translate('editmaneuver.py', 'dv      : magnitude of delta-V (m/s)'),
+            self._translate('editmaneuver.py', 'dvpd  : magnitude of acceleration (m/s/day)'),
+            self._translate('editmaneuver.py', 'phi     : angle phi (deg)'),
+            self._translate('editmaneuver.py', 'elv     : angle elv (deg)'),
+            self._translate('editmaneuver.py', 'aria    : area of solar sail (m**2)'),
+            self._translate('editmaneuver.py', 'theta : angle theta (deg)'),
+            self._translate('editmaneuver.py', 'tvmode : thrust vector mode (L|E)'),
+            self._translate('editmaneuver.py', 'inter : integration interval (days)')
             ]
         self.timedesc = [
-                'Start Time', 
-                'Date & Time', 
-                'Date & Time', 
-                'Date & Time', 
-                'Date & Time', 
-                'Date & Time', 
-                'End Time'
+                self._translate('editmaneuver.py', 'Start Time'), 
+                self._translate('editmaneuver.py', 'Date & Time'), 
+                self._translate('editmaneuver.py', 'Date & Time'), 
+                self._translate('editmaneuver.py', 'Date & Time'), 
+                self._translate('editmaneuver.py', 'Date & Time'), 
+                self._translate('editmaneuver.py', 'Date & Time'), 
+                self._translate('editmaneuver.py', 'End Time')
                 ]
         self.fmttbl = [
             '{:.8f}',
@@ -152,29 +155,29 @@ class EditManDialog(QDialog):
             self.setenable()
         
     def initMessages(self):
-        self.sysMes01 = 'Received: Date and Time, from Show Orbit'
-        self.sysMes02 = 'Received: Results, from FTA'
-        self.sysMes03 = 'Received: Results, from OPTIMIZE'
-        self.sysMes04 = 'Edited: Date and Time'
-        self.sysMes05 = 'Sent: Parameters, to Show Orbit'
-        self.sysMes06 = 'Edited: Parameter {}'
+        self.sysMes01 = self._translate('editmaneuver.py', 'Received: Date and Time, from Show Orbit')
+        self.sysMes02 = self._translate('editmaneuver.py', 'Received: Results, from FTA')
+        self.sysMes03 = self._translate('editmaneuver.py', 'Received: Results, from OPTIMIZE')
+        self.sysMes04 = self._translate('editmaneuver.py', 'Edited: Date and Time')
+        self.sysMes05 = self._translate('editmaneuver.py', 'Sent: Parameters, to Show Orbit')
+        self.sysMes06 = self._translate('editmaneuver.py', 'Edited: Parameter {}')
         
-        self.mbTtl01 = 'Inappropriate Maneuver Type'
-        self.mbMes01 = 'START can be used for the first Maneuver only.\n\nSelect another Maneuver Type.'
-        self.mbTtl02 = 'Inappropriate Parameter'
-        self.mbMes02 = 'tvmode should be L or E'
-        self.mbMes03 = '{} should be a floating number'
-        self.mbMes04 = '{} should be greater than or equal to 0.00001'
-        self.mbMes05 = '{} should not be a negative value'
-        self.mbTtl06 = 'Out of Range: Start Time'
-        self.mbMes06 = "Inappropriate Start Time\nStart Time is OUTSIDE of Target's time span"
-        self.mbTtl07 = 'Information'
-        self.mbMes07 = 'To use FTA, open Show Orbit window and try again'
-        self.mbMes08 = 'Error occured during FTA computation.\nTry different parameters'
-        self.mbTtl09 = 'Confirm FTA Results'
-        self.mbMes09 = 'FTA Results are as follows. Apply them?\ndv = {0}\nphi = {1}\nelv = {2}'
-        self.mbTtl10 = 'Urgent!'
-        self.mbMes10 = 'You requested to apply parameters optimized for the time\n{}\nto the Maneuver.\n\nApplied Maneuver should be executed at that time.  You need to adjust preceding Maneuver(s) before execution of the Maneuver.\n\nThe time (ISOT format) has been copied to system clipboard.'
+        self.mbTtl01 = self._translate('editmaneuver.py', 'Inappropriate Maneuver Type')
+        self.mbMes01 = self._translate('editmaneuver.py', 'START can be used for the first Maneuver only.\n\nSelect another Maneuver Type.')
+        self.mbTtl02 = self._translate('editmaneuver.py', 'Inappropriate Parameter')
+        self.mbMes02 = self._translate('editmaneuver.py', 'tvmode should be L or E')
+        self.mbMes03 = self._translate('editmaneuver.py', '{} should be a floating number')
+        self.mbMes04 = self._translate('editmaneuver.py', '{} should be greater than or equal to 0.00001')
+        self.mbMes05 = self._translate('editmaneuver.py', '{} should not be a negative value')
+        self.mbTtl06 = self._translate('editmaneuver.py', 'Out of Range: Start Time')
+        self.mbMes06 = self._translate('editmaneuver.py', "Inappropriate Start Time\nStart Time is OUTSIDE of Target's time span")
+        self.mbTtl07 = self._translate('editmaneuver.py', 'Information')
+        self.mbMes07 = self._translate('editmaneuver.py', 'To use FTA, open Show Orbit window and try again')
+        self.mbMes08 = self._translate('editmaneuver.py', 'Error occured during FTA computation.\nTry different parameters')
+        self.mbTtl09 = self._translate('editmaneuver.py', 'Confirm FTA Results')
+        self.mbMes09 = self._translate('editmaneuver.py', 'FTA Results are as follows. Apply them?\ndv = {0}\nphi = {1}\nelv = {2}')
+        self.mbTtl10 = self._translate('editmaneuver.py', 'Urgent!')
+        self.mbMes10 = self._translate('editmaneuver.py', 'You requested to apply parameters optimized for the time\n{}\nto the Maneuver.\n\nApplied Maneuver should be executed at that time.  You need to adjust preceding Maneuver(s) before execution of the Maneuver.\n\nThe time (ISOT format) has been copied to system clipboard.')
 
     def setenable(self):
         self.ui.computeFTA.setEnabled(False)

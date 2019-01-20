@@ -74,7 +74,7 @@
     <message>
         <location filename="../ui/editmandialog.ui" line="184"/>
         <source>Discard Changes and Quit Editing</source>
-        <translation>変更を廃棄してエディタを終了します</translation>
+        <translation>変更を破棄してエディタを終了します</translation>
     </message>
     <message>
         <location filename="../ui/editmandialog.ui" line="187"/>
@@ -922,7 +922,7 @@
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="49"/>
         <source>Start time</source>
-        <translation type="unfinished">出発時刻</translation>
+        <translation>出発時刻</translation>
     </message>
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="65"/>
@@ -1415,12 +1415,12 @@ Range</source>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="190"/>
         <source>Expornent of 10 (days)</source>
-        <translation type="unfinished">時刻の変化の速さを指定します。1 を指定すると速さが10倍になります。</translation>
+        <translation>時刻の変化の速さを指定します。1 を指定すると速さが10倍に、-1 を指定すると 10 分の 1 になります。</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="209"/>
         <source>Scale 10**</source>
-        <translation type="unfinished">速さ</translation>
+        <translation>速さ</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="225"/>
@@ -1557,192 +1557,206 @@ Range</source>
     <name>editdatetime.py</name>
     <message>
         <source>Input Error</source>
-        <translation type="unfinished">入力エラー</translation>
+        <translation>入力エラー</translation>
     </message>
     <message>
         <source>Invalid ISOT</source>
-        <translation type="unfinished"></translation>
+        <translation>不正なISO時刻</translation>
     </message>
     <message>
         <source>Inappropriate Date &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切な日付と時刻</translation>
     </message>
     <message>
         <source>ISOT is out of range.
 In this Flight Plan, ISOT should be in following range:
  from {0}
  to   {1}</source>
-        <translation type="unfinished"></translation>
+        <translation>ISO時刻が範囲外です。
+ここでは、ISO時刻は次の範囲でなければなりません。
+　{0}　から
+　{1}　まで</translation>
     </message>
     <message>
         <source>Invalid JD</source>
-        <translation type="unfinished"></translation>
+        <translation>不正なユリウス日</translation>
     </message>
     <message>
         <source>JD is out of range.
 In this Flight Plan, JD should be in following range:
  from {0:.2f}
  to   {1:.2f}</source>
-        <translation type="unfinished"></translation>
+        <translation>ユリウス日が範囲外です。
+ここでは、ユリウス日は次の範囲でなければなりません。
+　{0:.2f}　から
+　{1:.2f}　まで</translation>
     </message>
     <message>
         <source>Invalid Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>不正な継続期間</translation>
     </message>
     <message>
         <source>Duration should be positive</source>
-        <translation type="unfinished"></translation>
+        <translation>継続期間は正でなければなりません</translation>
     </message>
     <message>
         <source>Inappropriate Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切な継続期間</translation>
     </message>
     <message>
         <source>Duration is too long.
 In this case, Duration should less than {:.2f}</source>
-        <translation type="unfinished"></translation>
+        <translation>継続期間が長すぎます。
+ここでは、継続期間は {:.2f} よりも短くなければなりません。</translation>
     </message>
 </context>
 <context>
     <name>editmaneuver.py</name>
     <message>
         <source>time  : Maneuver Time (JD)</source>
-        <translation type="unfinished"></translation>
+        <translation>time  : マヌーバ時刻 （ユリウス日）</translation>
     </message>
     <message>
         <source>dv      : magnitude of delta-V (m/s)</source>
-        <translation type="unfinished"></translation>
+        <translation>dv      : デルタ V の大きさ （m/s）</translation>
     </message>
     <message>
         <source>dvpd  : magnitude of acceleration (m/s/day)</source>
-        <translation type="unfinished"></translation>
+        <translation>dvpd  : 加速率の大きさ （m/s/日）</translation>
     </message>
     <message>
         <source>phi     : angle phi (deg)</source>
-        <translation type="unfinished"></translation>
+        <translation>phi     : 角度ファイ （度）</translation>
     </message>
     <message>
         <source>elv     : angle elv (deg)</source>
-        <translation type="unfinished"></translation>
+        <translation>elv     : 上下角 （度）</translation>
     </message>
     <message>
         <source>aria    : area of solar sail (m**2)</source>
-        <translation type="unfinished"></translation>
+        <translation>aria    : ソーラーセイルの面積 （平方 m）</translation>
     </message>
     <message>
         <source>theta : angle theta (deg)</source>
-        <translation type="unfinished"></translation>
+        <translation>theta : 角度シータ （度）</translation>
     </message>
     <message>
         <source>tvmode : thrust vector mode (L|E)</source>
-        <translation type="unfinished"></translation>
+        <translation>tvmode : 推力方向モード （L または E）</translation>
     </message>
     <message>
         <source>inter : integration interval (days)</source>
-        <translation type="unfinished"></translation>
+        <translation>inter : 積分間隔 （日）</translation>
     </message>
     <message>
         <source>Start Time</source>
-        <translation type="unfinished"></translation>
+        <translation>出発時刻</translation>
     </message>
     <message>
         <source>Date &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>日付と時刻</translation>
     </message>
     <message>
         <source>End Time</source>
-        <translation type="unfinished"></translation>
+        <translation>終了時刻</translation>
     </message>
     <message>
         <source>Received: Date and Time, from Show Orbit</source>
-        <translation type="unfinished"></translation>
+        <translation>受信しました： 日付と時刻を「軌道表示」から</translation>
     </message>
     <message>
         <source>Received: Results, from FTA</source>
-        <translation type="unfinished"></translation>
+        <translation>受信しました： 結果を FTA から</translation>
     </message>
     <message>
         <source>Received: Results, from OPTIMIZE</source>
-        <translation type="unfinished"></translation>
+        <translation>受信しました： 結果を「最適化アシスタント」から</translation>
     </message>
     <message>
         <source>Edited: Date and Time</source>
-        <translation type="unfinished"></translation>
+        <translation>編集しました： 日付と時刻</translation>
     </message>
     <message>
         <source>Sent: Parameters, to Show Orbit</source>
-        <translation type="unfinished"></translation>
+        <translation>送信しました： パラメータを「軌道表示」へ</translation>
     </message>
     <message>
         <source>Edited: Parameter {}</source>
-        <translation type="unfinished"></translation>
+        <translation>編集しました： パラメータ {}</translation>
     </message>
     <message>
         <source>Inappropriate Maneuver Type</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切なマヌーバタイプ</translation>
     </message>
     <message>
         <source>START can be used for the first Maneuver only.
 
 Select another Maneuver Type.</source>
-        <translation type="unfinished"></translation>
+        <translation>START マヌーバは最初のマヌーバに限り使用できます。
+
+他のマヌーバタイプを選択してください。</translation>
     </message>
     <message>
         <source>Inappropriate Parameter</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切なパラメータ</translation>
     </message>
     <message>
         <source>tvmode should be L or E</source>
-        <translation type="unfinished"></translation>
+        <translation>tvmode の値は L または E でなければなりません</translation>
     </message>
     <message>
         <source>{} should be a floating number</source>
-        <translation type="unfinished"></translation>
+        <translation>{} は数値でなければなりません</translation>
     </message>
     <message>
         <source>{} should be greater than or equal to 0.00001</source>
-        <translation type="unfinished"></translation>
+        <translation>{} の値は 0.00001 以上でなければなりません</translation>
     </message>
     <message>
         <source>{} should not be a negative value</source>
-        <translation type="unfinished"></translation>
+        <translation>{} の値は負であってはなりません</translation>
     </message>
     <message>
         <source>Out of Range: Start Time</source>
-        <translation type="unfinished"></translation>
+        <translation>範囲外： 出発時刻</translation>
     </message>
     <message>
         <source>Inappropriate Start Time
 Start Time is OUTSIDE of Target&apos;s time span</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切な出発時刻
+出発時刻がターゲットの有効な期間の外です</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>情報</translation>
     </message>
     <message>
         <source>To use FTA, open Show Orbit window and try again</source>
-        <translation type="unfinished"></translation>
+        <translation>FTA を使用するには「軌道表示」が必要です。「軌道表示」を開いて再度試してください。</translation>
     </message>
     <message>
         <source>Error occured during FTA computation.
 Try different parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>FTA の計算中にエラーが発生しました。
+違うパラメータを試してください。</translation>
     </message>
     <message>
         <source>Confirm FTA Results</source>
-        <translation type="unfinished"></translation>
+        <translation>FTA 結果確認</translation>
     </message>
     <message>
         <source>FTA Results are as follows. Apply them?
 dv = {0}
 phi = {1}
 elv = {2}</source>
-        <translation type="unfinished"></translation>
+        <translation>FTA の結果は以下のとおりです。これらの値を使用しますか？
+dv = {0}
+phi = {1}
+elv = {2}</translation>
     </message>
     <message>
         <source>Urgent!</source>
-        <translation type="unfinished"></translation>
+        <translation>重要な情報</translation>
     </message>
     <message>
         <source>You requested to apply parameters optimized for the time
@@ -1752,515 +1766,530 @@ to the Maneuver.
 Applied Maneuver should be executed at that time.  You need to adjust preceding Maneuver(s) before execution of the Maneuver.
 
 The time (ISOT format) has been copied to system clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>マヌーバのパラメータは次の時刻に実行される前提で最適化されています。
+{}
+編集中のマヌーバは上の時刻に実行される必要があります。このマヌーバ以前に実行されるマヌーバを変更して、条件を満たす飛行計画にしてください。
+
+上記の時刻は ISO時刻の形式でクリップボードにコピーされています。</translation>
     </message>
 </context>
 <context>
     <name>flightplan.py</name>
     <message>
         <source>Select SPK file</source>
-        <translation type="unfinished"></translation>
+        <translation>SPK ファイルの選択</translation>
     </message>
     <message>
         <source>Edit Probe Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>探査機の編集</translation>
     </message>
     <message>
         <source>Select New Target</source>
-        <translation type="unfinished"></translation>
+        <translation>ターゲットの選択</translation>
     </message>
     <message>
         <source>Invalid SPK file</source>
-        <translation type="unfinished"></translation>
+        <translation>不正な SPK ファイル</translation>
     </message>
     <message>
         <source>Invalid file format: the file is not an SPK file</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの形式が正しくありません。選択したファイルは SPK ファイルではありません。</translation>
     </message>
     <message>
         <source>Invalid SPK file: the file contains more than one data type</source>
-        <translation type="unfinished"></translation>
+        <translation>不正な SPK ファイルです。ファイルに複数のデータタイプが含まれています。</translation>
     </message>
     <message>
         <source>Input Error</source>
-        <translation type="unfinished"></translation>
+        <translation>入力エラー</translation>
     </message>
     <message>
         <source>Probe mass should be a float number.</source>
-        <translation type="unfinished"></translation>
+        <translation>探査機の質量は数値でなければなりません。</translation>
     </message>
     <message>
         <source>Invalid Probe mass</source>
-        <translation type="unfinished"></translation>
+        <translation>不正な探査機の質量</translation>
     </message>
     <message>
         <source>No Taget name is specified. 
 Enter Target name</source>
-        <translation type="unfinished"></translation>
+        <translation>ターゲットの名前が設定されていません。
+ターゲットの名前を入力してください。</translation>
     </message>
     <message>
         <source>No SPK file is specified. 
 Click Find button and specify SPK file of the Target</source>
-        <translation type="unfinished"></translation>
+        <translation>SPK ファイルが指定されていません。
+[探す] のボタンをクリックして、ターゲットの SPK ファイルを指定してください。</translation>
     </message>
 </context>
 <context>
     <name>flightreview.py</name>
     <message>
         <source>Real</source>
-        <translation type="unfinished"></translation>
+        <translation>実時刻</translation>
     </message>
 </context>
 <context>
     <name>ftasetting.py</name>
     <message>
         <source>Input Error</source>
-        <translation type="unfinished"></translation>
+        <translation>入力エラー</translation>
     </message>
     <message>
         <source>Each parameter should be a floating number</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのパラメータは数値でなければなりません</translation>
     </message>
     <message>
         <source>Inappropriate Parameter</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切なパラメータ</translation>
     </message>
     <message>
         <source>To use FTA, Time to Arrival shall be
 greater than {0:.1f} day</source>
-        <translation type="unfinished"></translation>
+        <translation>FTA では飛行時間として {0:.1f} （日） よりも大きな値を指定してください</translation>
     </message>
     <message>
         <source>Invalid Time to Arrival.
 Arrival time is OUTSIDE of Target&apos;s time span</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切な飛行時間です。
+到着時刻がターゲットの有効期間の外になります。</translation>
     </message>
     <message>
         <source>Offset distance should not be negative</source>
-        <translation type="unfinished"></translation>
+        <translation>オフセット距離の値は負であってはなりません</translation>
     </message>
 </context>
 <context>
     <name>optimize.py</name>
     <message>
         <source>Out of Range: Start Time</source>
-        <translation type="unfinished"></translation>
+        <translation>範囲外： 出発時刻</translation>
     </message>
     <message>
         <source>Out of Range: Arrival Time</source>
-        <translation type="unfinished"></translation>
+        <translation>範囲外： 到着時刻</translation>
     </message>
     <message>
         <source>Failed: Finding Orbit</source>
-        <translation type="unfinished"></translation>
+        <translation>失敗しました： 軌道の探索</translation>
     </message>
     <message>
         <source>Out of Range: Maneuver Time</source>
-        <translation type="unfinished"></translation>
+        <translation>範囲外： マヌーバ時刻</translation>
     </message>
     <message>
         <source>CP Optimize Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>最適化アシスタント （CP マヌーバ）</translation>
     </message>
     <message>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>直前の軌道</translation>
     </message>
     <message>
         <source>Adjust Maneuver Time</source>
-        <translation type="unfinished"></translation>
+        <translation>マヌーバ時刻の調整</translation>
     </message>
     <message>
         <source>Maneuver Time</source>
-        <translation type="unfinished"></translation>
+        <translation>マヌーバ時刻</translation>
     </message>
 </context>
 <context>
     <name>probe.py</name>
     <message>
         <source>Invalid End Time of FLYTO : Earier than Current Time</source>
-        <translation type="unfinished"></translation>
+        <translation>FLYTO マヌーバの終了時刻の不正： 現在時刻よりも前</translation>
     </message>
     <message>
         <source>Invalid End Time of FLYTO : OUTSIDE of Target&apos;s Time Span</source>
-        <translation type="unfinished"></translation>
+        <translation>FLYTO マヌーバの終了時刻の不正： ターゲットの有効期間の外</translation>
     </message>
     <message>
         <source>Invalid Manuever Type : {}</source>
-        <translation type="unfinished"></translation>
+        <translation>不正なマヌーバタイプ： {}</translation>
     </message>
     <message>
         <source>Numerical Integration Error(s) occured 
 after {}</source>
-        <translation type="unfinished"></translation>
+        <translation>数値積分のエラーが発生しました。発生したのは次の時刻以降です。
+{}</translation>
     </message>
     <message>
         <source>Invalid Start Time : OUTSIDE of Target&apos;s Time Span</source>
-        <translation type="unfinished"></translation>
+        <translation>出発時刻の不正： ターゲットの有効期間の外</translation>
     </message>
 </context>
 <context>
     <name>reviewthrough.py</name>
     <message>
         <source>Real</source>
-        <translation type="unfinished"></translation>
+        <translation>実時刻</translation>
     </message>
 </context>
 <context>
     <name>showorbit.py</name>
     <message>
         <source>Real</source>
-        <translation type="unfinished"></translation>
+        <translation>実時刻</translation>
     </message>
     <message>
         <source>Prediction</source>
-        <translation type="unfinished"></translation>
+        <translation>予測時刻</translation>
     </message>
     <message>
         <source>Start Time</source>
-        <translation type="unfinished"></translation>
+        <translation>出発時刻</translation>
     </message>
     <message>
         <source>Input Error</source>
-        <translation type="unfinished"></translation>
+        <translation>入力エラー</translation>
     </message>
     <message>
         <source>Elapsed time should be a floating number</source>
-        <translation type="unfinished"></translation>
+        <translation>経過時間は数値でなければなりません</translation>
     </message>
     <message>
         <source>Inappropriate Start Time</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切な出発時間</translation>
     </message>
     <message>
         <source>Start Time is OUTSIDE of Target&apos;s time span</source>
-        <translation type="unfinished"></translation>
+        <translation>出発時刻がターゲットの有効期間の外です</translation>
     </message>
     <message>
         <source>Received: Parameters, from Maneuver Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>受信しました： パラメータをマヌーバエディタから</translation>
     </message>
     <message>
         <source>Received: Orbit, from SSVG</source>
-        <translation type="unfinished"></translation>
+        <translation>受信しました： 軌道を SSVG から</translation>
     </message>
     <message>
         <source>Sent: Date and Time, to Maneuver Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>送信しました： 日付と時刻をマヌーバエディタへ</translation>
     </message>
     <message>
         <source>Out of Range: Prediction Time</source>
-        <translation type="unfinished"></translation>
+        <translation>範囲外： 予測時刻</translation>
     </message>
     <message>
         <source>Failed: Prediction, Position of Probe</source>
-        <translation type="unfinished"></translation>
+        <translation>失敗しました： 探査機の位置の予測</translation>
     </message>
 </context>
 <context>
     <name>SSVG.py</name>
     <message>
         <source>time (ISOT)</source>
-        <translation type="unfinished"></translation>
+        <translation>time （ISO時刻）</translation>
     </message>
     <message>
         <source>dv (m/s)</source>
-        <translation type="unfinished"></translation>
+        <translation>dv （m/s）</translation>
     </message>
     <message>
         <source>dvpd (m/s/day)</source>
-        <translation type="unfinished"></translation>
+        <translation>dvpd （m/s/日）</translation>
     </message>
     <message>
         <source>phi (deg)</source>
-        <translation type="unfinished"></translation>
+        <translation>phi （度）</translation>
     </message>
     <message>
         <source>elv (deg)</source>
-        <translation type="unfinished"></translation>
+        <translation>elv （度）</translation>
     </message>
     <message>
         <source>aria (m**2)</source>
-        <translation type="unfinished"></translation>
+        <translation>aria （平方 m）</translation>
     </message>
     <message>
         <source>theta (deg)</source>
-        <translation type="unfinished"></translation>
+        <translation>theta （度）</translation>
     </message>
     <message>
         <source>tvmode (L|E)</source>
-        <translation type="unfinished"></translation>
+        <translation>tvmode （L または E）</translation>
     </message>
     <message>
         <source>inter (days)</source>
-        <translation type="unfinished"></translation>
+        <translation>inter （日）</translation>
     </message>
     <message>
         <source>Saved: {}</source>
-        <translation type="unfinished"></translation>
+        <translation>保存しました： {}</translation>
     </message>
     <message>
         <source>Edited: Line {}</source>
-        <translation type="unfinished"></translation>
+        <translation>編集しました： 行 {}</translation>
     </message>
     <message>
         <source>Executed: {0}, Line {1}</source>
-        <translation type="unfinished"></translation>
+        <translation>実行しました： 行 {1} の {0}</translation>
     </message>
     <message>
         <source>Cleared: Execution State</source>
-        <translation type="unfinished"></translation>
+        <translation>クリアしました： 実行状態</translation>
     </message>
     <message>
         <source>Created: Flight Plan</source>
-        <translation type="unfinished"></translation>
+        <translation>作成しました： 飛行計画</translation>
     </message>
     <message>
         <source>Opened: {}</source>
-        <translation type="unfinished"></translation>
+        <translation>開きました： {}</translation>
     </message>
     <message>
         <source>Edited: Probe, of {}</source>
-        <translation type="unfinished"></translation>
+        <translation>編集しました： {} の探査機</translation>
     </message>
     <message>
         <source>Edited: Target, of {}</source>
-        <translation type="unfinished"></translation>
+        <translation>編集しました： {} のターゲット</translation>
     </message>
     <message>
         <source>Created: Checkpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>作成しました： チェックポイント</translation>
     </message>
     <message>
         <source>Resumed: Checkpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>回復しました： チェックポイント</translation>
     </message>
     <message>
         <source>Erased: Checkpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>削除しました： チェックポイント</translation>
     </message>
     <message>
         <source>Inserted: Line {}</source>
-        <translation type="unfinished"></translation>
+        <translation>挿入しました： 行 {}</translation>
     </message>
     <message>
         <source>Deleted: Line {}</source>
-        <translation type="unfinished"></translation>
+        <translation>削除しました： 行 {}</translation>
     </message>
     <message>
         <source>Sent: Orbit, to Show Orbit</source>
-        <translation type="unfinished"></translation>
+        <translation>送信しました： 軌道を「軌道表示」へ</translation>
     </message>
     <message>
         <source>Sent: FLYTO Record, to Flight Review</source>
-        <translation type="unfinished"></translation>
+        <translation>送信しました： FLYTO の結果を「飛行レビュー」へ</translation>
     </message>
     <message>
         <source>Sent: Flight Records, to Review Throughout</source>
-        <translation type="unfinished"></translation>
+        <translation>送信しました： 飛行結果を「全体レビュー」へ</translation>
     </message>
     <message>
         <source>Confirmation</source>
-        <translation type="unfinished"></translation>
+        <translation>確認</translation>
     </message>
     <message>
         <source>Current Flight Plan has not been saved.
 Do you want to save?</source>
-        <translation type="unfinished"></translation>
+        <translation>飛行計画が保存されていません。
+保存しますか？</translation>
     </message>
     <message>
         <source>SPK File not Found</source>
-        <translation type="unfinished"></translation>
+        <translation>SPK ファイルがありません</translation>
     </message>
     <message>
         <source>Target&apos;s SPK file {0} is not found.  Store it in &apos;SSVG_data&apos; folder</source>
-        <translation type="unfinished"></translation>
+        <translation>ターゲットの SPK ファイル {0} が見つかりません。そのファイルを &apos;SSVG_data&apos; に格納してください</translation>
     </message>
     <message>
         <source>Out of Range: Flight Plan</source>
-        <translation type="unfinished"></translation>
+        <translation>範囲外： 飛行計画</translation>
     </message>
     <message>
         <source>The Flight Plan file contains Maneuver(s) OUTSIDE of Target&apos;s time span.
 You could encounter trouble(s) in running and/or editing the Flight Plan</source>
-        <translation type="unfinished"></translation>
+        <translation>飛行計画ファイルにターゲットの有効期間の外のマヌーバが含まれています。
+飛行計画の実行や編集でトラブルが発生する可能性があります。</translation>
     </message>
     <message>
         <source>Permission Error</source>
-        <translation type="unfinished"></translation>
+        <translation>許可されていないファイルアクセス</translation>
     </message>
     <message>
         <source>The File cannot be overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>このファイルは上書きが許可されていません</translation>
     </message>
     <message>
         <source>Invalid Maneuver</source>
-        <translation type="unfinished"></translation>
+        <translation>不正なマヌーバ</translation>
     </message>
     <message>
         <source>You do not have valid Maneuver</source>
-        <translation type="unfinished"></translation>
+        <translation>有効なマヌーバがありません</translation>
     </message>
     <message>
         <source>Execution Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>実行が失敗しました</translation>
     </message>
     <message>
         <source>SSVG failed to execute the Maneuver.
 
 {}</source>
-        <translation type="unfinished"></translation>
+        <translation>マヌーバの実行に失敗しました。
+
+{}</translation>
     </message>
     <message>
         <source>Invalid Command</source>
-        <translation type="unfinished"></translation>
+        <translation>不正な操作</translation>
     </message>
     <message>
         <source>To execute Maneuvers in a row, select a Line below the Next Line and click [EXECUTE *]</source>
-        <translation type="unfinished"></translation>
+        <translation>マヌーバを連続して実行するには、Next 行よりも下にある行を選択して [連続実行] をクリックしてください</translation>
     </message>
     <message>
         <source>Invalid Date &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>不適切な日付と時刻</translation>
     </message>
     <message>
         <source>The date and time specified in the Maneuver is OUTSIDE of the valid time span of the Target.
 Try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>指定された日付と時刻はターゲットの有効期間の外です。
+違う日付と時刻を試してください。</translation>
     </message>
     <message>
         <source>Confirmation to Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>削除の確認</translation>
     </message>
     <message>
         <source>Line {} will be deleted. OK?</source>
-        <translation type="unfinished"></translation>
+        <translation>行 {} を削除します。よろしいですか？</translation>
     </message>
     <message>
         <source>The Flight Plan file containes Maneuver(s) OUTSIDE of Target&apos;s time span.
 You could encounter trouble(s) in running and/or editing this Flight Plan.
 It is recommended that you select another SPK file.</source>
-        <translation type="unfinished"></translation>
+        <translation>飛行計画ファイルにはターゲットの有効期間の外のマヌーバが含まれています。
+作業を続けると飛行計画の実行や編集でトラブルが発生する可能性があります。
+別の SPK ファイルを使用することを推奨します。</translation>
     </message>
     <message>
         <source>Mercury</source>
-        <translation type="unfinished"></translation>
+        <translation>水星</translation>
     </message>
     <message>
         <source>Venus</source>
-        <translation type="unfinished"></translation>
+        <translation>金星</translation>
     </message>
     <message>
         <source>Mars</source>
-        <translation type="unfinished"></translation>
+        <translation>火星</translation>
     </message>
     <message>
         <source>Jupiter</source>
-        <translation type="unfinished"></translation>
+        <translation>木星</translation>
     </message>
     <message>
         <source>Saturn</source>
-        <translation type="unfinished"></translation>
+        <translation>土星</translation>
     </message>
     <message>
         <source>Uranus</source>
-        <translation type="unfinished"></translation>
+        <translation>天王星</translation>
     </message>
     <message>
         <source>Neptune</source>
-        <translation type="unfinished"></translation>
+        <translation>海王星</translation>
     </message>
     <message>
         <source>Pluto</source>
-        <translation type="unfinished"></translation>
+        <translation>冥王星</translation>
     </message>
     <message>
         <source>Moon</source>
-        <translation type="unfinished"></translation>
+        <translation>月</translation>
     </message>
     <message>
         <source>Earth</source>
-        <translation type="unfinished"></translation>
+        <translation>地球</translation>
     </message>
     <message>
         <source>Earth L1</source>
-        <translation type="unfinished"></translation>
+        <translation>地球 L1</translation>
     </message>
     <message>
         <source>Earth L2</source>
-        <translation type="unfinished"></translation>
+        <translation>地球 L2</translation>
     </message>
     <message>
         <source>Mercury L1</source>
-        <translation type="unfinished"></translation>
+        <translation>水星 L1</translation>
     </message>
     <message>
         <source>Mercury L2</source>
-        <translation type="unfinished"></translation>
+        <translation>水星 L2</translation>
     </message>
     <message>
         <source>Venus L1</source>
-        <translation type="unfinished"></translation>
+        <translation>金星 L1</translation>
     </message>
     <message>
         <source>Venus L2</source>
-        <translation type="unfinished"></translation>
+        <translation>金星 L2</translation>
     </message>
     <message>
         <source>Mars L1</source>
-        <translation type="unfinished"></translation>
+        <translation>火星 L1</translation>
     </message>
     <message>
         <source>Mars L2</source>
-        <translation type="unfinished"></translation>
+        <translation>火星 L2</translation>
     </message>
     <message>
         <source>Jupiter L1</source>
-        <translation type="unfinished"></translation>
+        <translation>木星 L1</translation>
     </message>
     <message>
         <source>Jupiter L2</source>
-        <translation type="unfinished"></translation>
+        <translation>木星 L2</translation>
     </message>
     <message>
         <source>Saturn L1</source>
-        <translation type="unfinished"></translation>
+        <translation>土星 L1</translation>
     </message>
     <message>
         <source>Saturn L2</source>
-        <translation type="unfinished"></translation>
+        <translation>土星 L2</translation>
     </message>
     <message>
         <source>Uranus L1</source>
-        <translation type="unfinished"></translation>
+        <translation>天王星 L1</translation>
     </message>
     <message>
         <source>Uranus L2</source>
-        <translation type="unfinished"></translation>
+        <translation>天王星 L2</translation>
     </message>
     <message>
         <source>Neptune L1</source>
-        <translation type="unfinished"></translation>
+        <translation>海王星 L1</translation>
     </message>
     <message>
         <source>Neptune L2</source>
-        <translation type="unfinished"></translation>
+        <translation>海王星 L2</translation>
     </message>
     <message>
         <source>3D Orbit</source>
-        <translation type="unfinished"></translation>
+        <translation>3D 軌道</translation>
     </message>
     <message>
         <source>Select Flight Plan File</source>
-        <translation type="unfinished"></translation>
+        <translation>飛行計画ファイルの選択</translation>
     </message>
     <message>
         <source>Define Output Flight Plan File</source>
-        <translation type="unfinished"></translation>
+        <translation>出力する飛行計画ファイルの指定</translation>
     </message>
     <message>
         <source>Processing:  {0} {1}</source>
-        <translation type="unfinished"></translation>
+        <translation>処理中です： {0} {1}</translation>
     </message>
 </context>
 </TS>
