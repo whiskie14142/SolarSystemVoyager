@@ -1561,7 +1561,7 @@ Range</source>
     </message>
     <message>
         <source>Invalid ISOT</source>
-        <translation>不正なISO時刻</translation>
+        <translation>ISO時刻のフォーマットが正しくありません</translation>
     </message>
     <message>
         <source>Inappropriate Date &amp; Time</source>
@@ -1579,7 +1579,7 @@ In this Flight Plan, ISOT should be in following range:
     </message>
     <message>
         <source>Invalid JD</source>
-        <translation>不正なユリウス日</translation>
+        <translation>ユリウス日は数値でなければなりません</translation>
     </message>
     <message>
         <source>JD is out of range.

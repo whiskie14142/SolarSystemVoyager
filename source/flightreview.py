@@ -41,7 +41,8 @@ class FlightReviewControl(QDialog):
         self.ui = Ui_FlightReviewControl()
         self.ui.setupUi(self)
 
-        self.timecap_real = 'Real'
+        self._translate = QtCore.QCoreApplication.translate
+        self.timecap_real = self._translate('flightreview.py', 'Real')
 
         # Get Settings of 'Look at' from showorbitsettings
         if g.showorbitsettings is not None:

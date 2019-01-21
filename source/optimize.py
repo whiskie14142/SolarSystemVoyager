@@ -39,6 +39,8 @@ class StartOptimizeDialog(QDialog):
         g.probe_Kepler = None
         g.target_Kepler = None
         
+        self._translate = QtCore.QCoreApplication.translate
+        
         self.ui = Ui_OrbitOptimizeDialog()
         self.ui.setupUi(self)
         self.orgjd = orgjd
@@ -95,9 +97,9 @@ class StartOptimizeDialog(QDialog):
         self.ui.cancelbutton.clicked.connect(self.cancelbutton)
         
     def initMessage(self):
-        self.sysMes01 = 'Out of Range: Start Time'
-        self.sysMes02 = 'Out of Range: Arrival Time'
-        self.sysMes03 = 'Failed: Finding Orbit'
+        self.sysMes01 = self._translate('optimize.py', 'Out of Range: Start Time')
+        self.sysMes02 = self._translate('optimize.py', 'Out of Range: Arrival Time')
+        self.sysMes03 = self._translate('optimize.py', 'Failed: Finding Orbit')
     
     def initdialog(self):
         self.sl_minval = 0
@@ -592,17 +594,17 @@ class CpOptimizeDialog(StartOptimizeDialog):
     """
 
     def initMessage(self):
-        self.sysMes01 = 'Out of Range: Maneuver Time'
-        self.sysMes02 = 'Out of Range: Arrival Time'
-        self.sysMes03 = 'Failed: Finding Orbit'
+        self.sysMes01 = self._translate('optimize.py', 'Out of Range: Maneuver Time')
+        self.sysMes02 = self._translate('optimize.py', 'Out of Range: Arrival Time')
+        self.sysMes03 = self._translate('optimize.py', 'Failed: Finding Orbit')
     
     def initforCPoptimize(self):
-        self.setWindowTitle('CP Optimize Assistant')
+        self.setWindowTitle(self._translate('optimize.py', 'CP Optimize Assistant'))
         self.ui.fixed_to_ct.setChecked(True)
         self.ui.box_initialtime.setEnabled(False)
-        self.ui.check_orgorb.setText('Previous')
-        self.ui.label_initialtime.setText('Adjust Maneuver Time')
-        self.ui.label_it.setText('Maneuver Time')
+        self.ui.check_orgorb.setText(self._translate('optimize.py', 'Previous'))
+        self.ui.label_initialtime.setText(self._translate('optimize.py', 'Adjust Maneuver Time'))
+        self.ui.label_it.setText(self._translate('optimize.py', 'Maneuver Time'))
         
         self.orgorb = TwoBodyPred('orgorb')
         self.orgorb.fix_state(g.myprobe.jd, g.myprobe.pos, g.myprobe.vel)

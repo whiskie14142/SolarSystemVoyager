@@ -43,7 +43,8 @@ class ReviewThroughoutControl(QDialog):
         self.ui = Ui_ReviewThroughoutControl()
         self.ui.setupUi(self)
         
-        self.timecap_real = 'Real'
+        self._translate = QtCore.QCoreApplication.translate
+        self.timecap_real = self._translate('reviewthrough.py', 'Real')
 
         # Get Settings of 'Look at' from showorbitsettings
         if g.showorbitsettings is not None:

@@ -8,6 +8,7 @@ import common
 from probeorbit import ProbeOrbit
 import numpy as np
 import math
+from PyQt5 import QtCore
 
 
 
@@ -40,11 +41,13 @@ class Probe:
         self.orbit = ProbeOrbit(name, pmass)
         self.execinitialize()
         
-        self.errormes01 = 'Invalid End Time of FLYTO : Earier than Current Time'
-        self.errormes02 = "Invalid End Time of FLYTO : OUTSIDE of Target's Time Span"
-        self.errormes03 = 'Invalid Manuever Type : {}'
-        self.errormes04 = 'Numerical Integration Error(s) occured \nafter {}'
-        self.errormes05 = "Invalid Start Time : OUTSIDE of Target's Time Span"
+        self._translate = QtCore.QCoreApplication.translate
+        
+        self.errormes01 = self._translate('probe.py', 'Invalid End Time of FLYTO : Earier than Current Time')
+        self.errormes02 = self._translate('probe.py', "Invalid End Time of FLYTO : OUTSIDE of Target's Time Span")
+        self.errormes03 = self._translate('probe.py', 'Invalid Manuever Type : {}')
+        self.errormes04 = self._translate('probe.py', 'Numerical Integration Error(s) occured \nafter {}')
+        self.errormes05 = self._translate('probe.py', "Invalid Start Time : OUTSIDE of Target's Time Span")
 
     def execinitialize(self):
         self.trj_record = []

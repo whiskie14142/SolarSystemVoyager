@@ -54,13 +54,15 @@ class ShowOrbitDialog(QDialog):
         self.ui.totarget.clicked.connect(self._statuschanged)
         self.ui.dtApply.clicked.connect(self.dtapplyclicked)
 
-        self.timecap_Real = 'Real'
-        self.timecap_Pred = 'Prediction'
-        self.timelabel = 'Start Time'
-        self.mbTtl01 = 'Input Error'
-        self.mbMes01 = 'Elapsed time should be a floating number'
-        self.mbTtl02 = 'Inappropriate Start Time'
-        self.mbMes02 = "Start Time is OUTSIDE of Target's time span"
+        self._translate = QtCore.QCoreApplication.translate
+
+        self.timecap_Real = self._translate('showorbit.py', 'Real')
+        self.timecap_Pred = self._translate('showorbit.py', 'Prediction')
+        self.timelabel = self._translate('showorbit.py', 'Start Time')
+        self.mbTtl01 = self._translate('showorbit.py', 'Input Error')
+        self.mbMes01 = self._translate('showorbit.py', 'Elapsed time should be a floating number')
+        self.mbTtl02 = self._translate('showorbit.py', 'Inappropriate Start Time')
+        self.mbMes02 = self._translate('showorbit.py', "Start Time is OUTSIDE of Target's time span")
 
         self.initMessage()
         self.artist_of_probe = None
@@ -72,11 +74,11 @@ class ShowOrbitDialog(QDialog):
         
 
     def initMessage(self):
-        self.sysMes01 = 'Received: Parameters, from Maneuver Editor'
-        self.sysMes02 = 'Received: Orbit, from SSVG'
-        self.sysMes03 = 'Sent: Date and Time, to Maneuver Editor'
-        self.sysMes04 = 'Out of Range: Prediction Time'
-        self.sysMes05 = 'Failed: Prediction, Position of Probe'
+        self.sysMes01 = self._translate('showorbit.py', 'Received: Parameters, from Maneuver Editor')
+        self.sysMes02 = self._translate('showorbit.py', 'Received: Orbit, from SSVG')
+        self.sysMes03 = self._translate('showorbit.py', 'Sent: Date and Time, to Maneuver Editor')
+        self.sysMes04 = self._translate('showorbit.py', 'Out of Range: Prediction Time')
+        self.sysMes05 = self._translate('showorbit.py', 'Failed: Prediction, Position of Probe')
         
     def ssvgReset(self):
         # this method is called by SSVG

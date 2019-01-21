@@ -48,12 +48,13 @@ class FTAsettingDialog(QDialog):
         
         self.ta_radioclicked()
         
-        self.mbTtl01 = 'Input Error'
-        self.mbMes01 = 'Each parameter should be a floating number'
-        self.mbTtl02 = 'Inappropriate Parameter'
-        self.mbMes02 = 'To use FTA, Time to Arrival shall be\ngreater than {0:.1f} day'
-        self.mbMes03 = "Invalid Time to Arrival.\nArrival time is OUTSIDE of Target's time span"
-        self.mbMes04 = 'Offset distance should not be negative'
+        self._translate = QtCore.QCoreApplication.translate
+        self.mbTtl01 = self._translate('ftasetting.py', 'Input Error')
+        self.mbMes01 = self._translate('ftasetting.py', 'Each parameter should be a floating number')
+        self.mbTtl02 = self._translate('ftasetting.py', 'Inappropriate Parameter')
+        self.mbMes02 = self._translate('ftasetting.py', 'To use FTA, Time to Arrival shall be\ngreater than {0:.1f} day')
+        self.mbMes03 = self._translate('ftasetting.py', "Invalid Time to Arrival.\nArrival time is OUTSIDE of Target's time span")
+        self.mbMes04 = self._translate('ftasetting.py', 'Offset distance should not be negative')
         
     def ta_radioclicked(self):
         if self.ui.fromshoworbit.isChecked():
