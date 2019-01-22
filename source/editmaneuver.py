@@ -44,6 +44,10 @@ class EditManDialog(QDialog):
     
     def __init__(self, parent=None, editman=None, currentrow=0):
         super().__init__(parent)
+        
+        flags = self.windowFlags() ^ Qt.WindowContextHelpButtonHint
+        self.setWindowFlags(flags)
+        
         left = g.mainform.geometry().left()
         top = g.mainform.geometry().top()
         self.setGeometry(left, top+380, 640, 320)

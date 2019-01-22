@@ -35,6 +35,10 @@ class ShowOrbitDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.mother = parent
+        
+        flags = self.windowFlags() ^ Qt.WindowContextHelpButtonHint
+        self.setWindowFlags(flags)
+        
         left = g.mainform.geometry().left()
         top = g.mainform.geometry().top()
         self.setGeometry(left, top+740, 640, 211)

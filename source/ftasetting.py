@@ -35,6 +35,10 @@ class FTAsettingDialog(QDialog):
     
     def __init__(self, parent=None):
         super().__init__(parent)
+        
+        flags = self.windowFlags() ^ Qt.WindowContextHelpButtonHint
+        self.setWindowFlags(flags)
+        
         self.ui = Ui_ftasettingdialog()
         self.ui.setupUi(self)
         self.ui.fromshoworbit.clicked.connect(self.ta_radioclicked)

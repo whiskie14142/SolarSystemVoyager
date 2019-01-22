@@ -34,6 +34,10 @@ class EditDateTimeDialog(QDialog):
     
     def __init__(self, parent=None, orgjd=0.0, fromjd=0.0, tojd=0.0, duration=False):
         super().__init__(parent)
+        
+        flags = self.windowFlags() ^ Qt.WindowContextHelpButtonHint
+        self.setWindowFlags(flags)
+        
         self.ui = Ui_edittimedialog()
         self.ui.setupUi(self)
         self.ui.radioISOT.clicked.connect(self.radioclicked)

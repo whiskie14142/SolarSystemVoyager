@@ -36,6 +36,10 @@ class StartOptimizeDialog(QDialog):
     """
     def __init__(self, orgjd, parent=None):
         super().__init__(parent)
+        
+        flags = self.windowFlags() ^ Qt.WindowContextHelpButtonHint
+        self.setWindowFlags(flags)
+        
         g.probe_Kepler = None
         g.target_Kepler = None
         

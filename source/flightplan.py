@@ -35,6 +35,10 @@ class NewFlightPlanDialog(QDialog):
     
     def __init__(self, parent=None):
         super().__init__(parent)
+        
+        flags = self.windowFlags() ^ Qt.WindowContextHelpButtonHint
+        self.setWindowFlags(flags)
+        
         self.ui = Ui_NewFlightPlanDialog()
         self.ui.setupUi(self)
         
