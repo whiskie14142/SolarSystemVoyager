@@ -1137,9 +1137,9 @@ class MainForm(QMainWindow):
         self.currentrow = g.nextman
         self.dispmanplan()
         
+        self.dispSysMes(self.sysMes10)
         self.showorbit()
         self.dispcurrentstatus()
-        self.dispSysMes(self.sysMes10)
 
     def editprobe(self):
         self.clearSysMes()
@@ -1171,6 +1171,7 @@ class MainForm(QMainWindow):
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
         self.dispSysMes(self.sysMes07.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
+        self.dispmanfilename()
 
         if g.options['log']:
             logstring = []
@@ -1214,6 +1215,7 @@ class MainForm(QMainWindow):
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
         self.dispSysMes(self.sysMes08.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
+        self.dispmanfilename()
         
         # Check Time of Maneuver with time range of Target
         tsjd, tejd = g.mytarget.getsejd()

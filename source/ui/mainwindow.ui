@@ -667,14 +667,14 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>329</y>
+      <y>327</y>
       <width>131</width>
       <height>16</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -687,14 +687,14 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>328</y>
+      <y>327</y>
       <width>151</width>
       <height>16</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -809,7 +809,7 @@
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>330</y>
+      <y>327</y>
       <width>91</width>
       <height>16</height>
      </rect>
@@ -1341,7 +1341,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">

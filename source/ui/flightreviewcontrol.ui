@@ -217,14 +217,14 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>565</x>
      <y>80</y>
      <width>71</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Hopping</string>
+    <string>Quickness</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

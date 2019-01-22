@@ -124,7 +124,7 @@
     <message>
         <location filename="../ui/editmandialog.ui" line="297"/>
         <source>Click &amp; Select</source>
-        <translation>クリックして選択</translation>
+        <translation>←クリックして選択</translation>
     </message>
     <message>
         <location filename="../ui/editmandialog.ui" line="318"/>
@@ -259,8 +259,8 @@
     </message>
     <message>
         <location filename="../ui/flightreviewcontrol.ui" line="227"/>
-        <source>Hopping</source>
-        <translation>早送り</translation>
+        <source>Quickness</source>
+        <translation>早送りの指定</translation>
     </message>
     <message>
         <location filename="../ui/flightreviewcontrol.ui" line="243"/>
@@ -388,12 +388,12 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="161"/>
         <source>Execute &apos;Next&apos; Maneuver</source>
-        <translation>Next 行のマヌーバを実行します</translation>
+        <translation>Next 行を実行します</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="164"/>
         <source>EXECUTE</source>
-        <translation>Next 実行</translation>
+        <translation>実行</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="180"/>
@@ -463,7 +463,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="396"/>
         <source>Edit &apos;Next&apos; Maneuver</source>
-        <translation>Next 行のマヌーバを編集します</translation>
+        <translation>Next 行を編集します</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="399"/>
@@ -668,7 +668,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1469"/>
         <source>Save &amp;as</source>
-        <translation>別名で保存 （&amp;a）</translation>
+        <translation>別名で保存 （&amp;A）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1472"/>
@@ -693,7 +693,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1493"/>
         <source>&amp;about SSVG</source>
-        <translation>SSVG について （&amp;a）</translation>
+        <translation>SSVG について （&amp;A）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1498"/>
@@ -909,7 +909,7 @@
     <message>
         <location filename="../ui/newflightplandialog.ui" line="408"/>
         <source>OK</source>
-        <translation>作成</translation>
+        <translation>完了</translation>
     </message>
 </context>
 <context>
@@ -1036,8 +1036,8 @@
     </message>
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="664"/>
-        <source>SHOW Orbit</source>
-        <translation>軌道表示</translation>
+        <source>Redisplay 3D Orbit</source>
+        <translation>3D 軌道再表示</translation>
     </message>
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="680"/>
@@ -1231,8 +1231,8 @@ Range</source>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="224"/>
-        <source>Hopping</source>
-        <translation>早送り</translation>
+        <source>Quickness</source>
+        <translation>早送りの指定</translation>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="240"/>
@@ -1414,13 +1414,13 @@ Range</source>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="190"/>
-        <source>Expornent of 10 (days)</source>
-        <translation>時刻の変化の速さを指定します。1 を指定すると速さが10倍に、-1 を指定すると 10 分の 1 になります。</translation>
+        <source>The value specifies granularity (or fineness) of the Prediction Time.  Larger value makes time steps larger.</source>
+        <translation>予測時刻の粗密を指定します。値大きくするとボタンをクリックしたときの予測時刻の変化が大きくなります。</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="209"/>
-        <source>Scale 10**</source>
-        <translation>速さ</translation>
+        <source>Granularity</source>
+        <translation>粗密の指定</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="225"/>
@@ -1618,11 +1618,11 @@ In this case, Duration should less than {:.2f}</source>
     </message>
     <message>
         <source>dv      : magnitude of delta-V (m/s)</source>
-        <translation>dv      : デルタ V の大きさ （m/s）</translation>
+        <translation>dv      : デルタV の絶対値 （m/s）</translation>
     </message>
     <message>
         <source>dvpd  : magnitude of acceleration (m/s/day)</source>
-        <translation>dvpd  : 加速率の大きさ （m/s/日）</translation>
+        <translation>dvpd  : 加速率の絶対値 （m/s/日）</translation>
     </message>
     <message>
         <source>phi     : angle phi (deg)</source>

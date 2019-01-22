@@ -98,10 +98,12 @@ def replot_planets(jd):
     names = []
     id_of_target = g.mytarget.getID()
     id_of_Moon = 301
+    id_of_Pluto = 9
     
     for iplanet in g.i_planetnames:
         planet_id = common.planets_id[iplanet[1]]
         if planet_id[0] == id_of_target: continue
+        if planet_id[0] == id_of_Pluto: continue
         pos, vel = common.SPKposvel(planet_id[0], jd)
         markx.append(pos[0])
         marky.append(pos[1])

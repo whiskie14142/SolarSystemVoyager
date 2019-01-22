@@ -31,27 +31,6 @@
   <property name="modal">
    <bool>true</bool>
   </property>
-  <widget class="QLabel" name="starttime">
-   <property name="geometry">
-    <rect>
-     <x>432</x>
-     <y>10</y>
-     <width>201</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Lucida Console</family>
-    </font>
-   </property>
-   <property name="toolTip">
-    <string>Start time</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
@@ -651,9 +630,9 @@
   <widget class="QPushButton" name="reopenbutton">
    <property name="geometry">
     <rect>
-     <x>510</x>
+     <x>490</x>
      <y>20</y>
-     <width>91</width>
+     <width>111</width>
      <height>23</height>
     </rect>
    </property>
@@ -661,7 +640,7 @@
     <string>Show 3D Orbit Window</string>
    </property>
    <property name="text">
-    <string>SHOW Orbit</string>
+    <string>Redisplay 3D Orbit</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -746,10 +725,10 @@
    <widget class="QPushButton" name="it_f">
     <property name="geometry">
      <rect>
-      <x>303</x>
+      <x>305</x>
       <y>66</y>
       <width>31</width>
-      <height>22</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -868,10 +847,10 @@ Range</string>
    <widget class="QPushButton" name="it_b">
     <property name="geometry">
      <rect>
-      <x>263</x>
+      <x>265</x>
       <y>66</y>
       <width>31</width>
-      <height>22</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -989,8 +968,8 @@ Range</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>253</x>
-      <y>90</y>
+      <x>256</x>
+      <y>110</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -1156,7 +1135,7 @@ Range</string>
       <x>265</x>
       <y>76</y>
       <width>31</width>
-      <height>23</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -1327,7 +1306,7 @@ Range</string>
       <x>305</x>
       <y>76</y>
       <width>31</width>
-      <height>23</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -1353,7 +1332,7 @@ Range</string>
     <property name="geometry">
      <rect>
       <x>256</x>
-      <y>100</y>
+      <y>120</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -1451,7 +1430,7 @@ Range</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -1464,7 +1443,6 @@ Range</string>
     <enum>QFrame::NoFrame</enum>
    </property>
   </widget>
-  <zorder>starttime</zorder>
   <zorder>label_3</zorder>
   <zorder>label_9</zorder>
   <zorder>label_14</zorder>
