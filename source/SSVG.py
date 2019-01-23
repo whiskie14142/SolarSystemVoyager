@@ -273,7 +273,22 @@ class MainForm(QMainWindow):
     
         matplotlib.rcParams['toolbar'] = 'none'
         matplotlib.rcParams['grid.linewidth'] = 0.25
-        matplotlib.rcParams['font.family'] = 'IPAexGothic'
+        
+        # Font for matplotlib
+        fontDicFilePath = os.path.join(common.i18ndir, '3DOrbitFont.json')
+        fontDicFile = open(fontDicFilePath, 'r')
+        fontDic = json.load(fontDicFile)
+        fontDicFile.close()
+        langCode = self._translate('Language', 'en')
+        try:
+            familyName = fontDic[langCode]
+        except KeyError:
+            mbTitle = 'Error in font setup for 3D Orbit window'
+            mbMessage = 'Language Code "{}" is not contained in 3DOrbitFont.json.  \nFont family "sans-serif" will be used for 3D Orbit window'.format(langCode)
+            QMessageBox.critical(self, mbTitle, mbMessage, QMessageBox.Ok)
+            familyName = 'sans-serif'
+        matplotlib.rcParams['font.family'] = familyName
+
         plt.ion()
         g.fig = None
         self.init3Dfigure()

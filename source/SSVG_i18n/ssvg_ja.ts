@@ -2292,4 +2292,14 @@ It is recommended that you select another SPK file.</source>
         <translation>処理中です： {0} {1}</translation>
     </message>
 </context>
+
+<context>
+    <name>Language</name>
+    <message>
+        <!-- Translate Language Code -->
+        <source>en</source>
+        <translation>ja</translation>
+    </message>
+</context>
+
 </TS>
