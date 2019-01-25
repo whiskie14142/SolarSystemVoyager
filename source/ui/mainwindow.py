@@ -521,6 +521,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "SSVG"))
+        self.manplans.setToolTip(_translate("MainWindow", "Maneuver Table"))
         item = self.manplans.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Type"))
         item = self.manplans.horizontalHeaderItem(1)

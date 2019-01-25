@@ -10,19 +10,19 @@
     <x>0</x>
     <y>0</y>
     <width>480</width>
-    <height>480</height>
+    <height>520</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>480</width>
-    <height>480</height>
+    <height>520</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>480</width>
-    <height>480</height>
+    <height>520</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>10</y>
+     <y>60</y>
      <width>441</width>
      <height>91</height>
     </rect>
@@ -117,7 +117,7 @@
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>440</y>
+     <y>480</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -133,7 +133,7 @@
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>440</y>
+     <y>480</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -149,7 +149,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>120</y>
+     <y>170</y>
      <width>441</width>
      <height>291</height>
     </rect>
@@ -410,6 +410,22 @@
      </property>
     </widget>
    </widget>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>441</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>FTA computes delta-V for a Maneuver that brings the Probe to the Target.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
  </widget>
  <tabstops>

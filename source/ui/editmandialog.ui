@@ -34,7 +34,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>390</x>
      <y>4</y>
      <width>111</width>
      <height>21</height>
@@ -44,13 +44,13 @@
     <string>Maneuver Type</string>
    </property>
    <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
   <widget class="QComboBox" name="mantype">
    <property name="geometry">
     <rect>
-     <x>404</x>
+     <x>390</x>
      <y>24</y>
      <width>111</width>
      <height>24</height>
@@ -174,7 +174,7 @@
   <widget class="QPushButton" name="cancelbutton">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>530</x>
      <y>290</y>
      <width>91</width>
      <height>23</height>
@@ -196,7 +196,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>530</x>
      <y>80</y>
      <width>91</width>
      <height>23</height>
@@ -218,7 +218,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>530</x>
      <y>120</y>
      <width>91</width>
      <height>23</height>
@@ -262,7 +262,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>530</x>
      <y>160</y>
      <width>91</width>
      <height>23</height>
@@ -281,7 +281,7 @@
   <widget class="QLabel" name="label_Click">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>506</x>
      <y>24</y>
      <width>111</width>
      <height>21</height>
@@ -525,6 +525,71 @@
    </property>
    <property name="text">
     <string>Messages</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="manTypeDesc">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>54</y>
+     <width>121</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>240</red>
+         <green>240</green>
+         <blue>240</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>240</red>
+         <green>240</green>
+         <blue>240</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>240</red>
+         <green>240</green>
+         <blue>240</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="undoRedoEnabled">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="placeholderText">
+    <string/>
    </property>
   </widget>
  </widget>

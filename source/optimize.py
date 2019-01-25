@@ -61,6 +61,8 @@ class StartOptimizeDialog(QDialog):
         g.ax.set_zlim(-3.0e11, 3.0e11)
         
         self.initMessage()
+        self.ui.whatIsOptimize.clear()
+        self.ui.whatIsOptimize.appendPlainText(self.whatIs)
         
         self.initdialog()
         self.initforCPoptimize()
@@ -99,11 +101,13 @@ class StartOptimizeDialog(QDialog):
         self.ui.reopenbutton.clicked.connect(self.reopen3dorbit)
         self.ui.finishbutton.clicked.connect(self.finishbutton)
         self.ui.cancelbutton.clicked.connect(self.cancelbutton)
+        self.ui.groupBox.hide()
         
     def initMessage(self):
         self.sysMes01 = self._translate('optimize.py', 'Out of Range: Start Time')
         self.sysMes02 = self._translate('optimize.py', 'Out of Range: Arrival Time')
         self.sysMes03 = self._translate('optimize.py', 'Failed: Finding Orbit')
+        self.whatIs = self._translate('optimize.py', 'This window assists finding appropriate Start Time and Flight Time to the Target, and provides delta-V of the START Maneuver.')
     
     def initdialog(self):
         self.sl_minval = 0
@@ -601,7 +605,8 @@ class CpOptimizeDialog(StartOptimizeDialog):
         self.sysMes01 = self._translate('optimize.py', 'Out of Range: Maneuver Time')
         self.sysMes02 = self._translate('optimize.py', 'Out of Range: Arrival Time')
         self.sysMes03 = self._translate('optimize.py', 'Failed: Finding Orbit')
-    
+        self.whatIs = self._translate('optimize.py', 'This window assists finding appropriate Flight Time to the Target (and Maneuver Time, if you need) for the orbit transition maneuver, and provides delta-V of the CP Maneuver.')
+                                        
     def initforCPoptimize(self):
         self.setWindowTitle(self._translate('optimize.py', 'CP Optimize Assistant'))
         self.ui.fixed_to_ct.setChecked(True)

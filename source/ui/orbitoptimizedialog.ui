@@ -150,11 +150,14 @@
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>240</x>
      <y>10</y>
-     <width>91</width>
+     <width>61</width>
      <height>91</height>
     </rect>
    </property>
@@ -219,9 +222,9 @@
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>10</x>
      <y>10</y>
-     <width>241</width>
+     <width>211</width>
      <height>91</height>
     </rect>
    </property>
@@ -234,9 +237,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>110</x>
       <y>40</y>
-      <width>111</width>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
@@ -250,9 +253,9 @@
    <widget class="QCheckBox" name="check_Ppred">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>110</x>
       <y>20</y>
-      <width>111</width>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
@@ -268,7 +271,7 @@
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>101</width>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
@@ -284,7 +287,7 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>101</width>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
@@ -525,7 +528,7 @@
   <widget class="QPushButton" name="clearstat">
    <property name="geometry">
     <rect>
-     <x>271</x>
+     <x>275</x>
      <y>570</y>
      <width>91</width>
      <height>23</height>
@@ -630,8 +633,8 @@
   <widget class="QPushButton" name="reopenbutton">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>20</y>
+     <x>20</x>
+     <y>625</y>
      <width>111</width>
      <height>23</height>
     </rect>
@@ -1443,6 +1446,67 @@ Range</string>
     <enum>QFrame::NoFrame</enum>
    </property>
   </widget>
+  <widget class="QPlainTextEdit" name="whatIsOptimize">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>10</y>
+     <width>311</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>240</red>
+         <green>240</green>
+         <blue>240</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>240</red>
+         <green>240</green>
+         <blue>240</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>240</red>
+         <green>240</green>
+         <blue>240</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="placeholderText">
+    <string>whatIsOptimize</string>
+   </property>
+  </widget>
   <zorder>label_3</zorder>
   <zorder>label_9</zorder>
   <zorder>label_14</zorder>
@@ -1474,6 +1538,7 @@ Range</string>
   <zorder>frame</zorder>
   <zorder>label_5</zorder>
   <zorder>sysMessage</zorder>
+  <zorder>whatIsOptimize</zorder>
  </widget>
  <tabstops>
   <tabstop>tobarycenter</tabstop>

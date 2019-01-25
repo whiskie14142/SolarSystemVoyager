@@ -113,6 +113,16 @@ class EditManDialog(QDialog):
             '{}',
             '{:.5f}'
             ]
+        self.manTypeDesc = [
+                self._translate('editmaneuver.py', 'that starts the Probe from a Space Base'),
+                self._translate('editmaneuver.py', 'that makes orbit transition with Chemical Propulsion Engine'),
+                self._translate('editmaneuver.py', 'that turns on the Electric Propulsion Engine'),
+                self._translate('editmaneuver.py', 'that turns off the Electric Propulsion Engine'),
+                self._translate('editmaneuver.py', 'that turns on the Solar Sail'),
+                self._translate('editmaneuver.py', 'that turns off the Solar Sail'),
+                self._translate('editmaneuver.py', 'that flies the Probe until specified End Time'),
+                ''
+            ]
         self.stringitems = []
         
         self.initMessages()
@@ -267,6 +277,8 @@ class EditManDialog(QDialog):
                     self.ui.parameters.item(row, 1).setFlags(Qt.NoItemFlags)
                     self.ui.parameters.item(row, 0).setFlags(Qt.NoItemFlags)
         self.ui.parameters.cellChanged.connect(self.cellChanged)
+        self.ui.manTypeDesc.clear()
+        self.ui.manTypeDesc.appendPlainText(self.manTypeDesc[self.typeID])
     
     def enableDateTime(self, jd, duration):
         self.ui.frameDT.setEnabled(True)

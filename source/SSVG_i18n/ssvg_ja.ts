@@ -371,6 +371,11 @@
         <translation>SSVG</translation>
     </message>
     <message>
+        <location filename="../ui/mainwindow.ui" line="60"/>
+        <source>Maneuver Table</source>
+        <translation>マヌーバ表</translation>
+    </message>
+    <message>
         <location filename="../ui/mainwindow.ui" line="122"/>
         <source>Type</source>
         <translation>タイプ</translation>
@@ -818,6 +823,11 @@
         <source>Angle elv on Orbit Local coordinate</source>
         <translation>軌道ローカル座標系における角度 elv （上下角）</translation>
     </message>
+    <message>
+        <location filename="../ui/ftasettingdialog.ui" line="424"/>
+        <source>FTA computes delta-V for a Maneuver that brings the Probe to the Target.</source>
+        <translation>FTAは探査機をターゲットに向かう軌道に乗せるデルタVを計算します。</translation>
+    </message>
 </context>
 <context>
     <name>NewFlightPlanDialog</name>
@@ -927,7 +937,7 @@
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="65"/>
         <source>Initial Delta-V (m/s)</source>
-        <translation>出発時のデルタ V （m/s）</translation>
+        <translation>デルタV （m/s）</translation>
     </message>
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="81"/>
@@ -1007,7 +1017,7 @@
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="454"/>
         <source>Total DV (IDV + TRV)</source>
-        <translation>合計 （デルタ V ＋ 相対速度）</translation>
+        <translation>合計 （デルタV ＋ 相対速度）</translation>
     </message>
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="556"/>
@@ -1772,6 +1782,34 @@ The time (ISOT format) has been copied to system clipboard.</source>
 
 上記の時刻は ISO時刻の形式でクリップボードにコピーされています。</translation>
     </message>
+    <message>
+        <source>that starts the Probe from a Space Base</source>
+        <translation>探査機を宇宙基地から出発させます</translation>
+    </message>
+    <message>
+        <source>that makes orbit transition with Chemical Propulsion Engine</source>
+        <translation>化学推進エンジンにより探査機の軌道を変化させます</translation>
+    </message>
+    <message>
+        <source>that turns on the Electric Propulsion Engine</source>
+        <translation>電気推進エンジンをオンにします</translation>
+    </message>
+    <message>
+        <source>that turns off the Electric Propulsion Engine</source>
+        <translation>電気推進エンジンをオフにします</translation>
+    </message>
+    <message>
+        <source>that turns on the Solar Sail</source>
+        <translation>ソーラーセイルをオンにします</translation>
+    </message>
+    <message>
+        <source>that turns off the Solar Sail</source>
+        <translation>ソーラーセイルをオフにします</translation>
+    </message>
+    <message>
+        <source>that flies the Probe until specified End Time</source>
+        <translation>探査機を指定した終了時刻まで飛行させます</translation>
+    </message>
 </context>
 <context>
     <name>flightplan.py</name>
@@ -1894,6 +1932,16 @@ Arrival time is OUTSIDE of Target&apos;s time span</source>
     <message>
         <source>Maneuver Time</source>
         <translation>マヌーバ時刻</translation>
+    </message>
+    <message>
+        <source>This window assists finding appropriate Start Time and Flight Time to the Target, and provides delta-V of the START Maneuver.</source>
+        <translation>このウインドウは、宇宙基地からターゲットに直接向かうための適切な出発時刻と飛行時間（日数）の発見を支援するとともに、STARTマヌーバのデルタVを計算します。</translation>
+    </message>
+    <message>
+        <source>This window assists finding appropriate Flight Time to the Target (and Maneuver Time, if you need) for the orbit transition maneuver, and provides delta-V of the CP Maneuver.</source>
+        <translation>このウインドウは、軌道を変更してターゲットに向かうための適切な飛行時間（日数）の発見を支援するとともに、CPマヌーバのデルタVを計算します。
+
+必要な場合には適切なマヌーバ時刻の発見を支援することもできます。</translation>
     </message>
 </context>
 <context>
@@ -2213,67 +2261,67 @@ It is recommended that you select another SPK file.</source>
     </message>
     <message>
         <source>Earth L1</source>
-        <translation>地球 L1</translation>
+        <translation>地球L1</translation>
     </message>
     <message>
         <source>Earth L2</source>
-        <translation>地球 L2</translation>
+        <translation>地球L2</translation>
     </message>
     <message>
         <source>Mercury L1</source>
-        <translation>水星 L1</translation>
+        <translation>水星L1</translation>
     </message>
     <message>
         <source>Mercury L2</source>
-        <translation>水星 L2</translation>
+        <translation>水星L2</translation>
     </message>
     <message>
         <source>Venus L1</source>
-        <translation>金星 L1</translation>
+        <translation>金星L1</translation>
     </message>
     <message>
         <source>Venus L2</source>
-        <translation>金星 L2</translation>
+        <translation>金星L2</translation>
     </message>
     <message>
         <source>Mars L1</source>
-        <translation>火星 L1</translation>
+        <translation>火星L1</translation>
     </message>
     <message>
         <source>Mars L2</source>
-        <translation>火星 L2</translation>
+        <translation>火星L2</translation>
     </message>
     <message>
         <source>Jupiter L1</source>
-        <translation>木星 L1</translation>
+        <translation>木星L1</translation>
     </message>
     <message>
         <source>Jupiter L2</source>
-        <translation>木星 L2</translation>
+        <translation>木星L2</translation>
     </message>
     <message>
         <source>Saturn L1</source>
-        <translation>土星 L1</translation>
+        <translation>土星L1</translation>
     </message>
     <message>
         <source>Saturn L2</source>
-        <translation>土星 L2</translation>
+        <translation>土星L2</translation>
     </message>
     <message>
         <source>Uranus L1</source>
-        <translation>天王星 L1</translation>
+        <translation>天王星L1</translation>
     </message>
     <message>
         <source>Uranus L2</source>
-        <translation>天王星 L2</translation>
+        <translation>天王星L2</translation>
     </message>
     <message>
         <source>Neptune L1</source>
-        <translation>海王星 L1</translation>
+        <translation>海王星L1</translation>
     </message>
     <message>
         <source>Neptune L2</source>
-        <translation>海王星 L2</translation>
+        <translation>海王星L2</translation>
     </message>
     <message>
         <source>3D Orbit</source>
@@ -2292,14 +2340,11 @@ It is recommended that you select another SPK file.</source>
         <translation>処理中です： {0} {1}</translation>
     </message>
 </context>
-
 <context>
     <name>Language</name>
     <message>
-        <!-- Translate Language Code -->
         <source>en</source>
         <translation>ja</translation>
     </message>
 </context>
-
 </TS>
