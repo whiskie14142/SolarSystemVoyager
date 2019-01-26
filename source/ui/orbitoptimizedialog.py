@@ -416,7 +416,7 @@ class Ui_OrbitOptimizeDialog(object):
         self.label_5.setGeometry(QtCore.QRect(18, 298, 131, 16))
         self.label_5.setObjectName("label_5")
         self.sysMessage = QtWidgets.QPlainTextEdit(OrbitOptimizeDialog)
-        self.sysMessage.setGeometry(QtCore.QRect(400, 563, 211, 51))
+        self.sysMessage.setGeometry(QtCore.QRect(398, 563, 211, 51))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.sysMessage.setFont(font)

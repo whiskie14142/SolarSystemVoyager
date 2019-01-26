@@ -265,7 +265,7 @@
     <rect>
      <x>10</x>
      <y>130</y>
-     <width>211</width>
+     <width>201</width>
      <height>16</height>
     </rect>
    </property>
@@ -279,7 +279,7 @@
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>237</x>
+     <x>227</x>
      <y>130</y>
      <width>191</width>
      <height>16</height>
@@ -343,7 +343,7 @@
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>235</x>
+     <x>225</x>
      <y>150</y>
      <width>71</width>
      <height>16</height>
@@ -359,7 +359,7 @@
   <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>407</x>
      <y>150</y>
      <width>71</width>
      <height>16</height>
@@ -375,7 +375,7 @@
   <widget class="QLabel" name="label_16">
    <property name="geometry">
     <rect>
-     <x>235</x>
+     <x>225</x>
      <y>170</y>
      <width>71</width>
      <height>16</height>
@@ -391,7 +391,7 @@
   <widget class="QLabel" name="label_17">
    <property name="geometry">
     <rect>
-     <x>235</x>
+     <x>225</x>
      <y>190</y>
      <width>71</width>
      <height>16</height>
@@ -407,7 +407,7 @@
   <widget class="QLabel" name="label_18">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>427</x>
      <y>130</y>
      <width>161</width>
      <height>16</height>
@@ -475,7 +475,7 @@
   <widget class="QLineEdit" name="RVTvel">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>300</x>
      <y>149</y>
      <width>91</width>
      <height>18</height>
@@ -502,7 +502,7 @@
   <widget class="QLineEdit" name="RVTphi">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>300</x>
      <y>169</y>
      <width>91</width>
      <height>18</height>
@@ -529,7 +529,7 @@
   <widget class="QLineEdit" name="RVTelv">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>300</x>
      <y>189</y>
      <width>91</width>
      <height>18</height>
@@ -829,7 +829,7 @@
     <rect>
      <x>90</x>
      <y>149</y>
-     <width>131</width>
+     <width>121</width>
      <height>18</height>
     </rect>
    </property>
@@ -856,7 +856,7 @@
     <rect>
      <x>90</x>
      <y>169</y>
-     <width>131</width>
+     <width>121</width>
      <height>18</height>
     </rect>
    </property>
@@ -883,7 +883,7 @@
     <rect>
      <x>90</x>
      <y>189</y>
-     <width>131</width>
+     <width>121</width>
      <height>18</height>
     </rect>
    </property>
@@ -908,7 +908,7 @@
   <widget class="QLineEdit" name="LoSVvel">
    <property name="geometry">
     <rect>
-     <x>503</x>
+     <x>490</x>
      <y>149</y>
      <width>101</width>
      <height>18</height>
@@ -935,9 +935,9 @@
   <widget class="QPlainTextEdit" name="sysMessage">
    <property name="geometry">
     <rect>
-     <x>409</x>
-     <y>175</y>
-     <width>227</width>
+     <x>400</x>
+     <y>176</y>
+     <width>237</width>
      <height>37</height>
     </rect>
    </property>

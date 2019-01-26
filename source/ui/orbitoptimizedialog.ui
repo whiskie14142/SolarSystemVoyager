@@ -1425,7 +1425,7 @@ Range</string>
   <widget class="QPlainTextEdit" name="sysMessage">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>398</x>
      <y>563</y>
      <width>211</width>
      <height>51</height>

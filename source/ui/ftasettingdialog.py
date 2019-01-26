@@ -120,7 +120,10 @@ class Ui_ftasettingdialog(object):
         self.elvedit.setFont(font)
         self.elvedit.setObjectName("elvedit")
         self.label_7 = QtWidgets.QLabel(ftasettingdialog)
-        self.label_7.setGeometry(QtCore.QRect(20, 20, 441, 16))
+        self.label_7.setGeometry(QtCore.QRect(10, 20, 461, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_7.setFont(font)
         self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setObjectName("label_7")
 

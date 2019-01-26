@@ -414,11 +414,16 @@
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>20</y>
-     <width>441</width>
-     <height>16</height>
+     <width>461</width>
+     <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>FTA computes delta-V for a Maneuver that brings the Probe to the Target.</string>
