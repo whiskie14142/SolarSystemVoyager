@@ -1434,12 +1434,12 @@ Range</source>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="190"/>
-        <source>The value specifies granularity (or fineness) of the Prediction Time.  Larger value makes time steps larger.</source>
+        <source>The value specifies coarseness (or fineness) of the Prediction Time.  Larger value makes time steps larger.</source>
         <translation>予測時刻の粗さ／細かさを指定します。値大きくするとボタンをクリックしたときの予測時刻の変化が大きくなります。</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="209"/>
-        <source>Granularity</source>
+        <source>coarse/fine</source>
         <translation>粗／細</translation>
     </message>
     <message>

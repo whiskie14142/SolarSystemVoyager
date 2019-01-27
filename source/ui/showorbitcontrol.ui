@@ -187,7 +187,7 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>The value specifies granularity (or fineness) of the Prediction Time.  Larger value makes time steps larger.</string>
+    <string>The value specifies coarseness (or fineness) of the Prediction Time.  Larger value makes time steps larger.</string>
    </property>
    <property name="minimum">
     <number>-8</number>
@@ -206,7 +206,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Granularity</string>
+    <string>coarse/fine</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
