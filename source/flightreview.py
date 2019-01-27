@@ -47,6 +47,8 @@ class FlightReviewControl(QDialog):
 
         self._translate = QtCore.QCoreApplication.translate
         self.timecap_real = self._translate('flightreview.py', 'Real')
+        self.sysMes01 = self._translate('flightreview.py', 'Recieved: FLYTO record, from SSVG')
+        self.sysMes02 = self._translate('flightreview.py', 'Reviewing: FLYTO, Line {}')
 
         # Get Settings of 'Look at' from showorbitsettings
         if g.showorbitsettings is not None:
@@ -111,9 +113,12 @@ class FlightReviewControl(QDialog):
         erase_TKepler()
         if self.ui.check_TKepler.isChecked():
             draw_TKepler()
-
         
         self._redrawmark()
+        
+        self.ui.sysMessage.clear()
+        self.ui.sysMessage.appendPlainText(self.sysMes01)
+        self.ui.sysMessage.appendPlainText(self.sysMes02.format(g.nextman))
 
     def _redrawmark(self):
         c_time = self.last_trj[0][self.c_index]

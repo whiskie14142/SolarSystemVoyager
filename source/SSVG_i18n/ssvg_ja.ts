@@ -362,6 +362,11 @@
         <source>Target Kepler Orbit</source>
         <translation>ターゲットの軌道</translation>
     </message>
+    <message>
+        <location filename="../ui/flightreviewcontrol.ui" line="852"/>
+        <source>System Messages</source>
+        <translation>システムメッセージ表示領域</translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1326,8 +1331,8 @@ Range</source>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="635"/>
-        <source>|&lt;</source>
-        <translation>|&lt;</translation>
+        <source>|&lt;&lt;</source>
+        <translation>|&lt;&lt;</translation>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="660"/>
@@ -1336,8 +1341,8 @@ Range</source>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="663"/>
-        <source>&gt;|</source>
-        <translation>&gt;|</translation>
+        <source>&gt;&gt;|</source>
+        <translation>&gt;&gt;|</translation>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="682"/>
@@ -1368,6 +1373,11 @@ Range</source>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="758"/>
         <source>Maneuver Type</source>
         <translation>マヌーバタイプ</translation>
+    </message>
+    <message>
+        <location filename="../ui/reviewthroughoutcontrol.ui" line="921"/>
+        <source>System Messages</source>
+        <translation>システムメッセージ表示領域</translation>
     </message>
 </context>
 <context>
@@ -1425,12 +1435,12 @@ Range</source>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="190"/>
         <source>The value specifies granularity (or fineness) of the Prediction Time.  Larger value makes time steps larger.</source>
-        <translation>予測時刻の粗密を指定します。値大きくするとボタンをクリックしたときの予測時刻の変化が大きくなります。</translation>
+        <translation>予測時刻の粗さ／細かさを指定します。値大きくするとボタンをクリックしたときの予測時刻の変化が大きくなります。</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="209"/>
         <source>Granularity</source>
-        <translation>粗密の指定</translation>
+        <translation>粗／細</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="225"/>
@@ -1783,7 +1793,7 @@ The time (ISOT format) has been copied to system clipboard.</source>
 上記の時刻は ISO時刻の形式でクリップボードにコピーされています。</translation>
     </message>
     <message>
-        <source>that starts the Probe from a Space Base</source>
+        <source>that starts the Probe from the Space Base</source>
         <translation>探査機を宇宙基地から出発させます</translation>
     </message>
     <message>
@@ -1808,7 +1818,7 @@ The time (ISOT format) has been copied to system clipboard.</source>
     </message>
     <message>
         <source>that flies the Probe until specified End Time</source>
-        <translation>探査機を指定した終了時刻まで飛行させます</translation>
+        <translation>探査機を終了時刻まで飛行させます</translation>
     </message>
 </context>
 <context>
@@ -1867,6 +1877,14 @@ Click Find button and specify SPK file of the Target</source>
     <message>
         <source>Real</source>
         <translation>実時刻</translation>
+    </message>
+    <message>
+        <source>Recieved: FLYTO record, from SSVG</source>
+        <translation>受信しました： FLYTO の結果を SSVG から</translation>
+    </message>
+    <message>
+        <source>Reviewing: FLYTO, Line {}</source>
+        <translation>レビュー中です： 行 {} の FLYTO</translation>
     </message>
 </context>
 <context>
@@ -1974,6 +1992,14 @@ after {}</source>
     <message>
         <source>Real</source>
         <translation>実時刻</translation>
+    </message>
+    <message>
+        <source>Recieved: Flight records, from SSVG</source>
+        <translation>受信しました： 飛行結果を SSVG から</translation>
+    </message>
+    <message>
+        <source>Reviewing: {0}, Line {1}</source>
+        <translation>レビュー中です： 行 {1} の {0}</translation>
     </message>
 </context>
 <context>

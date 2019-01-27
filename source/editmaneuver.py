@@ -114,7 +114,7 @@ class EditManDialog(QDialog):
             '{:.5f}'
             ]
         self.manTypeDesc = [
-                self._translate('editmaneuver.py', 'that starts the Probe from a Space Base'),
+                self._translate('editmaneuver.py', 'that starts the Probe from the Space Base'),
                 self._translate('editmaneuver.py', 'that makes orbit transition with Chemical Propulsion Engine'),
                 self._translate('editmaneuver.py', 'that turns on the Electric Propulsion Engine'),
                 self._translate('editmaneuver.py', 'that turns off the Electric Propulsion Engine'),

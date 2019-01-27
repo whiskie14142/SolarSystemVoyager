@@ -615,7 +615,7 @@ class MainForm(QMainWindow):
             g.reviewthroughoutcontrol = ReviewThroughoutControl(self)
             g.reviewthroughoutcontrol.show()
         else:
-            g.reviewthroughoutcontrol.drawman()
+            g.reviewthroughoutcontrol.drawmanFromSSVG()
         
         self.dispSysMes(self.sysMes16)
 
