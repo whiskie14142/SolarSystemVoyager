@@ -783,7 +783,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>644</y>
+      <y>553</y>
       <width>241</width>
       <height>16</height>
      </rect>
@@ -799,7 +799,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>660</y>
+      <y>569</y>
       <width>241</width>
       <height>15</height>
      </rect>
@@ -1337,7 +1337,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>575</y>
+      <y>601</y>
       <width>248</width>
       <height>67</height>
      </rect>
@@ -1376,7 +1376,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>557</y>
+      <y>583</y>
       <width>131</width>
       <height>16</height>
      </rect>
@@ -1385,6 +1385,68 @@
      <string>Messages</string>
     </property>
    </widget>
+   <zorder>label_24</zorder>
+   <zorder>sysMessage</zorder>
+   <zorder>manplans</zorder>
+   <zorder>execNext</zorder>
+   <zorder>insertMan</zorder>
+   <zorder>showOrbit</zorder>
+   <zorder>editMan</zorder>
+   <zorder>execto</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>probename</zorder>
+   <zorder>targetname</zorder>
+   <zorder>deleteMan</zorder>
+   <zorder>label_3</zorder>
+   <zorder>manfilename</zorder>
+   <zorder>editnext</zorder>
+   <zorder>initexec</zorder>
+   <zorder>reviewthroughout</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_6</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_9</zorder>
+   <zorder>label_10</zorder>
+   <zorder>label_11</zorder>
+   <zorder>label_12</zorder>
+   <zorder>label_13</zorder>
+   <zorder>label_14</zorder>
+   <zorder>label_15</zorder>
+   <zorder>label_16</zorder>
+   <zorder>label_17</zorder>
+   <zorder>label_18</zorder>
+   <zorder>flightreview</zorder>
+   <zorder>label_19</zorder>
+   <zorder>label_20</zorder>
+   <zorder>label_mantime_h</zorder>
+   <zorder>label_22</zorder>
+   <zorder>selectedman</zorder>
+   <zorder>label_progress</zorder>
+   <zorder>progressBar</zorder>
+   <zorder>label_cman</zorder>
+   <zorder>label_ISOT</zorder>
+   <zorder>label_JD</zorder>
+   <zorder>label_range</zorder>
+   <zorder>label_velocity</zorder>
+   <zorder>label_SMA</zorder>
+   <zorder>label_SMAAU</zorder>
+   <zorder>label_Ecc</zorder>
+   <zorder>label_Inc</zorder>
+   <zorder>label_LAN</zorder>
+   <zorder>label_APH</zorder>
+   <zorder>label_PPT</zorder>
+   <zorder>label_PPTJD</zorder>
+   <zorder>label_MA</zorder>
+   <zorder>label_OP</zorder>
+   <zorder>label_mantime</zorder>
+   <zorder>label_ELM</zorder>
+   <zorder>label_21</zorder>
+   <zorder>label_ADV</zorder>
+   <zorder>label_23</zorder>
+   <zorder>spacebase</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
