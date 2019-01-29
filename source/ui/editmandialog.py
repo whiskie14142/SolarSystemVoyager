@@ -97,6 +97,7 @@ class Ui_editmandialog(object):
         self.sysMessage.setLineWidth(0)
         self.sysMessage.setUndoRedoEnabled(False)
         self.sysMessage.setReadOnly(True)
+        self.sysMessage.setMaximumBlockCount(20)
         self.sysMessage.setObjectName("sysMessage")
         self.frameDT = QtWidgets.QFrame(editmandialog)
         self.frameDT.setGeometry(QtCore.QRect(20, 24, 351, 71))

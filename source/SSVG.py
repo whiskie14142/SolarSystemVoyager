@@ -90,7 +90,7 @@ class MainForm(QMainWindow):
         self.ui.actionProbe.triggered.connect(self.editprobe)
         self.ui.actionTarget.triggered.connect(self.edittarget)
         self.ui.actionCreate.triggered.connect(self.createcheckpoint)
-        self.ui.actionResume.triggered.connect(self.resumecheckpoint)
+        self.ui.actionResume.triggered.connect(self.resumecheckpointAction)
         self.ui.actionAbout_SSVG.triggered.connect(self.aboutselected)
         self.ui.execNext.clicked.connect(self.execnextclicked)
         self.ui.reviewthroughout.clicked.connect(self.reviewthroughout)
@@ -309,7 +309,7 @@ class MainForm(QMainWindow):
             g.logfile = open(fpath, 'w', encoding='utf-8')
             logstring = 'start ssvg ' + g.version + ': ' + nowtimestr() + '\n'
             g.logfile.write(logstring)
-            
+            g.logfile.flush()
 
     def init3Dfigure(self):
         if g.fig is not None:
@@ -497,6 +497,7 @@ class MainForm(QMainWindow):
             if outofrange:
                 logstring.append('    *** Warning *** ' + self.mbMes03 + '\n')
             g.logfile.writelines(logstring)
+            g.logfile.flush()
 
     def newmanplan(self):
         self.clearSysMes()
@@ -591,6 +592,7 @@ class MainForm(QMainWindow):
                 logstring.append('    target SPKID: ' +
                                 str(g.manplan['target']['SPKID2B']) + '\n')
             g.logfile.writelines(logstring)
+            g.logfile.flush()
         self.dispmanfilename()
 
 
@@ -639,6 +641,7 @@ class MainForm(QMainWindow):
             g.logfile.write(logstring)
             logstring = '    file name: ' + g.manfilename + '\n'
             g.logfile.write(logstring)
+            g.logfile.flush()
         self.dispmanfilename()
         self.dispSysMes(self.sysMes01.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
         
@@ -671,6 +674,7 @@ class MainForm(QMainWindow):
             g.logfile.write(logstring)
             logstring = '    file name: ' + g.manfilename + '\n'
             g.logfile.write(logstring)
+            g.logfile.flush()
         self.dispmanfilename()
         self.dispSysMes(self.sysMes01.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
 
@@ -842,6 +846,7 @@ class MainForm(QMainWindow):
             logstring.append('begin maneuver editing: ' + nowtimestr() + '\n')
             logstring.append('    line: ' + str(self.currentrow + 1) + '\n')
             g.logfile.writelines(logstring)
+            g.logfile.flush()
         
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
@@ -877,7 +882,16 @@ class MainForm(QMainWindow):
         if self.currentrow < len(g.maneuvers):
             g.maneuvers[self.currentrow] = g.editedman
             if self.currentrow < g.nextman:
-                self.execinitialize()
+
+                # resume if checkpoint is available
+                if self.checkpoint:
+                    if self.checkpointdata['checkrow'] < self.currentrow:
+                        self.resumecheckpoint()
+                    else:
+                        self.execinitialize()
+                else:
+                    self.execinitialize()
+
             self.dispmanplan()
         else:
             g.maneuvers.append(g.editedman)
@@ -912,6 +926,7 @@ class MainForm(QMainWindow):
             logstring.append('insert BLANK maneuver: ' + nowtimestr() + '\n')
             logstring.append('    line: ' + str(self.currentrow + 1) + '\n')
             g.logfile.writelines(logstring)
+            g.logfile.flush()
             
     def deleteman(self):
         self.clearSysMes()
@@ -943,6 +958,7 @@ class MainForm(QMainWindow):
                                 str(self.currentrow + 1) + '\n')
                 logstring.append('    maneuver type: ' + deltype + '\n')
                 g.logfile.writelines(logstring)
+                g.logfile.flush()
 
     def dispmanfilename(self):
         filename = os.path.basename(g.manfilename)
@@ -1130,6 +1146,10 @@ class MainForm(QMainWindow):
                                      anitem)
             self.dispSysMes(self.sysMes11)
         self.checkpoint = False
+
+    def resumecheckpointAction(self):
+        self.resumecheckpoint()
+        self.showorbit()
     
     def resumecheckpoint(self):
         self.clearSysMes()
@@ -1153,7 +1173,6 @@ class MainForm(QMainWindow):
         self.dispmanplan()
         
         self.dispSysMes(self.sysMes10)
-        self.showorbit()
         self.dispcurrentstatus()
 
     def editprobe(self):
@@ -1198,6 +1217,7 @@ class MainForm(QMainWindow):
             logstring.append('    space base: ' +
                             g.manplan['probe']['base'] + '\n')
             g.logfile.writelines(logstring)
+            g.logfile.flush()
     
     def edittarget(self):
         self.clearSysMes()
@@ -1255,12 +1275,15 @@ class MainForm(QMainWindow):
             if outofrange:
                 logstring.append('    *** Warning *** ' + self.mbMes11 + '\n')
             g.logfile.writelines(logstring)
+            g.logfile.flush()
     
     def dispSysMes(self, message):
         self.ui.sysMessage.appendPlainText(message)
+        self.ui.sysMessage.centerCursor()
         
     def clearSysMes(self):
-        self.ui.sysMessage.clear()
+        pass
+        # self.ui.sysMessage.clear()
 
 def resource_path(relative):
     if hasattr(sys, '_MEIPASS'):

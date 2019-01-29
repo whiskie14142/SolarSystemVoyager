@@ -444,6 +444,7 @@ class Ui_MainWindow(object):
         self.sysMessage.setLineWidth(0)
         self.sysMessage.setUndoRedoEnabled(False)
         self.sysMessage.setReadOnly(True)
+        self.sysMessage.setMaximumBlockCount(20)
         self.sysMessage.setObjectName("sysMessage")
         self.label_24 = QtWidgets.QLabel(self.centralwidget)
         self.label_24.setGeometry(QtCore.QRect(380, 583, 131, 16))

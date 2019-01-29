@@ -68,6 +68,7 @@ class ShowOrbitDialog(QDialog):
         self.mbTtl02 = self._translate('showorbit.py', 'Inappropriate Start Time')
         self.mbMes02 = self._translate('showorbit.py', "Start Time is OUTSIDE of Target's time span")
 
+        self.unableDrawMark = False
         self.initMessage()
         self.artist_of_probe = None
         self.artist_of_target = None
@@ -83,6 +84,7 @@ class ShowOrbitDialog(QDialog):
         self.sysMes03 = self._translate('showorbit.py', 'Sent: Date and Time, to Maneuver Editor')
         self.sysMes04 = self._translate('showorbit.py', 'Out of Range: Prediction Time')
         self.sysMes05 = self._translate('showorbit.py', 'Failed: Prediction, Position of Probe')
+        self.sysMes06 = self._translate('showorbit.py', 'Recovered')
         
     def ssvgReset(self):
         # this method is called by SSVG
@@ -187,17 +189,30 @@ class ShowOrbitDialog(QDialog):
             self.artist_of_target.remove()
             self.artist_of_target = None
 
+        if self.artist_of_sun is not None:
+            self.artist_of_sun.remove()
+            self.artist_of_sun = None
+
+        remove_planets()
+        remove_time()
+            
         # Check time
         tsjd, tejd = g.mytarget.getsejd()
         if tempjd < tsjd or tempjd >= tejd:
             self.dispSysMes(self.sysMes04)
+            self.unableDrawMark = True
             return False
 
         try:
             probe_pos, probe_vel = self.tbpred.posvelatt(tempjd)
         except RuntimeError:
             self.dispSysMes(self.sysMes05)
+            self.unableDrawMark = True
             return False
+
+        if self.unableDrawMark:
+            self.dispSysMes(self.sysMes06)
+            self.unableDrawMark = False
         
         self.target_pos, target_vel = g.mytarget.posvel(tempjd)
         
@@ -223,18 +238,13 @@ class ShowOrbitDialog(QDialog):
         self.artist_of_target = g.ax.scatter(*self.target_pos, s=50, c='g', 
                                              depthshade=False, marker='+')
             
-        if self.artist_of_sun is not None:
-            self.artist_of_sun.remove()
-            self.artist_of_sun = None
         self.artist_of_sun = g.ax.scatter(*self.sun_pos, s=50, c='#FFAF00',
                                           depthshade=False, marker='o')
 
         # redraw planets
-        remove_planets()
         if self.ui.showplanets.isChecked():
             replot_planets(tempjd)
 
-        remove_time()
         if self.delta_jd == 0.0:
             replot_time(tempjd, self.timecap_Real)
         else:
@@ -388,9 +398,11 @@ class ShowOrbitDialog(QDialog):
 
     def dispSysMes(self, message):
         self.ui.sysMessage.appendPlainText(message)
+        self.ui.sysMessage.centerCursor()
         
     def clearSysMes(self):
-        self.ui.sysMessage.clear()
+        pass
+        # self.ui.sysMessage.clear()
 
 class ShowStartOrbitDialog(ShowOrbitDialog):
     """class for 'Show Start Orbit' window

@@ -498,7 +498,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="437"/>
         <source>REVIEW Through</source>
-        <translation>全体レビュー</translation>
+        <translation>連続レビュー</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="456"/>
@@ -1192,7 +1192,7 @@ Range</source>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="26"/>
         <source>Review Throughout</source>
-        <translation>全体レビュー</translation>
+        <translation>連続レビュー</translation>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="38"/>
@@ -1879,7 +1879,7 @@ Click Find button and specify SPK file of the Target</source>
         <translation>実時刻</translation>
     </message>
     <message>
-        <source>Recieved: FLYTO record, from SSVG</source>
+        <source>Received: FLYTO record, from SSVG</source>
         <translation>受信しました： FLYTO の結果を SSVG から</translation>
     </message>
     <message>
@@ -1994,8 +1994,8 @@ after {}</source>
         <translation>実時刻</translation>
     </message>
     <message>
-        <source>Recieved: Flight records, from SSVG</source>
-        <translation>受信しました： 飛行結果を SSVG から</translation>
+        <source>Received: Flight records, from SSVG</source>
+        <translation>受信しました： 実行結果を SSVG から</translation>
     </message>
     <message>
         <source>Reviewing: {0}, Line {1}</source>
@@ -2051,6 +2051,10 @@ after {}</source>
     <message>
         <source>Failed: Prediction, Position of Probe</source>
         <translation>失敗しました： 探査機の位置の予測</translation>
+    </message>
+    <message>
+        <source>Recovered</source>
+        <translation>回復しました</translation>
     </message>
 </context>
 <context>
@@ -2153,7 +2157,7 @@ after {}</source>
     </message>
     <message>
         <source>Sent: Flight Records, to Review Throughout</source>
-        <translation>送信しました： 飛行結果を「全体レビュー」へ</translation>
+        <translation>送信しました： 実行結果を「連続レビュー」へ</translation>
     </message>
     <message>
         <source>Confirmation</source>

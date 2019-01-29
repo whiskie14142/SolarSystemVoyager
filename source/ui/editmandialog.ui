@@ -334,6 +334,9 @@
    <property name="readOnly">
     <bool>true</bool>
    </property>
+   <property name="maximumBlockCount">
+    <number>20</number>
+   </property>
   </widget>
   <widget class="QFrame" name="frameDT">
    <property name="geometry">

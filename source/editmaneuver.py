@@ -428,6 +428,7 @@ class EditManDialog(QDialog):
                 datastr =self.fmttbl[i].format(self.editman[pname])
                 logstring.append('    ' + pname + ': ' + datastr + '\n')
         g.logfile.writelines(logstring)
+        g.logfile.flush()
         
     def closeEvent(self, event):
         if g.showorbitcontrol is not None:
@@ -565,6 +566,7 @@ class EditManDialog(QDialog):
                     logstring.append('    result phi: ' + str(phi) + '\n')
                     logstring.append('    result elv: ' + str(elv) + '\n')
                     g.logfile.writelines(logstring)
+                    g.logfile.flush()
 
         elif g.fta_parameters[1] == 'BP':
             # compute terminal velocity at Target
@@ -633,6 +635,7 @@ class EditManDialog(QDialog):
                     logstring.append('    result phi: ' + str(phi) + '\n')
                     logstring.append('    result elv: ' + str(elv) + '\n')
                     g.logfile.writelines(logstring)
+                    g.logfile.flush()
         
     def optimize(self):
         self.clearSysMes()
@@ -674,6 +677,7 @@ class EditManDialog(QDialog):
             logstring.append('    flight duration: ' +
                             str(dialog.result_tt - dialog.result_it) + '\n')
             g.logfile.writelines(logstring)
+            g.logfile.flush()
         
     
     def cp_optimize(self):
@@ -715,6 +719,7 @@ class EditManDialog(QDialog):
             logstring.append('    flight duration: ' +
                             str(dialog.result_tt - dialog.result_it) + '\n')
             g.logfile.writelines(logstring)
+            g.logfile.flush()
 
     def settime(self, jd):
         # this method is called from Show Orbit
@@ -727,6 +732,8 @@ class EditManDialog(QDialog):
 
     def dispSysMes(self, message):
         self.ui.sysMessage.appendPlainText(message)
+        self.ui.sysMessage.centerCursor()
         
     def clearSysMes(self):
-        self.ui.sysMessage.clear()
+        pass
+        # self.ui.sysMessage.clear()

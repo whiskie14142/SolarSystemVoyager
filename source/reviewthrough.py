@@ -48,7 +48,7 @@ class ReviewThroughoutControl(QDialog):
         
         self._translate = QtCore.QCoreApplication.translate
         self.timecap_real = self._translate('reviewthrough.py', 'Real')
-        self.sysMes01 = self._translate('reviewthrough.py', 'Recieved: Flight records, from SSVG')
+        self.sysMes01 = self._translate('reviewthrough.py', 'Received: Flight records, from SSVG')
         self.sysMes02 = self._translate('reviewthrough.py', 'Reviewing: {0}, Line {1}')
 
         # Get Settings of 'Look at' from showorbitsettings
@@ -86,7 +86,7 @@ class ReviewThroughoutControl(QDialog):
         self.drawmanFromSSVG()
 
     def drawmanFromSSVG(self):
-        self.ui.sysMessage.clear()
+#        self.ui.sysMessage.clear()
         self.ui.sysMessage.appendPlainText(self.sysMes01)
         self.drawman()
         
@@ -98,6 +98,7 @@ class ReviewThroughoutControl(QDialog):
         self.mantext = '   ' + str(self.man_index + 1) + ' ' + mantype
         status = np.zeros(7)
         self.ui.sysMessage.appendPlainText(self.sysMes02.format(self.c_mantype, self.man_index+1))
+        self.ui.sysMessage.centerCursor()
         if mantype == 'FLYTO':
             status[0] = record[1][0]
             status[1] = record[2][0]
