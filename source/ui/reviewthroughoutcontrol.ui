@@ -74,10 +74,10 @@
   <widget class="QPushButton" name="fastbackward">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>100</y>
-     <width>31</width>
-     <height>23</height>
+     <x>320</x>
+     <y>90</y>
+     <width>41</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -85,6 +85,9 @@
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="toolTip">
     <string>Fast Backword</string>
@@ -102,10 +105,10 @@
   <widget class="QPushButton" name="backward">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>100</y>
-     <width>31</width>
-     <height>23</height>
+     <x>370</x>
+     <y>90</y>
+     <width>41</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -113,6 +116,9 @@
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="toolTip">
     <string>Backward</string>
@@ -130,10 +136,10 @@
   <widget class="QPushButton" name="forward">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>100</y>
-     <width>31</width>
-     <height>23</height>
+     <x>420</x>
+     <y>90</y>
+     <width>41</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -144,6 +150,9 @@
    </property>
    <property name="cursor">
     <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="toolTip">
     <string>Forward</string>
@@ -162,9 +171,9 @@
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>100</y>
-     <width>31</width>
-     <height>23</height>
+     <y>90</y>
+     <width>41</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -172,6 +181,9 @@
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="toolTip">
     <string>Fast Forward</string>
@@ -190,10 +202,13 @@
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>100</y>
+     <y>90</y>
      <width>51</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::WheelFocus</enum>
    </property>
    <property name="toolTip">
     <string>Steps for FF and FB</string>
@@ -215,7 +230,7 @@
    <property name="geometry">
     <rect>
      <x>565</x>
-     <y>80</y>
+     <y>72</y>
      <width>71</width>
      <height>20</height>
     </rect>
@@ -425,8 +440,8 @@
   <widget class="QLabel" name="label_19">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>80</y>
+     <x>340</x>
+     <y>72</y>
      <width>151</width>
      <height>20</height>
     </rect>
@@ -616,10 +631,10 @@
   <widget class="QPushButton" name="previousman">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>100</y>
+     <x>270</x>
+     <y>90</y>
      <width>41</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -627,6 +642,9 @@
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="toolTip">
     <string>Previous Maneuver</string>
@@ -645,9 +663,9 @@
    <property name="geometry">
     <rect>
      <x>520</x>
-     <y>100</y>
+     <y>90</y>
      <width>41</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -655,6 +673,9 @@
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="toolTip">
     <string>Next Maneuver</string>

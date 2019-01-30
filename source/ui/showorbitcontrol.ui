@@ -47,7 +47,7 @@
      <x>472</x>
      <y>51</y>
      <width>111</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <property name="font">
@@ -66,9 +66,9 @@
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>100</y>
+     <y>90</y>
      <width>41</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -94,9 +94,9 @@
    <property name="geometry">
     <rect>
      <x>420</x>
-     <y>100</y>
+     <y>90</y>
      <width>41</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -122,9 +122,9 @@
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>100</y>
+     <y>90</y>
      <width>41</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -153,9 +153,9 @@
    <property name="geometry">
     <rect>
      <x>520</x>
-     <y>100</y>
+     <y>90</y>
      <width>41</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -181,9 +181,9 @@
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>100</y>
+     <y>90</y>
      <width>42</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -200,7 +200,7 @@
    <property name="geometry">
     <rect>
      <x>560</x>
-     <y>80</y>
+     <y>72</y>
      <width>81</width>
      <height>20</height>
     </rect>
@@ -250,7 +250,7 @@
      <x>591</x>
      <y>50</y>
      <width>41</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
@@ -427,7 +427,7 @@
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>80</y>
+     <y>72</y>
      <width>171</width>
      <height>20</height>
     </rect>

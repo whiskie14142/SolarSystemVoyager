@@ -82,8 +82,12 @@ class ReviewThroughoutControl(QDialog):
         self.tbpred = TwoBodyPred(g.myprobe.name)
         self.man_index = 0
         self.man_count = len(g.myprobe.trj_record)
+        self.ui.previousman.setEnabled(False)
 
         self.drawmanFromSSVG()
+        
+        if self.man_count == 1 and self.c_mantype != 'FLYTO':
+             self.ui.nextman.setEnabled(False)
 
     def drawmanFromSSVG(self):
 #        self.ui.sysMessage.clear()
@@ -110,8 +114,8 @@ class ReviewThroughoutControl(QDialog):
             ssacc = record[8][0]
             self.last_trj = record[1:]
             self.c_index = 0
-            self.ui.fastbackward.setEnabled(True)
-            self.ui.backward.setEnabled(True)
+            self.ui.fastbackward.setEnabled(False)
+            self.ui.backward.setEnabled(False)
             self.ui.forward.setEnabled(True)
             self.ui.fastforward.setEnabled(True)
             self.ui.timescale.setEnabled(True)
@@ -343,11 +347,27 @@ class ReviewThroughoutControl(QDialog):
         if self.c_index + 1 < len(self.last_trj[0]):
             self.c_index += 1
             self.drawFLYTO()
+            self.ui.backward.setEnabled(True)
+            self.ui.fastbackward.setEnabled(True)
+            self.ui.previousman.setEnabled(True)
+            if self.c_index + 1 == len(self.last_trj[0]):
+                self.ui.forward.setEnabled(False)
+                self.ui.fastforward.setEnabled(False)
+                if self.man_index + 1 == self.man_count:
+                    self.ui.nextman.setEnabled(False)
     
     def backward(self):
         if self.c_index > 0:
             self.c_index -= 1
             self.drawFLYTO()
+            self.ui.forward.setEnabled(True)
+            self.ui.fastforward.setEnabled(True)
+            self.ui.nextman.setEnabled(True)
+            if self.c_index == 0:
+                self.ui.backward.setEnabled(False)
+                self.ui.fastbackward.setEnabled(False)
+                if self.man_index == 0:
+                    self.ui.previousman.setEnabled(False)
         
     def fastforward(self):
         if self.c_index == len(self.last_trj[0]) - 1: return
@@ -356,6 +376,14 @@ class ReviewThroughoutControl(QDialog):
         if self.c_index >= len(self.last_trj[0]):
             self.c_index = len(self.last_trj[0]) - 1
         self.drawFLYTO()
+        self.ui.backward.setEnabled(True)
+        self.ui.fastbackward.setEnabled(True)
+        self.ui.previousman.setEnabled(True)
+        if self.c_index + 1 == len(self.last_trj[0]):
+            self.ui.forward.setEnabled(False)
+            self.ui.fastforward.setEnabled(False)
+            if self.man_index + 1 == self.man_count:
+                self.ui.nextman.setEnabled(False)
 
     def fastbackward(self):
         if self.c_index == 0: return
@@ -364,6 +392,14 @@ class ReviewThroughoutControl(QDialog):
         if self.c_index < 0:
             self.c_index = 0
         self.drawFLYTO()
+        self.ui.forward.setEnabled(True)
+        self.ui.fastforward.setEnabled(True)
+        self.ui.nextman.setEnabled(True)
+        if self.c_index == 0:
+            self.ui.backward.setEnabled(False)
+            self.ui.fastbackward.setEnabled(False)
+            if self.man_index == 0:
+                self.ui.previousman.setEnabled(False)
 
     def previousman(self):
         if self.c_mantype == 'FLYTO':
@@ -372,14 +408,21 @@ class ReviewThroughoutControl(QDialog):
                     return
                 self.man_index -= 1
                 self.drawman()
+                if self.man_index == 0:
+                    self.ui.previousman.setEnabled(False)
             else:
                 self.c_index = 0
                 self.drawFLYTO()
+                self.ui.forward.setEnabled(True)
+                self.ui.fastforward.setEnabled(True)
+                self.ui.backward.setEnabled(False)
+                self.ui.fastbackward.setEnabled(False)
         else:
             if self.man_index == 0:
                 return
             self.man_index -= 1
             self.drawman()
+        self.ui.nextman.setEnabled(True)
     
     def nextman(self):
         if self.c_mantype == 'FLYTO':
@@ -389,14 +432,25 @@ class ReviewThroughoutControl(QDialog):
                     return
                 self.man_index += 1
                 self.drawman()
+                if self.man_index + 1 == self.man_count and self.c_mantype != 'FLYTO':
+                    self.ui.nextman.setEnabled(False)
             else:
                 self.c_index = length - 1
                 self.drawFLYTO()
+                self.ui.forward.setEnabled(False)
+                self.ui.fastforward.setEnabled(False)
+                self.ui.backward.setEnabled(True)
+                self.ui.fastbackward.setEnabled(True)
+                if self.man_index + 1 == self.man_count:
+                    self.ui.nextman.setEnabled(False)
         else:
             if self.man_index + 1 == self.man_count:
                 return
             self.man_index += 1
             self.drawman()
+            if self.man_index + 1 == self.man_count and self.c_mantype != 'FLYTO':
+                self.ui.nextman.setEnabled(False)
+        self.ui.previousman.setEnabled(True)
         
     def _statuschanged(self):
         self.save_settings()

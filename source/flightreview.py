@@ -79,7 +79,8 @@ class FlightReviewControl(QDialog):
         
     def reset(self):
         self.c_index = 0
-        
+        self.ui.backward.setEnabled(False)
+        self.ui.fastbackward.setEnabled(False)
         
         self.redraw()
 
@@ -221,11 +222,25 @@ class FlightReviewControl(QDialog):
         if self.c_index + 1 < len(self.last_trj[0]):
             self.c_index += 1
             self._redrawmark()
+            self.ui.backward.setEnabled(True)
+            self.ui.fastbackward.setEnabled(True)
+        else:
+            return
+        if self.c_index + 1 == len(self.last_trj[0]):
+            self.ui.forward.setEnabled(False)
+            self.ui.fastforward.setEnabled(False)
         
     def backward(self):
         if self.c_index > 0:
             self.c_index -= 1
             self._redrawmark()
+            self.ui.forward.setEnabled(True)
+            self.ui.fastforward.setEnabled(True)
+        else:
+            return
+        if self.c_index == 0:
+            self.ui.backward.setEnabled(False)
+            self.ui.fastbackward.setEnabled(False)
         
     def fastforward(self):
         if self.c_index == len(self.last_trj[0]) - 1: return
@@ -234,6 +249,11 @@ class FlightReviewControl(QDialog):
         if self.c_index >= len(self.last_trj[0]):
             self.c_index = len(self.last_trj[0]) - 1
         self._redrawmark()
+        self.ui.backward.setEnabled(True)
+        self.ui.fastbackward.setEnabled(True)
+        if self.c_index + 1 == len(self.last_trj[0]):
+            self.ui.forward.setEnabled(False)
+            self.ui.fastforward.setEnabled(False)
 
     def fastbackward(self):
         if self.c_index == 0: return
@@ -242,6 +262,11 @@ class FlightReviewControl(QDialog):
         if self.c_index < 0:
             self.c_index = 0
         self._redrawmark()
+        self.ui.forward.setEnabled(True)
+        self.ui.fastforward.setEnabled(True)
+        if self.c_index == 0:
+            self.ui.backward.setEnabled(False)
+            self.ui.fastbackward.setEnabled(False)
         
     def _statuschanged(self):
         erase_Ptrj()
