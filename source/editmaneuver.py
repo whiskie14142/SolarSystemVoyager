@@ -557,7 +557,7 @@ class EditManDialog(QDialog):
                     logstring.append('    Type of Precise Targeting: ' + 
                                     'OL coordinates or Center' + '\n')
                     logstring.append('    offset distance: ' + 
-                                    str(g.fta_parameters[2][1]) + '\n')
+                                    str(g.fta_parameters[2][1] / 1000.0) + '\n')
                     logstring.append('    phi: ' + 
                                     str(g.fta_parameters[2][2]) + '\n')
                     logstring.append('    elv: ' + 
@@ -628,7 +628,7 @@ class EditManDialog(QDialog):
                     logstring.append('    Type of Precise Targeting: ' + 
                                     'BP (B-plane coordinates)' + '\n')
                     logstring.append('    offset distance: ' + 
-                                    str(g.fta_parameters[2][1]) + '\n')
+                                    str(g.fta_parameters[2][1] / 1000.0) + '\n')
                     logstring.append('    beta: ' + 
                                     str(g.fta_parameters[2][2]) + '\n')
                     logstring.append('    result dv: ' + str(dv) + '\n')

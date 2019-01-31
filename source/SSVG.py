@@ -916,7 +916,14 @@ class MainForm(QMainWindow):
             g.maneuvers.append(None)
         self.dispSysMes(self.sysMes12.format(self.currentrow+1))
         if self.currentrow < g.nextman:
-            self.execinitialize()
+            # resume if checkpoint is available
+            if self.checkpoint:
+                if self.checkpointdata['checkrow'] < self.currentrow:
+                    self.resumecheckpoint()
+                else:
+                    self.execinitialize()
+            else:
+                self.execinitialize()
         g.manplan_saved = False
         self.dispmanplan()
         self.dispmanfilename()
@@ -946,7 +953,14 @@ class MainForm(QMainWindow):
             self.dispSysMes(self.sysMes13.format(self.currentrow+1))
 
             if self.currentrow < g.nextman:
-                self.execinitialize()
+                # resume if checkpoint is available
+                if self.checkpoint:
+                    if self.checkpointdata['checkrow'] < self.currentrow:
+                        self.resumecheckpoint()
+                    else:
+                        self.execinitialize()
+                else:
+                    self.execinitialize()
             g.manplan_saved = False
             self.dispmanplan()
             self.dispmanfilename()

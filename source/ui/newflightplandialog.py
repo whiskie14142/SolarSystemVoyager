@@ -77,7 +77,7 @@ class Ui_NewFlightPlanDialog(object):
         self.label_5.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.label_5.setObjectName("label_5")
         self.spkfileselect = QtWidgets.QPushButton(self.targetgroupbox)
-        self.spkfileselect.setGeometry(QtCore.QRect(290, 20, 41, 23))
+        self.spkfileselect.setGeometry(QtCore.QRect(290, 15, 41, 31))
         self.spkfileselect.setAutoDefault(False)
         self.spkfileselect.setObjectName("spkfileselect")
         self.targetname = QtWidgets.QLineEdit(self.targetgroupbox)
@@ -123,6 +123,7 @@ class Ui_NewFlightPlanDialog(object):
         self.cancelbutton.setObjectName("cancelbutton")
         self.okbutton = QtWidgets.QPushButton(NewFlightPlanDialog)
         self.okbutton.setGeometry(QtCore.QRect(280, 320, 75, 23))
+        self.okbutton.setAutoDefault(False)
         self.okbutton.setObjectName("okbutton")
 
         self.retranslateUi(NewFlightPlanDialog)

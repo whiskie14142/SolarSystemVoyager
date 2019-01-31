@@ -219,7 +219,7 @@ class Ui_MainWindow(object):
         self.label_22.setObjectName("label_22")
         self.selectedman = QtWidgets.QTableWidget(self.centralwidget)
         self.selectedman.setEnabled(True)
-        self.selectedman.setGeometry(QtCore.QRect(380, 388, 241, 164))
+        self.selectedman.setGeometry(QtCore.QRect(380, 388, 241, 162))
         self.selectedman.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.selectedman.setRowCount(8)
         self.selectedman.setColumnCount(2)
