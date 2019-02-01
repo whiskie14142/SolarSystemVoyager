@@ -1452,10 +1452,10 @@ Range</string>
   <widget class="QPlainTextEdit" name="whatIsOptimize">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>250</x>
      <y>10</y>
-     <width>311</width>
-     <height>111</height>
+     <width>351</width>
+     <height>121</height>
     </rect>
    </property>
    <property name="palette">
@@ -1497,7 +1497,7 @@ Range</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">

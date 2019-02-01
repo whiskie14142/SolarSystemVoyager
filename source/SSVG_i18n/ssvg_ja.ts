@@ -831,7 +831,7 @@
     <message>
         <location filename="../ui/ftasettingdialog.ui" line="424"/>
         <source>FTA computes delta-V for a Maneuver that brings the Probe to the Target.</source>
-        <translation>FTAは探査機をターゲットに向かう軌道に乗せるデルタVを計算します。</translation>
+        <translation>FTAは探査機をターゲットに向かう軌道に乗せるデルタV を計算します。</translation>
     </message>
 </context>
 <context>
@@ -1952,14 +1952,23 @@ Arrival time is OUTSIDE of Target&apos;s time span</source>
         <translation>マヌーバ時刻</translation>
     </message>
     <message>
-        <source>This window assists finding appropriate Start Time and Flight Time to the Target, and provides delta-V of the START Maneuver.</source>
-        <translation>このウインドウは、宇宙基地からターゲットに直接向かうための適切な出発時刻と飛行時間（日数）の発見を支援するとともに、STARTマヌーバのデルタVを計算します。</translation>
+        <source>This window assists you composing a START Maneuver that sends off the Probe into an orbit, which brings the Probe directly to the Target.
+
+Move each handle of the sliders to change the &quot;Start Time&quot; and/or &quot;Flight Time&quot;.  For each set of Start Time and Flight Time, the Assistant finds an orbit, show it on the 3D chart, and computes delta-V of the Maneuver and other parameters of the orbit.</source>
+        <translation>このアシスタントは探査機を直接ターゲットに向かう軌道に送り出す START マヌーバの設計を支援します。
+
+スライダーを操作して、探査機の出発時刻やターゲットに到着するまでの飛行時間を変化させてみてください。アシスタントは軌道を見つけて 3D チャートに図示し、出発時のデルタV や到着時の相対速度を表示します。</translation>
     </message>
     <message>
-        <source>This window assists finding appropriate Flight Time to the Target (and Maneuver Time, if you need) for the orbit transition maneuver, and provides delta-V of the CP Maneuver.</source>
-        <translation>このウインドウは、軌道を変更してターゲットに向かうための適切な飛行時間（日数）の発見を支援するとともに、CPマヌーバのデルタVを計算します。
+        <source>This window assists you composing a CP Maneuver that brings the Probe to the Target.
 
-必要な場合には適切なマヌーバ時刻の発見を支援することもできます。</translation>
+Move the handle of the slider to change the &quot;Flight Time&quot;.  For each Flight Time, the Assistant finds an orbit, show it on the 3D chart, and computes delta-V of the Maneuver and other parameters of the orbit.
+If you need, you can try another Maneuver Time by unchecking the &quot;Fix to SSVG&apos;s Time&quot; checkbox.</source>
+        <translation>このアシスタントは、探査機をターゲットに向かう軌道に乗せる CP マヌーバの設計を支援します。
+
+スライダーを操作して、探査機がターゲットに到着するまでの飛行時間を変化させてみてください。アシスタントは軌道を見つけて 3D チャートに図示し、軌道変更のデルタV や到着時の相対速度を表示します。
+
+「SSVG の時刻に固定」のチェックを外すことにより、CP マヌーバの実行時刻を変化させて軌道を確認することもできます。</translation>
     </message>
 </context>
 <context>

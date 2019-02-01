@@ -107,7 +107,7 @@ class StartOptimizeDialog(QDialog):
         self.sysMes01 = self._translate('optimize.py', 'Out of Range: Start Time')
         self.sysMes02 = self._translate('optimize.py', 'Out of Range: Arrival Time')
         self.sysMes03 = self._translate('optimize.py', 'Failed: Finding Orbit')
-        self.whatIs = self._translate('optimize.py', 'This window assists finding appropriate Start Time and Flight Time to the Target, and provides delta-V of the START Maneuver.')
+        self.whatIs = self._translate('optimize.py', 'This window assists you composing a START Maneuver that sends off the Probe into an orbit, which brings the Probe directly to the Target.\n\nMove each handle of the sliders to change the "Start Time" and/or "Flight Time".  For each set of Start Time and Flight Time, the Assistant finds an orbit, show it on the 3D chart, and computes delta-V of the Maneuver and other parameters of the orbit.')
     
     def initdialog(self):
         self.sl_minval = 0
@@ -605,7 +605,7 @@ class CpOptimizeDialog(StartOptimizeDialog):
         self.sysMes01 = self._translate('optimize.py', 'Out of Range: Maneuver Time')
         self.sysMes02 = self._translate('optimize.py', 'Out of Range: Arrival Time')
         self.sysMes03 = self._translate('optimize.py', 'Failed: Finding Orbit')
-        self.whatIs = self._translate('optimize.py', 'This window assists finding appropriate Flight Time to the Target (and Maneuver Time, if you need) for the orbit transition maneuver, and provides delta-V of the CP Maneuver.')
+        self.whatIs = self._translate('optimize.py', 'This window assists you composing a CP Maneuver that brings the Probe to the Target.\n\nMove the handle of the slider to change the "Flight Time".  For each Flight Time, the Assistant finds an orbit, show it on the 3D chart, and computes delta-V of the Maneuver and other parameters of the orbit.\nIf you need, you can try another Maneuver Time by unchecking the "Fix to SSVG\'s Time" checkbox.')
                                         
     def initforCPoptimize(self):
         self.setWindowTitle(self._translate('optimize.py', 'CP Optimize Assistant'))
