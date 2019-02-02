@@ -713,7 +713,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1506"/>
         <source>&amp;Resume</source>
-        <translation>回復 （&amp;R）</translation>
+        <translation>復元 （&amp;R）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1511"/>
@@ -2142,7 +2142,7 @@ after {}</source>
     </message>
     <message>
         <source>Resumed: Checkpoint</source>
-        <translation>回復しました： チェックポイント</translation>
+        <translation>復元しました： チェックポイント</translation>
     </message>
     <message>
         <source>Erased: Checkpoint</source>
