@@ -674,7 +674,7 @@ class EditManDialog(QDialog):
             logstring.append('    elv: ' + str(dialog.result_elv) + '\n')
             logstring.append('    arrival time: ' +
                             common.jd2isot(dialog.result_tt) + '\n')
-            logstring.append('    flight duration: ' +
+            logstring.append('    flight time: ' +
                             str(dialog.result_tt - dialog.result_it) + '\n')
             g.logfile.writelines(logstring)
             g.logfile.flush()
@@ -716,7 +716,7 @@ class EditManDialog(QDialog):
             logstring.append('    elv: ' + str(dialog.result_elv) + '\n')
             logstring.append('    arrival time: ' +
                             common.jd2isot(dialog.result_tt) + '\n')
-            logstring.append('    flight duration: ' +
+            logstring.append('    flight time: ' +
                             str(dialog.result_tt - dialog.result_it) + '\n')
             g.logfile.writelines(logstring)
             g.logfile.flush()
