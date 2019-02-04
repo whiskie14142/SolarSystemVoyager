@@ -1705,6 +1705,10 @@ In this case, Duration should less than {:.2f}</source>
         <translation>編集しました： パラメータ {}</translation>
     </message>
     <message>
+        <source>Rounded: Parameter {}</source>
+        <translation>値を丸めました： パラメータ {}</translation>
+    </message>
+    <message>
         <source>Inappropriate Maneuver Type</source>
         <translation>不適切なマヌーバタイプ</translation>
     </message>

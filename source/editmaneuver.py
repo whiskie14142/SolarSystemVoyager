@@ -79,6 +79,16 @@ class EditManDialog(QDialog):
             [0, 0, 0, 0, 0, 0, 0, 0, 0], # for SS_OFF
             [1, 0, 0, 0, 0, 0, 0, 0, 1]  # for FLYTO
             ]
+        self.roundParam = [     # digits parameters will be rounded to
+            3,      # dv
+            3,      # dvpd
+            2,      # phi
+            2,      # elv
+            1,      # aria
+            2,      # theta
+            0,      # (place holder)
+            5       # inter
+            ]
 
         self._translate = QtCore.QCoreApplication.translate
 
@@ -175,6 +185,7 @@ class EditManDialog(QDialog):
         self.sysMes04 = self._translate('editmaneuver.py', 'Edited: Date and Time')
         self.sysMes05 = self._translate('editmaneuver.py', 'Sent: Parameters, to Show Orbit')
         self.sysMes06 = self._translate('editmaneuver.py', 'Edited: Parameter {}')
+        self.sysMes07 = self._translate('editmaneuver.py', 'Rounded: Parameter {}')
         
         self.mbTtl01 = self._translate('editmaneuver.py', 'Inappropriate Maneuver Type')
         self.mbMes01 = self._translate('editmaneuver.py', 'START can be used for the first Maneuver only.\n\nSelect another Maneuver Type.')
@@ -363,6 +374,7 @@ class EditManDialog(QDialog):
 
     def applyParameters(self):
         inputError = 0
+        self.ui.parameters.cellChanged.disconnect(self.cellChanged)
         for paramIdx in range(8):
             if self.paramflag[self.typeID][paramIdx+1] == 1:
                 paramText = self.ui.parameters.item(paramIdx, 1).text().upper().strip()
@@ -382,6 +394,15 @@ class EditManDialog(QDialog):
                             self.mbMes03.format(self.paramname[paramIdx+1]), 
                             QMessageBox.Ok)
                         continue
+                    # round entered parameters
+                    rounded = round(newval, self.roundParam[paramIdx])
+                    if rounded != newval:
+                        newval = rounded
+                        message = self.sysMes07.format(self.paramname[paramIdx+1])
+                        self.dispSysMes(message)
+                        anitem = QTableWidgetItem(self.fmttbl[paramIdx+1].format(newval))
+                        self.ui.parameters.setItem(paramIdx, 1, anitem)
+
                     if self.paramname[paramIdx+1] == 'inter':
                         if newval < 0.00001:
                             inputError += 1
@@ -400,6 +421,7 @@ class EditManDialog(QDialog):
                             continue
                     self.editman[self.paramname[paramIdx+1]] = newval
         
+        self.ui.parameters.cellChanged.connect(self.cellChanged)
         if inputError == 0:
             return True
         return False
