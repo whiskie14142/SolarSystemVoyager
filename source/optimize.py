@@ -101,7 +101,6 @@ class StartOptimizeDialog(QDialog):
         self.ui.reopenbutton.clicked.connect(self.reopen3dorbit)
         self.ui.finishbutton.clicked.connect(self.finishbutton)
         self.ui.cancelbutton.clicked.connect(self.cancelbutton)
-        self.ui.groupBox.hide()
         
     def initMessage(self):
         self.sysMes01 = self._translate('optimize.py', 'Out of Range: Start Time')

@@ -149,76 +149,6 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>10</y>
-     <width>61</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Look at</string>
-   </property>
-   <widget class="QRadioButton" name="tobarycenter">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>Solar System Barycenter</string>
-    </property>
-    <property name="text">
-     <string>SSB</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="toprobe">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Probe</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="totarget">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Target</string>
-    </property>
-   </widget>
-  </widget>
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
     <rect>
@@ -1516,7 +1446,6 @@ Range</string>
   <zorder>label_16</zorder>
   <zorder>terminalRV_cur</zorder>
   <zorder>terminalRV_min</zorder>
-  <zorder>groupBox</zorder>
   <zorder>groupBox_3</zorder>
   <zorder>label_18</zorder>
   <zorder>initialDV_min</zorder>
@@ -1544,9 +1473,6 @@ Range</string>
   <zorder>whatIsOptimize</zorder>
  </widget>
  <tabstops>
-  <tabstop>tobarycenter</tabstop>
-  <tabstop>toprobe</tabstop>
-  <tabstop>totarget</tabstop>
   <tabstop>check_orgorb</tabstop>
   <tabstop>check_Ppred</tabstop>
   <tabstop>check_TKepler</tabstop>

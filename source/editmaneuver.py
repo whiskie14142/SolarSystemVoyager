@@ -335,7 +335,6 @@ class EditManDialog(QDialog):
         self.setenable()
 
     def editdatetime(self):
-        self.clearSysMes()
         jd = self.editman[self.paramname[0]]
         startjd, endjd = g.mytarget.getsejd()
         duration = False
@@ -458,7 +457,6 @@ class EditManDialog(QDialog):
         event.accept()
 
     def showorbitclicked(self):
-        self.clearSysMes()
         self.showorbit()
 
     def showorbit(self):
@@ -526,7 +524,6 @@ class EditManDialog(QDialog):
         
             
     def computefta(self):
-        self.clearSysMes()
         norm = lambda x : x / np.sqrt(np.dot(x,x))
         if g.showorbitcontrol is None:
             QMessageBox.information(self, self.mbTtl07, self.mbMes07, QMessageBox.Ok)
@@ -660,7 +657,6 @@ class EditManDialog(QDialog):
                     g.logfile.flush()
         
     def optimize(self):
-        self.clearSysMes()
         g.mainform.init3Dfigure()
         if self.typeID == 0:
             self.start_optimize()
@@ -755,7 +751,3 @@ class EditManDialog(QDialog):
     def dispSysMes(self, message):
         self.ui.sysMessage.appendPlainText(message)
         self.ui.sysMessage.centerCursor()
-        
-    def clearSysMes(self):
-        pass
-        # self.ui.sysMessage.clear()

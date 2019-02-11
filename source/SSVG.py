@@ -360,7 +360,6 @@ class MainForm(QMainWindow):
         plt.close('all')
 
     def openmanplan(self):
-        self.clearSysMes()
         if not g.manplan_saved:
             ans = QMessageBox.question(self, self.mbTtl01, self.mbMes01, 
                QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
@@ -500,7 +499,6 @@ class MainForm(QMainWindow):
             g.logfile.flush()
 
     def newmanplan(self):
-        self.clearSysMes()
         if not g.manplan_saved:
             ans = QMessageBox.question(self, self.mbTtl01, self.mbMes01,
                QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
@@ -597,7 +595,6 @@ class MainForm(QMainWindow):
 
 
     def reviewthroughout(self):
-        self.clearSysMes()
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
                                     QMessageBox.Ok)
@@ -623,7 +620,6 @@ class MainForm(QMainWindow):
 
 
     def savemanplan(self):
-        self.clearSysMes()
         if g.manfilename == self.defaultFileName:
             self.saveasmanplan()
             return
@@ -646,7 +642,6 @@ class MainForm(QMainWindow):
         self.dispSysMes(self.sysMes01.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
         
     def saveasmanplan(self):
-        self.clearSysMes()
         if g.manfilename == self.defaultFileName:
             dr = os.path.join(g.currentdir, self.defaultFileName)
         else:
@@ -710,7 +705,6 @@ class MainForm(QMainWindow):
         self.close()
 
     def execnextclicked(self):
-        self.clearSysMes()
         self.execnext()
 
     def execnext(self):
@@ -764,7 +758,6 @@ class MainForm(QMainWindow):
         return True
 
     def execto(self):
-        self.clearSysMes()
         start = g.nextman
         stop = self.currentrow
         if start > stop:
@@ -799,7 +792,6 @@ class MainForm(QMainWindow):
 
 
     def showorbitclicked(self):
-        self.clearSysMes()
         self.showorbit()
 
     def showorbit(self):
@@ -835,12 +827,10 @@ class MainForm(QMainWindow):
         self.editman()
 
     def initexec(self):
-        self.clearSysMes()
         self.execinitialize()
         self.dispmanplan()
         
     def editman(self):
-        self.clearSysMes()
         if g.options['log']:
             logstring = []
             logstring.append('begin maneuver editing: ' + nowtimestr() + '\n')
@@ -909,7 +899,6 @@ class MainForm(QMainWindow):
         self.dispmanfilename()
             
     def insertman(self):
-        self.clearSysMes()
         if self.currentrow < len(g.maneuvers):
             g.maneuvers.insert(self.currentrow, None)
         else:
@@ -936,7 +925,6 @@ class MainForm(QMainWindow):
             g.logfile.flush()
             
     def deleteman(self):
-        self.clearSysMes()
         if self.currentrow == len(g.maneuvers):
             return
         if g.maneuvers[self.currentrow] is not None:
@@ -982,7 +970,6 @@ class MainForm(QMainWindow):
         self.ui.manfilename.setText(filename)
 
     def showflightreview(self):
-        self.clearSysMes()
         if g.myprobe is None:
             QMessageBox.information(self, 'Info', 'You have no valid probe.', 
                                     QMessageBox.Ok)
@@ -1131,7 +1118,6 @@ class MainForm(QMainWindow):
             self.ui.selectedman.item(row, 0).setFlags(Qt.NoItemFlags)
 
     def createcheckpoint(self):
-        self.clearSysMes()
         if not g.myprobe.onflight:
             return
         if self.checkpoint:
@@ -1166,7 +1152,6 @@ class MainForm(QMainWindow):
         self.showorbit()
     
     def resumecheckpoint(self):
-        self.clearSysMes()
         if not self.checkpoint:
             return
         if g.showorbitcontrol is not None:
@@ -1190,7 +1175,6 @@ class MainForm(QMainWindow):
         self.dispcurrentstatus()
 
     def editprobe(self):
-        self.clearSysMes()
         manplan = g.manplan.copy()
         editdialog = EditProbeDialog(self, manplan)
         ans = editdialog.exec_()
@@ -1234,7 +1218,6 @@ class MainForm(QMainWindow):
             g.logfile.flush()
     
     def edittarget(self):
-        self.clearSysMes()
         manplan = g.manplan.copy()
         editdialog = EditTargetDialog(self, manplan)
         ans = editdialog.exec_()
@@ -1295,9 +1278,6 @@ class MainForm(QMainWindow):
         self.ui.sysMessage.appendPlainText(message)
         self.ui.sysMessage.centerCursor()
         
-    def clearSysMes(self):
-        pass
-        # self.ui.sysMessage.clear()
 
 def resource_path(relative):
     if hasattr(sys, '_MEIPASS'):

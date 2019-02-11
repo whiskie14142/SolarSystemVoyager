@@ -1961,7 +1961,7 @@ Arrival time is OUTSIDE of Target&apos;s time span</source>
 Move each handle of the sliders to change the &quot;Start Time&quot; and/or &quot;Flight Time&quot;.  For each set of Start Time and Flight Time, the Assistant finds an orbit, show it on the 3D chart, and computes delta-V of the Maneuver and other parameters of the orbit.</source>
         <translation>このアシスタントは探査機を直接ターゲットに向かう軌道に送り出す START マヌーバの設計を支援します。
 
-スライダーを操作して、探査機の出発時刻やターゲットに到着するまでの飛行時間を変化させてみてください。アシスタントは軌道を見つけて 3D チャートに図示し、出発時のデルタV や到着時の相対速度を表示します。</translation>
+スライダを操作して、探査機の出発時刻やターゲットに到着するまでの飛行時間を変化させてみてください。アシスタントは軌道を見つけて3次元の図に示し、出発時のデルタV や到着時の相対速度を表示します。</translation>
     </message>
     <message>
         <source>This window assists you composing a CP Maneuver that brings the Probe to the Target.
@@ -1970,7 +1970,7 @@ Move the handle of the slider to change the &quot;Flight Time&quot;.  For each F
 If you need, you can try another Maneuver Time by unchecking the &quot;Fix to SSVG&apos;s Time&quot; checkbox.</source>
         <translation>このアシスタントは、探査機をターゲットに向かう軌道に乗せる CP マヌーバの設計を支援します。
 
-スライダーを操作して、探査機がターゲットに到着するまでの飛行時間を変化させてみてください。アシスタントは軌道を見つけて 3D チャートに図示し、軌道変更のデルタV や到着時の相対速度を表示します。
+スライダを操作して、探査機がターゲットに到着するまでの飛行時間を変化させてみてください。アシスタントは軌道を見つけて3次元の図に示し、軌道変更のデルタV や到着時の相対速度を表示します。
 
 「SSVG の時刻に固定」のチェックを外すことにより、CP マヌーバの実行時刻を変化させて軌道を確認することもできます。</translation>
     </message>

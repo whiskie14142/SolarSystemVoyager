@@ -117,7 +117,6 @@ class FlightReviewControl(QDialog):
         
         self._redrawmark()
         
-#        self.ui.sysMessage.clear()
         self.ui.sysMessage.appendPlainText(self.sysMes01)
         self.ui.sysMessage.appendPlainText(self.sysMes02.format(g.nextman))
         self.ui.sysMessage.centerCursor()

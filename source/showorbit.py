@@ -288,7 +288,6 @@ class ShowOrbitDialog(QDialog):
         return self.jd + self.delta_jd
         
     def forward(self):
-        self.clearSysMes()
         exp = self.ui.timescale.value()
         self.delta_jd += 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -298,7 +297,6 @@ class ShowOrbitDialog(QDialog):
                 self.mother.settime(self.jd + self.delta_jd)
         
     def backward(self):
-        self.clearSysMes()
         exp = self.ui.timescale.value()
         self.delta_jd -= 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -308,7 +306,6 @@ class ShowOrbitDialog(QDialog):
                 self.mother.settime(self.jd + self.delta_jd)
         
     def fastforward(self):
-        self.clearSysMes()
         exp = self.ui.timescale.value() + 1
         self.delta_jd += 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -318,7 +315,6 @@ class ShowOrbitDialog(QDialog):
                 self.mother.settime(self.jd + self.delta_jd)
 
     def fastbackward(self):
-        self.clearSysMes()
         exp = self.ui.timescale.value() + 1
         self.delta_jd -= 10.0 ** exp
         self.ui.delta_t_edit.setText('{:.8f}'.format(self.delta_jd))
@@ -328,7 +324,6 @@ class ShowOrbitDialog(QDialog):
                 self.mother.settime(self.jd + self.delta_jd)
         
     def _statuschanged(self):
-        self.clearSysMes()
         erase_Ptrj()
         if self.ui.check_Ptrj.isChecked():
             draw_Ptrj()
@@ -343,7 +338,6 @@ class ShowOrbitDialog(QDialog):
         self._redrawmark()
 
     def dtapplyclicked(self):
-        self.clearSysMes()
         self.dtapply()
         
     def dtapply(self):
@@ -400,9 +394,6 @@ class ShowOrbitDialog(QDialog):
         self.ui.sysMessage.appendPlainText(message)
         self.ui.sysMessage.centerCursor()
         
-    def clearSysMes(self):
-        pass
-        # self.ui.sysMessage.clear()
 
 class ShowStartOrbitDialog(ShowOrbitDialog):
     """class for 'Show Start Orbit' window
