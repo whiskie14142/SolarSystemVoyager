@@ -1143,7 +1143,7 @@ Range</source>
     </message>
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="1044"/>
-        <source>Slyder Defines</source>
+        <source>Slider Defines</source>
         <translation>スライダで設定するのは</translation>
     </message>
     <message>

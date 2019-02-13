@@ -128,6 +128,11 @@
             "type": "FLYTO",
             "time": 2449589.5,
             "inter": 5.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459214.5,
+            "inter": 50.0
         }
     ],
     "target": {

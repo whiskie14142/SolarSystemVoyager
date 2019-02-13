@@ -1,4 +1,9 @@
-（０）uiフォルダの内部を含めスクリプト（ソース）を最新にする。
+（０）次のフォルダの内部を含め source の内容を最新にする。
+　　ui
+　　SSVG_data
+　　SSVG_i18n
+　　SSVG_log
+　　SSVG_plan
 
 （１）PyInstallerフォルダにある次のフォルダを削除する。
 　　__pychache__
@@ -7,7 +12,6 @@
 
 （２）PI.batを実行する
 
-（３）PyInstaller/dist/SSVG に、このフォルダ内の3つのフォルダ（SSVG_data、SSVG_log、SSVG_plan）をコピーする
 
 （４）SSVGのフォルダ名にバージョン番号を付与する。
 　　（SSVG_v_v_vに変更する）
@@ -20,11 +24,8 @@
 
 （注1）アイコンファイル（ssvgicon.ico）は https://convertico.com/ でpngから変換して作ったものでなければならない。（ペイントでbmpを作成して拡張子を変換したものは不可）
 
-（注2）PI_createspec.batを実行した場合、出来上がったspecファイルに次の行を追加して、PI.batを再実行する必要がある。
-【2行目に次の2行を追加】
-import sys
-sys.setrecursionlimit(5000)
-【pyz=から始まる行の直前に次の1行を追加】
-a.datas += [('ssvgicon.ico', 'ssgvicon.ico', 'DATA')]
+（注2）原則としてPI_createspec.batは実行しないこと。もし実行した場合、出来上がったspecファイルを変更して、PI.batを再実行する必要がある。specファイルの変更には、
+　SSVG - org.specを参考にする。specファイルの書き方についてはこちらを参照すること。
+https://pyinstaller.readthedocs.io/en/stable/spec-files.html
 
 （注3）PyInstaller実行時、--onefile オプションで一つのexeにすることも可能だが、それをすると実行時に20秒以上待たされるようになるので、採用しない。

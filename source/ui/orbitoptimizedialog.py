@@ -533,7 +533,7 @@ class Ui_OrbitOptimizeDialog(object):
         self.it_ff.setText(_translate("OrbitOptimizeDialog", ">>>"))
         self.label_2.setText(_translate("OrbitOptimizeDialog", "Tweak Handle"))
         self.label_initialtime.setText(_translate("OrbitOptimizeDialog", "Adjust Start Time"))
-        self.groupBox_2.setTitle(_translate("OrbitOptimizeDialog", "Slyder Defines"))
+        self.groupBox_2.setTitle(_translate("OrbitOptimizeDialog", "Slider Defines"))
         self.radio_fd.setText(_translate("OrbitOptimizeDialog", "Flight Time"))
         self.radio_tt.setText(_translate("OrbitOptimizeDialog", "Arrival Time"))
         self.tt_fb.setToolTip(_translate("OrbitOptimizeDialog", "Shift Range to Left"))

@@ -953,7 +953,7 @@ Range</string>
      </rect>
     </property>
     <property name="title">
-     <string>Slyder Defines</string>
+     <string>Slider Defines</string>
     </property>
     <widget class="QRadioButton" name="radio_fd">
      <property name="geometry">
