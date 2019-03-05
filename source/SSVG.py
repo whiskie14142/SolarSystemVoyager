@@ -21,6 +21,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 from PyQt5.QtGui import QTextDocument
+from PyQt5.QtGui import QDesktopServices as qds
 
 import sys
 import os
@@ -92,6 +93,8 @@ class MainForm(QMainWindow):
         self.ui.actionCreate.triggered.connect(self.createcheckpoint)
         self.ui.actionResume.triggered.connect(self.resumecheckpointAction)
         self.ui.actionAbout_SSVG.triggered.connect(self.aboutselected)
+        self.ui.action_UsersGuide.triggered.connect(self.openUsersGuide)
+        self.ui.action_HomePage.triggered.connect(self.openHomePage)
         self.ui.execNext.clicked.connect(self.execnextclicked)
         self.ui.reviewthroughout.clicked.connect(self.reviewthroughout)
         self.ui.flightreview.clicked.connect(self.showflightreview)
@@ -153,7 +156,7 @@ class MainForm(QMainWindow):
             self._translate('SSVG.py', 'tvmode (L|E)'),
             self._translate('SSVG.py', 'inter (days)')
             ]
-
+        
         self.initConstants()
         self.initMessage()
         self.initselectedman()
@@ -1014,7 +1017,10 @@ class MainForm(QMainWindow):
         self.ui.label_Inc.setText('{:.6f}'.format(kepl['i']))
         self.ui.label_LAN.setText('{:.6f}'.format(kepl['LoAN']))
         self.ui.label_APH.setText('{:.6f}'.format(kepl['AoP']))
-        self.ui.label_PPT.setText('{0}'.format(common.jd2isot(kepl['T'])))
+        try:
+            self.ui.label_PPT.setText('{0}'.format(common.jd2isot(kepl['T'])))
+        except ValueError:
+            self.ui.label_PPT.setText('------------------------')
         self.ui.label_PPTJD.setText('{:.8f}'.format(kepl['T']))
         if kepl['e'] < 1.0:
             self.ui.label_MA.setText('{:.6f}'.format(kepl['MA']))
@@ -1273,6 +1279,24 @@ class MainForm(QMainWindow):
                 logstring.append('    *** Warning *** ' + self.mbMes11 + '\n')
             g.logfile.writelines(logstring)
             g.logfile.flush()
+            
+    def openUsersGuide(self):
+        langCode = self._translate('Language', 'en')
+        urltext = 'file:///' + os.path.abspath('SSVG_UsersGuide-' + langCode + '.pdf')
+        url = QUrl(urltext, QUrl.TolerantMode)
+        if not qds.openUrl(url):
+            urltext = 'file:///' + os.path.abspath('SSVG_UsersGuide-en.pdf')
+            url = QUrl(urltext, QUrl.TolerantMode)
+            qds.openUrl(url)
+            
+    def openHomePage(self):
+        langCode = self._translate('Language', 'en')
+        if langCode == 'ja':
+            urltext = 'http://whsk.sakura.ne.jp/ssvg/index.html'
+        else:
+            urltext = 'http://whsk.sakura.ne.jp/ssvg/index-en.html'
+        url = QUrl(urltext, QUrl.TolerantMode)
+        qds.openUrl(url)
     
     def dispSysMes(self, message):
         self.ui.sysMessage.appendPlainText(message)

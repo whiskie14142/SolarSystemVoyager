@@ -260,7 +260,7 @@
     <message>
         <location filename="../ui/flightreviewcontrol.ui" line="227"/>
         <source>Quickness</source>
-        <translation>早送りの指定</translation>
+        <translation>早送り</translation>
     </message>
     <message>
         <location filename="../ui/flightreviewcontrol.ui" line="243"/>
@@ -309,8 +309,8 @@
     </message>
     <message>
         <location filename="../ui/flightreviewcontrol.ui" line="438"/>
-        <source>Review Manipulator</source>
-        <translation>レビュー操作</translation>
+        <source>bkwd&lt;&lt;   Review Manipulator   &gt;&gt;fwd</source>
+        <translation>戻る&lt;&lt;　　　レビュー操作　　　&gt;&gt;進む</translation>
     </message>
     <message>
         <location filename="../ui/flightreviewcontrol.ui" line="568"/>
@@ -724,6 +724,16 @@
         <location filename="../ui/mainwindow.ui" line="1516"/>
         <source>&amp;Target</source>
         <translation>ターゲット （&amp;T）</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1591"/>
+        <source>&amp;User&apos;s Guide</source>
+        <translation>ユーザーズガイド （U）</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1596"/>
+        <source>&amp;Home Page</source>
+        <translation>ホームページ （H）</translation>
     </message>
 </context>
 <context>
@@ -1247,7 +1257,7 @@ Range</source>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="224"/>
         <source>Quickness</source>
-        <translation>早送りの指定</translation>
+        <translation>早送り</translation>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="240"/>
@@ -1295,9 +1305,9 @@ Range</source>
         <translation>ターゲットの視線速度</translation>
     </message>
     <message>
-        <location filename="../ui/reviewthroughoutcontrol.ui" line="435"/>
-        <source>Review Manipulator</source>
-        <translation>レビュー操作</translation>
+        <location filename="../ui/reviewthroughoutcontrol.ui" line="450"/>
+        <source>bkwd&lt;&lt;   Review Manipulator   &gt;&gt;fwd</source>
+        <translation>戻る&lt;&lt;　　　レビュー操作　　　&gt;&gt;進む</translation>
     </message>
     <message>
         <location filename="../ui/reviewthroughoutcontrol.ui" line="565"/>
@@ -1494,8 +1504,8 @@ Range</source>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="436"/>
-        <source>Prediction Time Manipulator</source>
-        <translation>予測時刻操作</translation>
+        <source>bkwd&lt;&lt;    Time Manipulator    &gt;&gt;fwd</source>
+        <translation>戻る&lt;&lt;　　　　時刻操作　　　　&gt;&gt;進む</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="566"/>

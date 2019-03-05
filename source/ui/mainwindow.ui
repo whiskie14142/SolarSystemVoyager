@@ -1475,6 +1475,8 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="action_UsersGuide"/>
+    <addaction name="action_HomePage"/>
     <addaction name="actionAbout_SSVG"/>
    </widget>
    <widget class="QMenu" name="menuCheckpoint">
@@ -1582,6 +1584,16 @@
   <action name="actionTarget">
    <property name="text">
     <string>&amp;Target</string>
+   </property>
+  </action>
+  <action name="action_UsersGuide">
+   <property name="text">
+    <string>&amp;User's Guide</string>
+   </property>
+  </action>
+  <action name="action_HomePage">
+   <property name="text">
+    <string>&amp;Home Page</string>
    </property>
   </action>
  </widget>

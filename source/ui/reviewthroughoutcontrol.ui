@@ -229,7 +229,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>565</x>
+     <x>570</x>
      <y>72</y>
      <width>71</width>
      <height>20</height>
@@ -440,14 +440,14 @@
   <widget class="QLabel" name="label_19">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>310</x>
      <y>72</y>
-     <width>151</width>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Review Manipulator</string>
+    <string>bkwd&lt;&lt;   Review Manipulator   &gt;&gt;fwd</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

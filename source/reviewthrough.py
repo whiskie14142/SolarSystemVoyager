@@ -119,6 +119,7 @@ class ReviewThroughoutControl(QDialog):
             self.ui.forward.setEnabled(True)
             self.ui.fastforward.setEnabled(True)
             self.ui.timescale.setEnabled(True)
+            self.ui.label_2.setEnabled(True)
             if self.c_maninfo['epon']:
                 self.mantext = self.mantext + ' EP(' + \
                                 self.c_maninfo['epmode'] + ')'
@@ -132,6 +133,7 @@ class ReviewThroughoutControl(QDialog):
             self.ui.forward.setEnabled(False)
             self.ui.fastforward.setEnabled(False)
             self.ui.timescale.setEnabled(False)
+            self.ui.label_2.setEnabled(False)
         if mantype == 'START':
             self.ui.starttime.setText(common.jd2isot(record[1][0]))
             self.start_time = status[0]

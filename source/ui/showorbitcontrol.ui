@@ -65,7 +65,7 @@
   <widget class="QPushButton" name="fastbackward">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>360</x>
      <y>90</y>
      <width>41</width>
      <height>31</height>
@@ -93,7 +93,7 @@
   <widget class="QPushButton" name="backward">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>410</x>
      <y>90</y>
      <width>41</width>
      <height>31</height>
@@ -121,7 +121,7 @@
   <widget class="QPushButton" name="forward">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>460</x>
      <y>90</y>
      <width>41</width>
      <height>31</height>
@@ -152,7 +152,7 @@
   <widget class="QPushButton" name="fastforward">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>510</x>
      <y>90</y>
      <width>41</width>
      <height>31</height>
@@ -199,9 +199,9 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>560</x>
+     <x>570</x>
      <y>72</y>
-     <width>81</width>
+     <width>67</width>
      <height>20</height>
     </rect>
    </property>
@@ -426,14 +426,14 @@
   <widget class="QLabel" name="label_19">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>351</x>
      <y>72</y>
-     <width>171</width>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Prediction Time Manipulator</string>
+    <string>bkwd&lt;&lt;    Time Manipulator    &gt;&gt;fwd</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
