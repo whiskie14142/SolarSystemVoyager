@@ -31,7 +31,7 @@ class Ui_aboutSSVG(object):
         self.groupBox_2.setObjectName("groupBox_2")
         self.licensetext = QtWidgets.QPlainTextEdit(self.groupBox_2)
         self.licensetext.setGeometry(QtCore.QRect(10, 30, 421, 231))
-        self.licensetext.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.licensetext.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.licensetext.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.licensetext.setAcceptDrops(False)
         self.licensetext.setAutoFillBackground(True)

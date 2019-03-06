@@ -290,6 +290,7 @@ class Ui_ReviewThroughoutControl(object):
         font = QtGui.QFont()
         font.setPointSize(9)
         self.sysMessage.setFont(font)
+        self.sysMessage.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.sysMessage.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.sysMessage.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.sysMessage.setFrameShadow(QtWidgets.QFrame.Plain)

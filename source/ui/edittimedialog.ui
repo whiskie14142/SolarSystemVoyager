@@ -43,6 +43,9 @@
    <property name="text">
     <string>Cancel</string>
    </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="finishbutton">
    <property name="geometry">
@@ -55,6 +58,9 @@
    </property>
    <property name="text">
     <string>Finish</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QRadioButton" name="radioISOT">

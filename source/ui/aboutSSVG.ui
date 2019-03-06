@@ -95,7 +95,7 @@
      </rect>
     </property>
     <property name="cursor" stdset="0">
-     <cursorShape>IBeamCursor</cursorShape>
+     <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="focusPolicy">
      <enum>Qt::ClickFocus</enum>
