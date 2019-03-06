@@ -10,6 +10,8 @@ added_files = [
     ('SSVG_log/*.*', 'SSVG_log'),
     ('SSVG_plan/*.*', 'SSVG_plan'),
     ('ssvgicon.ico', '.'),
+    ('SSVG_UsersGuide-en.pdf', '.'),
+    ('SSVG_UsersGuide-ja.pdf', '.'),
     ('ipaexg.ttf', 'mpl-data/fonts/ttf')
     ]
 a = Analysis(['SSVG.py'],

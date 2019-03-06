@@ -13,13 +13,7 @@
 （２）PI.batを実行する
 
 
-（４）SSVGのフォルダ名にバージョン番号を付与する。
-　　（SSVG_v_v_vに変更する）
 
-（５）SSVGのフォルダを圧縮してzipファイルを作成する
-
-（６）zipファイルにユーザーズガイドを追加する。
-　　（SSVGユーザーズガイド.zip および SSVG_UsersGuide-en.zip）
 
 
 （注1）アイコンファイル（ssvgicon.ico）は https://convertico.com/ でpngから変換して作ったものでなければならない。（ペイントでbmpを作成して拡張子を変換したものは不可）
