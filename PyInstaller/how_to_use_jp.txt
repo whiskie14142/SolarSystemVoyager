@@ -5,14 +5,21 @@
 　　SSVG_log
 　　SSVG_plan
 
+　PyInstaller のルートにはPythonスクリプトに加えて以下のファイルの最新版が必要。
+　　ssvgicon.ico　（SSVGのアイコン）
+　　ipaexg.ttf　（日本語フォント：IPAexGothic）
+　　SSVG_UsersGuide-ja.pdf　（ユーザーズガイド日本語版）
+　　SSVG_UsersGude-en.pdf　（ユーザーズガイド英語版）
+
+
 （１）PyInstallerフォルダにある次のフォルダを削除する。
 　　__pychache__
 　　build
 　　dist
 
+
 （２）PI.batを実行する
-
-
+　dist\SSVG の内容が実行形式パッケージである。このフォルダをインストーラーパッケージ作成に使用する。
 
 
 

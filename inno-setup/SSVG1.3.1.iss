@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SSVG"
-#define MyAppVersion "1.3.0"
+#define MyAppVersion "1.3.1"
 #define MyAppPublisher "Shushi Uetsuki/whiskie14142"
 #define MyAppURL "http://whsk.sakura.ne.jp/ssvg/"
 #define MyAppExeName "SSVG.exe"
@@ -22,7 +22,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={localappdata}\{#MyAppName}
 DefaultGroupName=SSVG Solar System Voyager
 OutputDir=C:\Users\shush_000\Documents\Distribution
-OutputBaseFilename=SSVG_1_3_0_setup
+OutputBaseFilename=SSVG_1_3_1_setup
 SetupIconFile=C:\Users\shush_000\Documents\Distribution\SSVGinstall.ico
 Compression=lzma
 SolidCompression=yes
@@ -30,7 +30,7 @@ PrivilegesRequired=lowest
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "SSVG_license-en.txt"
-Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"; LicenseFile: "SSVG_license-jp.txt"
+Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"; LicenseFile: "SSVG_license-ja.txt"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
@@ -44,14 +44,14 @@ Source: "C:\Users\shush_000\Documents\Distribution\SSVG\*"; DestDir: "{app}"; Fl
 Name: "{group}\Run {#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Languages: english
 Name: "{group}\{#MyAppName} 実行"; Filename: "{app}\{#MyAppExeName}"; Languages: japanese
 Name: "{group}\{#MyAppName} User's Guide"; Filename: "{app}\SSVG_UsersGuide-en.pdf"; Languages: english
-Name: "{group}\{#MyAppName} ユーザーズガイド"; Filename: "{app}\SSVG_UsersGuide-jp.pdf"; Languages: japanese
+Name: "{group}\{#MyAppName} ユーザーズガイド"; Filename: "{app}\SSVG_UsersGuide-ja.pdf"; Languages: japanese
 Name: "{group}\Uninstall {#MyAppName}"; Filename: "{uninstallexe}"; Languages: english
 Name: "{group}\{#MyAppName} のアンインストール"; Filename: "{uninstallexe}"; Languages: japanese
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 Name: "{commondesktop}\{#MyAppName} User's Guide"; Filename: "{app}\SSVG_UsersGuide-en.pdf"; Languages: english; Tasks: desktopicon
-Name: "{commondesktop}\{#MyAppName} ユーザーズガイド"; Filename: "{app}\SSVG_UsersGuide-jp.pdf"; Languages: japanese; Tasks: desktopicon
+Name: "{commondesktop}\{#MyAppName} ユーザーズガイド"; Filename: "{app}\SSVG_UsersGuide-ja.pdf"; Languages: japanese; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked
 Filename: "{app}\SSVG_UsersGuide-en.pdf"; Description: "Open SSVG User's Guide"; Languages: english; Flags: postinstall shellexec skipifsilent
-Filename: "{app}\SSVG_UsersGuide-jp.pdf"; Description: "SSVG ユーザーズガイドを開く"; Languages: japanese; Flags: postinstall shellexec skipifsilent
+Filename: "{app}\SSVG_UsersGuide-ja.pdf"; Description: "SSVG ユーザーズガイドを開く"; Languages: japanese; Flags: postinstall shellexec skipifsilent

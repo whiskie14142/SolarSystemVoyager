@@ -249,7 +249,7 @@ class MainForm(QMainWindow):
         self.procMes = self._translate('SSVG.py', 'Processing:  {0} {1}')
 
     def initSSV(self):
-        g.version = 'v1.3.0'
+        g.version = 'v1.3.1'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
