@@ -2,9 +2,9 @@
 
 SSVG is simulation software that allows us to fly our own spacecrafts in the solar system.  Each spacecraft has three propulsion systems: a chemical propulsion engine, an electric propulsion engine, and a solar sail.  
 
-Fly your own space probe in the precisely simulated solar system.
+Fly your own spacecrafts in the precisely simulated solar system.
 
-Read more on our homepage. <[http://whsk.sakura.ne.jp/ssvg/index-en.html](http://whsk.sakura.ne.jp/ssvg/index-en.html)>
+Read more on the home page. <[http://whsk.sakura.ne.jp/ssvg/index-en.html](http://whsk.sakura.ne.jp/ssvg/index-en.html)>
 
 ### Required environment
 * Python 3.7
@@ -21,6 +21,11 @@ Read more on our homepage. <[http://whsk.sakura.ne.jp/ssvg/index-en.html](http:/
 * spktype21 v0.1.0
 
 ### Modification Log
+#### v1.3.1 March 10, 2019
+* A defect that terminates SSVG accidentally was fixed
+* Display information elements were changed a little
+* Menu items to open the SSVG User's Guide and the home page of SSVG were added
+
 #### v1.3.0 February 21, 2019
 * Internationalized (added user interface in Japanese, and became extensible)
 * Improved user interface
