@@ -249,7 +249,7 @@ class MainForm(QMainWindow):
         self.procMes = self._translate('SSVG.py', 'Processing:  {0} {1}')
 
     def initSSV(self):
-        g.version = 'v1.3.1'
+        g.version = 'v1.3.2'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -396,7 +396,7 @@ class MainForm(QMainWindow):
         self.eraseselectedman()
         self.currentrow = 0
         
-        g.manfilename = os.path.relpath(ans)
+        g.manfilename = ans
         manfile = open(g.manfilename, 'r')
         g.manplan = json.load(manfile)
         manfile.close()
@@ -634,6 +634,7 @@ class MainForm(QMainWindow):
             return
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
+        manfile.close()
         
         if g.options['log']:
             logstring = 'save flight plan: ' + nowtimestr() + '\n'
@@ -656,7 +657,7 @@ class MainForm(QMainWindow):
 
         g.currentdir = os.path.split(ans)[0]
         
-        g.manfilename = os.path.relpath(ans)
+        g.manfilename = ans
         try:
             manfile = open(g.manfilename, 'w')
         except PermissionError:
@@ -665,6 +666,7 @@ class MainForm(QMainWindow):
             
         json.dump(g.manplan, manfile, indent=4)
         g.manplan_saved = True
+        manfile.close()
         self.dispmanfilename()
         
         if g.options['log']:

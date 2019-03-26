@@ -87,8 +87,14 @@ class NewFlightPlanDialog(QDialog):
             filter='SPK Files (*.bsp);;All Files (*.*)')
         ans = ans[0]
         if ans == '': return
-        filename = os.path.relpath(ans, start=common.bspdir)
-        filepath = os.path.join(common.bspdir, filename)
+        try:
+            filename = os.path.relpath(ans, start=common.bspdir)
+        except ValueError:
+            filename = ans
+            filepath = ans
+        else:
+            filepath = os.path.join(common.bspdir, filename)
+            
         try:
             tempk = SPKType21.open(filepath)
         except ValueError:

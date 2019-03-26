@@ -150,4 +150,5 @@ class Target:
     def closesbkernel(self):
         if self.sbkernel is not None:
             self.sbkernel.close()
+            self.sbkernel = None
         
