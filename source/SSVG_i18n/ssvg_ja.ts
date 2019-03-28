@@ -627,28 +627,28 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1397"/>
-        <source>File</source>
-        <translation>ファイル</translation>
+        <source>&amp;File</source>
+        <translation>ファイル(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1408"/>
-        <source>Help</source>
-        <translation>ヘルプ</translation>
+        <source>&amp;Help</source>
+        <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1417"/>
-        <source>Checkpoint</source>
-        <translation>チェックポイント</translation>
+        <source>&amp;Checkpoint</source>
+        <translation>チェックポイント(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1427"/>
-        <source>Edit</source>
-        <translation>編集</translation>
+        <source>&amp;Edit</source>
+        <translation>編集(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1439"/>
         <source>&amp;Open</source>
-        <translation>開く （&amp;O）</translation>
+        <translation>開く(&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1442"/>
@@ -658,7 +658,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1447"/>
         <source>&amp;New</source>
-        <translation>新規 （&amp;N）</translation>
+        <translation>新規(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1450"/>
@@ -668,7 +668,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1458"/>
         <source>&amp;Save</source>
-        <translation>保存 （&amp;S）</translation>
+        <translation>保存(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1461"/>
@@ -678,7 +678,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1469"/>
         <source>Save &amp;as</source>
-        <translation>別名で保存 （&amp;A）</translation>
+        <translation>別名で保存(&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1472"/>
@@ -686,9 +686,19 @@
         <translation>飛行計画に名前を付けて保存します</translation>
     </message>
     <message>
+        <location filename="../ui/mainwindow.ui" line="1475"/>
+        <source>&amp;Export</source>
+        <translation>エクスポート(&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1481"/>
+        <source>&amp;Import</source>
+        <translation>インポート(&amp;I)</translation>
+    </message>
+    <message>
         <location filename="../ui/mainwindow.ui" line="1477"/>
         <source>&amp;Quit</source>
-        <translation>終了 （&amp;Q）</translation>
+        <translation>終了(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1480"/>
@@ -703,37 +713,52 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1493"/>
         <source>&amp;about SSVG</source>
-        <translation>SSVG について （&amp;A）</translation>
+        <translation>SSVG について(&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1498"/>
         <source>&amp;Create</source>
-        <translation>作成 （&amp;C）</translation>
+        <translation>作成(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1506"/>
         <source>&amp;Resume</source>
-        <translation>復元 （&amp;R）</translation>
+        <translation>復元(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1511"/>
         <source>&amp;Probe</source>
-        <translation>探査機 （&amp;P）</translation>
+        <translation>探査機(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1516"/>
         <source>&amp;Target</source>
-        <translation>ターゲット （&amp;T）</translation>
+        <translation>ターゲット(&amp;T)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1591"/>
         <source>&amp;User&apos;s Guide</source>
-        <translation>ユーザーズガイド （U）</translation>
+        <translation>ユーザーズガイド(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1596"/>
         <source>&amp;Home Page</source>
-        <translation>ホームページ （H）</translation>
+        <translation>ホームページ(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1623"/>
+        <source>&amp;SPK file</source>
+        <translation>SPK ファイル(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1628"/>
+        <source>&amp;Flight Plan file</source>
+        <translation>飛行計画ファイル(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1636"/>
+        <source>Current &amp;Flight Plan</source>
+        <translation>現在の飛行計画(&amp;F)</translation>
     </message>
 </context>
 <context>
@@ -2391,6 +2416,54 @@ It is recommended that you select another SPK file.</source>
     <message>
         <source>Processing:  {0} {1}</source>
         <translation>処理中です： {0} {1}</translation>
+    </message>
+    <message>
+        <source>Import Completed</source>
+        <translation>インポート完了</translation>
+    </message>
+    <message>
+        <source>The SPK file was imported as &quot;{0}&quot;.</source>
+        <translation>SPK ファイルが &quot;{0}&quot; という名前でインポートされました。</translation>
+    </message>
+    <message>
+        <source>The Flight Plan file was imported as &quot;{0}&quot;.
+
+Open it now?</source>
+        <translation>飛行計画ファイルが &quot;{0}&quot; という名前でインポートされました。
+
+この飛行計画を開きますか？</translation>
+    </message>
+    <message>
+        <source>Export Completed</source>
+        <translation>エクスポート完了</translation>
+    </message>
+    <message>
+        <source>Current Flight Plan was exported to:
+
+&quot;{0}&quot;.</source>
+        <translation>現在の飛行計画が次のファイルにエクスポートされました。
+
+&quot;{0}&quot;</translation>
+    </message>
+    <message>
+        <source>New Flight Plan</source>
+        <translation>新しい飛行計画</translation>
+    </message>
+    <message>
+        <source>New Flight Plan was created.  Click [Edit Next] button to start editing.</source>
+        <translation>新しい飛行計画が生成されました。　[Next 編集] ボタンをクリックして編集を初めてください。</translation>
+    </message>
+    <message>
+        <source>Select SPK file to import</source>
+        <translation>インポートする SPK ファイルの選択</translation>
+    </message>
+    <message>
+        <source>Select Flight Plan file to import</source>
+        <translation>インポートする飛行計画ファイルの選択</translation>
+    </message>
+    <message>
+        <source>Define destination file to export</source>
+        <translation>エクスポート先の指定</translation>
     </message>
 </context>
 <context>

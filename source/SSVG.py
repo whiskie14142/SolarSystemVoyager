@@ -26,6 +26,7 @@ from PyQt5.QtGui import QDesktopServices as qds
 import sys
 import os
 import json
+import shutil
 
 import common
 import probe
@@ -88,6 +89,11 @@ class MainForm(QMainWindow):
         self.ui.actionQuit.triggered.connect(self.appquit)
         self.ui.actionSave.triggered.connect(self.savemanplan)
         self.ui.actionSave_as.triggered.connect(self.saveasmanplan)
+        
+        self.ui.action_SPK_import.triggered.connect(self.import_SPK)
+        self.ui.action_Flight_Plan_import.triggered.connect(self.import_Flight_Plan)
+        self.ui.action_Flight_Plan_Export.triggered.connect(self.export_Flight_Plan)
+        
         self.ui.actionProbe.triggered.connect(self.editprobe)
         self.ui.actionTarget.triggered.connect(self.edittarget)
         self.ui.actionCreate.triggered.connect(self.createcheckpoint)
@@ -204,6 +210,14 @@ class MainForm(QMainWindow):
         self.mbTtl10 = self._translate('SSVG.py', 'Confirmation to Delete')
         self.mbMes10 = self._translate('SSVG.py', 'Line {} will be deleted. OK?')
         self.mbMes11 = self._translate('SSVG.py', "The Flight Plan file containes Maneuver(s) OUTSIDE of Target's time span.\nYou could encounter trouble(s) in running and/or editing this Flight Plan.\nIt is recommended that you select another SPK file.")
+
+        self.mbTtl12 = self._translate('SSVG.py', 'Import Completed')
+        self.mbMes12 = self._translate('SSVG.py', 'The SPK file was imported as "{0}".')
+        self.mbMes13 = self._translate('SSVG.py', 'The Flight Plan file was imported as "{0}".\n\nOpen it now?')
+        self.mbTtl14 = self._translate('SSVG.py', 'Export Completed')
+        self.mbMes14 = self._translate('SSVG.py', 'Current Flight Plan was exported to:\n\n"{0}".')
+        self.mbTtl15 = self._translate('SSVG.py', 'New Flight Plan')
+        self.mbMes15 = self._translate('SSVG.py', 'New Flight Plan was created.  Click [Edit Next] button to start editing.')
         
 
     def initConstants(self):
@@ -247,6 +261,11 @@ class MainForm(QMainWindow):
         self.winTtl_SFP = self._translate('SSVG.py', 'Select Flight Plan File')
         self.winTtl_OFP = self._translate('SSVG.py', 'Define Output Flight Plan File')
         self.procMes = self._translate('SSVG.py', 'Processing:  {0} {1}')
+
+        self.winTtl_ISPK = self._translate('SSVG.py', 'Select SPK file to import')
+        self.winTtl_IFP = self._translate('SSVG.py', 'Select Flight Plan file to import')
+        self.winTtl_EFP = self._translate('SSVG.py', 'Define destination file to export')
+
 
     def initSSV(self):
         g.version = 'v1.3.2'
@@ -362,7 +381,7 @@ class MainForm(QMainWindow):
         event.accept()
         plt.close('all')
 
-    def openmanplan(self):
+    def openmanplan(self, checked=True, filepath=''):
         if not g.manplan_saved:
             ans = QMessageBox.question(self, self.mbTtl01, self.mbMes01, 
                QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
@@ -373,11 +392,16 @@ class MainForm(QMainWindow):
                 pass
             else:
                 return
-            
-        ans = QFileDialog.getOpenFileName(parent=self, caption=self.winTtl_SFP,
-            directory=g.currentdir, filter='JSON files (*.json)')
-        ans = ans[0]
-        if ans == '': return
+        
+        if filepath == '':
+            #   activated from menu
+            ans = QFileDialog.getOpenFileName(parent=self, caption=self.winTtl_SFP,
+                directory=g.currentdir, filter='JSON files (*.json)')
+            ans = ans[0]
+            if ans == '': return
+        else:
+            #   activated from import_Flight_Plan()
+            ans = filepath
 
         g.currentdir = os.path.split(ans)[0]
         
@@ -475,6 +499,7 @@ class MainForm(QMainWindow):
         self.ui.reviewthroughout.setEnabled(False)
         self.ui.actionSave.setEnabled(True)
         self.ui.actionSave_as.setEnabled(True)
+        self.ui.menu_Export.setEnabled(True)
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
         self.erasecheckpoint()
@@ -570,6 +595,7 @@ class MainForm(QMainWindow):
         self.ui.reviewthroughout.setEnabled(False)
         self.ui.actionSave.setEnabled(True)
         self.ui.actionSave_as.setEnabled(True)
+        self.ui.menu_Export.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
         self.ui.menuEdit.setEnabled(True)
         self.erasecheckpoint()
@@ -595,6 +621,9 @@ class MainForm(QMainWindow):
             g.logfile.writelines(logstring)
             g.logfile.flush()
         self.dispmanfilename()
+        QMessageBox.information(self, self.mbTtl15, 
+                                self.mbMes15, QMessageBox.Ok)
+
 
 
     def reviewthroughout(self):
@@ -677,6 +706,66 @@ class MainForm(QMainWindow):
             g.logfile.flush()
         self.dispmanfilename()
         self.dispSysMes(self.sysMes01.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
+
+    def import_SPK(self):
+        ans = QFileDialog.getOpenFileName(parent=self, caption=self.winTtl_ISPK,
+            directory=os.path.join('../'), filter='SPK files (*.bsp)')
+        ans = ans[0]
+        if ans == '': return
+        
+        filename = os.path.splitext(os.path.basename(ans))
+        count = 1
+        extention = ''
+        while True:
+            destname = os.path.join(common.bspdir, filename[0]+extention+filename[1])
+            if not os.path.isfile(destname):
+                break
+            count += 1
+            extention = '({})'.format(count)
+        shutil.copyfile(ans, destname)
+        name = os.path.basename(destname)
+        QMessageBox.information(self, self.mbTtl12, 
+                                self.mbMes12.format(name), QMessageBox.Ok)
+    
+    def import_Flight_Plan(self):
+        ans = QFileDialog.getOpenFileName(parent=self, caption=self.winTtl_IFP,
+            directory=os.path.join('../'), filter='JSON files (*.json)')
+        ans = ans[0]
+        if ans == '': return
+        
+        filename = os.path.splitext(os.path.basename(ans))
+        count = 1
+        extention = ''
+        while True:
+            destname = os.path.join(common.plandir, filename[0]+extention+filename[1])
+            if not os.path.isfile(destname):
+                break
+            count += 1
+            extention = '({})'.format(count)
+        shutil.copyfile(ans, destname)
+        name = os.path.basename(destname)
+        ans = QMessageBox.question(self, self.mbTtl12, self.mbMes13.format(name),
+           QMessageBox.Open | QMessageBox.Cancel, QMessageBox.Cancel)
+        if ans == QMessageBox.Open:
+            self.openmanplan(filepath=destname)
+    
+    def export_Flight_Plan(self):
+        dr = os.path.join('../', os.path.basename(g.manfilename))
+        ans = QFileDialog.getSaveFileName(self, self.winTtl_EFP, dr, 
+                                          'JSON files (*.json)')
+        ans = ans[0]
+        if ans == '': return
+
+        try:
+            destfile = open(ans, 'w')
+        except PermissionError:
+            QMessageBox.critical(self, self.mbTtl04, self.mbMes04, QMessageBox.Ok)
+            return
+            
+        json.dump(g.manplan, destfile, indent=4)
+        destfile.close()
+        QMessageBox.information(self, self.mbTtl14, 
+                                self.mbMes14.format(ans), QMessageBox.Ok)
 
     def dispmanplan(self):
         self.ui.manplans.clearContents()  # clear previous table
@@ -1208,6 +1297,7 @@ class MainForm(QMainWindow):
         self.ui.reviewthroughout.setEnabled(False)
         self.ui.actionSave.setEnabled(True)
         self.ui.actionSave_as.setEnabled(True)
+        self.ui.menu_Export.setEnabled(True)
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
         self.dispSysMes(self.sysMes07.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
@@ -1252,6 +1342,7 @@ class MainForm(QMainWindow):
         self.ui.reviewthroughout.setEnabled(False)
         self.ui.actionSave.setEnabled(True)
         self.ui.actionSave_as.setEnabled(True)
+        self.ui.menu_Export.setEnabled(True)
         self.ui.menuEdit.setEnabled(True)
         self.ui.menuCheckpoint.setEnabled(False)
         self.dispSysMes(self.sysMes08.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
