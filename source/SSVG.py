@@ -48,23 +48,8 @@ from flightreview import FlightReviewControl
 from showorbit import ShowOrbitDialog
 from reviewthrough import ReviewThroughoutControl
 
-from globaldata import *
-# Import followings
-#     g : container of global data
-#     erase_Ptrj()
-#     draw_Ptrj()
-#     erase_PKepler()
-#     draw_PKepler()
-#     erase_TKepler()
-#     draw_TKepler()
-#     remove_planets()
-#     replot_planets(jd)
-#     remove_time()
-#     replot_time(jd, ttype='')
-#     nowtimestr()
-#     nowtimestrf()
-
-
+from globaldata import g, erase_Ptrj, erase_TKepler
+from globaldata import nowtimestr, nowtimestrf
 
 from ui.mainwindow import *
 
@@ -76,14 +61,14 @@ class MainForm(QMainWindow):
         self.setGeometry(10, 40, 640, 700)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.manplans.setColumnWidth(0,60)
-        self.ui.manplans.setColumnWidth(1,300)
-        self.ui.manplans.setColumnWidth(2,80)
+        self.ui.manplans.setColumnWidth(0, 60)
+        self.ui.manplans.setColumnWidth(1, 300)
+        self.ui.manplans.setColumnWidth(2, 80)
         self.ui.manplans.setCornerButtonEnabled(False)              # Disable table selection by clicking corner button
         self.ui.manplans.horizontalHeader().setSectionsClickable(False)     # Disable colomn selection by clicking
         self.ui.manplans.verticalHeader().setSectionsClickable(False)       # Disable row selection by clicking
-        self.ui.selectedman.setColumnWidth(0,139)
-        self.ui.selectedman.setColumnWidth(1,100)
+        self.ui.selectedman.setColumnWidth(0, 139)
+        self.ui.selectedman.setColumnWidth(1, 100)
         self.ui.actionOpen.triggered.connect(self.openmanplan)
         self.ui.actionNew.triggered.connect(self.newmanplan)
         self.ui.actionQuit.triggered.connect(self.appquit)
@@ -478,6 +463,8 @@ class MainForm(QMainWindow):
         erase_TKepler()
             
         self.enablewidgets()
+        self.switchEditButtons()
+        self.switchExecButtons()
         self.ui.probename.setText(g.manplan['probe']['name'])
         tname = g.manplan['target']['name']
         for i in range(10):
@@ -573,6 +560,8 @@ class MainForm(QMainWindow):
         g.mytarget = target.Target(**g.manplan['target'])
         
         self.enablewidgets()
+        self.switchEditButtons()
+        self.switchExecButtons()
         
         self.ui.probename.setText(g.manplan['probe']['name'])
         tname = g.manplan['target']['name']
@@ -849,6 +838,7 @@ class MainForm(QMainWindow):
         
         self.dispcurrentstatus()
         self.ui.menuCheckpoint.setEnabled(True)
+        self.switchExecButtons()
         return True
 
     def execto(self):
@@ -883,6 +873,7 @@ class MainForm(QMainWindow):
         self.erasecheckpoint()
         self.ui.menuCheckpoint.setEnabled(False)
         self.dispSysMes(self.sysMes04)
+        self.switchExecButtons()
 
 
     def showorbitclicked(self):
@@ -914,6 +905,8 @@ class MainForm(QMainWindow):
         if newrow >= 0:
             self.currentrow = newrow
             self.dispselectedman()
+        self.switchEditButtons()
+        self.switchExecButtons()
 
     def editnext(self):
         self.currentrow = g.nextman
@@ -991,6 +984,7 @@ class MainForm(QMainWindow):
             if g.nextman > 0:
                 self.showorbit()
         self.dispmanfilename()
+        self.switchExecButtons()
             
     def insertman(self):
         if self.currentrow < len(g.maneuvers):
@@ -1010,6 +1004,7 @@ class MainForm(QMainWindow):
         g.manplan_saved = False
         self.dispmanplan()
         self.dispmanfilename()
+        self.switchExecButtons()
         
         if g.options['log']:
             logstring = []
@@ -1046,6 +1041,7 @@ class MainForm(QMainWindow):
             g.manplan_saved = False
             self.dispmanplan()
             self.dispmanfilename()
+            self.switchExecButtons()
             
             if g.options['log']:
                 logstring = []
@@ -1076,7 +1072,8 @@ class MainForm(QMainWindow):
             QMessageBox.information(self, 'Info', 
                                     'Latest maneuver was not FLYTO.', QMessageBox.Ok)
             return  
-        
+
+        self.ui.manplans.selectRow(g.nextman-1)
         self.init3Dfigure()
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
@@ -1153,13 +1150,9 @@ class MainForm(QMainWindow):
         self.ui.label_ADV.setText('')
 
     def enablewidgets(self):
-        self.ui.execNext.setEnabled(True)
-        self.ui.execto.setEnabled(True)
-        self.ui.initexec.setEnabled(True)
         self.ui.editnext.setEnabled(True)
         self.ui.editMan.setEnabled(True)
         self.ui.insertMan.setEnabled(True)
-        self.ui.deleteMan.setEnabled(True)
         self.ui.manplans.setEnabled(True)
         
     def aboutselected(self):
@@ -1284,6 +1277,8 @@ class MainForm(QMainWindow):
         g.myprobe = probe.Probe(**g.manplan['probe'])
         
         self.enablewidgets()
+        self.switchEditButtons()
+        self.switchExecButtons()
         self.ui.probename.setText(g.manplan['probe']['name'])
         bname = g.manplan['probe']['base']
         for i in range(16):
@@ -1329,22 +1324,12 @@ class MainForm(QMainWindow):
         g.mytarget.closesbkernel()
         g.mytarget = target.Target(**g.manplan['target'])
         
-        self.enablewidgets()
         tname = g.manplan['target']['name']
         for i in range(10):
             if common.planets_id[g.i_planetnames[i][1]][1] == tname:
                 tname = g.i_planetnames[i][0]
                 break
         self.ui.targetname.setText(tname)
-#        self.dispmanplan()
-#        self.ui.showOrbit.setEnabled(False)
-#        self.ui.flightreview.setEnabled(False)
-#        self.ui.reviewthroughout.setEnabled(False)
-#        self.ui.actionSave.setEnabled(True)
-#        self.ui.actionSave_as.setEnabled(True)
-#        self.ui.menu_Export.setEnabled(True)
-#        self.ui.menuEdit.setEnabled(True)
-#        self.ui.menuCheckpoint.setEnabled(False)
         
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.ssvgRedraw()
@@ -1403,6 +1388,57 @@ class MainForm(QMainWindow):
         self.ui.sysMessage.appendPlainText(message)
         self.ui.sysMessage.centerCursor()
         
+    def switchEditButtons(self):
+        button = self.ui.deleteMan.setEnabled
+        if g.manplan is None: 
+            button(False)
+        elif len(g.maneuvers) == self.currentrow:
+            button(False)
+        else:
+            button(True)
+            
+    def switchExecButtons(self):
+        def containEmptyline(start, end):
+            ans = False
+            for i in range(start, end+1):
+                if g.maneuvers[i] is None:
+                    ans = True
+            return ans
+        
+        execButton = self.ui.execNext.setEnabled
+        execStarButton = self.ui.execto.setEnabled
+        clearButton = self.ui.initexec.setEnabled
+        
+        if g.manplan is None:
+            execButton(False)
+            execStarButton(False)
+            clearButton(False)
+            return
+        # for Clear Button
+        elif g.myprobe.onflight:
+            clearButton(True)
+        else:
+            clearButton(False)
+        
+        # for Execute Button
+        if len(g.maneuvers) <= g.nextman:
+            execButton(False)
+        elif g.maneuvers[g.nextman] is None:
+            execButton(False)
+        else:
+            execButton(True)
+        
+        # for Execute* Button
+        if len(g.maneuvers) <= g.nextman:
+            execStarButton(False)
+        elif len(g.maneuvers) <= self.currentrow:
+            execStarButton(False)
+        elif self.currentrow < g.nextman:
+            execStarButton(False)
+        elif containEmptyline(g.nextman, self.currentrow):
+            execStarButton(False)
+        else:
+            execStarButton(True)
 
 def resource_path(relative):
     if hasattr(sys, '_MEIPASS'):
