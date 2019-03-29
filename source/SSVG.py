@@ -361,7 +361,7 @@ class MainForm(QMainWindow):
 
     def closeEvent(self, event):
         if g.manplan_saved:
-           pass
+            pass
         else:
             ans = QMessageBox.question(self, self.mbTtl01, self.mbMes01, 
                 QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel, 
@@ -1322,7 +1322,7 @@ class MainForm(QMainWindow):
         if ans == QDialog.Rejected:
             return
         
-        self.execinitialize()
+#        self.execinitialize()
         g.manplan_saved = False
         g.manplan['target'] = manplan['target']
         erase_TKepler()
@@ -1336,15 +1336,23 @@ class MainForm(QMainWindow):
                 tname = g.i_planetnames[i][0]
                 break
         self.ui.targetname.setText(tname)
-        self.dispmanplan()
-        self.ui.showOrbit.setEnabled(False)
-        self.ui.flightreview.setEnabled(False)
-        self.ui.reviewthroughout.setEnabled(False)
-        self.ui.actionSave.setEnabled(True)
-        self.ui.actionSave_as.setEnabled(True)
-        self.ui.menu_Export.setEnabled(True)
-        self.ui.menuEdit.setEnabled(True)
-        self.ui.menuCheckpoint.setEnabled(False)
+#        self.dispmanplan()
+#        self.ui.showOrbit.setEnabled(False)
+#        self.ui.flightreview.setEnabled(False)
+#        self.ui.reviewthroughout.setEnabled(False)
+#        self.ui.actionSave.setEnabled(True)
+#        self.ui.actionSave_as.setEnabled(True)
+#        self.ui.menu_Export.setEnabled(True)
+#        self.ui.menuEdit.setEnabled(True)
+#        self.ui.menuCheckpoint.setEnabled(False)
+        
+        if g.showorbitcontrol is not None:
+            g.showorbitcontrol.ssvgRedraw()
+        elif g.flightreviewcontrol is not None:
+            g.flightreviewcontrol.redraw()
+        elif g.reviewthroughoutcontrol is not None:
+            g.reviewthroughoutcontrol.redrawTargetFromSSVG()
+        
         self.dispSysMes(self.sysMes08.format(os.path.splitext(os.path.basename(g.manfilename))[0]))
         self.dispmanfilename()
         

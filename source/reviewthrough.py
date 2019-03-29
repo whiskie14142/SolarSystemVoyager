@@ -134,6 +134,9 @@ class ReviewThroughoutControl(QDialog):
             self.ui.fastforward.setEnabled(False)
             self.ui.timescale.setEnabled(False)
             self.ui.label_2.setEnabled(False)
+
+        self.savedstatus = np.copy(status)        
+        
         if mantype == 'START':
             self.ui.starttime.setText(common.jd2isot(record[1][0]))
             self.start_time = status[0]
@@ -260,6 +263,10 @@ class ReviewThroughoutControl(QDialog):
         pvel[1] = self.last_trj[5][self.c_index]
         pvel[2] = self.last_trj[6][self.c_index]
         ssacc = self.last_trj[7][self.c_index]
+        
+        self.savedstatus[0] = np.copy(c_time)
+        self.savedstatus[1:4] = np.copy(ppos)
+        self.savedstatus[4:7] = np.copy(pvel)
 
         erase_PKepler()
         if self.ui.check_PKepler.isChecked():
@@ -344,6 +351,62 @@ class ReviewThroughoutControl(QDialog):
         self.ui.RVTphi.setText('{:.2f}'.format(tvphi))
         self.ui.RVTelv.setText('{:.2f}'.format(tvelv))
         self.ui.LoSVvel.setText('{:.3f}'.format(losvel))
+
+    def redrawTargetFromSSVG(self):
+        status = self.savedstatus
+        target_pos, target_vel = g.mytarget.posvel(status[0])
+        sun_pos, sun_vel = common.SPKposvel(10, status[0])
+
+        # adjust center of image
+        xlim = g.ax.get_xlim()
+        hw = (xlim[1] - xlim[0]) * 0.5
+        if self.ui.tobarycenter.isChecked():
+            cent = [0.0, 0.0, 0.0]
+        elif self.ui.toprobe.isChecked():
+            cent = status[1:4]
+        else:
+            cent = target_pos
+        g.ax.set_xlim(cent[0]-hw, cent[0]+hw)
+        g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
+        g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
+
+        # Planets
+        remove_planets()
+        if self.ui.showplanets.isChecked():
+            replot_planets(status[0])
+        
+        # Kepler Orbit of target
+        xs, ys, zs, ts = g.mytarget.points(status[0], g.ndata)
+        g.target_Kepler = [xs, ys, zs]
+        erase_TKepler()
+        if self.ui.check_TKepler.isChecked():
+            draw_TKepler()
+
+        # Target mark
+        if self.artist_of_target is not None:
+            self.artist_of_target.remove()
+            self.artist_of_target = None
+        self.artist_of_target = g.ax.scatter(*target_pos, s=50, c='g',
+                                             depthshade=False, marker='+')
+        
+        # display relative position and velocity
+        rel_pos = target_pos - status[1:4]
+        rel_pos = common.eclv2lv(rel_pos, status[1:4], 
+                                 status[4:], sun_pos, sun_vel)
+        trange, tphi, telv = common.rect2polar(rel_pos)
+        rel_vel = target_vel - status[4:]
+        rel_vel = common.eclv2lv(rel_vel, status[1:4], 
+                                 status[4:], sun_pos, sun_vel)
+        relabsvel, tvphi, tvelv = common.rect2polar(rel_vel)
+        losvel = np.dot(rel_vel, rel_pos) / trange
+        self.ui.RPTrange.setText('{:.3f}'.format(trange / 1000.0))
+        self.ui.RPTphi.setText('{:.2f}'.format(tphi))
+        self.ui.RPTelv.setText('{:.2f}'.format(telv))
+        self.ui.RVTvel.setText('{:.3f}'.format(relabsvel))
+        self.ui.RVTphi.setText('{:.2f}'.format(tvphi))
+        self.ui.RVTelv.setText('{:.2f}'.format(tvelv))
+        self.ui.LoSVvel.setText('{:.3f}'.format(losvel))
+        
     
     def forward(self):
         if self.c_index + 1 < len(self.last_trj[0]):
