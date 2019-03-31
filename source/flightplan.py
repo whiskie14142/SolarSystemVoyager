@@ -101,6 +101,7 @@ class NewFlightPlanDialog(QDialog):
             QMessageBox.critical(self, self.mbTtl01, self.mbMes01, QMessageBox.Ok)
             return
         self.ui.spkfilepath.setText(filename)
+        self.ui.targetname.setText(os.path.splitext(os.path.basename(filename))[0])
         
         # Check center of coordinates. it should be 0
         center0 = tempk.segments[0].center

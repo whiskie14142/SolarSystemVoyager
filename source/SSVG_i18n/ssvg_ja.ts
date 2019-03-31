@@ -2034,6 +2034,14 @@ after {}</source>
         <source>Invalid Start Time : OUTSIDE of Target&apos;s Time Span</source>
         <translation>出発時刻の不正： ターゲットの有効期間の外</translation>
     </message>
+    <message>
+        <source>Invalid Maneuver Type : {}  Your Probe is not in flight yet.</source>
+        <translation>不正なマヌーバタイプ： {}　探査機はまだ飛行を開始していません。</translation>
+    </message>
+    <message>
+        <source>Invalid Maneuver Type : {}  Your Probe is in flight already.</source>
+        <translation>不正なマヌーバタイプ： {}　探査機はすでに飛行中です。</translation>
+    </message>
 </context>
 <context>
     <name>reviewthrough.py</name>

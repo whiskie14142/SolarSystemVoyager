@@ -48,6 +48,8 @@ class Probe:
         self.errormes03 = self._translate('probe.py', 'Invalid Manuever Type : {}')
         self.errormes04 = self._translate('probe.py', 'Numerical Integration Error(s) occured \nafter {}')
         self.errormes05 = self._translate('probe.py', "Invalid Start Time : OUTSIDE of Target's Time Span")
+        self.errormes06 = self._translate('probe.py', 'Invalid Maneuver Type : {}  Your Probe is not in flight yet.')
+        self.errormes07 = self._translate('probe.py', 'Invalid Maneuver Type : {}  Your Probe is in flight already.')
 
     def execinitialize(self):
         self.trj_record = []
@@ -62,11 +64,9 @@ class Probe:
 #        
     def exec_man(self, man, target, pbar=None, plabel=None, ptext=''):
         if man['type'] != 'START' and not self.onflight:
-            return False, 'Your probe has not started yet.  Man. Type : '   \
-                + man['type']
+            return False, self.errormes06.format(man['type'])
         if man['type'] == 'START' and self.onflight:
-            return False, 'Your probe has started already.  Man. Type : '   \
-                + man['type']
+            return False, self.errormes07.format(man['type'])
 
         cman = man.copy()
         cman['epon'] = False
