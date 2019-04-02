@@ -1609,6 +1609,92 @@ Range</source>
     </message>
 </context>
 <context>
+    <name>DescriptionEditor</name>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="29"/>
+        <source>Maneuver Description Editor</source>
+        <translation>マヌーバ説明エディタ</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="55"/>
+        <source>Edit the description</source>
+        <translation>説明を編集してください。</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="79"/>
+        <source>No description</source>
+        <translation>説明がありません</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="95"/>
+        <source>Copy selected characters into clipboard</source>
+        <translation>選択した文字列をクリップボードにコピーします</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="98"/>
+        <source>Copy</source>
+        <translation>コピー</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="117"/>
+        <source>Cut selected characters and store into clipboard</source>
+        <translation>選択した文字列を切り取ってクリップボードに入れます</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="120"/>
+        <source>Cut</source>
+        <translation>切取り</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="139"/>
+        <source>Paste characters from clipboard</source>
+        <translation>クリップボードの文字列を貼り付けます</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="142"/>
+        <source>Paste</source>
+        <translation>貼付け</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="164"/>
+        <source>Undo latest operation</source>
+        <translation>最後の操作を取り消します（アンドゥー）</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="167"/>
+        <source>Undo</source>
+        <translation>取消し</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="189"/>
+        <source>Redo latest undone operation</source>
+        <translation>最後に取り消した操作を再実行します（取消しの取消し・リドゥー）</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="192"/>
+        <source>Redo</source>
+        <translation>再実行</translation>
+    </message>
+</context>
+<context>
+    <name>ManeuverDescription</name>
+    <message>
+        <location filename="../ui/maneuverdescription.ui" line="26"/>
+        <source>Maneuver Description</source>
+        <translation>マヌーバの説明</translation>
+    </message>
+    <message>
+        <location filename="../ui/maneuverdescription.ui" line="67"/>
+        <source>Description of the selected Maneuver</source>
+        <translation>選択されているマヌーバの説明です</translation>
+    </message>
+    <message>
+        <location filename="../ui/maneuverdescription.ui" line="91"/>
+        <source>No description</source>
+        <translation>説明がありません</translation>
+    </message>
+</context>
+<context>
     <name>editdatetime.py</name>
     <message>
         <source>Input Error</source>
@@ -2472,6 +2558,10 @@ Open it now?</source>
     <message>
         <source>Define destination file to export</source>
         <translation>エクスポート先の指定</translation>
+    </message>
+    <message>
+        <source>Line {0},  {1}</source>
+        <translation>行 {0}、 {1}</translation>
     </message>
 </context>
 <context>
