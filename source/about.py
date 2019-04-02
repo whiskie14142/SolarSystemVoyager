@@ -8,29 +8,18 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from ui.aboutSSVG import *
 
-from globaldata import *
-# Import followings
+from globaldata import g
 #     g : container of global data
-#     erase_Ptrj()
-#     draw_Ptrj()
-#     erase_PKepler()
-#     draw_PKepler()
-#     erase_TKepler()
-#     draw_TKepler()
-#     remove_planets()
-#     replot_planets(jd)
-#     remove_time()
-#     replot_time(jd, ttype='')
-#     nowtimestr()
-#     nowtimestrf()
-
-
 
 class AboutSSVG(QDialog):
     """class for 'About SSVG' dialog
     """
     def __init__(self, parent=None):
         super().__init__(parent)
+        
+        flags = self.windowFlags() ^ Qt.WindowContextHelpButtonHint
+        self.setWindowFlags(flags)
+
         self.ui = Ui_aboutSSVG()
         self.ui.setupUi(self)
         

@@ -440,6 +440,7 @@ class Ui_MainWindow(object):
         self.sysMessage.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.sysMessage.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.sysMessage.setAcceptDrops(False)
+        self.sysMessage.setStyleSheet("")
         self.sysMessage.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.sysMessage.setFrameShadow(QtWidgets.QFrame.Plain)
         self.sysMessage.setLineWidth(0)

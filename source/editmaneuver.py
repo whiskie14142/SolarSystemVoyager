@@ -20,22 +20,10 @@ from ui.editmandialog import *
 from showorbit import ShowOrbitDialog
 from showorbit import ShowStartOrbitDialog
 from editdatetime import EditDateTimeDialog
+from editmandesc import EditManDesc
 
-from globaldata import *
-# Import followings
+from globaldata import g, nowtimestr
 #     g : container of global data
-#     erase_Ptrj()
-#     draw_Ptrj()
-#     erase_PKepler()
-#     draw_PKepler()
-#     erase_TKepler()
-#     draw_TKepler()
-#     remove_planets()
-#     replot_planets(jd)
-#     remove_time()
-#     replot_time(jd, ttype='')
-#     nowtimestr()
-#     nowtimestrf()
 
 
 class EditManDialog(QDialog):
@@ -177,6 +165,9 @@ class EditManDialog(QDialog):
             self.ui.label_Click.hide()
             self.dispman()
             self.setenable()
+
+        self.desckeyname = 'description_' + g.i_languagecode
+        self.editdescription()
         
     def initMessages(self):
         self.sysMes01 = self._translate('editmaneuver.py', 'Received: Date and Time, from Show Orbit')
@@ -356,6 +347,14 @@ class EditManDialog(QDialog):
     def finish_exec(self):
         if not self.applyParameters():
             return
+
+        if g.descriptioneditor is not None:
+            self.editman[self.desckeyname] = g.descriptioneditor.getText()
+        else:
+            self.editman[self.desckeyname] = g.saveddescription
+        if g.descriptioneditor is not None:
+            g.descriptioneditor.close()
+            
         g.editedman = self.editman
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
@@ -365,6 +364,14 @@ class EditManDialog(QDialog):
     def finishbutton(self):
         if not self.applyParameters():
             return
+
+        if g.descriptioneditor is not None:
+            self.editman[self.desckeyname] = g.descriptioneditor.getText()
+        else:
+            self.editman[self.desckeyname] = g.saveddescription
+        if g.descriptioneditor is not None:
+            g.descriptioneditor.close()
+            
         g.editedman = self.editman
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
@@ -428,6 +435,8 @@ class EditManDialog(QDialog):
     def cancelbutton(self):
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
+        if g.descriptioneditor is not None:
+            g.descriptioneditor.close()
         self.reject()
     
     def cellChanged(self, row, column):
@@ -454,6 +463,8 @@ class EditManDialog(QDialog):
     def closeEvent(self, event):
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
+        if g.descriptioneditor is not None:
+            g.descriptioneditor.close()
         event.accept()
 
     def showorbitclicked(self):
@@ -751,3 +762,18 @@ class EditManDialog(QDialog):
     def dispSysMes(self, message):
         self.ui.sysMessage.appendPlainText(message)
         self.ui.sysMessage.centerCursor()
+        
+    def editdescription(self):
+        if g.maneuverdescription is not None:
+            g.maneuverdescription.close()
+        if g.descriptioneditor is not None:
+            g.descriptioneditor.close()
+        
+        if self.editman is None:
+            initialtext = ''
+        elif self.desckeyname in self.editman:
+            initialtext = self.editman[self.desckeyname]
+        else:
+            initialtext =''
+        g.descriptioneditor = EditManDesc(self, initialtext)
+        g.descriptioneditor.show()

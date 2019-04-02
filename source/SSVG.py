@@ -47,6 +47,7 @@ from editmaneuver import EditManDialog
 from flightreview import FlightReviewControl
 from showorbit import ShowOrbitDialog
 from reviewthrough import ReviewThroughoutControl
+from mandescription import ManDescription
 
 from globaldata import g, erase_Ptrj, erase_TKepler
 from globaldata import nowtimestr, nowtimestrf
@@ -250,10 +251,12 @@ class MainForm(QMainWindow):
         self.winTtl_ISPK = self._translate('SSVG.py', 'Select SPK file to import')
         self.winTtl_IFP = self._translate('SSVG.py', 'Select Flight Plan file to import')
         self.winTtl_EFP = self._translate('SSVG.py', 'Define destination file to export')
+        
+        self.manDescAttrib = self._translate('SSVG.py', 'Line {0},  {1}')
 
 
     def initSSV(self):
-        g.version = 'v1.3.2'
+        g.version = 'v1.4.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -277,6 +280,14 @@ class MainForm(QMainWindow):
         g.probe_trj = []
         g.probe_Kepler = None
         g.target_Kepler = None
+        
+        g.descriptioneditor = None
+        g.saveddescription = ''
+        g.maneuverdescription = None
+        
+        g.i_languagecode = self._translate('Language', 'en')
+        self.desckeyname = 'description_' + g.i_languagecode
+        self.desckeyname_en = 'description_en'
     
         matplotlib.rcParams['toolbar'] = 'none'
         matplotlib.rcParams['grid.linewidth'] = 0.25
@@ -286,9 +297,9 @@ class MainForm(QMainWindow):
         fontDicFile = open(fontDicFilePath, 'r')
         fontDic = json.load(fontDicFile)
         fontDicFile.close()
-        langCode = self._translate('Language', 'en')
+#        langCode = self._translate('Language', 'en')
         try:
-            familyName = fontDic[langCode]
+            familyName = fontDic[g.i_languagecode]
         except KeyError:
             mbTitle = 'Error in font setup for 3D Orbit window'
             mbMessage = 'Language Code "{}" is not contained in 3DOrbitFont.json.  \nFont family "sans-serif" will be used for 3D Orbit window'.format(langCode)
@@ -394,9 +405,7 @@ class MainForm(QMainWindow):
             g.showorbitcontrol.close()
         if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
-        if g.reviewthroughoutcontrol is not None:
-            g.reviewthroughoutcontrol.close()
-            
+
         g.ax.set_xlim(-3.0e11, 3.0e11)
         g.ax.set_ylim(-3.0e11, 3.0e11)
         g.ax.set_zlim(-3.0e11, 3.0e11)
@@ -534,8 +543,6 @@ class MainForm(QMainWindow):
             g.showorbitcontrol.close()
         if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
-        if g.reviewthroughoutcontrol is not None:
-            g.reviewthroughoutcontrol.close()
 
         g.ax.set_xlim(-3.0e11, 3.0e11)
         g.ax.set_ylim(-3.0e11, 3.0e11)
@@ -783,6 +790,12 @@ class MainForm(QMainWindow):
         self.ui.manplans.setItem(g.nextman, 2, anitem)
         self.ui.manplans.selectRow(self.currentrow)
         self.dispcheckpoint()
+
+        if len(g.maneuvers) == 0:
+            self.showManDesc('')
+        else:
+            desctext = self.getManDesc(g.maneuvers[self.currentrow])
+            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
         
     def appquit(self):        
         self.close()
@@ -860,6 +873,8 @@ class MainForm(QMainWindow):
         
         g.myprobe.execinitialize()
         g.nextman = 0
+        self.currentrow = g.nextman
+        self.ui.manplans.selectRow(self.currentrow)
         if g.showorbitcontrol is not None:
             g.showorbitcontrol.close()
         if g.flightreviewcontrol is not None:
@@ -907,6 +922,12 @@ class MainForm(QMainWindow):
             self.dispselectedman()
         self.switchEditButtons()
         self.switchExecButtons()
+        
+        if len(g.maneuvers) <= self.currentrow:
+            self.showManDesc('')
+        else:
+            desctext = self.getManDesc(g.maneuvers[self.currentrow])
+            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
 
     def editnext(self):
         self.currentrow = g.nextman
@@ -940,6 +961,7 @@ class MainForm(QMainWindow):
         ans = editdialog.exec_()
         
         if ans == QDialog.Rejected:
+            self.dispmanplan()
             if g.myprobe.onflight:
                 self.showorbit()
             return
@@ -1367,8 +1389,8 @@ class MainForm(QMainWindow):
             g.logfile.flush()
             
     def openUsersGuide(self):
-        langCode = self._translate('Language', 'en')
-        urltext = 'file:///' + os.path.abspath('SSVG_UsersGuide-' + langCode + '.pdf')
+#        langCode = self._translate('Language', 'en')
+        urltext = 'file:///' + os.path.abspath('SSVG_UsersGuide-' + g.i_languagecode + '.pdf')
         url = QUrl(urltext, QUrl.TolerantMode)
         if not qds.openUrl(url):
             urltext = 'file:///' + os.path.abspath('SSVG_UsersGuide-en.pdf')
@@ -1439,6 +1461,27 @@ class MainForm(QMainWindow):
             execStarButton(False)
         else:
             execStarButton(True)
+
+    def showManDesc(self, desctext, line=1, man=None):
+        if g.maneuverdescription is None:
+            g.maneuverdescription = ManDescription(self)
+            g.maneuverdescription.show()
+        g.maneuverdescription.setText(desctext)
+        if man is None:
+            g.maneuverdescription.setAttrib('')
+        else:
+            attribText = self.manDescAttrib.format(line, man['type'])
+            g.maneuverdescription.setAttrib(attribText)
+            
+    def getManDesc(self, man):
+        if man is None:
+            return ''
+        if self.desckeyname in man:
+            return man[self.desckeyname]
+        elif self.desckeyname_en in man:
+            return man[self.desckeyname_en]
+        else:
+            return ''
 
 def resource_path(relative):
     if hasattr(sys, '_MEIPASS'):

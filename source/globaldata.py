@@ -48,7 +48,11 @@ class _Gdata:
         'finish_exec',              # return code of EditManDialog for finish and execute (== 2)
         'fta_parameters',           # return parameters from FTAsettingDialog
         'i_planetnames',            # i18n planet names and its index
-        'i_spacebases'              # i18n space base names
+        'i_spacebases',             # i18n space base names
+        'i_languagecode',           # i18n language Code
+        'descriptioneditor',        # instance of Description Editor
+        'saveddescription',         # description text when editor closed
+        'maneuverdescription'       # instance of Maneuver Desctiption window
         ]
     
 # global data container instance    

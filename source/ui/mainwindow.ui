@@ -1359,6 +1359,9 @@
     <property name="toolTip">
      <string>System Messages</string>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="frameShape">
      <enum>QFrame::NoFrame</enum>
     </property>
