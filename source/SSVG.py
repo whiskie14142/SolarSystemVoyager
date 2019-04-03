@@ -791,7 +791,7 @@ class MainForm(QMainWindow):
         self.ui.manplans.selectRow(self.currentrow)
         self.dispcheckpoint()
 
-        if len(g.maneuvers) == 0:
+        if len(g.maneuvers) <= self.currentrow:
             self.showManDesc('')
         else:
             desctext = self.getManDesc(g.maneuvers[self.currentrow])

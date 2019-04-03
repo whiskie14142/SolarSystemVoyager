@@ -23,6 +23,7 @@ class Ui_DescriptionEditor(object):
         self.description.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
         self.description.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.description.setAcceptDrops(True)
+        self.description.setToolTipDuration(1500)
         self.description.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.description.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.description.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

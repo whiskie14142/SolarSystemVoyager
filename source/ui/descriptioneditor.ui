@@ -54,6 +54,9 @@
    <property name="toolTip">
     <string>Edit the description</string>
    </property>
+   <property name="toolTipDuration">
+    <number>1500</number>
+   </property>
    <property name="frameShape">
     <enum>QFrame::NoFrame</enum>
    </property>
