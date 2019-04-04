@@ -92,6 +92,7 @@ class ReviewThroughoutControl(QDialog):
     def drawmanFromSSVG(self):
 #        self.ui.sysMessage.clear()
         self.ui.sysMessage.appendPlainText(self.sysMes01)
+        self.fromNextman = False   
         self.drawman()
         
     def drawman(self):
@@ -113,11 +114,18 @@ class ReviewThroughoutControl(QDialog):
             status[6] = record[7][0]
             ssacc = record[8][0]
             self.last_trj = record[1:]
-            self.c_index = 0
-            self.ui.fastbackward.setEnabled(False)
-            self.ui.backward.setEnabled(False)
-            self.ui.forward.setEnabled(True)
-            self.ui.fastforward.setEnabled(True)
+            if self.fromNextman:
+                self.c_index = len(self.last_trj[0]) - 1
+                self.ui.fastbackward.setEnabled(True)
+                self.ui.backward.setEnabled(True)
+                self.ui.forward.setEnabled(False)
+                self.ui.fastforward.setEnabled(False)
+            else:
+                self.c_index = 0
+                self.ui.fastbackward.setEnabled(False)
+                self.ui.backward.setEnabled(False)
+                self.ui.forward.setEnabled(True)
+                self.ui.fastforward.setEnabled(True)
             self.ui.timescale.setEnabled(True)
             self.ui.label_2.setEnabled(True)
             if self.c_maninfo['epon']:
@@ -141,6 +149,22 @@ class ReviewThroughoutControl(QDialog):
             self.ui.starttime.setText(common.jd2isot(record[1][0]))
             self.start_time = status[0]
         target_pos, target_vel = g.mytarget.posvel(status[0])
+
+        erase_Ptrj()
+        if self.ui.check_Ptrj.isChecked():
+            draw_Ptrj()
+
+        # Kepler Orbit of target
+        xs, ys, zs, ts = g.mytarget.points(status[0], g.ndata)
+        g.target_Kepler = [xs, ys, zs]
+        erase_TKepler()
+        if self.ui.check_TKepler.isChecked():
+            draw_TKepler()
+
+        self.mainwindow.ui.manplans.selectRow(self.man_index)
+        if mantype == 'FLYTO':
+            self.drawFLYTO()
+            return
         
         # adjust center of image
         xlim = g.ax.get_xlim()
@@ -155,10 +179,6 @@ class ReviewThroughoutControl(QDialog):
         g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
         g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
 
-        erase_Ptrj()
-        if self.ui.check_Ptrj.isChecked():
-            draw_Ptrj()
-
         # Kepler Orbit of probe        
         erase_PKepler()
         if self.ui.check_PKepler.isChecked():
@@ -167,18 +187,11 @@ class ReviewThroughoutControl(QDialog):
             g.probe_Kepler = [x, y, z]
             if self.ui.check_PKepler.isChecked():
                 draw_PKepler()
-
+        
         # Planets
         remove_planets()
         if self.ui.showplanets.isChecked():
             replot_planets(status[0])
-        
-        # Kepler Orbit of target
-        xs, ys, zs, ts = g.mytarget.points(status[0], g.ndata)
-        g.target_Kepler = [xs, ys, zs]
-        erase_TKepler()
-        if self.ui.check_TKepler.isChecked():
-            draw_TKepler()
 
         # Probe mark
         if self.artist_of_probe is not None:
@@ -192,16 +205,8 @@ class ReviewThroughoutControl(QDialog):
             self.artist_of_type.remove()
             self.artist_of_type = None
         if self.ui.showmantype.isChecked():
-            if mantype == 'FLYTO':
-                acctext = ''
-                if self.c_maninfo['sson']:
-                    acctext = ' SSacc={:.3f}'.format(ssacc)
-                self.artist_of_type = g.ax.text(*status[1:4], 
-                            self.mantext+acctext+' (start)', color='r', 
-                            fontsize=10)
-            else:
-                self.artist_of_type = g.ax.text(*status[1:4], self.mantext, 
-                                                color='r', fontsize=10)
+            self.artist_of_type = g.ax.text(*status[1:4], self.mantext, 
+                                            color='r', fontsize=10)
         
         # Target mark
         if self.artist_of_target is not None:
@@ -245,7 +250,6 @@ class ReviewThroughoutControl(QDialog):
         self.ui.currenttime.setText(common.jd2isot(status[0]))
         self.ui.delta_t_edit.setText('{:.8f}'.format(delta_jd))
 
-        self.mainwindow.ui.manplans.selectRow(self.man_index)
         
     def drawFLYTO(self):
         c_time = self.last_trj[0][self.c_index]
@@ -472,6 +476,7 @@ class ReviewThroughoutControl(QDialog):
                 if self.man_index == 0:
                     return
                 self.man_index -= 1
+                self.fromNextman = True
                 self.drawman()
                 if self.man_index == 0:
                     self.ui.previousman.setEnabled(False)
@@ -486,6 +491,7 @@ class ReviewThroughoutControl(QDialog):
             if self.man_index == 0:
                 return
             self.man_index -= 1
+            self.fromNextman = True
             self.drawman()
         self.ui.nextman.setEnabled(True)
     
@@ -496,6 +502,7 @@ class ReviewThroughoutControl(QDialog):
                 if self.man_index + 1 == self.man_count:
                     return
                 self.man_index += 1
+                self.fromNextman = False
                 self.drawman()
                 if self.man_index + 1 == self.man_count and self.c_mantype != 'FLYTO':
                     self.ui.nextman.setEnabled(False)
@@ -512,6 +519,7 @@ class ReviewThroughoutControl(QDialog):
             if self.man_index + 1 == self.man_count:
                 return
             self.man_index += 1
+            self.fromNextman = False
             self.drawman()
             if self.man_index + 1 == self.man_count and self.c_mantype != 'FLYTO':
                 self.ui.nextman.setEnabled(False)

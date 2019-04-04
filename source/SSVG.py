@@ -646,6 +646,12 @@ class MainForm(QMainWindow):
         
         self.dispSysMes(self.sysMes16)
 
+        if len(g.maneuvers) <= self.currentrow:
+            self.showManDesc('')
+        else:
+            desctext = self.getManDesc(g.maneuvers[self.currentrow])
+            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
+
 
     def savemanplan(self):
         if g.manfilename == self.defaultFileName:
@@ -914,6 +920,13 @@ class MainForm(QMainWindow):
         self.dispSysMes(self.sysMes14)
         g.showorbitcontrol.ssvgRedraw()
         g.showorbitcontrol.set_affect_parent(False)
+        
+        if len(g.maneuvers) <= self.currentrow:
+            self.showManDesc('')
+        else:
+            desctext = self.getManDesc(g.maneuvers[self.currentrow])
+            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
+
 
     def manplanscellchanged(self, newrow, newcolm, prevrow, prevcolm):
         self.eraseselectedman()
@@ -1109,6 +1122,12 @@ class MainForm(QMainWindow):
             g.flightreviewcontrol.redraw()
         
         self.dispSysMes(self.sysMes15)
+        
+        if len(g.maneuvers) <= self.currentrow:
+            self.showManDesc('')
+        else:
+            desctext = self.getManDesc(g.maneuvers[self.currentrow])
+            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
 
     def dispcurrentstatus(self):
         if self.tbpred_formain is None:
