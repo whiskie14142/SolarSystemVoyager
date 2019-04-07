@@ -91,6 +91,25 @@
     <string>No description</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="editButton">
+   <property name="geometry">
+    <rect>
+     <x>465</x>
+     <y>3</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Start editing of the description</string>
+   </property>
+   <property name="text">
+    <string>Edit Description</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

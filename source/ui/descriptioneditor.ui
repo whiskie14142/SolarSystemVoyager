@@ -2,24 +2,27 @@
 <ui version="4.0">
  <class>DescriptionEditor</class>
  <widget class="QDialog" name="DescriptionEditor">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>216</height>
+    <height>251</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>600</width>
-    <height>216</height>
+    <height>251</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>600</width>
-    <height>216</height>
+    <height>251</height>
    </size>
   </property>
   <property name="acceptDrops">
@@ -27,6 +30,9 @@
   </property>
   <property name="windowTitle">
    <string>Maneuver Description Editor</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
   </property>
   <widget class="QPlainTextEdit" name="description">
    <property name="geometry">
@@ -87,7 +93,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>70</width>
+     <width>51</width>
      <height>23</height>
     </rect>
    </property>
@@ -107,9 +113,9 @@
   <widget class="QPushButton" name="cutButton">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>49</x>
      <y>0</y>
-     <width>70</width>
+     <width>51</width>
      <height>23</height>
     </rect>
    </property>
@@ -129,9 +135,9 @@
   <widget class="QPushButton" name="pasteButton">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>98</x>
      <y>0</y>
-     <width>70</width>
+     <width>51</width>
      <height>23</height>
     </rect>
    </property>
@@ -154,9 +160,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>160</x>
      <y>0</y>
-     <width>70</width>
+     <width>51</width>
      <height>23</height>
     </rect>
    </property>
@@ -179,9 +185,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>209</x>
      <y>0</y>
-     <width>70</width>
+     <width>51</width>
      <height>23</height>
     </rect>
    </property>
@@ -193,6 +199,44 @@
    </property>
    <property name="text">
     <string>Redo</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="finishButton">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>220</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Finish Editing</string>
+   </property>
+   <property name="text">
+    <string>Finish</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelButton">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>220</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Cancel Editing</string>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>

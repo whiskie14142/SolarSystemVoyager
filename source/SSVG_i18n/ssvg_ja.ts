@@ -1675,6 +1675,26 @@ Range</source>
         <source>Redo</source>
         <translation>再実行</translation>
     </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="217"/>
+        <source>Finish Editing</source>
+        <translation>編集を完了させます</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="220"/>
+        <source>Finish</source>
+        <translation>完了</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="236"/>
+        <source>Cancel Editing</source>
+        <translation>編集をキャンセルします</translation>
+    </message>
+    <message>
+        <location filename="../ui/descriptioneditor.ui" line="239"/>
+        <source>Cancel</source>
+        <translation>キャンセル</translation>
+    </message>
 </context>
 <context>
     <name>ManeuverDescription</name>
@@ -1692,6 +1712,16 @@ Range</source>
         <location filename="../ui/maneuverdescription.ui" line="91"/>
         <source>No description</source>
         <translation>説明がありません</translation>
+    </message>
+    <message>
+        <location filename="../ui/maneuverdescription.ui" line="104"/>
+        <source>Start editing of the description</source>
+        <translation>説明の編集を開始します</translation>
+    </message>
+    <message>
+        <location filename="../ui/maneuverdescription.ui" line="107"/>
+        <source>Edit Description</source>
+        <translation>説明の編集</translation>
     </message>
 </context>
 <context>
@@ -2559,6 +2589,9 @@ Open it now?</source>
         <source>Define destination file to export</source>
         <translation>エクスポート先の指定</translation>
     </message>
+</context>
+<context>
+    <name>mandescription.py</name>
     <message>
         <source>Line {0},  {1}</source>
         <translation>行 {0}、 {1}</translation>

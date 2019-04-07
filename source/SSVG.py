@@ -251,9 +251,6 @@ class MainForm(QMainWindow):
         self.winTtl_ISPK = self._translate('SSVG.py', 'Select SPK file to import')
         self.winTtl_IFP = self._translate('SSVG.py', 'Select Flight Plan file to import')
         self.winTtl_EFP = self._translate('SSVG.py', 'Define destination file to export')
-        
-        self.manDescAttrib = self._translate('SSVG.py', 'Line {0},  {1}')
-
 
     def initSSV(self):
         g.version = 'v1.4.0'
@@ -281,7 +278,6 @@ class MainForm(QMainWindow):
         g.probe_Kepler = None
         g.target_Kepler = None
         
-        g.descriptioneditor = None
         g.saveddescription = ''
         g.maneuverdescription = None
         
@@ -297,7 +293,6 @@ class MainForm(QMainWindow):
         fontDicFile = open(fontDicFilePath, 'r')
         fontDic = json.load(fontDicFile)
         fontDicFile.close()
-#        langCode = self._translate('Language', 'en')
         try:
             familyName = fontDic[g.i_languagecode]
         except KeyError:
@@ -645,14 +640,8 @@ class MainForm(QMainWindow):
             g.reviewthroughoutcontrol.drawmanFromSSVG()
         
         self.dispSysMes(self.sysMes16)
-
-        if len(g.maneuvers) <= self.currentrow:
-            self.showManDesc('')
-        else:
-            desctext = self.getManDesc(g.maneuvers[self.currentrow])
-            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
-
-
+        self.showManDesc()
+        
     def savemanplan(self):
         if g.manfilename == self.defaultFileName:
             self.saveasmanplan()
@@ -796,12 +785,7 @@ class MainForm(QMainWindow):
         self.ui.manplans.setItem(g.nextman, 2, anitem)
         self.ui.manplans.selectRow(self.currentrow)
         self.dispcheckpoint()
-
-        if len(g.maneuvers) <= self.currentrow:
-            self.showManDesc('')
-        else:
-            desctext = self.getManDesc(g.maneuvers[self.currentrow])
-            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
+        self.showManDesc()
         
     def appquit(self):        
         self.close()
@@ -920,12 +904,7 @@ class MainForm(QMainWindow):
         self.dispSysMes(self.sysMes14)
         g.showorbitcontrol.ssvgRedraw()
         g.showorbitcontrol.set_affect_parent(False)
-        
-        if len(g.maneuvers) <= self.currentrow:
-            self.showManDesc('')
-        else:
-            desctext = self.getManDesc(g.maneuvers[self.currentrow])
-            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
+        self.showManDesc()
 
 
     def manplanscellchanged(self, newrow, newcolm, prevrow, prevcolm):
@@ -935,12 +914,7 @@ class MainForm(QMainWindow):
             self.dispselectedman()
         self.switchEditButtons()
         self.switchExecButtons()
-        
-        if len(g.maneuvers) <= self.currentrow:
-            self.showManDesc('')
-        else:
-            desctext = self.getManDesc(g.maneuvers[self.currentrow])
-            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
+        self.showManDesc()
 
     def editnext(self):
         self.currentrow = g.nextman
@@ -1122,12 +1096,7 @@ class MainForm(QMainWindow):
             g.flightreviewcontrol.redraw()
         
         self.dispSysMes(self.sysMes15)
-        
-        if len(g.maneuvers) <= self.currentrow:
-            self.showManDesc('')
-        else:
-            desctext = self.getManDesc(g.maneuvers[self.currentrow])
-            self.showManDesc(desctext, self.currentrow+1, g.maneuvers[self.currentrow])
+        self.showManDesc()
 
     def dispcurrentstatus(self):
         if self.tbpred_formain is None:
@@ -1481,26 +1450,14 @@ class MainForm(QMainWindow):
         else:
             execStarButton(True)
 
-    def showManDesc(self, desctext, line=1, man=None):
+    def showManDesc(self):
         if g.maneuverdescription is None:
             g.maneuverdescription = ManDescription(self)
             g.maneuverdescription.show()
-        g.maneuverdescription.setText(desctext)
-        if man is None:
-            g.maneuverdescription.setAttrib('')
-        else:
-            attribText = self.manDescAttrib.format(line, man['type'])
-            g.maneuverdescription.setAttrib(attribText)
+        g.maneuverdescription.showText(self.currentrow)
+
             
-    def getManDesc(self, man):
-        if man is None:
-            return ''
-        if self.desckeyname in man:
-            return man[self.desckeyname]
-        elif self.desckeyname_en in man:
-            return man[self.desckeyname_en]
-        else:
-            return ''
+
 
 def resource_path(relative):
     if hasattr(sys, '_MEIPASS'):

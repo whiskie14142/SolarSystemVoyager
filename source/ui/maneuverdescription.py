@@ -36,6 +36,10 @@ class Ui_ManeuverDescription(object):
         self.description.setReadOnly(True)
         self.description.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
         self.description.setObjectName("description")
+        self.editButton = QtWidgets.QPushButton(ManeuverDescription)
+        self.editButton.setGeometry(QtCore.QRect(465, 3, 111, 23))
+        self.editButton.setAutoDefault(False)
+        self.editButton.setObjectName("editButton")
 
         self.retranslateUi(ManeuverDescription)
         QtCore.QMetaObject.connectSlotsByName(ManeuverDescription)
@@ -45,4 +49,6 @@ class Ui_ManeuverDescription(object):
         ManeuverDescription.setWindowTitle(_translate("ManeuverDescription", "Maneuver Description"))
         self.description.setToolTip(_translate("ManeuverDescription", "Description of the selected Maneuver"))
         self.description.setPlaceholderText(_translate("ManeuverDescription", "No description"))
+        self.editButton.setToolTip(_translate("ManeuverDescription", "Start editing of the description"))
+        self.editButton.setText(_translate("ManeuverDescription", "Edit Description"))
 
