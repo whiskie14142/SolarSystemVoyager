@@ -49,6 +49,8 @@ class EditManDialog(QDialog):
         self.ui.EditDateTime.clicked.connect(self.editdatetime)
         self.ui.parameters.cellChanged.connect(self.cellChanged)
         
+        self.ui.parameters.setEditTriggers(QAbstractItemView.AllEditTriggers)
+        
         self.types = ['START', 'CP', 'EP_ON', 'EP_OFF', 'SS_ON', 'SS_OFF', 
                       'FLYTO']
         self.typedict = {}

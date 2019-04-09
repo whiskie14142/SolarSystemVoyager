@@ -1027,5 +1027,22 @@
   <tabstop>timescale</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>delta_t_edit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>dtApply</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>550</x>
+     <y>62</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>609</x>
+     <y>62</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

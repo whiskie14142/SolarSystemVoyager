@@ -278,13 +278,13 @@ class MainForm(QMainWindow):
         g.probe_Kepler = None
         g.target_Kepler = None
         
-        g.saveddescription = ''
         g.maneuverdescription = None
+        g.saveddescription = ''
         
         g.i_languagecode = self._translate('Language', 'en')
         self.desckeyname = 'description_' + g.i_languagecode
         self.desckeyname_en = 'description_en'
-    
+
         matplotlib.rcParams['toolbar'] = 'none'
         matplotlib.rcParams['grid.linewidth'] = 0.25
         

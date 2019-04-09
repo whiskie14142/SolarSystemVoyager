@@ -45,6 +45,9 @@ class EditDateTimeDialog(QDialog):
         self.ui.radioDuration.clicked.connect(self.radioclicked)
         self.ui.finishbutton.clicked.connect(self.finish_clicked)
         self.ui.cancelbutton.clicked.connect(self.reject)
+        self.ui.lineEditISOT.returnPressed.connect(self.isotReturnPressed)
+        self.ui.lineEditJD.returnPressed.connect(self.jdReturnPressed)
+        self.ui.lineEditDuration.returnPressed.connect(self.durationReturnPressed)
         
         self._translate = QtCore.QCoreApplication.translate
         
@@ -146,3 +149,75 @@ class EditDateTimeDialog(QDialog):
 
         self.maneuverEditor.editedjd = jd
         self.accept()
+        
+    def isotReturnPressed(self):
+        text = self.ui.lineEditISOT.text()
+        stext = text.split('.')
+        if len(stext) == 2:
+            isot = stext[0] + '.' + (stext[1] + '0000')[0:4]
+        elif len(stext) == 1:
+            isot = stext[0] + '.0000'
+        else:
+            QMessageBox.critical(self, self.mbTtl01, self.mbMes01, 
+                                    QMessageBox.Ok)
+            return
+        try:
+            jd = common.isot2jd(isot)
+        except ValueError:
+            QMessageBox.critical(self, self.mbTtl01, self.mbMes01, 
+                                    QMessageBox.Ok)
+            return
+        
+        if jd < self.fromjd or jd >= self.tojd:
+            mes = self.mbMes02.format(common.jd2isot(self.fromjd), 
+                                      common.jd2isot(self.tojd))
+            QMessageBox.critical(self, self.mbTtl02, mes, QMessageBox.Ok)
+            return
+        
+        self.ui.lineEditISOT.setText(common.jd2isot(jd))
+        self.ui.lineEditJD.setText('{:.8f}'.format(jd))
+        if self.activateDuration:
+            dt = jd - g.myprobe.jd
+            self.ui.lineEditDuration.setText('{:.8f}'.format(dt))
+        
+    def jdReturnPressed(self):
+        try:
+            jd = float(self.ui.lineEditJD.text())
+        except ValueError:
+            QMessageBox.critical(self, self.mbTtl01, self.mbMes03, 
+                                 QMessageBox.Ok)
+            return
+        if jd < self.fromjd or jd >= self.tojd:
+            mes = self.mbMes04.format(self.fromjd, self.tojd)
+            QMessageBox.critical(self, self.mbTtl02, mes, QMessageBox.Ok)
+            return
+
+        self.ui.lineEditISOT.setText(common.jd2isot(jd))
+        self.ui.lineEditJD.setText('{:.8f}'.format(jd))
+        if self.activateDuration:
+            dt = jd - g.myprobe.jd
+            self.ui.lineEditDuration.setText('{:.8f}'.format(dt))
+
+    def durationReturnPressed(self):
+        try:
+            dt = float(self.ui.lineEditDuration.text())
+        except ValueError:
+            QMessageBox.critical(self, self.mbTtl01, self.mbMes05, 
+                                 QMessageBox.Ok)
+            return
+        if dt < 0.0:
+            QMessageBox.critical(self, self.mbTtl01, self.mbMes06, 
+                                 QMessageBox.Ok)
+            return
+        jd = dt + g.myprobe.jd
+        if jd >= self.tojd:
+            mes = self.mbMes07.format(self.tojd - g.myprobe.jd)
+            QMessageBox.critical(self, self.mbTtl07, mes, QMessageBox.Ok)
+            return
+
+        self.ui.lineEditISOT.setText(common.jd2isot(jd))
+        self.ui.lineEditJD.setText('{:.8f}'.format(jd))
+        if self.activateDuration:
+            dt = jd - g.myprobe.jd
+            self.ui.lineEditDuration.setText('{:.8f}'.format(dt))
+        

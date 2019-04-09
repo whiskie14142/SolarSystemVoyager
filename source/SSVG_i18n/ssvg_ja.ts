@@ -58,8 +58,8 @@
     </message>
     <message>
         <location filename="../ui/editmandialog.ui" line="121"/>
-        <source>Double Click a Cell to Edit</source>
-        <translation>セルをダブルクリックすると編集できます</translation>
+        <source>Click a Cell to Edit</source>
+        <translation>セルをクリックすると編集できます</translation>
     </message>
     <message>
         <location filename="../ui/editmandialog.ui" line="165"/>
@@ -1678,7 +1678,7 @@ Range</source>
     <message>
         <location filename="../ui/descriptioneditor.ui" line="217"/>
         <source>Finish Editing</source>
-        <translation>編集を完了させます</translation>
+        <translation>編集を完了します</translation>
     </message>
     <message>
         <location filename="../ui/descriptioneditor.ui" line="220"/>
@@ -1701,7 +1701,7 @@ Range</source>
     <message>
         <location filename="../ui/maneuverdescription.ui" line="26"/>
         <source>Maneuver Description</source>
-        <translation>マヌーバの説明</translation>
+        <translation>マヌーバ説明</translation>
     </message>
     <message>
         <location filename="../ui/maneuverdescription.ui" line="67"/>
@@ -2593,8 +2593,8 @@ Open it now?</source>
 <context>
     <name>mandescription.py</name>
     <message>
-        <source>Line {0},  {1}</source>
-        <translation>行 {0}、 {1}</translation>
+        <source>Line {0}    {1}</source>
+        <translation>行 {0}    {1}</translation>
     </message>
 </context>
 <context>

@@ -23,8 +23,8 @@ class ManDescription(QDialog):
         flags = self.windowFlags() ^ Qt.WindowContextHelpButtonHint
         self.setWindowFlags(flags)
         
-        left = g.mainform.geometry().left()
-        top = g.mainform.geometry().top()
+        left = self.mother.geometry().left()
+        top = self.mother.geometry().top()
         self.setGeometry(left+650, top+740, 600, 211)
         self.ui = Ui_ManeuverDescription()
         self.ui.setupUi(self)
@@ -32,7 +32,7 @@ class ManDescription(QDialog):
         self.ui.editButton.clicked.connect(self.editDesc)
         
         self._translate = QtCore.QCoreApplication.translate
-        self.manDescAttrib = self._translate('mandescription.py', 'Line {0},  {1}')
+        self.manDescAttrib = self._translate('mandescription.py', 'Line {0}    {1}')
         self.descKey = 'description_' + g.i_languagecode
 
         

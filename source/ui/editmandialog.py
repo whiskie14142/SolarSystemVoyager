@@ -198,7 +198,7 @@ class Ui_editmandialog(object):
         self.mantype.setToolTip(_translate("editmandialog", "Click and Select a Maneuver type"))
         self.label_time.setText(_translate("editmandialog", "Date & Time"))
         self.label_5.setText(_translate("editmandialog", "Parameters"))
-        self.parameters.setToolTip(_translate("editmandialog", "Double Click a Cell to Edit"))
+        self.parameters.setToolTip(_translate("editmandialog", "Click a Cell to Edit"))
         self.finishbutton.setToolTip(_translate("editmandialog", "Finish editing the Maneuver"))
         self.finishbutton.setText(_translate("editmandialog", "Finish"))
         self.cancelbutton.setToolTip(_translate("editmandialog", "Discard Changes and Quit Editing"))

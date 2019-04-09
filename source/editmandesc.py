@@ -24,7 +24,7 @@ class EditManDesc(QDialog):
         
         left = g.mainform.geometry().left()
         top = g.mainform.geometry().top()
-        self.setGeometry(left+650, top+705, 600, 246)
+        self.setGeometry(left+650, top+710, 600, 241)
         self.ui = Ui_DescriptionEditor()
         self.ui.setupUi(self)
         
@@ -33,7 +33,7 @@ class EditManDesc(QDialog):
         self.ui.finishButton.clicked.connect(self.finish_clicked)
         self.ui.cancelButton.clicked.connect(self.reject)
         
-        self.setWindowTitle(self.windowTitle() + '    ' + attribute)
+        self.ui.type_and_line.setText(attribute)
         self.ui.description.setPlainText(desctext)
 
     def undoavailable(self, available):

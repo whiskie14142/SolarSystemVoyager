@@ -338,6 +338,7 @@ class Ui_ShowOrbitControl(object):
         self.sysMessage.raise_()
 
         self.retranslateUi(ShowOrbitControl)
+        self.delta_t_edit.returnPressed.connect(self.dtApply.click)
         QtCore.QMetaObject.connectSlotsByName(ShowOrbitControl)
         ShowOrbitControl.setTabOrder(self.tobarycenter, self.toprobe)
         ShowOrbitControl.setTabOrder(self.toprobe, self.totarget)

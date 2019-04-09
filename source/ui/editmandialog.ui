@@ -118,7 +118,7 @@
     <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
-    <string>Double Click a Cell to Edit</string>
+    <string>Click a Cell to Edit</string>
    </property>
    <property name="cornerButtonEnabled">
     <bool>false</bool>
