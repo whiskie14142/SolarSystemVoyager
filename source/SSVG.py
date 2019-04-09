@@ -1355,6 +1355,8 @@ class MainForm(QMainWindow):
         tsjd, tejd = g.mytarget.getsejd()
         outofrange = False
         for man in g.manplan['maneuvers']:
+            if man is None:
+                continue
             if man['type'] == 'START' or man['type'] == 'FLYTO':
                 if man['time'] < tsjd or man['time'] >= tejd:
                     outofrange = True
