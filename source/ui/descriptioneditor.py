@@ -25,6 +25,7 @@ class Ui_DescriptionEditor(object):
         self.description.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
         self.description.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.description.setAcceptDrops(True)
+        self.description.setToolTip("")
         self.description.setToolTipDuration(1500)
         self.description.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.description.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
@@ -88,7 +89,6 @@ class Ui_DescriptionEditor(object):
     def retranslateUi(self, DescriptionEditor):
         _translate = QtCore.QCoreApplication.translate
         DescriptionEditor.setWindowTitle(_translate("DescriptionEditor", "Maneuver Description Editor"))
-        self.description.setToolTip(_translate("DescriptionEditor", "Edit the description"))
         self.description.setPlaceholderText(_translate("DescriptionEditor", "No description"))
         self.copyButton.setToolTip(_translate("DescriptionEditor", "Copy selected characters into clipboard"))
         self.copyButton.setText(_translate("DescriptionEditor", "Copy"))

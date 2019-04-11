@@ -28,6 +28,7 @@ class Ui_ManeuverDescription(object):
         self.description.setFont(font)
         self.description.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.description.setAcceptDrops(False)
+        self.description.setToolTip("")
         self.description.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.description.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.description.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -47,7 +48,6 @@ class Ui_ManeuverDescription(object):
     def retranslateUi(self, ManeuverDescription):
         _translate = QtCore.QCoreApplication.translate
         ManeuverDescription.setWindowTitle(_translate("ManeuverDescription", "Maneuver Description"))
-        self.description.setToolTip(_translate("ManeuverDescription", "Description of the selected Maneuver"))
         self.description.setPlaceholderText(_translate("ManeuverDescription", "No description"))
         self.editButton.setToolTip(_translate("ManeuverDescription", "Start editing of the description"))
         self.editButton.setText(_translate("ManeuverDescription", "Edit Description"))

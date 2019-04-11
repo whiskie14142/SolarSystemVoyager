@@ -58,7 +58,7 @@
     <bool>true</bool>
    </property>
    <property name="toolTip">
-    <string>Edit the description</string>
+    <string notr="true"/>
    </property>
    <property name="toolTipDuration">
     <number>1500</number>

@@ -400,6 +400,8 @@ class MainForm(QMainWindow):
             g.showorbitcontrol.close()
         if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
+        if g.reviewthroughoutcontrol is not None:
+            g.reviewthroughoutcontrol.close()
 
         g.ax.set_xlim(-3.0e11, 3.0e11)
         g.ax.set_ylim(-3.0e11, 3.0e11)
@@ -538,6 +540,8 @@ class MainForm(QMainWindow):
             g.showorbitcontrol.close()
         if g.flightreviewcontrol is not None:
             g.flightreviewcontrol.close()
+        if g.reviewthroughoutcontrol is not None:
+            g.reviewthroughoutcontrol.close()
 
         g.ax.set_xlim(-3.0e11, 3.0e11)
         g.ax.set_ylim(-3.0e11, 3.0e11)

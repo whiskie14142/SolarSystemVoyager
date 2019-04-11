@@ -1616,11 +1616,6 @@ Range</source>
         <translation>マヌーバ説明エディタ</translation>
     </message>
     <message>
-        <location filename="../ui/descriptioneditor.ui" line="55"/>
-        <source>Edit the description</source>
-        <translation>説明を編集してください。</translation>
-    </message>
-    <message>
         <location filename="../ui/descriptioneditor.ui" line="79"/>
         <source>No description</source>
         <translation>説明がありません</translation>
@@ -1702,11 +1697,6 @@ Range</source>
         <location filename="../ui/maneuverdescription.ui" line="26"/>
         <source>Maneuver Description</source>
         <translation>マヌーバ説明</translation>
-    </message>
-    <message>
-        <location filename="../ui/maneuverdescription.ui" line="67"/>
-        <source>Description of the selected Maneuver</source>
-        <translation>選択されているマヌーバの説明です</translation>
     </message>
     <message>
         <location filename="../ui/maneuverdescription.ui" line="91"/>

@@ -64,7 +64,7 @@
     <bool>false</bool>
    </property>
    <property name="toolTip">
-    <string>Description of the selected Maneuver</string>
+    <string notr="true"/>
    </property>
    <property name="frameShape">
     <enum>QFrame::NoFrame</enum>
