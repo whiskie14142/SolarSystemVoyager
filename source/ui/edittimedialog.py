@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_edittimedialog(object):
     def setupUi(self, edittimedialog):
         edittimedialog.setObjectName("edittimedialog")
-        edittimedialog.setWindowModality(QtCore.Qt.ApplicationModal)
+        edittimedialog.setWindowModality(QtCore.Qt.WindowModal)
         edittimedialog.resize(470, 150)
         edittimedialog.setMinimumSize(QtCore.QSize(470, 150))
         edittimedialog.setMaximumSize(QtCore.QSize(470, 150))

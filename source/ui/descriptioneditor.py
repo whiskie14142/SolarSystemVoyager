@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_DescriptionEditor(object):
     def setupUi(self, DescriptionEditor):
         DescriptionEditor.setObjectName("DescriptionEditor")
-        DescriptionEditor.setWindowModality(QtCore.Qt.ApplicationModal)
+        DescriptionEditor.setWindowModality(QtCore.Qt.WindowModal)
         DescriptionEditor.resize(600, 246)
         DescriptionEditor.setMinimumSize(QtCore.QSize(600, 246))
         DescriptionEditor.setMaximumSize(QtCore.QSize(600, 246))

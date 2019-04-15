@@ -3,7 +3,7 @@
  <class>ftasettingdialog</class>
  <widget class="QDialog" name="ftasettingdialog">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::WindowModal</enum>
   </property>
   <property name="geometry">
    <rect>

@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_ftasettingdialog(object):
     def setupUi(self, ftasettingdialog):
         ftasettingdialog.setObjectName("ftasettingdialog")
-        ftasettingdialog.setWindowModality(QtCore.Qt.ApplicationModal)
+        ftasettingdialog.setWindowModality(QtCore.Qt.WindowModal)
         ftasettingdialog.resize(480, 520)
         ftasettingdialog.setMinimumSize(QtCore.QSize(480, 520))
         ftasettingdialog.setMaximumSize(QtCore.QSize(480, 520))
