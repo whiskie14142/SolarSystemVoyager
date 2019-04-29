@@ -134,10 +134,10 @@ class Probe:
             self.trj_record.append([cman, status])
             return True, ''
         elif man['type'] == 'SS_ON':
-            aria = man['aria']
+            area = man['area']
             theta = math.radians(man['theta'])
             elv = math.radians(man['elv'])
-            self.orbit.set_ssstatus(True, aria, theta, elv, man['tvmode'],
+            self.orbit.set_ssstatus(True, area, theta, elv, man['tvmode'],
                                     common.SPKkernel)
             status[0] = self.jd
             status[1:4] = self.pos.copy()

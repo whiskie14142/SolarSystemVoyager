@@ -1794,8 +1794,8 @@ In this case, Duration should less than {:.2f}</source>
         <translation>elv     : 上下角 （度）</translation>
     </message>
     <message>
-        <source>aria    : area of solar sail (m**2)</source>
-        <translation>aria    : ソーラーセイルの面積 （平方 m）</translation>
+        <source>area    : area of solar sail (m**2)</source>
+        <translation>area    : ソーラーセイルの面積 （平方 m）</translation>
     </message>
     <message>
         <source>theta : angle theta (deg)</source>
@@ -2242,8 +2242,8 @@ after {}</source>
         <translation>elv （度）</translation>
     </message>
     <message>
-        <source>aria (m**2)</source>
-        <translation>aria （平方 m）</translation>
+        <source>area (m**2)</source>
+        <translation>area （平方 m）</translation>
     </message>
     <message>
         <source>theta (deg)</source>
@@ -2578,6 +2578,14 @@ Open it now?</source>
     <message>
         <source>Define destination file to export</source>
         <translation>エクスポート先の指定</translation>
+    </message>
+    <message>
+        <source>Converted</source>
+        <translation>変換されました</translation>
+    </message>
+    <message>
+        <source>The Flight Plan was converted into the newer format.  Save it.</source>
+        <translation>飛行計画が最新の形式に変換されました。保存してください。</translation>
     </message>
 </context>
 <context>

@@ -109,12 +109,12 @@ class MainForm(QMainWindow):
         
         self.erasecurrentstatus()
         self.currentrow = 0
-        self.paramname = ['time', 'dv', 'dvpd', 'phi', 'elv', 'aria', 'theta', 
+        self.paramname = ['time', 'dv', 'dvpd', 'phi', 'elv', 'area', 'theta', 
                           'tvmode', 'inter']
         self.typedict = {'START':0, 'CP':1, 'EP_ON':2, 'EP_OFF':3, 'SS_ON':4,
                          'SS_OFF':5, 'FLYTO':6}
         self.paramflag = [
-            # 0:time, 1:dv, 2:dvpd, 3:phi, 4:elv, 5:aria, 6:theta, 7:tvmode, 8:inter
+            # 0:time, 1:dv, 2:dvpd, 3:phi, 4:elv, 5:area, 6:theta, 7:tvmode, 8:inter
             [1, 1, 0, 1, 1, 0, 0, 0, 0], # for START
             [0, 1, 0, 1, 1, 0, 0, 0, 0], # for CP
             [0, 0, 1, 1, 1, 0, 0, 1, 0], # for EP_ON
@@ -143,7 +143,7 @@ class MainForm(QMainWindow):
             self._translate('SSVG.py', 'dvpd (m/s/day)'),
             self._translate('SSVG.py', 'phi (deg)'),
             self._translate('SSVG.py', 'elv (deg)'),
-            self._translate('SSVG.py', 'aria (m**2)'),
+            self._translate('SSVG.py', 'area (m**2)'),
             self._translate('SSVG.py', 'theta (deg)'),
             self._translate('SSVG.py', 'tvmode (L|E)'),
             self._translate('SSVG.py', 'inter (days)')
@@ -204,6 +204,8 @@ class MainForm(QMainWindow):
         self.mbMes14 = self._translate('SSVG.py', 'Current Flight Plan was exported to:\n\n"{0}".')
         self.mbTtl15 = self._translate('SSVG.py', 'New Flight Plan')
         self.mbMes15 = self._translate('SSVG.py', 'New Flight Plan was created.  Click [Edit Next] button to start editing.')
+        self.mbTtl16 = self._translate('SSVG.py', 'Converted')
+        self.mbMes16 = self._translate('SSVG.py', 'The Flight Plan was converted into the newer format.  Save it.')
         
 
     def initConstants(self):
@@ -453,14 +455,26 @@ class MainForm(QMainWindow):
         
         g.maneuvers = g.manplan['maneuvers']
 
-        # for old manplan data        
+        # for old manplan data
+        manplan_revised = False
         for maneuver in g.maneuvers:
             if maneuver is not None:
                 if maneuver['type'] == 'EP_ON' or maneuver['type'] == 'SS_ON':
                     if not ('tvmode' in maneuver):
                         maneuver['tvmode'] = 'L'
+                        manplan_revised = True
+                if maneuver['type'] == 'SS_ON':
+                    if 'aria' in maneuver:
+                        maneuver['area'] = maneuver['aria']
+                        del maneuver['aria']
+                        manplan_revised = True
+        if manplan_revised:
+            QMessageBox.information(self, self.mbTtl16, 
+                                    self.mbMes16, QMessageBox.Ok)
+            g.manplan_saved = False
+        else:
+            g.manplan_saved = True
         
-        g.manplan_saved = True
         g.nextman = 0
         g.myprobe = probe.Probe(**g.manplan['probe'])
         

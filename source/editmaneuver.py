@@ -56,10 +56,10 @@ class EditManDialog(QDialog):
         self.typedict = {}
         for i in range(7):
             self.typedict[self.types[i]] = i
-        self.paramname = ['time', 'dv', 'dvpd', 'phi', 'elv', 'aria', 'theta', 
+        self.paramname = ['time', 'dv', 'dvpd', 'phi', 'elv', 'area', 'theta', 
                           'tvmode', 'inter']
         self.paramflag = [
-            # 0:time, 1:dv, 2:dvpd, 3:phi, 4:elv, 5:aria, 6:theta, 7:tvmode, 8:inter
+            # 0:time, 1:dv, 2:dvpd, 3:phi, 4:elv, 5:area, 6:theta, 7:tvmode, 8:inter
             [1, 1, 0, 1, 1, 0, 0, 0, 0], # for START
             [0, 1, 0, 1, 1, 0, 0, 0, 0], # for CP
             [0, 0, 1, 1, 1, 0, 0, 1, 0], # for EP_ON
@@ -73,7 +73,7 @@ class EditManDialog(QDialog):
             3,      # dvpd
             2,      # phi
             2,      # elv
-            1,      # aria
+            1,      # area
             2,      # theta
             0,      # (place holder)
             5       # inter
@@ -87,7 +87,7 @@ class EditManDialog(QDialog):
             self._translate('editmaneuver.py', 'dvpd  : magnitude of acceleration (m/s/day)'),
             self._translate('editmaneuver.py', 'phi     : angle phi (deg)'),
             self._translate('editmaneuver.py', 'elv     : angle elv (deg)'),
-            self._translate('editmaneuver.py', 'aria    : area of solar sail (m**2)'),
+            self._translate('editmaneuver.py', 'area    : area of solar sail (m**2)'),
             self._translate('editmaneuver.py', 'theta : angle theta (deg)'),
             self._translate('editmaneuver.py', 'tvmode : thrust vector mode (L|E)'),
             self._translate('editmaneuver.py', 'inter : integration interval (days)')
