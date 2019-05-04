@@ -1,0 +1,40 @@
+{
+    "probe": {
+        "name": "JupiterFlyer",
+        "base": "EarthL2",
+        "pmass": 500.0
+    },
+    "target": {
+        "name": "Jupiter",
+        "file": "",
+        "SPKID1A": 0,
+        "SPKID1B": 5,
+        "SPKID2A": 0,
+        "SPKID2B": 0
+    },
+    "maneuvers": [
+        {
+            "type": "START",
+            "time": 2458934.5,
+            "dv": 9130.0,
+            "phi": -4.7,
+            "elv": -8.0
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459350.5,
+            "inter": 1.0
+        },
+        {
+            "type": "CP",
+            "dv": 378.844,
+            "phi": -156.42,
+            "elv": 3.51
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459651.5,
+            "inter": 1.0
+        }
+    ]
+}
