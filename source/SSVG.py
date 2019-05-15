@@ -143,7 +143,7 @@ class MainForm(QMainWindow):
             self._translate('SSVG.py', 'dvpd (m/s/day)'),
             self._translate('SSVG.py', 'phi (deg)'),
             self._translate('SSVG.py', 'elv (deg)'),
-            self._translate('SSVG.py', 'area (m**2)'),
+            self._translate('SSVG.py', 'area (sq m)'),
             self._translate('SSVG.py', 'theta (deg)'),
             self._translate('SSVG.py', 'tvmode (L|E)'),
             self._translate('SSVG.py', 'inter (days)')

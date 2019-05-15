@@ -87,7 +87,7 @@ class EditManDialog(QDialog):
             self._translate('editmaneuver.py', 'dvpd  : magnitude of acceleration (m/s/day)'),
             self._translate('editmaneuver.py', 'phi     : angle phi (deg)'),
             self._translate('editmaneuver.py', 'elv     : angle elv (deg)'),
-            self._translate('editmaneuver.py', 'area    : area of solar sail (m**2)'),
+            self._translate('editmaneuver.py', 'area    : area of solar sail (sq m)'),
             self._translate('editmaneuver.py', 'theta : angle theta (deg)'),
             self._translate('editmaneuver.py', 'tvmode : thrust vector mode (L|E)'),
             self._translate('editmaneuver.py', 'inter : integration interval (days)')
