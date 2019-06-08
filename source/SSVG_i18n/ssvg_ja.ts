@@ -1794,7 +1794,7 @@ In this case, Duration should less than {:.2f}</source>
         <translation>elv     : 上下角 （度）</translation>
     </message>
     <message>
-        <source>area    : area of solar sail (m**2)</source>
+        <source>area    : area of solar sail (sq m)</source>
         <translation>area    : ソーラーセイルの面積 （平方 m）</translation>
     </message>
     <message>
@@ -1938,31 +1938,31 @@ The time (ISOT format) has been copied to system clipboard.</source>
 上記の時刻は ISO時刻の形式でクリップボードにコピーされています。</translation>
     </message>
     <message>
-        <source>that starts the Probe from the Space Base</source>
+        <source>The Probe starts the spaceflight.</source>
         <translation>探査機を宇宙基地から出発させます</translation>
     </message>
     <message>
-        <source>that makes orbit transition with Chemical Propulsion Engine</source>
+        <source>The Probe makes an orbital transition with the Chemical Propulsion Engine.</source>
         <translation>化学推進エンジンにより探査機の軌道を変化させます</translation>
     </message>
     <message>
-        <source>that turns on the Electric Propulsion Engine</source>
+        <source>The Probe turns on the Electric Propulsion Engine.</source>
         <translation>電気推進エンジンをオンにします</translation>
     </message>
     <message>
-        <source>that turns off the Electric Propulsion Engine</source>
+        <source>The Probe turns off the Electric Propulsion Engine.</source>
         <translation>電気推進エンジンをオフにします</translation>
     </message>
     <message>
-        <source>that turns on the Solar Sail</source>
+        <source>The Probe turns on the Solar Sail.</source>
         <translation>ソーラーセイルをオンにします</translation>
     </message>
     <message>
-        <source>that turns off the Solar Sail</source>
+        <source>The Probe turns off the Solar Sail.</source>
         <translation>ソーラーセイルをオフにします</translation>
     </message>
     <message>
-        <source>that flies the Probe until specified End Time</source>
+        <source>The Probe flies until the End Time.</source>
         <translation>探査機を終了時刻まで飛行させます</translation>
     </message>
 </context>
@@ -2097,9 +2097,9 @@ Arrival time is OUTSIDE of Target&apos;s time span</source>
         <translation>マヌーバ時刻</translation>
     </message>
     <message>
-        <source>This window assists you composing a START Maneuver that sends off the Probe into an orbit, which brings the Probe directly to the Target.
+        <source>This window assists you composing a START Maneuver that sends off the Probe into an orbit, which brings the Probe direct to the Target.
 
-Move each handle of the sliders to change the &quot;Start Time&quot; and/or &quot;Flight Time&quot;.  For each set of Start Time and Flight Time, the Assistant finds an orbit, show it on the 3D chart, and computes delta-V of the Maneuver and other parameters of the orbit.</source>
+Slide one of the handles to change Start Time or Flight Time.  Using a set of Start Time and Flight Time, the Assistant finds an orbit and show it on the 3D chart.  It computes delta-V of the Maneuver and other parameters of the orbit also.</source>
         <translation>このアシスタントは探査機を直接ターゲットに向かう軌道に送り出す START マヌーバの設計を支援します。
 
 スライダを操作して、探査機の出発時刻やターゲットに到着するまでの飛行時間を変化させてみてください。アシスタントは軌道を見つけて3次元の図に示し、出発時のデルタV や到着時の相対速度を表示します。</translation>
@@ -2107,7 +2107,7 @@ Move each handle of the sliders to change the &quot;Start Time&quot; and/or &quo
     <message>
         <source>This window assists you composing a CP Maneuver that brings the Probe to the Target.
 
-Move the handle of the slider to change the &quot;Flight Time&quot;.  For each Flight Time, the Assistant finds an orbit, show it on the 3D chart, and computes delta-V of the Maneuver and other parameters of the orbit.
+Slide the handle to change Flight Time.  For each Flight Time, the Assistant finds an orbit and show it on the 3D chart.  It computes delta-V of the Maneuver and other parameters of the orbit.
 If you need, you can try another Maneuver Time by unchecking the &quot;Fix to SSVG&apos;s Time&quot; checkbox.</source>
         <translation>このアシスタントは、探査機をターゲットに向かう軌道に乗せる CP マヌーバの設計を支援します。
 
@@ -2242,7 +2242,7 @@ after {}</source>
         <translation>elv （度）</translation>
     </message>
     <message>
-        <source>area (m**2)</source>
+        <source>area (sq m)</source>
         <translation>area （平方 m）</translation>
     </message>
     <message>

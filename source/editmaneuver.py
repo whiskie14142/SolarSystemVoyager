@@ -113,13 +113,13 @@ class EditManDialog(QDialog):
             '{:.5f}'
             ]
         self.manTypeDesc = [
-                self._translate('editmaneuver.py', 'that starts the Probe from the Space Base'),
-                self._translate('editmaneuver.py', 'that makes orbit transition with Chemical Propulsion Engine'),
-                self._translate('editmaneuver.py', 'that turns on the Electric Propulsion Engine'),
-                self._translate('editmaneuver.py', 'that turns off the Electric Propulsion Engine'),
-                self._translate('editmaneuver.py', 'that turns on the Solar Sail'),
-                self._translate('editmaneuver.py', 'that turns off the Solar Sail'),
-                self._translate('editmaneuver.py', 'that flies the Probe until specified End Time'),
+                self._translate('editmaneuver.py', 'The Probe starts the spaceflight.'),
+                self._translate('editmaneuver.py', 'The Probe makes an orbital transition with the Chemical Propulsion Engine.'),
+                self._translate('editmaneuver.py', 'The Probe turns on the Electric Propulsion Engine.'),
+                self._translate('editmaneuver.py', 'The Probe turns off the Electric Propulsion Engine.'),
+                self._translate('editmaneuver.py', 'The Probe turns on the Solar Sail.'),
+                self._translate('editmaneuver.py', 'The Probe turns off the Solar Sail.'),
+                self._translate('editmaneuver.py', 'The Probe flies until the End Time.'),
                 ''
             ]
         self.stringitems = []
