@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SSVG"
-#define MyAppVersion "1.3.1"
+#define MyAppVersion "1.4.0 RC2"
 #define MyAppPublisher "Shushi Uetsuki/whiskie14142"
 #define MyAppURL "http://whsk.sakura.ne.jp/ssvg/"
 #define MyAppExeName "SSVG.exe"
@@ -21,9 +21,9 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={localappdata}\{#MyAppName}
 DefaultGroupName=SSVG Solar System Voyager
-OutputDir=C:\Users\shush_000\Documents\Distribution
-OutputBaseFilename=SSVG_1_3_1_setup
-SetupIconFile=C:\Users\shush_000\Documents\Distribution\SSVGinstall.ico
+OutputDir=C:\Users\shush_000\Documents\Inno_Setup
+OutputBaseFilename=SSVG_1_4_0_setup
+SetupIconFile=C:\Users\shush_000\Documents\Inno_Setup\SSVGinstall.ico
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=lowest
@@ -36,8 +36,8 @@ Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"; LicenseFile: 
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "C:\Users\shush_000\Documents\Distribution\SSVG\SSVG.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\shush_000\Documents\Distribution\SSVG\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\shush_000\Documents\Inno_Setup\SSVG\SSVG.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\shush_000\Documents\Inno_Setup\SSVG\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
