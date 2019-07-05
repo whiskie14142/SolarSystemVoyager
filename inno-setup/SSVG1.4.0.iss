@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SSVG"
-#define MyAppVersion "1.4.0 RC2"
+#define MyAppVersion "1.4.0"
 #define MyAppPublisher "Shushi Uetsuki/whiskie14142"
 #define MyAppURL "http://whsk.sakura.ne.jp/ssvg/"
 #define MyAppExeName "SSVG.exe"

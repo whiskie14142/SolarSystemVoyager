@@ -21,6 +21,13 @@ Read more on the home page. <[http://whsk.sakura.ne.jp/ssvg/index-en.html](http:
 * spktype21 v0.1.0
 
 ### Modification Log
+#### v1.4.0 July 5, 2019
+* Maneuver Description was implemented
+* Import/export functions were implemented
+* Edit Target command was improved
+* User interface was improved
+* Errors in words were corrected
+
 #### v1.3.1 March 10, 2019
 * A defect that terminates SSVG accidentally was fixed
 * Display information elements were changed a little
