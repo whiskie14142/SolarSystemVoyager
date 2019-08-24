@@ -255,7 +255,7 @@ class MainForm(QMainWindow):
         self.winTtl_EFP = self._translate('SSVG.py', 'Define destination file to export')
 
     def initSSV(self):
-        g.version = 'v1.4.0'
+        g.version = 'v1.4.1'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
@@ -330,7 +330,7 @@ class MainForm(QMainWindow):
         if g.fig is not None:
             return
         g.fig=plt.figure(figsize=(11,11))
-        g.ax=g.fig.gca(projection='3d', aspect='equal')
+        g.ax=g.fig.gca(projection='3d')
     
         g.ax.set_xlim(-3.0e11, 3.0e11)
         g.ax.set_ylim(-3.0e11, 3.0e11)
