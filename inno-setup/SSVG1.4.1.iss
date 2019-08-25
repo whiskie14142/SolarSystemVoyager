@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SSVG"
-#define MyAppVersion "1.4.0"
+#define MyAppVersion "1.4.1beta"
 #define MyAppPublisher "Shushi Uetsuki/whiskie14142"
 #define MyAppURL "http://whsk.sakura.ne.jp/ssvg/"
 #define MyAppExeName "SSVG.exe"
@@ -21,9 +21,9 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={localappdata}\{#MyAppName}
 DefaultGroupName=SSVG Solar System Voyager
-OutputDir=C:\Users\shush_000\Documents\Inno_Setup
-OutputBaseFilename=SSVG_1_4_0_setup
-SetupIconFile=C:\Users\shush_000\Documents\Inno_Setup\SSVGinstall.ico
+OutputDir=U:\Shushi\Development\Inno_Setup
+OutputBaseFilename=SSVG_1_4_1_setup
+SetupIconFile=U:\Shushi\Development\Inno_Setup\SSVGinstall.ico
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=lowest
@@ -36,8 +36,8 @@ Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"; LicenseFile: 
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "C:\Users\shush_000\Documents\Inno_Setup\SSVG\SSVG.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\shush_000\Documents\Inno_Setup\SSVG\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "U:\Shushi\Development\Inno_Setup\SSVG\SSVG.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "U:\Shushi\Development\Inno_Setup\SSVG\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -47,9 +47,9 @@ Name: "{group}\{#MyAppName} User's Guide"; Filename: "{app}\SSVG_UsersGuide-en.p
 Name: "{group}\{#MyAppName} ユーザーズガイド"; Filename: "{app}\SSVG_UsersGuide-ja.pdf"; Languages: japanese
 Name: "{group}\Uninstall {#MyAppName}"; Filename: "{uninstallexe}"; Languages: english
 Name: "{group}\{#MyAppName} のアンインストール"; Filename: "{uninstallexe}"; Languages: japanese
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
-Name: "{commondesktop}\{#MyAppName} User's Guide"; Filename: "{app}\SSVG_UsersGuide-en.pdf"; Languages: english; Tasks: desktopicon
-Name: "{commondesktop}\{#MyAppName} ユーザーズガイド"; Filename: "{app}\SSVG_UsersGuide-ja.pdf"; Languages: japanese; Tasks: desktopicon
+Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{userdesktop}\{#MyAppName} User's Guide"; Filename: "{app}\SSVG_UsersGuide-en.pdf"; Languages: english; Tasks: desktopicon
+Name: "{userdesktop}\{#MyAppName} ユーザーズガイド"; Filename: "{app}\SSVG_UsersGuide-ja.pdf"; Languages: japanese; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked

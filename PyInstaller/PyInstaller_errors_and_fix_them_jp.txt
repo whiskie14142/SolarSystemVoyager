@@ -40,3 +40,5 @@ C:\Users\shush_000\Anaconda35\Lib\site-packages\PyInstaller\utils\hooks\qt.py
 C:/Users/shush_000/Anaconda35/Library/plugins
 
 OK。通った。
+この件（その２）については、ANACONDAのディストリビューションを「Anaconda3-2019.07」に更新したところ、発生しなかった。ANACONDAが修正された模様。2019/8/24
+
