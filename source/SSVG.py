@@ -34,9 +34,10 @@ import target
 from twobodypred import TwoBodyPred
 from spktype21 import SPKType21
 
+import matplotlib
+matplotlib.use('Qt5Agg')        # for MacOS
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-import matplotlib
 import numpy as np
 
 from flightplan import NewFlightPlanDialog
