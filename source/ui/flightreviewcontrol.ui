@@ -22,6 +22,12 @@
     <height>216</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Yu Gothic UI</family>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
   <property name="focusPolicy">
    <enum>Qt::NoFocus</enum>
   </property>
@@ -85,6 +91,8 @@
    </property>
    <property name="font">
     <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -113,6 +121,8 @@
    </property>
    <property name="font">
     <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -141,6 +151,8 @@
    </property>
    <property name="font">
     <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -172,6 +184,8 @@
    </property>
    <property name="font">
     <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -268,8 +282,13 @@
      <x>50</x>
      <y>130</y>
      <width>201</width>
-     <height>16</height>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Relative Position of Target</string>
@@ -284,8 +303,13 @@
      <x>250</x>
      <y>130</y>
      <width>191</width>
-     <height>16</height>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Relative Velocity of Target</string>
@@ -412,8 +436,13 @@
      <x>460</x>
      <y>130</y>
      <width>161</width>
-     <height>16</height>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Line of Sight Velocity</string>
@@ -433,6 +462,12 @@
      <width>211</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>bkwd&lt;&lt;   Review Manipulator   &gt;&gt;fwd</string>
@@ -835,14 +870,14 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>176</y>
+     <y>172</y>
      <width>237</width>
-     <height>37</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>9</pointsize>
+     <pointsize>8</pointsize>
     </font>
    </property>
    <property name="cursor" stdset="0">

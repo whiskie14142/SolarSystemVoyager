@@ -25,6 +25,12 @@
     <height>520</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Yu Gothic UI</family>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>FTA Setting</string>
   </property>
@@ -49,8 +55,13 @@
       <x>30</x>
       <y>20</y>
       <width>391</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Use Elapsed Time of Show Orbit Window</string>
@@ -65,8 +76,13 @@
       <x>30</x>
       <y>40</y>
       <width>391</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Specify Now</string>
@@ -87,6 +103,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="text">
@@ -104,6 +121,11 @@
       <width>191</width>
       <height>18</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Time to Arrival (days)</string>
@@ -163,8 +185,13 @@
       <x>30</x>
       <y>20</y>
       <width>391</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Center of Target</string>
@@ -179,8 +206,13 @@
       <x>30</x>
       <y>60</y>
       <width>391</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>B-plane Coordinates</string>
@@ -192,8 +224,13 @@
       <x>30</x>
       <y>170</y>
       <width>391</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Orbit Local Coordinates</string>
@@ -223,6 +260,11 @@
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>offset distance (km)</string>
      </property>
@@ -242,6 +284,7 @@
      <property name="font">
       <font>
        <family>Lucida Console</family>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="text">
@@ -256,6 +299,11 @@
        <width>121</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>beta (deg)</string>
@@ -276,6 +324,7 @@
      <property name="font">
       <font>
        <family>Lucida Console</family>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="toolTip">
@@ -307,8 +356,13 @@
        <x>20</x>
        <y>10</y>
        <width>121</width>
-       <height>16</height>
+       <height>17</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>offset distance (km)</string>
@@ -323,8 +377,13 @@
        <x>20</x>
        <y>30</y>
        <width>121</width>
-       <height>16</height>
+       <height>17</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>phi (deg)</string>
@@ -339,8 +398,13 @@
        <x>20</x>
        <y>50</y>
        <width>121</width>
-       <height>16</height>
+       <height>17</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>elv (deg)</string>
@@ -361,6 +425,7 @@
      <property name="font">
       <font>
        <family>Lucida Console</family>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="text">
@@ -379,6 +444,7 @@
      <property name="font">
       <font>
        <family>Lucida Console</family>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="toolTip">
@@ -400,6 +466,7 @@
      <property name="font">
       <font>
        <family>Lucida Console</family>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="toolTip">

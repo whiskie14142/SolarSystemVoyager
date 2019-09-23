@@ -27,7 +27,7 @@
   </property>
   <property name="font">
    <font>
-    <family>MS UI Gothic</family>
+    <family>Yu Gothic UI</family>
     <pointsize>9</pointsize>
    </font>
   </property>
@@ -41,6 +41,12 @@
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <widget class="QTableWidget" name="manplans">
     <property name="enabled">
      <bool>false</bool>
@@ -52,6 +58,12 @@
       <width>489</width>
       <height>251</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="focusPolicy">
      <enum>Qt::StrongFocus</enum>
@@ -155,6 +167,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -178,6 +191,12 @@
       <width>81</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="toolTip">
      <string>Insert an empty Maneuver</string>
@@ -204,6 +223,12 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="toolTip">
      <string>Show current Orbits</string>
     </property>
@@ -222,6 +247,12 @@
       <width>81</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="toolTip">
      <string>Edit selected Maneuver</string>
@@ -242,6 +273,12 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="toolTip">
      <string>Execute multiple Maneuvers</string>
     </property>
@@ -255,8 +292,14 @@
       <x>0</x>
       <y>10</y>
       <width>81</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Probe</string>
@@ -271,8 +314,14 @@
       <x>0</x>
       <y>30</y>
       <width>81</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Target</string>
@@ -287,13 +336,15 @@
       <x>90</x>
       <y>10</y>
       <width>161</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Lucida Console</family>
-      <pointsize>9</pointsize>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -306,13 +357,15 @@
       <x>90</x>
       <y>30</y>
       <width>141</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Lucida Console</family>
-      <pointsize>9</pointsize>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -331,6 +384,12 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="toolTip">
      <string>Delete selected Maneuver</string>
     </property>
@@ -347,8 +406,14 @@
       <x>240</x>
       <y>50</y>
       <width>91</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Flight Plan</string>
@@ -363,13 +428,15 @@
       <x>342</x>
       <y>50</y>
       <width>281</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Lucida Console</family>
-      <pointsize>9</pointsize>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -390,6 +457,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -414,6 +482,12 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="toolTip">
      <string>Clear Execution State</string>
     </property>
@@ -433,6 +507,12 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="toolTip">
      <string>Review throughout the Flight</string>
     </property>
@@ -446,13 +526,13 @@
       <x>20</x>
       <y>370</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>MS UI Gothic</family>
-      <pointsize>9</pointsize>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="text">
@@ -465,8 +545,14 @@
       <x>20</x>
       <y>390</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Current Time (JD)</string>
@@ -478,13 +564,13 @@
       <x>20</x>
       <y>350</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>MS UI Gothic</family>
-      <pointsize>9</pointsize>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="text">
@@ -497,8 +583,14 @@
       <x>20</x>
       <y>450</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Semi-major Axis (km)</string>
@@ -510,8 +602,14 @@
       <x>20</x>
       <y>490</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Eccentricity</string>
@@ -523,8 +621,14 @@
       <x>20</x>
       <y>510</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Inclination (deg)</string>
@@ -536,8 +640,14 @@
       <x>20</x>
       <y>530</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Long. of Asc. Node (deg)</string>
@@ -549,8 +659,14 @@
       <x>20</x>
       <y>550</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Arg. of Perihelion (deg)</string>
@@ -562,8 +678,14 @@
       <x>20</x>
       <y>610</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Mean Anomaly (deg)</string>
@@ -575,8 +697,14 @@
       <x>20</x>
       <y>630</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Orbital Period (days)</string>
@@ -588,8 +716,14 @@
       <x>20</x>
       <y>570</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Perihelion Passage</string>
@@ -601,8 +735,14 @@
       <x>20</x>
       <y>590</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Perihelion Passage (JD)</string>
@@ -614,8 +754,14 @@
       <x>20</x>
       <y>470</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Semi-major Axis (AU)</string>
@@ -627,8 +773,14 @@
       <x>20</x>
       <y>410</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Distance from Sun (km)</string>
@@ -640,8 +792,14 @@
       <x>20</x>
       <y>430</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Velocity rel. to Sun (m/s)</string>
@@ -659,6 +817,12 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="toolTip">
      <string>Review recent FLYTO Maneuver</string>
     </property>
@@ -672,11 +836,12 @@
       <x>20</x>
       <y>327</y>
       <width>131</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -692,11 +857,12 @@
       <x>380</x>
       <y>327</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -715,8 +881,14 @@
       <x>380</x>
       <y>348</y>
       <width>61</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Date&amp;Time</string>
@@ -728,8 +900,14 @@
       <x>380</x>
       <y>368</y>
       <width>121</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Parameters</string>
@@ -746,6 +924,12 @@
       <width>241</width>
       <height>162</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="focusPolicy">
      <enum>Qt::ClickFocus</enum>
@@ -788,6 +972,12 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -804,6 +994,12 @@
       <height>15</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="value">
      <number>24</number>
     </property>
@@ -814,15 +1010,15 @@
       <x>540</x>
       <y>327</y>
       <width>91</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Lucida Console</family>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -841,6 +1037,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -868,6 +1065,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -895,6 +1093,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -922,6 +1121,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -949,6 +1149,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -976,6 +1177,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1003,6 +1205,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1030,6 +1233,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1057,6 +1261,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1084,6 +1289,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1111,6 +1317,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1138,6 +1345,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1165,6 +1373,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1192,6 +1401,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1219,6 +1429,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1240,15 +1451,15 @@
       <x>180</x>
       <y>350</y>
       <width>187</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Lucida Console</family>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -1261,8 +1472,14 @@
       <x>20</x>
       <y>650</y>
       <width>151</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Accum. DV (m/s) CP, EP, SS</string>
@@ -1280,6 +1497,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1301,8 +1519,14 @@
       <x>0</x>
       <y>50</y>
       <width>81</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Space Base</string>
@@ -1317,13 +1541,15 @@
       <x>90</x>
       <y>50</y>
       <width>141</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Lucida Console</family>
-      <pointsize>9</pointsize>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -1344,6 +1570,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>9</pointsize>
      </font>
     </property>
@@ -1387,8 +1614,14 @@
       <x>380</x>
       <y>583</y>
       <width>131</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Messages</string>
@@ -1463,10 +1696,22 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <widget class="QMenu" name="menuFile">
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>&amp;File</string>
     </property>
@@ -1474,12 +1719,24 @@
      <property name="enabled">
       <bool>false</bool>
      </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>&amp;Export</string>
      </property>
      <addaction name="action_Flight_Plan_Export"/>
     </widget>
     <widget class="QMenu" name="menu_Import">
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>&amp;Import</string>
      </property>
@@ -1497,6 +1754,12 @@
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>&amp;Help</string>
     </property>
@@ -1508,6 +1771,12 @@
     <property name="enabled">
      <bool>false</bool>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>&amp;Checkpoint</string>
     </property>
@@ -1517,6 +1786,12 @@
    <widget class="QMenu" name="menuEdit">
     <property name="enabled">
      <bool>false</bool>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="title">
      <string>&amp;Edit</string>
@@ -1536,6 +1811,12 @@
    <property name="toolTip">
     <string>Open a Flight Plan</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionNew">
    <property name="text">
@@ -1543,6 +1824,12 @@
    </property>
    <property name="toolTip">
     <string>Create a Flight Plan</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionSave">
@@ -1555,6 +1842,12 @@
    <property name="toolTip">
     <string>Save the Flight Plan</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionSave_as">
    <property name="enabled">
@@ -1566,6 +1859,12 @@
    <property name="toolTip">
     <string>Save the Flight Plan with new Name</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionQuit">
    <property name="text">
@@ -1573,6 +1872,12 @@
    </property>
    <property name="toolTip">
     <string>Quit SSVG</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionNew_from_current_status">
@@ -1587,10 +1892,22 @@
    <property name="text">
     <string>&amp;about SSVG</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionCreate">
    <property name="text">
     <string>&amp;Create</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionResume">
@@ -1600,35 +1917,77 @@
    <property name="text">
     <string>&amp;Resume</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionProbe">
    <property name="text">
     <string>&amp;Probe</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
   <action name="actionTarget">
    <property name="text">
     <string>&amp;Target</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="action_UsersGuide">
    <property name="text">
     <string>&amp;User's Guide</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
   <action name="action_HomePage">
    <property name="text">
     <string>&amp;Home Page</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="action_SPK_import">
    <property name="text">
     <string>&amp;SPK file</string>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </action>
   <action name="action_Flight_Plan_import">
    <property name="text">
     <string>&amp;Flight Plan file</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
   <action name="action_Flight_Plan_Export">
@@ -1637,6 +1996,12 @@
    </property>
    <property name="text">
     <string>Current &amp;Flight Plan</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </action>
  </widget>

@@ -22,6 +22,12 @@
     <height>216</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Yu Gothic UI</family>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Show Orbit</string>
   </property>
@@ -73,6 +79,8 @@
    </property>
    <property name="font">
     <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -101,6 +109,8 @@
    </property>
    <property name="font">
     <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -129,6 +139,8 @@
    </property>
    <property name="font">
     <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -160,6 +172,8 @@
    </property>
    <property name="font">
     <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -263,11 +277,17 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>40</x>
      <y>130</y>
-     <width>201</width>
-     <height>16</height>
+     <width>221</width>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Relative Position of Target</string>
@@ -285,6 +305,11 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Relative Velocity of Target</string>
    </property>
@@ -300,6 +325,11 @@
      <width>81</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+    </font>
    </property>
    <property name="text">
     <string>distance (km)</string>
@@ -413,6 +443,11 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Line of Sight Velocity</string>
    </property>
@@ -431,6 +466,13 @@
      <width>211</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>bkwd&lt;&lt;    Time Manipulator    &gt;&gt;fwd</string>
@@ -936,14 +978,14 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>176</y>
+     <y>172</y>
      <width>237</width>
-     <height>37</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>9</pointsize>
+     <pointsize>8</pointsize>
     </font>
    </property>
    <property name="cursor" stdset="0">

@@ -25,6 +25,12 @@
     <height>320</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Yu Gothic UI</family>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Maneuver Editor</string>
   </property>
@@ -39,6 +45,11 @@
      <width>111</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Maneuver Type</string>
@@ -79,8 +90,13 @@
      <x>20</x>
      <y>8</y>
      <width>101</width>
-     <height>16</height>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Date &amp; Time</string>
@@ -98,6 +114,11 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Parameters</string>
    </property>
@@ -113,6 +134,11 @@
      <width>352</width>
      <height>162</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="focusPolicy">
     <enum>Qt::ClickFocus</enum>
@@ -384,11 +410,16 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>28</y>
       <width>81</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>JD</string>
@@ -403,10 +434,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>110</x>
       <y>48</y>
       <width>121</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
@@ -435,9 +466,14 @@
      <rect>
       <x>10</x>
       <y>48</y>
-      <width>81</width>
-      <height>16</height>
+      <width>91</width>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Duration (days)</string>
@@ -452,15 +488,16 @@
    <widget class="QLineEdit" name="isotedit">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>110</x>
       <y>8</y>
       <width>191</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -479,10 +516,10 @@
    <widget class="QLineEdit" name="jdedit">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>110</x>
       <y>28</y>
       <width>121</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
     </property>
     <property name="font">
@@ -506,11 +543,16 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>8</y>
       <width>81</width>
-      <height>16</height>
+      <height>17</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>ISOT</string>
@@ -526,8 +568,13 @@
      <x>390</x>
      <y>192</y>
      <width>131</width>
-     <height>16</height>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Messages</string>

@@ -310,7 +310,7 @@
     <message>
         <location filename="../ui/flightreviewcontrol.ui" line="438"/>
         <source>bkwd&lt;&lt;   Review Manipulator   &gt;&gt;fwd</source>
-        <translation>戻る&lt;&lt;　　　レビュー操作　　　&gt;&gt;進む</translation>
+        <translation>戻る&lt;&lt;　レビュー操作　&gt;&gt;進む</translation>
     </message>
     <message>
         <location filename="../ui/flightreviewcontrol.ui" line="568"/>
@@ -508,7 +508,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="469"/>
         <source>Current Time (JD)</source>
-        <translation>現在時刻 （ユリウス日）</translation>
+        <translation>現在時刻（ユリウス日）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="488"/>
@@ -518,7 +518,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="501"/>
         <source>Semi-major Axis (km)</source>
-        <translation>軌道長半径 （km）</translation>
+        <translation>軌道長半径（km）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="514"/>
@@ -528,27 +528,27 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="527"/>
         <source>Inclination (deg)</source>
-        <translation>軌道傾斜角 （度）</translation>
+        <translation>軌道傾斜角（度）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="540"/>
         <source>Long. of Asc. Node (deg)</source>
-        <translation>昇交点黄経 （度）</translation>
+        <translation>昇交点黄経（度）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="553"/>
         <source>Arg. of Perihelion (deg)</source>
-        <translation>近日点引数 （度）</translation>
+        <translation>近日点引数（度）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="566"/>
         <source>Mean Anomaly (deg)</source>
-        <translation>平均近点離角 （度）</translation>
+        <translation>平均近点離角（度）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="579"/>
         <source>Orbital Period (days)</source>
-        <translation>軌道周期 （日）</translation>
+        <translation>軌道周期（日）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="592"/>
@@ -558,22 +558,22 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="605"/>
         <source>Perihelion Passage (JD)</source>
-        <translation>近日点通過時刻 （ユリウス日）</translation>
+        <translation>近日点通過時刻(ユリウス日)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="618"/>
         <source>Semi-major Axis (AU)</source>
-        <translation>軌道長半径 （天文単位）</translation>
+        <translation>軌道長半径（天文単位）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="631"/>
         <source>Distance from Sun (km)</source>
-        <translation>太陽との距離 （km）</translation>
+        <translation>太陽との距離（km）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="644"/>
         <source>Velocity rel. to Sun (m/s)</source>
-        <translation>太陽との相対速度 （m/s）</translation>
+        <translation>太陽との相対速度（m/s）</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="660"/>
@@ -608,7 +608,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1265"/>
         <source>Accum. DV (m/s) CP, EP, SS</source>
-        <translation>積算 DV （m/s）  CP, EP, SS</translation>
+        <translation>積算 DV (m/s)  CP, EP, SS</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1305"/>
@@ -1530,7 +1530,7 @@ Range</source>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="436"/>
         <source>bkwd&lt;&lt;    Time Manipulator    &gt;&gt;fwd</source>
-        <translation>戻る&lt;&lt;　　　　時刻操作　　　　&gt;&gt;進む</translation>
+        <translation>戻る&lt;&lt;　　時刻操作　　&gt;&gt;進む</translation>
     </message>
     <message>
         <location filename="../ui/showorbitcontrol.ui" line="566"/>

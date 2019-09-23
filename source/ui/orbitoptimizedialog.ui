@@ -25,6 +25,12 @@
     <height>664</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Yu Gothic UI</family>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Start Optimize Assistant</string>
   </property>
@@ -39,6 +45,11 @@
      <width>171</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Initial Delta-V (m/s)</string>
@@ -56,6 +67,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Terminal Relative Velocity (m/s)</string>
    </property>
@@ -72,6 +88,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Current</string>
    </property>
@@ -87,6 +108,11 @@
      <width>71</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Min.</string>
@@ -157,6 +183,11 @@
      <width>211</width>
      <height>91</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="title">
     <string>Show Orbit</string>
@@ -238,6 +269,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Min.</string>
    </property>
@@ -308,6 +344,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Current</string>
    </property>
@@ -362,6 +403,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Total DV (IDV + TRV)</string>
    </property>
@@ -377,6 +423,11 @@
      <width>71</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Min.</string>
@@ -448,6 +499,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Current</string>
    </property>
@@ -460,7 +516,7 @@
     <rect>
      <x>280</x>
      <y>570</y>
-     <width>91</width>
+     <width>101</width>
      <height>23</height>
     </rect>
    </property>
@@ -537,6 +593,11 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>phi (deg)</string>
    </property>
@@ -552,6 +613,11 @@
      <width>71</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>elv (deg)</string>
@@ -587,6 +653,11 @@
      <width>131</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Fix to SSVG's Time</string>
@@ -666,6 +737,7 @@
     </property>
     <property name="font">
      <font>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -694,6 +766,8 @@
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -736,6 +810,11 @@ Range</string>
       <width>81</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Start Time</string>
@@ -788,6 +867,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -881,6 +961,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -921,8 +1002,13 @@ Range</string>
      <x>18</x>
      <y>123</y>
      <width>131</width>
-     <height>16</height>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Adjust Start Time</string>
@@ -1073,6 +1159,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1116,6 +1203,11 @@ Range</string>
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Flight Time (days)</string>
     </property>
@@ -1134,6 +1226,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1244,6 +1337,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1285,6 +1379,11 @@ Range</string>
       <width>81</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Arrival Time</string>
@@ -1345,8 +1444,13 @@ Range</string>
      <x>18</x>
      <y>298</y>
      <width>131</width>
-     <height>16</height>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Adjust Flight Time</string>

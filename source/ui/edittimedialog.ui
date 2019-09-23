@@ -25,6 +25,12 @@
     <height>150</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Yu Gothic UI</family>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Date and Time Editor</string>
   </property>
@@ -66,11 +72,16 @@
   <widget class="QRadioButton" name="radioISOT">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>27</y>
-     <width>111</width>
-     <height>16</height>
+     <width>121</width>
+     <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Edit by ISOT</string>
@@ -82,11 +93,16 @@
   <widget class="QRadioButton" name="radioJD">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>57</y>
-     <width>111</width>
-     <height>16</height>
+     <width>121</width>
+     <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Edit by JD</string>
@@ -98,11 +114,16 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>87</y>
-     <width>111</width>
-     <height>16</height>
+     <width>121</width>
+     <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Edit by Duration</string>

@@ -22,6 +22,11 @@
     <height>216</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Yu Gothic UI</family>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Maneuver Description</string>
   </property>
