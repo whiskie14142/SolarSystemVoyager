@@ -74,13 +74,13 @@
      <x>360</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -104,13 +104,13 @@
      <x>410</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -134,13 +134,13 @@
      <x>460</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -167,13 +167,13 @@
      <x>510</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -196,9 +196,14 @@
     <rect>
      <x>580</x>
      <y>90</y>
-     <width>42</width>
-     <height>31</height>
+     <width>51</width>
+     <height>35</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>The value specifies coarseness (or fineness) of the Prediction Time.  Larger value makes time steps larger.</string>
@@ -266,6 +271,11 @@
      <width>41</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Apply</string>

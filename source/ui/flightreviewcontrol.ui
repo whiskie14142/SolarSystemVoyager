@@ -83,16 +83,16 @@
   <widget class="QPushButton" name="fastbackward">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>320</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -113,16 +113,16 @@
   <widget class="QPushButton" name="backward">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>370</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -143,16 +143,16 @@
   <widget class="QPushButton" name="forward">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>420</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -176,16 +176,16 @@
   <widget class="QPushButton" name="fastforward">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>470</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -209,8 +209,13 @@
      <x>580</x>
      <y>90</y>
      <width>51</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>Steps for FF and FB</string>
@@ -457,9 +462,9 @@
   <widget class="QLabel" name="label_19">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>270</x>
      <y>72</y>
-     <width>211</width>
+     <width>291</width>
      <height>20</height>
     </rect>
    </property>

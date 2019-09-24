@@ -16,7 +16,7 @@ class Ui_aboutSSVG(object):
         aboutSSVG.setMaximumSize(QtCore.QSize(480, 449))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
-        font.setPointSize(10)
+        font.setPointSize(9)
         aboutSSVG.setFont(font)
         aboutSSVG.setAutoFillBackground(False)
         aboutSSVG.setModal(True)

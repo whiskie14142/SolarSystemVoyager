@@ -16,6 +16,7 @@ class Ui_ManeuverDescription(object):
         ManeuverDescription.setMaximumSize(QtCore.QSize(600, 216))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
+        font.setPointSize(9)
         ManeuverDescription.setFont(font)
         self.type_and_line = QtWidgets.QLabel(ManeuverDescription)
         self.type_and_line.setGeometry(QtCore.QRect(10, 6, 341, 16))

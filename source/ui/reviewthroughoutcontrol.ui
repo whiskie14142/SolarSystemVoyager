@@ -83,13 +83,13 @@
      <x>320</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -116,13 +116,13 @@
      <x>370</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -149,13 +149,13 @@
      <x>420</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -185,13 +185,13 @@
      <x>470</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -218,8 +218,13 @@
      <x>580</x>
      <y>90</y>
      <width>51</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="focusPolicy">
     <enum>Qt::WheelFocus</enum>
@@ -477,7 +482,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -670,13 +675,13 @@
      <x>270</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -703,13 +708,13 @@
      <x>520</x>
      <y>90</y>
      <width>41</width>
-     <height>31</height>
+     <height>35</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI</family>
+     <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>

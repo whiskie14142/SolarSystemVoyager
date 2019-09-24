@@ -25,6 +25,7 @@
   <property name="font">
    <font>
     <family>Yu Gothic UI</family>
+    <pointsize>9</pointsize>
    </font>
   </property>
   <property name="windowTitle">
