@@ -48,6 +48,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -69,6 +70,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -95,6 +97,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -116,6 +119,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -137,6 +141,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -187,6 +192,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="toolTip">
     <string>Finish editing the Maneuver</string>
    </property>
@@ -205,6 +216,12 @@
      <width>91</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>Discard Changes and Quit Editing</string>
@@ -228,6 +245,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="toolTip">
     <string>Apply current Parameters</string>
    </property>
@@ -249,6 +272,12 @@
      <width>91</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>Invoke FTA Function</string>
@@ -272,6 +301,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="toolTip">
     <string>Finish Editing and Execute the Maneuver</string>
    </property>
@@ -293,6 +328,12 @@
      <width>91</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>Invoke Optimize Assistant</string>
@@ -336,6 +377,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>9</pointsize>
     </font>
    </property>
@@ -376,6 +418,12 @@
      <height>71</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
@@ -396,6 +444,12 @@
       <width>91</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="toolTip">
      <string>Edit Date &amp; Time</string>
@@ -418,6 +472,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -443,6 +498,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -472,6 +528,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -525,6 +582,7 @@
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -551,6 +609,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -573,6 +632,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -625,6 +685,12 @@
       </colorrole>
      </disabled>
     </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="cursor" stdset="0">
     <cursorShape>ArrowCursor</cursorShape>

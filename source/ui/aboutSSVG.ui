@@ -48,6 +48,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>9</pointsize>
     </font>
    </property>
@@ -64,6 +65,12 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="title">
     <string>Version</string>
    </property>
@@ -75,6 +82,12 @@
       <width>341</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>0.1.0 Beta</string>
@@ -93,6 +106,12 @@
      <height>291</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="title">
     <string>Licese Terms</string>
    </property>
@@ -104,6 +123,12 @@
       <width>421</width>
       <height>231</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="cursor" stdset="0">
      <cursorShape>ArrowCursor</cursorShape>

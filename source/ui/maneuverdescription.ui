@@ -42,6 +42,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>11</pointsize>
     </font>
    </property>
@@ -60,6 +61,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -105,6 +107,12 @@
      <width>111</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>Start editing of the description</string>

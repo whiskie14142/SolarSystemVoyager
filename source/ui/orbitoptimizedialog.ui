@@ -48,6 +48,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -69,6 +70,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -90,6 +92,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -111,6 +114,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -133,6 +137,7 @@
    <property name="font">
     <font>
      <family>Lucida Console</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -160,6 +165,7 @@
    <property name="font">
     <font>
      <family>Lucida Console</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -186,6 +192,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -204,6 +211,12 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Trajectory</string>
     </property>
@@ -219,6 +232,12 @@
       <width>91</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Current</string>
@@ -236,6 +255,12 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Target</string>
     </property>
@@ -251,6 +276,12 @@
       <width>91</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Space Base</string>
@@ -271,6 +302,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -293,6 +325,7 @@
    <property name="font">
     <font>
      <family>Lucida Console</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -320,6 +353,7 @@
    <property name="font">
     <font>
      <family>Lucida Console</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -346,6 +380,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -365,6 +400,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="toolTip">
     <string>Finish Optimize and Apply</string>
    </property>
@@ -383,6 +424,12 @@
      <width>91</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>Cancel Optimize</string>
@@ -405,6 +452,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -426,6 +474,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -448,6 +497,7 @@
    <property name="font">
     <font>
      <family>Lucida Console</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -475,6 +525,7 @@
    <property name="font">
     <font>
      <family>Lucida Console</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -501,6 +552,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -519,6 +571,12 @@
      <width>101</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>Clear all Minimum Values</string>
@@ -542,6 +600,7 @@
    <property name="font">
     <font>
      <family>Lucida Console</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -569,6 +628,7 @@
    <property name="font">
     <font>
      <family>Lucida Console</family>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -595,6 +655,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -616,6 +677,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -634,6 +696,12 @@
      <width>111</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="toolTip">
     <string>Show 3D Orbit Window</string>
@@ -656,6 +724,7 @@
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -675,6 +744,12 @@
      <height>141</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
@@ -690,6 +765,12 @@
       <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>Slider Range</string>
     </property>
@@ -701,6 +782,12 @@
        <width>121</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Wide    (500 days)</string>
@@ -717,6 +804,12 @@
        <width>121</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Narrow (100 days)</string>
@@ -737,6 +830,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -794,6 +888,12 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Shift
 Range</string>
@@ -813,6 +913,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -832,6 +933,12 @@ Range</string>
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>2000-00-00</string>
     </property>
@@ -847,6 +954,12 @@ Range</string>
       <width>51</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Shift
@@ -867,6 +980,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -894,6 +1008,12 @@ Range</string>
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>2000-00-00</string>
     </property>
@@ -913,6 +1033,7 @@ Range</string>
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -940,6 +1061,12 @@ Range</string>
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="minimum">
      <number>0</number>
     </property>
@@ -961,6 +1088,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -988,6 +1116,12 @@ Range</string>
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Tweak Handle</string>
     </property>
@@ -1007,6 +1141,7 @@ Range</string>
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -1023,6 +1158,12 @@ Range</string>
      <height>151</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
@@ -1038,6 +1179,12 @@ Range</string>
       <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>Slider Defines</string>
     </property>
@@ -1049,6 +1196,12 @@ Range</string>
        <width>121</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Flight Time</string>
@@ -1065,6 +1218,12 @@ Range</string>
        <width>121</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Arrival Time</string>
@@ -1086,6 +1245,7 @@ Range</string>
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1115,6 +1275,8 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1141,6 +1303,12 @@ Range</string>
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>500</string>
     </property>
@@ -1159,6 +1327,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1186,6 +1355,12 @@ Range</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Shift
 Range</string>
@@ -1205,6 +1380,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -1227,6 +1403,7 @@ Range</string>
     <property name="font">
      <font>
       <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1253,6 +1430,12 @@ Range</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Shift
 Range</string>
@@ -1273,6 +1456,7 @@ Range</string>
     <property name="font">
      <font>
       <family>Lucida Console</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -1300,6 +1484,12 @@ Range</string>
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>0</string>
     </property>
@@ -1315,6 +1505,12 @@ Range</string>
       <width>511</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="minimum">
      <number>0</number>
@@ -1337,6 +1533,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1364,6 +1561,12 @@ Range</string>
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Tweak Handle</string>
     </property>
@@ -1382,6 +1585,7 @@ Range</string>
     </property>
     <property name="font">
      <font>
+      <family>Yu Gothic UI</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -1401,6 +1605,12 @@ Range</string>
       <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="title">
      <string>Slider Range</string>
     </property>
@@ -1412,6 +1622,12 @@ Range</string>
        <width>131</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Wide    (500 days)</string>
@@ -1428,6 +1644,12 @@ Range</string>
        <width>131</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI</family>
+       <pointsize>9</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>Narrow (100 days)</string>
@@ -1449,6 +1671,7 @@ Range</string>
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -1467,6 +1690,7 @@ Range</string>
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>9</pointsize>
     </font>
    </property>
@@ -1534,6 +1758,7 @@ Range</string>
    </property>
    <property name="font">
     <font>
+     <family>Yu Gothic UI</family>
      <pointsize>9</pointsize>
     </font>
    </property>
