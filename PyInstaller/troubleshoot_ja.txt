@@ -1,5 +1,4 @@
-Anakondaの新版(3.5)で遭遇したPyInstallerでの問題と対策
-(PyInstaller version 3.4)
+Anakondaの新版で遭遇したPyInstallerでの問題と対策
 
 （その１）
 PyInstaller実行時に「再起呼び出しが最大レベルを超えた」というメッセージが出て処理が止まる。
@@ -7,7 +6,8 @@ PyInstaller実行時に「再起呼び出しが最大レベルを超えた」と
 import sys
 sys.setrecursionlimit(5000)
 
-（その２）
+
+（その２）（解決ずみ）
 PyInstaller実行時に次のエラーメッセージが表示され処理が止まる。
 ーーーー前略
   File "<frozen importlib._bootstrap_external>", line 907, in load_module
@@ -41,4 +41,25 @@ C:/Users/shush_000/Anaconda35/Library/plugins
 
 OK。通った。
 この件（その２）については、ANACONDAのディストリビューションを「Anaconda3-2019.07」に更新したところ、発生しなかった。ANACONDAが修正された模様。2019/8/24
+
+
+（その３）
+Version 1.4.1 のコンパイルを行ったところ、次のメッセージが出てPyInstallerが異常終了した。
+----------------------------------------
+'utf-8' codec can't decode byte 0x83 in position 130: invalid start byte
+These are the bytes around the offending byte:
+----------------------------------------
+トレースバックの最後は次の行。
+  File "c:\users\shush\anaconda3\lib\site-packages\PyInstaller\compat.py", line 427, in exec_command
+    out = out.decode(encoding)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x83 in position 130: invalid start byte
+問題の行（compat.py の line 427）を次のどちらかに書き換えると大丈夫らしい。
+    out = out.decode(encoding, errors='ignore')
+    out = out.decode(encoding, "replace")
+参考情報はこちら。
+(1) https://qiita.com/pocket_kyoto/items/80a1ac0e46819d90737f
+(2) https://stackoverflow.com/questions/47692960/error-when-using-pyinstaller-unicodedecodeerror-utf-8-codec-cant-decode-byt
+参考情報(2)のコードを見ると、1.4.1で追加したコード（matplotlib.use('Qt5Agg')）が入っている。この関係かもしれない。
+compat.py に後者の修正を行ったところ、コンパイルに成功した。
+（2019/9/27）
 
