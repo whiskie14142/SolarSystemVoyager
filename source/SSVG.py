@@ -755,8 +755,8 @@ class MainForm(QMainWindow):
         shutil.copyfile(ans, destname)
         name = os.path.basename(destname)
         ans = QMessageBox.question(self, self.mbTtl12, self.mbMes13.format(name),
-           QMessageBox.Open | QMessageBox.Cancel, QMessageBox.Cancel)
-        if ans == QMessageBox.Open:
+           QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if ans == QMessageBox.Yes:
             self.openmanplan(filepath=destname)
     
     def export_Flight_Plan(self):
