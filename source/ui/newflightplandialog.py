@@ -113,7 +113,7 @@ class Ui_NewFlightPlanDialog(object):
         self.targetgroupbox.setFlat(False)
         self.targetgroupbox.setObjectName("targetgroupbox")
         self.label_5 = QtWidgets.QLabel(self.targetgroupbox)
-        self.label_5.setGeometry(QtCore.QRect(10, 20, 61, 21))
+        self.label_5.setGeometry(QtCore.QRect(2, 20, 69, 21))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(10)

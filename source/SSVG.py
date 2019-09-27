@@ -204,7 +204,7 @@ class MainForm(QMainWindow):
         self.mbTtl14 = self._translate('SSVG.py', 'Export Completed')
         self.mbMes14 = self._translate('SSVG.py', 'Current Flight Plan was exported to:\n\n"{0}".')
         self.mbTtl15 = self._translate('SSVG.py', 'New Flight Plan')
-        self.mbMes15 = self._translate('SSVG.py', 'New Flight Plan was created.  Click [Edit Next] button to start editing.')
+        self.mbMes15 = self._translate('SSVG.py', 'New Flight Plan was created.  Click [EDIT Next] button to start editing.')
         self.mbTtl16 = self._translate('SSVG.py', 'Converted')
         self.mbMes16 = self._translate('SSVG.py', 'The Flight Plan was converted into the newer format.  Save it.')
         

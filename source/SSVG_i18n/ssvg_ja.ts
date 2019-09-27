@@ -2564,7 +2564,7 @@ Open it now?</source>
         <translation>新しい飛行計画</translation>
     </message>
     <message>
-        <source>New Flight Plan was created.  Click [Edit Next] button to start editing.</source>
+        <source>New Flight Plan was created.  Click [EDIT Next] button to start editing.</source>
         <translation>新しい飛行計画が生成されました。　[Next 編集] ボタンをクリックして編集を初めてください。</translation>
     </message>
     <message>
