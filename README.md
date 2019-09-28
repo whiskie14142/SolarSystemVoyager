@@ -10,46 +10,48 @@ Read more on the home page. <[http://whsk.sakura.ne.jp/ssvg/index-en.html](http:
 * Python 3.7
 
 ### Packages and Modules
-* Numpy v1.15.1
-* Scipy v1.1.0
-* matplotlib v2.2.3
-* pyqt v5.9.2
-* jplephem v2.8
+* Numpy v1.16.4
+* Scipy v1.2.1
+* matplotlib v3.1.0
+* PyQt5 (QT_VERSION_STR=5.9.6, PYQT_VERSION_STR=5.9.2, SIP_VERSION_STR=4.19.8)
+* jplephem v2.9
 * julian v0.14
 * pytwobodyorbit v1.0.0
 * spktype01 v1.0.0
 * spktype21 v0.1.0
 
 ### Modification Log
+#### v1.4.1 September 28, 2019
+* The development environment was renewed to Anaconda3-2019.07
+* The font settings of GUI was improved
+* A statement to use "Qt5Agg" backend for Matplotlib was added
+
 #### v1.4.0 July 5, 2019
 * Maneuver Description was implemented
 * Import/export functions were implemented
 * Edit Target command was improved
-* User interface was improved
+* The user interface was improved
 * Errors in words were corrected
 * Problems in file access in Windows environments were fixed
 
 #### v1.3.1 March 10, 2019
 * A defect that terminates SSVG accidentally was fixed
-* Display information elements were changed a little
 * Menu items to open the SSVG User's Guide and the home page of SSVG were added
 
 #### v1.3.0 February 21, 2019
-* Internationalized (added user interface in Japanese, and became extensible)
-* Improved user interface
+* SSVG was internationalized (we added user interface in Japanese with an extensible manner)
+* The user interface was improved
 
 #### v1.2.1 January 1, 2019
-* Corresponded to pytwobodyorbit v1.0.0
+* SSVG corresponded to pytwobodyorbit v1.0.0
 
 #### v1.2.0 December 4, 2018
-* Supported Type 21 SPK file
-* Improved user interface
-* Renewal of development environment
+* SSVG became to support Type 21 SPK file
+* The user interface was improved
 
 #### v1.1.0 August 18, 2018
-* Improved user interface
-* FTA function allows users to specify targeting point by B-plane coordinates
-* Includes English version of document (SSVG_UsersGuide-en.pdf)
+* The user interface was improved
+* The B-plane coordinates was introduced
 
 #### v1.0.0 April 2, 2018
 * The first release
