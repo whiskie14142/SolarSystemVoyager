@@ -21,7 +21,7 @@ Read more on the home page. <[http://whsk.sakura.ne.jp/ssvg/index-en.html](http:
 * spktype21 v0.1.0
 
 ### Modification Log
-#### v1.4.1 September 28, 2019
+#### v1.4.1 September 30, 2019
 * The development environment was renewed to Anaconda3-2019.07
 * The font settings of GUI was improved
 * A statement to use "Qt5Agg" backend for Matplotlib was added
