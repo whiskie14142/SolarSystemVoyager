@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<HTML lang="en">
+  <HEAD>
+    <TITLE>SSVG &mdash; Solar System Voyager</TITLE>
+    <meta http-equiv="content-language" content="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./ssvg5.css" type="text/css">
+    <link rel="shortcut icon" href="./ssvgicon.ico">
+  </HEAD>
+  <BODY>
+    <CENTER>
+      <TABLE id=ghtitle>
+        <TBODY>
+          <TR>
+            <TD id=ghhtext>
+              <H1><IMG src="./images/icon32.jpg" class="setmiddle">&nbsp;&nbsp;SSVG &mdash; Solar System Voyager</H1>
+              <H2>Trajectory</H2>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <TABLE id=ghmain>
+        <TBODY>
+          <TR>
+            <TD id=lang colspan=2>
+              <A href="./13_accuracy.html">日本語</A>&nbsp;
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <TABLE id=menutbl>
+                <TBODY>
+                  <TR>
+                    <TD class=gmenu><A href="./index-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Home</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./01_install-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Install</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./11_flyfreely-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Fly freely</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./12_solarsail-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Solar Sail</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenuself><A href="./13_accuracy-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Trajectory</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./14_tools-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Tools</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./20_issues-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Known Issues</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./30_faq-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;FAQ</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./40_contact-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Contact</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./50_sample-en.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;Samples</A></TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+            </TD>
+            <TD id=mainbody>
+              <P>In SSVG, a spacecraft (Probe) traces realistic trajectory as follows:
+                <ul>
+                  <li>It does not trace a simple two-body orbit</li>
+                  <li>It can enter an orbit about a planet</li>
+                  <li>It can use gravity assist (swing-by) of a planet</li>
+                  <li>It can rendezvous with a small celestial body</li>
+                </ul></P>
+              <BR>
+              <P>SSVG computes the trajectory of Probes by numerical integration of forces, such as the gravitational attraction of the Sun and planets, and the propulsive forces of Electric Propulsion Engine and Solar Sail.  For the numerical integrations, SSVG uses Scipy of Python.</P>
+              <BR>
+              <P>Computations of the gravitational attractions from celestial objects require precise positions of the objects. SSVG computes their positions by &quot;jplephem&quot; module using an SPK file &quot;de430.bsp&quot; provided by NASA/JPL.</P>
+              <BR>
+              <P>To rendezvous with a small celestial body, we need its precise positions. SSVG computes them by &quot;spktype21&quot; module using an SPK file for the small celestial body provided by HORIZONS system of NASA/JPL.</P>
+              <BR>
+              <BR>
+              <P>Scipy: http://scipy.org/<BR>jplephem: https://github.com/brandon-rhodes/python-jplephem/<BR>spktype21: https://github.com/whiskie14142/spktype21/</P>
+              <BR><BR>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <TABLE id=ghfooter>
+        <TBODY>
+          <TR>
+            <TD id=ghftext>
+              <H2 style="padding-top: 48px">whiskie14142/Shushi Uetsuki</H2>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+    </CENTER>
+  </BODY>
+</HTML>

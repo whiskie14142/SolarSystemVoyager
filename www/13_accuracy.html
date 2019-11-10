@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<HTML lang="ja">
+  <HEAD>
+    <TITLE>SSVG 宇宙探査の旅</TITLE>
+    <meta http-equiv="content-language" content="ja">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./ssvg5.css" type="text/css">
+    <link rel="shortcut icon" href="./ssvgicon.ico">
+  </HEAD>
+  <BODY>
+    <CENTER>
+      <TABLE id=ghtitle>
+        <TBODY>
+          <TR>
+            <TD id=ghhtext>
+              <H1><IMG src="./images/icon32.jpg" class="setmiddle">&nbsp;&nbsp;SSVG 宇宙探査の旅</H1>
+              <H2>精密な飛行経路</H2>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <TABLE id=ghmain>
+        <TBODY>
+          <TR>
+            <TD id=lang colspan=2>
+              <A href="./13_accuracy-en.html">English</A>&nbsp;
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <TABLE id=menutbl>
+                <TBODY>
+                  <TR>
+                    <TD class=gmenu><A href="./index.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;ホーム　　　　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./01_install.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;インストール　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./11_flyfreely.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;宇宙を飛び回る</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./12_solarsail.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;ソーラーセイル</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenuself><A href="./13_accuracy.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;精密な飛行経路</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./14_tools.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;便利なツール　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./20_issues.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;既知の事象　　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./30_faq.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;FAQ　　　　　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./40_contact.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;連絡方法　　　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./50_sample.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;追加サンプル　</A></TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+            </TD>
+            <TD id=mainbody>
+              <P>SSVGを開発するとき、探査機の飛行について考えていたのは次のようなことです。 <BR>・現実の探査機と同じように（2体問題軌道ではなく）飛行すること <BR>・小惑星にランデブーできること <BR>・惑星の衛星になれること <BR>・惑星でスイングバイ（重力アシスト）が行えること</P>
+              <BR>
+              <P>プログラミング言語はPythonを使うことを決めていたのですが、実現方法を考えているうちに jplephem というモジュールに出会いました。NASAが公開しているデータファイルを読み込ませれば、太陽とすべての惑星（および冥王星と地球の月）の位置と速度を、指定した時刻について求めることができる、という優れものです。</P>
+              <BR>
+              <P>任意の時点で太陽や惑星の位置が分かるのであれば、探査機に働く引力が計算できるわけで、飛行経路を数値積分で求めるのは数値計算用の高度なライブラリがあるPythonでは難しくありません。この方法であれば、惑星の衛星になることや、スイングバイを行うことは自動的に実現できますし、惑星間空間での探査機の飛行も現実の探査機に近いものになることが期待できます。</P>
+              <BR>
+              <P>残る課題は「小惑星にランデブーできること」なのですが、これが難関でした。小惑星の位置や速度を計算するデータファイルはNASAのオンラインサービスで作成できることが分かったのですが、なんとデータ形式が異なるため jplephem では扱えなかったのです。</P>
+              <BR>
+              <P>この形式（Type 1）のデータを処理するソフトを探したのですが、結局見つけたのはデータ形式を記述した文書と、処理するソースコード（CやFORTRAN）だけでした。無いなら作ってしまえ、ということで、コードの主要部分をFORTRANから移植して新しいモジュールを作りました。(*)</P>
+              <BR>
+              <P>これでツールがそろい、SSVGとして作り上げることができました。探査機の飛行経路の計算の正しさは、SSVGで小惑星にランデブーできてその状態を数百日の期間維持できることから、このソフトとして必要な程度には確認ができたと考えています。</P>
+              <BR>
+              <P>(*) 2018年2月にNASAのオンラインサービス（HORIZONS）が提供するデータファイルの標準形式が Type 1 から Type 21 に変更になりました。SSVGはバージョン1.2.0から Type 21 のデータファイルも読むことができるようになっています。</P>
+              <BR><BR>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <TABLE id=ghfooter>
+        <TBODY>
+          <TR>
+            <TD id=ghftext>
+              <H2 style="padding-top: 48px">whiskie14142/植月修志</H2>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+    </CENTER>
+  </BODY>
+</HTML>

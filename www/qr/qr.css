@@ -1,0 +1,166 @@
+/* ------------------------------------------- global */
+
+*
+{
+    -webkit-text-size-adjust: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0 ,0.5);
+    box-sizing: border-box;
+    background-color: white;
+}
+
+body
+{
+    -webkit-text-size-adjust: 100%;
+    color: black;
+    font-size: middle;
+    font-family: sans-serif;
+    line-height: 1.4em;
+}
+
+h1
+{
+    font-size: x-large;
+}
+
+h2
+{
+    padding-top: 0.7em;
+    font-size: large;
+}
+
+h3
+{
+    padding-top: 1em;
+    font-size: medium;
+}
+
+table
+{
+    width: 100%;
+}
+
+td.qrimage
+{
+    width: 10%;
+}
+
+td.inst
+{
+    width: 90%;
+    vertical-align: middle;
+}
+
+img
+{
+    border: 0;
+}
+
+img.fig
+{
+    max-width: 70%;
+}
+
+p
+{
+    padding-bottom: 0.5em;
+    margin:0;
+}
+
+a
+{
+    line-height: 1.2em;
+}
+
+ul
+{
+    margin:0;
+    padding-left: 1.5em;
+    padding-bottom: 0.5em;
+    list-style-type: none;
+}
+
+ul.disc
+{
+    padding-left: 2em;
+    list-style-type: disc;
+}
+
+ul>li
+{
+    margin:0;
+    line-height: 1.4em;
+}
+
+ul.disc>li
+{
+    line-height: 1.4em;
+}
+
+div.footer
+{
+    width: 100%;
+    text-align: right;
+    color: silver;
+    font-size: small;
+}
+
+span.red
+{
+    color: red;
+    font-style: normal;
+    font-weight: bold;
+}
+
+span.blue
+{
+    color: blue;
+    font-style: normal;
+    font-weight: bold;
+}
+
+span.green
+{
+    color: green;
+    font-style: normal;
+    font-weight: bold;
+}
+
+span.orange
+{
+    color: orange;
+    font-style: normal;
+    font-weight: bold;
+}
+
+span.cyan
+{
+    color: cyan;
+    font-style: normal;
+    font-weight: normal;
+}
+
+	
+/* ------------------------------------------- link */
+a:link 
+{
+    text-decoration : none;
+    background: transparent;
+    color: #3366cc;
+}
+
+a:visited
+{
+    text-decoration : none;
+    background: transparent;
+    color: #3366cc;
+}
+
+a:hover
+{
+    text-decoration : underline;
+    background: transparent;
+    color: #3366cc;
+}
+

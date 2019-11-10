@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<HTML lang="ja">
+  <HEAD>
+    <TITLE>SSVG 宇宙探査の旅</TITLE>
+    <meta http-equiv="content-language" content="ja">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./ssvg5.css" type="text/css">
+    <link rel="shortcut icon" href="./ssvgicon.ico">
+  </HEAD>
+  <BODY>
+    <CENTER>
+      <TABLE id=ghtitle>
+        <TBODY>
+          <TR>
+            <TD id=ghhtext>
+              <H1><IMG src="./images/icon32.jpg" class="setmiddle">&nbsp;&nbsp;SSVG 宇宙探査の旅</H1>
+              <H2>FAQ</H2>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <TABLE id=ghmain>
+        <TBODY>
+          <TR>
+            <TD id=lang colspan=2>
+              <A href="./30_faq-en.html">English</A>&nbsp;
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <TABLE id=menutbl>
+                <TBODY>
+                  <TR>
+                    <TD class=gmenu><A href="./index.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;ホーム　　　　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./01_install.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;インストール　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./11_flyfreely.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;宇宙を飛び回る</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./12_solarsail.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;ソーラーセイル</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./13_accuracy.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;精密な飛行経路</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./14_tools.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;便利なツール　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./20_issues.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;既知の事象　　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenuself><A href="./30_faq.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;FAQ　　　　　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./40_contact.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;連絡方法　　　</A></TD>
+                  </TR>
+                  <TR>
+                    <TD class=gmenu><A href="./50_sample.html"><IMG alt=→ src="./images/arrow1.jpg">&nbsp;追加サンプル　</A></TD>
+                  </TR>
+                </TBODY>
+              </TABLE>
+            </TD>
+            <TD id=mainbody>
+              <ol>
+                <li>Ｑ：探査機やターゲットの軌道の線とマークが一致しないのはなぜ？<BR><BR>Ａ：理由は二つあります。 <BR>・軌道の線は軌道上の点列（1001点）を直線で結んで描画しているため<BR>・軌道の線はある時点のケプラー軌道（楕円）に基づいているため</li>
+              <BR>
+                <li>Ｑ：最適化アシスタントで表示される軌道の線が多角形になるのはなぜ？<BR><BR>Ａ：探査機の軌道（水色の線）は点列を直線で結んで描画しているのですが、描画速度を上げるため最適化アシスタントでは点の数を少なめにしています。そのため、楕円が細長いと多角形になってしまいます。なお、バージョン 1.2.0 以降では症状が軽減されています。</li>
+              <BR>
+                <li>Ｑ：探査機の軌道の線が閉じない（楕円にならない）ことがあるのはなぜ？<BR><BR>Ａ：探査機の軌道は通常は楕円ですが、放物線や双曲線になる場合があります。放物線や双曲線の軌道は無限の遠方まで続くのですが、途中で描画を止めてます。</li>
+              <BR>
+                <li>Ｑ：SSVGのサブフォルダの一つ（SSVG_log）の中に変な名前のファイルが沢山入っているのだけれど、これは何？　消していいの？<BR><BR>Ａ：「SSVGLOG_～.log」というような長い名前のファイルですね？　でしたらそれはSSVGでの飛行計画の編集作業を記録したログファイルです。消しても問題ありませんが、テキストエディタで開けば編集作業の内容を見ることができます。</li>
+              <BR>
+                <li>Ｑ：サンプルの飛行計画を実行して未来の探査機の位置を表示させていたのですけど、2050年を過ぎたあたりで探査機が表示されなくなります。惑星の位置も更新されません。どうしたのでしょうか？<BR><BR>Ａ：sample_Pallasを実行中ですね？　このサンプルの実行には小惑星パラスのSPKファイルが必要です。そのファイルはSSVGに同梱されているのですけど、有効期間が西暦2000年から2050年までなのです。SSVGではSPKファイルの有効期間の外では探査機を飛行させることや、探査機の位置を確認することはできません。</li>
+              </ol>
+              <BR><BR>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <TABLE id=ghfooter>
+        <TBODY>
+          <TR>
+            <TD id=ghftext>
+              <H2 style="padding-top: 48px">whiskie14142/植月修志</H2>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+    </CENTER>
+  </BODY>
+</HTML>

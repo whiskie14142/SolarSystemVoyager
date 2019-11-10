@@ -1,0 +1,17 @@
+/* --------------------- CSS for sample flight plan table ---------------------- */
+
+    #sfpt {width: 635px; empty-cells: show;}
+    #sfpt * {font-size: small; line-height: 1.4em; padding: 0em;}
+    #sfpt td {vertical-align: center; padding: 0.4em;}
+    #sfpt th, #sfpt td {border: solid thin silver;}
+    #sfph1 {width: 15%; text-align: center;}
+    #sfph2 {width: 45%; text-align: center;}
+    #sfph3 {width: 20%; text-align: center;}
+    #sfph4 {width: 20%; text-align: center;}
+    #sfph34 {text-align: center;}
+    .sfpb1 {width: 15%; text-align: center;}
+    .sfpb2 {width: 45%;}
+    .sfpb3 {width: 20%; text-align: center;}
+    .sfpb4 {width: 20%; text-align: center;}
+
+    #sfpt caption {font-weight: bold; padding-bottom: 2px; text-align: center}
