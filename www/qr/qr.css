@@ -41,12 +41,31 @@ table
     width: 100%;
 }
 
+table.mlist
+{
+    margin-left: 1em;
+    width: 95%;
+}
+
 td.qrimage
 {
     width: 10%;
+    vertical-align: middle;
 }
 
 td.inst
+{
+    width: 90%;
+    vertical-align: middle;
+}
+
+td.img
+{
+    width: 10%;
+    vertical-align: top;
+}
+
+td.desc
 {
     width: 90%;
     vertical-align: middle;
@@ -59,7 +78,12 @@ img
 
 img.fig
 {
-    max-width: 70%;
+    max-width: 100%;
+}
+
+img.mid
+{
+    vertical-align: middle;
 }
 
 p
@@ -109,36 +133,37 @@ div.footer
 span.red
 {
     color: red;
-    font-style: normal;
     font-weight: bold;
 }
 
 span.blue
 {
     color: blue;
-    font-style: normal;
     font-weight: bold;
 }
 
 span.green
 {
     color: green;
-    font-style: normal;
     font-weight: bold;
 }
 
 span.orange
 {
     color: orange;
-    font-style: normal;
     font-weight: bold;
 }
 
 span.cyan
 {
     color: cyan;
-    font-style: normal;
     font-weight: normal;
+}
+
+p.small
+{
+    font-size: small;
+    line-height: 1.4em;
 }
 
 	
@@ -159,7 +184,7 @@ a:visited
 
 a:hover
 {
-    text-decoration : underline;
+    text-decoration : none;
     background: transparent;
     color: #3366cc;
 }
