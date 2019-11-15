@@ -141,6 +141,12 @@ h2
     padding-left: 6px;
 }
 
+.smenu
+{
+    line-height: 1.0em;
+    font-size: small;
+}
+
 .gmenuself
 {
     text-align: left;
