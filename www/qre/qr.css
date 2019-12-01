@@ -1,0 +1,221 @@
+/* ------------------------------------------- global */
+
+*
+{
+    -webkit-text-size-adjust: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0 ,0.5);
+    box-sizing: border-box;
+    background-color: white;
+}
+
+body
+{
+    -webkit-text-size-adjust: 100%;
+    color: black;
+    font-size: middle;
+    font-family: sans-serif;
+    line-height: 1.4em;
+}
+
+h1
+{
+    font-size: x-large;
+}
+
+h2
+{
+    padding-top: 2em;
+    font-size: large;
+}
+
+h3
+{
+    padding-top: 1em;
+    font-size: medium;
+}
+
+table
+{
+    width: 100%;
+}
+
+table.mlist
+{
+    margin-left: 1em;
+    width: 95%;
+}
+
+table.proc
+{
+    width: 100%;
+    padding-bottom: 0.5em
+}
+
+td.qrimage
+{
+    width: 10%;
+    vertical-align: middle;
+}
+
+td.inst
+{
+    width: 90%;
+    vertical-align: middle;
+}
+
+td.img
+{
+    width: 10%;
+    vertical-align: top;
+}
+
+td.desc
+{
+    width: 90%;
+    vertical-align: middle;
+}
+
+td.proc {
+    width: 10%;
+    padding-right: 1em;
+    font-size: small;
+    font-weight: bold;
+    font-style: italic;
+    font-family: serif;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+img
+{
+    border: 0;
+}
+
+img.fig
+{
+    max-width: 100%;
+}
+
+img.mid
+{
+    vertical-align: middle;
+}
+
+p
+{
+    padding-bottom: 0.5em;
+    margin:0;
+}
+
+a
+{
+    line-height: 1.2em;
+}
+
+ul
+{
+    margin:0;
+    padding-left: 1.5em;
+    padding-bottom: 0.5em;
+    list-style-type: none;
+}
+
+ul.disc
+{
+    padding-left: 2em;
+    list-style-type: disc;
+}
+
+ul>li
+{
+    margin:0;
+    line-height: 1.4em;
+}
+
+ul.disc>li
+{
+    line-height: 1.4em;
+}
+
+div.footer
+{
+    width: 100%;
+    text-align: right;
+    color: silver;
+    font-size: medium;
+}
+
+span.red
+{
+    color: red;
+    font-weight: bold;
+}
+
+span.blue
+{
+    color: blue;
+    font-weight: bold;
+}
+
+span.green
+{
+    color: green;
+    font-weight: bold;
+}
+
+span.orange
+{
+    color: orange;
+    font-weight: bold;
+}
+
+span.cyan
+{
+    color: cyan;
+    font-weight: normal;
+}
+
+span.proc
+{
+    font-size: small;
+    font-weight: bold;
+    font-style: italic;
+    font-family: serif;
+}
+
+p.small
+{
+    font-size: small;
+    line-height: 1.4em;
+}
+
+p.strong
+{
+    font-weight: bold;
+}
+
+	
+/* ------------------------------------------- link */
+a:link 
+{
+    text-decoration : none;
+    background: transparent;
+    color: #3366cc;
+}
+
+a:visited
+{
+    text-decoration : none;
+    background: transparent;
+    color: #3366cc;
+}
+
+a:hover
+{
+    text-decoration : none;
+    background: transparent;
+    color: #3366cc;
+}
+

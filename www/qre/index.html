@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<HTML lang="en">
+  <HEAD>
+    <TITLE>SSVG Quick Reference</TITLE>
+    <meta http-equiv="content-language" content="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="./qr.css" type="text/css">
+    <link rel="shortcut icon" href="SSVG-QR.ico">
+    <link rel="apple-touch-icon" href="SSVG-QR.png">
+    <link rel="icon" type="image/png" href="SSVG-QR.png">
+    <script>
+      function goback() {
+        history.back();
+      }
+      function gofwd() {
+        history.forward();
+      }
+    </script>
+  </HEAD>
+  <BODY>
+    <h1 id=head0>
+      SSVG Quick Reference
+    </h1>
+    <p>
+      This page provides quick guides for <a href="http://whsk.sakura.ne.jp/ssvg/index-en.html" target=_blank>SSVG (Solar System Voyager)</a>. We recommend narrowing the width of the window or using a smartphone to read.
+    </p>
+    <table>
+      <tr>
+        <td class=qrimage>
+          <img src="images/qrcode-e.gif" title="http://whsk.sakura.ne.jp/ssvg/qre/">
+        </td>
+        <td class=inst>
+          &larr; Open this page with a smartphone
+        </td>
+      </tr>
+    </table>
+      
+    </p>
+    <p>
+      If you wish to know details of SSVG, please refer &quot;SSVG User&apos;s Guide&quot contained in SSVG.
+    </p>
+    <noscript>
+      This page uses JavaScript. Please activate JavaScript on your smart phone.
+    </noscript>
+    <h2 id=table0>Table of Contents</h2>
+    <nav>
+      <ul>
+        <li><a href="#table1">1. Open a Flight Plan</a>
+          <ul>
+            <li><a href="#cont1-1">1.1 Open a Flight Plan File of Your Own</a></li>
+            <li><a href="#cont1-2">1.2 Open a Flight Plan File Received from Somewhere</a></li>
+            <li><a href="#cont1-3">1.3 Import a Flight Plan File</a></li>
+            <li><a href="#cont1-4">1.4 Import an SPK File</a></li>
+          </ul>
+        </li>
+        <li><a href="#table2">2. Execute Maneuvers of the Flight Plan</a>
+          <ul>
+            <li><a href="#cont2-1">2.1 Execute the Maneuver of the Next Line</a></li>
+            <li><a href="#cont2-2">2.2 Execute Maneuvers by One Operation</a></li>
+            <li><a href="#cont2-3">2.3 Use a Checkpoint</a></li>
+          </ul>
+        </li>
+        <li><a href="#table3">3. See the State of the Probe</a>
+          <ul>
+            <li><a href="#cont3-1">3.1 See the Current Position</a></li>
+            <li><a href="#cont3-2">3.2 See the Position in the Future (or in the Past)</a></li>
+            <li><a href="#cont3-3">3.3 See the Orbit in Numbers</a></li>
+            <li><a href="#cont3-4">3.4 See the Position and the Velocity of the Target</a></li>
+            <li><a href="#cont3-5">3.5 Zoom in/out or Rotate the 3D Chart</a></li>
+            <li><a href="#cont3-6">3.6 Change the Center of the 3D Chart</a></li>
+            <li><a href="#cont3-7">3.7 Show/Hide Items of the 3D Chart</a></li>
+            <li><a href="#cont3-8">3.8 Marks and Lines of the 3D Chart</a></li>
+          </ul>
+        </li>
+        <li><a href="#table4">4. Review the Result of the Spaceflight</a>
+          <ul>
+            <li><a href="#cont4-1">4.1 Review the Recent FLYTO Maneuver</a></li>
+            <li><a href="#cont4-2">4.2 Review Through the Executed Maneuvers</a></li>
+          </ul>
+        </li>
+        <li><a href="#table5">5. Edit the Flight Plan</a>
+          <ul>
+            <li><a href="#cont5-1">5.1 Edit the Probe</a></li>
+            <li><a href="#cont5-2">5.2 Choose a Celestial Body for the Target</a></li>
+            <li><a href="#cont5-3">5.3 Add a Maneuver</a></li>
+            <li><a href="#cont5-4">5.4 Delete a Maneuver</a></li>
+            <li><a href="#cont5-5">5.5 Start Editing of a Maneuver</a></li>
+            <li><a href="#cont5-6">5.6 Edit an Empty Maneuver</a></li>
+            <li><a href="#cont5-7">5.7 Configure a START Maneuver</a></li>
+            <li><a href="#cont5-8">5.8 Configure a CP Maneuver</a></li>
+            <li><a href="#cont5-9">5.9 Configure an EP_ON Maneuver</a></li>
+            <li><a href="#cont5-10">5.10 Configure an EP_OFF Maneuver</a></li>
+            <li><a href="#cont5-11">5.11 Configure an SS_ON Maneuver</a></li>
+            <li><a href="#cont5-12">5.12 Configure an SS_OFF Maneuver</a></li>
+            <li><a href="#cont5-13">5.13 Configure a FLYTO Maneuver</a></li>
+            <li><a href="#cont5-14">5.14 Edit a Maneuver Description</li></a></li>
+            <li><a href="#cont5-15">5.15 Save the Flight Plan</a></li>
+          </ul>
+        </li>
+        <li><a href="#table6">6. Create a Flight Plan</a>
+          <ul>
+            <li><a href="#cont6-1">6.1 Get an SPK file</a></li>
+            <li><a href="#cont6-2">6.2 Start Composition of a Flight Plan</a></li>
+            <li><a href="#cont6-3">6.3 Define the Probe</a></li>
+            <li><a href="#cont6-4">6.4 Choose a Celestial Body for the Target</a></li>
+            <li><a href="#cont6-5">6.5 Save the Flight Plan</a></li>
+          </ul>
+        </li>
+        <li><a href="#table7">7. Distribute a Flight Plan</a>
+          <ul>
+            <li><a href="#cont7-1">7.1 Files to Distribute</a></li>
+            <li><a href="#cont7-2">7.2 Explain How to Use the Files</a></li>
+          </ul>
+        </li>
+        <li><a href="#table8">8. Use FTA</a>
+          <ul>
+            <li><a href="#cont8-1">8.1 What is FTA</a></li>
+            <li><a href="#cont8-2">8.2 Open FTA</a></li>
+            <li><a href="#cont8-3">8.3 Time to Arrival</a></li>
+            <li><a href="#cont8-4">8.4 Precise Targeting</a></li>
+            <li><a href="#cont8-5">8.5 Define with B-plane Coordinates</a></li>
+            <li><a href="#cont8-6">8.6 Define with Orbit Local Coordinates</a></li>
+            <li><a href="#cont8-7">8.7 Run the Computation</a></li>
+          </ul>
+        </li>
+        <li><a href="#table9">9. Use Optimize Assistant</a>
+          <ul>
+            <li><a href="#cont9-1">9.1 What is Optimize Assistant</a></li>
+            <li><a href="#cont9-2">9.2 Open Optimize Assistant</a></li>
+            <li><a href="#cont9-3">9.3 Adjust Start Time of the START Maneuver</a></li>
+            <li><a href="#cont9-4">9.4 Adjust Maneuver Time of the CP Maneuver</a></li>
+            <li><a href="#cont9-5">9.5 Adjust Flight Time</a></li>
+            <li><a href="#cont9-6">9.6 Find a Preferable Orbit</a></li>
+            <li><a href="#cont9-7">9.7 Apply the Result of Optimize Assistant</a></li>
+            <li><a href="#cont9-8">9.8 Apply the Maneuver Time into the Flight Plan</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      Top |
+      Prev |
+      <a href="#table1">Next</a>
+    </div>
+
+    <h2 id=table1>1. Open a Flight Plan</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont1-1">1.1 Open a Flight Plan File of Your Own</a></li>
+        <li><a href="#cont1-2">1.2 Open a Flight Plan File Received from Somewhere</a></li>
+        <li><a href="#cont1-3">1.3 Import a Flight Plan File</a></li>
+        <li><a href="#cont1-4">1.4 Import an SPK File</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table1">Top</a> |
+      Prev |
+      <a href="#table2">Next</a>
+    </div>
+
+    <h3 id=cont1-1>1.1 Open a Flight Plan File of Your Own</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Menu > File > Open</td>
+      </tr>
+    </table>
+    <p>
+      Click the &quot;File&quot; of the menu of the SSVG window and click the &quot;Open&quot; on the list.  The &quot;Select Flight Plan File&quot; dialog appears. You will find the file in it.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table1">Top</a> |
+      Prev |
+      <a href="#table2">Next</a>
+    </div>
+
+    <h3 id=cont1-2>1.2 Open a Flight Plan File Received from Somewhere</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Menu > File > Open</td>
+      </tr>
+    </table>
+    <p>
+      Click the &quot;File&quot; of the menu of the SSVG window and click the &quot;Open&quot; on the list.  The &quot;Select Flight Plan File&quot; dialog appears. If you find the file in it, open it.
+    </p>
+    <p>
+      If you cannot find the file, get the file again, <a href="#cont1-3">import</a> it, and try again.
+    </p>
+    <p>
+      When the Flight Plan requires SPK file(s), get the file(s) from the author of the Flight Plan and <a href="#cont1-4">import</a> them beforehand.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table1">Top</a> |
+      Prev |
+      <a href="#table2">Next</a>
+    </div>
+
+    <h3 id=cont1-3>1.3 Import a Flight Plan File</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Menu > File > Import > Flight Plan file</td>
+      </tr>
+    </table>
+    <p>
+      We recommend importing Flight Plan files when you received them.
+    </p>
+    <p>
+      Click the &quot;File&quot; of the menu of the SSVG window, click the &quot;Import&quot; on the list, and click the &quot;Flight Plan file.&quot; Then find the file in the dialog that appeared and open it. SSVG will import the file and show you the result.
+    </p>
+    <p>
+      When SSVG has a Flight Plan file with the same name, it imports the file with a modified file name to avert the collision. SSVG adds (2) or (3) and so on, at the end of the file name.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table1">Top</a> |
+      Prev |
+      <a href="#table2">Next</a>
+    </div>
+
+    <h3 id=cont1-4>1.4 Import an SPK File</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Menu > File > Import > SPK file</td>
+      </tr>
+    </table>
+    <p>
+      We recommend importing SPK files when you got them.
+    </p>
+    <p>
+      Click the &quot;File&quot; of the menu of the SSVG window, click the &quot;Import&quot; on the list, and click the &quot;SPK file.&quot; Then find the file in the dialog and open it. SSVG will import the file and show you the result.
+    </p>
+    <p>
+      When SSVG has an SPK file with the same name, it imports the file with a modified file name to avert the collision. SSVG adds (2) or (3) and so on at the end of the file name. In this case, you may need to modify the Flight Plan that uses the SPK file. (You need to choose a celestial body for the Target)
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table1">Top</a> |
+      Prev |
+      <a href="#table2">Next</a>
+    </div>
+
+    <h2 id=table2>2. Execute Maneuvers of the Flight Plan</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont2-1">2.1 Execute the Maneuver of the Next Line</a></li>
+        <li><a href="#cont2-2">2.2 Execute Maneuvers by One Operation</a></li>
+        <li><a href="#cont2-3">2.3 Use a Checkpoint</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table2">Top</a> |
+      <a href="#table1">Prev</a> |
+      <a href="#table3">Next</a>
+    </div>
+
+    <h3 id=cont2-1>2.1 Execute the Maneuver of the Next Line</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > [EXECUTE] button</td>
+      </tr>
+    </table>
+    <p>
+      When you clicked the [EXECUTE] button, SSVG executes the Maneuver of the Next Line<sup>*</sup> and shows the state of the Probe. The line just below the current Next Line becomes the new Next Line.
+    </p>
+    <p class=small>
+      <sup>*</sup> The Maneuver Table contains one line (row) that has a &quot;Next&quot; in the Status column. That is the Next Line.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table2">Top</a> |
+      <a href="#table1">Prev</a> |
+      <a href="#table3">Next</a>
+    </div>
+
+    <h3 id=cont2-2>2.2 Execute Maneuvers by One Operation</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Select a line > [EXECUTE *] button</td>
+      </tr>
+    </table>
+    <p>
+      To execute several Maneuvers in a row, select the last line of the execution and click the [EXECUTE *] button. 
+    </p>
+    <p>
+      SSVG executes the Maneuvers from the Next Line through the selected line and shows the last state of the Probe. The line just below the selected line becomes the new Next Line.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table2">Top</a> |
+      <a href="#table1">Prev</a> |
+      <a href="#table3">Next</a>
+    </div>
+
+    <h3 id=cont2-3>2.3 Use a Checkpoint</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>create</td>
+        <td class=desc>SSVG window > Menu > Checkpoint > Create</td>
+      </tr>
+      <tr>
+        <td class=proc>resume</td>
+        <td class=desc>SSVG window > Menu > Checkpoint > Resume</td>
+      </tr>
+    </table>
+    <p>
+      When you have executed Maneuver(s), you can create a Checkpoint that contains the current state of the Probe. After subsequent executions of some Maneuvers, you can resume the state of the Probe from the Checkpoint.
+    </p>
+    <p>
+      To create a Checkpoint, click the &quot;Checkpoint&quot; of the menu and click the &quot;Create&quot; of the list.
+    </p>
+    <p>
+      To resume the state from the Checkpoint, click the &quot;Checkpoint&quot; of the menu and click the &quot;Resume&quot; of the list.
+    </p>
+    <p>
+      When you perform cut-and-try of a Maneuver, you can use a Checkpoint to ease the repetition.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table2">Top</a> |
+      <a href="#table1">Prev</a> |
+      <a href="#table3">Next</a>
+    </div>
+
+    <h2 id=table3>3. See the State of the Probe</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont3-1">3.1 See the Current Position</a></li>
+        <li><a href="#cont3-2">3.2 See the Position in the Future (or in the Past)</a></li>
+        <li><a href="#cont3-3">3.3 See the Orbit in Numbers</a></li>
+        <li><a href="#cont3-4">3.4 See the Position and the Velocity of the Target</a></li>
+        <li><a href="#cont3-5">3.5 Zoom in/out or Rotate the 3D Chart</a></li>
+        <li><a href="#cont3-6">3.6 Change the Center of the 3D Chart</a></li>
+        <li><a href="#cont3-7">3.7 Show/Hide Items of the 3D Chart</a></li>
+        <li><a href="#cont3-8">3.8 Marks and Lines of the 3D Chart</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h3 id=cont3-1>3.1 See the Current Position</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>Execute a Maneuver, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>SSVG window > [SHOW Orbit] button, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. C</td>
+        <td class=desc>Show Orbit window > Zero the Elapsed Time</td>
+      </tr>
+    </table>
+    <p>
+      When you execute a Maneuver, SSVG shows the current position of the Probe with a <span class=red>&times;</span> mark on the 3D Orbit window.
+    </p>
+    <p>
+      During a review of spaceflight, click the [SHOW Orbit] button of the SSVG window to terminate the review. SSVG shows the current position of the Probe.
+    </p>
+    <p>
+      If the Elapsed Time of the Show Orbit window is not zero, the <span class=red>&times;</span> mark indicates a position in the future (or the past) of the Probe but the current position. Zero the Elapsed Time to see the current position of the Probe.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h3 id=cont3-2>3.2 See the Position in the Future (or the Past)</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>Show Orbit window > Buttons of Time Manipulator, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>Show Orbit window > Elapsed Time (days)</td>
+      </tr>
+    </table>
+    <p>
+      When you click one of the buttons of the Time Manipulator of the Show Orbit window, SSVG shows the position of the Probe in the future or the past. Two buttons on both end (&lt;&lt; and &gt;&gt;) are for fast-backward and fast-forward. You can change the coarseness/fineness of the time by manipulating the &quot;coarse/fine&quot; spinner.
+    </p>
+    <p>
+      You can change the time to see also by editing the input field of the &quot;Elapsed Time&quot; and click the [Apply] button (or type the Enter).
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h3 id=cont3-3>3.3 See the Orbit in Numbers</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>See the SSVG window</td>
+      </tr>
+    </table>
+    <p>
+      SSVG shows the current state of the Probe on the Current Status area of the SSVG window.
+    </p>
+    <p>
+      The information includes classical orbital elements (semi-major axis, eccentricity, inclination, etc).
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h3 id=cont3-4>3.4 See the Position and the Velocity of the Target</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>See the Show Orbit window</td>
+      </tr>
+    </table>
+    <p>
+      The lower part of the Show Orbit window contains the position and the velocity of the Target relative to the Probe and the line of sight velocity of the Target from the Probe.
+    </p>
+    <p>
+      See the following figure about the two angles phi and elv.<br>
+      <img class=fig src="images/ol-2en.gif" title="Direction on the Orbit Local Coordinate System of the Probe">
+    </p>
+    <p>
+      The line of sight velocity indicates the velocity by which the Target is departing from the Probe. When Target is approaching, it shows a negative value.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h3 id=cont3-5>3.5 Zoom in/out or Rotate the 3D Chart</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>zoom</td>
+        <td class=desc>3D Orbit window > Move the mouse up/down with the right button held down</td>
+      </tr>
+      <tr>
+        <td class=proc>rotate</td>
+        <td class=desc>3D Orbit window > Move the mouse with the left button held down</td>
+      </tr>
+    </table>
+    <p>
+      To zoom the 3D chart, put the mouse cursor on the 3D Orbit window and move the mouse up or down with the right button held down. Downward movement zooms in the chart, upward zooms out.
+    </p>
+    <p>
+      To rotate the 3D chart, put the mouse cursor on the 3D Orbit window and move the mouse with the left button held down. The chart rotates with the movement of the mouse cursor.
+    </p>
+    <p>
+      The pivot of the rotation and zooming is the center of the chart.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h3 id=cont3-6>3.6 Change the Center of the 3D Chart</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Show Orbit window > Look at</td>
+      </tr>
+    </table>
+    <p>
+      You can change the center of the 3D chart by selecting one of the items of the &quot;Look at&quot; group of the Show Orbit window.
+    </p>
+    <p>
+      The center of the chart is the pivot of the rotation and zooming of the chart.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h3 id=cont3-7>3.7 Show/Hide Items of the 3D Chart</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Show Orbit window > Show</td>
+      </tr>
+    </table>
+    <p>
+      You can choose the show or hide the following items of the 3D chart by checking/erasing of the checkboxes of the &quot;Show&quot; group of the Show Orbit window.
+      <ul class=disc>
+        <li>Probe Trajectory: The trajectory of the Probe created by previous executions of the Maneuvers.</li>
+        <li>Probe Kepler Orbit: The current two-body orbit of the Probe.</li>
+        <li>Target Kepler Orbit: The two-body orbit of the Target.</li>
+        <li>Planet: The positions and the names of the planets.</li>
+      </ul>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h3 id=cont3-8>3.8 Marks and Lines of the 3D Chart</h3>
+    <p>
+      The followings are the main items shown on the 3D Orbit window.
+      <table class=mlist>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/probe.png" height=18>
+          </td>
+          <td class=desc>
+            The Probe
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/porb.png" height=18>
+          </td>
+          <td class=desc>
+            The two-body orbit of the Probe
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/ptrj.png" height=18>
+          </td>
+          <td class=desc>
+            The flown trajectory of the Probe
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/target.png" height=18>
+          </td>
+          <td class=desc>
+            The Target
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/torb.png" height=18>
+          </td>
+          <td class=desc>
+            The two-body orbit of the Target
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/sun.png" height=18>
+          </td>
+          <td class=desc>
+            The Sun
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/planet-e.png" height=18>
+          </td>
+          <td class=desc>
+            The Planets and the Moon of the Earth (the Moon appears as a <span class=cyan>+</span> mark only)
+          </td>
+        </tr>
+      </table>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table3">Top</a> |
+      <a href="#table2">Prev</a> |
+      <a href="#table4">Next</a>
+    </div>
+
+    <h2 id=table4>4. Review the Result of the Spaceflight</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont4-1">4.1 Review the Recent FLYTO Maneuver</a></li>
+        <li><a href="#cont4-2">4.2 Review Through the Executed Maneuvers</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table4">Top</a> |
+      <a href="#table3">Prev</a> |
+      <a href="#table5">Next</a>
+    </div>
+
+    <h3 id=cont4-1>4.1 Review the Recent FLYTO Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>SSVG window > [REVIEW Recent] button, and</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>Flight Review window > buttons of the Review Manipulator</td>
+      </tr>
+    </table>
+    <p>
+      Click the [REVIEW Recent] button just after the execution of a FLYTO Maneuver to review the state of the spaceflight.
+    </p>
+    <p>
+      The Flight Review window replaces the Show Orbit window below the SSVG window.
+    </p>
+    <p>
+      Click the buttons of the &quot;Review Manipulator&quot; to see the position and orbit of the Probe on each integration step of the FLYTO Maneuver.
+    </p>
+    <p>
+      To fast-forward or fast-backward the review, click one of the two buttons ( [&lt;&lt;] or [&gt;&gt;] ) placed on the outer side of the &quot;Review Manipulator.&quot; You can change the quickness of them by manipulating the &quot;Quickness&quot; spinner.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table4">Top</a> |
+      <a href="#table3">Prev</a> |
+      <a href="#table5">Next</a>
+    </div>
+    </div>
+
+    <h3 id=cont4-2>4.2 Review Through the Executed Maneuvers</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>SSVG window > [REVIEW Through] button, and</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>Review Throughout window > buttons of the Review Manipulator</td>
+      </tr>
+    </table>
+    <p>
+      Click the [REVIEW Through] button to review the progress through all executed Maneuvers.
+    </p>
+    <p>
+      The Review Throughout window replaces the Show Orbit window below the SSVG window.
+    </p>
+    <p>
+      You can see the state of the Probe at the end of each Maneuver. For a FLYTO Maneuver, you can see it also at the beginning of the flight and each integration step.
+    </p>
+    <p>
+      To review the progress of the spaceflight, use the six buttons of the &quot;Review Manipulator.&quot; Click one of the buttons of both ends ( [|&lt;&lt;] and [&gt;&gt;|] ) to change Maneuver to see. You use the other four buttons in reviewing a FLYTO Maneuver.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table4">Top</a> |
+      <a href="#table3">Prev</a> |
+      <a href="#table5">Next</a>
+    </div>
+
+    <h2 id=table5>5. Edit the Flight Plan</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont5-1">5.1 Edit the Probe</a></li>
+        <li><a href="#cont5-2">5.2 Choose a Celestial Body for the Target</a></li>
+        <li><a href="#cont5-3">5.3 Add a Maneuver</a></li>
+        <li><a href="#cont5-4">5.4 Delete a Maneuver</a></li>
+        <li><a href="#cont5-5">5.5 Start Editing of a Maneuver</a></li>
+        <li><a href="#cont5-6">5.6 Edit an Empty Maneuver</a></li>
+        <li><a href="#cont5-7">5.7 Configure a START Maneuver</a></li>
+        <li><a href="#cont5-8">5.8 Configure a CP Maneuver</a></li>
+        <li><a href="#cont5-9">5.9 Configure an EP_ON Maneuver</a></li>
+        <li><a href="#cont5-10">5.10 Configure an EP_OFF Maneuver</a></li>
+        <li><a href="#cont5-11">5.11 Configure an SS_ON Maneuver</a></li>
+        <li><a href="#cont5-12">5.12 Configure an SS_OFF Maneuver</a></li>
+        <li><a href="#cont5-13">5.13 Configure a FLYTO Maneuver</a></li>
+        <li><a href="#cont5-14">5.14 Edit a Maneuver Description</li></a></li>
+        <li><a href="#cont5-15">5.15 Save the Flight Plan</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-1>5.1 Edit the Probe</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Menu > Edit > Probe</td>
+      </tr>
+    </table>
+    <p>
+      To edit the properties of the Probe, click the &quot;Edit&quot; of the menu and click the &quot;Probe&quot; of the list. The &quot;Edit Probe Properties&quot; window appears.
+    </p>
+    <p>
+      You can edit the name and mass of the Probe and choose a Space Bases from which the Probe starts the spaceflight.
+    </p>
+    <p>
+      The editing of the Probe properties clears the execution state of the Flight Plan.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-2>5.2 Choose a Celestial Body for the Target</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Menu > Edit > Target</td>
+      </tr>
+    </table>
+    <p>
+      To choose a celestial body for the Target, click the &quot;Edit&quot; of the menu and click the &quot;Target&quot; of the list. The &quot;Select New Target&quot; window appears.
+    </p>
+    <p>
+      Select one of the two radio buttons of the &quot;Planet&quot; or the &quot;Small Body&quot; at first.
+    </p>
+    <p>
+      When you select the &quot;Planet,&quot; you can choose the celestial body from the adjacent drop-down list. The list contains eight planets, Pluto (dwarf planet), and the Moon of the Earth.
+    </p>
+    <p>
+      When you select the &quot;Small Body,&quot; you can choose one of the small celestial bodies for which you have SPK files. The procedure is as follows:
+      <ul class=disc>
+        <li>Click the [Find] button and open the SPK file of the body.</li>
+        <li>Click the drop-down list of the SPKID and choose the appropriate SPKID.</li>
+        <li>Edit the name of the celestial body (if you wish).</li>
+      </ul>
+      You may get the SPK file from the author of the Flight Plan. If not the case, you should get it from the web-site of NASA/JPL. Please refer to the &quot;Get SPK File of Small Celestial Body&quot; section of the SSVG User&apos;s Guide. We recommend <a href="#cont1-4">importing</a> the SPK file in advance.
+    </p>
+    <p>
+      The editing of the Target does not affect the execution state of the Flight Plan.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-3>5.3 Add a Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>SSVG window > Edit the last line of the Maneuver Table, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>SSVG window > Select a line of the Maneuver Table > [INS *] button</td>
+      </tr>
+    </table>
+    <p>
+      The Maneuver Table (a large table placed in the upper part of the SSVG window) contains an empty Maneuver at the end of the Flight Plan. When you edit it, SSVG adds the Maneuver at the end of the Flight Plan.
+    </p>
+    <p>
+      If you wish to insert a Maneuver into a specific place of the Flight Plan, select the line of the Maneuver Table on which the new Maneuver will be placed and click the [INS *] button. SSVG inserts an empty Maneuver there.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-4>5.4 Delete a Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Select a line of the Maneuver Table > [DEL *] button</td>
+      </tr>
+    </table>
+    <p>
+      To delete a Maneuver of the Flight Plan, select the line of the Maneuver Table and click the [DEL *] button. SSVG requests the confirmation of the deletion and deletes the Maneuver.
+    </p>
+    <p>
+      There is no way to undo the deletion.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-5>5.5 Start Editing of a Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>SSVG window > [EDIT Next] button, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>SSVG window > Select a line of the Maneuver Table > [EDIT *] button, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. C</td>
+        <td class=desc>SSVG window > Double-click a line of the Maneuver Table</td>
+      </tr>
+    </table>
+    <p>
+      When you click the [EDIT Next] button, SSVG starts editing the Maneuver of the Next Line. The Next Line of the Maneuver Table indicates a &quot;Next&quot; mark on the &quot;Status&quot; column.
+    </p>
+    <p>
+      When you select a line of the Maneuver Table and click the [EDIT *] button, SSVG starts editing the Maneuver of the line.
+    </p>
+    <p>
+      When you double-click a line of the Maneuver Table, SSVG starts editing the Maneuver of the line.
+    </p>
+    <p>
+      If you edit a Maneuver that is not in the Next Line, you can use only a portion of the functions of the Maneuver Editor.
+    </p>
+    <p>
+      You can specify the Type of Maneuver only when the Maneuver was empty at the start of the editing. If you wish to change the Type of an existing Maneuver, delete it, insert a new Maneuver, and edit it.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-6>5.6 Edit an Empty Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Maneuver Editor window > Maneuver Type</td>
+      </tr>
+    </table>
+    <p>
+      When you edit an empty Maneuver, choose the type of the Maneuver at first.
+    </p>
+    <p>
+      If the Maneuver is in the first line of the Maneuver Table, SSVG assigns START for the type because the first Maneuver of the Flight Plan should be a START Maneuver.
+    </p>
+    <p>
+      To choose the Type of the Maneuver, click the drop-down list of &quot;Maneuver Type&quot; and select one of the Types on the list. You will be able to configure the Maneuver.
+    </p>
+    <p>
+      The Types of Maneuver are as follows:
+      <ul>
+        <li>START: starts the spaceflight of the Probe</li>
+        <li>CP: performs an orbital transition with the chemical propulsion engine</li>
+        <li>EP_ON: turns on the electric propulsion engine</li>
+        <li>EP_OFF: turns off the electric propulsion engine</li>
+        <li>SS_ON: turns on the solar sail</li>
+        <li>SS_OFF: turns off the solar sail</li>
+        <li>FLYTO: flies the Probe</li>
+      </ul>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-7>5.7 Configure a START Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>Maneuver Editor window > Start Time > [Edit Time] button, and</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>Maneuver Editor window > Parameters Table</td>
+      </tr>
+    </table>
+    <p>
+      A START Maneuver makes the Probe leave the Space Base. It requires the Start Time of the spaceflight and the delta-V.
+    </p>
+    <p>
+      To edit the Start Time, click the [Edit Time] button of the &quot;Start Time&quot; group. The &quot;Date and Time Editor&quot; window appears. The time is in TDB, the Barycentric Dynamical Time. The clock time in TDB is near to UT, the Universal Time, but there is some difference of roughly one minute between them.
+    </p>
+    <p>
+      To specify the delta-V, click each cell of the "Parameters" table and edit it.
+    </p>
+    <p>
+      The delta-V is the relative velocity of the Probe from the Space Base when it leaves. We use the Orbit Local Coordinate System of the Space Base to specify the vector.
+    </p>
+    <p>
+      The next figure shows the vector of the delta-V (&quot;V&quot;), the absolute value of the delta-V (&quot;dv&quot;), two angles to indicate the direction of the delta-V (&quot;phi&quot; and &quot;elv&quot;). You should specify the three values dv, phi, and elv for the Maneuver.
+      <br>
+      <img class=fig src="images/ol-1en.gif" title="Vector of Delta-V (START Maneuver)">
+    </p>
+    <p>
+      When you are editing a START Maneuver of the Next Line, the clicking of the [SHOW Orbit] button of the Maneuver Editor window results in the forecast of the Maneuver using the current parameters.  You will see the forecasted result of the Maneuver on the 3D Orbit window and the Show Orbit window.
+    </p>
+    <p>
+      When you are editing a START Maneuver of the Next Line, you can use the FTA or the Optimize Assistant to configure the parameters. See the following chapters.
+      <ul>
+        <li><a href="#table8">8. Use FTA</a></li>
+        <li><a href="#table9">9. Use Optimize Assistant</a></li>
+      </ul>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-8>5.8 Configure a CP Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Maneuver Editor window > Parameters Table</td>
+      </tr>
+    </table>
+    <p>
+      A CP Maneuver performs an orbital transition with the chemical propulsion engine. It requires the delta-V of the orbital transition.
+    </p>
+    <p>
+      To specify the delta-V, click each cell of the &quot;Parameters&quot; table and edit it. 
+    </p>
+    <p>
+      We use the Orbit Local Coordinate System of the Probe to specify the vector of the delta-V.
+    </p>
+    <p>
+      The next figure shows the vector of the delta-V (&quot;V&quot;), the absolute value of the delta-V (&quot;dv&quot;), two angles to indicate the direction of the delta-V (&quot;phi&quot; and &quot;elv&quot;). You should specify the three values dv, phi, and elv for the Maneuver.
+      <br>
+      <img class=fig src="images/ol-3en.gif" title="Vector of Delta-V (CP Maneuver)">
+    </p>
+    <p>
+      When you are editing a CP Maneuver of the Next Line, the clicking of the [SHOW Orbit] button of the Maneuver Editor window results in the forecast of the Maneuver using the current parameters. You will see the forecasted result of the Maneuver on the 3D Orbit window and the Show Orbit window.
+    </p>
+    <p>
+      When you are editing a CP Maneuver of the Next Line, you can use the FTA or the Optimize Assistant to configure the parameters. See the following chapters.
+      <ul>
+        <li><a href="#table8">8. Use FTA</a></li>
+        <li><a href="#table9">9. Use Optimize Assistant</a></li>
+      </ul>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-9>5.9 Configure an EP_ON Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Maneuver Editor window > Parameters Table</td>
+      </tr>
+    </table>
+    <p>
+      An EP_ON Maneuver turns on the electric propulsion engine. It requires the acceleration vector of the engine and the Thrust Vector Mode.
+    </p>
+    <p>
+      To specify the parameters, click each cell of the "Parameters" table and edit it.
+    </p>
+    <p>
+      We use the Orbit Local Coordinate System of the Probe to specify the acceleration vector.
+    </p>
+    <p>
+      The next figure shows the acceleration vector (&quot;V&quot;), the absolute value of the acceleration in velocity variance per day (&quot;dvpd&quot;), two angles to indicate the direction of the vector (&quot;phi&quot; and &quot;elv&quot;). You should specify the three values dvpd, phi, and elv for the Maneuver.
+      <br>
+      <img class=fig src="images/ol-4en.gif" title="Acceleration Vector">
+    </p>
+    <p>
+      The Thrust Vector Mode (&quot;tvmode&quot;) of the EP_ON Maneuver defines the way to control the direction of the thrust. It takes one of the two values &quot;L&quot; or &quot;E&quot; as follows:
+      <ul class=disc>
+        <li>L: the Probe keeps the direction of the thrust vector on the Orbit Local Coordinate System of the Probe throughout the operation of the engine. The thrust vector rotates in the inertial space during spaceflight because the coordinate system rotates.</li>
+        <li>E: the Probe computes the thrust vector in the inertial space at the execution of the Maneuver. It keeps the vector throughout the operation of the engine.</li>
+      </ul>
+    </p>
+    <p>
+      The thrust of the electric propulsion engine works during spaceflights or in other words, executions of FLYTO Maneuver. It changes the orbit of the Probe gradually during the spaceflights. 
+    </p>
+    <p>
+      Therefore, the orbit of the Probe displayed during the editing of the Maneuver or just after the execution of it does contain no effect of the thrust.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-10>5.10 Configure an EP_OFF Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Not required</td>
+      </tr>
+    </table>
+    <p>
+      An EP_OFF Maneuver turns off the electric propulsion engine. It requires no parameter.
+    </p>
+    <p>
+      When you select the type, you may finish the editing at the point.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-11>5.11 Configure an SS_ON Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Maneuver Editor window > Parameters Table</td>
+      </tr>
+    </table>
+    <p>
+      An SS_ON Maneuver turns on the solar sail. The Maneuver requires the direction of the sail and the Thrust Vector Mode.
+    </p>
+    <p>
+      To specify the parameters, click each cell of the "Parameters" table and edit it.
+    </p>
+    <p>
+      We use a unit vector that is perpendicular to the sail to indicate the direction of the sail. We specify it with the Solar Sail Coordinate System.
+    <p>
+      The next figure shows the unit vector of the sail (&quot;UV&quot;) and two angles to indicate the direction of the vector (&quot;theta&quot; and &quot;elv&quot;). You should specify both values theta and elv for the Maneuver.
+      <br>
+      <img class=fig src="images/ssen.gif" title="Direction of the Solar Sail">
+    </p>
+    <p>
+      The Thrust Vector Mode (&quot;tvmode&quot;) of the SS_ON Maneuver defines the way to control the direction of the sail. It takes one of the two values &quot;L&quot; or &quot;E&quot; as follows:
+      <ul class=disc>
+        <li>L: the Probe keeps the direction of the sail on the Solar Sail Coordinate System throughout the operation of the solar sail. The direction rotates in the inertial space during spaceflight because the coordinate system rotates.</li>
+        <li>E: the Probe computes the direction of the sail in the inertial space at the execution of the Maneuver and keeps it throughout the operation of the solar sail.</li>
+      </ul>
+    </p>
+    <p>
+      The thrust of the solar sail works during spaceflights or in other words, executions of FLYTO Maneuver. It changes the orbit of the Probe gradually during the spaceflights. 
+    </p>
+    <p>
+      Therefore, the orbit of the Probe displayed during the editing of the Maneuver or just after the execution of it does contain no effect of the thrust.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-12>5.12 Configure an SS_OFF Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Not required</td>
+      </tr>
+    </table>
+    <p>
+      An SS_OFF Maneuver turns off the solar sail. It requires no parameter.
+    </p>
+    <p>
+      When you select the type, you may finish the editing at the point.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-13>5.13 Configure a FLYTO Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>Maneuver Editor window > End Time > [Edit Time] button, or</td>
+      </tr>
+      <tr>
+          <td class=proc>proc. B</td>
+          <td class=desc>Show Orbit window > Time Manipulator, and</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. C</td>
+        <td class=desc>Maneuver Editor window > Parameters Table</td>
+      </tr>
+    </table>
+    <p>
+      A FLYTO Maneuver flies the Probe until its end time. It requires the end time of the flight and the integration interval (&quot;inter&quot;) of the numerical integration of the trajectory of the Probe.
+    </p>
+    <p>
+      To edit the end time of the flight, click the [Edit Time] button of the &quot;End Time&quot; group. The "Date and Time Editor" window appears. The time is in TDB, the Barycentric Dynamical Time. The clock time in TDB is near to UT, the Universal Time, but there is some difference of roughly one minute between them. 
+    </p>
+    <p>
+      If you are editing the FLYTO Maneuver of the Next Line, you can specify the duration of the flight instead of the end time.
+    </p>
+    <p>
+      When you are editing the FLYTO Maneuver of the Next Line, you can specify the &quot;Elapsed Time&quot; of the Show Orbit window instead of the end time of the Maneuver Editor window. To manipulate the elapsed time, you can use the buttons of the &quot;Time Manipulator.&quot;
+    </p>
+    <p>
+      To edit the integration interval, click the cell of the parameter &quot;inter&quot; of the &quot;Parameters&quot; Table.
+    </p>
+    <p>
+        You can use any value greater than or equal to 0.00001 days (0.9 seconds) for the &quot;inter.&quot; However, a FLYTO Maneuver with a small &quot;inter&quot; may require a long execution time.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-14>5.14 Edit a Maneuver Description</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Maneuver Description window > [Edit Description] button</td>
+      </tr>
+    </table>
+    <p>
+      To edit the description of the Maneuver, click the [Edit Description] button of the Maneuver Description window.
+    </p>
+    <p>
+      The window shows the description of the Maneuver selected on the Maneuver Table of the SSVG window. Click the line to select the Maneuver.
+    </p>
+    <p>
+      While editing a Maneuver, you cannot edit its description.
+    </p>
+    <p>
+      You cannot edit the description of an empty Maneuver.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h3 id=cont5-15>5.15 Save the Flight Plan</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>SSVG window > Menu > File > Save, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>SSVG window > Menu > File > Save as</td>
+      </tr>
+    </table>
+    <p>
+      To save the edited Flight Plan into a file, click the &quot;File&quot; of the menu of the SSVG window.
+    </p>
+    <p>
+      If you wish to overwrite the opened file, click the &quot;Save&quot; of the list subsequently.
+    </p>
+    <p>
+      If you wish to save it as a new file, click the &quot;Save as&quot; of the list subsequently.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table5">Top</a> |
+      <a href="#table4">Prev</a> |
+      <a href="#table6">Next</a>
+    </div>
+
+    <h2 id=table6>6. Create a Flight Plan</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont6-1">6.1 Get an SPK file</a></li>
+        <li><a href="#cont6-2">6.2 Start Composition of a Flight Plan</a></li>
+        <li><a href="#cont6-3">6.3 Define the Probe</a></li>
+        <li><a href="#cont6-4">6.4 Choose a Celestial Body for the Target</a></li>
+        <li><a href="#cont6-5">6.5 Save the Flight Plan</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table6">Top</a> |
+      <a href="#table5">Prev</a> |
+      <a href="#table7">Next</a>
+    </div>
+
+    <h3 id=cont6-1>6.1 Get an SPK file</h3>
+    <p>
+      When you choose one of the small celestial bodies such as asteroids or comets for the Target of the Flight Plan, you need the SPK file for it. SSVG uses it to compute positions and velocities of the small celestial body.
+    </p>
+    <p>
+      Please refer to the &quot;Get SPK File of Small Celestial Body&quot; section of the SSVG User&apos;s Guide to learn how to get the file. We recommend <a href="#cont1-4">importing</a> it in advance.
+    </p>
+    <p>
+      When you choose one of the planets, Pluto (dwarf planet), or the Moon of the Earth for the Target of the Flight Plan, you need no additional SPK file. Proceed to the next section.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table6">Top</a> |
+      <a href="#table5">Prev</a> |
+      <a href="#table7">Next</a>
+    </div>
+  
+    <h3 id=cont6-2>6.2 Start Composition of a Flight Plan</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Menu > File > New</td>
+      </tr>
+    </table>
+    <p>
+      To start the composition of a new Flight Plan, click the &quot;File&quot; of the menu of the SSVG window and click the &quot;New&quot; of the list.
+    </p>
+    <p>
+      The &quot;New Flight Plan&quot; window appears. Proceed to the defining of the Probe and choosing a celestial body for the Target.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table6">Top</a> |
+      <a href="#table5">Prev</a> |
+      <a href="#table7">Next</a>
+    </div>
+  
+    <h3 id=cont6-3>6.3 Define the Probe</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>New Flight Plan window > Probe</td>
+      </tr>
+    </table>
+    <p>
+      Name the new Probe and enter it into the &quot;Name&quot; field.
+    </p>
+    <p>
+      Enter the mass of the Probe into the &quot;Mass (kg)&quot; field. SSVG uses it only when the solar sail is on.
+    </p>
+    <p>
+      Click the &quot;Space Base&quot; drop-down list and select the Space Base from which your Probe starts the spaceflight.
+    </p>
+    <p>
+      Every planet of the solar system has two Space Bases. One is at the Lagrange point L1, and the other is at L2. 
+    </p>
+    <p>
+      The L1 is in the direction of the sun from the planet, and the L2 is in the anti-sun direction.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table6">Top</a> |
+      <a href="#table5">Prev</a> |
+      <a href="#table7">Next</a>
+    </div>
+  
+    <h3 id=cont6-4>6.4 Choose a Celestial Body for the Target</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>New Flight Plan window > Target</td>
+      </tr>
+    </table>
+    <p>
+      Select one of the two radio buttons of the &quot;Planet&quot; or the &quot;Small Body&quot; at first.
+    </p>
+    <p>
+      When you selected the &quot;Planet,&quot; you can choose one of the celestial bodies of the adjacent drop-down list. It contains eight planets, Pluto (dwarf planet), and the Moon of the Earth.
+    </p>
+    <p>
+      When you selected the &quot;Small Body,&quot; you can choose one of the small celestial bodies for which you have SPK files. The procedure is as follows:
+      <ul class=disc>
+        <li>Click the [Find] button and open the SPK file of the body</li>
+        <li>Click the drop-down list of the SPKID and choose the appropriate SPKID</li>
+        <li>Edit the name of the celestial body (if you wish)</li>
+      </ul>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table6">Top</a> |
+      <a href="#table5">Prev</a> |
+      <a href="#table7">Next</a>
+    </div>
+  
+    <h3 id=cont6-5>6.5 Save the Flight Plan</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Menu > File > Save as</td>
+      </tr>
+    </table>
+    <p>
+      When you composed a new Flight Plan, save it as a file.
+    </p>
+    <p>
+      Click the &quot;File&quot; of the menu of the SSVG window and click the &quot;Save as&quot; of the list. Name the Flight Plan and save it.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table6">Top</a> |
+      <a href="#table5">Prev</a> |
+      <a href="#table7">Next</a>
+    </div>
+  
+    <h2 id=table7>7. Distribute a Flight Plan</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont7-1">7.1 Files to Distribute</a></li>
+        <li><a href="#cont7-2">7.2 Explain How to Use the Files</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table7">Top</a> |
+      <a href="#table6">Prev</a> |
+      <a href="#table8">Next</a>
+    </div>
+
+    <h3 id=cont7-1>7.1 Files to Distribute</h3>
+    <p>
+      When you distribute your Flight Plan, we recommend distributing it as a set of the following files.
+      <ul class=disc>
+        <li>The Flight Plan file</li>
+        <li>The SPK file(s) required by the Flight Plan. Not necessary when the Flight Plan uses no small celestial body for Target</li>
+      </ul>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table7">Top</a> |
+      <a href="#table6">Prev</a> |
+      <a href="#table8">Next</a>
+    </div>
+  
+    <h3 id=cont7-2>7.2 Explain How to Use the Files</h3>
+    <p>
+      When you distribute your Flight Plan(s), we recommend explaining the following.
+      <ul class=disc>
+        <li>The content of each file</li>
+        <li>SSVG is necessary to use the Flight Plan</li>
+        <li>URL of the homepage of SSVG<br>
+          http://whsk.sakura.ne.jp/ssvg/index-en.html</li>
+      </ul>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table7">Top</a> |
+      <a href="#table6">Prev</a> |
+      <a href="#table8">Next</a>
+    </div>
+  
+    <h2 id=table8>8. Use FTA</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont8-1">8.1 What is FTA</a></li>
+        <li><a href="#cont8-2">8.2 Open FTA</a></li>
+        <li><a href="#cont8-3">8.3 Time to Arrival</a></li>
+        <li><a href="#cont8-4">8.4 Precise Targeting</a></li>
+        <li><a href="#cont8-5">8.5 Define with B-plane Coordinates</a></li>
+        <li><a href="#cont8-6">8.6 Define with Orbit Local Coordinates</a></li>
+        <li><a href="#cont8-7">8.7 Run the Computation</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table8">Top</a> |
+      <a href="#table7">Prev</a> |
+      <a href="#table9">Next</a>
+    </div>
+
+    <h3 id=cont8-1>8.1 What is FTA</h3>
+    <p>
+      FTA assists you in configuring a START Maneuver or a CP Maneuver. It computes delta-V of the Maneuver that makes the Probe fly toward a targeting point near the Target in a specified time.
+    </p>
+    <p>
+      You can use FTA only when editing a START Maneuver or a CP Maneuver of the Next Line.<sup>*</sup>
+    </p>
+    <p class=small>
+      <sup>* </sup>The Next Line is the line (row) of the Maneuver Table next to the executed last Maneuver. When you open a Flight Plan or clear the execution state of the Flight Plan, the top line of the Maneuver Table becomes the Next Line.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table8">Top</a> |
+      <a href="#table7">Prev</a> |
+      <a href="#table9">Next</a>
+    </div>
+  
+    <h3 id=cont8-2>8.2 Open FTA</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Maneuver Editor window > [FTA] button, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Show Orbit window > Specify the Elapsed Time > Maneuver Editor window > [FTA] button</td>
+      </tr>
+    </table>
+    <p>
+      Click the [FTA] button to open the &quot;FTA Setting&quot; window. you can specify the execution condition of the FTA on it.
+    </p>
+    <p>
+      In advance, you may specify the &quot;Elapsed Time&quot; of the &quot;Show Orbit&quot; window by manipulating the buttons of the &quot;Time Manipulator.&quot; You can use it for the &quot;Time to Arrival&quot; of FTA.
+    </p>
+    <p>
+      You can open FTA only while editing a START Maneuver or a CP Maneuver of the Next Line.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table8">Top</a> |
+      <a href="#table7">Prev</a> |
+      <a href="#table9">Next</a>
+    </div>
+  
+    <h3 id=cont8-3>8.3 Time to Arrival</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>FTA Setting window > Time to Arrival</td>
+      </tr>
+    </table>
+    <p>
+      The &quot;Time to Arrival&quot; is the flight time the Probe. After the execution of the Maneuver, it flies for the period and arrives at the Target.
+    </p>
+    <p>
+      When you select the &quot;Use Elapsed Time of Show Orbit Window&quot; radio button, FTA uses the Elapsed Time of the Show Orbit window for the Time to Arrival.
+    </p>
+    <p>
+      When you select the &quot;Specify Now&quot; radio button, you can edit the input field of the &quot;Time to Arrival (days).&quot;
+    </p>
+    <p>
+      You can use any value greater than or equal to one day for the Time to Arrival. However, a short time for the long flight distance may result in errors of the FTA or errors of trajectory computation after that.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table8">Top</a> |
+      <a href="#table7">Prev</a> |
+      <a href="#table9">Next</a>
+    </div>
+  
+    <h3 id=cont8-4>8.4 Precise Targeting</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>FTA Setting window > Precise Targeting</td>
+      </tr>
+    </table>
+    <p>
+      Specify the targeting point of FTA precisely. You can choose one of the following methods.
+      <ul class=disc>
+        <li>Center of Target</li>
+        <li>B-plane Coordinates</li>
+        <li>Orbit Local Coordinates</li>
+      </ul>
+    </p>
+    <p>
+      When you selected the &quot;Center of Target,&quot; the FTA computes the delta-V for the Maneuver that makes the Probe fly toward the center of the Target.
+    </p>
+    <p>
+      The following sections explain the other two methods.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table8">Top</a> |
+      <a href="#table7">Prev</a> |
+      <a href="#table9">Next</a>
+    </div>
+  
+    <h3 id=cont8-5>8.5 Define with B-plane Coordinates</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>FTA Setting window > Precise Targeting > B-plane Coordinates</td>
+      </tr>
+    </table>
+    <p>
+      When you selected the &quot;B-plane Coordinates,&quot; the FTA computes the delta-V for the Maneuver that make the Probe fly by the Target.
+    </p>
+    <p>
+      The targeting point is the B-point of the next figure. We specify it by the offset distance (the distance of the B-point from the center of the Target) and the angle beta of the figure.
+    </p>
+    <p>
+      <img class=fig src="images/bpen.gif" title="B-plane Coordinate System"><br>
+      The arrow of the dashed line in red indicates the two-body motion<sup>*</sup> of the Probe relative to the Target. The B-point is the nearest point of it from Target. The plane that contains the B-point and perpendicular to the relative motion is the &quot;B-plane.&quot; The center of the Target is on it also.
+    </p>
+    <p class=small>
+      <sup>*</sup> FTA uses only the gravity of the Sun but not of the Target to calculate the two-body motion of the Probe. We can consider the relative motion of the Probe is uniform linear motion in this circumstance.
+    </p>
+    <p>
+      The B-plane coordinates are favorable in the case of a swingby (a gravity assist) or an orbit insertion.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table8">Top</a> |
+      <a href="#table7">Prev</a> |
+      <a href="#table9">Next</a>
+    </div>
+  
+    <h3 id=cont8-6>8.6 Define with Orbit Local Coordinates</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>FTA Setting window > Precise Targeting > Orbit Local Coordinates</td>
+      </tr>
+    </table>
+    <p>
+      When you selected the &quot;Orbit Local Coordinates,&quot; the FTA computes the delta-V for the Maneuver that makes the Probe fly toward a near Target point.
+    </p>
+    <p>
+      The vector V of the next figure is the position vector of the targeting point from the center of the Target. We use the offset distance (the length of V) and the two angles (&quot;phi&quot; and &quot;elv&quot;) to specify it.
+    </p>
+    <p>
+      <img class=fig src="images/ol-5en.gif" title="Orbit Local Coordinate System of the Target"><br>
+      The Orbit Local Coordinates are favorable when you make the Probe rendezvous with the Target.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table8">Top</a> |
+      <a href="#table7">Prev</a> |
+      <a href="#table9">Next</a>
+    </div>
+  
+    <h3 id=cont8-7>8.7 Run the Computation</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>FTA Setting window > [OK] button</td>
+      </tr>
+    </table>
+    <p>
+      Click the [OK] button to run the computation of FTA.
+    </p>
+    <p>
+        FTA shows the results in a dialog. Confirm if they are as expected and click the [OK] button.
+    </p>
+    <p>
+      The Maneuver Editor receives the results of FTA and applies them into the orbit of the Probe.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table8">Top</a> |
+      <a href="#table7">Prev</a> |
+      <a href="#table9">Next</a>
+    </div>
+  
+    <h2 id=table9>9. Use Optimize Assistant</h2>
+    <nav>
+      <ul>
+        <li><a href="#cont9-1">9.1 What is Optimize Assistant</a></li>
+        <li><a href="#cont9-2">9.2 Open Optimize Assistant</a></li>
+        <li><a href="#cont9-3">9.3 Adjust Start Time of the START Maneuver</a></li>
+        <li><a href="#cont9-4">9.4 Adjust Maneuver Time of the CP Maneuver</a></li>
+        <li><a href="#cont9-5">9.5 Adjust Flight Time</a></li>
+        <li><a href="#cont9-6">9.6 Find a Preferable Orbit</a></li>
+        <li><a href="#cont9-7">9.7 Apply the Result of Optimize Assistant</a></li>
+        <li><a href="#cont9-8">9.8 Apply the Maneuver Time into the Flight Plan</a></li>
+      </ul>
+    </nav>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+
+    <h3 id=cont9-1>9.1 What is Optimize Assistant</h3>
+    <p>
+      &quot;Optimize Assistant&quot; assists you in optimizing a spaceflight toward the Target. When you specified the start time and the flight time of spaceflight, it displays the orbit, the delta-V, and the relative velocity at the arrival.
+    </p>
+    <p>
+      You can use Optimize Assistant when editing a START Maneuver or a CP Maneuver of the Next Line.<sup>*</sup>
+    </p>
+    <p class=small>
+      <sup>* </sup>The Next Line is the line (row) of the Maneuver Table next to the executed last Maneuver. When you open a Flight Plan or clear the execution state of the Flight Plan, the top line of the Maneuver Table becomes the Next Line.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+
+    <h3 id=cont9-2>9.2 Open Optimize Assistant</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>Maneuver Editor window > [OPTIMIZE] button</td>
+      </tr>
+    </table>
+    <p>
+      Click the [OPTIMIZE] button of the Maneuver Editor window to open the Optimize Assistant. One of the windows of the &quot;START Optimize Assistant&quot; or &quot;CP Optimize Assistant&quot; appears.
+    </p>
+    <p>
+      You can open Optimize Assistant only while editing a START Maneuver or a CP Maneuver of the Next Line.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+
+    <h3 id=cont9-3>9.3 Adjust Start Time of the START Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>START Optimize Assistant window > Adjust Start Time</td>
+      </tr>
+    </table>
+    <p>
+      To adjust the Start Time of the START Maneuver, use the slider and the buttons of the &quot;Adjust Start Time&quot; group.
+    </p>
+    <p>
+      Move the handle of the slider to change the Start Time continuously.
+    </p>
+    <p>
+      If you wish to try the time outside of the range of the slider, click one of the buttons ( [&lt;&lt;&lt;] or [&gt;&gt;&gt;] ) of the "Shift Range" beside both ends of it. It shifts the range of the value of the slider.
+    </p>
+    <p>
+      Click one of the buttons ( [&lt;] or [&gt;] ) of the &quot;Tweek Handle&quot; to move the handle of the slider by one pixel.
+    </p>
+    <p>
+      Select one of the radio buttons of the &quot;Slider Range&quot; to change the width of the value range of the slider. If you select the &quot;Narrow (100 days),&quot; you will be able to set the Start Time more precisely.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+
+    <h3 id=cont9-4>9.4 Adjust Maneuver Time of the CP Maneuver</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>CP Optimize Assistant window > Adjust Maneuver Time</td>
+      </tr>
+    </table>
+    <p>
+      To adjust the Maneuver Time of the CP Maneuver, clear the checkbox for the &quot;Fix to SSVG&apos;s Time&quot; and use the slider and the buttons of the &quot;Adjust Maneuver Time&quot; group.
+    </p>
+    <p class=small>
+      Note that the Optimize Assistant does not apply the adjusted Maneuver Time to any Maneuver, including the current (editing) CP Maneuver. See the &quot;<a href="#cont9-8">Apply the Maneuver Time into the Flight Plan</a>&quot; section.
+    </p>
+    <p>
+      Move the handle of the slider to change the Maneuver Time continuously.
+    </p>
+    <p>
+      If you wish to try the time outside of the range of the slider, click one of the buttons ( [&lt;&lt;&lt;] or [&gt;&gt;&gt;] ) of the "Shift Range" beside both ends of it. It shifts the range of the value of the slider.
+    </p>
+    <p>
+      Click one of the buttons ( [&lt;] or [&gt;] ) of the &quot;Tweek Handle&quot; to move the handle of the slider by one pixel.
+    </p>
+    <p>
+      Select one of the radio buttons of the &quot;Slider Range&quot; to change the width of the value range of the slider. If you select the &quot;Narrow (100 days),&quot; you will be able to set the Maneuver Time more precisely.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+
+    <h3 id=cont9-5>9.5 Adjust Flight Time</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>START Optimize Assistant window > Adjust Flight Time, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>CP Optimize Assistant window > Adjust Flight Time</td>
+      </tr>
+    </table>
+    <p>
+      To adjust the Flight Time, use the slider and the buttons of the &quot;Adjust Flight Time&quot; group.
+    </p>
+    <p>
+      Select one of the radio buttons of the &quot;Slider Defines&quot; to choose the way the slider works from the following.
+      <ul class=disc>
+        <li>Flight Time: the slider specifies the Flight Time directly.</li>
+        <li>Arrival Time: the slider specifies the Arrival Time of the Probe at the Target. Optimize Assistant calculate the Flight Time from the Arrival Time.</li>
+      </ul>
+    </p>
+    <p>
+      Move the handle of the slider to change the Flight Time continuously.
+    </p>
+    <p>
+      If you wish to try the time outside of the range of the slider, click one of the buttons ( [&lt;&lt;&lt;] or [&gt;&gt;&gt;] ) of the "Shift Range" beside both ends of it. It shifts the range of the value of the slider.
+    </p>
+    <p>
+      Click one of the buttons ( [&lt;] or [&gt;] ) of the &quot;Tweek Handle&quot; to move the handle of the slider by one pixel.
+    </p>
+    <p>
+      Select one of the radio buttons of the &quot;Slider Range&quot; to change the width of the value range of the slider. If you select the &quot;Narrow (100 days),&quot; you will be able to set the Flight Time more precisely.
+    </p>
+    <p>
+      When Flight Time became negative, the Optimize Assistant fails to find a valid orbit. When Flight Time is too short, it may fail also.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+
+    <h3 id=cont9-6>9.6 Find a Preferable Orbit</h3>
+    <p>
+      Adjust both Start Time (or Maneuver Time) and Flight Time and find a preferable orbit of the Probe.
+    </p>
+    <p>
+      The lower part of the Optimize Assistant window shows the following values and their minimums up to that point.
+      <ul class=disc>
+        <li>Initial Delta-V: the absolute value of the delta-V of the Maneuver</li>
+        <li>Terminal Relative Velocity: the absolute value of the relative velocity of the Target at the arrival of the Probe</li>
+        <li>Total DV (IDV + TRV): the summation of the value of the &quot;Initial Delta-V&quot; and the &quot;Terminal Relative Velocity&quot;</li>
+      </ul>
+      For the Initial Delta-V, it shows the two angles (phi and elv) of the delta-V also.
+    </p>
+    <p>
+      The 3D chart shows the following marks of the current orbit.
+      <table class=mlist>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/probe.png" height=18>
+          </td>
+          <td class=desc>
+            The initial position (at the execution of the Maneuver) of the Probe
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/porb.png" height=18>
+          </td>
+          <td class=desc>
+            The orbit of the Space Base or the previous orbit (before the execution of the Maneuver) of the Probe
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/target.png" height=18>
+          </td>
+          <td class=desc>
+            The initial position (at the execution of the Maneuver) of the Target
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/torb.png" height=18>
+          </td>
+          <td class=desc>
+            The orbit of the Target
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/apoint.png" height=18>
+          </td>
+          <td class=desc>
+            The place of the arrival of the Probe at the Target
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/pcorb.png" height=18>
+          </td>
+          <td class=desc>
+            The orbit of the Probe
+          </td>
+        </tr>
+        <tr>
+          <td class=img>
+            <img class=mid src="images/sun.png" height=18>
+          </td>
+          <td class=desc>
+            The Sun
+          </td>
+        </tr>
+      </table>
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+
+    <h3 id=cont9-7>9.7 Apply the Result of Optimize Assistant</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc. A</td>
+        <td class=desc>START Optimize Assistant window > [Finish] button, or</td>
+      </tr>
+      <tr>
+        <td class=proc>proc. B</td>
+        <td class=desc>CP Optimize Assistant window > [Finish] button</td>
+      </tr>
+    </table>
+    <p>
+      When you found the preferable orbit, click the [Finish] button. The Optimize Assistant applies the delta-V into the editing Maneuver. If it is a START Maneuver, the Optimize Assistant applies the Start Time also.
+    </p>
+    <p class=strong>
+      Even if you adjusted the Maneuver Time of the CP Maneuver, the Optimize Assistant does not apply it into any Maneuver, including the editing Maneuver. See the next section.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+
+    <h3 id=cont9-8>9.8 Apply the Maneuver Time into the Flight Plan</h3>
+    <table class=proc>
+      <tr>
+        <td class=proc>proc.</td>
+        <td class=desc>SSVG window > Edit Maneuver(s)</td>
+      </tr>
+    </table>
+    <p>
+      When you adjusted the Maneuver Time on the CP Optimize Assistant window and wish to use it, you should modify Maneuver(s) of the Flight Plan to make it execute the CP Maneuver at the adjusted time. Just after the finishing of the CP Optimize Assistant and the Maneuver Editor, follow the procedures of:
+    </p>
+    <p>
+      Open a text editor and paste the content of the clipboard. It is the adjusted Maneuver Time of the CP Maneuver in ISO format. It may be useful in procedures that follow.
+    </p>
+    <p>
+      If the adjusted Maneuver Time was in the future of the current time of SSVG, insert a FLYTO Maneuver just before the CP Maneuver and execute it. It should fly the Probe until the adjusted Maneuver Time. If the Probe was using the electric propulsion engine or the solar sail, it should turn off all of them beforehand.
+    </p>
+    <p>
+      If the adjusted Maneuver Time was in the past of the current time of SSVG, and the Probe executed a FLYTO Maneuver just before the CP Maneuver, modify the End Time of the FLYTO Maneuver into the adjusted Maneuver Time. However, it is possible and effective only when the flight of the FLYTO Maneuver was long enough, and the Probe was using neither the electric propulsion engine nor the solar sail.
+    </p>
+    <p>
+      If the previous procedures do not fit your case, re-configure the Flight Plan more extensively to use the adjusted Maneuver Time.
+    </p>
+    <div class=footer>
+      <a href="javascript:goback()"><img class=mid src="images/barrow.png" height=16></a>|
+      <a href="javascript:gofwd()"><img class=mid src="images/farrow.png" height=16></a>|
+      <a href="#table0">TOC</a> |
+      <a href="#table9">Top</a> |
+      <a href="#table8">Prev</a> |
+      Next
+    </div>
+    <br>
+    <br><br><br><br><br><br>
+  </BODY>
+</HTML>
