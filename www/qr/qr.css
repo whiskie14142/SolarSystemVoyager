@@ -26,7 +26,7 @@ h1
 
 h2
 {
-    padding-top: 0.7em;
+    padding-top: 2em;
     font-size: large;
 }
 
@@ -45,6 +45,12 @@ table.mlist
 {
     margin-left: 1em;
     width: 95%;
+}
+
+table.proc
+{
+    width: 100%;
+    padding-bottom: 0.5em;
 }
 
 td.qrimage
@@ -69,6 +75,16 @@ td.desc
 {
     width: 90%;
     vertical-align: middle;
+}
+
+td.proc
+{
+    width: 10%;
+    padding-right: 1em;
+    font-size: small;
+    font-weight: bold;
+    vertical-align: top;
+    white-space: nowrap;
 }
 
 img
@@ -126,8 +142,10 @@ div.footer
 {
     width: 100%;
     text-align: right;
+    padding-right: 0.5em;
     color: silver;
-    font-size: small;
+    font-size: medium;
+    word-spacing: -0.3em;
 }
 
 span.red
@@ -164,6 +182,11 @@ p.small
 {
     font-size: small;
     line-height: 1.4em;
+}
+
+p.strong
+{
+    font-weight: bold;
 }
 
 	
