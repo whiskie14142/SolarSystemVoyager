@@ -1,0 +1,15 @@
+SSVGに必須のライブラリとそのバージョン
+
+qt 5.9.7
+numpy 1.16.4
+scipy 1.2.1
+matplotlib 3.1.0
+
+
+以下はpipでインストール
+pyinstaller 3.5
+jplephem 2.9
+julian 0.14
+pytwobodyorbit 1.0.0
+spktype01 1.0.0
+spktype21 0.1.0
