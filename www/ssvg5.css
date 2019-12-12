@@ -228,3 +228,8 @@ img.setmiddle
 {
     vertical-align: middle;
 }
+
+img.settop
+{
+    vertical-align: top;
+}

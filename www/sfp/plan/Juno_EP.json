@@ -1,0 +1,144 @@
+{
+    "probe": {
+        "name": "myprobe",
+        "base": "EarthL2",
+        "pmass": 500.0
+    },
+    "target": {
+        "name": "Juno",
+        "file": "2000003_Juno.bsp",
+        "SPKID1A": 0,
+        "SPKID2A": 0,
+        "SPKID2B": 0,
+        "SPKID1B": 2000003
+    },
+    "maneuvers": [
+        {
+            "type": "START",
+            "time": 2461475.5,
+            "dv": 6000.0,
+            "phi": 0.0,
+            "elv": 40.6,
+            "description_ja": "\u3053\u306e\u98db\u884c\u8a08\u753b\u306f\u63a2\u67fb\u6a5f\u3092\u5c0f\u60d1\u661f Juno \u306b\u30e9\u30f3\u30c7\u30d6\u30fc\u3055\u305b\u308b\u3082\u306e\u3067\u3059\u3002\u3057\u304b\u3057\u3053\u306e\u30de\u30cc\u30fc\u30d0\uff08START \u30de\u30cc\u30fc\u30d0\uff09\u306f\u3001\u63a2\u67fb\u6a5f\u3092\u76f4\u63a5 Juno \u306b\u5411\u3051\u3066\u9001\u308a\u51fa\u3059\u306e\u3067\u306f\u306a\u304f\u3001\u9060\u65e5\u70b9\u4ed8\u8fd1\u3067 Juno \u306e\u8ecc\u9053\u306b\u63a5\u8fd1\u3059\u308b\u3088\u3046\u306b\u51fa\u767a\u3055\u305b\u307e\u3059\u3002\n\n\u51fa\u767a\u65e5\u306f\u5730\u7403\u3068\u5b87\u5b99\u57fa\u5730\u304c Juno \u306e\u8ecc\u9053\u9762\u4e0a\u306b\u6765\u308b\u65e5\u3092\u9078\u3073\u307e\u3057\u305f\u3002\uff082027-03-11\uff09\n\u51fa\u767a\u901f\u5ea6\u306f 6000 m/s\u3001phi \u306f\u30bc\u30ed\u3068\u3057\u307e\u3057\u305f\u3002\n\u63a2\u67fb\u6a5f\u306e\u8ecc\u9053\u9762\u304c Juno \u306e\u8ecc\u9053\u9762\u306b\u8fd1\u3065\u304d\u3001\u63a2\u67fb\u6a5f\u306e\u5b9f\u7d4c\u8def\uff08FLYTO \u30de\u30cc\u30fc\u30d0\u306b\u3088\u308b\u98db\u884c\u7d4c\u8def\uff09\u304c\u9060\u65e5\u70b9\u4ed8\u8fd1\u3067 Juno \u306e\u8ecc\u9053\u306b\u63a5\u8fd1\u3059\u308b\u3088\u3046\u306b elv \u306e\u5024\u3092\u8abf\u6574\u3057\u307e\u3057\u305f\u3002\n\n\u63a2\u67fb\u6a5f\u306e\u5b9f\u7d4c\u8def\u306f 2028-04-09 \u306b Juno \u306e\u8ecc\u9053\u306b\u63a5\u8fd1\u3057\u307e\u3059\u3002\n\n",
+            "description_en": "The Probe makes a rendezvous with asteroid Juno at the last phase of the Flight Plan.  However, the Maneuver (FLYTO Maneuver) send it off to an orbit that does not reach Juno but the orbit of it.\n\nWe chose 2027-03-11 (March 11, 2027) for the Start Time of the spaceflight because Space Base Earth L2 comes onto the orbital plane of Juno at the date.\nWe took 6000 m/s for the magnitude of delta-V and zero for the \"phi.\"\nWe chose the value of \"elv\" by the following criteria.\n  - The Maneuver rotates the orbital plane of the Probe in the direction that reduces the inclination against the orbital plane of Juno.\n  - The real trajectory of the Probe (the result of an FLYTO Maneuver) reaches the orbit of Juno at the apoapsis.\n\nAfter the execution of the Maneuver, the Probe will reach the orbit of Juno at 2028-04-09 by its real trajectory.\n \n"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2461745.5,
+            "inter": 1.0,
+            "description_ja": "2028-04-09 \u307e\u3067 FLYTO \u30de\u30cc\u30fc\u30d0\u3092\u5b9f\u884c\u3057\u305f\u5f8c\u3067\u6700\u9069\u5316\u30a2\u30b7\u30b9\u30bf\u30f3\u30c8\u3092\u4f7f\u3063\u3066\u8abf\u3079\u3066\u307f\u308b\u3068\u3001\u3069\u3046\u3084\u3089 2028-06-23 \u306b CP \u30de\u30cc\u30fc\u30d0\u306b\u3088\u308b\u8ecc\u9053\u5909\u66f4\u3092\u884c\u3048\u3070 1 \u516c\u8ee2\u5f8c\u306b Juno \u306b\u63a5\u8fd1\u3067\u304d\u305d\u3046\u3067\u3059\u3002\u5fc5\u8981\u306a\u30c7\u30eb\u30bfV\u306f3735 m/s \u3067\u3059\u3002\n\n\u3053\u308c\u3068\u540c\u7b49\u306a\u8ecc\u9053\u5909\u66f4\u3092 400 \u65e5\u9593\u306e \u96fb\u6c17\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\u306e\u904b\u7528\u3067\u5b9f\u884c\u3059\u308b\u305f\u3081\u3001\u904b\u7528\u671f\u9593\u4e2d\u592e\uff082028-06-23\uff09\u306e 200 \u65e5\u524d\u307e\u3067\u63a2\u67fb\u6a5f\u3092\u98db\u884c\u3055\u305b\u307e\u3059\u3002",
+            "description_en": "We made a trial run of FLYTO Maneuver that flies the Probe until 2028-04-09 and used Optimize Assistant and found that a CP Maneuver on 2028-06-23 would make the Probe approach Juno after one orbit.  The magnitude of the delta-V of the CP Maneuver was 3735 m/s.\n\nTo make an equivalent orbital transition with a 400-day operation of the electric propulsion engine, the FLYTO Maneuver flies the Probe until 2027-12-06.  It is 200 days before the midpoint of the operation period of the engine."
+        },
+        {
+            "type": "EP_ON",
+            "dvpd": 11.492,
+            "phi": 71.03,
+            "elv": -15.81,
+            "tvmode": "E",
+            "description_ja": "\u96fb\u6c17\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08EP\uff09\u3092\u30aa\u30f3\u306b\u3057\u3001\u4eca\u5f8c 400 \u65e5\u9593\u306e\u30d1\u30ef\u30fc\u30d5\u30e9\u30a4\u30c8\u3067\u4f7f\u7528\u3059\u308b\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\n\n400 \u65e5\u9593\u306e\u30d1\u30ef\u30fc\u30d5\u30e9\u30a4\u30c8\u306b\u3088\u308a\u3001\u7d04 1 \u516c\u8ee2\u5f8c\u306e 2031-05-03 \u306b\u30bf\u30fc\u30b2\u30c3\u30c8\u306b\u63a5\u8fd1\u3059\u308b\u8ecc\u9053\u306b\u4e57\u305b\u308b\u3053\u3068\u3092\u76ee\u6307\u3057\u3066\u3044\u307e\u3059\u3002\n\nEP\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f\u30ab\u30c3\u30c8\u30a2\u30f3\u30c9\u30c8\u30e9\u30a4\u306b\u3088\u308a\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002\u305d\u306e\u521d\u671f\u5024\u306f\u904b\u7528\u671f\u9593\u306e\u4e2d\u592e\u306e 2028-06-23 \u306b CP \u30de\u30cc\u30fc\u30d0\u3092\u5b9f\u65bd\u3057\u3066\u540c\u69d8\u306a\u76ee\u7684\u3092\u9054\u6210\u3059\u308b\u5834\u5408\u306e\u30c7\u30eb\u30bfV\u3092\u53c2\u8003\u306b\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "The Maneuver turns on the electric propulsion engine (EP) and specifies its parameters.\n\nDuring the 400-day powered flight that follows the Maneuver, the Probe will make the orbital transition to approach Juno on 2031-05-03.\n\nWe decided on the parameters of the Maneuver by cut-and-try.  For a reference, we used delta-V of a CP Maneuver that makes the equivalent orbital transition on 2028-06-23, the midpoint of the powered flight."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2462145.5,
+            "inter": 1.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 400 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u96fb\u6c17\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08EP\uff09\u304c\u30aa\u30f3\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u306e\u3067\u3001\u3053\u306e\u98db\u884c\u306f\u63a8\u529b\u98db\u884c\uff08\u30d1\u30ef\u30fc\u30d5\u30e9\u30a4\u30c8\uff09\u3067\u3059\u3002",
+            "description_en": "The Maneuver flies the Probe for 400 days. It is a powered flight because the electric propulsion engine is on."
+        },
+        {
+            "type": "EP_OFF",
+            "description_ja": "\u96fb\u6c17\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08EP\uff09\u3092\u30aa\u30d5\u306b\u3057\u307e\u3059\u3002\n\n\u63a2\u67fb\u6a5f\u306f 2031-05-03 \u3054\u308d\u306b Juno \u306b\u63a5\u8fd1\u3059\u308b\u8ecc\u9053\u306b\u4e57\u3063\u3066\u3044\u307e\u3059\u3002",
+            "description_en": "The Maneuver turns off the electric propulsion engine.\n\nThe Probe is on an orbit that arrives at Juno on 2031-05-03 or around."
+        },
+        {
+            "type": "CP",
+            "dv": 14.493,
+            "phi": -6.21,
+            "elv": -80.38,
+            "description_ja": "\u5316\u5b66\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08CP\uff09\u3092\u904b\u7528\u3057\u3066\u8ecc\u9053\u3092\u8abf\u6574\u3057\u307e\u3059\u3002\n\u76ee\u6a19\u306f 2031-05-03 \u306b\u63a2\u67fb\u6a5f\u304c Juno\u306b\u3088\u308a\u63a5\u8fd1\u3059\u308b\u3053\u3068\u3067\u3059\u3002CP \u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f SSVG \u306e FTA \u6a5f\u80fd\u3092\u4f7f\u7528\u3057\u3066\u8a2d\u5b9a\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "The Maneuver makes an orbital correction with the chemical propulsion engine (CP).  The new orbit brings the Probe to Juno at 2031-05-03.\n\nWe obtained the parameters of the Maneuver by FTA.\n\n"
+        },
+        {
+            "type": "CP",
+            "dv": 3.9,
+            "phi": 154.0,
+            "elv": -54.0,
+            "description_ja": "\u5316\u5b66\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08CP\uff09\u3092\u904b\u7528\u3057\u3066\u3001\u63a2\u67fb\u6a5f\u306e\u5b9f\u7d4c\u8def\uff08FLYTO \u30de\u30cc\u30fc\u30d0\u3067\u306e\u98db\u884c\u7d50\u679c\uff09\u304c 2031-05-03 \u306b\u3082\u3063\u3068\u63a5\u8fd1\u3059\u308b\u3088\u3046\u8ecc\u9053\u3092\u5fae\u8abf\u6574\u3057\u307e\u3059\u3002\n\nCP \u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f\u30ab\u30c3\u30c8\u30a2\u30f3\u30c9\u30c8\u30e9\u30a4\u3067\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002\n\n\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306e\u5b9f\u884c\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u306f 2031-05-03 \u306b 2576 km \u306b\u307e\u3067\u63a5\u8fd1\u3059\u308b\u8ecc\u9053\u306b\u4e57\u308a\u307e\u3059\u3002\u63a5\u8fd1\u6642\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u306e\u76f8\u5bfe\u901f\u5ea6\u306f 2731 m/s \u3067\u3059\u3002",
+            "description_en": "The Maneuver makes an additional orbital correction of the Probe to approach Juno more closely.\n\nWe decided on the parameters by cut-and-try.\n\nAfter the execution of the Maneuver, the Probe is on an orbit that approaches Juno within 2600 km.  The relative velocity at the approach is 2731 m/s."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2462839.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 2030-12-04 \u307e\u3067\u306e 694 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u306e Juno \u3078\u306e\u5230\u7740\u76ee\u6a19\u65e5\u307e\u3067 150 \u65e5\u306b\u306a\u308a\u307e\u3059\u3002\u3053\u308c\u304b\u3089 300 \u65e5\u9593\u96fb\u6c17\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08EP\uff09\u3092\u904b\u7528\u3057\u63a2\u67fb\u6a5f\u3092 Juno \u306b\u30e9\u30f3\u30c7\u30d6\u30fc\u3055\u305b\u308b\u8a08\u753b\u3067\u3059\u3002",
+            "description_en": "The Maneuver flies the Probe for 694 days, until 2030-12-04.\n\nAt the end of the Maneuver, it is 150 days before the approach of the Probe to Juno.  The Probe will use the electric propulsion engine for 300 days and make the rendezvous with Juno."
+        },
+        {
+            "type": "EP_ON",
+            "dvpd": 9.115,
+            "phi": 68.51,
+            "elv": -32.1,
+            "tvmode": "E",
+            "description_ja": "\u96fb\u6c17\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08EP\uff09\u3092\u30aa\u30f3\u306b\u3057\u3001\u4eca\u5f8c 300 \u65e5\u9593\u306e\u904b\u7528\u3067\u4f7f\u7528\u3059\u308b\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\n\nEP \u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f\u30ab\u30c3\u30c8\u30a2\u30f3\u30c9\u30c8\u30e9\u30a4\u3067\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002\u76ee\u6a19\u306f 300 \u65e5\u5f8c\u306e 2031-09-30 \u306b\u63a2\u67fb\u6a5f\u304c Juno \u306b\u30e9\u30f3\u30c7\u30d6\u30fc\u3059\u308b\u3053\u3068\u3067\u3059\u3002\n\n\u30ab\u30c3\u30c8\u30a2\u30f3\u30c9\u30c8\u30e9\u30a4\u306e\u521d\u671f\u5024\u306f\u3001\u73fe\u5728\u306e\u8ecc\u9053\u3067\u63a2\u67fb\u6a5f\u304c Juno \u306b\u5230\u7740\u3057\u305f\u3068\u304d\u306e\u76f8\u5bfe\u901f\u5ea6\u3092\u53c2\u8003\u306b\u3057\u3066\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "The Maneuver turns on the electric propulsion engine (EP) and specifies its parameters.\n\nOn 2031-09-30, at the end of the 300-day powered flight that follows the Maneuver, the Probe will make the rendezvous with Juno.\n\nWe decided on the parameters of the Maneuver by cut-and-try.  For a reference, we used the relative velocity of the Target at the arrival of the Probe with its current orbit."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2463139.5,
+            "inter": 1.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 300 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u96fb\u6c17\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08EP\uff09\u304c\u30aa\u30f3\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u306e\u3067\u3001\u3053\u306e\u98db\u884c\u306f\u63a8\u529b\u98db\u884c\uff08\u30d1\u30ef\u30fc\u30d5\u30e9\u30a4\u30c8\uff09\u3067\u3059\u3002\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u306f\u5f90\u3005\u306b\u76f8\u5bfe\u901f\u5ea6\u3092\u5c0f\u3055\u304f\u3057\u306a\u304c\u3089 Juno \u306b\u63a5\u8fd1\u3057\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u304c\u7d42\u308f\u3063\u305f\u6642\u70b9\u3067 \u63a2\u67fb\u6a5f\u306f Juno \u306b 11000 km \u307e\u3067\u63a5\u8fd1\u3057\u3001\u306a\u304a\u63a5\u8fd1\u4e2d\u3067\u3059\u3002",
+            "description_en": "The Maneuver flies the Probe for 300 days. It is a powered flight because the EP is on. During it, the Probe approaches at Juno with gradually decreasing relative velocity.\n\nAt the end of the Maneuver, the Probe is 11000 km from Juno and still approaching."
+        },
+        {
+            "type": "EP_OFF",
+            "description_ja": "\u96fb\u6c17\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08EP\uff09\u3092\u30aa\u30d5\u306b\u3057\u307e\u3059\u3002",
+            "description_en": "The Maneuver turns off the electric propulsion engine."
+        },
+        {
+            "type": "CP",
+            "dv": 14.588,
+            "phi": -11.29,
+            "elv": -10.87,
+            "description_ja": "\u5316\u5b66\u63a8\u9032\u30a8\u30f3\u30b8\u30f3\uff08CP\uff09\u3092\u904b\u7528\u3057\u3001\u63a2\u67fb\u6a5f\u304c 5 \u65e5\u5f8c\u306b Juno \u306e\u8ecc\u9053\u524d\u65b9 1000 km \u306e\u5730\u70b9\u306b\u5230\u7740\u3059\u308b\u3088\u3046\u8ecc\u9053\u3092\u5909\u66f4\u3057\u307e\u3059\u3002\n\nCP \u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f SSVG \u306e FTA \u6a5f\u80fd\u3092\u7528\u3044\u3066\u6c42\u3081\u307e\u3057\u305f\u3002",
+            "description_en": "The Maneuver makes an orbital correction with the chemical propulsion engine (CP) and makes the Probe will come to the targeting point, 1000 km before Juno on its orbit, after a five-day flight.\n\nWe obtained the parameters of the Maneuver by FTA."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2463144.5,
+            "inter": 1.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 5 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u63a2\u67fb\u6a5f\u306f Juno \u306e\u8ecc\u9053\u524d\u65b9 1000 km \u306e\u5730\u70b9\u306b\u5230\u7740\u3057\u307e\u3059\u3002",
+            "description_en": "The Maneuver flies the Probe for five days.\n\nAt the end of the flight, the Probe is 1000 km before Juno on its orbit."
+        },
+        {
+            "type": "CP",
+            "dv": 23.12,
+            "phi": -15.05,
+            "elv": -2.85,
+            "description_ja": "\u30bf\u30fc\u30b2\u30c3\u30c8\u3068\u306e\u76f8\u5bfe\u901f\u5ea6\u3092\u30bc\u30ed\u306b\u3059\u308b\u30de\u30cc\u30fc\u30d0\uff081 \u56de\u76ee\uff09\u3067\u3059\u3002",
+            "description_en": "The Maneuver is the first Maneuver to zero the relative velocity of the Target."
+        },
+        {
+            "type": "CP",
+            "dv": 0.001,
+            "phi": -83.24,
+            "elv": 46.1,
+            "description_ja": "\u30bf\u30fc\u30b2\u30c3\u30c8\u3068\u306e\u76f8\u5bfe\u901f\u5ea6\u3092\u30bc\u30ed\u306b\u3059\u308b\u30de\u30cc\u30fc\u30d0\uff082 \u56de\u76ee\uff09\u3067\u3059\u3002",
+            "description_en": "The Maneuver is the second Maneuver to zero the relative velocity of the Target."
+        },
+        {
+            "type": "CP",
+            "dv": 0.075,
+            "phi": 84.1,
+            "elv": 0.0,
+            "description_ja": "Juno \u306b\u6b63\u78ba\u306b\u30e9\u30f3\u30c7\u30d6\u30fc\u3059\u308b\u305f\u3081\u306e\u8ffd\u52a0\u306e\u8ecc\u9053\u4fee\u6b63\u3067\u3059\u3002\n\n\u3053\u306e\u8ecc\u9053\u4fee\u6b63\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u306f Juno \u3068\u306e\u4f4d\u7f6e\u95a2\u4fc2\u3092\u4fdd\u3063\u305f\u307e\u307e\u3067\u592a\u967d\u3092\u516c\u8ee2\u3067\u304d\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "The Maneuver makes a small correction of the orbit to complete the rendezvous with Juno."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2464736.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 1592 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u63a2\u67fb\u6a5f\u306f Juno \u306b\u30e9\u30f3\u30c7\u30d6\u30fc\u3057\u305f\u72b6\u614b\u3067\u592a\u967d\u3092 1 \u516c\u8ee2\u3057\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u3067\u63a2\u67fb\u6a5f\u304c Juno \u306b\u30e9\u30f3\u30c7\u30d6\u30fc\u3057\u305f\u72b6\u614b\u3092\u7d9a\u3051\u308b\u3053\u3068\u304c\u3067\u304d\u308b\u306e\u306f\u3001 \u7d4c\u8def\u306e\u8a08\u7b97\u306b Juno \u304c\u63a2\u67fb\u6a5f\u306b\u53ca\u307c\u3059\u5f15\u529b\u304c\u8003\u616e\u3055\u308c\u3066\u3044\u306a\u3044\u305f\u3081\u3067\u3059\u3002\u5b9f\u969b\u306e\u63a2\u67fb\u6a5f\u3092 Juno \u306e\u8fd1\u508d\u306b\u9577\u671f\u9593\u7559\u307e\u3089\u305b\u308b\u305f\u3081\u306b\u306f\u3001\u63a2\u67fb\u6a5f\u3092 Juno \u5468\u56de\u8ecc\u9053\u306b\u6295\u5165\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002",
+            "description_en": "The Maneuver flies the Probe for 1592 days.  During the flight, the Probe completes one orbit around the Sun with Juno.\n\nThe trajectory of the Probe of the flight is not so real because SSVG does not take into account the gravity of Juno.  On an actual spaceflight, you should make the Probe enter into Juno orbit if you wish to keep it beside Juno for a long period."
+        }
+    ]
+}
