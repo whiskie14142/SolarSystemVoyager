@@ -219,7 +219,7 @@ class ShowOrbitDialog(QDialog):
         sunpos = common.SPKkernel[0, 10].compute(tempjd)
         self.sun_pos = common.eqn2ecl(sunpos) * 1000.0
 
-        xlim = g.ax.get_xlim()
+        xlim = g.ax.get_xlim3d()
         hw = (xlim[1] - xlim[0]) * 0.5
         if self.ui.tobarycenter.isChecked():
             cent = [0.0, 0.0, 0.0]
@@ -228,9 +228,9 @@ class ShowOrbitDialog(QDialog):
         else:
             cent = self.target_pos
         
-        g.ax.set_xlim(cent[0]-hw, cent[0]+hw)
-        g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
-        g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
+        g.ax.set_xlim3d(cent[0]-hw, cent[0]+hw)
+        g.ax.set_ylim3d(cent[1]-hw, cent[1]+hw)
+        g.ax.set_zlim3d(cent[2]-hw, cent[2]+hw)
 
         self.artist_of_probe = g.ax.scatter(*probe_pos, s=40, c='r', 
                                             depthshade=False, marker='x')

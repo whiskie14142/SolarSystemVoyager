@@ -167,7 +167,7 @@ class ReviewThroughoutControl(QDialog):
             return
         
         # adjust center of image
-        xlim = g.ax.get_xlim()
+        xlim = g.ax.get_xlim3d()
         hw = (xlim[1] - xlim[0]) * 0.5
         if self.ui.tobarycenter.isChecked():
             cent = [0.0, 0.0, 0.0]
@@ -175,9 +175,9 @@ class ReviewThroughoutControl(QDialog):
             cent = status[1:4]
         else:
             cent = target_pos
-        g.ax.set_xlim(cent[0]-hw, cent[0]+hw)
-        g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
-        g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
+        g.ax.set_xlim3d(cent[0]-hw, cent[0]+hw)
+        g.ax.set_ylim3d(cent[1]-hw, cent[1]+hw)
+        g.ax.set_zlim3d(cent[2]-hw, cent[2]+hw)
 
         # Kepler Orbit of probe        
         erase_PKepler()
@@ -282,7 +282,7 @@ class ReviewThroughoutControl(QDialog):
         target_pos, target_vel = g.mytarget.posvel(c_time)
         sun_pos, sun_vel = common.SPKposvel(10, c_time)        
 
-        xlim = g.ax.get_xlim()
+        xlim = g.ax.get_xlim3d()
         hw = (xlim[1] - xlim[0]) * 0.5
         if self.ui.tobarycenter.isChecked():
             cent = [0.0, 0.0, 0.0]
@@ -291,9 +291,9 @@ class ReviewThroughoutControl(QDialog):
         else:
             cent = target_pos
         
-        g.ax.set_xlim(cent[0]-hw, cent[0]+hw)
-        g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
-        g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
+        g.ax.set_xlim3d(cent[0]-hw, cent[0]+hw)
+        g.ax.set_ylim3d(cent[1]-hw, cent[1]+hw)
+        g.ax.set_zlim3d(cent[2]-hw, cent[2]+hw)
 
         # redraw planets
         remove_planets()
@@ -362,7 +362,7 @@ class ReviewThroughoutControl(QDialog):
         sun_pos, sun_vel = common.SPKposvel(10, status[0])
 
         # adjust center of image
-        xlim = g.ax.get_xlim()
+        xlim = g.ax.get_xlim3d()
         hw = (xlim[1] - xlim[0]) * 0.5
         if self.ui.tobarycenter.isChecked():
             cent = [0.0, 0.0, 0.0]
@@ -370,9 +370,9 @@ class ReviewThroughoutControl(QDialog):
             cent = status[1:4]
         else:
             cent = target_pos
-        g.ax.set_xlim(cent[0]-hw, cent[0]+hw)
-        g.ax.set_ylim(cent[1]-hw, cent[1]+hw)
-        g.ax.set_zlim(cent[2]-hw, cent[2]+hw)
+        g.ax.set_xlim3d(cent[0]-hw, cent[0]+hw)
+        g.ax.set_ylim3d(cent[1]-hw, cent[1]+hw)
+        g.ax.set_zlim3d(cent[2]-hw, cent[2]+hw)
 
         # Planets
         remove_planets()

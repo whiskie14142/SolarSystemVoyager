@@ -331,11 +331,13 @@ class MainForm(QMainWindow):
         if g.fig is not None:
             return
         g.fig=plt.figure(figsize=(11,11))
-        g.ax=g.fig.gca(projection='3d')
+        g.ax = g.fig.gca(projection='3d')
+
+        g.ax.set_box_aspect([1,1,1])  # to adapt matplotlib ver 3.3.2
     
-        g.ax.set_xlim(-3.0e11, 3.0e11)
-        g.ax.set_ylim(-3.0e11, 3.0e11)
-        g.ax.set_zlim(-3.0e11, 3.0e11)
+        g.ax.set_xlim3d(-3.0e11, 3.0e11)
+        g.ax.set_ylim3d(-3.0e11, 3.0e11)
+        g.ax.set_zlim3d(-3.0e11, 3.0e11)
         g.ax.set_xlabel('X')
         g.ax.set_ylabel('Y')
         g.ax.set_zlabel('Z')
@@ -406,9 +408,9 @@ class MainForm(QMainWindow):
         if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
 
-        g.ax.set_xlim(-3.0e11, 3.0e11)
-        g.ax.set_ylim(-3.0e11, 3.0e11)
-        g.ax.set_zlim(-3.0e11, 3.0e11)
+        g.ax.set_xlim3d(-3.0e11, 3.0e11)
+        g.ax.set_ylim3d(-3.0e11, 3.0e11)
+        g.ax.set_zlim3d(-3.0e11, 3.0e11)
 
         self.erasecurrentstatus()
         self.eraseselectedman()
@@ -558,9 +560,9 @@ class MainForm(QMainWindow):
         if g.reviewthroughoutcontrol is not None:
             g.reviewthroughoutcontrol.close()
 
-        g.ax.set_xlim(-3.0e11, 3.0e11)
-        g.ax.set_ylim(-3.0e11, 3.0e11)
-        g.ax.set_zlim(-3.0e11, 3.0e11)
+        g.ax.set_xlim3d(-3.0e11, 3.0e11)
+        g.ax.set_ylim3d(-3.0e11, 3.0e11)
+        g.ax.set_zlim3d(-3.0e11, 3.0e11)
 
         self.erasecurrentstatus()
         self.eraseselectedman()

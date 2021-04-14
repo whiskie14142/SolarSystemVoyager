@@ -56,9 +56,9 @@ class StartOptimizeDialog(QDialog):
         self.artist_Porbit = None
         self.clearstatistics()
         
-        g.ax.set_xlim(-3.0e11, 3.0e11)
-        g.ax.set_ylim(-3.0e11, 3.0e11)
-        g.ax.set_zlim(-3.0e11, 3.0e11)
+        g.ax.set_xlim3d(-3.0e11, 3.0e11)
+        g.ax.set_ylim3d(-3.0e11, 3.0e11)
+        g.ax.set_zlim3d(-3.0e11, 3.0e11)
         
         self.initMessage()
         self.ui.whatIsOptimize.clear()
