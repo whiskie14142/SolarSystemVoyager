@@ -16,7 +16,7 @@ class Target:
     """class for the target
     
     """
-    def de430_ephem(self, jd):
+    def planets_ephem(self, jd):
         pos, vel = self.kernel[self.idx1a, self.idx1b].compute_and_differentiate(jd)
         if self.idx2a != 0:
             pos2, vel2 = self.kernel[self.idx2a, self.idx2b].compute_and_differentiate(jd)
@@ -44,7 +44,7 @@ class Target:
         self.sbkernel = None
         if file == '':
             self.kernel = common.SPKkernel
-            self.ephem = self.de430_ephem
+            self.ephem = self.planets_ephem
             self.startjd = common.SPKstart
             self.endjd = common.SPKend
         else:

@@ -16,20 +16,24 @@ au = 1.495978707e11             # meters of an astronomical unit
 _eclinc = math.radians(8.4381406e4 / 3600.0)    # ecliptic inc. of J2000.0
 secofday = 86400.0     # seconds of a day
 
-planets_mu = (  solarmu * 1.6601e-7,       # Mercury
-                solarmu * 2.4478e-6,       # Venus
-                3.986004356e14 * 1.012300, # Earth + Moon
-                solarmu * 3.2272e-7,       # Mars
-                solarmu * 9.5479e-4,       # Jupiter
-                solarmu * 2.8589e-4,       # Saturn
-                solarmu * 4.3662e-5,       # Uranus
-                solarmu * 5.1514e-5,       # Neptune
-                3.986004356e14 * 0.00218,  # Pluto
-                solarmu,                   # Sun
-                solarmu * 3.6943e-8,       # Moon
-                3.986004356e14  )          # Earth
+planets_mu = (  # source: ftp://ssd.jpl.nasa.gov/pub/xfr/gm_Horizons.pck
+                2.2031868551400003e13,  # Mercury
+                3.2485859200000000e14,  # Venus
+                4.0350323562548019e14,  # Earth + Moon
+                4.2828375815756102e13,  # Mars
+                1.2671276409999998e17,  # Jupiter
+                3.7940584841799997e16,  # Saturn
+                5.7945563999999985e15,  # Uranus
+                6.8365271005803989e15,  # Neptune
+                9.7550000000000000e11,  # Pluto
+                1.3271244004127942e20,  # Sun
+                4.9028001184575496e12,  # Moon
+                3.9860043550702266e14   # Earth
+             )
 
-# SPKIDs for planets (objects in de430.bsp)
+solarmu = planets_mu[9]                    # solar gravitational constant
+
+# SPKIDs for planets (objects in the planetsSPK file)
 planets_id = (  (1, 'Mercury'),
                 (2, 'Venus'),
                 (3, 'EMB'),
@@ -76,18 +80,21 @@ logdir = 'SSVG_log'
 plandir = 'SSVG_plan'
 i18ndir = 'SSVG_i18n'
 
+# SPK file for planets
+planetsSPK = 'de440.bsp'
+
 # minimum flight time (days)
 minft = 1.0
 
 # SPK kernel
 from jplephem.spk import SPK
 try:
-    SPKkernel = SPK.open(os.path.join(bspdir, 'de430.bsp'))
+    SPKkernel = SPK.open(os.path.join(bspdir, planetsSPK))
 except FileNotFoundError:
-    print("\n  Cannot open the SPK file 'de430.bsp'")
+    print("\n  Cannot open the SPK file '{0}'".format(planetsSPK))
     print("  Please consult 'Install SSVG' section of the Users Guide")
     print("")
-    print("  SPKファイル 'de430.bsp' を開くことができません")
+    print("  SPKファイル '{0}'を開くことができません".format(planetsSPK))
     print("  ユーザーズガイドの 'インストール' の項を参照してください")
     print("")
     print("Type Enter to exit")

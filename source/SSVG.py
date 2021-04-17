@@ -256,7 +256,7 @@ class MainForm(QMainWindow):
         self.winTtl_EFP = self._translate('SSVG.py', 'Define destination file to export')
 
     def initSSV(self):
-        g.version = 'v1.4.1'
+        g.version = 'v1.5.0'
         g.options = {}
         g.options['log'] = True
         g.clipboard = QApplication.clipboard()
