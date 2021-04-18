@@ -44,7 +44,7 @@ class Ui_NewFlightPlanDialog(object):
         self.label_2.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.probe_box)
-        self.label_3.setGeometry(QtCore.QRect(0, 50, 71, 16))
+        self.label_3.setGeometry(QtCore.QRect(0, 47, 71, 20))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(10)

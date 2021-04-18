@@ -894,7 +894,7 @@
     <message>
         <location filename="../ui/newflightplandialog.ui" line="88"/>
         <source>Mass (kg)</source>
-        <translation>質量</translation>
+        <translation>質量 (kg)</translation>
     </message>
     <message>
         <location filename="../ui/newflightplandialog.ui" line="109"/>
@@ -966,7 +966,7 @@
     <name>OrbitOptimizeDialog</name>
     <message>
         <location filename="../ui/orbitoptimizedialog.ui" line="29"/>
-        <source>Start Optimize Assistant</source>
+        <source>START Optimize Assistant</source>
         <translation>最適化アシスタント （START マヌーバ）</translation>
     </message>
     <message>

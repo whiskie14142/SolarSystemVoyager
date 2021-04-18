@@ -75,7 +75,7 @@ class Ui_OrbitOptimizeDialog(object):
         self.terminalRV_min.setReadOnly(True)
         self.terminalRV_min.setObjectName("terminalRV_min")
         self.groupBox_3 = QtWidgets.QGroupBox(OrbitOptimizeDialog)
-        self.groupBox_3.setGeometry(QtCore.QRect(10, 10, 211, 91))
+        self.groupBox_3.setGeometry(QtCore.QRect(10, 10, 221, 91))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(10)
@@ -83,7 +83,7 @@ class Ui_OrbitOptimizeDialog(object):
         self.groupBox_3.setObjectName("groupBox_3")
         self.check_Ptrj = QtWidgets.QCheckBox(self.groupBox_3)
         self.check_Ptrj.setEnabled(True)
-        self.check_Ptrj.setGeometry(QtCore.QRect(110, 40, 91, 16))
+        self.check_Ptrj.setGeometry(QtCore.QRect(110, 40, 101, 16))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
         font.setPointSize(10)
@@ -718,7 +718,7 @@ class Ui_OrbitOptimizeDialog(object):
 
     def retranslateUi(self, OrbitOptimizeDialog):
         _translate = QtCore.QCoreApplication.translate
-        OrbitOptimizeDialog.setWindowTitle(_translate("OrbitOptimizeDialog", "Start Optimize Assistant"))
+        OrbitOptimizeDialog.setWindowTitle(_translate("OrbitOptimizeDialog", "START Optimize Assistant"))
         self.label_3.setText(_translate("OrbitOptimizeDialog", "Initial Delta-V (m/s)"))
         self.label_9.setText(_translate("OrbitOptimizeDialog", "Terminal Relative Velocity (m/s)"))
         self.label_14.setText(_translate("OrbitOptimizeDialog", "Current"))

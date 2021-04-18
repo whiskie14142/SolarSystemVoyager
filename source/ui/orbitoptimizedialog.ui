@@ -32,7 +32,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Start Optimize Assistant</string>
+   <string>START Optimize Assistant</string>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -186,7 +186,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>211</width>
+     <width>221</width>
      <height>91</height>
     </rect>
    </property>
@@ -207,7 +207,7 @@
      <rect>
       <x>110</x>
       <y>40</y>
-      <width>91</width>
+      <width>101</width>
       <height>16</height>
      </rect>
     </property>
