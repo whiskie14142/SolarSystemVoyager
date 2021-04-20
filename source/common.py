@@ -8,6 +8,17 @@ import numpy as np
 import math
 import sys
 import os
+import json
+
+# get configuration params
+configfile = open('SSVGconfig.json', 'r')
+config = json.load(configfile)
+configfile.close()
+planetsSPK = config['system']['planetsSPK']     # name of the SPK file for planets
+projection = config['system']['3Dproj']         # proj. type of the 3D orbit window
+print('current configuration:')
+print('  file name of the SPK file for planets = ', planetsSPK)
+print('  projection type of 3D figures = ', projection)
 
 solarmu = 1.32712440041e20      # solar gravitational constant
 solark1 = 3.85e26               # total solar flux
@@ -79,9 +90,6 @@ bspdir = 'SSVG_data'
 logdir = 'SSVG_log'
 plandir = 'SSVG_plan'
 i18ndir = 'SSVG_i18n'
-
-# SPK file for planets
-planetsSPK = 'de440.bsp'
 
 # minimum flight time (days)
 minft = 1.0
