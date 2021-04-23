@@ -90,6 +90,10 @@ class ProbeOrbit:
         # kernel: kernel of SPK
         # body_f: source of grav. [0]Mercury~[8]Pluto,[9]Sun  True or False
         # body_mu: mu of the body
+        
+        # This version try updating gravitational force computation, but
+        # it did not work properly.
+
         yd = np.zeros(6)
         yd[0] = y[3]
         yd[1] = y[4]
@@ -101,11 +105,22 @@ class ProbeOrbit:
             if body_f[i]:
                 n = common.planets_id[i][0]
                 if n > 300:
-                    pos = (kernel[0,3].compute(td) + kernel[3,n].compute(td)) \
-                        * 1000.0
+                    pos = common.eqn2ecl((kernel[0,3].compute(td) +         \
+                        kernel[3,n].compute(td))) * 1000.0
+                    pvec = pos - y[0:3]
+                    deltat = np.sqrt(np.dot(pvec, pvec)) / common.c
+#                    print(n, deltat)
+                    ctd = td - (deltat / common.secofday)
+                    pos = common.eqn2ecl((kernel[0,3].compute(ctd) +        \
+                        kernel[3,n].compute(ctd))) * 1000.0
                 else:
-                    pos = kernel[0,n].compute(td) * 1000.0
-                delta = common.eqn2ecl(pos) - y[0:3]
+                    pos = common.eqn2ecl(kernel[0,n].compute(td)) * 1000.0
+                    pvec = pos - y[0:3]
+                    deltat = np.sqrt(np.dot(pvec, pvec)) / common.c
+#                    print(n, deltat)
+                    ctd = td - (deltat / common.secofday)
+                    pos = common.eqn2ecl(kernel[0,n].compute(ctd)) * 1000.0
+                delta = pos - y[0:3]
                 r = np.sqrt(np.dot(delta, delta))
                 yd[3:6] += delta * (body_mu[i] / r ** 3)
 #                print(delta * (body_mu[i] / r ** 3))
