@@ -28,17 +28,18 @@ import os
 import json
 import shutil
 
+import matplotlib
+matplotlib.use('Qt5Agg')        # for MacOS
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+import numpy as np
+
 import common
 import probe
 import target
 from twobodypred import TwoBodyPred
 from spktype21 import SPKType21
 
-import matplotlib
-matplotlib.use('Qt5Agg')        # for MacOS
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
-import numpy as np
 
 from flightplan import NewFlightPlanDialog
 from flightplan import EditProbeDialog
@@ -333,7 +334,7 @@ class MainForm(QMainWindow):
         g.fig=plt.figure(figsize=(11,11))
         g.ax = g.fig.gca(projection='3d')
 
-        g.ax.set_box_aspect([1,1,1])            # set equal scale for three axes
+        # g.ax.set_box_aspect([1,1,1])            # for newer MatPlotLib
         g.ax.set_proj_type(common.projection)   # Projection ('ortho' or 'persp')
     
         g.ax.set_xlim3d(-3.0e11, 3.0e11)

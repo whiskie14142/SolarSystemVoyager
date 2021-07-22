@@ -16,9 +16,10 @@ config = json.load(configfile)
 configfile.close()
 planetsSPK = config['system']['planetsSPK']     # name of the SPK file for planets
 projection = config['system']['3Dproj']         # proj. type of the 3D orbit window
-print('current configuration:')
+print('\ncurrent configuration:')
 print('  file name of the SPK file for planets = ', planetsSPK)
 print('  projection type of 3D figures = ', projection)
+print()
 
 solarmu = 1.32712440041e20      # solar gravitational constant
 solark1 = 3.85e26               # total solar flux
