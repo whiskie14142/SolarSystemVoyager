@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SSVG"
-#define MyAppVersion "1.4.1"
+#define MyAppVersion "1.5.0"
 #define MyAppPublisher "Shushi Uetsuki/whiskie14142"
 #define MyAppURL "http://whsk.sakura.ne.jp/ssvg/"
 #define MyAppExeName "SSVG.exe"
@@ -22,7 +22,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={localappdata}\{#MyAppName}
 DefaultGroupName=SSVG Solar System Voyager
 OutputDir=U:\Shushi\Development\Inno_Setup
-OutputBaseFilename=SSVG_1_4_1_setup
+OutputBaseFilename=SSVG_1_5_0_setup
 SetupIconFile=U:\Shushi\Development\Inno_Setup\SSVGinstall.ico
 Compression=lzma
 SolidCompression=yes
@@ -36,8 +36,8 @@ Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"; LicenseFile: 
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "U:\Shushi\Development\Inno_Setup\SSVG\SSVG.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "U:\Shushi\Development\Inno_Setup\SSVG\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "U:\Shushi\Development\Inno_Setup\SSVG\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs overwritereadonly
+Source: "U:\Shushi\Development\Inno_Setup\SSVG\SSVG_plan\*.json"; DestDir: "{app}\SSVG_plan"; Flags: ignoreversion overwritereadonly; Attribs: readonly
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

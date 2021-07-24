@@ -63,3 +63,79 @@ UnicodeDecodeError: 'utf-8' codec can't decode byte 0x83 in position 130: invali
 compat.py に後者の修正を行ったところ、コンパイルに成功した。
 （2019/9/27）
 
+
+
+
+2021/7/19
+Anaconda3を最新版（3.8）に更新。Pythonは3.8.8になった
+conda でPyInstaller 3.6をインストール
+
+（問題１）
+SSVG1.5.0をコンパイルして実行すると次のエラーが出る。
+
+C:\Users\Public\Downloads\SSVG>ssvg.exe
+INTEL MKL ERROR: 指定されたモジュールが見つかりません。 mkl_intel_thread.1.dll.
+Intel MKL FATAL ERROR: Cannot load mkl_intel_thread.1.dll.
+
+トライ１：mkl_intel_thread.1.dll をコンパイル後のSSVGにコピーした：メッセージも出さず異常終了。
+
+.specファイルに以下の行を加える。ソースはこちら。https://stackoverflow.com/questions/35478526/pyinstaller-numpy-intel-mkl-fatal-error-cannot-load-mkl-intel-thread-dll　ただし、mkl_で始まるファイルをぜんぶコピーするように修正してある。
+
+mkl_dlls = [
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_avx.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_avx2.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_avx512.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_blacs_ilp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_blacs_intelmpi_ilp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_blacs_intelmpi_lp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_blacs_lp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_blacs_mpich2_ilp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_blacs_mpich2_lp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_blacs_msmpi_ilp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_blacs_msmpi_lp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_cdft_core.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_core.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_def.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_intel_thread.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_mc.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_mc3.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_msg.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_pgi_thread.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_rt.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_scalapack_ilp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_scalapack_lp64.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_sequential.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_tbb_thread.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_vml_avx.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_vml_avx2.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_vml_avx512.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_vml_cmpt.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_vml_def.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_vml_mc.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_vml_mc2.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\mkl_vml_mc3.1.dll', '.'),
+ ('C:\\Users\\shush\\anaconda3\\envs\\ssvg\\Library\\bin\\libiomp5md.dll', '.')]
+
+あと、この修正も。
+a = Analysis(['yourpythonappnamehere.py'],
+             pathex=['C:\\Users\\...\\Documents\\...'],
+             binaries=mkl_dlls,
+             datas=None,
+             ....
+
+（問題２）
+実行すると次のエラーが出る。
+ModuleNotFoundError: No module named 'scipy.spatial.transform._rotation_groups'
+[11128]
+
+Scipyの問題らしい。
+.specファイルの hiddenimportに ’scipy.spatial.transform._rotation_groups’ を与えることで解決した。
+
+（問題３）
+実行すると次のエラーが出る。matplotlibで。
+NameError: name 'defaultParams' is not defined
+matplotlibを3.2.2に戻すと解決するという記事あり。SSVG環境だけ3.2.2に戻す。
+解決した。
+
+
+

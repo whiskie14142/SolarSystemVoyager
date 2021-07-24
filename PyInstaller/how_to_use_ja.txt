@@ -7,6 +7,7 @@
 
 　PyInstaller のルートにはPythonスクリプトに加えて以下のファイルの最新版が必要。
 　　ssvgicon.ico　（SSVGのアイコン）
+　　SSVGconfig.json　（システム設定ファイル）
 　　ipaexg.ttf　（日本語フォント：IPAexGothic）
 　　SSVG_UsersGuide-ja.pdf　（ユーザーズガイド日本語版）
 　　SSVG_UsersGude-en.pdf　（ユーザーズガイド英語版）
@@ -19,8 +20,8 @@
 
 
 （２）Python環境をSSVG用に切り替える。
-　Anacondaプロンプトを起動し、次のコマンドを実行する。（注4）
-　　conda activate ssvg
+　Anacondaプロンプトを起動し、次のバッチファイルを実行する。（注4）
+　　cenv.bat
 
 （３）PI.batを実行する
 　dist\SSVG の内容が実行形式パッケージである。このフォルダをインストーラーパッケージ作成に使用する。
