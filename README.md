@@ -7,20 +7,25 @@ Fly your own spacecrafts in the precisely simulated solar system.
 Read more on the home page. <[http://whsk.sakura.ne.jp/ssvg/index-en.html](http://whsk.sakura.ne.jp/ssvg/index-en.html)>
 
 ### Required environment
-* Python 3.7
+* Python 3.8
 
 ### Packages and Modules
-* Numpy v1.16.4
-* Scipy v1.2.1
-* matplotlib v3.1.0
+* Numpy v1.20.1
+* Scipy v1.6.2
+* matplotlib v3.2.2
 * PyQt5 (QT_VERSION_STR=5.9.6, PYQT_VERSION_STR=5.9.2, SIP_VERSION_STR=4.19.8)
-* jplephem v2.9
+* jplephem v2.16
 * julian v0.14
 * pytwobodyorbit v1.0.0
 * spktype01 v1.0.0
 * spktype21 v0.1.0
 
 ### Modification Log
+#### v1.5.0 July 27, 2021
+* The development environment became to Anaconda3-2021.06
+* To use the latest planetary ephemeris of NASA/JPL
+* To use parallel projection to draw figures on the 3D Orbit window
+
 #### v1.4.1 September 30, 2019
 * The development environment was renewed to Anaconda3-2019.07
 * The font settings of GUI was improved

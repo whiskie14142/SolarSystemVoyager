@@ -1,6 +1,5 @@
 このフォルダはSSVGのインストーラーパッケージを作成するためのものである。
-このフォルダを使用するには、Inno Setup version 5.6が必要である。
-（今後 version 6 に移行する予定）
+このフォルダを使用するには、Inno Setup version 6が必要である。
 
 （１）準備
 ・SSVGフォルダの内容を最新にする。このフォルダはPyInstrallerが作成したWindows実行形式のフォルダである。
@@ -15,6 +14,6 @@
 ・スクリプトを保存する
 
 （３）コンパイルする
-　Inno Setup Studio上で「コンパイル」を実行する。（4分ほどかかる）
+　Inno Setup Studio上で「Build→Compile」を実行する。（4分ほどかかる）
 
 以上の操作でSSVGのインストーラーパッケージが出来上がる。
