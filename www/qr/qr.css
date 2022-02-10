@@ -77,6 +77,19 @@ td.desc
     vertical-align: middle;
 }
 
+td.item
+{
+    width: 30%;
+    vertical-align: top;
+    text-align: right;
+    padding-right: 0.5em;
+}
+
+td.idesc
+{
+    width: 70%;
+}
+
 td.proc
 {
     width: 10%;

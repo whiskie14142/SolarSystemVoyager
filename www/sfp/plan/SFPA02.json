@@ -1,0 +1,179 @@
+{
+    "maneuvers": [
+        {
+            "elv": 19.1,
+            "phi": 18.51,
+            "type": "START",
+            "time": 2443376.0999999996,
+            "dv": 9705.0,
+            "description_ja": "\u3053\u306e\u98db\u884c\u8a08\u753b\u306f\u3001NASA \u306e\u63a2\u67fb\u6a5f\u30dc\u30a4\u30b8\u30e3\u30fc2\u53f7\u306e\u65c5\u3092\u518d\u73fe\u3057\u305f\u3082\u306e\u3067\u3059\u304c\u3001\u518d\u73fe\u306f\u7cbe\u5bc6\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\n\u53c2\u8003\u8cc7\u6599\uff1a http://www.jpl.nasa.gov/news/fact_sheets/voyager.pdf\n\n\u63a2\u67fb\u6a5f\u306f 1977 \u5e74 8 \u6708 20 \u65e5\u306b\u6728\u661f\u306b\u5411\u3051\u3066\u5b87\u5b99\u57fa\u5730\u3092\u51fa\u767a\u3057\u307e\u3059\u3002\n\u63a2\u67fb\u6a5f\u306e\u6700\u521d\u306e\u76ee\u6a19\u306f\u30011979 \u5e74 7 \u6708 9 \u65e5\u306b\u6728\u661f\u306b\u5230\u7740\u3057\u3066\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u3092\u884c\u3046\u3053\u3068\u3067\u3059\u3002\n\n\u666e\u901a\u306b\u8003\u3048\u308b\u3068\u305d\u306e\u65e5\u306b\u6728\u661f\u306b\u63a5\u8fd1\u3059\u308b\u8ecc\u9053\u306b\u63a2\u67fb\u6a5f\u3092\u9001\u308a\u3060\u305b\u3070\u3088\u3055\u305d\u3046\u3067\u3059\u304c\u3001\u305d\u308c\u3067\u306f\u6728\u661f\u306e\u5f15\u529b\u306e\u5f71\u97ff\u3067\u6728\u661f\u5230\u7740\u304c 10 \u65e5\u8fd1\u304f\u65e9\u304f\u306a\u3063\u3066\u3057\u307e\u3044\u307e\u3059\u3002\u305d\u3053\u3067\u3001\u3053\u306e\u98db\u884c\u8a08\u753b\u3067\u306f 1979 \u5e74 7 \u6708 18 \u65e5\u306b\u6728\u661f\u306b\u63a5\u8fd1\u3059\u308b\u8ecc\u9053\u306b\u63a2\u67fb\u6a5f\u3092\u9001\u308a\u51fa\u3057\u307e\u3059\u3002\n\n\u63a2\u67fb\u6a5f\u3092\u51fa\u767a\u3055\u305b\u308b START \u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3067\u3082\u3068\u3081\u305f\u5024\u3092\u3001\u5f15\u304d\u7d9a\u304f FLYTO \u30de\u30cc\u30fc\u30d0\u306e\u7d50\u679c\u306b\u57fa\u3065\u3044\u3066\u624b\u76f4\u3057\u3057\u305f\u3082\u306e\u3067\u3059\u3002",
+            "description_en": "This Flight Plan is a replication of the spaceflight of Voyager 2, a space probe of NASA/JPL that explored all of the four giant planets of the solar system.  However, the replication is not so accurate.\n\nThe Probe leaves the space station \"Earth L2\" on 1977-08-20 (August 20, 1977) and flies toward Jupiter.  The first target of the spaceflight is the Jupiter swing-by on 1979-07-09 (July 9, 1979).\n\nBecause of the acceleration by the gravity of Jupiter, the Probe arrives at Jupiter earlier than a passing date on its two-body orbit.\n\nSo, we should send off the Probe with an initial orbit that passes Jupiter later than the date of swing-by.  \n\nWe tried several spaceflights and found an orbit that satisfies the objective date.  The Probe passes Jupiter on 1979-07-18 (July 18, 1979), eleven days after the planned swing-by, by the two-body orbit.  The gravity of Jupiter accelerates the Probe, and the actual swing-by occurs on the planned date.\n\nWe obtained the parameters of the Maneuver by the FTA function of SSVG and modified them based on several trial runs of Maneuvers.\n\n"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2443425.5,
+            "inter": 1.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 10 \u6708 9 \u65e5\u307e\u3067\u306e 50 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u306f\u5730\u7403\u3092\u96e2\u308c\u3001\u4eca\u5f8c\u306e\u4e88\u5b9a\u304c\u7acb\u3066\u3084\u3059\u304f\u306a\u308a\u307e\u3059\u3002\n\u3053\u306e\u6642\u70b9\u3067\u306f\u8ecc\u9053\u306f\u554f\u984c\u306a\u3055\u305d\u3046\u3067\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 50 days until 1977-10-09 (October 9, 1977).\n\nThe Probe draws away from the Earth by the flight; it makes the planning of the subsequent spaceflight easy.\n\nAt this point, the orbit of the Probe is on the planned line."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2443892.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 1979 \u5e74 1 \u6708 22 \u65e5\u307e\u3067\u306e 467 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u304c2\u4f53\u554f\u984c\u8ecc\u9053\u3067\u6728\u661f\u306b\u63a5\u8fd1\u3059\u308b\u307e\u3067 180 \u65e5\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 467 days until 1979-01-22 (January 22, 1979).\n\nAt the end of the flight, the Probe is 180 days before the approach to Jupiter on its two-body orbit."
+        },
+        {
+            "elv": 44.66,
+            "phi": 152.53,
+            "type": "CP",
+            "dv": 29.452,
+            "description_ja": "\u6728\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306e\u305f\u3081\u306e\u8ecc\u9053\u4fee\u6b63\u3092\u884c\u3044\u307e\u3059\u3002\n\u3053\u306e\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u3092\u6b21\u306e\u76ee\u6a19\u306e\u571f\u661f\u306b\u5411\u304b\u3046\u8ecc\u9053\u306b\u4e57\u305b\u307e\u3059\u3002\n\n\u8ecc\u9053\u5909\u66f4\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3067\u6c42\u3081\u307e\u3057\u305f\u3002FTA \u306e\u6761\u4ef6\u306f\u6b21\u306e\u3088\u3046\u306b\u306a\u308a\u307e\u3057\u305f\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a \u6728\u661f\n\u3000\u98db\u884c\u6642\u9593\uff1a 180.0 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a2d\u5b9a\u65b9\u6cd5\uff1a B \u30d7\u30ec\u30fc\u30f3\u5ea7\u6a19\n\u3000\u30aa\u30d5\u30bb\u30c3\u30c8\u8ddd\u96e2\uff1a 1898000 km\n\u3000beta \uff08\u89d2\u5ea6\u30d9\u30fc\u30bf\uff09\uff1a 2.87 \u5ea6\n\nFTA\u306e\u6761\u4ef6\u306f\u3001\u571f\u661f\u306b\u6b63\u78ba\u306b\u63a5\u8fd1\u3067\u304d\u308b\u3088\u3046\u8907\u6570\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u8a66\u3057\u3066\u6c7a\u3081\u305f\u3082\u306e\u3067\u3059\u3002",
+            "description_en": "This Maneuver performs an orbital correction to prepare Jupiter swing-by.\nThe objective of the swing-by is putting the Probe into an orbit that brings the Probe to Saturn. \n\nWe obtained the parameters of the Maneuver by the FTA function of SSVG.  The execution conditions of the FTA were as follows:\n  Target: Jupiter\n  Time to Arrival: 180.0 days\n  Precise Targeting: B-plane coordinates\n  offset distance: 1898000 km\n  beta: 2.87 deg\n\nWe determined those conditions by cut-and-try.\n\n"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2444054.0,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 6 \u6708 29.5 \u65e5\u307e\u3067\u306e 161.5 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u6728\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u307e\u3067 10.5 \u65e5\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 161.5 days until 1979-06-29 (June 29, 1979).\n\nAt the end of the flight, the Probe is ten and a half days before the Jupiter swing-by."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2444074.0,
+            "inter": 0.5,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 7 \u6708 19.5 \u65e5\u307e\u3067 20 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u63a2\u67fb\u6a5f\u306f\u6728\u661f\u3067\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u3092\u884c\u3044\u3001\u8ecc\u9053\u3092\u5927\u304d\u304f\u5909\u3048\u3066\u571f\u661f\u306b\u5411\u304b\u3044\u307e\u3059\u3002\n\n\u6728\u661f\u3067\u306e\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306f UT \uff08\u4e16\u754c\u6642\uff09\u3067 7 \u6708 10 \u65e5 0 \u6642\u3054\u308d\u306b\u306a\u308a\u307e\u3057\u305f\u3002",
+            "description_en": "This Maneuver flies the Probe for 20 days until 1979-07-19 (July 19, 1979).\n\nThe Probe performs the Jupiter swing-by during the flight; the Probe flies toward Saturn after the swing-by.\n\nThe Jupiter swing-by occurs at about 0 o'clock of 1979-07-10 (July 10, 1979) on GMT."
+        },
+        {
+            "type": "CP",
+            "dv": 43.0,
+            "phi": 180.0,
+            "elv": 0.0,
+            "description_ja": "\u6728\u661f\u306e\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306e\u901f\u5ea6\u304c\u5c11\u3057\u5927\u304d\u904e\u304e\u305f\u3088\u3046\u3067\u3001\u3053\u306e\u307e\u307e\u98db\u884c\u3059\u308b\u3068\u571f\u661f\u5230\u7740\u6642\u671f\u304c\u5b9f\u969b\u306e\u30dc\u30a4\u30b8\u30e3\u30fc2\u53f7\u3088\u308a\u3082\u65e9\u304f\u306a\u3063\u3066\u3057\u307e\u3044\u307e\u3059\u3002\n\n\u63a2\u67fb\u6a5f\u306e\u901f\u5ea6\u3092\u5c11\u3057\u5c0f\u3055\u304f\u3059\u308b\u30de\u30cc\u30fc\u30d0\u3092\u884c\u3044\u307e\u3059\u3002dv \uff08\u30c7\u30eb\u30bfV \u306e\u7d76\u5bfe\u5024\uff09\u306e\u5024\u306f\u8907\u6570\u306e\u5024\u3092\u8a66\u3057\u3066 43.0 m/s \u3092\u9078\u3073\u307e\u3057\u305f\u3002",
+            "description_en": "At this point, we observed the orbit of the Probe and found that the arrival to Saturn would occur earlier than expected.  It means that the velocity of the Probe relative to Jupiter at the swing-by was a little faster than the real trajectory of Voyager 2.\n\nThis Maneuver performs an orbital correction to decelerate the Probe.  We determined the value of 43.0 m/s by cut-and-try for the parameter dv of the Maneuver."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2444663.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 1981 \u5e74 2 \u6708 28 \u65e5\u307e\u3067\u306e 589.5 \u65e5\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u306f\u571f\u661f\u63a5\u8fd1\u76ee\u6a19\u65e5\u307e\u3067 180 \u65e5\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 589.5 days until 1981-02-28 (February 28, 1981).\n\nAt the end of the flight, the Probe is 180 days before the Saturn swing-by."
+        },
+        {
+            "elv": 8.03,
+            "phi": 64.42,
+            "type": "CP",
+            "dv": 6.338,
+            "description_ja": "\u571f\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306e\u305f\u3081\u306e\u8ecc\u9053\u4fee\u6b63\u3092\u884c\u3044\u307e\u3059\u3002\n\u3053\u306e\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u3092\u5929\u738b\u661f\u306b\u5411\u304b\u3046\u8ecc\u9053\u306b\u4e57\u305b\u307e\u3059\u3002\n\n\u8ecc\u9053\u5909\u66f4\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3067\u6c42\u3081\u307e\u3057\u305f\u3002FTA \u306e\u6761\u4ef6\u306f\u6b21\u306e\u3088\u3046\u306b\u306a\u308a\u307e\u3057\u305f\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a \u571f\u661f\n\u3000\u98db\u884c\u6642\u9593\uff1a 180.0 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a2d\u5b9a\u65b9\u6cd5\uff1a B \u30d7\u30ec\u30fc\u30f3\u5ea7\u6a19\n\u3000\u30aa\u30d5\u30bb\u30c3\u30c8\u8ddd\u96e2\uff1a 379250 km\n\u3000beta \uff08\u89d2\u5ea6\u30d9\u30fc\u30bf\uff09\uff1a -3.1 \u5ea6\n\nFTA \u306e\u6761\u4ef6\u306f\u8907\u6570\u306e\u5024\u3092\u8a66\u3057\u3066\u6700\u9069\u306a\u3082\u306e\u3092\u63a2\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "This Maneuver performs an orbital correction of the Probe to prepare the Saturn swing-by.\nThe objective of the swing-by is putting the Probe into an orbit that brings the Probe to Uranus.\n\nWe obtained the parameters of the Maneuver by the FTA function of SSVG.  The execution conditions of the FTA were as follows:\n  Target: Saturn\n  Time to Arrival: 180.0 days\n  Precise Targeting: B-plane coordinates\n  offset distance: 379250 km\n  beta: -3.1 deg\n\nWe determined those conditions by cut-and-try.\n\n"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2444832.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 8 \u6708 16 \u65e5\u307e\u3067\u306e 169 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u571f\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u307e\u3067 9 \u65e5\u307b\u3069\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 169 days until 1981-08-16 (August 16, 1981).\n\nAt the end of the flight, the Probe is about nine days before the Saturn swing-by."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2444852.5,
+            "inter": 0.05,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 9 \u6708 5 \u65e5\u307e\u3067\u306e 20 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u4e2d\u306b\u63a2\u67fb\u6a5f\u306f\u571f\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u3092\u884c\u3044\u3001\u5929\u738b\u661f\u306b\u5411\u304b\u3046\u8ecc\u9053\u306b\u4e57\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 20 days until 1981-09-05 (September 5, 1981).\n\nThe Probe performs the Saturn swing-by during the flight; it flies toward Uranus after the swing-by."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2446080.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 1985 \u5e74 1 \u6708 15 \u65e5\u307e\u3067\u306e 1228 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u5929\u738b\u661f\u63a5\u8fd1\u306e\u76ee\u6a19\u65e5\u307e\u3067 375 \u65e5\u3068\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 1228 days until 1985-01-15 (January 15, 1985).\n\nAt the end of the flight, the Probe is 375 days before the Uranus swing-by."
+        },
+        {
+            "elv": 48.7,
+            "phi": -143.98,
+            "type": "CP",
+            "dv": 3.784,
+            "description_ja": "\u5929\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306e\u305f\u3081\u306e\u8ecc\u9053\u4fee\u6b63\u3092\u884c\u3044\u307e\u3059\u3002\n\u3053\u306e\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u3092\u6d77\u738b\u661f\u306b\u5411\u304b\u3046\u8ecc\u9053\u306b\u4e57\u305b\u307e\u3059\u3002\n\n\u8ecc\u9053\u5909\u66f4\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3067\u6c42\u3081\u307e\u3057\u305f\u3002FTA \u306e\u6761\u4ef6\u306f\u6b21\u306e\u3088\u3046\u306b\u306a\u308a\u307e\u3057\u305f\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a \u5929\u738b\u661f\n\u3000\u98db\u884c\u6642\u9593\uff1a 375.2 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a2d\u5b9a\u65b9\u6cd5\uff1a B \u30d7\u30ec\u30fc\u30f3\u5ea7\u6a19\n\u3000\u30aa\u30d5\u30bb\u30c3\u30c8\u8ddd\u96e2\uff1a 87640 km\n\u3000beta \uff08\u89d2\u5ea6\u30d9\u30fc\u30bf\uff09\uff1a 16.07 \u5ea6\n\nFTA \u306e\u6761\u4ef6\u306f\u8907\u6570\u306e\u5024\u3092\u8a66\u3057\u3066\u6700\u9069\u306a\u3082\u306e\u3092\u63a2\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "This Maneuver performs an orbital correction of the Probe to prepare the Uranus swing-by.\nThe objective of the swing-by is putting the Probe into an orbit that brings the Probe to Neptune.\n\nWe obtained the parameters of the Maneuver by the FTA function of SSVG.  The execution conditions of the FTA were as follows:\n  Target: Uranus\n  Time to Arrival: 375.2 days\n  Precise Targeting: B-plane coordinates\n  offset distance: 87640 km\n  beta: 16.07 deg\n\nWe determined those conditions by cut-and-try.\n"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2446445.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 1986 \u5e74 1 \u6708 15 \u65e5\u307e\u3067\u306e 365 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u5929\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u307e\u3067 9 \u65e5\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 365 days until 1986-01-15 (January 15, 1986).\n\nAt the end of the flight, the Probe is nine days before the Uranus swing-by."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2446465.5,
+            "inter": 0.05,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 2 \u6708 4 \u65e5\u307e\u3067\u306e 20 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306e\u9593\u306b\u63a2\u67fb\u6a5f\u306f\u5929\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u3092\u884c\u3044\u3001\u6d77\u738b\u661f\u306b\u5411\u304b\u3044\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 20 days until 1989-02-04 (February 4, 1986).\n\nThe Probe performs the Uranus swing-by during the flight; it flies toward Neptune after the swing-by."
+        },
+        {
+            "type": "CP",
+            "dv": 34.0,
+            "phi": 0.0,
+            "elv": 0.0,
+            "description_ja": "\u6d77\u738b\u661f\u5230\u7740\u307e\u3067\u63a2\u67fb\u6a5f\u3092\u98db\u884c\u3055\u305b\u3066\u307f\u308b\u3068\u3001\u3069\u3046\u3084\u3089 2 \u65e5\u307b\u3069\u9045\u308c\u3066\u5230\u7740\u3057\u3066\u3057\u307e\u3046\u3088\u3046\u3067\u3059\u3002\u5929\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306e\u901f\u5ea6\u304c\u5b9f\u969b\u306e\u98db\u884c\u3088\u308a\u3082\u9045\u304b\u3063\u305f\u3068\u601d\u308f\u308c\u307e\u3059\u3002\n\n\u30dc\u30a4\u30b8\u30e3\u30fc 2\u53f7 \u304c\u6d77\u738b\u661f\u306b\u5230\u7740\u3057\u305f 1989 \u5e748\u6708 25 \u65e5\u306b\u63a2\u67fb\u6a5f\u304c\u5230\u7740\u3059\u308b\u3088\u3046\u3001\u63a2\u67fb\u6a5f\u306e\u901f\u5ea6\u3092\u5897\u52a0\u3055\u305b\u307e\u3059\u3002dv \uff08\u30c7\u30eb\u30bfV \u306e\u7d76\u5bfe\u5024\uff09\u306f\u8907\u6570\u306e\u5024\u3092\u8a66\u3057\u3066 34.0 m/s \u3092\u9078\u3073\u307e\u3057\u305f\u3002",
+            "description_en": "At this point, we observed the orbit of the Probe and found that the arrival to Neptune would occur two days later than expected.  It means that the velocity of the Probe relative to Uranus at the swing-by was a little slower than the real trajectory of Voyager 2.\n\nThis Maneuver performs an orbital correction to accelerate the Probe.  We determined the value of 34.0 m/s by cut-and-try for the parameter dv of the Maneuver."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2447515.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 1988 \u5e74 12 \u6708 20 \u65e5\u307e\u3067\u306e 1050 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u6d77\u738b\u661f\u5230\u7740\u76ee\u6a19\u65e5\u307e\u3067 249 \u65e5\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 1050 days until 1988-12-20 (December 20, 1988).\n\nAt the end of the flight, the Probe is 249 days before the arrival to Neptune."
+        },
+        {
+            "elv": 56.4,
+            "phi": 97.21,
+            "type": "CP",
+            "dv": 9.096,
+            "description_ja": "\u6d77\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u306e\u305f\u3081\u306e\u8ecc\u9053\u4fee\u6b63\u3092\u884c\u3044\u307e\u3059\u3002\n\u63a2\u67fb\u6a5f\u306f\u6d77\u738b\u661f\u306e\u5317\u6975\u4e0a\u7a7a\u3092\u901a\u904e\u3057\u3001\u8ecc\u9053\u3092\u5927\u304d\u304f\u307e\u3052\u3066\u9ec4\u9053\u9762\u306e\u5357\u306b\u5411\u304b\u3044\u307e\u3059\u3002\n\n\u8ecc\u9053\u5909\u66f4\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306fFTA\u3067\u6c42\u3081\u307e\u3057\u305f\u3002FTA \u306e\u6761\u4ef6\u306f\u6b21\u306e\u3088\u3046\u306b\u306a\u308a\u307e\u3057\u305f\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a \u6d77\u738b\u661f\n\u3000\u98db\u884c\u6642\u9593\uff1a 249 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a2d\u5b9a\u65b9\u6cd5\uff1a B \u30d7\u30ec\u30fc\u30f3\u5ea7\u6a19\n\u3000\u30aa\u30d5\u30bb\u30c3\u30c8\u8ddd\u96e2\uff1a 59000 km\n\u3000beta \uff08\u89d2\u5ea6\u30d9\u30fc\u30bf\uff09\uff1a 238 \u5ea6\n\nFTA \u306e\u6761\u4ef6\u306f\u3001\u63a2\u67fb\u6a5f\u304c\u6d77\u738b\u661f\u306e\u5317\u6975\u4e0a\u7a7a\u3092\u901a\u904e\u3057\u3001\u6700\u63a5\u8fd1\u8ddd\u96e2\u304c 30000 km \u306b\u306a\u308b\u3088\u3046\u3001\u8907\u6570\u306e\u5024\u3092\u8a66\u3057\u3066\u6700\u9069\u306a\u3082\u306e\u3092\u9078\u3073\u307e\u3057\u305f\u3002",
+            "description_en": "This Maneuver performs an orbital correction of the Probe to prepare the Neptune swing-by.\nThe probe passes above the north pole of Neptune, and it makes a steep turn of its orbit during the swing-by.   After that, it flies toward the south of the ecliptic plane.\n\nWe obtained the parameters of the Maneuver by the FTA function of SSVG.  The execution conditions of the FTA were as follows:\n  Target: Neptune\n  Time to Arrival: 249 days\n  Precise Targeting: B-plane coordinates\n  offset distance: 59000 km\n  beta: 238 deg\n\nWe determined those conditions by cut-and-try to obtain the following trajectory.\n  The Probe passes above the north pole of Neptune.\n  At the closest point, the distance of the Probe from Neptune center is 30000 km.\n"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2447753.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 1989 \u5e74 8 \u6708 15 \u65e5\u307e\u3067 238 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u6d77\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u307e\u3067 10 \u65e5\u307b\u3069\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 238 days until 1989-08-15 (August 15, 1989).\n\nAt the end of the flight, the Probe is about ten days before the  Neptune swing-by."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2447773.5,
+            "inter": 0.05,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 9 \u6708 4 \u65e5\u307e\u3067\u306e 20 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u306e\u9593\u306b\u63a2\u67fb\u6a5f\u306f\u6d77\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u3092\u884c\u3044\u3001\u7d4c\u8def\u3092\u5927\u304d\u304f\u5909\u3048\u3066\u9ec4\u9053\u9762\u306e\u5357\u306b\u5411\u304b\u3044\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 20 days until 1989-09-04 (September 4, 1989).\n\nThe Probe performs the Neptune swing-by during the flight; it makes a steep turn of its orbit and flies toward the south of the ecliptic plane after the swing-by."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2449589.5,
+            "inter": 5.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 1994 \u5e74 8 \u6708 25 \u65e5\u307e\u3067\u306e 1816 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u3092\u7d42\u3048\u308b\u3068\u3001\u6d77\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\u304b\u3089\u3061\u3087\u3046\u3069 5 \u5e74\u306b\u306a\u308a\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 1816 days until 1994-08-25 (August 25, 1994).\n\nAt the end of the flight, the Probe is after five years of the Neptune swing-by."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459214.5,
+            "inter": 50.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u3092 2020 \u5e74 12 \u6708 31 \u65e5\u307e\u3067\u306e 9625 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\n\n\u3053\u306e\u98db\u884c\u304c\u7d42\u308f\u308b\u3068\u3001\u63a2\u67fb\u6a5f\u306f\u6253\u4e0a\u3052\u304b\u3089 15838 \u65e5\uff0843 \u5e74\u3068 4\u304b\u6708\u4f59\u308a\uff09\u306b\u306a\u308a\u307e\u3059\u3002\u592a\u967d\u304b\u3089\u306e\u8ddd\u96e2\u306f 200 \u5104\u30ad\u30ed\u30e1\u30fc\u30c8\u30eb\u3092\u8d85\u3048\u3066\u3044\u308b\u306f\u305a\u3067\u3059\u3002\n\n\u306a\u304a\u3001\u6700\u5f8c\u306e\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\uff08\u6d77\u738b\u661f\u30b9\u30a4\u30f3\u30b0\u30d0\u30a4\uff09\u306e\u7d4c\u8def\u3092\u30dc\u30a4\u30b8\u30e3\u30fc 2\u53f7\u306e\u98db\u884c\u7d4c\u8def\u306b\u5408\u308f\u305b\u308b\u3053\u3068\u304c\u96e3\u3057\u3044\u305f\u3081\u3001\u305d\u308c\u4ee5\u5f8c\u306e\u7d4c\u8def\u306f\u6b63\u78ba\u3067\u306f\u306a\u3044\u3068\u8003\u3048\u3089\u308c\u307e\u3059\u3002",
+            "description_en": "This Maneuver flies the Probe for 9625 days until 2020-12-31 (December 31, 2020).\n\nAt the end of the flight, the Probe is after 15838 days (a little more than 43 years and four months) from the start of the spaceflight.  The distance of the Probe would be more than 20 billion kilometers from the Sun.\n\nNote:\nBecause of the difficulty of the matching of the flight path during the Neptune swing-by, the trajectory of the Probe is not accurate in the last phase of the spaceflight."
+        }
+    ],
+    "target": {
+        "name": "Saturn",
+        "file": "",
+        "SPKID1A": 0,
+        "SPKID1B": 6,
+        "SPKID2A": 0,
+        "SPKID2B": 0
+    },
+    "probe": {
+        "name": "Voyager2",
+        "base": "EarthL2",
+        "pmass": 500.0
+    }
+}

@@ -65,25 +65,22 @@
               </TABLE>
             </TD>
             <TD id=mainbody>
-              <P>準備中です。</P><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-              <!--
-              <P>このページでは、SSVG の飛行計画のサンプル（追加分）をダウンロードすることができます。</P>
+              <P>このページでは、SSVG の飛行計画のサンプルをダウンロードすることができます。</P>
               <ul>
                 <li>飛行計画を実行するには SSVG が必要です。まだでしたら<A href="./01_install.html" target="_blank">インストール</A>してください。</li>
                 <li>下の表から試してみたい飛行計画を選んでください。</li>
-                <li>選んだ飛行計画の飛行計画ファイルと、SPK ファイルをダウンロードしてください。</li>
-                <li>SSVG を実行し、ダウンロードした SPK ファイルをインポートしてください。</li>
-                <li>SSVG でダウンロードした飛行計画ファイルをインポートしてください。</li>
-                <li>SSVG で飛行計画を開き、実行してください。</li>
+                <li>飛行計画ファイルと、SPK ファイルをダウンロードしてください。SPK ファイルのない（必要でない）サンプルもあります。</li>
+                <li>SPK ファイルをダウンロードした場合は SSVG を実行してインポートしてください。</li>
+                <li>SSVG で飛行計画ファイルをインポートし、実行してください。</li>
                 <li>SSVG の使い方は<A href="./docs/SSVG_UsersGuide-ja.pdf" download>ユーザーズガイド</A>を参照してください。</li>
               </ul>
               <BR>
               <table id=sfpt>
-                <caption>飛行計画のサンプル（追加分）<caption>
+                <caption>飛行計画のサンプル<caption>
                 <thead>
                   <tr>
                     <th id=sfph1 rowspan="2">ID</th>
-                    <th id=sfph2 rowspan="2">説明（クリックで詳細）</th>
+                    <th id=sfph2 rowspan="2">説明<br>（タイトルのクリックで詳細表示）</th>
                     <th id=sfph34 colspan="2">ダウンロード</th>
                     <tr>
                         <th id=sfph3>飛行計画ファイル</th>
@@ -94,47 +91,52 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class=sfpb1>SFP001</td>
+                    <td class=sfpb1>SFPA01</td>
                     <td class=sfpb2>
                       <details>
-                        <summary>Ceres に電気推進でランデブー</summary>
-                        <p>探査機を準惑星 Ceres にランデブーさせる飛行計画です。Ceres（日本語ではセレスまたはケレス）は小惑星帯における最大の天体です。<br>この飛行では Ceres にランデブーするための軌道変更に電気推進エンジン（EP）を使用します。</p>
+                        <summary>小惑星パラスにランデブー</summary>
+                        <p>探査機を小惑星パラスにランデブーさせる飛行計画です。パラス（Pallas）は小惑星帯における最も大きな４つの天体の一つです。パラスの軌道は黄道面（地球の軌道面）から大きく傾いています。<br>この飛行計画では、探査機はまず木星に飛行し、スイングバイを行ってパラスに向かいます。</p>
                       </details>
                     </td>
-                    <td class=sfpb3><A href="./sfp/plan/Ceres_EP.json" download>Ceres_EP.json</A></td>
-                    <td class=sfpb4><A href="./sfp/data/2000001_Ceres.bsp" download>2000001_Ceres.bsp</A></td></td>
-                  </tr>
-                  <tr>
-                    <td class=sfpb1>SFP002</td>
-                    <td class=sfpb2>
-                      <details>
-                        <summary>Pallas に電気推進でランデブー</summary>
-                        <p>探査機を小惑星 Pallas にランデブーさせる飛行計画です。Pallas（パラス）は小惑星帯におけるもっとも大きな４つの天体の一つです。Pallas の軌道は地球の軌道面から大きく傾いているため、探査機はまず木星でスイングバイを行って軌道を傾けて Pallas に向かいます。<br>この飛行では Pallas にランデブーするための軌道変更に電気推進エンジン（EP）を使用します。<br>この飛行計画は SSVG に同梱されているサンプル（sample_Pallas）を改良したものです。</p>
-                      </details>
-                    </td>
-                    <td class=sfpb3><A href="./sfp/plan/Pallas_JSB-EP.json" download>Pallas_JSB-EP.json</A></td>
+                    <td class=sfpb3><A href="./sfp/plan/SFPA01.json" download>SFPA01.json</A></td>
                     <td class=sfpb4><A href="./sfp/data/2000002_Pallas.bsp" download>2000002_Pallas.bsp</A></td>
                   </tr>
                   <tr>
-                    <td class=sfpb1>SFP003</td>
+                    <td class=sfpb1>SFPA02</td>
                     <td class=sfpb2>
                       <details>
-                        <summary>Juno にランデブー（2段階軌道変更）</summary>
-                        <p>探査機を小惑星 Juno にランデブーさせる飛行計画です。Juno は小惑星帯におけるもっとも大きな 4 つの天体の一つです。地球近傍から直接 Juno に向かうと出発時のデルタVや到着時の相対速度が大きくなるので、2段階の軌道変更を経て Juno に接近する次のような飛行計画にしました。
-                        <ul class=inbox>
-                          <li>地球近傍を出発するときの軌道は、遠日点付近で Juno の軌道に接近するものを選ぶ</li>
-                          <li>遠日点付近で増速方向の軌道変更を行い、約 1 公転後に Juno に接近できるようにする</li>
-                          <li>Juno に接近したら再度軌道変更を行い、ランデブーする</li>
-                        </ul>
-                        出発後の軌道変更には主として電気推進エンジンを使用します。</p>
+                        <summary>ボイジャー２号の航海</summary>
+                        <p>宇宙探査機ボイジャー２号の飛行経路を再現する飛行計画です。<br>ボイジャー２号はアメリカが 1977 年に打ち上げた宇宙探査機で、木星、土星、天王星、海王星という４大惑星をこの順に訪れて詳細な画像を撮影しました。</p>
                       </details>
                     </td>
-                    <td class=sfpb3><A href="./sfp/plan/Juno_EP.json" download>Juno_EP.json</A></td>
-                    <td class=sfpb4><A href="./sfp/data/2000003_Juno.bsp" download>2000003_Juno.bsp</A></td>
+                    <td class=sfpb3><A href="./sfp/plan/SFPA02.json" download>SFPA02.json</A></td>
+                    <td class=sfpb4>（なし）</td>
+                  </tr>
+                  <tr>
+                    <td class=sfpb1>SFPA03</td>
+                    <td class=sfpb2>
+                      <details>
+                        <summary>小惑星アポロにフライバイ</summary>
+                        <p>探査機を小惑星アポロのすぐ近くを通り過ぎさせる（フライバイを行う）飛行計画です。アポロ（Apollo）は地球に接近する可能性のある軌道を持つ小惑星の一つです。</p>
+                      </details>
+                    </td>
+                    <td class=sfpb3><A href="./sfp/plan/SFPA03.json" download>SFPA03.json</A></td>
+                    <td class=sfpb4><A href="./sfp/data/2001862_Apollo.bsp" download>2001862_Apollo.bsp</A></td>
+                  </tr>
+                  <tr>
+                    <td class=sfpb1>SFPA04</td>
+                    <td class=sfpb2>
+                      <details>
+                        <summary>小惑星アポロにランデブー</summary>
+                        <p>探査機を小惑星アポロにランデブーさせる飛行計画です。アポロ（Apollo）は地球に接近する可能性のある軌道を持つ小惑星の一つです。<br>探査機はアポロの近傍に長い期間留まります。アポロとの距離は初めのうちは 100 km で、そのあと 10 km にまで近づきます。</p>
+                      </details>
+                    </td>
+                    <td class=sfpb3><A href="./sfp/plan/SFPA04.json" download>SFPA04.json</A></td>
+                    <td class=sfpb4><A href="./sfp/data/2001862_Apollo.bsp" download>2001862_Apollo.bsp</A></td>
                   </tr>
                 </tbody>
               </table>
-              <br><br>-->
+              <br><br>
             </TD>
           </TR>
         </TBODY>

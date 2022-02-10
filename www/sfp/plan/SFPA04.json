@@ -1,0 +1,162 @@
+{
+    "probe": {
+        "name": "myprobe",
+        "base": "EarthL2",
+        "pmass": 500.0
+    },
+    "target": {
+        "name": "2001862_Apollo",
+        "file": "2001862_Apollo.bsp",
+        "SPKID1A": 0,
+        "SPKID2A": 0,
+        "SPKID2B": 0,
+        "SPKID1B": 2001862
+    },
+    "maneuvers": [
+        {
+            "type": "START",
+            "time": 2459497.5,
+            "dv": 10770.988,
+            "phi": -73.09,
+            "elv": 21.22,
+            "description_ja": "\u3053\u306e\u98db\u884c\u8a08\u753b\u306f\u63a2\u67fb\u6a5f\u3092\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u30e9\u30f3\u30c7\u30d6\u30fc\u3055\u305b\u307e\u3059\u3002\n\n\u51fa\u767a\u306e\u65e5\u4ed8\u3068\u51fa\u767a\u6642\u306e\u901f\u5ea6\uff08\u5927\u304d\u3055\u3068\u5411\u304d\uff09\u306f\u6700\u9069\u5316\u30a2\u30b7\u30b9\u30bf\u30f3\u30c8\u3067\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002\u63a2\u67fb\u6a5f\u304c\u30a2\u30dd\u30ed\u306b\u5230\u7740\u3057\u305f\u3068\u304d\u306e\u76f8\u5bfe\u901f\u5ea6\u304c\u304a\u304a\u3088\u305d 2000 m/s \u306b\u306a\u308b\u3088\u3046\u306b\u3057\u307e\u3057\u305f\u3002\n\n\u63a2\u67fb\u6a5f\u304c\u51fa\u767a\u3057\u3066\u304b\u3089\u30a2\u30dd\u30ed\u306b\u5230\u7740\u3059\u308b\u307e\u3067 235 \u65e5\u304b\u304b\u308a\u307e\u3059\u3002",
+            "description_en": "The Probe of the Flight Plan explores Apollo, an asteroid. It makes a rendezvous with the asteroid.\n\nThe START Maneuver makes the Probe begin the spaceflight.\nI decided on the beginning date of the spaceflight and parameters of the Maneuver by using the START Optimize Assistant to achieve a small Terminal Relative Velocity, 2000 m/s, of the Probe to the asteroid at the approach.\n\nAt this point, the Probe arrives at the asteroid Apollo in 235 days."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459532.5,
+            "inter": 1.0,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092 35 \u65e5\u98db\u884c\u3055\u305b\u307e\u3059\u3002",
+            "description_en": "The FLYTO Maneuver flies the Probe for 35 days."
+        },
+        {
+            "type": "CP",
+            "dv": 35.705,
+            "phi": -77.62,
+            "elv": 5.74,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u3067\u306f\u3001\u5316\u5b66\u63a8\u9032\u3092\u4f7f\u7528\u3057\u3066\u63a2\u67fb\u6a5f\u306e\u8ecc\u9053\u3092\u4fee\u6b63\u3057\u307e\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3092\u7528\u3044\u3066\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002FTA\u306e\u5b9f\u884c\u6761\u4ef6\u306f\u6b21\u306e\u3068\u304a\u308a\u3067\u3059\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\n\u3000\u98db\u884c\u6642\u9593\uff1a200 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a2d\u5b9a\u65b9\u6cd5\uff1a\u30bf\u30fc\u30b2\u30c3\u30c8\u306e\u4e2d\u5fc3\n",
+            "description_en": "The CP Maneuver corrects the orbit of the Probe by the Chemical Propulsion.\n\nI decided on the parameters of the CP Maneuver by using the FTA function.\nThe parameters of the FTA are as follows:\n  Target: Apollo\n  Time to Arrival: 200.0 days\n  Precise Targeting: Center of Target\n"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459722.5,
+            "inter": 1.0,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092 190 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u98db\u884c\u304c\u7d42\u4e86\u3057\u305f\u6642\u70b9\u3067\u306f\u3001\u63a2\u67fb\u6a5f\u306e\u30a2\u30dd\u30ed\u5230\u7740\u307e\u3067 10 \u65e5\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u3002",
+            "description_en": "The FLYTO Maneuver flies the Probe for 190 days.\nAt the end of the Maneuver, the Probe is ten days before the encounter with Apollo."
+        },
+        {
+            "type": "CP",
+            "dv": 28.915,
+            "phi": -134.49,
+            "elv": 3.34,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u306e\u8ecc\u9053\u4fee\u6b63\u3092\u884c\u3044\u3001\u63a2\u67fb\u6a5f\u304c\u6b63\u78ba\u306b\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u63a5\u8fd1\u3067\u304d\u308b\u3088\u3046\u306b\u3057\u307e\u3059\u3002\u76ee\u6a19\u4f4d\u7f6e\u306f\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306e\u8ecc\u9053\u4e0a\u5f8c\u65b9\u3067\u3001\u4e2d\u5fc3\u304b\u3089\u306e\u8ddd\u96e2 100 km \u306e\u5834\u6240\u3067\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3092\u7528\u3044\u3066\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002FTA \u306e\u5b9f\u884c\u6761\u4ef6\u306f\u6b21\u306e\u3068\u304a\u308a\u3067\u3059\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\n\u3000\u98db\u884c\u6642\u9593\uff1a10.0 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a73\u7d30\u8a2d\u5b9a\u65b9\u6cd5\uff1a\u8ecc\u9053\u30ed\u30fc\u30ab\u30eb\u5ea7\u6a19\n\u3000\u30aa\u30d5\u30bb\u30c3\u30c8\u8ddd\u96e2\uff1a100.0 km\n\u3000\u89d2\u5ea6\u30d5\u30a1\u30a4\uff08phi\uff09\uff1a180.0 \u5ea6\n\u3000\u4e0a\u4e0b\u89d2\uff08elv\uff09\uff1a0.0 \u5ea6",
+            "description_en": "The Maneuver corrects the orbit of the Probe to enable it comes to the rendezvous point with Apollo. The rendezvous point follows Apollo by 100 kilometers in its orbit.\n\nI decided on the parameters of the CP Maneuver by using the FTA function.\nThe parameters of the FTA are as follows:\n  Target: Apollo\n  Time to Arrival: 10.0 days\n  Precise Targeting: Orbit Local Coordinates\n  offset distance: 100.0 km\n  phi: 180.0 deg\n  elv: 0.0 deg"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459731.5,
+            "inter": 1.0,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092 9 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u98db\u884c\u7d42\u4e86\u306e\u6642\u70b9\u3067\u306f\u63a2\u67fb\u6a5f\u304c\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u5230\u7740\u3059\u308b\u307e\u3067 1.0 \u65e5\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u3002",
+            "description_en": "The FLYTO Maneuver flies the Probe for 9 (nine) days.\nAt the end of the Maneuver, the Probe is 1 (one) day before the encounter with Apollo."
+        },
+        {
+            "type": "CP",
+            "dv": 1773.314,
+            "phi": -140.41,
+            "elv": 15.23,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092\u6e1b\u901f\u3057\u3001\u3053\u306e\u3042\u3068 10 \u65e5\u304b\u3051\u3066\u3086\u3063\u304f\u308a\u3068\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u63a5\u8fd1\u3059\u308b\u3088\u3046\u306b\u3057\u307e\u3059\u3002\u76ee\u6a19\u4f4d\u7f6e\u306f\u30a2\u30dd\u30ed\u306e\u8ecc\u9053\u4e0a\u5f8c\u65b9\u3067\u3001\u4e2d\u5fc3\u304b\u3089\u306e\u8ddd\u96e2 100 km \u306e\u5834\u6240\u3067\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3092\u7528\u3044\u3066\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002FTA \u306e\u5b9f\u884c\u6761\u4ef6\u306f\u6b21\u306e\u3068\u304a\u308a\u3067\u3059\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\n\u3000\u98db\u884c\u6642\u9593\uff1a10.0 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a73\u7d30\u8a2d\u5b9a\u65b9\u6cd5\uff1a\u8ecc\u9053\u30ed\u30fc\u30ab\u30eb\u5ea7\u6a19\n\u3000\u30aa\u30d5\u30bb\u30c3\u30c8\u8ddd\u96e2\uff1a100.0 km\n\u3000\u89d2\u5ea6\u30d5\u30a1\u30a4\uff08phi\uff09\uff1a180.0 \u5ea6\n\u3000\u4e0a\u4e0b\u89d2\uff08elv\uff09\uff1a0.0 \u5ea6",
+            "description_en": "The CP Maneuver decelerates the Probe to make it approach the rendezvous point in 10 days. The rendezvous point follows Apollo by 100 kilometers in its orbit.\n\nI decided on the parameters of the CP Maneuver by using the FTA function.\nThe parameters of the FTA are as follows:\n  Target: Apollo\n  Time to Arrival: 10.0 days\n  Precise Targeting: Orbit Local Coordinates\n  offset distance: 100.0 km\n  phi: 180.0 deg\n  elv: 0.0 deg"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459740.5,
+            "inter": 1.0,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092 9 \u65e5\u9593\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u98db\u884c\u7d42\u4e86\u306e\u6642\u70b9\u3067\u63a2\u67fb\u6a5f\u306e\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u5230\u7740\u307e\u3067 1.0 \u65e5\u3067\u3059\u3002",
+            "description_en": "The FLYTO Maneuver flies the Probe for 9 (nine) days.\nAt the end of the Maneuver, the Probe is 1 (one) day before to come the rendezvous point with Apollo."
+        },
+        {
+            "type": "CP",
+            "dv": 1.123,
+            "phi": -174.87,
+            "elv": -54.46,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u306e\u8ecc\u9053\u3092\u5fae\u8abf\u6574\u3057\u30011.0 \u65e5\u5f8c\u306b\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u6b63\u78ba\u306b\u63a5\u8fd1\u3067\u304d\u308b\u3088\u3046\u306b\u3057\u307e\u3059\u3002\u76ee\u6a19\u4f4d\u7f6e\u306f\u30a2\u30dd\u30ed\u306e\u8ecc\u9053\u4e0a\u5f8c\u65b9\u3067\u3001\u4e2d\u5fc3\u304b\u3089\u306e\u8ddd\u96e2 100 km \u306e\u5834\u6240\u3067\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3092\u7528\u3044\u3066\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002FTA \u306e\u5b9f\u884c\u6761\u4ef6\u306f\u6b21\u306e\u3068\u304a\u308a\u3067\u3059\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\n\u3000\u98db\u884c\u6642\u9593\uff1a1.0 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a73\u7d30\u8a2d\u5b9a\u65b9\u6cd5\uff1a\u8ecc\u9053\u30ed\u30fc\u30ab\u30eb\u5ea7\u6a19\n\u3000\u30aa\u30d5\u30bb\u30c3\u30c8\u8ddd\u96e2\uff1a100.0 km\n\u3000\u89d2\u5ea6\u30d5\u30a1\u30a4\uff08phi\uff09\uff1a180.0 \u5ea6\n\u3000\u4e0a\u4e0b\u89d2\uff08elv\uff09\uff1a0.0 \u5ea6",
+            "description_en": "The CP Maneuver performs a precisive orbital correction of the Probe to bring it to the rendezvous point with Apollo.\n\nI decided on the parameters of the CP Maneuver by using the FTA function.\nThe parameters of the FTA are as follows:\n  Target: Apollo\n  Time to Arrival: 1.0 days\n  Precise Targeting: Orbit Local Coordinates\n  offset distance: 100.0 km\n  phi: 180.0 deg\n  elv: 0.0 deg"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2459741.5,
+            "inter": 1.0,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092 1.0 \u65e5\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u98db\u884c\u7d42\u4e86\u306e\u6642\u70b9\u3067\u63a2\u67fb\u6a5f\u306f\u76ee\u6a19\u3068\u3059\u308b\u4f4d\u7f6e\uff08\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306e\u8ecc\u9053\u4e0a\u5f8c\u65b9\u3001\u4e2d\u5fc3\u304b\u3089\u306e\u8ddd\u96e2\u7d04 100 km\uff09\u306b\u5230\u7740\u3057\u3066\u3044\u307e\u3059\u3002",
+            "description_en": "The FLYTO Maneuver flies the Probe for 1.0 days. At the end of the Maneuver, the Probe is right on the rendezvous point with Apollo."
+        },
+        {
+            "type": "CP",
+            "dv": 196.834,
+            "phi": -139.84,
+            "elv": 17.23,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092\u6e1b\u901f\u3057\u3001\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u3068\u306e\u76f8\u5bfe\u901f\u5ea6\u3092\u30bc\u30ed\u306b\u8fd1\u3065\u3051\u307e\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u3068\u3057\u3066\u306f\u3001\u3053\u306e\u30de\u30cc\u30fc\u30d0\u3092\u5b9f\u884c\u3059\u308b\u76f4\u524d\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u306e\u76f8\u5bfe\u901f\u5ea6\uff08\u63a2\u67fb\u6a5f\u304b\u3089\u898b\u305f\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306e\u76f8\u5bfe\u901f\u5ea6\uff09\u306e\u5024\u3092\u305d\u306e\u307e\u307e\u4f7f\u7528\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "The CP Maneuver decelerates the Probe to reduce the relative velocity with Apollo close to zero.\n\nI used the Relative Velocity of Target just before the Maneuver for the parameters of the Maneuver."
+        },
+        {
+            "type": "CP",
+            "dv": 0.015,
+            "phi": 127.45,
+            "elv": 7.85,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u306e\u901f\u5ea6\u3092\u5fae\u8abf\u6574\u3057\u3001\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u3068\u306e\u76f8\u5bfe\u901f\u5ea6\u3092\u30bc\u30ed\u306b\u3057\u307e\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u3068\u3057\u3066\u306f\u3001\u3053\u306e\u30de\u30cc\u30fc\u30d0\u3092\u5b9f\u884c\u3059\u308b\u76f4\u524d\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u306e\u76f8\u5bfe\u901f\u5ea6\uff08\u63a2\u67fb\u6a5f\u304b\u3089\u898b\u305f\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306e\u76f8\u5bfe\u901f\u5ea6\uff09\u306e\u5024\u3092\u305d\u306e\u307e\u307e\u4f7f\u7528\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "The CP Maneuver zeros the relative velocity of the Probe with Apollo.\n\nI used the Relative Velocity of Target just before the Maneuver for the parameters of the Maneuver."
+        },
+        {
+            "type": "CP",
+            "dv": 0.008,
+            "phi": -77.5,
+            "elv": 0.0,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u306e\u901f\u5ea6\u3092\u5fae\u8abf\u6574\u3057\u3001\u63a2\u67fb\u6a5f\u306e\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u3078\u306e\u30e9\u30f3\u30c7\u30d6\u30fc\u3092\u5b8c\u4e86\u3055\u305b\u307e\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f\u30ab\u30c3\u30c8\u30a2\u30f3\u30c9\u30c8\u30e9\u30a4\u3067\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "The CP Maneuver makes the Probe achieve a rendezvous with Apollo.\n\nI decided on the parameters of the Maneuver by cut-and-tries.\n"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460392.87,
+            "inter": 1.0,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092 651.37 \u65e5\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u3053\u306e\u98db\u884c\u3067\u306f\u3001\u63a2\u67fb\u6a5f\u306f\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306e\u8ecc\u9053\u4e0a\u306e\u5f8c\u65b9 100 km \u307b\u3069\u306e\u4f4d\u7f6e\u3092\u4fdd\u3063\u305f\u307e\u307e\u3001\u592a\u967d\u306e\u5468\u56f2\u3092 1 \u516c\u8ee2\u3057\u307e\u3059\u3002",
+            "description_en": "The FLYTO Maneuver flies the Probe for 651.37 days. The Probe completes a round-up trip of the Sun with Apollo in the period."
+        },
+        {
+            "type": "CP",
+            "dv": 1.044,
+            "phi": 13.36,
+            "elv": -0.29,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u3001\u63a2\u67fb\u6a5f\u3092\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u3082\u3063\u3068\u63a5\u8fd1\u3055\u305b\u308b\u8ecc\u9053\u5909\u66f4\u3092\u884c\u3044\u307e\u3059\u3002\u76ee\u6a19\u4f4d\u7f6e\u306f\u30a2\u30dd\u30ed\u306e\u8ecc\u9053\u4e0a\u5f8c\u65b9\u3067\u3001\u4e2d\u5fc3\u304b\u3089\u306e\u8ddd\u96e2 10 km \u306e\u5834\u6240\u3067\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f FTA \u3092\u7528\u3044\u3066\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002FTA \u306e\u5b9f\u884c\u6761\u4ef6\u306f\u6b21\u306e\u3068\u304a\u308a\u3067\u3059\u3002\n\u3000\u30bf\u30fc\u30b2\u30c3\u30c8\uff1a\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\n\u3000\u98db\u884c\u6642\u9593\uff1a1.0 \u65e5\n\u3000\u76ee\u6a19\u4f4d\u7f6e\u306e\u8a73\u7d30\u8a2d\u5b9a\u65b9\u6cd5\uff1a\u8ecc\u9053\u30ed\u30fc\u30ab\u30eb\u5ea7\u6a19\n\u3000\u30aa\u30d5\u30bb\u30c3\u30c8\u8ddd\u96e2\uff1a10.0 km\n\u3000\u89d2\u5ea6\u30d5\u30a1\u30a4\uff08phi\uff09\uff1a180.0 \u5ea6\n\u3000\u4e0a\u4e0b\u89d2\uff08elv\uff09\uff1a0.0 \u5ea6",
+            "description_en": "The CP Maneuver accelerates the Probe toward Apollo.\n\nI decided on the parameters of the CP Maneuver by using the FTA function.\nThe parameters of the FTA are as follows:\n  Target: Apollo\n  Time to Arrival: 1.0 days\n  Precise Targeting: Orbit Local Coordinates\n  offset distance: 10.0 km\n  phi: 180.0 deg\n  elv: 0.0 deg"
+        },
+        {
+            "type": "FLYTO",
+            "time": 2460393.87,
+            "inter": 0.1,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092 1.0 \u65e5\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u3053\u306e\u98db\u884c\u306b\u3088\u308a\u3001\u63a2\u67fb\u6a5f\u306f\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u63a5\u8fd1\u3057\u307e\u3059\u3002\u98db\u884c\u7d42\u4e86\u6642\u306b\u306f\u3001\u30a2\u30dd\u30ed\u306e\u4e2d\u5fc3\u304b\u3089\u7d04 10 km \u306e\u4f4d\u7f6e\u306b\u5230\u9054\u3057\u307e\u3059\u3002",
+            "description_en": "The FLYTO Maneuver flies the Probe for 1.0 days. At the end of it, the Probe comes to the new rendezvous point. It is a point following Apollo by 10.0 kilometers in its orbit."
+        },
+        {
+            "type": "CP",
+            "dv": 1.043,
+            "phi": -167.33,
+            "elv": 0.29,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u306e\u901f\u5ea6\u3092\u5fae\u8abf\u6574\u3057\u3001\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u3068\u306e\u76f8\u5bfe\u901f\u5ea6\u3092\u30bc\u30ed\u306b\u3057\u307e\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u3068\u3057\u3066\u306f\u3001\u3053\u306e\u30de\u30cc\u30fc\u30d0\u3092\u5b9f\u884c\u3059\u308b\u76f4\u524d\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u306e\u76f8\u5bfe\u901f\u5ea6\uff08\u63a2\u67fb\u6a5f\u304b\u3089\u898b\u305f\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306e\u76f8\u5bfe\u901f\u5ea6\uff09\u306e\u5024\u3092\u305d\u306e\u307e\u307e\u4f7f\u7528\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "The CP Maneuver zeros the relative velocity of the Probe with Apollo.\n\nI used the Relative Velocity of Target just before the Maneuver for the parameters of the Maneuver."
+        },
+        {
+            "type": "CP",
+            "dv": 0.001,
+            "phi": -95.0,
+            "elv": 0.0,
+            "description_ja": "\u63a2\u67fb\u6a5f\u306e\u901f\u5ea6\u3092\u5fae\u8abf\u6574\u3057\u3001\u63a2\u67fb\u6a5f\u304c\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u63a5\u8fd1\u3057\u305f\u72b6\u614b\u304c\u9577\u304f\u7d9a\u304f\u3088\u3046\u306b\u3057\u307e\u3059\u3002\n\n\u30de\u30cc\u30fc\u30d0\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f\u30ab\u30c3\u30c8\u30a2\u30f3\u30c9\u30c8\u30e9\u30a4\u3092\u884c\u3063\u3066\u6c7a\u5b9a\u3057\u307e\u3057\u305f\u3002",
+            "description_en": "The CP Maneuver tweaks the velocity of the Probe to stay longer in the vicinity of Apollo.\n\nI decided on the parameters of the Maneuver by cut-and-tries."
+        },
+        {
+            "type": "FLYTO",
+            "time": 2461045.24,
+            "inter": 1.0,
+            "description_ja": "\u3053\u306e\u30de\u30cc\u30fc\u30d0\u306f\u63a2\u67fb\u6a5f\u3092 651.37 \u65e5\u98db\u884c\u3055\u305b\u307e\u3059\u3002\u3053\u306e\u98db\u884c\u3067\u306f\u3001\u63a2\u67fb\u6a5f\u306f\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306b\u63a5\u8fd1\u3057\u305f\u72b6\u614b\u3092\u4fdd\u3063\u305f\u307e\u307e\u3001\u592a\u967d\u306e\u5468\u56f2\u3092 1 \u516c\u8ee2\u3057\u307e\u3059\u3002\n\n\u98db\u884c\u3092\u958b\u59cb\u3057\u305f\u6642\u70b9\u3067\u306f\u63a2\u67fb\u6a5f\u3068\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u306e\u8ddd\u96e2\uff08\u4e2d\u5fc3\u9593\u306e\u8ddd\u96e2\uff09\u306f \u7d0410 km \u3067\u3059\u304c\u3001\u63a2\u67fb\u6a5f\u306f 357 \u65e5\u306b\u308f\u305f\u3063\u3066\u5c0f\u60d1\u661f\u30a2\u30dd\u30ed\u304b\u3089 20 km \u4ee5\u5185\u306e\u8fd1\u508d\u306b\u7559\u307e\u308a\u307e\u3059\u3002\n\n",
+            "description_en": "The FLYTO Maneuver flies the Probe for 651.37 days. The Probe completes a round-up trip of the Sun with Apollo in the period.\n\nThe Probe is ten kilometers from the center of Apollo at the beginning of the Maneuver. It will stay for 357 (three hundred and fifty-seven) days within twenty kilometers from Apollo."
+        }
+    ]
+}

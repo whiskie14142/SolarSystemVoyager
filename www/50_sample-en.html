@@ -65,14 +65,12 @@
               </TABLE>
             </TD>
             <TD id=mainbody>
-              <P>under construction</P><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-              <!--
               <P>This page provides additional samples of the Flight Plan of SSVG.</P>
               <ul>
                 <li>You need SSVG to run one of the Flight Plans. If you have not yet, please <A href="./01_install-en.html" target="_blank">install</A> it.</li>
                 <li>Choose one of the samples below.</li>
-                <li>Download the Flight Plan file and the SPK file of the sample.</li>
-                <li>Run SSVG and import the downloaded SPK file.</li>
+                <li>Download the Flight Plan file and the SPK file of the sample. Some samples may not contain any SPK file.</li>
+                <li>Run SSVG and import the downloaded SPK file if you have one.</li>
                 <li>Import the downloaded Flight Plan file with SSVG.</li>
                 <li>Open the Flight Plan file with SSVG.</li>
                 <li>Read <A href="./docs/SSVG_UsersGuide-en.pdf" download>SSVG User&apos;s Guide</A> to learn how to use SSVG.</li>
@@ -83,7 +81,7 @@
                 <thead>
                   <tr>
                     <th id=sfph1 rowspan="2">ID</th>
-                    <th id=sfph2 rowspan="2">Descriptions</th>
+                    <th id=sfph2 rowspan="2">Descriptions<br>(Click a title to see its detail)</th>
                     <th id=sfph34 colspan="2">Downloads</th>
                     <tr>
                         <th id=sfph3>Flight Plan files</th>
@@ -94,54 +92,52 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class=sfpb1>SFP001</td>
+                    <td class=sfpb1>SFPA01</td>
                     <td class=sfpb2>
                       <details>
-                        <summary>Rendezvous with Ceres using EP</summary>
-                        <p>This Flight Plan makes the Probe rendezvous with dwarf planet Ceres. Ceres is the largest object in the main belt. The Probe uses its electric propulsion engine (EP) for the orbital transitions that make the Probe rendezvous with Ceres.</p>
+                        <summary>Rendezvous with Pallas</summary>
+                        <p>This Flight Plan makes the Probe rendezvous with the asteroid Pallas. It is one of the four large objects in the asteroid belt. Its orbital plane is inclined heavily from the ecliptic plane.<br>In the Flight Plan, the Probe flies to Jupiter, makes a swing-by, and then flies toward Pallas.</p>
                       </details>
                     </td>
-                    <td class=sfpb3><A href="./sfp/plan/Ceres_EP.json" download>Ceres_EP.json</A></td>
-                    <td class=sfpb4><A href="./sfp/data/2000001_Ceres.bsp" download>2000001_Ceres.bsp</A></td></td>
+                    <td class=sfpb3><A href="./sfp/plan/SFPA01.json" download>SFPA01.json</A></td>
+                    <td class=sfpb4><A href="./sfp/data/2000002_Pallas.bsp" download>2000002_Pallas.bsp</A></td>
                   </tr>
                   <tr>
-                        <td class=sfpb1>SFP002</td>
-                        <td class=sfpb2>
-                          <details>
-                            <summary>Rendezvous with Pallas using EP</summary>
-                            <p>This Flight Plan makes the Probe rendezvous with asteroid Pallas. Pallas is one of the largest four objects in the main belt. Since the orbital plane of Pallas inclines largely to the ecliptic plane, the Probe performs a swing-by of Jupiter in the first phase of the journey and approaches Pallas in the next phase.<br>In the Flight Plan, the Probe uses the electric propulsion engine to rendezvous with Pallas.<br>The Flight Plan is an improved version of "sample_Pallas" contained in SSVG.</p>
-                          </details>
-                        </td>
-                        <td class=sfpb3><A href="./sfp/plan/Pallas_JSB-EP.json" download>Pallas_JSB-EP.json</A></td>
-                        <td class=sfpb4><A href="./sfp/data/2000002_Pallas.bsp" download>2000002_Pallas.bsp</A></td>
-                  </tr>
-                  <tr>
-                    <td class=sfpb1>SFP003</td>
+                    <td class=sfpb1>SFPA02</td>
                     <td class=sfpb2>
                       <details>
-                        <summary>Rendezvous with Juno by two steps of orbital transition</summary>
-                        <p>The Flight Plan makes the Probe rendezvous with asteroid Juno, which is one of the largest four celestial objects in the main belt.
-                          A Flight Plan that brings the Probe directly to Juno requires large delta-V to leave and results in the large relative velocity of the Target at the arrival. Therefore, the Flight Plan takes two major orbital transition steps as follows:
-                        <ul class=inbox>
-                          <li>The Probe starts its spaceflight on an orbit that reaches to the orbit of Juno at the apoapsis.</li>
-                          <li>At the apoapsis, the Probe performs the first orbital transition that makes the probe approach Juno.</li>
-                          <li>After one orbit, the Probe performs the second orbital transition to rendezvous with Juno.</li>
-                        </ul>
-                        We use the electric propulsion engine as the main thruster of the Probe.</p>
+                        <summary>Spaceflight of Voyager 2</summary>
+                        <p>This Flight Plan replicates the spaceflight of Voyager 2. The spacecraft was launched in 1977 by the USA to probe Jupiter, Saturn, Uranus, and Neptune sequentially.</p>
                       </details>
                     </td>
-                    <td class=sfpb3><A href="./sfp/plan/Juno_EP.json" download>Juno_EP.json</A></td>
-                    <td class=sfpb4><A href="./sfp/data/2000003_Juno.bsp" download>2000003_Juno.bsp</A></td>
+                    <td class=sfpb3><A href="./sfp/plan/SFPA02.json" download>SFPA02.json</A></td>
+                    <td class=sfpb4>N/A</td>
                   </tr>
-
-
-
-
-
+                  <tr>
+                    <td class=sfpb1>SFPA03</td>
+                    <td class=sfpb2>
+                      <details>
+                        <summary>Flyby to Apollo</summary>
+                        <p>This Flight Plan makes the Probe flyby to Apollo. It is one of the asteroids that could come close to the Earth.</p>
+                      </details>
+                    </td>
+                    <td class=sfpb3><A href="./sfp/plan/SFPA03.json" download>SFPA03.json</A></td>
+                    <td class=sfpb4><A href="./sfp/data/2001862_Apollo.bsp" download>2001862_Apollo.bsp</A></td>
+                  </tr>
+                  <tr>
+                    <td class=sfpb1>SFPA04</td>4
+                    <td class=sfpb2>
+                      <details>
+                        <summary>Rendezvous with Apollo</summary>
+                        <p>This Flight Plan makes the Probe rendezvous with Apollo. It is one of the asteroids that could come close to the Earth.<br>The Probe stays in the vicinity of Apollo for a long stint. The distance is about one hundred kilometers in the first phase and then comes closer to ten kilometers.</p>
+                      </details>
+                    </td>
+                    <td class=sfpb3><A href="./sfp/plan/SFPA04.json" download>SFPA04.json</A></td>
+                    <td class=sfpb4><A href="./sfp/data/2001862_Apollo.bsp" download>2001862_Apollo.bsp</A></td>
+                  </tr>
                 </tbody>
               </table>
               <br><br>
-              -->
             </TD>
           </TR>
         </TBODY>
